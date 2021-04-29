@@ -5,3 +5,9 @@
 
 ## 과제 제출 과정
 * [과제 제출 방법](https://github.com/next-step/nextstep-docs/tree/master/precourse)
+
+## 기능 구현 목록
+
+- 1 ~ 9 까지 랜덤한 수 생성 기능
+- 4 이상일 경우 전진하는 자동차의 전진 기능 
+- 횟수를 입력받아 모든 차들을 횟수만큼 이동 시키는기능
