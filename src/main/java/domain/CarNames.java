@@ -19,7 +19,7 @@ public class CarNames {
     }
 
     public List<CarName> getNames() {
-        return names;
+        return new ArrayList<>(names);
     }
 
     @Override
