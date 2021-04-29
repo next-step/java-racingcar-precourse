@@ -12,9 +12,9 @@ public class PositionTest {
     public void 증가가_가능하다() {
         Position position = new Position();
 
-        position.increase();
+        Position newPosition = position.increase();
 
-        assertThat(position)
+        assertThat(newPosition)
                 .isEqualTo(new Position(1));
     }
 
