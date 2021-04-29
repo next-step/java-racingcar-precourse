@@ -3,21 +3,25 @@ package racing;
 public class Racing {
     
     private final Car car;
-    private final int randomNumber;
+    private final RandomNumber randomNumber;
     
-    public Racing(Car car, int randomNumber) {
+    public Racing(Car car, int randomNo) {
         this.car = car;
-        this.randomNumber = randomNumber;
+        this.randomNumber = new RandomNumber(randomNo);
     }
     
-    public int getRandomNumber() {
-        return randomNumber;
+    public RandomNumber getRandomNumber() {
+        return randomNumber; 
     }
     
-    public int play(Racing racing) {
-        if (racing.getRandomNumber() >= 4) {
-            return 1;
+    public void play(Racing racing) {
+        if (isMoveNumber()) {
+            car.move(racing);
         }
-        return 0;
     }
+    
+    private boolean isMoveNumber() {
+        return randomNumber.getRandomNumber() >= 4;
+    }
+    
 }

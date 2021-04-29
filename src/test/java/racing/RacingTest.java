@@ -17,10 +17,12 @@ public class RacingTest {
         Racing racing = new Racing(car, 4);
         
         // 1. 현재 상태를 알기 위해선 움직이는게 필요해. 파라미터는 자동차이름 + 숫자 --> racing
-        int currentPosition = racing.play(racing);
+        racing.play(racing);
+        racing.play(racing);
+        racing.play(racing); 
         
         // 0. 1칸 움직였을때를 가정하고 Test 메소드 만들 예정.
-        assertThat(currentPosition).isEqualTo(1);
+        assertThat(car.getCurrentPosition()).isEqualTo(3);
         
     }
 }
