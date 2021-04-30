@@ -17,6 +17,15 @@ public class RaceGame {
 		return cars;
 	}
 	
+	public void startNthGames(Cars cars, int playCnt) {
+		if(playCnt < 1) {
+			return;
+		}
+		for(int i = 0; i < playCnt; i++) {
+			startGame(cars);
+		}
+	}
+	
 	public void startGame(Cars cars) {
 		for(Car car : cars.getCarList()) {
 			car.addScore();
