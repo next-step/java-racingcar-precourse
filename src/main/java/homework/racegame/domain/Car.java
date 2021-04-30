@@ -28,4 +28,17 @@ public class Car {
     void printMoveProgress() {
         System.out.println(new StringBuffer(name).append(":").append(getMoveProgress()));
     }
+
+    public void moveOrStop() {
+        if (isPossibleToMove()) {
+            move();
+        }
+    }
+
+    @Override
+    public String toString() {
+        StringBuffer stringBuffer = new StringBuffer();
+        stringBuffer.append("name: ").append(name).append(", progress: ").append(progress);
+        return stringBuffer.toString();
+    }
 }
