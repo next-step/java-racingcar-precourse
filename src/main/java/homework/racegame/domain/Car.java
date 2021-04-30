@@ -38,6 +38,10 @@ public class Car {
         System.out.println(new StringBuffer(name).append(":").append(getMoveProgress()));
     }
 
+    public String getName() {
+        return name;
+    }
+
     public void moveOrStop() {
         if (isPossibleToMove()) {
             move();
