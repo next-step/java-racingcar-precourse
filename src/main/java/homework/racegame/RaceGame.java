@@ -29,7 +29,6 @@ public class RaceGame {
 
     void printWinners(List<Car> winners) {
         if (winners == null || winners.isEmpty()) {
-            System.out.println("우승자가 없습니다.");
             return;
         }
         StringBuffer stringBuffer = new StringBuffer();
