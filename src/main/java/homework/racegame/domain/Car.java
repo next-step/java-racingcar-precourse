@@ -1,0 +1,31 @@
+package homework.racegame.domain;
+
+import java.util.Random;
+
+public class Car {
+
+    private final int GO_STOP_BOUNDARY = 4;
+    private final String name;
+    private final StringBuffer progress;
+
+    public Car(String name) {
+        this.name = name;
+        this.progress = new StringBuffer();
+    }
+
+    String getMoveProgress() {
+        return this.progress.toString();
+    }
+
+    boolean isPossibleToMove() {
+        return new Random().nextInt(10) >= GO_STOP_BOUNDARY;
+    }
+
+    void move() {
+        this.progress.append("-");
+    }
+
+    void printMoveProgress() {
+        System.out.println(new StringBuffer(name).append(":").append(getMoveProgress()));
+    }
+}
