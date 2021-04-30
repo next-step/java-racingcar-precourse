@@ -13,8 +13,17 @@ public class Car {
         this.progress = new StringBuffer();
     }
 
+    public Car(String name, StringBuffer progress) {
+        this.name = name;
+        this.progress = progress;
+    }
+
     String getMoveProgress() {
         return this.progress.toString();
+    }
+
+    int getMoveProgressValue() {
+        return this.progress.length();
     }
 
     boolean isPossibleToMove() {
