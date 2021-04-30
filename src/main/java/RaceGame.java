@@ -6,7 +6,7 @@ import java.util.Random;
 import java.util.Set;
 
 public class RaceGame {
-	private static final String printStr = "-";
+	private static final String PRINT_STR = "-";
 	private Cars cars;
 	
 	public RaceGame(Cars cars) {
@@ -30,7 +30,7 @@ public class RaceGame {
 		for(Car car : cars.getCarList()) {
 			car.addScore();
 			System.out.println(car.getCarName() + ":" + 
-				String.join("", Collections.nCopies(car.getCarScore(), printStr)));
+				String.join("", Collections.nCopies(car.getCarScore(), PRINT_STR)));
 		}
 		this.cars = cars;
 	}
