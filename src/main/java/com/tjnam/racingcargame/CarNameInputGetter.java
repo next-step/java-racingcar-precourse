@@ -29,6 +29,10 @@ public class CarNameInputGetter {
     }
 
     private List<CarName> convertStringToCarName(String[] carNameInputs){
-
+        List<CarName> carNames = new ArrayList<CarName>();
+        for (int i=0 ; i<carNameInputs.length ; i++) {
+            carNames.add(new CarName(carNameInputs[i]));
+        }
+        return carNames;
     }
 }
