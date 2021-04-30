@@ -1,17 +1,19 @@
 package racing;
 
+import static racing.RandomNumber.MOVABLE_MINIMUM_NUMBER;
+
 public class Racing {
-    
+
+    private final int number;
     private final Car car;
-    private final RandomNumber randomNumber;
-    
-    public Racing(Car car, int randomNo) {
+
+    public Racing(Car car, int number) {
         this.car = car;
-        this.randomNumber = new RandomNumber(randomNo);
+        this.number = number;
     }
     
-    public RandomNumber getRandomNumber() {
-        return randomNumber; 
+    public int getRandomNumber() {
+        return number; 
     }
     
     public void play(Racing racing) {
@@ -21,7 +23,7 @@ public class Racing {
     }
     
     private boolean isMoveNumber() {
-        return randomNumber.getRandomNumber() >= 4;
+        return number >= MOVABLE_MINIMUM_NUMBER;
     }
     
 }
