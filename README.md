@@ -16,19 +16,27 @@
     - progress - 이동한 정도를 저장하는 변수, StringBuffer
     - Car - 차량 이름을 전달받아 차량을 생성하는 생성자
     - getMoveProgress - 자동차 이동 상황을 반환하는 메소드
+    - getMoveProgressValue - 자동차 이동 거리 값을 반환하는 메소드
     - isPossibleToMove - Random 값을 통해 이동할 수 있는지 여부를 확인하는 메소드
     - move - 한 칸 이동하는 메소드
+    - printMoveProgress - 차량 진행 상태를 출력하는 메소드
+    - moveOrStop - 랜덤한 값에 따라 차량을 이동시키는 메소드
     - toString - 디버그용 toString 메소드 오버라이드
 
 1. CarGroup - Car 객체들을 관리하는 클래스
     - cars - Car 객체를 저장하여 관리하는 Collection 클래스, List<Car>
     - CarGroup - 차량 이름을 배열로 전달받아 차량 그룹을 생성하는 생성자
-    - moveCars - 자신이 관리하는 자동차를 이동시키는 메소드
+    - getMaximumMoveProgressValueInGroup - 차량 그룹 내 가장 멀리 이동한 차량의 이동거리를 반환하는 메소드
+    - setCarIntoListCheckWithPredicate - Predicate 함수형 인터페이스의 조건을 만족하는 차량을 매개변수 리스트에 담는 메소드
+    - moveOrStopCars - 자신이 관리하는 차량을 이동시키는 메소드
+    - ~~moveCars - 자신이 관리하는 자동차를 이동시키는 메소드~~
     - printCarsProgress - 자신이 관리하는 자동차들의 이동 상태를 출력하는 메소드
+    - getWinners - 우승 차량들을 반환하는 메소드
     - toString - 디버그용 toString 메소드 오버라이드
 
 1. ValidationChecker - 사용자 입력에 대한 정합성 체크를 수행하는 클래스
     - isValidTryCount - 사용자가 지정한 시도 횟수의 정합성을 체크
+    - isValidCarName - 사용자가 입력한 차량 이름들 중에 비정상적인 경우가 있는지 체크
 
 1. RaceGame 클래스 - 레이스 게임의 전체적인 흐름을 제어하는 클래스
     - getCarNames - 사용자가 입력한 차량들의 이름을 반환하는 메소드
