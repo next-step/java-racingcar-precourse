@@ -18,11 +18,14 @@
     - getMoveProgress - 자동차 이동 상황을 반환하는 메소드
     - isPossibleToMove - Random 값을 통해 이동할 수 있는지 여부를 확인하는 메소드
     - move - 한 칸 이동하는 메소드
+    - toString - 디버그용 toString 메소드 오버라이드
 
 1. CarGroup - Car 객체들을 관리하는 클래스
     - cars - Car 객체를 저장하여 관리하는 Collection 클래스, List<Car>
     - CarGroup - 차량 이름을 배열로 전달받아 차량 그룹을 생성하는 생성자
     - moveCars - 자신이 관리하는 자동차를 이동시키는 메소드
+    - printCarsProgress - 자신이 관리하는 자동차들의 이동 상태를 출력하는 메소드
+    - toString - 디버그용 toString 메소드 오버라이드
 
 1. ValidationChecker - 사용자 입력에 대한 정합성 체크를 수행하는 클래스
     - isValidTryCount - 사용자가 지정한 시도 횟수의 정합성을 체크
