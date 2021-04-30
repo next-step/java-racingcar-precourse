@@ -36,7 +36,7 @@ public class RaceGameTest {
     public void getTryCountTest() {
         Scanner scanner = new Scanner(tryCount);
         RaceGame raceGame = new RaceGame();
-        Assertions.assertThat(raceGame.getTryCount(scanner)).isEqualTo(12);
+        Assertions.assertThat(raceGame.getTryCount(scanner)).isEqualTo(5);
         scanner.close();
     }
 
