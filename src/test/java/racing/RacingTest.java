@@ -6,9 +6,10 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingTest {
+    
     @Test
     @DisplayName("자동차 이동 테스트 - 1~3일 경우 stop, 4~9일 경우 go")
-    public void move() {
+    public void moveTest() {
         
         RandomNumber randomNumber = new RandomNumber();
         
@@ -36,4 +37,5 @@ public class RacingTest {
         }
         
     }
+    
 }
