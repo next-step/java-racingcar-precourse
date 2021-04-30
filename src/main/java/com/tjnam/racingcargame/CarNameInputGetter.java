@@ -1,4 +1,5 @@
 package com.tjnam.racingcargame;
 
-public class CarNameInputer {
+public class CarNameInputGetter {
+
 }
