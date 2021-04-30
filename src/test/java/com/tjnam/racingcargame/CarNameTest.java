@@ -1,4 +1,4 @@
 package com.tjnam.racingcargame;
 
-public class CarGameTest {
+public class CarNameTest {
 }
