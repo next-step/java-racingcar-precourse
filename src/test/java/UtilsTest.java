@@ -62,7 +62,7 @@ public class UtilsTest {
 
     @Test
     @DisplayName("car_name_5자리_검증_테스트_실패")
-    void CarNameValidTestException() {
+    void CarNameValidTestFail() {
         assertThatThrownBy(() -> Utils.carNameValid("메르세데스벤츠")).isInstanceOf(IllegalArgumentException.class)
             .hasMessageContaining("이름이 5자리 이상입니다.");
     }
@@ -76,9 +76,24 @@ public class UtilsTest {
 
     @Test
     @DisplayName("입력_된_자동차_개수_검증_실패")
-    void inputCarSizeValidTestException() {
+    void inputCarSizeValidTestFail() {
         String[] names = {};
         assertThatThrownBy(() -> Utils.inputCarSizeValid(names)).isInstanceOf(IllegalArgumentException.class)
             .hasMessageContaining("1개 이상의 자동차 이름을 입력해주세요.");
+    }
+
+    @Test
+    @DisplayName("중복된_이름이_있는지_검증_성공")
+    void inputCarNameDuplicateValidTestSuccess() {
+        String[] names = {"페라리", "벤츠"};
+        assertThat(Utils.inputCarNameDuplicateValid(names)).isTrue();
+    }
+
+    @Test
+    @DisplayName("중복된_이름이_있는지_검증_실패")
+    void inputCarNameDuplicateValidTestFail() {
+        String[] names = {"페라리", "페라리"};
+        assertThatThrownBy(() -> Utils.inputCarNameDuplicateValid(names)).isInstanceOf(IllegalArgumentException.class)
+            .hasMessageContaining("중복된 이름이 존재합니다.");
     }
 }

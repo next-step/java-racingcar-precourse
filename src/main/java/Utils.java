@@ -1,5 +1,8 @@
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Utils {
     public static CarStatus getCarStatus(int number) {
@@ -42,5 +45,16 @@ public class Utils {
             throw new IllegalArgumentException("1개 이상의 자동차 이름을 입력해주세요.");
         }
         return true;
+    }
+
+    public static boolean inputCarNameDuplicateValid(String[] names) {
+        Set<String> nameSet = new HashSet<>(Arrays.asList(names));
+
+        if (nameSet.size() != names.length) {
+            throw new IllegalArgumentException("중복된 이름이 존재합니다.");
+        }
+
+        return true;
+
     }
 }
