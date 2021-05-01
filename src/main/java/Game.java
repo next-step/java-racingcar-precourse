@@ -1,2 +1,42 @@
+import util.Car;
+
+import java.util.Scanner;
+
 public class Game {
+    Car carObject;
+    Scanner scanner;
+    int gameCount;
+
+    Game(){
+        carObject = new Car();
+    }
+
+    public void carNameInput(){
+      scanner = new Scanner(System.in);
+      System.out.println("경주할 자동차 이름을 입력하세요. (이름은 쉼표(,) 기준으로 구분)");
+      String fullString = scanner.nextLine();
+      String[] arrayString = fullString.split(",");
+      carObject.initCarList(arrayString.length);
+      carObject.initCarProcessList(arrayString.length);
+      for(int i=0;i<arrayString.length;i++) carObject.setCarList(arrayString[i], i);
+    }
+
+    public void randomInitCountInput(){
+      scanner = new Scanner(System.in);
+      System.out.println("시도할 횟수는 몇회인가요?");
+      try { int caseCount = Integer.parseInt(scanner.nextLine());
+            if(caseCount > 0) {
+                gameCount = Integer.parseInt(scanner.nextLine());
+            }else{ throw new AssertionError("음수는 계산 불가능합니다."); }
+      }catch (NumberFormatException e){
+          System.out.print("숫자 미입력 OR 초과수 에러 : ");
+          e.printStackTrace(); }
+    }
+
+    public void GameStart(){
+        this.carNameInput();
+        this.randomInitCountInput();
+    }
+
+
 }
