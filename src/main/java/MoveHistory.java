@@ -12,7 +12,7 @@ public class MoveHistory {
         this.moves.add(movement);
     }
 
-    public int countMove(){
+    public int countMoves(){
         return this.moves.size();
     }
 

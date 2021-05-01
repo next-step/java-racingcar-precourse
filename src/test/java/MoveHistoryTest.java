@@ -21,7 +21,7 @@ public class MoveHistoryTest {
             this.moveHistory.add(new Movement());
         }
 
-        Assertions.assertThat(this.moveHistory.countMove()).isEqualTo(moveCount);
+        Assertions.assertThat(this.moveHistory.countMoves()).isEqualTo(moveCount);
         Assertions.assertThat(this.moveHistory.toString()).isEqualTo(movePrint);
     }
 }
