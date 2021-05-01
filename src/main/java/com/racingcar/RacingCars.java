@@ -27,6 +27,19 @@ public class RacingCars {
 	public void start(int repeatCount) {
 		for (int i = 0; i < repeatCount; i++) {
 			startByCar();
+			printByCar();
+
+			printSpace();
+		}
+	}
+
+	private void printSpace() {
+		System.out.println("\n");
+	}
+
+	private void printByCar() {
+		for (RacingCar car : this.values) {
+			car.print();
 		}
 	}
 

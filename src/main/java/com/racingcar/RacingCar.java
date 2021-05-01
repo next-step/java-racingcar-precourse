@@ -42,4 +42,8 @@ public class RacingCar {
 	public Location getLocation() {
 		return location;
 	}
+
+	public void print() {
+		System.out.println(RacingCarResult.of(this));
+	}
 }
