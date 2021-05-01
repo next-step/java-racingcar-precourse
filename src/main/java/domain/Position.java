@@ -5,22 +5,32 @@ import java.util.Objects;
 public class Position {
     private static final int MINIMUM_POSITION = 0;
 
+    private CarName carName;
     private int position;
 
     public Position() {
-        this(MINIMUM_POSITION);
+        this(null, MINIMUM_POSITION);
     }
 
     public Position(int position) {
+        this(null, position);
+    }
+
+    public Position(CarName carName) {
+        this(carName, MINIMUM_POSITION);
+    }
+
+    public Position(CarName carName, int position) {
         if(position < MINIMUM_POSITION) {
             throw new IllegalArgumentException("위치는 0 이하가 없습니다.");
         }
 
+        this.carName = carName;
         this.position = position;
     }
 
     public Position increase() {
-        return new Position(position + 1);
+        return new Position(carName, position + 1);
     }
 
     @Override
@@ -28,11 +38,11 @@ public class Position {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Position position1 = (Position) o;
-        return position == position1.position;
+        return position == position1.position && Objects.equals(carName, position1.carName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(position);
+        return Objects.hash(carName, position);
     }
 }

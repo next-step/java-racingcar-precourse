@@ -5,7 +5,7 @@ import domain.strategy.MoveStrategy;
 public class Car {
     private CarName carName;
     private MoveStrategy moveStrategy;
-    private Position position = new Position();
+    private Position position;
 
     public Car(String carName, MoveStrategy moveStrategy) {
         this(new CarName(carName), moveStrategy);
@@ -14,11 +14,12 @@ public class Car {
     public Car(CarName carName, MoveStrategy moveStrategy) {
         this.carName = carName;
         this.moveStrategy = moveStrategy;
+        this.position = new Position(carName);
     }
 
     public void move() {
         if(moveStrategy.movable()) {
-            position.increase();
+            position = position.increase();
         }
     }
 
