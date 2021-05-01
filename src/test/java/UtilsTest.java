@@ -135,4 +135,13 @@ public class UtilsTest {
         assertThatThrownBy(() -> Utils.splitInputCarNames(input)).isInstanceOf(IllegalArgumentException.class)
             .hasMessageContaining("쉼표(,) 구분을 정확히 해주세요.");
     }
+
+    @Test
+    @DisplayName("1_9까지_랜덤_숫자_생성")
+    void generatorRandomNumber() {
+        for (int i = 0; i < 1000; i++) {
+            int number = Utils.generatorRandomNumber();
+            assertThat(number > 0 && number < 10).isTrue();
+        }
+    }
 }

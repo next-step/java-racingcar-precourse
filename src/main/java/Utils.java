@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Random;
 import java.util.Set;
 
 public class Utils {
@@ -90,5 +91,10 @@ public class Utils {
         commaCountCompareToNames(names, commaCount);
 
         return names;
+    }
+
+    public static int generatorRandomNumber() {
+        Random random = new Random();
+        return random.nextInt(8) + 1;
     }
 }
