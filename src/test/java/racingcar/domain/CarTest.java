@@ -10,7 +10,7 @@ public class CarTest {
 
     @Test
     @DisplayName("자동차 생성 - 이름 입력")
-    void contractor_name() {
+    void 자동차_생성_및_이름_5자리_이하() {
         Car car = new Car("  하스      ");
         assertThat(car.getName()).isEqualTo("하스");
 
