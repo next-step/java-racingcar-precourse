@@ -29,7 +29,6 @@ class RaceTest {
 	void 사용자의_입력값을_자동차들과_라운드로_변환한다() {
 		List<Car> cars = this.race.getCars();
 		Round round = this.race.getRound();
-
 		List<String> carNameStrings = new ArrayList<>();
 		for (Car car : cars) {
 			CarName carName = car.getCarName();

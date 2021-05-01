@@ -17,6 +17,10 @@ public class Race {
 		}
 	}
 
+	public RaceResult start() {
+		return null;
+	}
+
 	public List<Car> getCars() {
 		return this.cars;
 	}
