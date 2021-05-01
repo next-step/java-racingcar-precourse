@@ -20,4 +20,8 @@ public class RandomNumber {
 	public static RandomNumber create() {
 		return new RandomNumber((int)(Math.random() * 10));
 	}
+
+	public boolean isLessThan(int number) {
+		return getValue() < number;
+	}
 }

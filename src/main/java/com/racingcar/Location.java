@@ -14,4 +14,8 @@ public class Location {
 	public void increase() {
 		this.value++;
 	}
+
+	public int getValue() {
+		return value;
+	}
 }

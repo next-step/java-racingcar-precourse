@@ -1,6 +1,8 @@
 package com.racingcar;
 
 public class RacingCar {
+	private static final int MOVE_FORWARD_CONDITION = 4;
+
 	private Name name;
 	private Location location;
 
@@ -15,5 +17,21 @@ public class RacingCar {
 
 	public RandomNumber createRandomNumber() {
 		return RandomNumber.create();
+	}
+
+	void moveForwardIfMoveable(RandomNumber randomNumber) {
+		if (randomNumber.isLessThan(MOVE_FORWARD_CONDITION)) {
+			return;
+		}
+
+		this.location.increase();
+	}
+
+	public Name getName() {
+		return name;
+	}
+
+	public Location getLocation() {
+		return location;
 	}
 }
