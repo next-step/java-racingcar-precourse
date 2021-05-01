@@ -15,5 +15,10 @@ public final class ConditionalMovableObject implements Movable {
             this.movable.moveForward();
         }
     }
+
+    @Override
+    public Location getLocation() {
+        return this.movable.getLocation();
+    }
 }
 

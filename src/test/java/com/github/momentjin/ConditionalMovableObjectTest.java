@@ -68,4 +68,9 @@ class MockMovable implements Movable {
     public void moveForward() {
         isMoved = true;
     }
+
+    @Override
+    public Location getLocation() {
+        return null;
+    }
 }
