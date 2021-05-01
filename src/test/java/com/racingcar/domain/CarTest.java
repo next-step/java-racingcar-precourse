@@ -16,7 +16,7 @@ class CarTest {
     @ValueSource(ints = {4, 5, 6, 7, 8, 9})
     public void moveCarTest(Integer flag) {
         // when
-        Car car = new Car();
+        Car car = new Car(null);
         Boolean isMoving = car.isCarMoving(flag);
 
         // then
@@ -28,7 +28,7 @@ class CarTest {
     @ValueSource(ints = {0, 1, 2, 3})
     public void stayCarTest(Integer flag) {
         // when
-        Car car = new Car();
+        Car car = new Car(null);
         Boolean isMoving = car.isCarMoving(flag);
 
         // then
