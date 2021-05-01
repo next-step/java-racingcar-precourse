@@ -11,16 +11,9 @@ public class Main {
     }
 
     public static void start() {
-        // 이름 입력 받기
         List<String> names = carNamesSetUp();
-
-        // 골 숫자 세팅
         goalSetUp();
-
-        // car 세팅
         List<Car> cars = carSetUp(names);
-
-        // 경주 실행
         play(cars);
     }
 
@@ -39,7 +32,6 @@ public class Main {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String inputNames = scanner.nextLine();
 
-        // 이름 나누기
         try {
             names = Utils.splitInputCarNames(inputNames);
             carNamesValid(names);
@@ -51,10 +43,8 @@ public class Main {
     }
 
     public static void carNamesValid(List<String> names) {
-        // 입력 된 자동차 개수 확인
         Utils.inputCarSizeValid(names);
 
-        // 중복된 이름있는지 확인
         Utils.inputCarNameDuplicateValid(names);
     }
 
