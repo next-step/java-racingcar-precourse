@@ -1,6 +1,6 @@
-package com.bistros.racing.game;
+package com.bistros.racing.domain;
 
-public class CarPosition implements Comparable<CarPosition> {
+public class PlayingCarPosition implements Comparable<PlayingCarPosition> {
     private int position = 0;
 
     public void increasePosition() {
@@ -12,7 +12,7 @@ public class CarPosition implements Comparable<CarPosition> {
     }
 
     @Override
-    public int compareTo(CarPosition o) {
+    public int compareTo(PlayingCarPosition o) {
         return position - o.position;
     }
 }

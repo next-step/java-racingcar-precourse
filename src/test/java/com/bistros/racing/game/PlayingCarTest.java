@@ -1,5 +1,7 @@
 package com.bistros.racing.game;
 
+import com.bistros.racing.domain.PlayingCar;
+import com.bistros.racing.domain.PositionLead;
 import com.bistros.racing.domain.TestCar;
 import org.junit.jupiter.api.Test;
 

@@ -1,6 +1,8 @@
 package com.bistros.racing.game;
 
 import com.bistros.racing.domain.Car;
+import com.bistros.racing.domain.PlayingCar;
+import com.bistros.racing.domain.PositionLead;
 
 import java.util.ArrayList;
 import java.util.Collections;

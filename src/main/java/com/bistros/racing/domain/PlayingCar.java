@@ -1,16 +1,14 @@
-package com.bistros.racing.game;
-
-import com.bistros.racing.domain.Car;
+package com.bistros.racing.domain;
 
 import java.util.Arrays;
 
 public class PlayingCar implements Comparable<PlayingCar> {
     private final Car car;
-    private final CarPosition position;
+    private final PlayingCarPosition position;
 
     public PlayingCar(Car car) {
         this.car = car;
-        this.position = new CarPosition();
+        this.position = new PlayingCarPosition();
     }
 
     public Car getCar() {
