@@ -1,14 +1,12 @@
 package racing.vo;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.AssertionsKt;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CarTest {
 
@@ -35,6 +33,6 @@ public class CarTest {
         int nameSize = names.split(",").length;
         Reception reception = new Reception(new ArrayList<>());
         reception.register(names);
-        assertEquals(nameSize,reception.getReceptionList().size());
+        assertEquals(nameSize,reception.getParticipants().size());
     }
 }
