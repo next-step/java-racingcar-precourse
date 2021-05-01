@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
@@ -24,12 +25,16 @@ public class Utils {
     public static List<Car> getCarStatusEqualsGoal(List<Car> cars) {
         List<Car> carList = new ArrayList<>();
         for (Car car : cars) {
-            if (carStatusEqualsGoalCheck(car)) {
-                carList.add(car);
-            }
+            addCarStatusEqualsGoal(carList, car);
         }
 
         return carList;
+    }
+
+    public static void addCarStatusEqualsGoal(List<Car> carList, Car currentCar) {
+        if (carStatusEqualsGoalCheck(currentCar)) {
+            carList.add(currentCar);
+        }
     }
 
     public static boolean carNameValid(String name) {
@@ -65,32 +70,23 @@ public class Utils {
     }
 
     public static List<String> splitInputCarNames(String inputNames) {
-        List<String> names = new ArrayList<>();
+        List<String> names = new ArrayList<>(Arrays.asList(inputNames.split(",")));
         int commaCount = 0;
-        int start = 0;
-        int end = 0;
 
-        int inputStringSize = inputNames.length();
-
-        for (int i = 0; i < inputStringSize; i++) {
-            if (inputNames.charAt(i) == ',') {
-                commaCount++;
-                end = i;
-                names.add(inputNames.substring(start, end));
-                start = i + 1;
-                continue;
-            }
-
-            if (i == inputStringSize - 1) {
-                end = i + 1;
-                names.add(inputNames.substring(start, end));
-                break;
-            }
+        for (char c : inputNames.toCharArray()) {
+            commaCount += getCommaCount(c);
         }
 
         commaCountCompareToNames(names, commaCount);
 
         return names;
+    }
+
+    public static int getCommaCount(char c) {
+        if (c == ',') {
+            return 1;
+        }
+        return 0;
     }
 
     public static int generatorRandomNumber() {
