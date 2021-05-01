@@ -1,5 +1,7 @@
 package util;
 
+import java.util.Arrays;
+
 public class Car {
     private String[] carList;
     private int[] carProcessList;
@@ -34,7 +36,11 @@ public class Car {
         return carList[index];
     }
 
-    public String getCarProcessList(int index){
+    public int getCarProcessValueList(int index){
+        return carProcessList[index];
+    }
+
+    public String getCarProcessStringList(int index){
         String returnCarProcessList = "";
         for(int i=0;i<carProcessList[index];i++){
             returnCarProcessList += "-";
@@ -49,7 +55,5 @@ public class Car {
     public void minosCarProcessValue(int index){
         if(carProcessList[index] > 0) carProcessList[index]--;
     }
-
-
 
 }

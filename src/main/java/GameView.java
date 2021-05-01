@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class GameView {
     public Game game;
 
@@ -13,6 +15,7 @@ public class GameView {
             this.GameRoundRandom();
             this.GameViewString();
         }
+        System.out.println(this.GameViewVictory());
     }
 
     public void GameRoundRandom(){
@@ -27,6 +30,28 @@ public class GameView {
         }
         System.out.println("");
     }
+
+    public String GameViewVictory(){
+        int maxCount = game.returnMaxCount();
+        String[] victoryList = this.GameMaxCountCaulator(maxCount).split(",");
+        String victoryString = victoryList[0];
+        for(int i=1;i<victoryList.length;i++){
+            victoryString += ",";
+            victoryString += victoryList[i];
+        } victoryString += "가 최종 우승했습니다.";
+        return victoryString;
+    }
+
+    public String GameMaxCountCaulator(int maxCount){
+        boolean[] victoryBoolean = new boolean[game.carObject.getCarListLength()];
+        String victoryString = "";
+        for(int i=0;i<game.carObject.getCarListLength();i++) {
+            victoryBoolean[i] = game.returnIndexCount(maxCount,i);
+            victoryString += game.returnCalulatorString(victoryBoolean[i],i);
+        }
+        return victoryString;
+    }
+
 
 
 }

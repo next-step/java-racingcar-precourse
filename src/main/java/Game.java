@@ -1,5 +1,6 @@
 import util.Car;
 
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -46,9 +47,24 @@ public class Game {
     }
 
     public String viewStringResult(int index){
-       return carObject.getCarList(index) + ":" + carObject.getCarProcessList(index);
+       return carObject.getCarList(index) + ":" + carObject.getCarProcessStringList(index);
     }
 
+    public int returnMaxCount(){
+        int[] maxTempArray = new int[carObject.getCarListLength()];
+        for(int i=0;i<carObject.getCarListLength();i++) maxTempArray[i] = carObject.getCarProcessValueList(i);
+        Arrays.sort(maxTempArray);
+        return maxTempArray[maxTempArray.length-1];
+    }
 
+    public boolean returnIndexCount(int maxCount, int index){
+        if(maxCount == carObject.getCarProcessValueList(index)) return true;
+        return false;
+    }
+
+    public String returnCalulatorString(boolean calculatorBoolean, int index){
+         if(calculatorBoolean == true) return carObject.getCarList(index) + ",";
+         return "";
+    }
 
 }
