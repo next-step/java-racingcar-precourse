@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class CarNames {
-    private static final String NAME_SPLITTER = ",";
+    public static final String NAME_SPLITTER = ",";
 
     private List<CarName> names;
 

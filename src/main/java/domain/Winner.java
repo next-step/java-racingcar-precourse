@@ -9,6 +9,10 @@ public class Winner {
         this.carName = carName;
     }
 
+    public CarName getCarName() {
+        return carName;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
