@@ -11,8 +11,14 @@ public class InputView {
 	}
 
 	public static RacingCars inputRacingCarNames(Scanner scanner) {
-		System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-		return new RacingCars(splitCarNames(scanner.nextLine()));
+		RacingCars cars = null;
+		try {
+			System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+			cars = new RacingCars(splitCarNames(scanner.nextLine()));
+		} catch (IllegalArgumentException exception) {
+			System.out.println(exception.getMessage());
+		}
+		return cars;
 	}
 
 	public static String[] splitCarNames(String carNames) {

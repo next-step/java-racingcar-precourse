@@ -1,7 +1,26 @@
+import java.util.Objects;
+
 public class RacingCar {
-	private final String name;
+	private final RacingCarName racingCarName;
 
 	RacingCar(String name) {
-		this.name = name;
+		this.racingCarName = new RacingCarName(name);
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		RacingCar car = (RacingCar)o;
+		return Objects.equals(racingCarName, car.racingCarName);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(racingCarName);
 	}
 }
