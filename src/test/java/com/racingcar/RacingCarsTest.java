@@ -14,8 +14,8 @@ class RacingCarsTest {
 
 		assertThat(result.count()).isEqualTo(1);
 
-		assertThat(result.getValue().get(0).getName().getValue()).isEqualTo("test1");
-		assertThat(result.getValue().get(0).getLocation().getValue()).isEqualTo(0);
+		assertThat(result.getValues().get(0).getName().getValue()).isEqualTo("test1");
+		assertThat(result.getValues().get(0).getLocation().getValue()).isEqualTo(0);
 	}
 
 	@Test
@@ -26,10 +26,10 @@ class RacingCarsTest {
 
 		assertThat(result.count()).isEqualTo(2);
 
-		assertThat(result.getValue().get(0).getName().getValue()).isEqualTo("test1");
-		assertThat(result.getValue().get(0).getLocation().getValue()).isEqualTo(0);
+		assertThat(result.getValues().get(0).getName().getValue()).isEqualTo("test1");
+		assertThat(result.getValues().get(0).getLocation().getValue()).isEqualTo(0);
 
-		assertThat(result.getValue().get(1).getName().getValue()).isEqualTo("test2");
-		assertThat(result.getValue().get(1).getLocation().getValue()).isEqualTo(0);
+		assertThat(result.getValues().get(1).getName().getValue()).isEqualTo("test2");
+		assertThat(result.getValues().get(1).getLocation().getValue()).isEqualTo(0);
 	}
 }

@@ -37,7 +37,7 @@ public class RacingCars {
 		return this.values.size();
 	}
 
-	public List<RacingCar> getValue() {
+	public List<RacingCar> getValues() {
 		return this.values;
 	}
 }
