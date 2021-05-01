@@ -26,15 +26,20 @@ public class Car {
        }
     }
 
+    public int getCarListLength(){
+        return carList.length;
+    }
+
     public String getCarList(int index){
         return carList[index];
     }
 
-    public void getCarProcessList(int index){
+    public String getCarProcessList(int index){
+        String returnCarProcessList = "";
         for(int i=0;i<carProcessList[index];i++){
-            System.out.print("-");
+            returnCarProcessList += "-";
         }
-        System.out.println("");
+        return returnCarProcessList;
     }
 
     public void plusCarProcessValue(int index){
@@ -44,4 +49,7 @@ public class Car {
     public void minosCarProcessValue(int index){
         if(carProcessList[index] > 0) carProcessList[index]--;
     }
+
+
+
 }
