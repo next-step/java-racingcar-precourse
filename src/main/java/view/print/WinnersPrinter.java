@@ -1,6 +1,5 @@
 package view.print;
 
-import domain.CarName;
 import domain.Winner;
 import domain.Winners;
 
