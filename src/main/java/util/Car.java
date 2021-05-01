@@ -5,7 +5,10 @@ public class Car {
     private int[] carProcessList;
 
     public Car(int indexLength){
-
+        for(int i=0;i<indexLength;i++){
+            carList[i] = "";
+            carProcessList[i] = 0;
+        }
     }
 
     public void setCarList(String car){
@@ -21,5 +24,13 @@ public class Car {
             System.out.print("-");
         }
         System.out.println("");
+    }
+
+    public void plusCarProcessValue(int index){
+        carProcessList[index]++;
+    }
+
+    public void minosCarProcessValue(int index){
+        if(carProcessList[index] > 0) carProcessList[index]--;
     }
 }
