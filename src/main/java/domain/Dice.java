@@ -19,4 +19,8 @@ public class Dice {
     public int getTicks() {
         return ticks;
     }
+
+    public Dice(int ticks) {
+        this.ticks = ticks;
+    }
 }
