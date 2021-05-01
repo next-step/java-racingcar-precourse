@@ -17,7 +17,7 @@ class CarTest {
     public void moveCarTest(Integer flag) {
         // when
         Car car = new Car(null);
-        Boolean isMoving = car.isCarMoving(flag);
+        Boolean isMoving = car.isCarMoving(MovingCondition.of(flag));
 
         // then
         Assertions.assertThat(isMoving).isEqualTo(Boolean.TRUE);
@@ -29,7 +29,7 @@ class CarTest {
     public void stayCarTest(Integer flag) {
         // when
         Car car = new Car(null);
-        Boolean isMoving = car.isCarMoving(flag);
+        Boolean isMoving = car.isCarMoving(MovingCondition.of(flag));
 
         // then
         Assertions.assertThat(isMoving).isEqualTo(Boolean.FALSE);

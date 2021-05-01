@@ -9,21 +9,21 @@ public class CarName {
     private final String carName;
 
     private CarName(String carName) {
+        validateCarName(carName);
         this.carName = carName;
     }
 
     public static CarName of(String carName) {
-        validateCarName(carName);
         return new CarName(carName);
     }
 
-    private static void validateCarName(String carName) {
+    private void validateCarName(String carName) {
         if (carName == null || !isValidLength(carName)) {
             throw new RacingCarGameException("자동차 이름의 길이가 유효하지 않습니다.");
         }
     }
 
-    private static Boolean isValidLength(String carName) {
+    private Boolean isValidLength(String carName) {
         return carName.length() > 0 && carName.length() <= 5;
     }
 
