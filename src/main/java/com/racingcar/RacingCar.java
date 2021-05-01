@@ -27,6 +27,10 @@ public class RacingCar {
 		this.location.increase();
 	}
 
+	public void start() {
+		moveForwardIfMoveable(createRandomNumber());
+	}
+
 	public Name getName() {
 		return name;
 	}

@@ -21,6 +21,18 @@ public class RacingCars {
 		return new RacingCars(racingCars);
 	}
 
+	public void start(int repeatCount) {
+		for (int i = 0; i < repeatCount; i++) {
+			startByCar();
+		}
+	}
+
+	private void startByCar() {
+		for (RacingCar car : this.values) {
+			car.start();
+		}
+	}
+
 	public int count() {
 		return this.values.size();
 	}
