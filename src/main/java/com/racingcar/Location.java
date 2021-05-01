@@ -18,4 +18,13 @@ public class Location {
 	public int getValue() {
 		return value;
 	}
+
+	public String visualize() {
+		String result = "";
+		for (int i = 0; i < getValue(); i++) {
+			result += "-";
+		}
+
+		return result;
+	}
 }
