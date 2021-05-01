@@ -14,4 +14,9 @@ public class CarName {
 
         this.name = trimmedName;
     }
+
+    @Override
+    public String toString(){
+        return this.name;
+    }
 }
