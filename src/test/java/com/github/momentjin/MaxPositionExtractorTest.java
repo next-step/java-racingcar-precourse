@@ -58,6 +58,6 @@ class MaxPositionExtractorTest {
         List<Location> locations = Arrays.asList(location);
         Collections.sort(locations);
 
-        return locations.get(0);
+        return locations.get(locations.size() - 1);
     }
 }
