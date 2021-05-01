@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingCars {
-	private List<RacingCar> racingCars;
+	private List<RacingCar> values;
 
-	private RacingCars(List<RacingCar> racingCars) {
-		this.racingCars = racingCars;
+	private RacingCars(List<RacingCar> values) {
+		this.values = values;
 	}
 
 	public static RacingCars of(String input) {
@@ -22,10 +22,10 @@ public class RacingCars {
 	}
 
 	public int count() {
-		return this.racingCars.size();
+		return this.values.size();
 	}
 
 	public List<RacingCar> getValue() {
-		return this.racingCars;
+		return this.values;
 	}
 }
