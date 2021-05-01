@@ -6,6 +6,11 @@ package com.bistros.racing.domain;
 public class TestEngine extends Engine {
     @Override
     public boolean canMove() {
-        return canMove(1);
+        return true;
+    }
+
+    @Override
+    public boolean canMove(int power) {
+        return true;
     }
 }
