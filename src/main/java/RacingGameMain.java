@@ -2,8 +2,8 @@ public class RacingGameMain {
 
     public static void main(String[] args){
         try {
-            Game game = new Game();
-            game.GameStart();
+            GameView gameView = new GameView();
+            gameView.GameViewStart();
         }catch(Exception e){
             System.out.print("This Error : ");
             e.printStackTrace();
