@@ -1,11 +1,13 @@
 package racingcar;
 
+import utils.ValidationUtils;
+
 public class Car {
     private static final int ARGUMENT_LENGTH = 5;
     private static final int MOVABLE_VALUE = 4;
     private static final String ILLEGAL_ARGUMENT_MESSAGE = "자동차 이름은 5자 이하여야 합니다.";
     private final String name;
-    private int position;
+    private int position = 0;
 
     public Car(String name) {
         if (isValidNameLength(name)) {
@@ -15,8 +17,7 @@ public class Car {
     }
 
     private boolean isValidNameLength(String name) {
-        String checkName = name.trim();
-        return checkName.length() > ARGUMENT_LENGTH || "".equals(checkName);
+        return name.trim().length() > ARGUMENT_LENGTH || ValidationUtils.isBlank(name);
     }
 
     public boolean isMovable(int num) {
