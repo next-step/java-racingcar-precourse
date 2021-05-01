@@ -74,7 +74,7 @@ public class Utils {
             throw new IllegalArgumentException("다시 입력해주세요.");
         }
 
-        List<String> names = new ArrayList<>(Arrays.asList(inputNames.split(",")));
+        List<String> names = new ArrayList<>(Arrays.asList(splitAndTrim(inputNames)));
         int commaCount = 0;
 
         for (char c : inputNames.toCharArray()) {
@@ -82,6 +82,17 @@ public class Utils {
         }
 
         commaCountCompareToNames(names, commaCount);
+
+        return names;
+    }
+
+    public static String[] splitAndTrim(String inputNames) {
+        inputNames = inputNames.trim();
+
+        String[] names = inputNames.split(",");
+        for (int i = 0; i < names.length; i++) {
+            names[i] = names[i].trim();
+        }
 
         return names;
     }

@@ -144,4 +144,11 @@ public class UtilsTest {
             assertThat(number > 0 && number < 10).isTrue();
         }
     }
+
+    @Test
+    @DisplayName("입력받은_차량_이름_Trim_처리_테스트")
+    void splitAndTrim() {
+        String input = " 페라리, 람보르기니 ";
+        assertThat(Utils.splitAndTrim(input)).contains("페라리").contains("람보르기니");
+    }
 }
