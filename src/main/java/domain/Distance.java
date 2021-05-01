@@ -9,12 +9,12 @@ public class Distance {
         return new Distance(0);
     }
 
-    public int getValue() {
-        return value;
-    }
-
     public Distance(int value) {
         this.value = value;
+    }
+
+    public int getValue() {
+        return value;
     }
 
     public void add(Distance distance) {

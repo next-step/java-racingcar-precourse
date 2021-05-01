@@ -1,6 +1,6 @@
 package domain;
 
-public class DiceMovingStrategy implements MovingStrategy{
+public class DiceMovingStrategy implements MovingStrategy {
     public final static int MOVING_POINT = 4;
 
     @Override
