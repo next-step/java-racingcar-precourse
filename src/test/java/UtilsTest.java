@@ -1,5 +1,6 @@
 import static org.assertj.core.api.Assertions.*;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -70,14 +71,14 @@ public class UtilsTest {
     @Test
     @DisplayName("입력_된_자동차_개수_검증_성공")
     void inputCarSizeValidTestSuccess() {
-        String[] names = {"페라리", "람보르기니"};
+        List<String> names = new ArrayList<>(Arrays.asList("페라리", "람보르기니"));
         assertThat(Utils.inputCarSizeValid(names)).isTrue();
     }
 
     @Test
     @DisplayName("입력_된_자동차_개수_검증_실패")
     void inputCarSizeValidTestFail() {
-        String[] names = {};
+        List<String> names = new ArrayList<>();
         assertThatThrownBy(() -> Utils.inputCarSizeValid(names)).isInstanceOf(IllegalArgumentException.class)
             .hasMessageContaining("1개 이상의 자동차 이름을 입력해주세요.");
     }
@@ -85,14 +86,14 @@ public class UtilsTest {
     @Test
     @DisplayName("중복된_이름이_있는지_검증_성공")
     void inputCarNameDuplicateValidTestSuccess() {
-        String[] names = {"페라리", "벤츠"};
+        List<String> names = new ArrayList<>(Arrays.asList("페라리", "벤츠"));
         assertThat(Utils.inputCarNameDuplicateValid(names)).isTrue();
     }
 
     @Test
     @DisplayName("중복된_이름이_있는지_검증_실패")
     void inputCarNameDuplicateValidTestFail() {
-        String[] names = {"페라리", "페라리"};
+        List<String> names = new ArrayList<>(Arrays.asList("페라리", "페라리"));
         assertThatThrownBy(() -> Utils.inputCarNameDuplicateValid(names)).isInstanceOf(IllegalArgumentException.class)
             .hasMessageContaining("중복된 이름이 존재합니다.");
     }

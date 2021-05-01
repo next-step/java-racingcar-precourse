@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -40,21 +39,20 @@ public class Utils {
         return true;
     }
 
-    public static boolean inputCarSizeValid(String[] names) {
-        if (names.length <= 0) {
+    public static boolean inputCarSizeValid(List<String> names) {
+        if (names.size() <= 0) {
             throw new IllegalArgumentException("1개 이상의 자동차 이름을 입력해주세요.");
         }
         return true;
     }
 
-    public static boolean inputCarNameDuplicateValid(String[] names) {
-        Set<String> nameSet = new HashSet<>(Arrays.asList(names));
+    public static boolean inputCarNameDuplicateValid(List<String> names) {
+        Set<String> nameSet = new HashSet<>(names);
 
-        if (nameSet.size() != names.length) {
+        if (nameSet.size() != names.size()) {
             throw new IllegalArgumentException("중복된 이름이 존재합니다.");
         }
 
         return true;
-
     }
 }
