@@ -8,4 +8,10 @@ public class Cars {
     public Cars(List<Car> cars) {
         this.cars = cars;
     }
+
+    public void move() {
+        for(Car car : cars) {
+            car.move();
+        }
+    }
 }

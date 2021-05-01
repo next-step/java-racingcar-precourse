@@ -33,6 +33,14 @@ public class Position {
         return new Position(carName, position + 1);
     }
 
+    public CarName getCarName() {
+        return carName;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
