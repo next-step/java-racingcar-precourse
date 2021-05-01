@@ -15,7 +15,7 @@ public class GameTest {
         CarNames carNames = new CarNames("a,b,c");
         Game game = new Game(carNames, () -> true);
 
-        game.move(times);
+        game.move(new TryCount(times));
 
         List<Positions> moveHistories = game.getMoveHistories();
 

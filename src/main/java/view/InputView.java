@@ -1,7 +1,7 @@
 package view;
 
 import domain.CarNames;
-import view.input.TryCount;
+import domain.TryCount;
 
 import java.io.InputStream;
 import java.util.Scanner;

@@ -18,8 +18,8 @@ public class Game {
         this.cars = new Cars(carNames, moveStrategy);
     }
 
-    public void move(int times) {
-        for (int i = 0; i < times; i++) {
+    public void move(TryCount times) {
+        for (int i = 0; i < times.getCount(); i++) {
             cars.move();
             moveHistories.add(cars.getPositions());
         }

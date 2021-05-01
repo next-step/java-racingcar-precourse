@@ -6,7 +6,7 @@ public class TryCount {
     public TryCount(String tryCount) {
         this(Integer.parseInt(tryCount));
     }
-    
+
     public TryCount(int count) {
         this.count = count;
 

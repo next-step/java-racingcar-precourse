@@ -2,7 +2,7 @@ import domain.CarNames;
 import domain.Game;
 import view.InputView;
 import view.PrintView;
-import view.input.TryCount;
+import domain.TryCount;
 
 public class App {
     public static void main(String[] args) {
@@ -13,7 +13,7 @@ public class App {
 
         Game game = new Game(names);
 
-        game.move(tryCount.getCount());
+        game.move(tryCount);
 
         PrintView printView = new PrintView(game);
 
