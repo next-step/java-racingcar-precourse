@@ -1,14 +1,17 @@
 import util.Car;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class Game {
     Car carObject;
     Scanner scanner;
     int gameCount;
+    Random random;
 
     Game(){
         carObject = new Car();
+        random = new Random();
     }
 
     public void carNameInput(){
@@ -26,17 +29,26 @@ public class Game {
       System.out.println("시도할 횟수는 몇회인가요?");
       try { int caseCount = Integer.parseInt(scanner.nextLine());
             if(caseCount > 0) {
-                gameCount = Integer.parseInt(scanner.nextLine());
+                gameCount = caseCount;
             }else{ throw new AssertionError("음수는 계산 불가능합니다."); }
       }catch (NumberFormatException e){
           System.out.print("숫자 미입력 OR 초과수 에러 : ");
           e.printStackTrace(); }
     }
 
-    public void GameStart(){
-        this.carNameInput();
-        this.randomInitCountInput();
+    public void randomCountResult(int index){
+        int count = random.nextInt(10);
+        if(count < 4) {
+            carObject.minosCarProcessValue(index);
+            return;
+        }
+        carObject.plusCarProcessValue(index);
     }
+
+    public String viewStringResult(int index){
+       return carObject.getCarList(index) + ":" + carObject.getCarProcessList(index);
+    }
+
 
 
 }
