@@ -55,4 +55,40 @@ public class Utils {
 
         return true;
     }
+
+    public static boolean commaCountCompareToNames(List<String> names, int commaCount) {
+        if (names.size() - 1 != commaCount) {
+            throw new IllegalArgumentException("쉼표(,) 구분을 정확히 해주세요.");
+        }
+        return true;
+    }
+
+    public static List<String> splitInputCarNames(String inputNames) {
+        List<String> names = new ArrayList<>();
+        int commaCount = 0;
+        int start = 0;
+        int end = 0;
+
+        int inputStringSize = inputNames.length();
+
+        for (int i = 0; i < inputStringSize; i++) {
+            if (inputNames.charAt(i) == ',') {
+                commaCount++;
+                end = i;
+                names.add(inputNames.substring(start, end));
+                start = i + 1;
+                continue;
+            }
+
+            if (i == inputStringSize - 1) {
+                end = i + 1;
+                names.add(inputNames.substring(start, end));
+                break;
+            }
+        }
+
+        commaCountCompareToNames(names, commaCount);
+
+        return names;
+    }
 }

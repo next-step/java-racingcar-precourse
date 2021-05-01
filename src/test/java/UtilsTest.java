@@ -97,4 +97,42 @@ public class UtilsTest {
         assertThatThrownBy(() -> Utils.inputCarNameDuplicateValid(names)).isInstanceOf(IllegalArgumentException.class)
             .hasMessageContaining("중복된 이름이 존재합니다.");
     }
+
+    @Test
+    @DisplayName("이름_리스트_개수와_쉼표_개수_비교_성공")
+    void commaCountCompareToNamesTestSuccess() {
+        List<String> inputNames1 = new ArrayList<>(Arrays.asList("페라리", "람보르기니"));
+        List<String> inputNames2 = new ArrayList<>(Arrays.asList("페라리"));
+
+        assertThat(Utils.commaCountCompareToNames(inputNames1, 1)).isTrue();
+        assertThat(Utils.commaCountCompareToNames(inputNames2, 0)).isTrue();
+
+    }
+
+    @Test
+    @DisplayName("이름_리스트_개수와_쉼표_개수_비교_실패")
+    void commaCountCompareToNamesTestFail() {
+        List<String> inputNames1 = new ArrayList<>(Arrays.asList("페라리", "람보르기니"));
+
+        assertThatThrownBy(() -> Utils.commaCountCompareToNames(inputNames1, 2)).isInstanceOf(
+            IllegalArgumentException.class)
+            .hasMessageContaining("쉼표(,) 구분을 정확히 해주세요.");
+    }
+
+    @Test
+    @DisplayName("입력받은_이름_검증_성공")
+    void splitInputCarNamesTestSuccess() {
+        String input1 = "페라리,람보르기니";
+        String input2 = "페라리";
+        assertThat(Utils.splitInputCarNames(input1)).hasSize(2).contains("페라리").contains("람보르기니");
+        assertThat(Utils.splitInputCarNames(input2)).hasSize(1).contains("페라리");
+    }
+
+    @Test
+    @DisplayName("입력받은_이름_검증_실패")
+    void splitInputCarNamesTestFail() {
+        String input = "페라리,";
+        assertThatThrownBy(() -> Utils.splitInputCarNames(input)).isInstanceOf(IllegalArgumentException.class)
+            .hasMessageContaining("쉼표(,) 구분을 정확히 해주세요.");
+    }
 }
