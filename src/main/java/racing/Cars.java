@@ -11,7 +11,7 @@ public class Cars {
         this.cars = carList(userInput);
     }
     
-    public List<Car> carList(String userInput) {
+    private static List<Car> carList(String userInput) {
         List<Car> cars = new ArrayList<>();
         String[] carNameArray = userInput.split(",");
         
@@ -21,4 +21,6 @@ public class Cars {
         
         return cars;
     }
+    
+    
 }
