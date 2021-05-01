@@ -1,7 +1,7 @@
 package com.github.momentjin;
 
-import com.github.momentjin.car.Car;
-import com.github.momentjin.car.CarLocation;
+import com.github.momentjin.mock.MockLocation;
+import com.github.momentjin.mock.MockMovableObject;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -19,12 +19,16 @@ class MaxPositionExtractorTest {
     void extract() {
 
         // given
-        Location maxLocation = new CarLocation(3);
+        Location location1 = new MockLocation(1);
+        Location location2 = new MockLocation(2);
+        Location location3 = new MockLocation(3);
+        Location maxLocation = getMaxLocation(location1, location2, location3);
+
         List<MovableObject> movableObjects = Arrays.asList(
-                new Car("자동차1", new CarLocation(1)),
-                new Car("자동차2", new CarLocation(2)),
-                new Car("자동차3", maxLocation),
-                new Car("자동차4", maxLocation)
+                new MockMovableObject(location1),
+                new MockMovableObject(location2),
+                new MockMovableObject(location3),
+                new MockMovableObject(location3)
         );
 
         // when
@@ -36,7 +40,7 @@ class MaxPositionExtractorTest {
                 .allMatch(o -> o.getLocation().equals(maxLocation));
     }
 
-    @DisplayName("input이 비어있으면 IllegalArgumentException이 발생한")
+    @DisplayName("input이 비어있으면 IllegalArgumentException이 발생한다")
     @Test
     void extract2() {
 
@@ -47,5 +51,13 @@ class MaxPositionExtractorTest {
         assertThatThrownBy(() -> new MaxPositionExtractor().extract(empty))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("비어있는 리스트는 허용하지 않습니다");
+    }
+
+    private Location getMaxLocation(Location... location) {
+
+        List<Location> locations = Arrays.asList(location);
+        Collections.sort(locations);
+
+        return locations.get(0);
     }
 }

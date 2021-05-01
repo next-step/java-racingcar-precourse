@@ -1,5 +1,7 @@
 package com.github.momentjin;
 
+import com.github.momentjin.mock.MockMovableObject;
+import com.github.momentjin.mock.MockMoveCondition;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -24,7 +26,7 @@ class ConditionalMovableObjectTest {
         movableObject.moveForward();
 
         // then
-        assertThat(movable.isMoved).isTrue();
+        assertThat(movable.isMoved()).isTrue();
     }
 
     @DisplayName("moveCondition이 false를 반환하면 movableObject는 움직이지 않는다")
@@ -42,40 +44,6 @@ class ConditionalMovableObjectTest {
         movableObject.moveForward();
 
         // then
-        assertThat(movable.isMoved).isFalse();
-    }
-}
-
-class MockMoveCondition implements MoveCondition {
-
-    private final boolean success;
-
-    public MockMoveCondition(boolean success) {
-        this.success = success;
-    }
-
-    @Override
-    public boolean movableToForward() {
-        return success;
-    }
-}
-
-class MockMovableObject implements MovableObject {
-
-    boolean isMoved;
-
-    @Override
-    public MovableObjectName getName() {
-        return null;
-    }
-
-    @Override
-    public void moveForward() {
-        isMoved = true;
-    }
-
-    @Override
-    public Location getLocation() {
-        return null;
+        assertThat(movable.isMoved()).isFalse();
     }
 }

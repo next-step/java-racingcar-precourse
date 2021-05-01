@@ -3,13 +3,13 @@ package com.github.momentjin.car;
 
 import com.github.momentjin.MoveCondition;
 
-public class CarMoveCondition implements MoveCondition {
+class CarMoveCondition implements MoveCondition {
 
     private final static int THRESHOLD = 4;
 
     private final NumberGenerator numberGenerator;
 
-    public CarMoveCondition(NumberGenerator numberGenerator) {
+    CarMoveCondition(NumberGenerator numberGenerator) {
         this.numberGenerator = numberGenerator;
     }
 

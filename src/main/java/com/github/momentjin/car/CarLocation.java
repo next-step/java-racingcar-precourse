@@ -2,12 +2,12 @@ package com.github.momentjin.car;
 
 import com.github.momentjin.Location;
 
-public class CarLocation implements Location {
+class CarLocation implements Location {
 
     private final int position;
     public static final CarLocation ZERO = new CarLocation(0);
 
-    public CarLocation(int position) {
+    CarLocation(int position) {
         this.position = position;
     }
 

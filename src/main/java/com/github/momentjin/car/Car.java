@@ -8,12 +8,12 @@ public class Car implements MovableObject {
     private Location location;
     private final CarName name;
 
-    public Car(String name) {
+    Car(String name) {
         this.name = new CarName(name);
         this.location = CarLocation.ZERO;
     }
 
-    public Car(String name, Location location) {
+    Car(String name, Location location) {
         this.name = new CarName(name);
         this.location = location;
     }
