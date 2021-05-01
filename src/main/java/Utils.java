@@ -70,6 +70,10 @@ public class Utils {
     }
 
     public static List<String> splitInputCarNames(String inputNames) {
+        if (inputNames.length() == 0) {
+            throw new IllegalArgumentException("다시 입력해주세요.");
+        }
+
         List<String> names = new ArrayList<>(Arrays.asList(inputNames.split(",")));
         int commaCount = 0;
 

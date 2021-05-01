@@ -11,7 +11,6 @@ public class Main {
     }
 
     public static void start() {
-
         // 이름 입력 받기
         List<String> names = carNamesSetUp();
 
