@@ -1,9 +1,9 @@
 package com.github.momentjin.car;
 
 import com.github.momentjin.Location;
-import com.github.momentjin.Movable;
+import com.github.momentjin.MovableObject;
 
-public class Car implements Movable {
+public class Car implements MovableObject {
 
     private Location location;
     private final CarName name;

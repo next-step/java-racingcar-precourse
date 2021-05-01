@@ -5,9 +5,9 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class ConditionalMovableObjectTest {
+class ConditionalMovableObjectObjectTest {
 
-    MockMovable movable = new MockMovable();
+    MockMovableObject movable = new MockMovableObject();
 
     @DisplayName("moveCondition이 true를 반환하면 movableObject는 앞으로 움직인다")
     @Test
@@ -15,7 +15,7 @@ class ConditionalMovableObjectTest {
 
         // given
         MoveCondition successCondition = new MockMoveCondition(true);
-        ConditionalMovableObject movableObject = new ConditionalMovableObject(
+        ConditionalMovableObjectObject movableObject = new ConditionalMovableObjectObject(
                 movable,
                 successCondition
         );
@@ -33,7 +33,7 @@ class ConditionalMovableObjectTest {
 
         // given
         MoveCondition failCondition = new MockMoveCondition(false);
-        ConditionalMovableObject movableObject = new ConditionalMovableObject(
+        ConditionalMovableObjectObject movableObject = new ConditionalMovableObjectObject(
                 movable,
                 failCondition
         );
@@ -60,7 +60,7 @@ class MockMoveCondition implements MoveCondition {
     }
 }
 
-class MockMovable implements Movable {
+class MockMovableObject implements MovableObject {
 
     boolean isMoved;
 

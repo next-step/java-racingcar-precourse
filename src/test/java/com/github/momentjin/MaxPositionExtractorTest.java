@@ -20,7 +20,7 @@ class MaxPositionExtractorTest {
 
         // given
         Location maxLocation = new CarLocation(3);
-        List<Movable> movables = Arrays.asList(
+        List<MovableObject> movableObjects = Arrays.asList(
                 new Car("자동차1", new CarLocation(1)),
                 new Car("자동차2", new CarLocation(2)),
                 new Car("자동차3", maxLocation),
@@ -28,8 +28,8 @@ class MaxPositionExtractorTest {
         );
 
         // when
-        List<Movable> movablesHasMaxLocation = new MaxPositionExtractor()
-                .extract(movables);
+        List<MovableObject> movablesHasMaxLocation = new MaxPositionExtractor()
+                .extract(movableObjects);
 
         // then
         assertThat(movablesHasMaxLocation)
@@ -41,7 +41,7 @@ class MaxPositionExtractorTest {
     void extract2() {
 
         // given
-        List<Movable> empty = Collections.emptyList();
+        List<MovableObject> empty = Collections.emptyList();
 
         // when & then
         assertThatThrownBy(() -> new MaxPositionExtractor().extract(empty))

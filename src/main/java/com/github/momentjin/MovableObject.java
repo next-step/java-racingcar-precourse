@@ -1,6 +1,6 @@
 package com.github.momentjin;
 
-public interface Movable {
+public interface MovableObject {
 
     MovableObjectName getName();
     void moveForward();

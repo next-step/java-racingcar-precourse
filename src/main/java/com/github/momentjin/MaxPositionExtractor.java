@@ -6,34 +6,34 @@ import java.util.List;
 
 public class MaxPositionExtractor {
 
-    private final static Comparator<Movable> MAX_LOCATION_COMPARATOR
-            = Comparator.comparing(Movable::getLocation).reversed();
+    private final static Comparator<MovableObject> MAX_LOCATION_COMPARATOR
+            = Comparator.comparing(MovableObject::getLocation).reversed();
 
-    public List<Movable> extract(List<Movable> movables) {
+    public List<MovableObject> extract(List<MovableObject> movableObjects) {
 
-        if (movables.isEmpty()) {
+        if (movableObjects.isEmpty()) {
             throw new IllegalArgumentException("비어있는 리스트는 허용하지 않습니다");
         }
 
-        Location maxLocation = getMaxLocation(movables);
-        return filterMovablesByLocation(movables, maxLocation);
+        Location maxLocation = getMaxLocation(movableObjects);
+        return filterMovablesByLocation(movableObjects, maxLocation);
     }
 
-    private Location getMaxLocation(List<Movable> movables) {
-        movables.sort(MAX_LOCATION_COMPARATOR);
-        return movables.get(0).getLocation();
+    private Location getMaxLocation(List<MovableObject> movableObjects) {
+        movableObjects.sort(MAX_LOCATION_COMPARATOR);
+        return movableObjects.get(0).getLocation();
     }
 
-    private List<Movable> filterMovablesByLocation(List<Movable> movables, Location location ) {
+    private List<MovableObject> filterMovablesByLocation(List<MovableObject> movableObjects, Location location ) {
 
-        List<Movable> maxLocationMovables = new ArrayList<>();
-        for (Movable movable : movables) {
-            if (movable.getLocation().equals(location)) {
-                maxLocationMovables.add(movable);
+        List<MovableObject> maxLocationMovableObjects = new ArrayList<>();
+        for (MovableObject movableObject : movableObjects) {
+            if (movableObject.getLocation().equals(location)) {
+                maxLocationMovableObjects.add(movableObject);
             }
         }
 
-        return maxLocationMovables;
+        return maxLocationMovableObjects;
     }
 }
 
