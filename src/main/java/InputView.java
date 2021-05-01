@@ -1,0 +1,21 @@
+import java.util.Scanner;
+
+public class InputView {
+	public static RacingCars racingCarNamesView() {
+		Scanner scanner = new Scanner(System.in);
+		RacingCars cars = null;
+		while (RacingCars.isNull(cars)) {
+			cars = inputRacingCarNames(scanner);
+		}
+		return cars;
+	}
+
+	public static RacingCars inputRacingCarNames(Scanner scanner) {
+		System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+		return new RacingCars(splitCarNames(scanner.nextLine()));
+	}
+
+	public static String[] splitCarNames(String carNames) {
+		return carNames.replaceAll(" ", "").split(",");
+	}
+}
