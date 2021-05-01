@@ -15,4 +15,8 @@ public class Name {
 	public static Name of(String name) {
 		return new Name(name);
 	}
+
+	public String getValue() {
+		return value;
+	}
 }
