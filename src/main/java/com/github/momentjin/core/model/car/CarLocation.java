@@ -1,6 +1,6 @@
-package com.github.momentjin.car;
+package com.github.momentjin.core.model.car;
 
-import com.github.momentjin.Location;
+import com.github.momentjin.core.model.Location;
 
 class CarLocation implements Location {
 

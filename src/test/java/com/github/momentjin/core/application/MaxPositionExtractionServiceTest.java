@@ -1,5 +1,7 @@
-package com.github.momentjin;
+package com.github.momentjin.core.application;
 
+import com.github.momentjin.core.model.Location;
+import com.github.momentjin.core.model.MovableObject;
 import com.github.momentjin.mock.MockLocation;
 import com.github.momentjin.mock.MockMovableObject;
 import org.junit.jupiter.api.DisplayName;
@@ -12,7 +14,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class MaxPositionExtractorTest {
+class MaxPositionExtractionServiceTest {
 
     @DisplayName("Max Location을 가진 movable 객체를 추출할 수 있다")
     @Test
@@ -32,7 +34,7 @@ class MaxPositionExtractorTest {
         );
 
         // when
-        List<MovableObject> movablesHasMaxLocation = new MaxPositionExtractor()
+        List<MovableObject> movablesHasMaxLocation = new MaxPositionExtractionService()
                 .extract(movableObjects);
 
         // then
@@ -48,7 +50,7 @@ class MaxPositionExtractorTest {
         List<MovableObject> empty = Collections.emptyList();
 
         // when & then
-        assertThatThrownBy(() -> new MaxPositionExtractor().extract(empty))
+        assertThatThrownBy(() -> new MaxPositionExtractionService().extract(empty))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("비어있는 리스트는 허용하지 않습니다");
     }

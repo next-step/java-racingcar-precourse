@@ -1,5 +1,7 @@
-package com.github.momentjin;
+package com.github.momentjin.core.application;
 
+import com.github.momentjin.core.model.ConditionalMovableObject;
+import com.github.momentjin.core.model.MoveCondition;
 import com.github.momentjin.mock.MockMovableObject;
 import com.github.momentjin.mock.MockMoveCondition;
 import org.junit.jupiter.api.DisplayName;

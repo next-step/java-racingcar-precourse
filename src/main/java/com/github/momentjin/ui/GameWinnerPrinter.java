@@ -1,6 +1,6 @@
 package com.github.momentjin.ui;
 
-import com.github.momentjin.MovableObject;
+import com.github.momentjin.core.model.MovableObject;
 
 import java.util.Collection;
 

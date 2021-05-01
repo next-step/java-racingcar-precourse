@@ -1,7 +1,7 @@
-package com.github.momentjin.car;
+package com.github.momentjin.core.model.car;
 
-import com.github.momentjin.Location;
-import com.github.momentjin.MovableObject;
+import com.github.momentjin.core.model.Location;
+import com.github.momentjin.core.model.MovableObject;
 
 public class Car implements MovableObject {
 

@@ -1,6 +1,6 @@
-package com.github.momentjin.car;
+package com.github.momentjin.core.model.car;
 
-import com.github.momentjin.MovableObjectName;
+import com.github.momentjin.core.model.MovableObjectName;
 
 class CarName implements MovableObjectName {
 

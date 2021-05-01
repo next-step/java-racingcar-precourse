@@ -1,6 +1,6 @@
-package com.github.momentjin.car;
+package com.github.momentjin.core.model.car;
 
-import com.github.momentjin.ConditionalMovableObject;
+import com.github.momentjin.core.model.ConditionalMovableObject;
 
 public class CarFactory {
 

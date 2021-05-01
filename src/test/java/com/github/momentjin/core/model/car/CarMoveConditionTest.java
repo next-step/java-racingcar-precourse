@@ -1,4 +1,4 @@
-package com.github.momentjin.car;
+package com.github.momentjin.core.model.car;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;

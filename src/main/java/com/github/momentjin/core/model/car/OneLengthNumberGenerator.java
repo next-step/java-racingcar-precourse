@@ -1,4 +1,4 @@
-package com.github.momentjin.car;
+package com.github.momentjin.core.model.car;
 
 import java.util.Random;
 

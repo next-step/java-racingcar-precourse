@@ -1,41 +1,20 @@
 package com.github.momentjin.ui;
 
-import com.github.momentjin.MovableObject;
+import com.github.momentjin.core.model.MovableObject;
+import com.github.momentjin.ui.application.MovableObjectStatusService;
 
 import java.util.Collection;
 
 public class MovableObjectStatusPrinter {
 
-    private final static String DISPLAY_TEXT_OF_POSITION = "-";
+    private final MovableObjectStatusService movableObjectStatusService;
 
+    public MovableObjectStatusPrinter(MovableObjectStatusService movableObjectStatusService) {
+        this.movableObjectStatusService = movableObjectStatusService;
+    }
 
-    public void execute(Collection<MovableObject> movableObjects) {
-
-        for (MovableObject movableObject : movableObjects) {
-            execute(movableObject);
-        }
+    public void print(Collection<MovableObject> movableObjects) {
+        System.out.println(movableObjectStatusService.createText(movableObjects));
         System.out.println();
-    }
-
-    private void execute(MovableObject movableObject) {
-
-        String status = String.format("%s : %s",
-                movableObject.getName().getName(),
-                createTextOfMovableLocation(movableObject)
-        );
-
-        System.out.println(status);
-    }
-
-    private String createTextOfMovableLocation(MovableObject movableObject) {
-
-        int position = movableObject.getLocation().getPosition();
-
-        StringBuilder textOfPosition = new StringBuilder();
-        for (int count = 0; count < position; count++) {
-            textOfPosition.append(DISPLAY_TEXT_OF_POSITION);
-        }
-
-        return textOfPosition.toString();
     }
 }

@@ -1,6 +1,6 @@
-package com.github.momentjin.car;
+package com.github.momentjin.core.model.car;
 
-import com.github.momentjin.Location;
+import com.github.momentjin.core.model.Location;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

@@ -1,4 +1,4 @@
-package com.github.momentjin;
+package com.github.momentjin.core.model;
 
 public interface MoveCondition {
 

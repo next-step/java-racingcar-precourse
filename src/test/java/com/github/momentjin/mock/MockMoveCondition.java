@@ -1,6 +1,6 @@
 package com.github.momentjin.mock;
 
-import com.github.momentjin.MoveCondition;
+import com.github.momentjin.core.model.MoveCondition;
 
 public class MockMoveCondition implements MoveCondition {
 

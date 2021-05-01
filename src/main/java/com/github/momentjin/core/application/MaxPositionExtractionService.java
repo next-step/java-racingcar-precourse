@@ -1,10 +1,13 @@
-package com.github.momentjin;
+package com.github.momentjin.core.application;
+
+import com.github.momentjin.core.model.Location;
+import com.github.momentjin.core.model.MovableObject;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-public class MaxPositionExtractor {
+public class MaxPositionExtractionService {
 
     private final static Comparator<MovableObject> MAX_LOCATION_COMPARATOR
             = Comparator.comparing(MovableObject::getLocation).reversed();

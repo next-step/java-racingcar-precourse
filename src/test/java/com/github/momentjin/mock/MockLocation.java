@@ -1,6 +1,6 @@
 package com.github.momentjin.mock;
 
-import com.github.momentjin.Location;
+import com.github.momentjin.core.model.Location;
 
 public class MockLocation implements Location {
 

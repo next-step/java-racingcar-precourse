@@ -1,7 +1,7 @@
-package com.github.momentjin.car;
+package com.github.momentjin.core.model.car;
 
 
-import com.github.momentjin.MoveCondition;
+import com.github.momentjin.core.model.MoveCondition;
 
 class CarMoveCondition implements MoveCondition {
 
