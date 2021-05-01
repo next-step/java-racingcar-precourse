@@ -7,13 +7,13 @@ import java.util.*;
 
 public class CarFactory {
 
-    public static Set<Car> generateCars(String userInput) {
+    public static List<Car> generateCars(String userInput) {
         if (userInput == null || userInput.equals("")) {
             throw new InvalidUserInputDataException();
         }
         String[] names = userInput.trim().split(",");
 
-        Set<Car> cars = new HashSet<>();
+        List<Car> cars = new ArrayList<>();
         for (String name : names) {
             cars.add(new Car(name));
         }

@@ -5,7 +5,7 @@ import com.bistros.racing.exception.InvalidUserInputDataException;
 import com.bistros.racing.exception.NotAllowCarNamePolicyException;
 import org.junit.jupiter.api.Test;
 
-import java.util.Set;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -15,11 +15,11 @@ class CarFactoryTest {
     @Test
     void when_user_input_names_then_success() {
         String carNames = "pika,weka";
-        Set<Car> cars = CarFactory.generateCars(carNames);
+        List<Car> cars = CarFactory.generateCars(carNames);
         assertAll(
             () -> assertThat(cars.size()).isEqualTo(2),
-            () -> assertThat(cars.contains(new Car("pika"))),
-            () -> assertThat(cars.contains(new Car("weka")))
+            () -> assertThat(cars.get(0)).isEqualTo(new Car("pika")),
+            () -> assertThat(cars.get(1)).isEqualTo(new Car("weka"))
         );
     }
 
