@@ -9,7 +9,7 @@ public class Reception {
         this.participants = participants;
     }
 
-    public List<Car> getReceptionList(){
+    public List<Car> getParticipants(){
         return participants;
     }
 
