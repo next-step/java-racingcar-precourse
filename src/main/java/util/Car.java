@@ -4,15 +4,20 @@ public class Car {
     private String[] carList;
     private int[] carProcessList;
 
-    public Car(int indexLength){
+    public void initCarList(int indexLength){
         for(int i=0;i<indexLength;i++){
             carList[i] = "";
+        }
+    }
+
+    public void initCarProcessList(int indexLength){
+        for(int i=0;i<indexLength;i++){
             carProcessList[i] = 0;
         }
     }
 
-    public void setCarList(String car){
-
+    public void setCarList(String carString, int index){
+        carList[index] = carString;
     }
 
     public String getCarList(int index){
