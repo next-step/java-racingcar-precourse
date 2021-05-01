@@ -1,5 +1,13 @@
 package racing;
 
 public enum CarStatus {
-	FORWARD, STOP
+	FORWARD, STOP;
+
+	public boolean isForward() {
+		return this == FORWARD;
+	}
+
+	public boolean isStop() {
+		return this == STOP;
+	}
 }

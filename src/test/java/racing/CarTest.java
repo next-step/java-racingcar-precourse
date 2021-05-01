@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 class CarTest {
@@ -48,5 +49,18 @@ class CarTest {
 		Position after = this.car.getPosition();
 
 		assertEquals(before.getVal(), after.getVal());
+	}
+
+	@DisplayName("자동차가 주행하면 엔진에서 임의의 출력을 내어 전진하거나 멈춘다.")
+	@RepeatedTest(10)
+	void 자동차가_주행하면_엔진에서_임의의_출력을_내어_전진하거나_멈춘다() {
+		Position before = this.car.getPosition();
+		this.car.drive();
+		Position after = this.car.getPosition();
+
+		boolean isForward = before.getVal() + 1 == after.getVal();
+		boolean isStop = before.getVal() == after.getVal();
+
+		assertTrue(isForward || isStop);
 	}
 }
