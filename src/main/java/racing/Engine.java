@@ -12,11 +12,12 @@ public class Engine {
 		this.random = new Random();
 	}
 
-	public int getPower() {
-		return this.random.nextInt(POWER_LIMIT);
+	public Power getPower() {
+		int val = this.random.nextInt(POWER_LIMIT);
+		return new Power(val);
 	}
 
-	public CarStatus run(int power) {
-		return power >= FORWARD_THRESHOLD ? CarStatus.FORWARD : CarStatus.STOP;
+	public CarStatus run(Power power) {
+		return power.getVal() >= FORWARD_THRESHOLD ? CarStatus.FORWARD : CarStatus.STOP;
 	}
 }
