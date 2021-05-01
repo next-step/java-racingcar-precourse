@@ -53,4 +53,18 @@ public class UtilsTest {
     void getCarStatusEqualsGoalTest() {
         assertThat(Utils.getCarStatusEqualsGoal(cars)).hasSize(2).contains(cars.get(0)).contains(cars.get(2));
     }
+
+    @Test
+    @DisplayName("car_name_5자리_검증_테스트_성공")
+    void CarNameValidSuccess() {
+        assertThat(Utils.carNameValid("람보르기니")).isTrue();
+    }
+
+    @Test
+    @DisplayName("car_name_5자리_검증_테스트_실패")
+    void CarNameValidException() {
+        assertThatThrownBy(() -> Utils.carNameValid("메르세데스벤츠")).isInstanceOf(IllegalArgumentException.class)
+            .hasMessageContaining("이름이 5자리 이상입니다.");
+    }
+
 }
