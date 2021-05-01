@@ -1,5 +1,6 @@
 package com.github.momentjin;
 
+import com.github.momentjin.car.CarName;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -63,6 +64,11 @@ class MockMoveCondition implements MoveCondition {
 class MockMovable implements Movable {
 
     boolean isMoved;
+
+    @Override
+    public CarName getName() {
+        return null;
+    }
 
     @Override
     public void moveForward() {
