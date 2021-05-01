@@ -36,4 +36,11 @@ public class Utils {
 
         return true;
     }
+
+    public static boolean inputCarSizeValid(String[] names) {
+        if (names.length <= 0) {
+            throw new IllegalArgumentException("1개 이상의 자동차 이름을 입력해주세요.");
+        }
+        return true;
+    }
 }

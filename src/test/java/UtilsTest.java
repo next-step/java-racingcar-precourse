@@ -56,15 +56,29 @@ public class UtilsTest {
 
     @Test
     @DisplayName("car_name_5자리_검증_테스트_성공")
-    void CarNameValidSuccess() {
+    void CarNameValidTestSuccess() {
         assertThat(Utils.carNameValid("람보르기니")).isTrue();
     }
 
     @Test
     @DisplayName("car_name_5자리_검증_테스트_실패")
-    void CarNameValidException() {
+    void CarNameValidTestException() {
         assertThatThrownBy(() -> Utils.carNameValid("메르세데스벤츠")).isInstanceOf(IllegalArgumentException.class)
             .hasMessageContaining("이름이 5자리 이상입니다.");
     }
 
+    @Test
+    @DisplayName("입력_된_자동차_개수_검증_성공")
+    void inputCarSizeValidTestSuccess() {
+        String[] names = {"페라리", "람보르기니"};
+        assertThat(Utils.inputCarSizeValid(names)).isTrue();
+    }
+
+    @Test
+    @DisplayName("입력_된_자동차_개수_검증_실패")
+    void inputCarSizeValidTestException() {
+        String[] names = {};
+        assertThatThrownBy(() -> Utils.inputCarSizeValid(names)).isInstanceOf(IllegalArgumentException.class)
+            .hasMessageContaining("1개 이상의 자동차 이름을 입력해주세요.");
+    }
 }
