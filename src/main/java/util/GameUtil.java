@@ -33,7 +33,7 @@ public class GameUtil {
 			return null;
 		}
 		List<Car> carList = new ArrayList<>();
-		String[] strArray = StringUtil.splitNameByComma(input);
+		String[] strArray = GameUtil.splitNameByComma(input);
 		for (int i = 0; i < strArray.length; i++) {
 			carList.add(new Car(strArray[i], INITIAL_POSITION));
 		}
