@@ -1,11 +1,11 @@
 package com.github.momentjin;
 
-public final class ConditionalMovableObjectObject implements MovableObject {
+public final class ConditionalMovableObject implements MovableObject {
 
     private final MovableObject movableObject;
     private final MoveCondition moveCondition;
 
-    public ConditionalMovableObjectObject(MovableObject movableObject, MoveCondition moveCondition) {
+    public ConditionalMovableObject(MovableObject movableObject, MoveCondition moveCondition) {
         this.movableObject = movableObject;
         this.moveCondition = moveCondition;
     }
