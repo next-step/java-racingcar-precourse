@@ -3,6 +3,7 @@ package model;
 public class DistanceToMove {
     public static final int MIN_DISTANCE = 0;
     public static final int MAX_DISTANCE = 9;
+    public static final int MIN_DISTANCE_FOR_MOVE = 4;
 
     private final int distance;
 
@@ -13,7 +14,7 @@ public class DistanceToMove {
         this.distance = distance;
     }
 
-    public int getDistance() {
-        return distance;
+    public boolean canMoving() {
+        return this.distance >= MIN_DISTANCE_FOR_MOVE;
     }
 }
