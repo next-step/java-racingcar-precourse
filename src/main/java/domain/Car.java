@@ -7,10 +7,6 @@ public class Car {
     private MoveStrategy moveStrategy;
     private Position position;
 
-    public Car(String carName, MoveStrategy moveStrategy) {
-        this(new CarName(carName), moveStrategy);
-    }
-
     public Car(CarName carName, MoveStrategy moveStrategy) {
         this.carName = carName;
         this.moveStrategy = moveStrategy;
