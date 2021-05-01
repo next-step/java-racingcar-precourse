@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class CarName {
     private static final int CAR_NAME_MAX_LENGTH = 5;
+
     private String name;
 
     public CarName(String name) {
