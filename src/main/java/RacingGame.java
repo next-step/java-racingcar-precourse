@@ -25,4 +25,16 @@ public class RacingGame {
         return res;
     }
 
+    /**
+     * 각 이름이 5자 이하인지를 확인
+     * @param names 이름 배열
+     * @return 모두 5자 이하일 경우 true
+     */
+    public boolean checkLengthOfNames(String[] names) {
+        boolean flag = true;
+        for(String name : names){
+            flag = flag&& (name.length()<=5);
+        }
+        return flag;
+    }
 }
