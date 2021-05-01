@@ -4,13 +4,17 @@ import com.bistros.racing.domain.Car;
 
 import java.util.Arrays;
 
-public class PlayingCar {
+public class PlayingCar implements Comparable<PlayingCar> {
     private final Car car;
     private final CarPosition position;
 
     public PlayingCar(Car car) {
         this.car = car;
         this.position = new CarPosition();
+    }
+
+    public Car getCar() {
+        return car;
     }
 
     public void tryMove() {
@@ -29,10 +33,26 @@ public class PlayingCar {
         return PositionLead.LEAD;
     }
 
-    public void printing() {
+    public void printLocation() {
         char[] chars = new char[position.getPosition()];
         Arrays.fill(chars, '-');
 
         System.out.printf("%s : %s%n", this.car.getName(), new String(chars));
+    }
+
+    public void play() {
+        tryMove();
+        printLocation();
+    }
+
+
+    @Override
+    public int compareTo(PlayingCar o) {
+        return position.getPosition() - o.position.getPosition();
+    }
+
+    @Override
+    public String toString() {
+        return car.getName();
     }
 }
