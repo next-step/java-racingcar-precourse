@@ -1,5 +1,6 @@
 package racingcar;
 
+import utils.RandomNumberGenerator;
 import utils.ValidationUtils;
 
 import java.util.*;
@@ -20,6 +21,13 @@ public class RacingCarGame {
 
         this.cars = mapCar(input);
         this.count = Integer.parseInt(count);
+    }
+
+    public void start() {
+        for (int i = 0; i < count; i++) {
+            cars.play(new RandomNumberGenerator());
+        }
+        System.out.println(cars.getWinner() + "가 최종 우승했습니다.");
     }
 
     private Cars mapCar(String input) {

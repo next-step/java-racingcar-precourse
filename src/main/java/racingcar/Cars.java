@@ -1,5 +1,8 @@
 package racingcar;
 
+import console.PrintOutput;
+import utils.RandomNumberGenerator;
+
 import java.util.List;
 
 public class Cars {
@@ -7,6 +10,13 @@ public class Cars {
 
     public Cars(List<Car> cars) {
         this.cars = cars;
+    }
+
+    public void play(RandomNumberGenerator generator) {
+        for (Car car : cars) {
+            car.isMovable(generator.create());
+            PrintOutput.gameStatus(car);
+        }
     }
 
     public String getWinner() {
