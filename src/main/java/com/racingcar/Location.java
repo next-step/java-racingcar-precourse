@@ -1,5 +1,7 @@
 package com.racingcar;
 
+import java.util.Objects;
+
 public class Location {
 	private int value;
 
@@ -26,5 +28,20 @@ public class Location {
 		}
 
 		return result;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+		Location location = (Location)o;
+		return value == location.value;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(value);
 	}
 }

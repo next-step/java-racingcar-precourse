@@ -1,6 +1,9 @@
 package com.racingcar;
 
+import static java.util.Comparator.*;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class RacingCars {
@@ -30,6 +33,34 @@ public class RacingCars {
 	private void startByCar() {
 		for (RacingCar car : this.values) {
 			car.start();
+		}
+	}
+
+	public RacingCars winners() {
+		RacingCar winner = Collections.max(this.values,
+			comparingInt(car -> car.getLocation().getValue()));
+
+		List<RacingCar> result = new ArrayList<>();
+
+		for (RacingCar car : getValues()) {
+			addIfSameLocationWithWinner(winner, car, result);
+		}
+		return new RacingCars(result);
+	}
+
+	public List<Name> getNames() {
+		List<Name> names = new ArrayList<>();
+
+		for (RacingCar car : this.values) {
+			names.add(car.getName());
+		}
+
+		return names;
+	}
+
+	private void addIfSameLocationWithWinner(RacingCar winner, RacingCar car, List<RacingCar> result) {
+		if (winner.isSameLocation(car)) {
+			result.add(car);
 		}
 	}
 

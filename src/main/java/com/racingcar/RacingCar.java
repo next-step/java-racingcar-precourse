@@ -35,6 +35,10 @@ public class RacingCar {
 		return name;
 	}
 
+	public boolean isSameLocation(RacingCar other) {
+		return this.location.equals(other.location);
+	}
+
 	public Location getLocation() {
 		return location;
 	}
