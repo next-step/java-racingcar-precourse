@@ -6,7 +6,15 @@
 ## 과제 제출 과정
 * [과제 제출 방법](https://github.com/next-step/nextstep-docs/tree/master/precourse)
 
-# 구현할 기능 목록
+## 도메인
+
+- `CarName` : 자동차 이름
+- `CarNames` : 사용자 입력을 받아 자동차 이름들로 변환
+- `CarStatus` : 자동차 상태 (전진, 멈춤)
+- `Engine` : 임의의 출력을 내고, 전진할지 멈출지 판단 
+- `Power` : 출력
+
+## TODOs
 
 - [x] 자동차의 이름은 쉼표(,)를 기준으로 구분한다.
 - [x] 자동차의 이름은 5자 이하이다.
