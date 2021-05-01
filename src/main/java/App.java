@@ -2,17 +2,18 @@ import domain.CarNames;
 import domain.Game;
 import view.InputView;
 import view.PrintView;
+import view.input.TryCount;
 
 public class App {
     public static void main(String[] args) {
         InputView inputView = new InputView(System.in);
 
-        String names = inputView.carNames();
-        int tryCount = inputView.tryCount();
+        CarNames names = inputView.carNames();
+        TryCount tryCount = inputView.tryCount();
 
-        Game game = new Game(new CarNames(names));
+        Game game = new Game(names);
 
-        game.move(tryCount);
+        game.move(tryCount.getCount());
 
         PrintView printView = new PrintView(game);
 
