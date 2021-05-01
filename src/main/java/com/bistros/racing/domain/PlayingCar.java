@@ -2,26 +2,22 @@ package com.bistros.racing.domain;
 
 import java.util.Arrays;
 
-public class PlayingCar implements Comparable<PlayingCar> {
-    private final Car car;
+public class PlayingCar extends Car implements Comparable<PlayingCar> {
+
     private final PlayingCarPosition position;
 
     public PlayingCar(Car car) {
-        this.car = car;
+        super(car.getName(), car.getEngine());
         this.position = new PlayingCarPosition();
     }
 
-    public Car getCar() {
-        return car;
-    }
-
     public void tryMove() {
-        if (car.canToMove()) {
+        if (canToMove()) {
             position.increasePosition();
         }
     }
 
-    public PositionLead status(PlayingCar other) {
+    public PositionLead lead(PlayingCar other) {
         if (position.compareTo(other.position) == 0) {
             return PositionLead.TIE;
         }
@@ -35,7 +31,7 @@ public class PlayingCar implements Comparable<PlayingCar> {
         char[] chars = new char[position.getPosition()];
         Arrays.fill(chars, '-');
 
-        System.out.printf("%s : %s%n", this.car.getName(), new String(chars));
+        System.out.printf("%s : %s%n", this.getName(), new String(chars));
     }
 
     public void play() {
@@ -46,11 +42,7 @@ public class PlayingCar implements Comparable<PlayingCar> {
 
     @Override
     public int compareTo(PlayingCar o) {
-        return position.getPosition() - o.position.getPosition();
+        return position.compareTo(o.position);
     }
 
-    @Override
-    public String toString() {
-        return car.getName();
-    }
 }

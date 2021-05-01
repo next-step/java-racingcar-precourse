@@ -28,6 +28,10 @@ public class Car {
         return name;
     }
 
+    protected Engine getEngine() {
+        return engine;
+    }
+
     public boolean canToMove() {
         return engine.canMove();
     }
@@ -43,5 +47,10 @@ public class Car {
     @Override
     public int hashCode() {
         return Objects.hash(name);
+    }
+
+    @Override
+    public String toString() {
+        return getName();
     }
 }

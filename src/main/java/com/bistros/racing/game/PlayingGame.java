@@ -43,8 +43,8 @@ public class PlayingGame {
 
         List<String> winners = new ArrayList<>();
         for (PlayingCar playingCar : playingCars) {
-            if (playingCar.status(maxPositionCar) == PositionLead.TIE) {
-                winners.add(playingCar.getCar().getName());
+            if (playingCar.lead(maxPositionCar) == PositionLead.TIE) {
+                winners.add(playingCar.getName());
             }
         }
 

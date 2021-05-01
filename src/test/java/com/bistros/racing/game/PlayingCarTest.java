@@ -24,10 +24,10 @@ class PlayingCarTest {
         testPlaying3.tryMove();
 
         assertAll(
-            () -> assertThat(testPlaying1.status(testPlaying2)).isEqualTo(PositionLead.LEAD),
-            () -> assertThat(testPlaying2.status(testPlaying1)).isEqualTo(PositionLead.BEHIND),
+            () -> assertThat(testPlaying1.lead(testPlaying2)).isEqualTo(PositionLead.LEAD),
+            () -> assertThat(testPlaying2.lead(testPlaying1)).isEqualTo(PositionLead.BEHIND),
 
-            () -> assertThat(testPlaying1.status(testPlaying3)).isEqualTo(PositionLead.TIE)
+            () -> assertThat(testPlaying1.lead(testPlaying3)).isEqualTo(PositionLead.TIE)
         );
     }
 
