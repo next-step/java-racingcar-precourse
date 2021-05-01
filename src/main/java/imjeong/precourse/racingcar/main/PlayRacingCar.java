@@ -2,6 +2,8 @@ package imjeong.precourse.racingcar.main;
 
 import java.util.Scanner;
 
+import imjeong.precourse.racingcar.InputValidationUtil;
+
 /**
  * 자동차 경주 게임.
  * @author In Mook, Jeong
@@ -56,21 +58,8 @@ public class PlayRacingCar {
  public static String[] getInputCarNames() {
   System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
   String[] carNames = SCANNER.next().split(",");
-  if(!isCarName5Characters(carNames)) return getInputCarNames();
+  if(!InputValidationUtil.isCarName5Characters(carNames)) return getInputCarNames();
   return carNames;
- }
- 
- /**
-  * 사용자가 입력한 자동차 이름이 5자 이하인지 확인
-  * @param carNames - car name array
-  * @return
-  * @since 2021. 05. 01
-  */
- public static boolean isCarName5Characters(String[] carNames) {
-  for(String carName : carNames) {
-   if(carName.length() > 5) return false;
-  }
-  return true;
  }
  
  /**
@@ -81,17 +70,7 @@ public class PlayRacingCar {
  public static int getMoveCount() {
   System.out.println("시도할 횟수는 몇회인가요?");
   String moveCount = SCANNER.next();
-  if(!isValidNumber(moveCount)) return getMoveCount();
+  if(!InputValidationUtil.isValidNumber(moveCount)) return getMoveCount();
   return Integer.parseInt(moveCount);
- }
- 
- /**
-  * 입력한 값이 1~9 사이의 숫자인지 확인
-  * @param number - 숫자 형태의 문자열
-  * @return - 1~9 사이의 숫자면 ture, 아니면 false 반환
-  * @since 2021. 05. 02
-  */
- public static boolean isValidNumber(String input) {
-	 return (input.matches("[0-9]*") && Integer.parseInt(input) > 0);
  }
 }
