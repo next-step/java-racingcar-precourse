@@ -35,4 +35,23 @@ public class CarTest {
         reception.register(names);
         assertEquals(nameSize,reception.getParticipants().size());
     }
+
+    @Test
+    @DisplayName("자동차 위치값 호출")
+    public void getPosition() throws InterruptedException {
+
+        for(int i = 0;i<5;i++){
+            Car car = new Car("lucas");
+            Thread.sleep(3000);
+            int randomValue = car.randomSetPosition();
+            if(randomValue>=4){
+                System.out.println("전진");
+                assertEquals(1,car.getPosition());
+            }
+            if(randomValue<=3){
+                System.out.println("정지");
+                assertEquals(0,car.getPosition());
+            }
+        }
+    }
 }
