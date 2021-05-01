@@ -13,11 +13,15 @@ public class Car {
     private final Engine engine;
 
     public Car(String name) {
+        this(name, new Engine());
+    }
+
+    public Car(String name, Engine engine) {
         if (name == null || "".equals(name.trim()) || MAX_CAR_NAME_LENGTH < name.trim().length()) {
             throw new NotAllowCarNamePolicyException();
         }
         this.name = name;
-        this.engine = new Engine();
+        this.engine = engine;
     }
 
     public String getName() {
