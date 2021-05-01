@@ -30,4 +30,28 @@ public class ValidationTest {
 		assertThrows(IllegalArgumentException.class, () -> new Car("aaaaaa"));
 		assertThrows(IllegalArgumentException.class, () -> new Car("aaaaaaa"));
 	}
+
+	@Test
+	public void 자동차_이동_조건은_0에서_9_사이의_값(){
+		//given
+		Car car = new Car("aaaa");
+
+		//when
+		int travelDistancefor0 = car.forward(0);
+		int travelDistancefor9 = car.forward(9);
+
+		//then
+		assertThat(travelDistancefor0).isExactlyInstanceOf(Integer.class);
+		assertThat(travelDistancefor9).isExactlyInstanceOf(Integer.class);
+	}
+
+	@Test
+	public void 자동차_이동_조건이_0에서_9_사이_값이_아니면_에러_발생(){
+		//given
+		Car car = new Car("aaaa");
+
+		//when
+		assertThrows(IllegalArgumentException.class, () -> car.forward(-1));
+		assertThrows(IllegalArgumentException.class, () -> car.forward(10));
+	}
 }

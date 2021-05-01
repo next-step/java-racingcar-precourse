@@ -14,4 +14,12 @@ public class Car {
 	public String getName() {
 		return name;
 	}
+
+	public int forward(int condition) {
+		if (condition < 0 || 9 < condition) {
+			throw new IllegalArgumentException("전진하는 조건은 0에서 9 사이의 값이어야 합니다.");
+		}
+
+		return 0;
+	}
 }
