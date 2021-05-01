@@ -3,7 +3,8 @@ package racingcar;
 import utils.RandomNumberGenerator;
 import utils.ValidationUtils;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RacingCarGame {
     private static final String ILLEGAL_NAME_MESSAGE = "자동차 이름은 공백을 포함하지 않고, 중복되지 않아야 합니다.";
@@ -24,10 +25,11 @@ public class RacingCarGame {
     }
 
     public void start() {
+        RandomNumberGenerator generator = new RandomNumberGenerator();
         for (int i = 0; i < count; i++) {
-            cars.play(new RandomNumberGenerator());
+            cars.play(generator);
         }
-        System.out.println(cars.getWinner() + "가 최종 우승했습니다.");
+        cars.showGameWinner();
     }
 
     private Cars mapCar(String input) {

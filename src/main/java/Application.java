@@ -11,5 +11,6 @@ public class Application {
         String count = scanner.nextLine();
         RacingCarGame racingCarGame = new RacingCarGame(name, count);
         racingCarGame.start();
+        scanner.close();
     }
 }

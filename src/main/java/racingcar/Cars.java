@@ -1,6 +1,5 @@
 package racingcar;
 
-import console.PrintOutput;
 import utils.RandomNumberGenerator;
 
 import java.util.List;
@@ -15,8 +14,12 @@ public class Cars {
     public void play(RandomNumberGenerator generator) {
         for (Car car : cars) {
             car.isMovable(generator.create());
-            PrintOutput.gameStatus(car);
+            car.showGameStatus();
         }
+    }
+
+    public void showGameWinner() {
+        System.out.println(getWinner() + "가 최종 우승했습니다.");
     }
 
     public String getWinner() {
