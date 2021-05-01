@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -70,6 +71,25 @@ public class RacingGameTest {
         assertThat(carList.get(1).getCurrentPosition()).isEqualTo(0);
         assertThat(carList.get(2).getCurrentPosition()).isEqualTo(1);
         assertThat(carList.get(3).getCurrentPosition()).isEqualTo(3);
+        
+    }
+    
+    @Test
+    @DisplayName("입력한 횟수만큼 반복실행 테스트")
+    public void iteratePlayTest() {
+        
+        Cars cars = new Cars("11aa, 22bb, 33cc, 44dd");
+
+        System.out.println("시도할 회수는 몇회인가요?");
+        //Scanner scanner = new Scanner(System.in);
+        
+        int playCnt = 5; //scanner.nextInt();
+        
+        for(int i = 0; i < playCnt; i++) {
+            System.out.println("-----[" + i + "] stage-----");
+            cars.play();
+            System.out.println("---------------------");
+        }
         
     }
     
