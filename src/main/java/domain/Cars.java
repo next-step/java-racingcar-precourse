@@ -20,6 +20,7 @@ public class Cars {
     }
 
     public Cars getDeviceValue(String carNames) {
+
         String [] array = carNames.split(",");
         for(String carNm : array){
             cars.add(new Car(carNm));

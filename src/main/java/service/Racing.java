@@ -6,10 +6,6 @@ public class Racing {
 
     private Cars cars;
 
-    public int getCarNameLength(String carName) {
-        return carName.length();
-    }
-
     public Cars getDeviceValue(String carNames) {
         return new Cars(carNames);
     }

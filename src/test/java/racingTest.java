@@ -25,7 +25,11 @@ public class racingTest {
     @DisplayName("자동차 이름 길이 체크.")
     @Test
     void checkCarNameLengthTest() {
-        assertThat(racing.getCarNameLength("skskd")).isLessThan(6);
+        Car carOverLength = new Car("asdfd");
+        assertThat(carOverLength.getCarName().getName().length()).isGreaterThan(4);
+
+        Car carNull = new Car("");
+        assertThat(carNull.getCarName().getName().length()).isLessThan(1);
     }
 
     @DisplayName("자동차 이름 목록을 특수문자로 각각 나누기 체크.")

@@ -8,6 +8,10 @@ public class Car {
         this.carName = new Name(carName);
     }
 
+    public Car() {
+
+    }
+
     public Name getCarName() {
         return carName;
     }
