@@ -23,9 +23,9 @@ public class PlayRacingCarTest {
  }
  
  @ParameterizedTest
- @CsvSource(value = {"0:false", "9:true", "10:true", "a:false"}, delimiter = ':')
+ @CsvSource(value = {"0:false", "9:true", "10:true", "1020:true", "290003:true", "a:false"}, delimiter = ':')
  @DisplayName("Test whether the number of vehicle movements entered by the user is a number")
  void inputMoveCountTest(String input, boolean expected) {
-  assertEquals(input.matches("[1-9]+"), expected);
+  assertEquals((input.matches("[0-9]*") && Integer.parseInt(input) > 0), expected);
  }
 }
