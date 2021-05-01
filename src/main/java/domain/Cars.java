@@ -1,5 +1,6 @@
 package domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
@@ -13,5 +14,14 @@ public class Cars {
         for(Car car : cars) {
             car.move();
         }
+    }
+
+    public Positions getPositions() {
+        List<Position> positions = new ArrayList<>();
+        for(Car car : cars) {
+            positions.add(car.getPosition());
+        }
+
+        return new Positions(positions);
     }
 }

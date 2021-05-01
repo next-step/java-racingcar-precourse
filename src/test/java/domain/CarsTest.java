@@ -30,8 +30,9 @@ public class CarsTest {
             cars.move();
         }
 
-        for(Car car : carList) {
-            assertThat(car.getPosition().getPosition())
+        Positions positions = cars.getPositions();
+        for(Position position : positions.getPositions()) {
+            assertThat(position.getPosition())
                     .isEqualTo(move);
         }
     }
