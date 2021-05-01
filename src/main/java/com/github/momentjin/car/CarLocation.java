@@ -2,12 +2,12 @@ package com.github.momentjin.car;
 
 import com.github.momentjin.Location;
 
-public class CarLocation implements Location, Comparable<CarLocation> {
+public class CarLocation implements Location {
 
     private final int position;
     public static final CarLocation ZERO = new CarLocation(0);
 
-    CarLocation(int position) {
+    public CarLocation(int position) {
         this.position = position;
     }
 
@@ -25,11 +25,6 @@ public class CarLocation implements Location, Comparable<CarLocation> {
     }
 
     @Override
-    public int compareTo(CarLocation other) {
-        return Integer.compare(position, other.position);
-    }
-
-    @Override
     public CarLocation increaseOne() {
         return new CarLocation(this.position + 1);
     }
@@ -37,5 +32,10 @@ public class CarLocation implements Location, Comparable<CarLocation> {
     @Override
     public int getPosition() {
         return this.position;
+    }
+
+    @Override
+    public int compareTo(Location o) {
+        return Integer.compare(this.getPosition(), o.getPosition());
     }
 }

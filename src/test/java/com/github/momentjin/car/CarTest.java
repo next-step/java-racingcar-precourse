@@ -44,4 +44,9 @@ class MockLocation implements Location {
     public int getCountOfMethodCall() {
         return countOfMethodCall;
     }
+
+    @Override
+    public int compareTo(Location o) {
+        return 0;
+    }
 }

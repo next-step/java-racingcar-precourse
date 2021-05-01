@@ -13,7 +13,7 @@ public class Car implements Movable {
         this.location = CarLocation.ZERO;
     }
 
-    Car(String name, Location location) {
+    public Car(String name, Location location) {
         this.name = new CarName(name);
         this.location = location;
     }
