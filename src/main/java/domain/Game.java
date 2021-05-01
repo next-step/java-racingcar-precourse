@@ -19,7 +19,7 @@ public class Game {
     }
 
     public void move(int times) {
-        for(int i = 0; i<times; i++) {
+        for (int i = 0; i < times; i++) {
             cars.move();
             moveHistories.add(cars.getPositions());
         }
@@ -28,4 +28,9 @@ public class Game {
     public List<Positions> getMoveHistories() {
         return new ArrayList<>(moveHistories);
     }
+
+    public Winners getWinners() {
+        return new Winners(moveHistories.get(moveHistories.size() - 1));
+    }
+
 }
