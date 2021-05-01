@@ -1,12 +1,14 @@
 package com.github.momentjin.car;
 
-public class CarName {
+import com.github.momentjin.MovableObjectName;
+
+class CarName implements MovableObjectName {
 
     private final static int CAR_NAME_LENGTH_LIMIT = 5;
 
     private final String value;
 
-    public CarName(String value) {
+    CarName(String value) {
 
         if (value.length() > CAR_NAME_LENGTH_LIMIT) {
             throw new IllegalArgumentException("자동차 이름은 " + CAR_NAME_LENGTH_LIMIT + "글자를 초과할 수 없습니다");
@@ -19,7 +21,8 @@ public class CarName {
         this.value = value;
     }
 
-    public String getValue() {
+    @Override
+    public String getName() {
         return value;
     }
 }

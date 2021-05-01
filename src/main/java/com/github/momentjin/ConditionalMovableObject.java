@@ -1,7 +1,5 @@
 package com.github.momentjin;
 
-import com.github.momentjin.car.CarName;
-
 public final class ConditionalMovableObject implements Movable {
 
     private final Movable movable;
@@ -13,7 +11,7 @@ public final class ConditionalMovableObject implements Movable {
     }
 
     @Override
-    public CarName getName() {
+    public MovableObjectName getName() {
         return this.movable.getName();
     }
 

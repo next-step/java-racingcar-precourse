@@ -23,7 +23,7 @@ public class GameWinnerPrinter {
         StringBuilder joined = new StringBuilder();
 
         for (Movable movable : movables) {
-            joined.append(movable.getName().getValue())
+            joined.append(movable.getName().getName())
                     .append(delimiter);
         }
 

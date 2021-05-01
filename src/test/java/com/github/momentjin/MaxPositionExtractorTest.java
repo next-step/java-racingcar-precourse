@@ -2,7 +2,6 @@ package com.github.momentjin;
 
 import com.github.momentjin.car.Car;
 import com.github.momentjin.car.CarLocation;
-import com.github.momentjin.car.CarName;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

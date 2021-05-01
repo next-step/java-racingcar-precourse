@@ -1,6 +1,5 @@
 package com.github.momentjin;
 
-import com.github.momentjin.car.CarName;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -66,7 +65,7 @@ class MockMovable implements Movable {
     boolean isMoved;
 
     @Override
-    public CarName getName() {
+    public MovableObjectName getName() {
         return null;
     }
 
