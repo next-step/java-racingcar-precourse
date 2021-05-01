@@ -22,4 +22,23 @@ public class InputTest {
         });
     }
 
+    @ParameterizedTest
+    @DisplayName("해당 자료형 이상의 횟수를 입력한 경우 Exception 검출 테스트")
+    @CsvSource({"2147483648"})
+    public void intMoreThanInputCaseErrorTest(String parser){
+        assertThatExceptionOfType(java.lang.NumberFormatException.class).isThrownBy(() -> {
+            int testMoreThanValue = 0;
+            assertThat(testMoreThanValue = Integer.parseInt(parser));
+        }).withMessage("For input string: \"%s\"", parser);
+    }
+
+    @Test
+    @DisplayName("1번 미만의 숫자로 입력한 경우 Exception 검출 테스트")
+    public void intLessThanOneInputCaseErrorTest(){
+        int testLessThanValue = -1;
+        assertThatExceptionOfType(java.lang.AssertionError.class).isThrownBy(() -> {
+            assertThat(testLessThanValue).isGreaterThanOrEqualTo(1);
+        });
+    }
+
 }
