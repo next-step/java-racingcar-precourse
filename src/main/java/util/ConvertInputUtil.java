@@ -24,7 +24,15 @@ public class ConvertInputUtil {
         return names;
     }
 
-    private static void validateCarName(String name){
+    public static int getTryNumberFromInput(String input) {
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new GameException(GameErrorCode.TRY_NUMBER_PARSING);
+        }
+    }
+
+    private static void validateCarName(String name) {
         if (name.length() == 0) {
             throw new GameException(GameErrorCode.CAR_NAME_EMPTY);
         }
@@ -35,7 +43,7 @@ public class ConvertInputUtil {
 
     private static void checkOverlap(List<String> names) {
         Set<String> setNames = new HashSet<>(names);
-        if(names.size() != setNames.size()){
+        if (names.size() != setNames.size()) {
             throw new GameException(GameErrorCode.CAR_NAME_OVERLAP);
         }
     }

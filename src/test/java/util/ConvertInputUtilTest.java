@@ -9,7 +9,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-class ConvertInputUtilUtilTest {
+class ConvertInputUtilTest {
 
     @DisplayName("자동차 이름 입력_성공")
     @ParameterizedTest
@@ -17,14 +17,28 @@ class ConvertInputUtilUtilTest {
             "pobi, 1",
             "'pobi,crong,honux', 3"
     })
-    void TestCarNameInput_Success(String name, int num) {
+    void TEST_getCarNameFromInput_Success(String name, int num) {
         assertThat(ConvertInputUtil.getCarNameFromInput(name)).hasSize(num);
     }
 
     @DisplayName("자동차 이름 입력_실패")
     @ParameterizedTest
     @ValueSource(strings = {"", "aaaaaa", "pobi,pobi"})
-    void TestCarNameInput_Fail(String name) {
+    void TEST_getCarNameFromInput_Fail(String name) {
         assertThrows(GameException.class, () -> ConvertInputUtil.getCarNameFromInput(name));
+    }
+
+    @DisplayName("시도 횟수 입력_성공")
+    @ParameterizedTest
+    @ValueSource(strings = {"1", "10"})
+    void TEST_getCarNameFromInput_Success(String tryNum) {
+        assertThat(ConvertInputUtil.getTryNumberFromInput(tryNum)).isEqualTo(Integer.parseInt(tryNum));
+    }
+
+    @DisplayName("시도 횟수 입력_실패")
+    @ParameterizedTest
+    @ValueSource(strings = {"", "abc"})
+    void TEST_getTryNumberFromInput_Fail(String tryNum) {
+        assertThrows(GameException.class, () -> ConvertInputUtil.getTryNumberFromInput(tryNum));
     }
 }
