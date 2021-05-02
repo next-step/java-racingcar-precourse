@@ -19,8 +19,8 @@ class RacingCarTest {
         RacingCar car = new RacingCar(name);
 
         // then
-        assertThat(car.getName()).isEqualTo(name);
-        assertThat(car.getPosition()).isZero();
+        assertThat(car.getRacingCarName()).isEqualTo(name);
+        assertThat(car.getRacingCarPosition()).isZero();
     }
 
     @ParameterizedTest
@@ -44,7 +44,7 @@ class RacingCarTest {
         car.move(generatedNumber);
 
         // then
-        assertThat(car.getPosition()).isEqualTo(expectedPosition);
+        assertThat(car.getRacingCarPosition()).isEqualTo(expectedPosition);
     }
 
     @ParameterizedTest
