@@ -1,14 +1,14 @@
 package racingcar.domain;
 
 import racingcar.exception.DuplicateNameException;
-import racingcar.exception.InvalidNumberOfCarsExecption;
+import racingcar.exception.InvalidSizeOfCarsException;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
 
-    List<Car> cars = new ArrayList<>();
+    private List<Car> cars = new ArrayList<>();
 
     public Cars(String[] carNames) {
         setCars(carNames);
@@ -24,7 +24,7 @@ public class Cars {
 
     private void hasMoreThanOne(String[] carNames) {
         if (carNames == null || carNames.length == 0) {
-            throw new InvalidNumberOfCarsExecption();
+            throw new InvalidSizeOfCarsException();
         }
     }
 

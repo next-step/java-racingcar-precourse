@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.exception.DuplicateNameException;
-import racingcar.exception.InvalidNumberOfCarsExecption;
+import racingcar.exception.InvalidSizeOfCarsException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -27,7 +27,7 @@ class CarsTest {
     @Test
     void 자동차_0개_입력시_예외발생() {
         // when + then
-        assertThatThrownBy(() -> new Cars(null)).isInstanceOf(InvalidNumberOfCarsExecption.class);
+        assertThatThrownBy(() -> new Cars(null)).isInstanceOf(InvalidSizeOfCarsException.class);
     }
 
     @ParameterizedTest(name = "자동차 이름 중복 입력시 예외발생")

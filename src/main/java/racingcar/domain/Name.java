@@ -1,7 +1,7 @@
 package racingcar.domain;
 
 import racingcar.exception.NameHasInvalidCharacterException;
-import racingcar.exception.NameInvalidLengthException;
+import racingcar.exception.NameHasInvalidLengthException;
 
 import java.util.Objects;
 
@@ -19,7 +19,7 @@ public class Name {
 
     private void checkLength(String name) {
         if (name.length() < MIN_LENGTH_OF_NAME || name.length() > MAX_LENGTH_OF_NAME) {
-            throw new NameInvalidLengthException();
+            throw new NameHasInvalidLengthException();
         }
     }
 

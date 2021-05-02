@@ -4,7 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.exception.NameHasInvalidCharacterException;
-import racingcar.exception.NameInvalidLengthException;
+import racingcar.exception.NameHasInvalidLengthException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -26,7 +26,7 @@ class NameTest {
     @ValueSource(strings = {"abcdef", ""})
     void 범위초과시_예외발생(String input) {
         // when + then
-        assertThatThrownBy(() -> new Name(input)).isInstanceOf(NameInvalidLengthException.class);
+        assertThatThrownBy(() -> new Name(input)).isInstanceOf(NameHasInvalidLengthException.class);
     }
 
     @ParameterizedTest(name = "유효하지 않은 문자열 예외발생")
