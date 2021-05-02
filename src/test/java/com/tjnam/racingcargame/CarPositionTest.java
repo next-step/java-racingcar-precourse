@@ -18,4 +18,13 @@ public class CarPositionTest {
     public void initialPositionTest() {
         assertThat(position.getPosition()).isEqualTo(0);
     }
+
+    @Test
+    public void positionMoveTest(){
+        int expectedPosition = 100;
+        for (int i=0 ; i<100 ; i++){
+            position.move();
+        }
+        assertThat(position.getPosition()).isEqualTo(100);
+    }
 }
