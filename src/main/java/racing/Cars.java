@@ -44,7 +44,7 @@ public class Cars {
     
     private static List<Car> carList(String userInput) {
         List<Car> cars = new ArrayList<>();
-        String[] carNameArray = userInput.split(",");
+        String[] carNameArray = userInput.replace(" ", "").split(",");
         
         for (int i = 0; i < carNameArray.length; i++) {
             cars.add(new Car(carNameArray[i]));
