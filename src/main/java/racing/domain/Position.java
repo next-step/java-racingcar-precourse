@@ -10,10 +10,14 @@ public class Position {
   private final int value;
 
   public Position(int value) {
+    checkMoreThenMinimumValue(value);
+    this.value = value;
+  }
+
+  private void checkMoreThenMinimumValue(int value) {
     if (value < MIN) {
       throw new PositionLessThenMinValueException(MIN);
     }
-    this.value = value;
   }
 
   public static Position create() {
@@ -21,7 +25,7 @@ public class Position {
   }
 
   public Position move() {
-    return new Position(this.value + 1);
+    return new Position(value + 1);
   }
 
   @Override
