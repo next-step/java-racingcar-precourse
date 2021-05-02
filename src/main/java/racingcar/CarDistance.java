@@ -13,6 +13,9 @@ public class CarDistance {
 
 	public void move(int condition){
 		validationCarForwardConditionIsBetween0to9(condition);
+		if (4 <= condition) {
+			distance++;
+		}
 	}
 
 	private void validationCarForwardConditionIsBetween0to9(int condition) {
