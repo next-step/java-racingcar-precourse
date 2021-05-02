@@ -2,7 +2,7 @@ package domain;
 
 public class Distance {
 
-    private static String BAR = "-";
+    private static final String BAR = "-";
 
     int distance;
 

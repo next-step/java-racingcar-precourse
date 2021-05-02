@@ -2,17 +2,13 @@ package domain;
 
 public class Car {
 
-    private Name carName;
+    private final Name carName;
 
-    private Distance carDistance;
+    private final Distance carDistance;
 
     public Car(String carName) {
         this.carName = new Name(carName);
         this.carDistance = new Distance(0);
-    }
-
-    public Car() {
-
     }
 
     public Name getCarName() {

@@ -1,5 +1,7 @@
 package domain;
 
+import util.Message;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,17 +23,13 @@ public class Cars {
         getDeviceValue(carNames);
     }
 
-    public Cars() {
-
-    }
-
-    public Cars getDeviceValue(String carNames) {
+    public void getDeviceValue(String carNames) {
 
         String [] array = carNames.split(SPLIT_MARK);
         for(String carNm : array){
             cars.add(new Car(carNm));
         }
-        return new Cars(cars);
+        new Cars(cars);
     }
 
     public List<Car> getCars() {
@@ -40,9 +38,7 @@ public class Cars {
 
     public void moveForward(Cars cars) {
         for(Car car : cars.getCars()){
-            if(isGreaterThanCheckValue()){
-                car.moveCar();
-            }
+            if(isGreaterThanCheckValue()) car.moveCar();
         }
     }
 
@@ -53,4 +49,37 @@ public class Cars {
     public int getRandomValue(){
         return (int) (Math.random() * LIMIT_NUMBER_SIZE);
     }
+
+    public void getWinnerCar(){
+        List<Car> winnerCars = new ArrayList<>();
+        int maxDistance = 0;
+        for(Car playingCar : cars){
+
+            if(maxDistance == playingCar.getCarDistance().getDistance()){
+                winnerCars.add(playingCar);
+            }
+
+            if (maxDistance < playingCar.getCarDistance().getDistance()) {
+                maxDistance = playingCar.getCarDistance().getDistance();
+                winnerCars.clear();
+                winnerCars.add(playingCar);
+
+            }
+        }
+        printWinner(winnerCars);
+    }
+
+    public void printWinner(List<Car> winnerCars){
+        StringBuilder sb = new StringBuilder();
+        for(Car winnerCar : winnerCars){
+            sb.append(winnerCar.getCarName().getName());
+
+            if(winnerCars.indexOf(winnerCar) != winnerCars.size()-1){
+                sb.append(", ");
+            }
+
+        }
+        System.out.println(sb + Message.OUTPUT_MSG_WINNER_COMMENT);
+    }
+
 }

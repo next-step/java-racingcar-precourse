@@ -1,22 +1,15 @@
 import domain.Car;
 import domain.Cars;
-import org.assertj.core.api.AssertionsForClassTypes;
-import org.assertj.core.api.ListAssert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import service.Racing;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 public class racingTest {
 
     private Racing racing;
-
-    private Cars cars;
 
     @BeforeEach
     void setUp() {
@@ -47,14 +40,34 @@ public class racingTest {
     @DisplayName("0~9 랜덤 한자리수 생성 체크.")
     @Test
     void checkRandomValueTest() {
-        cars = new Cars("Test1");
+        Cars cars = new Cars("Test1");
         assertThat(cars.getRandomValue()).isLessThanOrEqualTo(9).isGreaterThanOrEqualTo(0);
     }
 
+    @DisplayName("차량 이동에 따른 거리값 설정 체크.")
     @Test
     void checkMoveCarTest() {
         Car testCar = new Car("test1");
         testCar.moveCar();
         assertThat(testCar.getCarDistance().getDistance()).isEqualTo(1);
+    }
+
+    @DisplayName("승자확인 체크")
+    @Test
+    void checkWinnerTest() {
+        Car testCar1 = new Car("test1");
+        testCar1.moveCar();
+        testCar1.moveCar();
+
+        Car testCar2 = new Car("test2");
+        testCar2.moveCar();
+        testCar2.moveCar();
+        testCar2.moveCar();
+
+        Car testCar3 = new Car("test3");
+        testCar3.moveCar();
+        testCar3.moveCar();
+
+        racing.getRaceWinner();
     }
 }
