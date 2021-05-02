@@ -1,7 +1,16 @@
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class CarTest {
+
+	private static Car car = new Car("테스트 자동차");
+
+	@BeforeAll
+	static void creatCar() {
+		car.applyForwardOrNot(true);
+		car.applyForwardOrNot(true);
+	}
 
 	// 자동차 이름 검증
 	static boolean isValidCarName(String carName) {
@@ -16,10 +25,7 @@ class CarTest {
 	@Test
 	@DisplayName("자동차 현재 주행거리 표시")
 	void printCurrentCarMileage() {
-		Car car = new Car("테스트 자동차");
-		car.applyForwardOrNot(true);
-		car.applyForwardOrNot(true);
 		car.printCurrentCarMileage();
 	}
-	
+
 }
