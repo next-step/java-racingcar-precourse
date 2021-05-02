@@ -1,6 +1,30 @@
 import java.util.*;
 
 public class RacingGame {
+    private Scanner scn = new Scanner(System.in);
+    public RacingGame(){ }
+
+    /**
+     * 전체 게임을 수행
+     */
+    public void playRacingGame(){
+        List<RacingCar> cars = null;
+        String names;
+        int rounds;
+        while(cars==null) {
+            System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분 / 이름은 5자 이하)");
+            names = scn.next();
+            cars = splitString(names);
+        }
+        System.out.println("시도할 횟수는 몇 회 인가요?");
+        rounds = scn.nextInt();
+        for(int i=0; i<rounds ; i++){
+            playOneRound(cars);
+        }
+        List<RacingCar> res = getWinners(cars);
+        printResult(res);
+    }
+
     /**
      * 한 회차의 각 자동차를 전진 또는 정지 시키고 그 결과를 출력
      * @param cars
