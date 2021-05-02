@@ -1,5 +1,7 @@
 package racingcar;
 
+import java.util.Random;
+
 public class Car {
     private static final String DEFAULT_NAME = "ProjectCar";
 
@@ -33,5 +35,10 @@ public class Car {
     public Car(String name) {
         this.name = name;
         this.position = 0;
+    }
+
+    public int draw() {
+        Random random = new Random();
+        return random.nextInt(10);
     }
 }

@@ -30,4 +30,11 @@ public class CarTest {
 
         assertThat(car.toString()).isEqualTo(result);
     }
+
+    @Test
+    @DisplayName("랜덤한 숫자 뽑기")
+    void draw() {
+        Car car = new Car();
+        assertThat(car.draw()).isBetween(0, 9);
+    }
 }
