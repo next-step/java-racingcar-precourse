@@ -5,16 +5,16 @@ public class RacingCar {
     public static final int MOVE_MINIMUM_VALUE = 4;
 
     private final Name name;
-    private TravelDistance distance;
+    private final TravelDistance distance;
 
-    public RacingCar(Name name) {
-        this.name = name;
-        this.distance = TravelDistance.create(0);
+    public RacingCar(String name) {
+        this.name = new Name(name);
+        this.distance = new TravelDistance();
     }
 
     public void moveForward(int random) {
         if(isMove(random))
-            this.distance = distance.increase();
+            distance.increase();
     }
 
     public TravelDistance getTravelDistance() {

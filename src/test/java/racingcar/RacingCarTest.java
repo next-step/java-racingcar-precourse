@@ -15,7 +15,7 @@ class RacingCarTest {
 
     @BeforeEach
     void setUp() {
-        racingCar = new RacingCar(new Name("hello"));
+        racingCar = new RacingCar("hello");
     }
 
     @ParameterizedTest
@@ -38,7 +38,7 @@ class RacingCarTest {
     @DisplayName("난수 3이 입력되었을 경우 자동차는 이동하지 않는다.")
     void stop(int random) {
         // given
-        TravelDistance zero = TravelDistance.create(0);
+        TravelDistance zero = new TravelDistance();
 
         // when
         racingCar.moveForward(random);
@@ -55,7 +55,7 @@ class RacingCarTest {
         String name = "greatThanFive";
 
         // when then
-        assertThatThrownBy(() -> new Name(name))
+        assertThatThrownBy(() -> new RacingCar(name))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("자동차의 이름은 5자 이하여야 합니다.");
     }
