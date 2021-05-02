@@ -23,7 +23,6 @@ public class RacingGame{
             System.out.println(distancePrint(car));
         }
         System.out.println();
-
     }
 
     public String distancePrint(Car car){
