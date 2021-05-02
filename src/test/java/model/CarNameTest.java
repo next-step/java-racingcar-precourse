@@ -15,7 +15,7 @@ class CarNameTest {
 
 	@DisplayName("자동차 이름 유효성검사")
 	@NullAndEmptySource
-	@ValueSource(strings = {"abcdef"})
+	@ValueSource(strings = {"car123"})
 	@ParameterizedTest()
 	void invalidCarName(final String givenCarName) {
 		/// region given
@@ -23,7 +23,10 @@ class CarNameTest {
 		/// endregion
 
 		/// region when
-		final Throwable actualThrowable = assertThrows(expectedException.getClass(), () -> new CarName(givenCarName));
+		final Throwable actualThrowable = assertThrows(
+			expectedException.getClass(),
+			() -> new CarName(givenCarName)
+		);
 		/// endregion
 
 		/// region then
@@ -35,7 +38,7 @@ class CarNameTest {
 	@Test
 	void carName() {
 		/// region given
-		final String givenCarName = "abcd";
+		final String givenCarName = "car";
 		/// endregion
 
 		/// region when
