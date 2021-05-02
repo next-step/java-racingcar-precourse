@@ -5,7 +5,7 @@ import racingcar.exception.NameHasInvalidLengthException;
 
 import java.util.Objects;
 
-import static racingcar.domain.rule.RacingcarGameRule.*;
+import static racingcar.domain.rule.RacingCarGameRule.*;
 
 public class Name {
 

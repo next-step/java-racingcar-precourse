@@ -9,7 +9,7 @@ import racingcar.exception.InvalidSizeOfCarsException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static racingcar.domain.rule.RacingcarGameRule.SEPERATOR;
+import static racingcar.domain.rule.RacingCarGameRule.SEPERATOR;
 
 @DisplayName("자동차 목록 도메인 테스트")
 class CarsTest {

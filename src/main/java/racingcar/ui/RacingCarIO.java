@@ -5,7 +5,7 @@ import java.util.Scanner;
 import static racingcar.ui.message.IOMessage.REQUEST_CAR_NAMES;
 import static racingcar.ui.message.IOMessage.REQUEST_ROUND;
 
-public class RacingcarIO {
+public class RacingCarIO {
     private static final Scanner scanner = new Scanner(System.in);
 
     public static String requestCarNames() {
