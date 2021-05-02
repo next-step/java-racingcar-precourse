@@ -11,17 +11,17 @@ public class Car {
 	}
 
 	// 자동차 이름 검증
-	boolean isValidCarName(String carName) {
+	public boolean isValidCarName(String carName) {
 		return 5 >= carName.length() && 1 <= carName.length();
 	}
 
 	// 자동차 대수 검증
-	boolean isValidCarCount(String[] carNameArr) {
+	public boolean isValidCarCount(String[] carNameArr) {
 		return 2 <= carNameArr.length;
 	}
 
 	// 자동차 이름 목록 검증
-	boolean isValidCarNames(String[] carNameArr) {
+	public boolean isValidCarNames(String[] carNameArr) {
 		int loopCount = 0;
 		boolean validCarNameResult = true;
 		while (loopCount < carNameArr.length && validCarNameResult) {
@@ -32,7 +32,7 @@ public class Car {
 	}
 
 	// 사용자 입력 자동차 이름들 검증
-	boolean isValidCar(String[] carNameArr) {
+	public boolean isValidCar(String[] carNameArr) {
 		if (!isValidCarCount(carNameArr)) {
 			return false;
 		}
