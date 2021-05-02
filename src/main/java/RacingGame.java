@@ -2,6 +2,25 @@ import java.util.*;
 
 public class RacingGame {
     /**
+     * 전체 자동차 리스트를 받아, 전진 횟수가 최대인 자동차 리스트를 반환
+     * @param cars 전체 자동차 리스트
+     * @return 전진 횟수가 최대인 자동차 리스트
+     */
+    public List<RacingCar> getWinners(List<RacingCar> cars) {
+        List<RacingCar> res = new ArrayList<>();
+        PriorityQueue<RacingCar> car_queue = new PriorityQueue<>();
+        for (RacingCar car : cars) {
+            car_queue.add(car);
+        }
+        res.add(car_queue.poll());
+        RacingCar temp_car;
+        while(!car_queue.isEmpty() && (temp_car=car_queue.poll()).getCount()==res.get(0).getCount() )
+            res.add(temp_car);
+
+        return res;
+    }
+
+    /**
      * 최종 우승자 리스트를 받아서 결과를 출력
      * @param winners 최종 우승자 리스트
      * @return 결과 문자열
