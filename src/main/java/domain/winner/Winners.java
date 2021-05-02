@@ -22,7 +22,7 @@ public class Winners {
     }
 
     private void addPositionIfMax(CarHistory carHistory, Position maxPosition) {
-        if(carHistory.getPosition().equals(maxPosition)) {
+        if (carHistory.getPosition().equals(maxPosition)) {
             winners.add(new Winner(carHistory.getCarName()));
         }
     }

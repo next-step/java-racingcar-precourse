@@ -21,7 +21,7 @@ public class CarHistories {
     public Positions getPositions() {
         List<Position> positions = new ArrayList<>();
 
-        for(CarHistory carHistory : carHistories) {
+        for (CarHistory carHistory : carHistories) {
             positions.add(carHistory.getPosition());
         }
 

@@ -8,13 +8,13 @@ import view.print.WinnersPrinter;
 
 public class PrintView {
     private Game game;
-    
+
     public PrintView(Game game) {
         this.game = game;
     }
 
     public void printMoveHistories() {
-        for(CarHistories carHistories : game.getMoveHistories()) {
+        for (CarHistories carHistories : game.getMoveHistories()) {
             printPositions(carHistories);
             System.out.println();
         }
@@ -26,7 +26,7 @@ public class PrintView {
     }
 
     private void printPositions(CarHistories carHistories) {
-        for(CarHistory carHistory : carHistories.getCarHistories()) {
+        for (CarHistory carHistory : carHistories.getCarHistories()) {
             System.out.println(new PositionPrinter(carHistory));
         }
     }

@@ -12,7 +12,7 @@ public class TryCount {
     public TryCount(int count) {
         this.count = count;
 
-        if(count < POSITIVE_NUMBER_CONDITION) {
+        if (count < POSITIVE_NUMBER_CONDITION) {
             throw new IllegalArgumentException("움직이는 조건은 양수여야 합니다.");
         }
     }

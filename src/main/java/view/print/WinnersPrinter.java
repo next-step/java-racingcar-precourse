@@ -19,7 +19,7 @@ public class WinnersPrinter {
     public String toString() {
         List<String> winnerNames = new ArrayList<>();
 
-        for(Winner winner : winners.getWinners()) {
+        for (Winner winner : winners.getWinners()) {
             winnerNames.add(winner.getCarName().toString());
         }
 

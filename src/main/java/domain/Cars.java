@@ -13,7 +13,7 @@ public class Cars {
     private List<Car> cars = new ArrayList<>();
 
     public Cars(CarNames carNames, MoveStrategy moveStrategy) {
-        for(CarName carName : carNames.getNames()) {
+        for (CarName carName : carNames.getNames()) {
             this.cars.add(new Car(carName, moveStrategy));
         }
     }
@@ -23,14 +23,14 @@ public class Cars {
     }
 
     public void move() {
-        for(Car car : cars) {
+        for (Car car : cars) {
             car.move();
         }
     }
 
     public CarHistories getCarCurrentInfos() {
         List<CarHistory> histories = new ArrayList<>();
-        for(Car car : cars) {
+        for (Car car : cars) {
             histories.add(car.getCurrentInfo());
         }
 

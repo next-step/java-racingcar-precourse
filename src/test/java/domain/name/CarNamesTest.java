@@ -1,7 +1,5 @@
 package domain.name;
 
-import domain.name.CarName;
-import domain.name.CarNames;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

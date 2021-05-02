@@ -19,7 +19,7 @@ public class PositionPrinter {
 
         stringWriter.write(String.format("%s : ", carHistory.getCarName()));
 
-        for(int i = 0; i<carHistory.getPosition().toInt(); i++) {
+        for (int i = 0; i < carHistory.getPosition().toInt(); i++) {
             stringWriter.append(POSITION_PRINTING_STRING);
         }
 

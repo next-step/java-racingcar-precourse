@@ -16,7 +16,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarsTest {
     @ParameterizedTest
-    @ValueSource(ints = {1,2,3,4,5})
+    @ValueSource(ints = {1, 2, 3, 4, 5})
     @DisplayName("전체 전진이 가능하다")
     public void 전체_전진이_가능하다(int move) {
         List<Car> carList = new ArrayList<>();
@@ -24,18 +24,18 @@ public class CarsTest {
         CarNames carNames = new CarNames("a,b,c,d,e");
         List<CarName> names = carNames.getNames();
 
-        for(CarName carName : names) {
+        for (CarName carName : names) {
             carList.add(new Car(carName, () -> true));
         }
 
         Cars cars = new Cars(carList);
 
-        for(int i = 0; i<move; i++) {
+        for (int i = 0; i < move; i++) {
             cars.move();
         }
 
         CarHistories carHistories = cars.getCarCurrentInfos();
-        for(CarHistory carHistory : carHistories.getCarHistories()) {
+        for (CarHistory carHistory : carHistories.getCarHistories()) {
             assertThat(carHistory.getPosition())
                     .isEqualTo(new Position(move));
         }

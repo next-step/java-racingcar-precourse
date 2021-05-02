@@ -13,7 +13,7 @@ public class Position implements Comparable {
     }
 
     public Position(int position) {
-        if(position < MINIMUM_POSITION) {
+        if (position < MINIMUM_POSITION) {
             throw new IllegalArgumentException("위치는 0 이하가 없습니다.");
         }
 
@@ -43,11 +43,11 @@ public class Position implements Comparable {
 
     @Override
     public int compareTo(Object o) {
-        Position dest = (Position)o;
+        Position dest = (Position) o;
 
-        if(dest.toInt() > toInt()) {
+        if (dest.toInt() > toInt()) {
             return -1;
-        }else if(dest.toInt() < toInt()) {
+        } else if (dest.toInt() < toInt()) {
             return 1;
         }
 

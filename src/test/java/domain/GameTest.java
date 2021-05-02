@@ -22,9 +22,9 @@ public class GameTest {
 
         List<CarHistories> moveHistories = game.getMoveHistories();
 
-        for(int i = 1; i<=times; i++) {
+        for (int i = 1; i <= times; i++) {
             CarHistories histories = moveHistories.get(i - 1);
-            for(Position position : histories.getPositions().getPositions()) {
+            for (Position position : histories.getPositions().getPositions()) {
                 assertThat(position.toInt())
                         .isEqualTo(i);
             }

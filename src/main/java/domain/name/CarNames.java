@@ -12,7 +12,7 @@ public class CarNames {
     public CarNames(String names) {
         String[] splicedNames = names.split(NAME_SPLITTER);
 
-        for(String name : splicedNames) {
+        for (String name : splicedNames) {
             this.names.add(new CarName(name));
         }
     }

@@ -2,7 +2,7 @@ package domain.strategy;
 
 import java.util.Random;
 
-public class RandomMoveStrategy implements MoveStrategy{
+public class RandomMoveStrategy implements MoveStrategy {
     private static final int MAX_RANDOM_NUMBER = 10;
     private static final int RANDOM_BIGGER_THAN = 4;
 

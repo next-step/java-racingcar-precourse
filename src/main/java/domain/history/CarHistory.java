@@ -12,6 +12,7 @@ public class CarHistory {
     public CarHistory(CarName carName) {
         this(carName, new Position());
     }
+
     public CarHistory(CarName carName, Position position) {
         this.carName = carName;
         this.position = position;
