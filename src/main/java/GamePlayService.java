@@ -11,4 +11,14 @@ public class GamePlayService {
 		return true;
 	}
 
+	// 숫자인지 검증
+	boolean isNumber(String playCount) {
+		try {
+			return isAboveMinimum(Integer.parseInt(playCount));
+		} catch (NumberFormatException e) {
+			System.out.println("숫자를 입력해 주세요.");
+			return false;
+		}
+	}
+
 }
