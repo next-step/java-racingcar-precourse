@@ -9,35 +9,15 @@ import org.junit.jupiter.api.Test;
 
 import exception.InvalidCarNameException;
 
-@DisplayName("레이싱 자동차 테스트")
+@DisplayName("경주용 자동차 목록 테스트")
 class RacingCarsTest {
-
-	@DisplayName("비어있는 자동차 이름")
-	@Test
-	void emptyRacingCarName() {
-		/// region given
-		final Throwable expectedException = new InvalidCarNameException();
-		final CarName givenCarName = null;
-		/// endregion
-
-		/// region when
-		final Throwable actualException = assertThrows(
-			expectedException.getClass(),
-			() -> new RacingCars(givenCarName)
-		);
-		/// endregion
-
-		/// region then
-		assertEquals(expectedException.getClass(), actualException.getClass());
-		/// endregion
-	}
 
 	@DisplayName("중복된 자동차 이름")
 	@Test
 	void duplicateRacingCarName() {
 		/// region given
 		final Throwable expectedException = new InvalidCarNameException();
-		final CarName givenCarName = new CarName("car");
+		final String givenCarName = "car";
 		/// endregion
 
 		/// region when
@@ -52,11 +32,16 @@ class RacingCarsTest {
 		/// endregion
 	}
 
-	@DisplayName("자동차 등록 확인")
+	@DisplayName("등록된 자동차 목록 확인")
 	@Test
 	void racingCars() {
 		/// region given
-		final CarName[] givenCarNames = {new CarName("car1"), new CarName("car2"), new CarName("car3")};
+		final String[] givenCarNames = {"car1", "car2", "car3"};
+		final RacingCar[] expectedRacingCars = {
+			new RacingCar(new CarName(givenCarNames[0])),
+			new RacingCar(new CarName(givenCarNames[1])),
+			new RacingCar(new CarName(givenCarNames[2]))
+		};
 		/// endregion
 
 		/// region when
@@ -66,8 +51,8 @@ class RacingCarsTest {
 		/// region then
 		assertNotNull(actualRacingCars);
 		final AtomicInteger index = new AtomicInteger();
-		actualRacingCars.getCarNames().forEach(
-			actualCarName -> assertEquals(givenCarNames[index.getAndIncrement()], actualCarName)
+		actualRacingCars.getRacingCars().forEach(
+			racingCar -> assertEquals(expectedRacingCars[index.getAndIncrement()], racingCar)
 		);
 		/// endregion
 	}
