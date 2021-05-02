@@ -17,6 +17,8 @@ public class Cars {
         
         RandomNumber random;
         
+        
+        // TODO - Erase the log.
         for(int i = 0; i < cars.size(); i++) {
             
             random = new RandomNumber();
@@ -27,6 +29,7 @@ public class Cars {
             System.out.println("[" + i + "] pos : " + cars.get(i).getCurrentPosition());
         }
         
+        // TODO - Erase it.
         for(int i = 0; i < cars.size(); i++) {
             System.out.println(cars.get(i).getCarName() + " : " + cars.get(i).getCurrentPosition());
         }
@@ -42,11 +45,11 @@ public class Cars {
     private static List<Car> carList(String userInput) {
         List<Car> cars = new ArrayList<>();
         String[] carNameArray = userInput.split(",");
-
+        
         for (int i = 0; i < carNameArray.length; i++) {
             cars.add(new Car(carNameArray[i]));
         }
-
+        
         return cars;
     }
 
