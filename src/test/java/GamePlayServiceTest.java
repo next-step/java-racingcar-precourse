@@ -1,5 +1,6 @@
 import static org.assertj.core.api.Assertions.*;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -25,13 +26,14 @@ class GamePlayServiceTest {
 	}
 
 	@ParameterizedTest
-	@ValueSource(strings = {"-14234", "0", "a", "ㅁ"}) // 실패
-	// @ValueSource(strings = {"1", "12351"}) // 성공
+	@DisplayName("레이싱 횟수 얻기")
+	// @ValueSource(strings = {"-14234", "0", "a", "ㅁ"}) // 실패
+	@ValueSource(strings = {"1", "12351"}) // 성공
 	void getRaceCount(String randomValue) {
 		assertThat(isNumber(randomValue))
-			.withFailMessage("숫자 검증 실패= " + randomValue)
-			.isFalse();  // 실패
-		// .isTrue(); // 성공
+			.withFailMessage("레이싱 횟수 얻기 실패= " + randomValue)
+			// .isFalse();  // 실패
+			.isTrue(); // 성공
 	}
 
 }
