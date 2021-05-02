@@ -30,7 +30,9 @@ public class Game {
     }
 
     public Winners getWinners() {
-        return new Winners(moveHistories.get(moveHistories.size() - 1));
+        int lastIndex = moveHistories.size() - 1;
+
+        return new Winners(moveHistories.get(lastIndex));
     }
 
 }
