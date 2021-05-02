@@ -92,5 +92,49 @@ public class RacingGameTest {
         }
         
     }
-    
+
+    @Test
+    @DisplayName("게임 진행상황 출력 테스트")
+    public void stagePrintTest() {
+        PlayResult result = new PlayResult();
+        Cars cars = new Cars("11aa,22bb,33cc,44dd");
+        
+        cars.getCars().get(0).play(3);
+        cars.getCars().get(1).play(1);
+        cars.getCars().get(2).play(5);
+        cars.getCars().get(3).play(8);
+        
+        result.stagePrint(cars);
+        
+        assertThat(cars.getCars().get(0).getCurrentPosition()).isEqualTo(0);
+        assertThat(cars.getCars().get(1).getCurrentPosition()).isEqualTo(0);
+        assertThat(cars.getCars().get(2).getCurrentPosition()).isEqualTo(1);
+        assertThat(cars.getCars().get(3).getCurrentPosition()).isEqualTo(1);
+
+        cars.getCars().get(0).play(0);
+        cars.getCars().get(1).play(2);
+        cars.getCars().get(2).play(3);
+        cars.getCars().get(3).play(5);
+        
+        result.stagePrint(cars);
+        
+        assertThat(cars.getCars().get(0).getCurrentPosition()).isEqualTo(0);
+        assertThat(cars.getCars().get(1).getCurrentPosition()).isEqualTo(0);
+        assertThat(cars.getCars().get(2).getCurrentPosition()).isEqualTo(1);
+        assertThat(cars.getCars().get(3).getCurrentPosition()).isEqualTo(2);
+
+        cars.getCars().get(0).play(9);
+        cars.getCars().get(1).play(1);
+        cars.getCars().get(2).play(2);
+        cars.getCars().get(3).play(7);
+        
+        result.stagePrint(cars);
+        
+        assertThat(cars.getCars().get(0).getCurrentPosition()).isEqualTo(1);
+        assertThat(cars.getCars().get(1).getCurrentPosition()).isEqualTo(0);
+        assertThat(cars.getCars().get(2).getCurrentPosition()).isEqualTo(1);
+        assertThat(cars.getCars().get(3).getCurrentPosition()).isEqualTo(3);
+
+        result.stagePrint(cars);
+    }
 }
