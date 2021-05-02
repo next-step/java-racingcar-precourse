@@ -30,5 +30,17 @@ public class RaceTest {
         assertThat(spy.count).isEqualTo(3);
     }
 
+    @Test
+    void getWinner_shouldReturnWinners() {
+        CarSet winners = new CarSet(new Car("win1"), new Car("win2"));
+        CarSet carset = new CarSet(winners.get(0), winners.get(1), new Car("loose"));
+        Round round = new Round(3);
+        EnergyGenerator stub = new EnergyGeneratorStub(4, 4, 3);
+        Race race = new Race(carset, round, stub);
+
+        race.start();
+
+        assertThat(race.getWinners()).isEqualTo(winners.getList());
+    }
 
 }
