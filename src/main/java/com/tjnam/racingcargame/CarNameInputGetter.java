@@ -24,9 +24,6 @@ public class CarNameInputGetter {
     }
 
     private String[] splitUserInput(String userInput){
-        if (userInput.length() == 0) {
-            throw new IllegalArgumentException("입력값이 없습니다.");
-        }
         return userInput.split(",");
     }
 
