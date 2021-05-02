@@ -3,12 +3,13 @@ package racingcar;
 public class RacingCar {
 
     public static final int MOVE_MINIMUM_VALUE = 4;
+
     private final Name name;
     private TravelDistance distance;
 
     public RacingCar(Name name) {
         this.name = name;
-        this.distance = TravelDistance.ZERO;
+        this.distance = TravelDistance.create(0);
     }
 
     public void moveForward(int random) {

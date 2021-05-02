@@ -1,29 +1,20 @@
 package racingcar;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class TravelDistance {
 
-    public static final TravelDistance ZERO = new TravelDistance(0);
-    private static final Map<Integer, TravelDistance> store = new HashMap<>();
+    private static final TravelDistanceStore store = new TravelDistanceStore();
 
     private final int distance;
 
-    private TravelDistance(int distance) {
+    protected TravelDistance(int distance) {
         this.distance = distance;
     }
 
     public static TravelDistance create(int distance) {
-        if(distance == 0)
-            return ZERO;
+        if (store.isEmpty(distance))
+            store.add(distance);
 
-        TravelDistance travelDistance = store.get(distance);
-        if (travelDistance == null) {
-            store.put(distance, new TravelDistance(distance));
-            travelDistance = store.get(distance);
-        }
-        return travelDistance;
+        return store.get(distance);
     }
 
     public TravelDistance increase() {

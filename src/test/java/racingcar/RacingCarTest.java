@@ -36,7 +36,7 @@ class RacingCarTest {
     @DisplayName("난수 3이 입력되었을 경우 자동차는 이동하지 않는다.")
     void stop(int random) {
         // given
-        TravelDistance zero = TravelDistance.ZERO;
+        TravelDistance zero = TravelDistance.create(0);
 
         // when
         racingCar.moveForward(random);
