@@ -14,9 +14,7 @@ public class Cars {
     public Cars(String[] carNames) {
         carHashMap = new HashMap<>();
 
-        for (String carName : carNames) {
-            addCar(carName);
-        }
+        addCars(carNames);
     }
 
     public boolean hasCar(String name) {
@@ -25,5 +23,11 @@ public class Cars {
 
     public int getNumOfCars() {
         return carHashMap.size();
+    }
+
+    public void addCars(String[] carNames) {
+        for (String carName : carNames) {
+            addCar(carName);
+        }
     }
 }

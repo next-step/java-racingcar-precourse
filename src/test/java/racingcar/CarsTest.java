@@ -30,6 +30,17 @@ public class CarsTest {
     }
 
     @Test
+    @DisplayName("참여할 차 추가하기")
+    void addCars() {
+        Cars cars = new Cars(new String[] {"pobi"});
+        cars.addCars(new String[] {"crong", "honux"});
+
+        assertThat(cars.hasCar("pobi")).isTrue();
+        assertThat(cars.hasCar("crong")).isTrue();
+        assertThat(cars.hasCar("honux")).isTrue();
+    }
+
+    @Test
     @DisplayName("차 대수 체크")
     void size() {
         Cars cars = new Cars(new String[] {"Lighting", "Racer"});
