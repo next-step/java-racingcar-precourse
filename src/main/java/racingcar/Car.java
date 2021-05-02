@@ -1,12 +1,37 @@
 package racingcar;
 
 public class Car {
+    private static final String DEFAULT_NAME = "ProjectCar";
+
+    private String name;
     private int position;
 
-    public boolean move(int num) {
-        if (num <= 3) return false;
+    public boolean isMovable(int num) {
+        return (num >= 4);
+    }
 
+    public void move() {
         position++;
-        return true;
+    }
+
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(name);
+        stringBuilder.append(":");
+
+        for (int i = 0; i < position; i++) {
+            stringBuilder.append("-");
+        }
+
+        return stringBuilder.toString();
+    }
+
+    public Car() {
+        this(DEFAULT_NAME);
+    }
+
+    public Car(String name) {
+        this.name = name;
+        this.position = 0;
     }
 }
