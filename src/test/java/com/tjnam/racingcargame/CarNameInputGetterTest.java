@@ -35,7 +35,32 @@ public class CarNameInputGetterTest {
         } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
             e.printStackTrace();
         }
+    }
 
+    @Test
+    public void splitWeirdUserInputTest(){
+        try {
+            Method splitUserInputTestMethod = carNameInputGetter.getClass().getDeclaredMethod("splitUserInput", String.class);
+            splitUserInputTestMethod.setAccessible(true);
+            String userInputData = "a,b,c,d,e,f,g,,";
+
+            String[] splitedUserInputCarName = (String[]) splitUserInputTestMethod.invoke(carNameInputGetter, userInputData);
+            assertThat(splitedUserInputCarName[0]).isEqualTo("a");
+            assertThat(splitedUserInputCarName[1]).isEqualTo("b");
+            assertThat(splitedUserInputCarName[2]).isEqualTo("c");
+            assertThat(splitedUserInputCarName[3]).isEqualTo("d");
+            assertThat(splitedUserInputCarName[4]).isEqualTo("e");
+            assertThat(splitedUserInputCarName[5]).isEqualTo("f");
+            assertThat(splitedUserInputCarName[6]).isEqualTo("g");
+            assertThat(splitedUserInputCarName.length).isEqualTo(7);
+
+            userInputData = ",,,,,";
+            splitedUserInputCarName = (String[]) splitUserInputTestMethod.invoke(carNameInputGetter, userInputData);
+            assertThat(splitedUserInputCarName.length).isEqualTo(0);
+
+        } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
     }
 
     @Test
@@ -50,6 +75,22 @@ public class CarNameInputGetterTest {
             convertStringToCarName.setAccessible(true);
             List<CarName> carNameList = (List<CarName>) convertStringToCarName.invoke(carNameInputGetter, (Object) carNameInputs);
             assertThat(carNameList.size()).isEqualTo(5);
+        } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void validateUserInputTest(){
+        String emptyUserInputSample = "1,2,3,4,";
+        try {
+            Method validateUserInputMethod = carNameInputGetter.getClass()
+                    .getDeclaredMethod("validateUserInput", String.class);
+            validateUserInputMethod.setAccessible(true);
+
+            Boolean isValid = (Boolean) validateUserInputMethod
+                                    .invoke(carNameInputGetter, emptyUserInputSample);
+
         } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
             e.printStackTrace();
         }
