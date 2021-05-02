@@ -1,8 +1,5 @@
-import static org.assertj.core.api.Assertions.*;
-
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.api.Test;
 
 class CarTest {
 
@@ -16,4 +13,13 @@ class CarTest {
 		return 2 <= carNameArr.length;
 	}
 
+	@Test
+	@DisplayName("자동차 현재 주행거리 표시")
+	void printCurrentCarMileage() {
+		Car car = new Car("테스트 자동차");
+		car.applyForwardOrNot(true);
+		car.applyForwardOrNot(true);
+		car.printCurrentCarMileage();
+	}
+	
 }
