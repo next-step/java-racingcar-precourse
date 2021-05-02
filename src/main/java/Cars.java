@@ -43,5 +43,12 @@ public class Cars {
 		return carNameArr;
 	}
 
+	// 모든 자동차 주행거리 표시
+	public void printCarsMileage() {
+		for (Car car : carList) {
+			car.printCurrentCarMileage();
+		}
+	}
+
 
 }
