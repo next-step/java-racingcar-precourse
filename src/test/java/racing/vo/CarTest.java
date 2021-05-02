@@ -19,6 +19,14 @@ public class CarTest {
     }
 
     @Test
+    @DisplayName("참가자명 빈값 에러")
+    public void nameLengthZeroError(){
+        assertThrows(IllegalArgumentException.class, () -> {
+            Car car = new Car("");
+        });
+    }
+
+    @Test
     @DisplayName("참가자명 정상 입력")
     public void inputName(){
         String name = "messi";
@@ -37,12 +45,23 @@ public class CarTest {
     }
 
     @Test
+    @DisplayName("여러 참가자들을 접수 에러")
+    public void inputNamesFail(){
+        String names = ",";
+        assertThrows(IllegalArgumentException.class, () -> {
+            Reception reception = new Reception(new ArrayList<>());
+            reception.register(names);
+        });
+
+    }
+
+    @Test
     @DisplayName("자동차 위치값 호출")
     public void getPosition() throws InterruptedException {
 
         for(int i = 0;i<5;i++){
             Car car = new Car("lucas");
-            Thread.sleep(3000);
+            Thread.sleep(500);
             int randomValue = car.randomSetPosition();
             if(randomValue>=4){
                 System.out.println("전진");
