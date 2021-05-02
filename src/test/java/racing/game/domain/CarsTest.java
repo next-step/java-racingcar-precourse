@@ -2,6 +2,8 @@ package racing.game.domain;
 
 import static org.assertj.core.api.Assertions.*;
 
+import java.util.List;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -26,5 +28,11 @@ class CarsTest {
 		assertThat(cars.size()).isEqualTo(4);
 		cars.runLab();
 		cars.showLabStatus();
+	}
+
+	@Test
+	@DisplayName("우승차량을 뽑아낸다.")
+	public void getWinnerPoistion() {
+		List<Car> winnerCars = cars.getWinnerCars();
 	}
 }

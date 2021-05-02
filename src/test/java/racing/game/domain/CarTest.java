@@ -38,5 +38,4 @@ class CarTest {
 		assertThat(car.getResultGraph(1)).isEqualTo("벤츠:-");
 		assertThat(car.getResultGraph(3)).isEqualTo("벤츠:---");
 	}
-
 }
