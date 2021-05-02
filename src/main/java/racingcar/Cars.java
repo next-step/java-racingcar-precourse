@@ -22,4 +22,8 @@ public class Cars {
     public boolean hasCar(String name) {
         return carHashMap.containsKey(name);
     }
+
+    public int getNumOfCars() {
+        return carHashMap.size();
+    }
 }

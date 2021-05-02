@@ -28,5 +28,13 @@ public class CarsTest {
         assertThat(cars.hasCar("honux")).isTrue();
         assertThat(cars.hasCar("rightning")).isFalse();
     }
+
+    @Test
+    @DisplayName("차 대수 체크")
+    void size() {
+        Cars cars = new Cars(new String[] {"Lighting", "Racer"});
+
+        assertThat(cars.getNumOfCars()).isEqualTo(1);
+    }
 }
 
