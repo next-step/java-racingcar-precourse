@@ -7,12 +7,11 @@ import java.util.Objects;
 public class CarNames {
     public static final String NAME_SPLITTER = ",";
 
-    private List<CarName> names;
+    private List<CarName> names = new ArrayList<>();
 
     public CarNames(String names) {
         String[] splicedNames = names.split(NAME_SPLITTER);
 
-        this.names = new ArrayList<>();
         for(String name : splicedNames) {
             this.names.add(new CarName(name));
         }

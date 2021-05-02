@@ -6,11 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
-    private List<Car> cars;
+    private List<Car> cars = new ArrayList<>();
 
     public Cars(CarNames carNames, MoveStrategy moveStrategy) {
-        this.cars = new ArrayList<>();
-
         for(CarName carName : carNames.getNames()) {
             this.cars.add(new Car(carName, moveStrategy));
         }
