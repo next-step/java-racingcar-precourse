@@ -7,7 +7,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class UtilityTest {
 
-
     @Test
     @DisplayName("랜덤으로 발생한 정수가 0 이상 10 미만이다.")
     void generateSingleDigitIntegerTest() {

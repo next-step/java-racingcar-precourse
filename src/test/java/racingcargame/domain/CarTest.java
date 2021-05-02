@@ -15,7 +15,7 @@ class CarTest {
     @DisplayName("4이상의 숫자가 입력되었을 때 전진한다.")
     void moveTest(Integer input, Integer expectedMileage) {
         // given
-        Car movedCar = Car.of("테스트");
+        Car movedCar = Car.of(CarName.of("테스트"));
 
         // when
         movedCar.move(input);
@@ -32,11 +32,10 @@ class CarTest {
 
         assertThatThrownBy(() -> {
             // when
-            Car.of(exceededName);
+            Car.of(CarName.of(exceededName));
         })
                 // then
                 .isInstanceOf(NameLengthExceededException.class)
                 .hasMessageContaining("이름이 다섯 글자를 초과할 수 없습니다");
-
     }
 }

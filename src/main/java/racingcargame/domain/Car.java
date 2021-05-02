@@ -13,8 +13,8 @@ public class Car {
         this.mileage = Mileage.of(MILEAGE_INITIAL_VALUE);
     }
 
-    public static Car of(String carName) {
-        return new Car(CarName.of(carName));
+    public static Car of(CarName carName) {
+        return new Car(carName);
     }
 
     public void move(Integer input) {
