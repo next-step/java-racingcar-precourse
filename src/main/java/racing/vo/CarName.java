@@ -11,8 +11,6 @@ public class CarName {
                 ||carName.length()<=MIN_CAR_NAME_LENGTH){
             throw new IllegalArgumentException("각 이름의 길이는 5자이하 입력 해주시길 바랍니다.");
         }
-
-
         this.carName = carName;
     }
 
