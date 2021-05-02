@@ -34,11 +34,12 @@ class CarNameTest {
 		/// endregion
 	}
 
-	@DisplayName("자동차 이름 출력")
+	@DisplayName("자동차 이름 확인")
 	@Test
 	void carName() {
 		/// region given
 		final String givenCarName = "car";
+		final CarName expectedCarName = new CarName(givenCarName);
 		/// endregion
 
 		/// region when
@@ -47,7 +48,7 @@ class CarNameTest {
 
 		/// region then
 		assertNotNull(actualCarName);
-		assertEquals(givenCarName, actualCarName.getName());
+		assertEquals(expectedCarName, actualCarName);
 		/// endregion
 	}
 }
