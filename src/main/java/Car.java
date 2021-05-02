@@ -1,4 +1,4 @@
-import java.util.Scanner;
+import java.util.Random;
 
 public class Car {
 
@@ -12,6 +12,11 @@ public class Car {
 
 	public String getCarName() {
 		return carName;
+	}
+
+	// 자동차 전진 여부 얻기
+	boolean getForwardOrNot() {
+		return 4 <= new Random(System.nanoTime()).nextInt(10);
 	}
 
 	// 자동차 전진 여부 적용
