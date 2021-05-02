@@ -11,12 +11,12 @@ public class Car {
         this.distance = new Distance();
     }
 
-    public String getName() {
-        return name.asString();
+    public Name getName() {
+        return name;
     }
 
-    public int getDistance() {
-        return distance.asInt();
+    public Distance getDistance() {
+        return distance;
     }
 
     @Override

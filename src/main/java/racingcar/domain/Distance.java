@@ -7,10 +7,6 @@ public class Distance {
         this.distance = 0;
     }
 
-    public int asInt() {
-        return distance;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

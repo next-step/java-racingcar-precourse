@@ -5,8 +5,7 @@ import racingcar.exception.NameInvalidLengthException;
 
 import java.util.Objects;
 
-import static racingcar.RacingcarGameRule.MAX_LENGTH_OF_NAME;
-import static racingcar.RacingcarGameRule.MIN_LENGTH_OF_NAME;
+import static racingcar.domain.rule.RacingcarGameRule.*;
 
 public class Name {
 
@@ -19,13 +18,13 @@ public class Name {
     }
 
     private void checkLength(String name) {
-        if (name.length() < MIN_LENGTH_OF_NAME.getValue() || name.length() > MAX_LENGTH_OF_NAME.getValue()) {
+        if (name.length() < MIN_LENGTH_OF_NAME || name.length() > MAX_LENGTH_OF_NAME) {
             throw new NameInvalidLengthException();
         }
     }
 
     private void checkInvalidCharacter(String name) {
-        if (name.indexOf(',') >= 0) {
+        if (name.indexOf(SEPERATOR) >= 0) {
             throw new NameHasInvalidCharacterException();
         }
     }
