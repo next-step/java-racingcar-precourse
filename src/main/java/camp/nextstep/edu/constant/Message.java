@@ -9,4 +9,5 @@ public class Message {
     public static final String INPUT_NUMBER_OF_ATTEMPTS = "시도할 회수는 몇회인가요?";
     public static final String INVALID_CAR_NAME = "자동차 이름은 5자 이하만 가능합니다.";
     public static final String INVALID_NUMBER_OF_ATTEMPTS = "1이상의 숫자를 입력해주세요.";
+    public static final String INVALID_MOVE_CONDITION = "유효하지 않은 이동 조건 값입니다.";
 }

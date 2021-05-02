@@ -21,4 +21,11 @@ public class RacingCar {
     public int getPosition() {
         return position;
     }
+
+    public void move(int number) {
+        if (number < 0 || number > 9) {
+            throw new IllegalArgumentException(Message.INVALID_MOVE_CONDITION);
+        }
+        position += (number >= 4 ? 1 : 0);
+    }
 }

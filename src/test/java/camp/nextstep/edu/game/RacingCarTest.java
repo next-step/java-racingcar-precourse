@@ -3,6 +3,7 @@ package camp.nextstep.edu.game;
 import camp.nextstep.edu.constant.Message;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -30,5 +31,29 @@ class RacingCarTest {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> new RacingCar(name))
                 .withMessageContaining(Message.INVALID_CAR_NAME);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"0:0", "1:0", "2:0", "3:0", "4:1", "5:1", "6:1", "7:1", "8:1", "9:1"}, delimiter = ':')
+    @DisplayName("레이싱카 전진/멈춤 - 성공 테스트")
+    void racingCar_move_successTest(int generatedNumber, int expectedPosition) {
+        // given
+        RacingCar car = new RacingCar("test");
+
+        // when
+        car.move(generatedNumber);
+
+        // then
+        assertThat(car.getPosition()).isEqualTo(expectedPosition);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"-1", "10"})
+    @DisplayName("레이싱카 전진/멈춤 - 실패 테스트")
+    void racingCar_move_failureTest(int generatedNumber) {
+        // given & when & then
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> new RacingCar("test").move(generatedNumber))
+                .withMessageContaining(Message.INVALID_MOVE_CONDITION);
     }
 }
