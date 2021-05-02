@@ -20,7 +20,7 @@ public class Output {
 
     @Override
     public String toString() {
-        return "Output{'" + output + '\'' + '}';
+        return output;
     }
 
     public Output concat(Output step) {

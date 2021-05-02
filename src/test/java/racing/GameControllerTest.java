@@ -33,6 +33,7 @@ public class GameControllerTest {
 
         controller.setCars(new CarSet());
         controller.setRound(new Round(10));
+        controller.start();
 
         assertThat(spy.isStart).isTrue();
     }
@@ -42,8 +43,10 @@ public class GameControllerTest {
         Race race = new Race();
         race.setGenerator(new EnergyGeneratorStub(4));
         GameController controller = new GameController(race);
+
         controller.setCars(new CarSet(new Car("abc")));
         controller.setRound(new Round(1));
+        controller.start();
 
         Output output = controller.flushOutput();
         assertThat(output).isEqualTo(new Output("실행 결과\nabc:-\n\nabc가 최종 우승했습니다."));
@@ -55,8 +58,10 @@ public class GameControllerTest {
         Race race = new Race();
         race.setGenerator(new EnergyGeneratorStub(4, 4, 3));
         GameController controller = new GameController(race);
+
         controller.setCars(new CarSet(new Car("abc"),new Car("def"),new Car("ghi")));
         controller.setRound(new Round(2));
+        controller.start();
 
         Output output = controller.flushOutput();
         assertThat(output).isEqualTo(new Output("실행 결과\nabc:-\ndef:-\nghi:\n\nabc:--\ndef:--\nghi:\n\nabc,def가 최종 우승했습니다."));

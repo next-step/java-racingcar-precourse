@@ -22,6 +22,10 @@ public class Race {
         this.generator = generator;
     }
 
+    public void setGenerator(EnergyGenerator generator) {
+        this.generator = generator;
+    }
+
     public void setCars(CarSet carset) {
         this.carset = carset;
     }
@@ -73,9 +77,5 @@ public class Race {
     @Override
     public String toString() {
         return "Race{carset=" + carset + ", round=" + round + '}';
-    }
-
-    public void setGenerator(EnergyGenerator generator) {
-        this.generator = generator;
     }
 }

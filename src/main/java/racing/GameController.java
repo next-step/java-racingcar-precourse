@@ -24,7 +24,6 @@ public class GameController implements OnRoundStepListener{
     public void setRound(Round round) {
         this.outputProvider.setState(GameState.READY_FOR_RESULT);
         race.setRound(round);
-        race.start();
     }
 
     @Override
@@ -35,5 +34,9 @@ public class GameController implements OnRoundStepListener{
     @Override
     public void onComplete(List<Car> winners) {
         this.outputProvider.addCompleteResult(winners);
+    }
+
+    public void start() {
+        this.race.start();
     }
 }
