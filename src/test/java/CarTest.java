@@ -27,23 +27,24 @@ class CarTest {
 		return loopCount == carNameArr.length && validCarNameResult;
 	}
 
-	@ParameterizedTest
-	@DisplayName("사용자 입력 자동차 이름들 검증")
-	@ValueSource(strings = {"1,2", "1,2,3,4"}) // 성공
-	void isValidCar(String carNames) {
-		boolean testResult = false;
-		String[] carNameArr = carNames.split(",");
-
+	// 사용자 입력 자동차 이름들 검증
+	boolean isValidCar(String[] carNameArr) {
 		if (!isValidCarCount(carNameArr)) {
-			assertThat(testResult).withFailMessage("자동차 대수 검증실패= " + carNames)
-				// .isTrue();
-				.isFalse();
+			return false;
 		}
+		return isValidCarNames(carNameArr);
+	}
 
-		testResult = isValidCarNames(carNameArr); // 자동차 이름 목록 검증
-		assertThat(testResult).withFailMessage("사용자 입력 자동차 이름들 검증실패= " + carNames)
-			.isTrue();
-			// .isFalse();
+	@ParameterizedTest
+	@DisplayName("자동차 이름 얻기")
+	@ValueSource(strings = {"1,2", "1,2,3,4"}) // 성공
+	// @ValueSource(strings = {"", "1,", ",1", ",,"}) // 실패
+	void getCarNames(String carNames) {
+		String[] carNameArr = carNames.split(",");
+		assertThat(isValidCar(carNameArr))
+			.withFailMessage("자동차 이름 얻기 실패= " + carNames)
+			.isTrue(); // 성공
+			// .isFalse(); // 실패
 	}
 
 }
