@@ -4,7 +4,7 @@ import java.util.List;
 public class CarNameContainer {
     private List<CarName> carNames;
 
-    public CarNameContainer(String[] carNameStrings){
+    public CarNameContainer(String[] carNameStrings) {
         this.carNames = new ArrayList<>();
 
         for (String carNameString : carNameStrings) {
@@ -12,7 +12,11 @@ public class CarNameContainer {
         }
     }
 
-    public int size(){
+    public List<CarName> getNames() {
+        return this.carNames;
+    }
+
+    public int size() {
         return this.carNames.size();
     }
 }

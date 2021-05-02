@@ -25,6 +25,10 @@ public class Car {
         return this.moveHistory.countMoves();
     }
 
+    public CarName getCarName() {
+        return this.carname;
+    }
+
     public String printMoveHistory() {
         return this.moveHistory.toString();
     }

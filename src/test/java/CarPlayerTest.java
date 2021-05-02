@@ -44,4 +44,18 @@ public class CarPlayerTest {
 
         Assertions.assertThat(this.carPlayer.getMoveCount()).isEqualTo(0);
     }
+
+    @ParameterizedTest
+    @CsvSource(value = {"5:-----", "6:------", "7:-------", "13:-------------"}, delimiter = ':')
+    @DisplayName("자동차가 이동한 만큼 문자열을 표시한다.")
+    void print_car_move_state(int forwardCount, String printString) {
+        when(this.randomGenerator.get()).thenReturn(Car.FORWARD_RANDOM_VALUE);
+
+        for (int i = 0; i < forwardCount; i++) {
+            this.carPlayer.tryMoveCar();
+        }
+
+        Assertions.assertThat(this.carPlayer.getMoveCount()).isEqualTo(forwardCount);
+        Assertions.assertThat(this.carPlayer.toString()).isEqualTo(TEST_CAR_NAME + " : " + printString);
+    }
 }
