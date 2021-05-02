@@ -2,6 +2,7 @@ package racingcar;
 
 public class Car {
 	private String name;
+	private int distance;
 
 	public Car(String name) {
 		if (5 < name.length()) {
@@ -9,6 +10,7 @@ public class Car {
 		}
 
 		this.name = name;
+		distance = 0;
 	}
 
 	public String getName() {
@@ -21,5 +23,13 @@ public class Car {
 		}
 
 		return 0;
+	}
+
+	public void printNameAndDistance(){
+		System.out.print(name + ": ");
+		for (int i = 0; i < distance; i++) {
+			System.out.print("-");
+		}
+		System.out.println();
 	}
 }
