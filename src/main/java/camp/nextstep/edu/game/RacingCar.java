@@ -28,4 +28,10 @@ public class RacingCar {
         }
         position += (number >= 4 ? 1 : 0);
     }
+
+    @Override
+    public String toString() {
+        String display = new String(new char[position]).replace("\0", "-");
+        return String.format("%s : %s", name, display);
+    }
 }

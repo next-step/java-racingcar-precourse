@@ -21,7 +21,8 @@ public class RacingGame implements Game {
         setRacingCarList(names);
         System.out.println(Message.INPUT_NUMBER_OF_ATTEMPTS);
         setAttempts(scanner.nextLine());
-        int generatedNumber = NumberUtil.generateNumber(MAX_NUMBER_BOUND);
+        RacingGameResult gameResult = play();
+        System.out.println(gameResult);
     }
 
     private void setRacingCarList(String[] names) {
@@ -39,6 +40,22 @@ public class RacingGame implements Game {
             this.attempts = number;
         } catch (NumberFormatException e) {
             e.printStackTrace();
+        }
+    }
+
+    private RacingGameResult play() {
+        for (int i = 0; i < attempts; i++) {
+            racing();
+            System.out.println();
+        }
+        return new RacingGameResult(racingCarList);
+    }
+
+    private void racing() {
+        for (RacingCar racingCar : racingCarList) {
+            int generatedNumber = NumberUtil.generateNumber(MAX_NUMBER_BOUND);
+            racingCar.move(generatedNumber);
+            System.out.println(racingCar);
         }
     }
 }
