@@ -4,7 +4,7 @@ public class Rule {
 
     private Round round;
 
-    public Rule(int round) {
+    public Rule(String round) {
         this.round = new Round(round);
     }
 

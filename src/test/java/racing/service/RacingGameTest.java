@@ -26,7 +26,7 @@ public class RacingGameTest {
             cars.add(car);
         }
         reception = new Reception(cars);
-        rule= new Rule(5);
+        rule= new Rule("5");
     }
 
     @Test
