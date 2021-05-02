@@ -9,7 +9,7 @@ public class StringUtils {
 		// do nothing
 	}
 
-	public static String repeat(String s, int n) {
-		return String.join("", Collections.nCopies(n, s));
+	public static String repeat(String str, int times) {
+		return String.join("", Collections.nCopies(times, str));
 	}
 }
