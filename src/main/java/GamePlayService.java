@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class GamePlayService {
@@ -6,6 +8,15 @@ public class GamePlayService {
 	public void startGame() {
 		String[] carNameArr = new Cars(null).getCarNames();
 		int playCount = getPlayCount();
+	}
+
+	// 자동차 목록 생성
+	private List<Car> creatCars(String[] carNameArr) {
+		List<Car> carList = new ArrayList<>();
+		for (String carName : carNameArr) {
+			carList.add(new Car(carName));
+		}
+		return carList;
 	}
 
 	// 1 이상인지 검증
