@@ -5,6 +5,7 @@ import static java.util.Comparator.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.StringJoiner;
 
 public class RacingCars {
 	private List<RacingCar> values;
@@ -22,6 +23,17 @@ public class RacingCars {
 		}
 
 		return new RacingCars(racingCars);
+	}
+
+	public static String winnerNamesIn(RacingCars racingCars) {
+		RacingCars winners = racingCars.winners();
+		StringJoiner stringJoiner = new StringJoiner(",");
+
+		for (Name name : winners.getNames()) {
+			stringJoiner.add(name.toString());
+		}
+
+		return stringJoiner.toString();
 	}
 
 	public void start(int repeatCount) {

@@ -1,9 +1,7 @@
 package com;
 
 import java.util.Scanner;
-import java.util.StringJoiner;
 
-import com.racingcar.Name;
 import com.racingcar.RacingCars;
 
 public class RacingCarManager {
@@ -21,17 +19,8 @@ public class RacingCarManager {
 			System.out.println(REPEAT_COUNT_MESSAGE);
 			racingCars.start(sc.nextInt());
 
-			System.out.println(concatWinnerNames(racingCars.winners()) + FINAL_RESULT_MESSAGE);
+			System.out.println(RacingCars.winnerNamesIn(racingCars) + FINAL_RESULT_MESSAGE);
 		}
 	}
 
-	private static String concatWinnerNames(RacingCars winners) {
-		StringJoiner stringJoiner = new StringJoiner(",");
-
-		for (Name name : winners.getNames()) {
-			stringJoiner.add(name.toString());
-		}
-
-		return stringJoiner.toString();
-	}
 }
