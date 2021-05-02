@@ -9,7 +9,7 @@ import java.util.List;
 public class RacingCars {
 	private List<RacingCar> values;
 
-	private RacingCars(List<RacingCar> values) {
+	RacingCars(List<RacingCar> values) {
 		this.values = values;
 	}
 
