@@ -24,4 +24,8 @@ public class Car {
     public int getPosition() {
         return position;
     }
+
+    public boolean isSamePosition(int maxPosition) {
+        return this.position == maxPosition;
+    }
 }

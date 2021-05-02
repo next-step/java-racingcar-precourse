@@ -37,4 +37,22 @@ public class RacingCarsTest {
         assertThat(carResponses.get(2).getCarName()).isEqualTo("ccc");
         assertThat(carResponses.get(2).getPosition()).isEqualTo(0);
     }
+
+    @DisplayName("RacingCars 의 승자 구하기")
+    @Test
+    void testGetWinners() {
+        Car car1 = new Car("aaa");
+        Car car2 = new Car("bbb");
+        Car car3 = new Car("ccc");
+
+        List<Car> cars = Arrays.asList(car1, car2, car3);
+        RacingCars racingCars = new RacingCars(cars);
+
+        List<Integer> numbers = Arrays.asList(4, 5, 2);
+        racingCars.race(numbers);
+
+        Winners winners = racingCars.getWinners();
+
+        assertThat(winners.getWinnerNames()).containsExactly("aaa", "bbb");
+    }
 }
