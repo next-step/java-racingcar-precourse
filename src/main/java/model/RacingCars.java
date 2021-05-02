@@ -28,4 +28,8 @@ public class RacingCars {
     public Winners getWinners() {
         return new Winners(maxPosition, cars);
     }
+
+    public int getSize() {
+        return cars.size();
+    }
 }
