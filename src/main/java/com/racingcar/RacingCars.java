@@ -36,26 +36,13 @@ public class RacingCars {
 		return stringJoiner.toString();
 	}
 
-	public void start(int repeatCount) {
-		for (int i = 0; i < repeatCount; i++) {
-			startByCar();
-			printByCar();
-
-			printSpace();
-		}
-	}
-
-	private void printSpace() {
-		System.out.println("\n");
-	}
-
-	private void printByCar() {
+	public void printNameAndLocationByCar() {
 		for (RacingCar car : this.values) {
-			car.print();
+			car.printNameAndLocation();
 		}
 	}
 
-	private void startByCar() {
+	public void startByCar() {
 		for (RacingCar car : this.values) {
 			car.start();
 		}

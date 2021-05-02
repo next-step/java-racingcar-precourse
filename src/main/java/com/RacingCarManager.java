@@ -17,10 +17,22 @@ public class RacingCarManager {
 			RacingCars racingCars = RacingCars.of(sc.nextLine());
 
 			System.out.println(REPEAT_COUNT_MESSAGE);
-			racingCars.start(sc.nextInt());
+			start(racingCars, sc.nextInt());
 
 			System.out.println(RacingCars.winnerNamesIn(racingCars) + FINAL_RESULT_MESSAGE);
 		}
 	}
 
+	public static void start(RacingCars racingCars, int repeatCount) {
+		for (int i = 0; i < repeatCount; i++) {
+			racingCars.startByCar();
+			racingCars.printNameAndLocationByCar();
+
+			printSpace();
+		}
+	}
+
+	private static void printSpace() {
+		System.out.println("\n");
+	}
 }

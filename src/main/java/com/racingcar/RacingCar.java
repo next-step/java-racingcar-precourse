@@ -51,7 +51,7 @@ public class RacingCar {
 		getLocation().increase();
 	}
 
-	public void print() {
+	public void printNameAndLocation() {
 		System.out.println(RacingCarResult.of(this));
 	}
 }
