@@ -28,15 +28,16 @@ public class RaceTest {
                 new Car("2등차", new Distance(3)),
                 new Car("4등차", new Distance(1))));
 
-         race = new Race(cars);
+         race = new Race(cars, new Count(3));
     }
 
     @Test
     @DisplayName("경기의 결과 정보가 알맞은 우승자를 반환하는지 테스트")
     public void findWinners_ShouldReturn_MaxDistanceCars() {
-        RaceReport raceReport = race.createReport();
+        race.end();
+        RaceReport raceReport = race.report();
         //when
-        List<CarDto> winners = raceReport.findWinners();
+        List<CarDto> winners = raceReport.getWinners();
         //then
         assertAll(
             () -> assertThat(winners).hasSize(2),
@@ -46,8 +47,35 @@ public class RaceTest {
     }
 
     @Test
+    @DisplayName("경기를 한 턴 진행시키면, 경기의 남은 턴 수가 정상적으로 차감되는지 테스트")
+    public void playOneCount_ShouldDiscount_RemainMoveCount() {
+        //when
+        race.playOneCount();
+        //then
+        assertAll(
+                () -> assertThat(race.getRemainMoveCount()).isEqualTo(new Count(2)),
+                () -> assertThat(race.isEnd()).isFalse()
+        );
+    }
+
+    @Test
+    @DisplayName("경기의 남은 횟수가 모두 소진되었을때, 경기의 상태가 완료로 변경되는지 테스트")
+    public void allMoveCountUsed_RaceStatus_MustBeEnd() {
+        //when
+        race.playOneCount();
+        race.playOneCount();
+        race.playOneCount();
+        //then
+        assertAll(
+                () -> assertThat(race.getRemainMoveCount()).isEqualTo(Count.zero()),
+                () -> assertThat(race.isEnd()).isTrue()
+        );
+    }
+
+    @Test
+    @DisplayName("race의 결과를 제대로 포매팅하는지 테스트")
     public void testFormatReport() {
-        RaceReport raceReport = race.createReport();
+        RaceReport raceReport = race.report();
         String reportOutput = RaceReportFormatUtil.format(raceReport);
         assertAll(
                 () -> assertThat(reportOutput).contains("꼴등차:"),

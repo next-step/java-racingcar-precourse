@@ -8,12 +8,18 @@ import java.util.List;
 
 public class RaceReport {
     private List<CarDto> results;
+    private List<CarDto> winners;
+    private RaceStatus raceStatus;
 
-    public RaceReport(List<CarDto> results) {
+    public RaceReport(List<CarDto> results, RaceStatus raceStatus) {
         this.results = results;
+        this.raceStatus = raceStatus;
+        if (raceStatus.isEnd()) {
+            winners = findWinners();
+        }
     }
 
-    public List<CarDto> findWinners() {
+    private List<CarDto> findWinners() {
         List<CarDto> winners = new ArrayList<>();
         Distance maxDistance = findMaxDistanceOfResults();
         for (CarDto carDto : results) {
@@ -35,5 +41,13 @@ public class RaceReport {
 
     public List<CarDto> getResults() {
         return results;
+    }
+
+    public List<CarDto> getWinners() {
+        return winners;
+    }
+
+    public boolean isEndReport() {
+        return raceStatus.isEnd();
     }
 }
