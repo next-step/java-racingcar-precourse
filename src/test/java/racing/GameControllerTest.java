@@ -11,7 +11,7 @@ public class GameControllerTest {
         GameController controller = new GameController(new Race());
         Output actual = controller.flushOutput();
 
-        assertThat(actual).isEqualTo(new Output("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"));
+        assertThat(actual).isEqualTo(new Output(OutputProvider.MESSAGE_INPUT_CAR_NAME));
     }
 
 
@@ -23,7 +23,7 @@ public class GameControllerTest {
 
         Output actual = controller.flushOutput();
 
-        assertThat(actual).isEqualTo(new Output("시도할 회수는 몇회인가요?"));
+        assertThat(actual).isEqualTo(new Output(OutputProvider.MESSAGE_INPUT_ROUND_NUMBER));
     }
 
     @Test
@@ -49,7 +49,7 @@ public class GameControllerTest {
         controller.start();
 
         Output output = controller.flushOutput();
-        assertThat(output).isEqualTo(new Output("실행 결과\nabc:-\n\nabc가 최종 우승했습니다."));
+        assertThat(output).isEqualTo(new Output(OutputProvider.RESULT_HEADER + "\nabc:-\n\nabc" + OutputProvider.RESULT_FOOTER_POSTFIX));
     }
 
 
@@ -64,6 +64,6 @@ public class GameControllerTest {
         controller.start();
 
         Output output = controller.flushOutput();
-        assertThat(output).isEqualTo(new Output("실행 결과\nabc:-\ndef:-\nghi:\n\nabc:--\ndef:--\nghi:\n\nabc,def가 최종 우승했습니다."));
+        assertThat(output).isEqualTo(new Output(OutputProvider.RESULT_HEADER +"\nabc:-\ndef:-\nghi:\n\nabc:--\ndef:--\nghi:\n\nabc,def" + OutputProvider.RESULT_FOOTER_POSTFIX));
     }
 }

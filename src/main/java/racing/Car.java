@@ -1,8 +1,9 @@
 package racing;
 
 public class Car {
+    public static final String DELIMITER_NAME_MILEAGE = ":";
     private final String name;
-    private Mileage mileage;
+    private final Mileage mileage;
 
     public Car(String name) {
         validateName(name);
@@ -31,7 +32,7 @@ public class Car {
 
     @Override
     public String toString() {
-        return name + ":" + mileage.getValueAsDash();
+        return name + DELIMITER_NAME_MILEAGE + mileage.getValueAsDash();
     }
 
     private void validateName(String name) {

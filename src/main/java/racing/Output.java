@@ -3,14 +3,15 @@ package racing;
 import java.util.List;
 
 public class Output {
-    private String output;
+    public static final String DELIMITER_CAR_NAME = ",";
+    private final String output;
 
     public Output(String output) {
         this.output = output;
     }
 
     public Output(List<String> names) {
-        this(String.join(",", names));
+        this(String.join(DELIMITER_CAR_NAME, names));
     }
 
     @Override
@@ -24,10 +25,14 @@ public class Output {
     }
 
     public Output concat(Output step) {
-        return new Output(this.output + step.output);
+        return this.concat(step.output);
+    }
+
+    public Output concat(String other) {
+        return new Output(this.output + other);
     }
 
     public Output concatln(Output step) {
-        return new Output(this.output + "\n" + step.output);
+        return new Output(this.output + OutputProvider.NEW_LINE + step.output);
     }
 }

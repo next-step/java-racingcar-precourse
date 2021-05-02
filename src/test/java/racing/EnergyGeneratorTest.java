@@ -21,7 +21,8 @@ public class EnergyGeneratorTest {
         EnergyGenerator generator = new EnergyGenerator();
 
         Set<Energy> actual = new HashSet<>();
-        for (int i = 0; i < 100; i++) {
+        int enoughLoop = 100;
+        for (int i = 0; i < enoughLoop; i++) {
             Energy energy = generator.generate();
             actual.add(energy);
         }

@@ -9,29 +9,22 @@ public class Race {
     private OnRoundStepListener listener;
 
     public Race() {
-        this(null, null);
+        this.generator = new EnergyGenerator();
     }
 
-    public Race(CarSet carset, Round round) {
-        this(carset, round, new EnergyGenerator());
-    }
-
-    public Race(CarSet carset, Round round, EnergyGenerator generator) {
-        this.carset = carset;
-        this.round = round;
+    public Race setGenerator(EnergyGenerator generator) {
         this.generator = generator;
+        return this;
     }
 
-    public void setGenerator(EnergyGenerator generator) {
-        this.generator = generator;
-    }
-
-    public void setCars(CarSet carset) {
+    public Race setCars(CarSet carset) {
         this.carset = carset;
+        return this;
     }
 
-    public void setRound(Round round) {
+    public Race setRound(Round round) {
         this.round = round;
+        return this;
     }
 
     public void start() {

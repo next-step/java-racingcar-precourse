@@ -5,7 +5,7 @@ import java.util.Iterator;
 public class Round implements Iterable<Integer> {
     private static final int MIN_ROUND = 1;
     private static final int MAX_ROUND = 10;
-    private int round;
+    private final int round;
 
     public Round(int round) {
         validateRound(round);
@@ -26,19 +26,14 @@ public class Round implements Iterable<Integer> {
 
     @Override
     public Iterator<Integer> iterator() {
-        return new RoundIterator(this.round);
+        return new RoundIterator();
     }
 
     class RoundIterator implements Iterator<Integer> {
         private int index = 0;
-        private int round;
-
-        public RoundIterator(int round) {
-            this.round = round;
-        }
 
         public boolean hasNext() {
-            return index < this.round;
+            return index < round;
         }
 
         public Integer next() {

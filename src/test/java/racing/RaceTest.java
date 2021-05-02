@@ -11,7 +11,7 @@ public class RaceTest {
         CarSpy spy = new CarSpy();
         CarSet carset = new CarSet(spy);
         Round round = new Round(3);
-        Race race = new Race(carset, round);
+        Race race = new Race().setCars(carset).setRound(round);
 
         race.start();
 
@@ -23,7 +23,7 @@ public class RaceTest {
         CarSet carset = new CarSet(new Car("dummy"));
         Round round = new Round(3);
         EnergyGeneratorSpy spy = new EnergyGeneratorSpy();
-        Race race = new Race(carset, round, spy);
+        Race race = new Race().setCars(carset).setRound(round).setGenerator(spy);
 
         race.start();
 
@@ -36,7 +36,7 @@ public class RaceTest {
         CarSet carset = new CarSet(winners.get(0), winners.get(1), new Car("loose"));
         Round round = new Round(3);
         EnergyGenerator stub = new EnergyGeneratorStub(4, 4, 3);
-        Race race = new Race(carset, round, stub);
+        Race race = new Race().setCars(carset).setRound(round).setGenerator(stub);
 
         race.start();
 

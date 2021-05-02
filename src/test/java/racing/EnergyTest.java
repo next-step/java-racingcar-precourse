@@ -12,6 +12,9 @@ public class EnergyTest {
 
     @Test
     void construct_shouldThrowWhenNegativeLevel() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> new Energy(-1));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            int negativeLevel = -1;
+            new Energy(negativeLevel);
+        });
     }
 }

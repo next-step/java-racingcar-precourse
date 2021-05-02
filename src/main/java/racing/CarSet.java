@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.function.BiFunction;
 
 public class CarSet implements Iterable<Car> {
-    private List<Car> set;
+    private final List<Car> set;
 
     public CarSet(Car... cars) {
         this.set = Arrays.asList(cars);

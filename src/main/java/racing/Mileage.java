@@ -1,6 +1,8 @@
 package racing;
 
 public class Mileage {
+    public static final String MILEAGE_DASH = "-";
+    public static final int INIT_MILEAGE = 0;
     private int mileage;
 
     public static Mileage max(Mileage left, Mileage right) {
@@ -14,7 +16,7 @@ public class Mileage {
     }
 
     public Mileage() {
-        this.mileage = 0;
+        this.mileage = INIT_MILEAGE;
     }
 
     public Mileage(int mileage) {
@@ -40,6 +42,6 @@ public class Mileage {
     }
 
     public String getValueAsDash() {
-        return new String(new char[mileage]).replace("\0", "-");
+        return new String(new char[mileage]).replace("\0", MILEAGE_DASH);
     }
 }

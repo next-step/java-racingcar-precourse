@@ -3,8 +3,8 @@ package racing;
 import java.util.List;
 
 public class GameController implements OnRoundStepListener{
-    private Race race;
-    private OutputProvider outputProvider;
+    private final Race race;
+    private final OutputProvider outputProvider;
 
     public GameController(Race race) {
         this.race = race;
