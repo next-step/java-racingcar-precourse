@@ -49,7 +49,37 @@ public class PlayRacingCar {
   * @since 2021. 05. 01
   */
  public static void startRacing() {
+  boolean finishedRacing = false;
   List<RacingCar> racingCars = setRacingInformation();
+  System.out.println("실행 결과");
+  while(!finishedRacing) {
+   for(RacingCar racingCar : racingCars) {
+    moveRacingCar(racingCar);
+    if(racingCar.getMoveCount() == FINISH_COUNT) finishedRacing = true;
+   }
+   
+   for(int i=0; i<racingCars.size(); i++) {
+    RacingCar racingCar = racingCars.get(i);
+    System.out.println(racingCar.toString());
+   }
+   System.out.println();
+  }
+ }
+ 
+ /**
+  * 자동차가 앞으로 전진<br/>
+  * $emsp;- Random 값이 4 이상이면 한칸 전진<br/>
+  * $emsp;- Random 값이 4 미만이면 정지<br/>
+  * 
+  * @param racingCars
+  * @since 2021. 05. 02
+  */
+ public static void moveRacingCar(RacingCar racingCar) {
+  int moveCount = racingCar.getMoveCount();
+  int num = (int) (Math.random() * 9 + 1);
+  if(num >= 4) {
+   racingCar.setMoveCount(moveCount + 1);
+  }
  }
  
  /**
