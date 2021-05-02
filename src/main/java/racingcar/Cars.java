@@ -34,4 +34,11 @@ public class Cars {
             addCar(carName);
         }
     }
+
+    public void playRound() {
+        carHashMap.forEach((key, value) -> {
+            value.draw();
+            System.out.println(value);
+        });
+    }
 }
