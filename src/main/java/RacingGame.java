@@ -23,6 +23,7 @@ public class RacingGame {
         }
         System.out.println("시도할 횟수는 몇 회 인가요?");
         rounds = scn.nextInt();
+        System.out.println("\n실행 결과");
         for(int i=0; i<rounds ; i++){
             playOneRound(cars);
         }
