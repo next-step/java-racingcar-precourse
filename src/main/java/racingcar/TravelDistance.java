@@ -2,27 +2,28 @@ package racingcar;
 
 public class TravelDistance {
 
-    private static final TravelDistanceStore store = new TravelDistanceStore();
+    private int distance;
 
-    private final int distance;
+    public TravelDistance() {
 
-    protected TravelDistance(int distance) {
+    }
+
+    private TravelDistance(int distance) {
         this.distance = distance;
     }
 
     public static TravelDistance create(int distance) {
-        if (store.isEmpty(distance))
-            store.add(distance);
-
-        return store.get(distance);
+        validDistance(distance);
+        return new TravelDistance(distance);
     }
 
-    public TravelDistance increase() {
-        return create(getNextDistance());
+    public void increase() {
+        this.distance++;
     }
 
-    private int getNextDistance() {
-        return distance + 1;
+    private static void validDistance(int distance) {
+        if (distance < 0)
+            throw new IllegalArgumentException("이동 거리가 음수일 수 없습니다.");
     }
 
     @Override
