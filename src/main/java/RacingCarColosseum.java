@@ -12,7 +12,7 @@ public class RacingCarColosseum {
 
         proceedGameTurns(carPlayerContainer, movementCount);
 
-        return carPlayerContainer.getPlayers();
+        return carPlayerContainer.getWinners();
     }
 
     private CarPlayerContainer createCarPlayers(CarNameContainer carNameContainer) {

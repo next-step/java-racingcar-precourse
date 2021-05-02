@@ -15,10 +15,14 @@ public class CarPlayer {
         return this.car.getMoveCount();
     }
 
+    public CarName getCarName(){
+        return this.car.getCarName();
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(car.getCarName().toString() + " : ");
+        sb.append(this.car.getCarName().toString() + " : ");
 
         for (int i = 0; i < this.car.getMoveCount(); i++) {
             sb.append("-");
