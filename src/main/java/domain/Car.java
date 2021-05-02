@@ -10,7 +10,7 @@ public class Car {
     public Car(CarName carName, MoveStrategy moveStrategy) {
         this.carName = carName;
         this.moveStrategy = moveStrategy;
-        this.position = new Position(carName);
+        this.position = new Position();
     }
 
     public void move() {
@@ -21,9 +21,5 @@ public class Car {
 
     public CarHistory getCurrentInfo() {
         return new CarHistory(carName, position);
-    }
-
-    public Position getPosition() {
-        return position;
     }
 }

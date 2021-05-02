@@ -12,17 +12,17 @@ public class WinnersTest {
     @DisplayName("최고점수 기반으로 우승자를 구해낸다")
     public void 최고점수_기반으로_우승자를_구해낸다() {
 
-        Positions positions = new Positions(
+        CarHistories carHistories = new CarHistories(
                 Arrays.asList(
-                        new Position(new CarName("A"), 1),
-                        new Position(new CarName("B"), 2),
-                        new Position(new CarName("C"), 3),
-                        new Position(new CarName("D"), 2),
-                        new Position(new CarName("E"), 3)
+                        new CarHistory(new CarName("A"), new Position(1)),
+                        new CarHistory(new CarName("B"), new Position(2)),
+                        new CarHistory(new CarName("C"), new Position(3)),
+                        new CarHistory(new CarName("D"), new Position(2)),
+                        new CarHistory(new CarName("E"), new Position(3))
                 )
         );
 
-        Winners winners = new Winners(positions);
+        Winners winners = new Winners(carHistories);
 
         assertThat(winners.getWinners())
                 .containsExactlyInAnyOrder(

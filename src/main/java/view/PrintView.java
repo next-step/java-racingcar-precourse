@@ -1,8 +1,9 @@
 package view;
 
+import domain.CarHistories;
+import domain.CarHistory;
 import domain.Game;
 import domain.Position;
-import domain.Positions;
 import view.print.PositionPrinter;
 import view.print.WinnersPrinter;
 
@@ -14,8 +15,8 @@ public class PrintView {
     }
 
     public void printMoveHistories() {
-        for(Positions positions : game.getMoveHistories()) {
-            printPositions(positions);
+        for(CarHistories carHistories : game.getMoveHistories()) {
+            printPositions(carHistories);
             System.out.println();
         }
     }
@@ -25,9 +26,9 @@ public class PrintView {
         System.out.println(winnersPrinter);
     }
 
-    private void printPositions(Positions positions) {
-        for(Position position : positions.getPositions()) {
-            System.out.println(new PositionPrinter(position));
+    private void printPositions(CarHistories carHistories) {
+        for(CarHistory carHistory : carHistories.getCarHistories()) {
+            System.out.println(new PositionPrinter(carHistory));
         }
     }
 }

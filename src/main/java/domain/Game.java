@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Game {
     private Cars cars;
-    private List<Positions> moveHistories = new ArrayList<>();
+    private List<CarHistories> moveHistories = new ArrayList<CarHistories>();
 
     public Game(CarNames carNames) {
         this(carNames, new RandomMoveStrategy());
@@ -21,11 +21,11 @@ public class Game {
     public void move(TryCount times) {
         for (int i = 0; i < times.getCount(); i++) {
             cars.move();
-            moveHistories.add(cars.getPositions());
+            moveHistories.add(cars.getCarCurrentInfos());
         }
     }
 
-    public List<Positions> getMoveHistories() {
+    public List<CarHistories> getMoveHistories() {
         return new ArrayList<>(moveHistories);
     }
 

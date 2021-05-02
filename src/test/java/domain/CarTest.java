@@ -16,8 +16,8 @@ public class CarTest {
             car.move();
         }
 
-        assertThat(car.getPosition())
-                .isEqualTo(new Position(carName, move));
+        assertThat(car.getCurrentInfo())
+                .isEqualTo(new CarHistory(carName, new Position(move)));
     }
 
     @ParameterizedTest
@@ -30,7 +30,7 @@ public class CarTest {
             car.move();
         }
 
-        assertThat(car.getPosition())
-                .isEqualTo(new Position(carName));
+        assertThat(car.getCurrentInfo())
+                .isEqualTo(new CarHistory(carName));
     }
 }

@@ -6,17 +6,17 @@ import java.util.List;
 public class Winners {
     private List<Winner> winners = new ArrayList<>();
 
-    public Winners(Positions positions) {
-        int maxPosition = positions.getMaxPosition();
+    public Winners(CarHistories carHistories) {
+        Position maxPosition = carHistories.getMaxPosition();
 
-        for (Position position : positions.getPositions()) {
-            addPositionIfMax(position, maxPosition);
+        for (CarHistory carHistory : carHistories.getCarHistories()) {
+            addPositionIfMax(carHistory, maxPosition);
         }
     }
 
-    private void addPositionIfMax(Position position, int maxPosition) {
-        if(position.getPosition() == maxPosition) {
-            winners.add(new Winner(position.getCarName()));
+    private void addPositionIfMax(CarHistory carHistory, Position maxPosition) {
+        if(carHistory.getPosition().equals(maxPosition)) {
+            winners.add(new Winner(carHistory.getCarName()));
         }
     }
 

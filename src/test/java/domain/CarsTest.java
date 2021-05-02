@@ -29,10 +29,10 @@ public class CarsTest {
             cars.move();
         }
 
-        Positions positions = cars.getPositions();
-        for(Position position : positions.getPositions()) {
-            assertThat(position.getPosition())
-                    .isEqualTo(move);
+        CarHistories carHistories = cars.getCarCurrentInfos();
+        for(CarHistory carHistory : carHistories.getCarHistories()) {
+            assertThat(carHistory.getPosition())
+                    .isEqualTo(new Position(move));
         }
     }
 }

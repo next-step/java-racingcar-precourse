@@ -17,12 +17,12 @@ public class GameTest {
 
         game.move(new TryCount(times));
 
-        List<Positions> moveHistories = game.getMoveHistories();
+        List<CarHistories> moveHistories = game.getMoveHistories();
 
         for(int i = 1; i<=times; i++) {
-            Positions positions = moveHistories.get(i - 1);
-            for(Position position : positions.getPositions()) {
-                assertThat(position.getPosition())
+            CarHistories histories = moveHistories.get(i - 1);
+            for(Position position : histories.getPositions()) {
+                assertThat(position.toInt())
                         .isEqualTo(i);
             }
         }

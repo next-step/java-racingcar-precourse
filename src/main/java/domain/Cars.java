@@ -24,12 +24,12 @@ public class Cars {
         }
     }
 
-    public Positions getPositions() {
-        List<Position> positions = new ArrayList<>();
+    public CarHistories getCarCurrentInfos() {
+        List<CarHistory> histories = new ArrayList<>();
         for(Car car : cars) {
-            positions.add(car.getPosition());
+            histories.add(car.getCurrentInfo());
         }
 
-        return new Positions(positions);
+        return new CarHistories(histories);
     }
 }
