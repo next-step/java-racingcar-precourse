@@ -7,6 +7,8 @@ public class GamePlayService {
 	// 게임 시작
 	public void startGame() {
 		String[] carNameArr = new Cars(null).getCarNames();
+		List<Car> carList = creatCars(carNameArr);
+		Cars cars = new Cars(carList);
 		int playCount = getPlayCount();
 	}
 
