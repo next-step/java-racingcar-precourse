@@ -8,11 +8,9 @@ import static org.assertj.core.api.Assertions.catchThrowable;
 
 public class CarTest {
 
-    private static final String INVALID_NAME_MESSAGE = "차량 이름을 5자리 이하로 입력해 주세요.";
-
     @Test
-    @DisplayName("자동차 생성 - 이름 입력")
-    void 자동차_생성_및_이름_5자리_이하() {
+    @DisplayName("자동차 생성, 이름 5자이하 테스트")
+    void constructor() {
         Car car = new Car("  하스      ");
         assertThat(car.getName()).isEqualTo("하스");
 
@@ -26,9 +24,7 @@ public class CarTest {
     }
 
     private void invalidName(String name) {
-        assertThat(catchThrowable(() -> new Car(name)))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(INVALID_NAME_MESSAGE);
+        assertThat(catchThrowable(() -> new Car(name))).isInstanceOf(IllegalArgumentException.class);
     }
 
 }
