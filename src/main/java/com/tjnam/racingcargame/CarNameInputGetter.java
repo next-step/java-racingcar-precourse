@@ -17,21 +17,23 @@ public class CarNameInputGetter {
 
     private String inputCarNames(){
         String userInput = carNameScanner.nextLine();
+        if (userInput.length() == 0) {
+            throw new IllegalArgumentException("NO_USER_INPUT");
+        }
         return userInput;
     }
 
-    private Boolean validateUserInput(String userInput){
-        return true;
-    }
-
     private String[] splitUserInput(String userInput){
+        if (userInput.length() == 0) {
+            throw new IllegalArgumentException("입력값이 없습니다.");
+        }
         return userInput.split(",");
     }
 
     private List<CarName> convertStringToCarName(String[] carNameInputs){
         List<CarName> carNames = new ArrayList<CarName>();
-        for (int i=0 ; i<carNameInputs.length ; i++) {
-            carNames.add(new CarName(carNameInputs[i]));
+        for (String carNameInput : carNameInputs) {
+            carNames.add(new CarName(carNameInput));
         }
         return carNames;
     }
