@@ -19,6 +19,10 @@ public class Car {
         }
     }
 
+    public CarHistory getCurrentInfo() {
+        return new CarHistory(carName, position);
+    }
+
     public Position getPosition() {
         return position;
     }
