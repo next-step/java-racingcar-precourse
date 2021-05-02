@@ -22,11 +22,11 @@ public class RacingCarColosseumTest {
     @ParameterizedTest
     @CsvSource(value = {"zcv,wer,qwer:5", "pobi,crong,honux,korsa:10"}, delimiter = ':')
     @DisplayName("게임이 진행되고 나면 적어도 한 명 이상의 우승자가 나와야 한다.")
-    void play_on_normal_case(String carNamesInput, String moveCount) {
+    void play_on_normal_case(String carNamesInput, String trialCountInput) {
         CarNameContainer carNameContainer = new CarNameContainer(carNamesInput.split(","));
-        MovementCount movementCount = new MovementCount(moveCount);
+        TrialCount trialCount = new TrialCount(trialCountInput);
 
-        List<CarPlayer> winners = this.racingCarColosseum.play(carNameContainer, movementCount);
+        List<CarPlayer> winners = this.racingCarColosseum.play(carNameContainer, trialCount);
 
         Assertions.assertThat(winners.size()).isGreaterThan(0);
     }
@@ -34,12 +34,12 @@ public class RacingCarColosseumTest {
     @ParameterizedTest
     @CsvSource(value = {"zcv,wer,qwer:5", "pobi,crong,honux,korsa:10"}, delimiter = ':')
     @DisplayName("게임이 진행되고 모든 랜덤 값이 전진 조건을 만족하지 못하면 전원 우승자가 된다.")
-    void play_when_every_random_value_not_satisfy_move_condition(String carNamesInput, String moveCount) {
+    void play_when_every_random_value_not_satisfy_trial_condition(String carNamesInput, String trialCountInput) {
         CarNameContainer carNameContainer = new CarNameContainer(carNamesInput.split(","));
-        MovementCount movementCount = new MovementCount(moveCount);
+        TrialCount trialCount = new TrialCount(trialCountInput);
         when(this.randomGenerator.get()).thenReturn(Car.STAY_RANDOM_VALUE);
 
-        List<CarPlayer> winners = this.racingCarColosseum.play(carNameContainer, movementCount);
+        List<CarPlayer> winners = this.racingCarColosseum.play(carNameContainer, trialCount);
 
         Assertions.assertThat(winners.size()).isEqualTo(carNameContainer.size());
     }
@@ -47,12 +47,12 @@ public class RacingCarColosseumTest {
     @ParameterizedTest
     @CsvSource(value = {"zcv,wer,qwer:5", "pobi,crong,honux,korsa:10"}, delimiter = ':')
     @DisplayName("게임이 진행되고 모든 랜덤 값이 전진 조건을 만족하면 전원 우승자가 된다.")
-    void play_when_every_random_value_satisfy_move_condition(String carNamesInput, String moveCount) {
+    void play_when_every_random_value_satisfy_trial_condition(String carNamesInput, String trialCountInput) {
         CarNameContainer carNameContainer = new CarNameContainer(carNamesInput.split(","));
-        MovementCount movementCount = new MovementCount(moveCount);
+        TrialCount trialCount = new TrialCount(trialCountInput);
         when(this.randomGenerator.get()).thenReturn(Car.FORWARD_RANDOM_VALUE);
 
-        List<CarPlayer> winners = this.racingCarColosseum.play(carNameContainer, movementCount);
+        List<CarPlayer> winners = this.racingCarColosseum.play(carNameContainer, trialCount);
 
         Assertions.assertThat(winners.size()).isEqualTo(carNameContainer.size());
     }

@@ -8,10 +8,10 @@ public class RacingCarColosseum {
         this.randomGenerator = randomGenerator;
     }
 
-    public List<CarPlayer> play(CarNameContainer carNameContainer, MovementCount movementCount) {
+    public List<CarPlayer> play(CarNameContainer carNameContainer, TrialCount trialCount) {
         CarPlayerContainer carPlayerContainer = this.createCarPlayers(carNameContainer);
 
-        proceedGameTurns(carPlayerContainer, movementCount);
+        proceedGameTurns(carPlayerContainer, trialCount);
 
         return carPlayerContainer.getWinners();
     }
@@ -26,8 +26,8 @@ public class RacingCarColosseum {
         return carPlayerContainer;
     }
 
-    private void proceedGameTurns(CarPlayerContainer carPlayerContainer, MovementCount movementCount) {
-        for (int i = 0; i < movementCount.getMoveCount(); i++) {
+    private void proceedGameTurns(CarPlayerContainer carPlayerContainer, TrialCount trialCount) {
+        for (int i = 0; i < trialCount.getTrialCount(); i++) {
             System.out.println(String.format(GAME_TURN_HEAD_MSG_FORMAT, i + 1));
             this.proceedGameTurn(carPlayerContainer);
             System.out.println();

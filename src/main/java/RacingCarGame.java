@@ -11,21 +11,21 @@ public class RacingCarGame {
         this.userInputParser = new UserInputParser();
     }
 
-    public PlayResult play(String carNamesInput, String moveCountInput) {
+    public PlayResult play(String carNamesInput, String trialCountInput) {
         Optional<CarNameContainer> mayCarNameContainer = this.userInputParser.parseCarNames(carNamesInput);
-        Optional<MovementCount> mayMoveCount = this.userInputParser.parseMoveCount(moveCountInput);
+        Optional<TrialCount> mayTrialCount = this.userInputParser.parseTrialCount(trialCountInput);
 
-        if (!mayCarNameContainer.isPresent() || !mayMoveCount.isPresent()) {
+        if (!mayCarNameContainer.isPresent() || !mayTrialCount.isPresent()) {
             return PlayResult.INVALID_INPUT;
         }
 
-        this.playInColosseum(mayCarNameContainer.get(), mayMoveCount.get());
+        this.playInColosseum(mayCarNameContainer.get(), mayTrialCount.get());
 
         return PlayResult.PLAYED;
     }
 
-    private void playInColosseum(CarNameContainer carNameContainer, MovementCount movementCount) {
-        List<CarPlayer> winners = this.racingCarColosseum.play(carNameContainer, movementCount);
+    private void playInColosseum(CarNameContainer carNameContainer, TrialCount trialCount) {
+        List<CarPlayer> winners = this.racingCarColosseum.play(carNameContainer, trialCount);
 
         String winnerMsg = this.getWinnerMessage(winners);
 

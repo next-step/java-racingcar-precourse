@@ -13,14 +13,14 @@ public class UserInputParser {
         return Optional.ofNullable(carNameContainer);
     }
 
-    public Optional<MovementCount> parseMoveCount(String moveCntInput) {
-        MovementCount movementCount = null;
+    public Optional<TrialCount> parseTrialCount(String trialCntInput) {
+        TrialCount trialCount = null;
 
         try {
-            movementCount = new MovementCount(moveCntInput);
+            trialCount = new TrialCount(trialCntInput);
         } catch (NumberFormatException e) {
         }
 
-        return Optional.ofNullable(movementCount);
+        return Optional.ofNullable(trialCount);
     }
 }

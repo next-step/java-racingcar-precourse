@@ -34,19 +34,19 @@ public class UserInputParserTest {
 
     @ParameterizedTest
     @CsvSource(value = {"124", "2", "4", "11", "2", "453", "333", "72", "13", "88956", "409", "34"})
-    @DisplayName("사용자가 정상적인 시도 횟수를 입력한 경우 MovementCount가 담긴 Optional 객체를 반환한다.")
-    void parse_valid_move_count_input(String moveCntInput) {
-        Optional<MovementCount> mayMovementCount = this.userInputParser.parseMoveCount(moveCntInput);
+    @DisplayName("사용자가 정상적인 시도 횟수를 입력한 경우 TrialCount가 담긴 Optional 객체를 반환한다.")
+    void parse_valid_trial_count_input(String trialCntInput) {
+        Optional<TrialCount> mayTrialCount = this.userInputParser.parseTrialCount(trialCntInput);
 
-        Assertions.assertThat(mayMovementCount.isPresent()).isTrue();
+        Assertions.assertThat(mayTrialCount.isPresent()).isTrue();
     }
 
     @ParameterizedTest
     @CsvSource(value = {"124cx", "!2", "4dz", "a", "_", "vc", "(*6", "^", "&", "aaabb", "_2", "34_"})
     @DisplayName("사용자가 비정상적인 시도 횟수를 입력한 경우 null이 담긴 Optional 객체를 반환한다.")
-    void parse_invalid_move_count_input(String moveCntInput) {
-        Optional<MovementCount> mayMovementCount = this.userInputParser.parseMoveCount(moveCntInput);
+    void parse_invalid_trial_count_input(String trialCntInput) {
+        Optional<TrialCount> mayTrialCount = this.userInputParser.parseTrialCount(trialCntInput);
 
-        Assertions.assertThat(mayMovementCount.isPresent()).isFalse();
+        Assertions.assertThat(mayTrialCount.isPresent()).isFalse();
     }
 }
