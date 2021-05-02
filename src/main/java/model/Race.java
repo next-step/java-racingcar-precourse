@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static util.RandomUtil.getRandom;
@@ -13,8 +14,8 @@ public class Race {
         this.maxScore = 0;
     }
 
-    private void setMaxScore(int score){
-        if(score > maxScore){
+    private void setMaxScore(int score) {
+        if (score > maxScore) {
             this.maxScore = score;
         }
     }
@@ -26,6 +27,17 @@ public class Race {
             }
             setMaxScore(car.getScore());
         }
+    }
+
+    public String getWinner() {
+        List<String> winners = new ArrayList<>();
+
+        for (Car car : cars) {
+            if (car.getScore() == maxScore) {
+                winners.add(car.getName());
+            }
+        }
+        return String.join(", ", winners);
     }
 
     @Override

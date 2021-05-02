@@ -26,6 +26,6 @@ class RaceTest {
     @DisplayName("우승자 선정 테스트")
     @Test
     void TEST_getWinner(){
-
+        System.out.println(race.getWinner());
     }
 }
