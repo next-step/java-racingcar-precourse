@@ -23,9 +23,9 @@ public class Car {
     public void setCarList(String carString, int index){
        if(carString.length() < 6) {
            carList[index] = carString;
-       } else{
-         throw new AssertionError("문자 자릿수 초과로 인한 Exception");
+           return;
        }
+         throw new AssertionError("문자 자릿수 초과로 인한 Exception");
     }
 
     public int getCarListLength(){
