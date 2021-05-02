@@ -3,13 +3,22 @@ import java.util.Scanner;
 public class Car {
 
 	private final String carName;
+	private int carMileage;
 
 	public Car(String carName) {
 		this.carName = carName;
+		this.carMileage = 0;
 	}
 
 	public String getCarName() {
 		return carName;
+	}
+
+	// 자동차 전진 여부 적용
+	public void applyForwardOrNot(boolean forwardOrNot) {
+		if (forwardOrNot) {
+			this.carMileage++;
+		}
 	}
 
 	// 자동차 이름 검증
