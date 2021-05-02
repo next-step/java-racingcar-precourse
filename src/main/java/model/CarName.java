@@ -5,18 +5,18 @@ import java.util.Objects;
 import exception.InvalidCarNameException;
 
 public class CarName {
-	final private String name;
+	final private String value;
 
 	public CarName(final String name) {
 		if (name == null)
 			throw new InvalidCarNameException("자동차 이름이 유효하지 않습니다.");
 		if (name.length() < 1 || name.length() > 5)
 			throw new InvalidCarNameException("자동차 이름은 1~5자 이어야 합니다.");
-		this.name = name;
+		this.value = name;
 	}
 
-	public String getName() {
-		return name;
+	public String getValue() {
+		return value;
 	}
 
 	@Override
@@ -26,11 +26,11 @@ public class CarName {
 		if (this == o)
 			return true;
 		CarName carName = (CarName)o;
-		return Objects.equals(getName(), carName.getName());
+		return Objects.equals(getValue(), carName.getValue());
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(getName());
+		return Objects.hash(getValue());
 	}
 }
