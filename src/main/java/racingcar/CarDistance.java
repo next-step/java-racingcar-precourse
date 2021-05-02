@@ -10,4 +10,14 @@ public class CarDistance {
 	public int getDistance() {
 		return distance;
 	}
+
+	public void move(int condition){
+		validationCarForwardConditionIsBetween0to9(condition);
+	}
+
+	private void validationCarForwardConditionIsBetween0to9(int condition) {
+		if (condition < 0 || 9 < condition) {
+			throw new IllegalArgumentException("전진하는 조건은 0에서 9 사이의 값이어야 합니다.");
+		}
+	}
 }

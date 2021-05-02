@@ -37,8 +37,8 @@ public class ValidationTest {
 		Car car = new Car("aaaa");
 
 		//when
-		int travelDistancefor0 = car.forward(0);
-		int travelDistancefor9 = car.forward(9);
+		int travelDistancefor0 = car.move(0);
+		int travelDistancefor9 = car.move(9);
 
 		//then
 		assertThat(travelDistancefor0).isExactlyInstanceOf(Integer.class);
@@ -51,7 +51,7 @@ public class ValidationTest {
 		Car car = new Car("aaaa");
 
 		//when
-		assertThrows(IllegalArgumentException.class, () -> car.forward(-1));
-		assertThrows(IllegalArgumentException.class, () -> car.forward(10));
+		assertThrows(IllegalArgumentException.class, () -> car.move(-1));
+		assertThrows(IllegalArgumentException.class, () -> car.move(10));
 	}
 }
