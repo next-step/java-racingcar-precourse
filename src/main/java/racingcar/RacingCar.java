@@ -24,4 +24,19 @@ public class RacingCar {
     private boolean isMove(int random) {
         return random >= MOVE_MINIMUM_VALUE;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        RacingCar racingCar = (RacingCar) o;
+
+        return name.equals(racingCar.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return name.hashCode();
+    }
 }

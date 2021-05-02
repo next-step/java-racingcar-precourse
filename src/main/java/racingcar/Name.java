@@ -5,11 +5,11 @@ public class Name {
     private final String name;
 
     public Name(String name) {
-        validName(name);
+        validLength(name);
         this.name = name;
     }
 
-    private void validName(String name) {
+    private void validLength(String name) {
         if (name.length() > 5)
             throw new IllegalArgumentException("자동차의 이름은 5자 이하여야 합니다.");
     }
