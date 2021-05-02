@@ -11,6 +11,15 @@ public class Car {
 		position = 0;
 	}
 
+	public Car(String carName, int position) {
+		this.carName = carName;
+		this.position = position;
+	}
+
+	public void setInitPosition() {
+		position = 0;
+	}
+
 	public String getCarName() {
 		return carName;
 	}
