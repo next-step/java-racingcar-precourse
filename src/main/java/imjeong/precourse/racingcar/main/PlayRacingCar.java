@@ -1,7 +1,10 @@
 package imjeong.precourse.racingcar.main;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
+import imjeong.precourse.racingcar.model.RacingCar;
 import imjeong.precourse.racingcar.util.InputValidationUtil;
 
 /**
@@ -12,6 +15,7 @@ import imjeong.precourse.racingcar.util.InputValidationUtil;
 public class PlayRacingCar {
  
  private static Scanner SCANNER = null; // 사용자 입력을 위한 Scanner 객체 초기화
+ private static int FINISH_COUNT = 0;
  
  /**
   * Start Point.
@@ -45,9 +49,32 @@ public class PlayRacingCar {
   * @since 2021. 05. 01
   */
  public static void startRacing() {
+  List<RacingCar> racingCars = setRacingInformation();
+ }
+ 
+ /**
+  * 자동차 레이시을 위한 자동차 이름, 완주를 위해 이동해야 할 횟수 설정
+  * @return
+  * @since 2021. 05. 02
+  */
+ public static List<RacingCar> setRacingInformation() {
   String[] carNames = getInputCarNames();
-  int moveCount = getMoveCount();
-  System.out.println("moveCount : " + moveCount);
+  FINISH_COUNT = getMoveCount();
+  return setRacingCars(carNames);
+ }
+ 
+ /**
+  * 사용자가 입력한 자동차 이름을 통해 자동차 객체가 담긴 리스트 생성
+  * @param carNames
+  * @return
+  * @since 2021. 05. 02
+  */
+ public static List<RacingCar> setRacingCars(String[] carNames) {
+  List<RacingCar> racingCars = new ArrayList<RacingCar>();
+  for(String carName : carNames) {
+   racingCars.add(new RacingCar(carName, 0));
+  }
+  return racingCars;
  }
  
  /**
