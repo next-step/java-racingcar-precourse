@@ -2,6 +2,18 @@ import java.util.*;
 
 public class RacingGame {
     /**
+     * 한 회차의 각 자동차를 전진 또는 정지 시키고 그 결과를 출력
+     * @param cars
+     */
+    public void playOneRound(List<RacingCar> cars) {
+        for (RacingCar car: cars) {
+            car.playOneRound();
+            car.printCurrentCount();
+        }
+        System.out.println();
+    }
+
+    /**
      * 전체 자동차 리스트를 받아, 전진 횟수가 최대인 자동차 리스트를 반환
      * @param cars 전체 자동차 리스트
      * @return 전진 횟수가 최대인 자동차 리스트
