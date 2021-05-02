@@ -13,14 +13,22 @@ public class Race {
     private List<Car> cars;
     private int maxScore;
 
-    public Race(List<Car> cars) {
-        this.cars = cars;
-        this.maxScore = 0;
+    public Race(List<String> names) {
+        cars = new ArrayList<>();
+        for(String name: names){
+            addCars(name);
+        }
+        maxScore = 0;
+    }
+
+    private void addCars(String name){
+        Car car = new Car(name);
+        cars.add(car);
     }
 
     private void setMaxScore(int score) {
         if (score > maxScore) {
-            this.maxScore = score;
+            maxScore = score;
         }
     }
 
