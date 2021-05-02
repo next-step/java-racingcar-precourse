@@ -1,6 +1,8 @@
 package racing;
 
-public class Round {
+import java.util.Iterator;
+
+public class Round implements Iterable<Integer> {
     private static final int MIN_ROUND = 1;
     private static final int MAX_ROUND = 10;
     private int round;
@@ -20,5 +22,27 @@ public class Round {
             throw new IllegalArgumentException("Round should be greater than" + MIN_ROUND);
         if (input > MAX_ROUND)
             throw new IllegalArgumentException("Round should be less than" + MAX_ROUND);
+    }
+
+    @Override
+    public Iterator<Integer> iterator() {
+        return new RoundIterator(this.round);
+    }
+
+    class RoundIterator implements Iterator<Integer> {
+        private int index = 0;
+        private int round;
+
+        public RoundIterator(int round) {
+            this.round = round;
+        }
+
+        public boolean hasNext() {
+            return index < this.round;
+        }
+
+        public Integer next() {
+            return index++;
+        }
     }
 }
