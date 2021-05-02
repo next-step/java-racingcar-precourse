@@ -14,17 +14,15 @@ public class GameMain {
     private Reception reception;
     private Rule rule;
 
-    public GameMain(){
-        ready();
-    }
-
-    private void ready() {
+    public boolean ready() {
         try{
             this.reception = inputName();
             this.rule = inputRound();
         }catch(IllegalArgumentException e){
             System.out.println(e.getMessage());
+            return false;
         }
+        return true;
     }
 
     public void start(){
