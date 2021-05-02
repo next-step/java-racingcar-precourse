@@ -11,6 +11,7 @@ public class GameInput {
     public static Set<Name> inputCarNames() {
         String[] carNames = scanner.next().split(NAME_SPLIT_REGEX);
         try {
+            validCountCars(carNames);
             return convertNames(carNames);
         } catch (IllegalArgumentException e) {
             GameOutput.printEnterAgain(e);
@@ -23,6 +24,11 @@ public class GameInput {
         for (String carName : carNames)
             names.add(new Name(carName));
         return names;
+    }
+
+    private static void validCountCars(String[] carNames) {
+        if (carNames.length < 2)
+            throw new IllegalArgumentException("경주 자동차는 2대 이상이어야 합니다.");
     }
 
 }
