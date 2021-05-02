@@ -15,7 +15,7 @@ public class CarPlayer {
         return this.car.getMoveCount();
     }
 
-    public CarName getCarName(){
+    public CarName getCarName() {
         return this.car.getCarName();
     }
 
@@ -27,6 +27,8 @@ public class CarPlayer {
         for (int i = 0; i < this.car.getMoveCount(); i++) {
             sb.append("-");
         }
+
+        sb.append(String.format(" (%d)", this.car.getMoveCount()));
 
         return sb.toString();
     }
