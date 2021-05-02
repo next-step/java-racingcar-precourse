@@ -27,7 +27,11 @@ public class TravelDistance {
     }
 
     public TravelDistance increase() {
-        return create(distance + 1);
+        return create(getNextDistance());
+    }
+
+    private int getNextDistance() {
+        return distance + 1;
     }
 
     @Override

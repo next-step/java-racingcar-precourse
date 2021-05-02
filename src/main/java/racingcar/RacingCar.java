@@ -2,6 +2,7 @@ package racingcar;
 
 public class RacingCar {
 
+    public static final int MOVE_MINIMUM_VALUE = 4;
     private final Name name;
     private TravelDistance distance;
 
@@ -11,11 +12,15 @@ public class RacingCar {
     }
 
     public void moveForward(int random) {
-        if(random >= 4)
+        if(isMove(random))
             this.distance = distance.increase();
     }
 
     public TravelDistance getTravelDistance() {
         return distance;
+    }
+
+    private boolean isMove(int random) {
+        return random >= MOVE_MINIMUM_VALUE;
     }
 }
