@@ -1,14 +1,18 @@
 public class Car {
-    private static final int GO_FORWARD_MIN = 4;
+    public static final int FORWARD_RANDOM_VALUE = 4;
+    public static final int STAY_RANDOM_VALUE = 0;
 
     private MoveHistory moveHistory;
+    private CarName carname;
 
-    public Car() {
+    public Car(CarName carname) {
+        this.carname = carname;
+
         this.moveHistory = new MoveHistory();
     }
 
     public MoveResult tryMove(int randomValue) {
-        if (randomValue >= GO_FORWARD_MIN) {
+        if (randomValue >= FORWARD_RANDOM_VALUE) {
             this.moveHistory.add(new Movement());
 
             return MoveResult.FORWARD;

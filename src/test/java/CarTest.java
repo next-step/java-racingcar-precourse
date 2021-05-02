@@ -6,14 +6,13 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 public class CarTest {
-    private static final int FORWARD_RANDOM_VALUE = 4;
-    private static final int STAY_RANDOM_VALUE = 0;
+    private static final String TEST_CAR_NAME = "test";
 
     private Car car;
 
     @BeforeEach
     void setup() {
-        this.car = new Car();
+        this.car = new Car(new CarName(TEST_CAR_NAME));
     }
 
     @ParameterizedTest
@@ -38,11 +37,11 @@ public class CarTest {
     @DisplayName("자동차가 3번 움직이고 4번 멈춰있을 경우 전진한 내역을 출력한다.")
     void print_3_forward_4_stay() {
         for (int i = 0; i < 3; i++) {
-            car.tryMove(FORWARD_RANDOM_VALUE);
+            car.tryMove(Car.FORWARD_RANDOM_VALUE);
         }
 
         for (int i = 0; i < 4; i++) {
-            car.tryMove(STAY_RANDOM_VALUE);
+            car.tryMove(Car.STAY_RANDOM_VALUE);
         }
 
         Assertions.assertThat(car.getMoveCount()).isEqualTo(3);
