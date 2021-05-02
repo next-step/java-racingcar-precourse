@@ -22,9 +22,9 @@ public class CarPositionTest {
     @Test
     public void positionMoveTest(){
         int expectedPosition = 100;
-        for (int i=0 ; i<100 ; i++){
+        for (int i=0 ; i<expectedPosition ; i++){
             position.move();
         }
-        assertThat(position.getPosition()).isEqualTo(100);
+        assertThat(position.getPosition()).isEqualTo(expectedPosition);
     }
 }
