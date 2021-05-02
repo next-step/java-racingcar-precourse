@@ -1,6 +1,9 @@
 package racing;
 
 class CarRecord {
+	private static final String MESSAGE_FORMAT = "%s : %s";
+	private static final String TRACE = "-";
+	
 	private CarName carName;
 	private Position position;
 
@@ -22,5 +25,13 @@ class CarRecord {
 
 	Position getPosition() {
 		return position;
+	}
+	
+	String toMessage() {
+		String carNameVal = carName.getName();
+		int positionVal = position.getVal();
+		String traces = StringUtils.repeat(TRACE, positionVal);
+
+		return String.format(MESSAGE_FORMAT, carNameVal, traces);
 	}
 }

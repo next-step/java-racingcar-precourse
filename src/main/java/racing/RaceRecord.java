@@ -4,13 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RaceRecord {
+	private static final String RACE_RESULT_MESSAGE = "실행 결과";
+	private static final String WINNER_MESSAGE_FORMAT = "%s가 최종 우승했습니다.";
+
 	private List<RoundRecord> roundRecords;
+	private List<CarName> winners;
 
 	RaceRecord(List<RoundRecord> roundRecords) {
 		this.roundRecords = roundRecords;
+		this.winners = judgeWinners();
 	}
 
-	public List<CarName> getWinners() {
+	private List<CarName> judgeWinners() {
 		RoundRecord lastRoundRecord = getLastRoundRecord();
 		List<CarRecord> lastRoundCarRecords = lastRoundRecord.getCarRecords();
 		Position maxPosition = getMaxPosition(lastRoundCarRecords);
@@ -48,11 +53,37 @@ public class RaceRecord {
 	}
 
 	String toMessage() {
-		return null;
+		StringBuilder builder = new StringBuilder();
+		builder.append(RACE_RESULT_MESSAGE);
+		builder.append("\n");
+
+		for (RoundRecord roundRecord : this.roundRecords) {
+			builder.append(roundRecord.toMessage());
+		}
+		builder.append(toWinnersMessage());
+
+		return builder.toString();
+	}
+
+	private String toWinnersMessage() {
+		StringBuilder builder = new StringBuilder();
+		List<String> names = new ArrayList<>();
+
+		for (CarName carName : this.winners) {
+			names.add(carName.getName());
+		}
+
+		builder.append(String.format(WINNER_MESSAGE_FORMAT, String.join(", ", names)));
+		builder.append("\n");
+		return builder.toString();
 	}
 
 	public List<RoundRecord> getRoundRecords() {
 		return this.roundRecords;
+	}
+
+	public List<CarName> getWinners() {
+		return this.winners;
 	}
 
 	private RoundRecord getLastRoundRecord() {
