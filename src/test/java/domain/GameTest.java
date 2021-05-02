@@ -2,6 +2,7 @@ package domain;
 
 import domain.history.CarHistories;
 import domain.name.CarNames;
+import domain.position.Position;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -23,7 +24,7 @@ public class GameTest {
 
         for(int i = 1; i<=times; i++) {
             CarHistories histories = moveHistories.get(i - 1);
-            for(Position position : histories.getPositions()) {
+            for(Position position : histories.getPositions().getPositions()) {
                 assertThat(position.toInt())
                         .isEqualTo(i);
             }

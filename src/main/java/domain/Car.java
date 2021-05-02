@@ -2,6 +2,7 @@ package domain;
 
 import domain.history.CarHistory;
 import domain.name.CarName;
+import domain.position.Position;
 import domain.strategy.MoveStrategy;
 
 public class Car {

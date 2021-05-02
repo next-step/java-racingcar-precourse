@@ -2,6 +2,7 @@ package domain;
 
 import domain.history.CarHistory;
 import domain.name.CarName;
+import domain.position.Position;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 

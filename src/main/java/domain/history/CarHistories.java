@@ -1,9 +1,9 @@
 package domain.history;
 
-import domain.Position;
+import domain.position.Position;
+import domain.position.Positions;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -18,18 +18,14 @@ public class CarHistories {
         return new ArrayList<>(carHistories);
     }
 
-    public Position getMaxPosition() {
-        return Collections.max(getPositions(), Position::compareTo);
-    }
-
-    public List<Position> getPositions() {
+    public Positions getPositions() {
         List<Position> positions = new ArrayList<>();
 
         for(CarHistory carHistory : carHistories) {
             positions.add(carHistory.getPosition());
         }
 
-        return positions;
+        return new Positions(positions);
     }
 
     @Override
