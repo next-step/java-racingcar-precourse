@@ -4,6 +4,11 @@ public class RacingGame {
     private Scanner scn = new Scanner(System.in);
     public RacingGame(){ }
 
+    public static void main(String[] args) {
+        RacingGame game = new RacingGame();
+        game.playRacingGame();
+    }
+
     /**
      * 전체 게임을 수행
      */
