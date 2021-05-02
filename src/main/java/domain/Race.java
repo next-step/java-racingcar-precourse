@@ -15,14 +15,12 @@ public class Race {
         this.racingCars = racingCars;
     }
 
-    public RaceReport play(Count moveCount) {
-        for (int i = 0; i < moveCount.getCount(); i++) {
-            racingCars.moveCars(new DiceMovingStrategy());
-        }
+    public RaceReport play() {
+        racingCars.moveCars(new DiceMovingStrategy());
         return createReport();
     }
 
-    RaceReport createReport() {
+    public RaceReport createReport() {
         return new RaceReport(racingCars.getCarDtos());
     }
 }

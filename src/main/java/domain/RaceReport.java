@@ -13,10 +13,6 @@ public class RaceReport {
         this.results = results;
     }
 
-    public List<CarDto> getResults() {
-        return results;
-    }
-
     public List<CarDto> findWinners() {
         List<CarDto> winners = new ArrayList<>();
         Distance maxDistance = findMaxDistanceOfResults();
@@ -35,5 +31,9 @@ public class RaceReport {
         if (maxDistance.equals(carDto.getLocation())) {
             carDtos.add(carDto);
         }
+    }
+
+    public List<CarDto> getResults() {
+        return results;
     }
 }
