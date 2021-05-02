@@ -31,4 +31,12 @@ public class Car {
 		return loopCount == carNameArr.length && validCarNameResult;
 	}
 
+	// 사용자 입력 자동차 이름들 검증
+	boolean isValidCar(String[] carNameArr) {
+		if (!isValidCarCount(carNameArr)) {
+			return false;
+		}
+		return isValidCarNames(carNameArr);
+	}
+
 }
