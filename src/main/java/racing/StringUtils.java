@@ -3,7 +3,7 @@ package racing;
 import java.util.Collections;
 
 public class StringUtils {
-	public static final String NEW_LINE = "\n";
+	static final String NEW_LINE = "\n";
 
 	private StringUtils() {
 		// do nothing

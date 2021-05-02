@@ -9,14 +9,12 @@ public class RaceRecord {
 	private static final String DELIMITER = ", ";
 
 	private List<RoundRecord> roundRecords;
-	private List<CarName> winners;
 
 	RaceRecord(List<RoundRecord> roundRecords) {
 		this.roundRecords = roundRecords;
-		this.winners = judgeWinners();
 	}
 
-	private List<CarName> judgeWinners() {
+	public List<CarName> getWinners() {
 		RoundRecord lastRoundRecord = getLastRoundRecord();
 		List<CarRecord> lastRoundCarRecords = lastRoundRecord.getCarRecords();
 		Position maxPosition = getMaxPosition(lastRoundCarRecords);
@@ -70,7 +68,7 @@ public class RaceRecord {
 		StringBuilder builder = new StringBuilder();
 		List<String> names = new ArrayList<>();
 
-		for (CarName carName : this.winners) {
+		for (CarName carName : this.getWinners()) {
 			names.add(carName.getName());
 		}
 
@@ -81,10 +79,6 @@ public class RaceRecord {
 
 	public List<RoundRecord> getRoundRecords() {
 		return this.roundRecords;
-	}
-
-	public List<CarName> getWinners() {
-		return this.winners;
 	}
 
 	private RoundRecord getLastRoundRecord() {
