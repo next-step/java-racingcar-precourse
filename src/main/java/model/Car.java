@@ -1,11 +1,11 @@
 package model;
 
 public class Car {
-    private CarName name;
+    private final CarName carName;
     private int position;
 
     public Car(String name) {
-        this.name = new CarName(name);
+        this.carName = new CarName(name);
     }
 
     public void move(MoveJudgmentNumber moveJudgmentNumber) {
@@ -14,7 +14,11 @@ public class Car {
         }
     }
 
+    public String getName() {
+        return carName.getName();
+    }
+
     public int getPosition() {
-        return this.position;
+        return position;
     }
 }
