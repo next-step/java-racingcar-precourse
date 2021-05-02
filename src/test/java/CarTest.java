@@ -1,6 +1,10 @@
+import static org.assertj.core.api.Assertions.*;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class CarTest {
 
@@ -26,6 +30,16 @@ class CarTest {
 	@DisplayName("자동차 현재 주행거리 표시")
 	void printCurrentCarMileage() {
 		car.printCurrentCarMileage();
+	}
+
+
+	@ParameterizedTest
+	@DisplayName("자동차 우승 여부 얻기")
+	@ValueSource(ints = {2})
+	public void isWinner(int playCount) {
+		assertThat(car.isWinner(playCount))
+			.withFailMessage("자동차 우승 여부 얻기 실패= " + playCount)
+			.isTrue();
 	}
 
 }
