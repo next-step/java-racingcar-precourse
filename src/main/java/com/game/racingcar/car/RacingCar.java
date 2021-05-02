@@ -17,6 +17,10 @@ public class RacingCar implements Car {
         this.carName = carName;
     }
 
+    public static RacingCar of(CarName carName){
+        return new RacingCar(new CarOption(), carName);
+    }
+
     @Override
     public void move(AccelPower accelPower) {
         if (isPossibleMove(accelPower)) {
@@ -27,6 +31,11 @@ public class RacingCar implements Car {
     @Override
     public Position getPosition() {
         return this.position;
+    }
+
+    @Override
+    public long getMovingDistance() {
+        return this.position.getX();
     }
 
     @Override
@@ -43,4 +52,19 @@ public class RacingCar implements Car {
     }
 
 
+    @Override
+    public int compareTo(Car car) {
+        // TODO Auto-generated method stub
+        long myDistance = this.getMovingDistance();
+        long targetDistance = car.getMovingDistance();
+
+        if (myDistance == targetDistance) return 0;
+        else if (myDistance > targetDistance) return 1;
+        else return -1;
+    }
+
+    @Override
+    public CarName getCarName() {
+        return this.carName;
+    }
 }
