@@ -6,8 +6,6 @@ import domain.Positions;
 import view.print.PositionPrinter;
 import view.print.WinnersPrinter;
 
-import java.util.List;
-
 public class PrintView {
     private Game game;
     
