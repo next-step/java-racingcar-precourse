@@ -7,7 +7,11 @@
 * [과제 제출 방법](https://github.com/next-step/nextstep-docs/tree/master/precourse)
 
 #[기능구현 List]
-
+ 
+##Main 
+    -InputVuuw Class로 참가할 자동차와 시도회수를 입력받는다.
+    -RacingGame을 시작한다.
+    -우승자를  OutputView로 결과를 보여준다. 
 ##Name
     -5글자길이 초과금지
     -영어만 사용가능
