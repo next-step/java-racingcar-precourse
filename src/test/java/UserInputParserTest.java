@@ -1,10 +1,10 @@
+import java.util.Optional;
+
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-
-import java.util.List;
 
 public class UserInputParserTest {
     private UserInputParser userInputParser;
@@ -15,11 +15,38 @@ public class UserInputParserTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"bac,wrterddf:1", "2314cx,12,3,08d:3", "192887ds,  !@8c8  ,*cc &*(sd1, czvzxd,eterd ,!))*Fdf,  :2"}, delimiter = ':')
-    @DisplayName("사용자가 쉼표를 기준으로 입력한 자동차 이름들을 파싱한다.")
-    void parse(String userInput, int validCarNameCount) {
-        List<CarName> carNames = this.userInputParser.parse(userInput);
+    @CsvSource(value = {"pobi,crong,honux", "pobi,alex,sand,krosa", "i,am,groot", "ionic,tesla,ford,audi"})
+    @DisplayName("사용자가 정상적인 자동차 이름을 입력한 경우 CarNameContainer가 담긴 Optional 객체를 반환한다.")
+    void parse_valid_car_names_input(String carNamesInput) {
+        Optional<CarNameContainer> mayCarNameContainer = this.userInputParser.parseCarNames(carNamesInput);
 
-        Assertions.assertThat(carNames.size()).isEqualTo(validCarNameCount);
+        Assertions.assertThat(mayCarNameContainer.isPresent()).isTrue();
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"wrterddf,2314cx", "12308d,192887ds,!@8c8*cc", "&*(sd1", "czvzxdeterd,!))*Fdf"})
+    @DisplayName("사용자가 비정상적인 자동차 이름을 입력한 경우 null이 담긴 Optional 객체를 반환한다.")
+    void parse_invalid_car_names_input(String carNamesInput) {
+        Optional<CarNameContainer> mayCarNameContainer = this.userInputParser.parseCarNames(carNamesInput);
+
+        Assertions.assertThat(mayCarNameContainer.isPresent()).isFalse();
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"124", "2", "4", "11", "2", "453", "333", "72", "13", "88956", "409", "34"})
+    @DisplayName("사용자가 정상적인 시도 횟수를 입력한 경우 MovementCount가 담긴 Optional 객체를 반환한다.")
+    void parse_valid_move_count_input(String moveCntInput) {
+        Optional<MovementCount> mayMovementCount = this.userInputParser.parseMoveCount(moveCntInput);
+
+        Assertions.assertThat(mayMovementCount.isPresent()).isTrue();
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"124cx", "!2", "4dz", "a", "_", "vc", "(*6", "^", "&", "aaabb", "_2", "34_"})
+    @DisplayName("사용자가 비정상적인 시도 횟수를 입력한 경우 null이 담긴 Optional 객체를 반환한다.")
+    void parse_invalid_move_count_input(String moveCntInput) {
+        Optional<MovementCount> mayMovementCount = this.userInputParser.parseMoveCount(moveCntInput);
+
+        Assertions.assertThat(mayMovementCount.isPresent()).isFalse();
     }
 }

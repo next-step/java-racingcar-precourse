@@ -1,41 +1,26 @@
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 public class UserInputParser {
-    public List<CarName> parse(String userInput) {
-        String[] carNameStrings = userInput.split(",");
 
-        return this.createCarNames(carNameStrings);
-    }
-
-    private List<CarName> createCarNames(String[] carNameStrings){
-        List<CarName> carNames = new ArrayList<>();
-
-        for (String carNameString : carNameStrings) {
-            Optional<CarName> mayCarName = this.getCarName(carNameString);
-
-            this.tryInsert(mayCarName, carNames);
-        }
-
-        return carNames;
-    }
-
-    private Optional<CarName> getCarName(String carNameString) {
-        CarName carname = null;
+    public Optional<CarNameContainer> parseCarNames(String userInput) {
+        CarNameContainer carNameContainer = null;
 
         try {
-            carname = new CarName(carNameString);
+            carNameContainer = new CarNameContainer(userInput.split(","));
         } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
         }
 
-        return Optional.ofNullable(carname);
+        return Optional.ofNullable(carNameContainer);
     }
 
-    private void tryInsert(Optional<CarName> mayContent, List<CarName> container) {
-        if (mayContent.isPresent()) {
-            container.add(mayContent.get());
+    public Optional<MovementCount> parseMoveCount(String moveCntInput) {
+        MovementCount movementCount = null;
+
+        try {
+            movementCount = new MovementCount(moveCntInput);
+        } catch (NumberFormatException e) {
         }
+
+        return Optional.ofNullable(movementCount);
     }
 }
