@@ -4,6 +4,7 @@ import racing.vo.Racing;
 import racing.vo.Reception;
 import racing.vo.Rule;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -31,6 +32,7 @@ public class GameMain {
         RacingGame racingGame = new RacingGame(racing);
         System.out.println("\r\n실행결과");
         racingGame.startRound();
+        new GameResult(this.reception);
     }
 
     private Reception inputName(){
