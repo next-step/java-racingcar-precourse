@@ -10,18 +10,18 @@ public class CarTest {
     private Car car;
     @BeforeEach
     void setUp() {
-        car = new Car(1);
+        car = new Car("-");
     }
 
     @Test
     @DisplayName("random 값이 4이상이면 전진")
     void go() {
-        assertThat(car.move(7)).isEqualTo(2);
+        assertThat(car.move(7)).isEqualTo("--");
     }
 
     @Test
     @DisplayName("random 값이 3이하이면 정지")
     void stop() {
-        assertThat(car.move(3)).isEqualTo(1);
+        assertThat(car.move(3)).isEqualTo("-");
     }
 }
