@@ -22,6 +22,8 @@ public class GameController {
             racingCars.getRacingCars().forEach(racingCar -> GameOutput.printTravelDistanceForCar(racingCar.getName(), racingCar.getDistance()));
             GameOutput.crlf();
         }
+
+        GameOutput.printWinners(racingCars.getWinners());
     }
 
 }

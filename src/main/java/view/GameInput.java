@@ -7,6 +7,8 @@ import java.util.*;
 public class GameInput {
     private static final Scanner SCANNER = new Scanner(System.in);
     private static final String NAME_SPLIT_REGEX = ",";
+    private static final int MIN_ATTEMPT_COUNT = 1;
+    private static final int MIN_RACING_CAR_COUNT = 2;
 
     public static Set<Name> enterCarNames() {
         String[] carNames = SCANNER.next().split(NAME_SPLIT_REGEX);
@@ -32,7 +34,7 @@ public class GameInput {
     }
 
     private static void validAttemptCount(int attemptCount) {
-        if (attemptCount < 1)
+        if (attemptCount < MIN_ATTEMPT_COUNT)
             throw new IllegalArgumentException();
     }
 
@@ -49,7 +51,7 @@ public class GameInput {
     }
 
     private static void validCountCars(String[] carNames) {
-        if (carNames.length < 2)
+        if (carNames.length < MIN_RACING_CAR_COUNT)
             throw new IllegalArgumentException("경주 자동차는 2대 이상이어야 합니다.");
     }
 }

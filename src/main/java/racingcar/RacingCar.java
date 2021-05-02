@@ -13,7 +13,7 @@ public class RacingCar {
     }
 
     public void moveForward(int random) {
-        if(isMove(random))
+        if (isMove(random))
             distance.increase();
     }
 
