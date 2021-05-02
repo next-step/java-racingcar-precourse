@@ -1,6 +1,6 @@
 package racing.vo;
 
-public class Car {
+public class Car implements Comparable<Car>{
     private CarName carName;
     private int carPosition;
     private StringBuilder positionText;
@@ -29,5 +29,10 @@ public class Car {
     }
     public StringBuilder getPositionText() {
         return positionText;
+    }
+
+    @Override
+    public int compareTo(Car o) {
+        return o.getPosition()-this.getPosition();
     }
 }
