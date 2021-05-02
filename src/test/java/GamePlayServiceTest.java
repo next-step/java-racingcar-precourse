@@ -6,9 +6,9 @@ import org.junit.jupiter.params.provider.ValueSource;
 class GamePlayServiceTest {
 
 	// 숫자인지 검증
-	boolean isNumber(String randomValue) {
+	boolean isNumber(String playCount) {
 		try {
-			return isAboveMinimum(Integer.parseInt(randomValue));
+			return isAboveMinimum(Integer.parseInt(playCount));
 		} catch (NumberFormatException e) {
 			System.out.println("숫자를 입력해 주세요.");
 			return false;
@@ -31,7 +31,7 @@ class GamePlayServiceTest {
 		assertThat(isNumber(randomValue))
 			.withFailMessage("숫자 검증 실패= " + randomValue)
 			.isFalse();  // 실패
-			// .isTrue(); // 성공
+		// .isTrue(); // 성공
 	}
 
 }
