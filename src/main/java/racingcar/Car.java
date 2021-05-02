@@ -39,6 +39,9 @@ public class Car {
 
     public int draw() {
         Random random = new Random();
-        return random.nextInt(10);
+        int picked = random.nextInt(10);
+
+        if (isMovable(picked)) move();
+        return picked;
     }
 }
