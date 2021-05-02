@@ -1,4 +1,4 @@
-package imjeong.precourse.racingcar;
+package imjeong.precourse.racingcar.util;
 
 /**
  * 사용자가 입력한 값이 유효한 값인지 확인하는 유틸 클래스
@@ -27,6 +27,6 @@ public class InputValidationUtil {
   * @since 2021. 05. 02
   */
  public static boolean isValidNumber(String input) {
-	 return (input.matches("[0-9]*") && Integer.parseInt(input) > 0);
+  return (input.matches("[0-9]*") && Integer.parseInt(input) > 0);
  }
 }

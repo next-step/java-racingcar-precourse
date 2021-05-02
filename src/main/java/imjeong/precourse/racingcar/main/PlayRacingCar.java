@@ -2,7 +2,7 @@ package imjeong.precourse.racingcar.main;
 
 import java.util.Scanner;
 
-import imjeong.precourse.racingcar.InputValidationUtil;
+import imjeong.precourse.racingcar.util.InputValidationUtil;
 
 /**
  * 자동차 경주 게임.
