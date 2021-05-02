@@ -1,4 +1,4 @@
-package racing;
+package racing.car;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -6,6 +6,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
+
+import racing.car.position.Position;
 
 class CarTest {
 	private CarName carName;

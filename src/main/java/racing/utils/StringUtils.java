@@ -1,9 +1,9 @@
-package racing;
+package racing.utils;
 
 import java.util.Collections;
 
 public class StringUtils {
-	static final String NEW_LINE = "\n";
+	public static final String NEW_LINE = "\n";
 
 	private StringUtils() {
 		// do nothing

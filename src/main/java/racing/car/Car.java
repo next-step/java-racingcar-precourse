@@ -1,4 +1,8 @@
-package racing;
+package racing.car;
+
+import racing.car.engine.Engine;
+import racing.car.engine.Power;
+import racing.car.position.Position;
 
 public class Car {
 	private static final int INITIAL_POSITION = 0;

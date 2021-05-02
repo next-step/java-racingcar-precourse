@@ -1,4 +1,4 @@
-package racing;
+package racing.car;
 
 import static org.junit.jupiter.api.Assertions.*;
 

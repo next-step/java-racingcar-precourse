@@ -2,6 +2,9 @@ package racing;
 
 import java.util.Scanner;
 
+import racing.race.Race;
+import racing.race.RaceRecord;
+
 public class Main {
 
 	public static void main(String[] args) {

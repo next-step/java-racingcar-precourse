@@ -1,7 +1,11 @@
-package racing;
+package racing.race;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import racing.car.Car;
+import racing.car.CarRecord;
+import racing.car.Cars;
 
 public class Race {
 	private Cars cars;

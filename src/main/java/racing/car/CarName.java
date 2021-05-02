@@ -1,8 +1,8 @@
-package racing;
+package racing.car;
 
 import java.util.Objects;
 
-class CarName {
+public class CarName {
 	private static final int MAX_LENGTH = 5;
 
 	private String name;

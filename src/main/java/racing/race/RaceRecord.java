@@ -1,7 +1,12 @@
-package racing;
+package racing.race;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import racing.car.CarName;
+import racing.car.CarRecord;
+import racing.car.position.Position;
+import racing.utils.StringUtils;
 
 public class RaceRecord {
 	private static final String RACE_RESULT_MESSAGE = "실행 결과";
@@ -51,7 +56,7 @@ public class RaceRecord {
 		return new Position(maxVal);
 	}
 
-	String toMessage() {
+	public String toMessage() {
 		StringBuilder builder = new StringBuilder();
 		builder.append(RACE_RESULT_MESSAGE);
 		builder.append(StringUtils.NEW_LINE);

@@ -1,4 +1,4 @@
-package racing;
+package racing.car;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 public class Cars {
 	private List<Car> cars;
 
-	Cars(String namesWithDelimiter) {
+	public Cars(String namesWithDelimiter) {
 		this.cars = new ArrayList<>();
 
 		CarNames carNames = new CarNames(namesWithDelimiter);

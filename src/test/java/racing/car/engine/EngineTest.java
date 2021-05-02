@@ -1,11 +1,14 @@
-package racing;
+package racing.car.engine;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
+
+import racing.car.CarStatus;
 
 class EngineTest {
 	private Engine engine;
@@ -26,7 +29,7 @@ class EngineTest {
 	@DisplayName("출력이 4 이상일 경우 전진하고, 3 이하의 값이면 멈춘다.")
 	@Test
 	void 출력이_4_이상일_경우_전진하고_3_이하의_값이면_멈춘다() {
-		assertEquals(CarStatus.STOP, this.engine.run(new Power(0)));
+		Assertions.assertEquals(CarStatus.STOP, this.engine.run(new Power(0)));
 		assertEquals(CarStatus.STOP, this.engine.run(new Power(3)));
 		assertEquals(CarStatus.FORWARD, this.engine.run(new Power(4)));
 		assertEquals(CarStatus.FORWARD, this.engine.run(new Power(9)));

@@ -1,6 +1,9 @@
-package racing;
+package racing.race;
 
 import java.util.List;
+
+import racing.car.CarRecord;
+import racing.utils.StringUtils;
 
 public class RoundRecord {
 	private List<CarRecord> carRecords;

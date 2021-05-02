@@ -1,11 +1,11 @@
-package racing;
+package racing.car.position;
 
 import java.util.Objects;
 
 public class Position {
 	private int val;
 
-	Position(int val) {
+	public Position(int val) {
 		this.val = val;
 	}
 

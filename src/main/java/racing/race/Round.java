@@ -1,4 +1,4 @@
-package racing;
+package racing.race;
 
 public class Round {
 	private final int val;

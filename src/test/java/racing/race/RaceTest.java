@@ -1,4 +1,4 @@
-package racing;
+package racing.race;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -10,6 +10,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
+
+import racing.car.Car;
+import racing.car.CarName;
+import racing.car.Cars;
 
 class RaceTest {
 	private List<String> carNameStrings;

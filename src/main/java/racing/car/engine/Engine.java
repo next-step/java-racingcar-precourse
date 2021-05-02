@@ -1,6 +1,8 @@
-package racing;
+package racing.car.engine;
 
 import java.util.Random;
+
+import racing.car.CarStatus;
 
 public class Engine {
 	private static final int POWER_LIMIT = 10;

@@ -1,6 +1,9 @@
-package racing;
+package racing.car;
 
-class CarRecord {
+import racing.car.position.Position;
+import racing.utils.StringUtils;
+
+public class CarRecord {
 	private static final String MESSAGE_FORMAT = "%s : %s";
 	private static final String TRACE = "-";
 	
@@ -12,22 +15,22 @@ class CarRecord {
 		this.position = position;
 	}
 
-	static CarRecord from(Car car) {
+	public static CarRecord from(Car car) {
 		CarName carName = new CarName(car.getCarName().getName());
 		Position position = new Position(car.getPosition().getVal());
 
 		return new CarRecord(carName, position);
 	}
 
-	CarName getCarName() {
+	public CarName getCarName() {
 		return carName;
 	}
 
-	Position getPosition() {
+	public Position getPosition() {
 		return position;
 	}
 	
-	String toMessage() {
+	public String toMessage() {
 		String carNameVal = carName.getName();
 		int positionVal = position.getVal();
 		String traces = StringUtils.repeat(TRACE, positionVal);

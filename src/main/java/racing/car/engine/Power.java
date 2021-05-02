@@ -1,4 +1,4 @@
-package racing;
+package racing.car.engine;
 
 public class Power {
 	private int val;
