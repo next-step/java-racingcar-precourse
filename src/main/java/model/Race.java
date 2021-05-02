@@ -6,6 +6,10 @@ import java.util.List;
 import static util.RandomUtil.getRandom;
 
 public class Race {
+    private static final int GO_CONDITION = 4;
+    private static final String NEW_LINE = "\n";
+    private static final String JOIN_KEYWORD = ", ";
+
     private List<Car> cars;
     private int maxScore;
 
@@ -22,7 +26,7 @@ public class Race {
 
     public void play() {
         for (Car car : cars) {
-            if (getRandom() > 3) {
+            if (getRandom() >= GO_CONDITION) {
                 car.go();
             }
             setMaxScore(car.getScore());
@@ -37,7 +41,7 @@ public class Race {
                 winners.add(car.getName());
             }
         }
-        return String.join(", ", winners);
+        return String.join(JOIN_KEYWORD, winners);
     }
 
     @Override
@@ -45,7 +49,7 @@ public class Race {
         StringBuilder status = new StringBuilder();
 
         for (Car car : this.cars) {
-            status.append(car.toString()).append("\n");
+            status.append(car.toString()).append(NEW_LINE);
         }
 
         return status.toString();
