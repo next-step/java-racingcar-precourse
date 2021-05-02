@@ -1,3 +1,5 @@
+package racingcargame.domain;
+
 import java.util.Objects;
 
 public class Mileage {

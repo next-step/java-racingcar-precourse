@@ -1,3 +1,7 @@
+package racingcargame.domain;
+
+import racingcargame.utility.Utility;
+
 public class Car {
     public static final int MOVE_THRESHOLD = 4;
     public static final int MILEAGE_INITIAL_VALUE = 0;
