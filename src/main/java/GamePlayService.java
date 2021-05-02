@@ -2,6 +2,12 @@ import java.util.Scanner;
 
 public class GamePlayService {
 
+	// 게임 시작
+	public void startGame() {
+		String[] carNameArr = new Cars(null).getCarNames();
+		int playCount = getPlayCount();
+	}
+
 	// 1 이상인지 검증
 	boolean isAboveMinimum(int playCount) {
 		if (1 > playCount) {
