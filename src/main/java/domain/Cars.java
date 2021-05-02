@@ -1,5 +1,9 @@
 package domain;
 
+import dto.CarDto;
+
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Cars {
@@ -15,4 +19,11 @@ public class Cars {
         }
     }
 
+    public List<CarDto> getCarDtos() {
+        List<CarDto> carDtos = new ArrayList<>();
+        for (Car car : cars) {
+            carDtos.add(car.toDto());
+        }
+        return carDtos;
+    }
 }

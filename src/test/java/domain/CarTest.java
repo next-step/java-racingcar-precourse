@@ -2,11 +2,15 @@ package domain;
 
 import constant.CarRule;
 import constant.ExceptionMessage;
+import dto.CarDto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 public class CarTest {
 
@@ -17,7 +21,8 @@ public class CarTest {
         //when
         car.move();
         //then
-        assertThat(car.getLocation()).isEqualTo(CarRule.MOVING_DISTANCE_PER_MOVE);
+        CarDto carDto = car.toDto();
+        assertThat(new Distance(carDto.getLocation())).isEqualTo(CarRule.MOVING_DISTANCE_PER_MOVE);
     }
 
     @Test
@@ -35,6 +40,19 @@ public class CarTest {
             carName += "a";
         }
         return carName;
+    }
+
+    @Test
+    @DisplayName("자동차가 , 로 구분지어 생성되는지 테스트")
+    public void generateCars_ShouldBeSeparate_AtSeperator() {
+        String carNames = "차1,차2,차3";
+        Cars cars = CarsGenerator.generate(carNames);
+        List<CarDto> carDtos = cars.getCarDtos();
+        assertAll(
+                () -> assertThat(carDtos.get(0).getName()).isEqualTo("차1"),
+                () -> assertThat(carDtos.get(1).getName()).isEqualTo("차2"),
+                () -> assertThat(carDtos.get(2).getName()).isEqualTo("차3"));
+
     }
 
 }

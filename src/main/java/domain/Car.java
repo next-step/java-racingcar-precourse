@@ -2,6 +2,7 @@ package domain;
 
 import constant.CarRule;
 import constant.ExceptionMessage;
+import dto.CarDto;
 
 public class Car {
     private String name;
@@ -22,7 +23,9 @@ public class Car {
         location.add(CarRule.MOVING_DISTANCE_PER_MOVE);
     }
 
-    public Distance getLocation() {
-        return location;
+    public CarDto toDto() {
+        return new CarDto(this.name, this.location.getValue());
     }
+
+
 }
