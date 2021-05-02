@@ -6,6 +6,13 @@ public enum MoveStatus {
     public static final int MIN_NUMBER_TO_MOVE = 4;
 
     public static MoveStatus getStatus(RandomNumber randomNumber) {
-        return randomNumber.getNumber() >= MIN_NUMBER_TO_MOVE ? MOVE : STOP;
+        if (randomNumber.getNumber() >= MIN_NUMBER_TO_MOVE) {
+            return MOVE;
+        }
+        return STOP;
+    }
+
+    public boolean isMove() {
+        return this == MOVE;
     }
 }

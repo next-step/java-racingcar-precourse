@@ -27,4 +27,25 @@ public class CarTest {
         assertThat(catchThrowable(() -> new Car(name))).isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    @DisplayName("랜덤 코드에 따른 자동차 전진, 멈춤 테스트")
+    void move() {
+        Car car = new Car("메르세데스");
+
+        car.move(MoveStatus.getStatus(new RandomNumber(0)));
+        assertThat(car.getPosition()).isEqualTo(0);
+
+        car.move(MoveStatus.getStatus(new RandomNumber(3)));
+        assertThat(car.getPosition()).isEqualTo(0);
+
+        car.move(MoveStatus.getStatus(new RandomNumber(4)));
+        assertThat(car.getPosition()).isEqualTo(1);
+
+        car.move(MoveStatus.getStatus(new RandomNumber(5)));
+        assertThat(car.getPosition()).isEqualTo(2);
+
+        car.move(MoveStatus.getStatus(new RandomNumber(2)));
+        assertThat(car.getPosition()).isEqualTo(2);
+    }
+
 }
