@@ -32,4 +32,25 @@ class RacingCarTest {
 
         assertThat(numberOfAdvances).isNotNull();
     }
+
+    @Test
+    @DisplayName("forward 메서드를 실행한 횟수만큼 전진횟수가 증가했는지 확인하는 테스트")
+    void forwardTest() {
+
+        // given
+        int forwardCount = 5;
+
+        // when
+        forward(forwardCount);
+
+        //then
+        int numberOfAdvances = car.getNumberOfAdvances();
+        assertThat(numberOfAdvances).isEqualTo(forwardCount);
+    }
+
+    private void forward(int forwardCount) {
+        for (int i = 0; i < forwardCount; i++) {
+            car.forward();
+        }
+    }
 }
