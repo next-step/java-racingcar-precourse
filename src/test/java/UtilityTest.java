@@ -1,18 +1,18 @@
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class UtilityTest {
 
 
     @Test
     void generateSingleDigitIntegerTest() {
-        // given
+        // given, when
         Integer randomSingleDigitInteger = Utility.generateRandomSingleDigitInteger();
 
+        // then
         assertThat(randomSingleDigitInteger).isInstanceOf(Integer.class);
         assertThat(randomSingleDigitInteger < 10).isTrue();
-        assertThat(randomSingleDigitInteger > 0).isTrue();
+        assertThat(randomSingleDigitInteger >= 0).isTrue();
     }
 }
