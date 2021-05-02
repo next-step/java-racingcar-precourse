@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Objects;
+
 import exception.InvalidCarNameException;
 
 public class CarName {
@@ -15,5 +17,20 @@ public class CarName {
 
 	public String getName() {
 		return name;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (o == null || getClass() != o.getClass())
+			return false;
+		if (this == o)
+			return true;
+		CarName carName = (CarName)o;
+		return Objects.equals(getName(), carName.getName());
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(getName());
 	}
 }
