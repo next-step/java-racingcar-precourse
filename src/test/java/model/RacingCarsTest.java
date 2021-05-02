@@ -52,7 +52,7 @@ public class RacingCarsTest {
         racingCars.race(numbers);
 
         Winners winners = racingCars.getWinners();
-        String[] split = winners.getWinnerNames().split(",");
+        String[] split = winners.getWinnerNames().split(", ");
 
         assertThat(split).containsExactly("aaa", "bbb");
     }
