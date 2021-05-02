@@ -8,13 +8,13 @@ public class DiceMovingStrategy implements MovingStrategy {
         ifDiceOverMovingPointMoveCarOrNot(car, Dice.roll());
     }
 
-    protected void ifDiceOverMovingPointMoveCarOrNot(Car car, Dice dice) {
+    void ifDiceOverMovingPointMoveCarOrNot(Car car, Dice dice) {
         if (isDiceTicksOverMovingPoint(dice)) {
             car.move();
         }
     }
 
     private boolean isDiceTicksOverMovingPoint(Dice dice) {
-        return dice.getTicks() >= 4;
+        return dice.getTicks() >= MOVING_POINT;
     }
 }

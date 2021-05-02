@@ -1,11 +1,11 @@
 package domain;
 
-import java.util.Set;
+import java.util.List;
 
 public class Cars {
-    private Set<Car> cars;
+    private List<Car> cars;
 
-    public Cars(Set<Car> cars) {
+    public Cars(List<Car> cars) {
         this.cars = cars;
     }
 
@@ -14,4 +14,5 @@ public class Cars {
             movingStrategy.move(car);
         }
     }
+
 }
