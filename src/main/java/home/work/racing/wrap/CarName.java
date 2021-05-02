@@ -1,5 +1,8 @@
 package home.work.racing.wrap;
 
+import lombok.Getter;
+
+@Getter
 public class CarName {
 
 	private static final int MAX_NAME_LENGTH = 5;

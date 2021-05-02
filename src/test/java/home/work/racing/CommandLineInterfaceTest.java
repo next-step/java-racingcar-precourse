@@ -8,9 +8,11 @@ import static org.mockito.Mockito.when;
 import java.util.Arrays;
 import java.util.Scanner;
 
+import org.assertj.core.api.InstanceOfAssertFactories;
 import org.junit.jupiter.api.Test;
 
 import home.work.racing.plural.CarNames;
+import home.work.racing.wrap.GameCount;
 
 public class CommandLineInterfaceTest {
 
@@ -33,4 +35,35 @@ public class CommandLineInterfaceTest {
 				.containsAll(Arrays.asList(splitedInput));
 	}
 	
+	@Test
+	final void testReceiveCarNames2() {
+		String inputValue = ",,,,";
+		Scanner mock = mock(Scanner.class);
+		when(mock.next()).thenReturn(inputValue);
+		CarNames result = new CommandLineInterface(mock).receiveCarNames();
+		assertThat(result).isNotNull().extracting("names").asList().hasSize(0);
+	}
+
+	@Test
+	final void testReceiveCarNamesWrongInput() {
+		String inputValue = "가나다라마바사아,자차카타파하,123";
+		Scanner mock = mock(Scanner.class);
+		when(mock.next()).thenReturn(inputValue);
+		CommandLineInterface testTarget = new CommandLineInterface(mock);
+		assertThatIllegalArgumentException().isThrownBy(() -> {
+			testTarget.receiveCarNames();
+		});
+	}
+
+	@Test
+	final void testReceiveGameCount() {
+		int inputValue = Integer.MIN_VALUE;
+		Scanner mock = mock(Scanner.class);
+		when(mock.nextInt()).thenReturn(inputValue);
+		CommandLineInterface testTarget = new CommandLineInterface(mock);
+		GameCount result = testTarget.receiveGameCount();
+		assertThat(result).isNotNull().extracting("count").asInstanceOf(InstanceOfAssertFactories.INTEGER)
+				.isEqualTo(inputValue);
+	}
+
 }

@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 import home.work.racing.plural.CarNames;
 import home.work.racing.wrap.CarName;
+import home.work.racing.wrap.GameCount;
 
 public class CommandLineInterface {
 
@@ -33,6 +34,11 @@ public class CommandLineInterface {
 			carNames.addCarName(new CarName(name));
 		}
 		return carNames;
+	}
+
+	public GameCount receiveGameCount() {
+		System.out.println("시도할 회수는 몇회인가요?");
+		return new GameCount(scanner.nextInt());
 	}
 
 }
