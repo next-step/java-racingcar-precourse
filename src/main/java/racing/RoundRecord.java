@@ -18,9 +18,9 @@ public class RoundRecord {
 
 		for (CarRecord carRecord : carRecords) {
 			builder.append(carRecord.toMessage());
-			builder.append("\n");
+			builder.append(StringUtils.NEW_LINE);
 		}
-		builder.append("\n");
+		builder.append(StringUtils.NEW_LINE);
 
 		return builder.toString();
 	}
