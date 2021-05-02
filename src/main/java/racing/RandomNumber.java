@@ -3,7 +3,7 @@ package racing;
 import java.util.Random;
 
 public class RandomNumber {
-
+    
     public static final int MINIMUM_NUMBER = 0;
     public static final int MOVABLE_MINIMUM_NUMBER = 4;
     public static final int MAXIMUM_NUMBER = 9;
@@ -13,7 +13,7 @@ public class RandomNumber {
     
     public RandomNumber() {
         this.number = generateRandomNumber();
-        if(!isAvailable(this.number)) {
+        if (!isAvailable(this.number)) {
             throw new IllegalArgumentException(NUMBER_RANGE_EXCEPTION_MESSAGE);
         }
     }

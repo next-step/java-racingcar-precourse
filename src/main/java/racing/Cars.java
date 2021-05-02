@@ -12,30 +12,15 @@ public class Cars {
     }
     
     public PlayResult play() {
-        
         PlayResult result = new PlayResult();
-        
         RandomNumber random;
         
-        
-        // TODO - Erase the log.
-        for(int i = 0; i < cars.size(); i++) {
-            
+        for (int i = 0; i < cars.size(); i++) {
             random = new RandomNumber();
-            System.out.println("car Name : " + cars.get(i).getCarName() + " / random Number : " + random.getRandomNumber());
-            
             cars.get(i).play(random.getRandomNumber());
-
-            System.out.println("[" + i + "] pos : " + cars.get(i).getCurrentPosition());
-        }
-        
-        // TODO - Erase it.
-        for(int i = 0; i < cars.size(); i++) {
-            System.out.println(cars.get(i).getCarName() + " : " + cars.get(i).getCurrentPosition());
         }
         
         return result;
-        
     }
     
     public List<Car> getCars() {
@@ -52,5 +37,5 @@ public class Cars {
         
         return cars;
     }
-
+    
 }
