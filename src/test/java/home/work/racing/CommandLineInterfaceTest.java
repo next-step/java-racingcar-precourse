@@ -1,0 +1,36 @@
+package home.work.racing;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+import org.junit.jupiter.api.Test;
+
+import home.work.racing.plural.CarNames;
+
+public class CommandLineInterfaceTest {
+
+	@Test
+	final void testCommandLineInterface() {
+		assertThatIllegalArgumentException().isThrownBy(() -> {
+			new CommandLineInterface(null);
+		}).withMessageContaining("입력기");
+	}
+
+	@Test
+	final void testReceiveCarNames() {
+		String inputValue = "abcde,가나다라마,12345,d,e,,,,";
+		String[] splitedInput = inputValue.split(",");
+		Scanner mock = mock(Scanner.class);
+		when(mock.next()).thenReturn(inputValue);
+		CommandLineInterface testTarget = new CommandLineInterface(mock);
+		CarNames result = testTarget.receiveCarNames();
+		assertThat(result).isNotNull().extracting("names").asList().hasSameSizeAs(splitedInput).extracting("name")
+				.containsAll(Arrays.asList(splitedInput));
+	}
+	
+}

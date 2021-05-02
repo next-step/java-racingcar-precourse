@@ -5,3 +5,10 @@
 
 ## 과제 제출 과정
 * [과제 제출 방법](https://github.com/next-step/nextstep-docs/tree/master/precourse)
+
+## 기능목록
+* 사용자 입력으로 자동차 목록 만들기
+* 사용자 입력으로 게임 회수 만들기
+* 자동차 목록과 게임 회수로 레이싱 게임 만들기
+* 자동차 마다 random값으로 판단하여 전진하기
+* 우승자 판단하여 출력하기
