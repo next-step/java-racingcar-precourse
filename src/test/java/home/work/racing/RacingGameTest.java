@@ -5,15 +5,20 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.mockStatic;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
 import org.assertj.core.api.InstanceOfAssertFactories;
+import org.assertj.core.util.Arrays;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
 
 import home.work.racing.plural.PlayerCars;
 import home.work.racing.wrap.CarMove;
@@ -86,9 +91,34 @@ public class RacingGameTest {
 		RacingGame spy = this.makeSpyRacingGame(input, count);
 		doNothing().when(spy).init();
 		doNothing().when(spy).start();
+		doNothing().when(spy).showResult();
 		spy.play();
 		verify(spy, times(1)).init();
 		verify(spy, times(1)).start();
+		verify(spy, times(1)).showResult();
+	}
+
+	@Test
+	final void testShowResult() {
+		String input = "a,b,c";
+		int count = 5;
+		Scanner scannerMock = mock(Scanner.class);
+		when(scannerMock.next()).thenReturn(input);
+		when(scannerMock.nextInt()).thenReturn(count);
+		CommandLineInterface cliSpy = spy(new CommandLineInterface(scannerMock));
+		RacingGame game = new RacingGame(cliSpy);
+		game.init();
+		mockStatic(RandomUtils.class).when(RandomUtils::random).thenReturn(new RandomResult(4));
+		for (int i = 0; i < count; i++) {
+			game.roll();
+		}
+		game.showResult();
+		ArgumentCaptor<RaceWinners> captor = ArgumentCaptor.forClass(RaceWinners.class);
+		verify(cliSpy).printWinners(captor.capture());
+		assertThat(Optional.ofNullable(captor).map(ArgumentCaptor::getValue).map(RaceWinners::getCars)
+				.map(PlayerCars::getCars).map(List::size).orElse(-1)).isEqualTo(Arrays.asList(input.split(",")).size());
+		assertThat(Optional.ofNullable(captor).map(ArgumentCaptor::getValue).map(RaceWinners::getWinnerMove)
+				.map(CarMove::getMove).orElse(-1)).isEqualTo(count);
 	}
 
 	private final RacingGame makeRacingGame(String names, int count) {

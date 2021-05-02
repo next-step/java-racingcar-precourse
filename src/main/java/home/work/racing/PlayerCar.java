@@ -11,7 +11,7 @@ public class PlayerCar {
 	private final CarMove move = new CarMove();
 	
 	public PlayerCar(CarName name) {
-		if (name == null) throw new IllegalArgumentException("�ڵ��� �̸��� ����");
+		if (name == null) throw new IllegalArgumentException("자동차 이름이 없음");
 		this.name = name;
 	}
 

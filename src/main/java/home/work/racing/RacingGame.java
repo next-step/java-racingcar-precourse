@@ -1,5 +1,7 @@
 package home.work.racing;
 
+import java.util.Collections;
+
 import home.work.racing.plural.CarNames;
 import home.work.racing.plural.PlayerCars;
 import home.work.racing.wrap.CarName;
@@ -22,6 +24,8 @@ public class RacingGame {
 
 	public void play() {
 		this.init();
+		this.start();
+		this.showResult();
 	}
 
 	void init() {
@@ -55,6 +59,18 @@ public class RacingGame {
 		if (randomResult.getNum() >= MOVEABLE_MIN_NUM) {
 			car.moving();
 		}
+	}
+
+	void showResult() {
+		PlayerCar max = Collections.max(this.cars.getCars(), (a, b) -> {
+			return a.getMove().getMove() - b.getMove().getMove();
+		});
+
+		RaceWinners winners = new RaceWinners(max.getMove());
+		for (PlayerCar car : this.cars.getCars()) {
+			winners.addCar(car);
+		}
+		this.cli.printWinners(winners);
 	}
 
 	private PlayerCars makePlayerCars(CarNames carNames) {

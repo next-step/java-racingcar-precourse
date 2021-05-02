@@ -1,6 +1,7 @@
 package home.work.racing;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -12,6 +13,8 @@ import org.assertj.core.api.InstanceOfAssertFactories;
 import org.junit.jupiter.api.Test;
 
 import home.work.racing.plural.CarNames;
+import home.work.racing.wrap.CarMove;
+import home.work.racing.wrap.CarName;
 import home.work.racing.wrap.GameCount;
 
 public class CommandLineInterfaceTest {
@@ -64,6 +67,48 @@ public class CommandLineInterfaceTest {
 		GameCount result = testTarget.receiveGameCount();
 		assertThat(result).isNotNull().extracting("count").asInstanceOf(InstanceOfAssertFactories.INTEGER)
 				.isEqualTo(inputValue);
+	}
+
+	@Test
+	final void testPrintCarMovingWithNull() {
+		Scanner mock = mock(Scanner.class);
+		CommandLineInterface testTarget = new CommandLineInterface(mock);
+		assertThatIllegalArgumentException()
+			.isThrownBy(() -> {
+				testTarget.printCarMoving(null);
+			});
+	}
+	
+	@Test
+	final void testPrintWinners() {
+		Scanner mock = mock(Scanner.class);
+		CommandLineInterface testTarget = new CommandLineInterface(mock);
+		CarMove winnerMove = this.getCarMove(5);
+		RaceWinners raceWinners = new RaceWinners(winnerMove);
+		raceWinners.addCar(new PlayerCar(new CarName("a")));
+		RaceWinners winners = raceWinners;
+		assertThatExceptionOfType(RuntimeException.class)
+			.isThrownBy(() -> {
+				testTarget.printWinners(winners);
+			});
+	}
+
+	@Test
+	final void testPrintWinnersWithNull() {
+		Scanner mock = mock(Scanner.class);
+		CommandLineInterface testTarget = new CommandLineInterface(mock);
+		assertThatExceptionOfType(RuntimeException.class)
+			.isThrownBy(() -> {
+				testTarget.printWinners(null);
+			});
+	}
+	
+	private final CarMove getCarMove(int count) {
+		CarMove move = new CarMove();
+		for (int i = 0; i < count; i++) {
+			move.moving();
+		}
+		return move;
 	}
 
 }

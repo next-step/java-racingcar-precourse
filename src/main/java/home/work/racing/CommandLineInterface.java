@@ -1,10 +1,13 @@
 package home.work.racing;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
 import home.work.racing.plural.CarNames;
+import home.work.racing.plural.PlayerCars;
 import home.work.racing.wrap.CarName;
 import home.work.racing.wrap.GameCount;
 
@@ -54,6 +57,18 @@ public class CommandLineInterface {
 			System.out.print("-");
 		}
 		System.out.println();
+	}
+
+	public void printWinners(RaceWinners winners) {
+		Optional.ofNullable(winners).map(RaceWinners::getCars).map(PlayerCars::getCars).filter(list -> list.size() > 0)
+				.orElseThrow(() -> new RuntimeException("우승자가 없습니다."));
+		List<String> winnerNames = new ArrayList<>();
+		for (PlayerCar car : Optional.ofNullable(winners).map(RaceWinners::getCars).map(PlayerCars::getCars)
+				.orElseThrow(() -> new RuntimeException("우승자 자동차가 없음"))) {
+			winnerNames.add(Optional.ofNullable(car).map(PlayerCar::getName).map(CarName::getName)
+					.orElseThrow(() -> new RuntimeException("우승자 이름이 없음")));
+		}
+		System.out.println(String.join(", ", winnerNames) + "가 최종 우승했습니다.");
 	}
 
 }

@@ -12,7 +12,7 @@ public class PlayerCars {
 	
 	public void addCar(PlayerCar car) {
 		if (car == null) {
-			throw new IllegalArgumentException("���� ����");
+			throw new IllegalArgumentException("차가 없음");
 		}
 		this.cars.add(car);
 	}
