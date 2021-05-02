@@ -45,4 +45,15 @@ public class CommandLineInterface {
 		System.out.println();
 	}
 
+	public void printCarMoving(PlayerCar car) {
+		if (car == null) {
+			throw new IllegalArgumentException("차가 없음");
+		}
+		System.out.print(car.getName().getName() + " : ");
+		for (int i = 0; i < car.getMove().getMove(); i++) {
+			System.out.print("-");
+		}
+		System.out.println();
+	}
+
 }

@@ -4,9 +4,11 @@ import home.work.racing.plural.CarNames;
 import home.work.racing.plural.PlayerCars;
 import home.work.racing.wrap.CarName;
 import home.work.racing.wrap.GameCount;
+import home.work.racing.wrap.RandomResult;
 
 public class RacingGame {
 
+	private static final int MOVEABLE_MIN_NUM = 4;
 	private GameCount gameCount;
 	private PlayerCars cars;
 	private CommandLineInterface cli;
@@ -33,6 +35,26 @@ public class RacingGame {
 			throw new RuntimeException("시도 회수 설정 실패");
 		}
 		this.cli.printLineSeperate();
+	}
+
+	void start() {
+		for (int i = 0; i < this.gameCount.getCount(); i++) {
+			this.roll();
+		}
+	}
+
+	void roll() {
+		for (PlayerCar car : this.cars.getCars()) {
+			this.check(RandomUtils.random(), car);
+			this.cli.printCarMoving(car);
+		}
+		cli.printLineSeperate();
+	}
+
+	void check(RandomResult randomResult, PlayerCar car) {
+		if (randomResult.getNum() >= MOVEABLE_MIN_NUM) {
+			car.moving();
+		}
 	}
 
 	private PlayerCars makePlayerCars(CarNames carNames) {
