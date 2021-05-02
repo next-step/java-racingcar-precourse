@@ -8,8 +8,8 @@ public class Car {
         this.name = new CarName(name);
     }
 
-    public void move(DistanceToMove distanceToMove) {
-        if (distanceToMove.canMoving()) {
+    public void move(MoveJudgmentNumber moveJudgmentNumber) {
+        if (moveJudgmentNumber.canMoving()) {
             this.position++;
         }
     }
