@@ -1,45 +1,49 @@
 import static org.assertj.core.api.Assertions.*;
 
-import java.util.Arrays;
-
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class CarTest {
 
+	// 자동차 이름 검증
 	boolean isValidCarName(String carName) {
 		return 5 >= carName.length() && 1 <= carName.length();
 	}
 
-	@ParameterizedTest
-	@DisplayName("자동차 대수 검증")
-	// @ValueSource(strings = {"1", "1,", ",1", ",", ""}) // 실패
-	@ValueSource(strings = {"1,2", "1,2,3,4,5"}) // 성공
-	void isValidCarCount(String carNameArr) {
-		assertThat(2 <= carNameArr.split(",").length)
-			.withFailMessage("자동차 대수 검증실패= [" + carNameArr + "]")
-			// .isFalse(); // 실패
-			.isTrue(); // 성공
+	// 자동차 대수 검증
+	boolean isValidCarCount(String[] carNameArr) {
+		return 2 <= carNameArr.length;
 	}
 
-	@ParameterizedTest
-	@DisplayName("자동차 이름 목록 검증")
-	// @ValueSource(strings = {"1,123456"}) // 실패
-	@ValueSource(strings = {"1", "1,12345"}) // 성공
-	void isValidCarNames(String carNames) {
-		String[] carNameArr = carNames.split(",");
+	// 자동차 이름 목록 검증
+	boolean isValidCarNames(String[] carNameArr) {
 		int loopCount = 0;
-		boolean validCarNameResult = false;
-		while (loopCount < carNameArr.length && !validCarNameResult) {
+		boolean validCarNameResult = true;
+		while (loopCount < carNameArr.length && validCarNameResult) {
 			validCarNameResult = isValidCarName(carNameArr[loopCount]);
 			loopCount++;
 		}
-		validCarNameResult = loopCount == carNameArr.length && validCarNameResult;
-		assertThat(validCarNameResult)
-			.withFailMessage("자동차 이름 목록 검증실패=" + Arrays.toString(carNameArr))
-			// .isFalse(); // 실패
-			.isTrue(); // 성공
+		return loopCount == carNameArr.length && validCarNameResult;
+	}
+
+	@ParameterizedTest
+	@DisplayName("사용자 입력 자동차 이름들 검증")
+	@ValueSource(strings = {"1,2", "1,2,3,4"}) // 성공
+	void isValidCar(String carNames) {
+		boolean testResult = false;
+		String[] carNameArr = carNames.split(",");
+
+		if (!isValidCarCount(carNameArr)) {
+			assertThat(testResult).withFailMessage("자동차 대수 검증실패= " + carNames)
+				// .isTrue();
+				.isFalse();
+		}
+
+		testResult = isValidCarNames(carNameArr); // 자동차 이름 목록 검증
+		assertThat(testResult).withFailMessage("사용자 입력 자동차 이름들 검증실패= " + carNames)
+			.isTrue();
+			// .isFalse();
 	}
 
 }
