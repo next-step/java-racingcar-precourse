@@ -2,7 +2,7 @@ package domain;
 
 import java.util.Objects;
 
-public class Distance {
+public class Distance implements Comparable<Distance> {
     private int value;
 
     public static Distance zeroDistance() {
@@ -32,5 +32,10 @@ public class Distance {
     @Override
     public int hashCode() {
         return Objects.hash(value);
+    }
+
+    @Override
+    public int compareTo(Distance anotherDistance) {
+        return Integer.compare(this.value, anotherDistance.value);
     }
 }

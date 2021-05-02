@@ -8,6 +8,11 @@ public class Car {
     private String name;
     private Distance location = Distance.zeroDistance();
 
+    Car(String name, Distance location) {
+        this.name = name;
+        this.location = location;
+    }
+
     public Car(String name) {
         validateNameLength(name);
         this.name = name;
@@ -24,8 +29,6 @@ public class Car {
     }
 
     public CarDto toDto() {
-        return new CarDto(this.name, this.location.getValue());
+        return new CarDto(this.name, this.location);
     }
-
-
 }

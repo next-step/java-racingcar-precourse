@@ -1,10 +1,12 @@
 package dto;
 
-public class CarDto {
-    private String name;
-    private int location;
+import domain.Distance;
 
-    public CarDto(String name, int location) {
+public class CarDto implements Comparable<CarDto> {
+    private String name;
+    private Distance location;
+
+    public CarDto(String name, Distance location) {
         this.name = name;
         this.location = location;
     }
@@ -13,7 +15,12 @@ public class CarDto {
         return name;
     }
 
-    public int getLocation() {
+    public Distance getLocation() {
         return location;
+    }
+
+    @Override
+    public int compareTo(CarDto anotherCarDto) {
+        return this.location.compareTo(anotherCarDto.getLocation());
     }
 }

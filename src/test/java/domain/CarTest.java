@@ -22,13 +22,15 @@ public class CarTest {
         car.move();
         //then
         CarDto carDto = car.toDto();
-        assertThat(new Distance(carDto.getLocation())).isEqualTo(CarRule.MOVING_DISTANCE_PER_MOVE);
+        assertThat(carDto.getLocation()).isEqualTo(CarRule.MOVING_DISTANCE_PER_MOVE);
     }
 
     @Test
     @DisplayName("자동차의 이름이 제한 글자 수를 초과할 경우 예외를 발생시키는지 테스트")
     public void ifCarNameOverNameLengthLimit_ShouldThrowIllegalArgumentException() {
+        //given
         String carName = createCarNameOverLimit();
+        //when, then
         assertThatThrownBy(() -> new Car(carName))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ExceptionMessage.CAR_NAME_LENGTH_LIMIT_EXCEPTION);
@@ -45,8 +47,11 @@ public class CarTest {
     @Test
     @DisplayName("자동차가 , 로 구분지어 생성되는지 테스트")
     public void generateCars_ShouldBeSeparate_AtSeperator() {
+        //given
         String carNames = "차1,차2,차3";
+        //when
         Cars cars = CarsGenerator.generate(carNames);
+        //then
         List<CarDto> carDtos = cars.getCarDtos();
         assertAll(
                 () -> assertThat(carDtos.get(0).getName()).isEqualTo("차1"),
