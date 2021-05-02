@@ -20,14 +20,14 @@ public class racingTest {
 
     @BeforeEach
     void setUp() {
-
+        racing = new Racing("test1");
     }
 
     @DisplayName("자동차 이름 길이 체크.")
     @Test
     void checkCarNameLengthTest() {
         Car carOverLength = new Car("asdfd");
-        assertThat(carOverLength.getCarName().getName().length()).isGreaterThan(4);
+        assertThat(carOverLength.getCarName().getName().length()).isGreaterThan(5);
     }
 
     @DisplayName("자동차 이름 목록을 특수문자로 각각 나누기 체크.")
@@ -44,14 +44,17 @@ public class racingTest {
         assertThat(carOverLength.getCarDistance().getDistance()).isEqualTo(0);
     }
 
-    @DisplayName("랜덤수를 기준값 기준으로 비교한뒤 boolean으로 리턴이 정상적으로 되는지 체크.")
+    @DisplayName("0~9 랜덤 한자리수 생성 체크.")
     @Test
-    void checkRandomValue() {
-        Car testCar = new Car("test1");
-        List<Car> testCarList = new ArrayList<>();
-        testCarList.add(testCar);
-        Cars testCars = new Cars(testCarList);
+    void checkRandomValueTest() {
+        cars = new Cars("Test1");
+        assertThat(cars.getRandomValue()).isLessThanOrEqualTo(9).isGreaterThanOrEqualTo(0);
+    }
 
-        assertThat(testCars.isGreaterThanCheckValue()).isFalse();
+    @Test
+    void checkMoveCarTest() {
+        Car testCar = new Car("test1");
+        testCar.moveCar();
+        assertThat(testCar.getCarDistance().getDistance()).isEqualTo(1);
     }
 }

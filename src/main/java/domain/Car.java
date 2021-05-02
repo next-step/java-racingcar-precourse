@@ -22,4 +22,8 @@ public class Car {
     public Distance getCarDistance() {
         return carDistance;
     }
+
+    public void moveCar(){
+        carDistance.move();
+    }
 }
