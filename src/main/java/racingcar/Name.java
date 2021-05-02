@@ -9,6 +9,10 @@ public class Name {
         this.name = name;
     }
 
+    public String getName() {
+        return name;
+    }
+
     private void validLength(String name) {
         if (name.length() > 5)
             throw new IllegalArgumentException("자동차의 이름은 5자 이하여야 합니다.");

@@ -5,11 +5,11 @@ import racingcar.Name;
 import java.util.*;
 
 public class GameInput {
-    private static final Scanner scanner = new Scanner(System.in);
+    private static final Scanner SCANNER = new Scanner(System.in);
     private static final String NAME_SPLIT_REGEX = ",";
 
     public static Set<Name> enterCarNames() {
-        String[] carNames = scanner.next().split(NAME_SPLIT_REGEX);
+        String[] carNames = SCANNER.next().split(NAME_SPLIT_REGEX);
         try {
             validCountCars(carNames);
             return convertNames(carNames);
@@ -21,7 +21,7 @@ public class GameInput {
 
     public static int enterAttemptCount() {
         try {
-            int attemptCount = scanner.nextInt();
+            int attemptCount = SCANNER.nextInt();
             validAttemptCount(attemptCount);
             return attemptCount;
         } catch (InputMismatchException | IllegalArgumentException e) {
@@ -38,11 +38,11 @@ public class GameInput {
 
     private static void emptyScanner(Exception e) {
         if (e instanceof InputMismatchException)
-            scanner.next();
+            SCANNER.next();
     }
 
     private static Set<Name> convertNames(String[] carNames) {
-        Set<Name> names = new HashSet<>();
+        Set<Name> names = new LinkedHashSet<>();
         for (String carName : carNames)
             names.add(new Name(carName));
         return names;

@@ -21,6 +21,10 @@ public class TravelDistance {
         this.distance++;
     }
 
+    public int getDistance() {
+        return distance;
+    }
+
     private static void validDistance(int distance) {
         if (distance < 0)
             throw new IllegalArgumentException("이동 거리가 음수일 수 없습니다.");

@@ -17,6 +17,14 @@ public class RacingCar {
             distance.increase();
     }
 
+    public String getName() {
+        return this.name.getName();
+    }
+
+    public int getDistance() {
+        return this.distance.getDistance();
+    }
+
     public TravelDistance getTravelDistance() {
         return distance;
     }
