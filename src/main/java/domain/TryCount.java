@@ -1,6 +1,8 @@
 package domain;
 
 public class TryCount {
+    private static final int POSITIVE_NUMBER_CONDITION = 1;
+
     private int count;
 
     public TryCount(String tryCount) {
@@ -10,7 +12,7 @@ public class TryCount {
     public TryCount(int count) {
         this.count = count;
 
-        if(count < 1) {
+        if(count < POSITIVE_NUMBER_CONDITION) {
             throw new IllegalArgumentException("움직이는 조건은 양수여야 합니다.");
         }
     }

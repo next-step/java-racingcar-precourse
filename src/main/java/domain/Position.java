@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class Position {
     private static final int MINIMUM_POSITION = 0;
+    private static final int POSITION_INCREASE_COUNT = 1;
 
     private CarName carName;
     private int position;
@@ -30,7 +31,7 @@ public class Position {
     }
 
     public Position increase() {
-        return new Position(carName, position + 1);
+        return new Position(carName, position + POSITION_INCREASE_COUNT);
     }
 
     public CarName getCarName() {
