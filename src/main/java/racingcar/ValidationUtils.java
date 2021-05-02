@@ -6,4 +6,8 @@ public class ValidationUtils {
 
         return (name.length() <= 5);
     }
+
+    public static boolean isPlayable(Cars cars) {
+        return (cars.getNumOfCars() >= 2);
+    }
 }
