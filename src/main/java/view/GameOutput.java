@@ -24,4 +24,18 @@ public class GameOutput {
         System.out.println(ATTEMPT_COUNT_ENTER_POSITIVE);
     }
 
+    public static void printGameResultComment() {
+        System.out.println(GAME_RESULT_COMMENT);
+    }
+
+    public static void printTravelDistanceForCar(String name, int distance) {
+        System.out.print(name + " : ");
+        for (int i = 0; i < distance; i++)
+            System.out.print("-");
+        System.out.println();
+    }
+
+    public static void crlf() {
+        System.out.println();
+    }
 }
