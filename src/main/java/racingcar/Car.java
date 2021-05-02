@@ -1,20 +1,16 @@
 package racingcar;
 
 public class Car {
-	private String name;
-	private int distance;
+	private CarName carName;
+	private CarDistance carDistance;
 
-	public Car(String name) {
-		if (5 < name.length()) {
-			throw new IllegalArgumentException("자동차의 이름은 5자 이하만 가능합니다.");
-		}
-
-		this.name = name;
-		distance = 0;
+	public Car(String carName) {
+		this.carName = new CarName(carName);
+		this.carDistance = new CarDistance();
 	}
 
-	public String getName() {
-		return name;
+	public String getCarName() {
+		return carName.getName();
 	}
 
 	public int forward(int condition) {
@@ -26,8 +22,8 @@ public class Car {
 	}
 
 	public void printNameAndDistance(){
-		System.out.print(name + ": ");
-		for (int i = 0; i < distance; i++) {
+		System.out.print(getCarName() + ": ");
+		for (int i = 0; i < carDistance.getDistance(); i++) {
 			System.out.print("-");
 		}
 		System.out.println();

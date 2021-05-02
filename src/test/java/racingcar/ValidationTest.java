@@ -14,8 +14,8 @@ public class ValidationTest {
 		Car carWithDiveLetterName = new Car("aaaaa");
 
 		//when
-		String fourLetterName = carWithFourLetterName.getName();
-		String fiveLetterName = carWithDiveLetterName.getName();
+		String fourLetterName = carWithFourLetterName.getCarName();
+		String fiveLetterName = carWithDiveLetterName.getCarName();
 
 		//then
 		assertThat(fourLetterName).hasSizeLessThanOrEqualTo(5);
