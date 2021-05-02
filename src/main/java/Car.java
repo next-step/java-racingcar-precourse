@@ -20,4 +20,15 @@ public class Car {
 		return 2 <= carNameArr.length;
 	}
 
+	// 자동차 이름 목록 검증
+	boolean isValidCarNames(String[] carNameArr) {
+		int loopCount = 0;
+		boolean validCarNameResult = true;
+		while (loopCount < carNameArr.length && validCarNameResult) {
+			validCarNameResult = isValidCarName(carNameArr[loopCount]);
+			loopCount++;
+		}
+		return loopCount == carNameArr.length && validCarNameResult;
+	}
+
 }
