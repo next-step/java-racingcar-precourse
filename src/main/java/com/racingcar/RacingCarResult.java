@@ -9,9 +9,9 @@ public class RacingCarResult {
 
 	public static RacingCarResult of(RacingCar racingCar) {
 		return new RacingCarResult(
-			racingCar.getName().getValue()
+			racingCar.getName()
 				+ " : "
-				+ racingCar.getLocation().visualize()
+				+ racingCar.visualizeLocation()
 		);
 	}
 

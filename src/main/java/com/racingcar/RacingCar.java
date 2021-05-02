@@ -24,7 +24,7 @@ public class RacingCar {
 			return;
 		}
 
-		this.location.increase();
+		increaseLocation();
 	}
 
 	public void start() {
@@ -41,6 +41,14 @@ public class RacingCar {
 
 	public Location getLocation() {
 		return location;
+	}
+
+	public String visualizeLocation() {
+		return getLocation().visualize();
+	}
+
+	public void increaseLocation() {
+		getLocation().increase();
 	}
 
 	public void print() {
