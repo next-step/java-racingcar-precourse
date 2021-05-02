@@ -20,6 +20,43 @@ class RacingGameTest {
     }
 
     @ParameterizedTest
+    @MethodSource("getWinnersParameters")
+    public void getWinners(List<RacingCar> cars, String expected){
+        assertEquals(racingGame.getWinners(cars).toString(),expected);
+    }
+    public static Stream<Arguments> getWinnersParameters(){
+        List<RacingCar> winners1 = new ArrayList<>();
+        RacingCar car1 = new RacingCar("TEST1");
+        car1.setCount(1);
+        winners1.add(car1);
+
+        List<RacingCar> winners2 = new ArrayList<>();
+        RacingCar car2 = new RacingCar("TEST2");
+        car2.setCount(3);
+        RacingCar car3 = new RacingCar("TEST3");
+        car3.setCount(2);
+        winners2.add(car2);
+        winners2.add(car3);
+
+        List<RacingCar> winners3 = new ArrayList<>();
+        RacingCar car4 = new RacingCar("TEST4");
+        car4.setCount(3);
+        RacingCar car5 = new RacingCar("TEST5");
+        car5.setCount(4);
+        RacingCar car6 = new RacingCar("TEST6");
+        car6.setCount(4);
+        winners3.add(car4);
+        winners3.add(car5);
+        winners3.add(car6);
+        RacingCar car;
+        return Stream.of(
+                Arguments.of(winners1,"[이름: TEST1, 전진횟수: 1]"),
+                Arguments.of(winners2,"[이름: TEST2, 전진횟수: 3]"),
+                Arguments.of(winners3,"[이름: TEST5, 전진횟수: 4, 이름: TEST6, 전진횟수: 4]")
+        );
+    }
+
+    @ParameterizedTest
     @MethodSource("printResultParameters")
     public void printResult(List<RacingCar> winners, String expected){
         assertEquals(racingGame.printResult(winners),expected);
