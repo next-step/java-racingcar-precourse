@@ -1,5 +1,7 @@
 package domain;
 
+import domain.history.CarHistories;
+import domain.name.CarNames;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

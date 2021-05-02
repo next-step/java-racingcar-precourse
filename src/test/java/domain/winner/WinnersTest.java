@@ -1,5 +1,11 @@
-package domain;
+package domain.winner;
 
+import domain.Position;
+import domain.history.CarHistories;
+import domain.history.CarHistory;
+import domain.name.CarName;
+import domain.winner.Winner;
+import domain.winner.Winners;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

@@ -1,6 +1,6 @@
 package view;
 
-import domain.CarNames;
+import domain.name.CarNames;
 import domain.TryCount;
 
 import java.io.InputStream;

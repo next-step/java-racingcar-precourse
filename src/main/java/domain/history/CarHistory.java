@@ -1,4 +1,7 @@
-package domain;
+package domain.history;
+
+import domain.Position;
+import domain.name.CarName;
 
 import java.util.Objects;
 

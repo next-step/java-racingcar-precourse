@@ -1,4 +1,4 @@
-import domain.CarNames;
+import domain.name.CarNames;
 import domain.Game;
 import view.InputView;
 import view.PrintView;

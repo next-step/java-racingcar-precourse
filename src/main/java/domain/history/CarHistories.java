@@ -1,4 +1,6 @@
-package domain;
+package domain.history;
+
+import domain.Position;
 
 import java.util.ArrayList;
 import java.util.Collections;

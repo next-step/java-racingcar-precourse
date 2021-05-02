@@ -1,6 +1,6 @@
 package view.print;
 
-import domain.CarHistory;
+import domain.history.CarHistory;
 
 import java.io.StringWriter;
 

@@ -1,4 +1,8 @@
-package domain;
+package domain.winner;
+
+import domain.history.CarHistories;
+import domain.history.CarHistory;
+import domain.Position;
 
 import java.util.ArrayList;
 import java.util.List;

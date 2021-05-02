@@ -1,7 +1,10 @@
 package domain;
 
+import domain.history.CarHistories;
+import domain.name.CarNames;
 import domain.strategy.MoveStrategy;
 import domain.strategy.RandomMoveStrategy;
+import domain.winner.Winners;
 
 import java.util.ArrayList;
 import java.util.List;

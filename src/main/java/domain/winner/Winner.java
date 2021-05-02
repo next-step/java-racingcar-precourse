@@ -1,4 +1,6 @@
-package domain;
+package domain.winner;
+
+import domain.name.CarName;
 
 import java.util.Objects;
 

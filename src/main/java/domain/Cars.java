@@ -1,5 +1,9 @@
 package domain;
 
+import domain.history.CarHistories;
+import domain.history.CarHistory;
+import domain.name.CarName;
+import domain.name.CarNames;
 import domain.strategy.MoveStrategy;
 
 import java.util.ArrayList;
