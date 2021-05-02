@@ -19,4 +19,17 @@ class CarTest {
                     .isThrownBy(() -> new Car("123456"))
                     .withMessageMatching("자동차 이름은 \\d+자 이하만 가능하다."));
   }
+
+  @Test
+  @DisplayName("자동차가 이동할 경우 position 값 증가된다.")
+  void move() {
+    // given
+    String name = "gmoon";
+
+    // when
+    Car moveCar = new Car(name).move(() -> true);
+
+    // then
+    assertThat(moveCar).isEqualTo(new Car(new Name(name), new Position(1)));
+  }
 }
