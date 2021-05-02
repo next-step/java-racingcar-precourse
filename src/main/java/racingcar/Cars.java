@@ -11,8 +11,12 @@ public class Cars {
         carHashMap.put(name, new Car(name));
     }
 
-    public Cars(String[] carNames) {
+    public Cars() {
         carHashMap = new HashMap<>();
+    }
+
+    public Cars(String[] carNames) {
+        this();
 
         addCars(carNames);
     }
