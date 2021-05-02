@@ -1,4 +1,4 @@
-public class RacingCar {
+public class RacingCar implements Comparable<RacingCar> {
     private String name;
     private int count = 0;
     public RacingCar(String str){
@@ -17,6 +17,10 @@ public class RacingCar {
         this.count = num;
     }
 
+    @Override
+    public int compareTo(RacingCar car){
+        return this.count <= car.getCount()? 1: -1;
+    }
     /**
      * 0~9 사이의 난수를 추출하여, 4 이상일 경우 전진한다.
      * @return 해당 회차의 난수를 반환
