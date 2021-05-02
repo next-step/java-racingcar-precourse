@@ -7,11 +7,10 @@ public class CarName {
     private final String name;
 
     public CarName(String name) {
-        if (name == null) {
-            throw new NullPointerException(INVALID_NAME_MESSAGE);
+        if (name != null) {
+            name = name.trim();
         }
-        name = name.trim();
-        if ("".equals(name) || name.length() > MAX_NAME_LENGTH) {
+        if (name == null || "".equals(name) || name.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException(INVALID_NAME_MESSAGE);
         }
         this.name = name;
