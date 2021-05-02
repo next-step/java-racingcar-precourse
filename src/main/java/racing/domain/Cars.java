@@ -1,6 +1,7 @@
 package racing.domain;
 
-import java.util.ArrayList;
+import racing.util.StringUtil;
+
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
@@ -15,12 +16,7 @@ public class Cars {
   }
 
   public static Cars generateFromInputString(String input) {
-    String[] arr = input.split(SEPARATOR_OF_NAME);
-    List<Car> values = new ArrayList<>(arr.length);
-    for (String str : arr) {
-      values.add(new Car(str));
-    }
-    return new Cars(values);
+    return new Cars(StringUtil.toList(input, SEPARATOR_OF_NAME, Car::new));
   }
 
   public List<Car> getValues() {
