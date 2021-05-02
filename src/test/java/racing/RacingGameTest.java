@@ -104,7 +104,7 @@ public class RacingGameTest {
         cars.getCars().get(2).play(5);
         cars.getCars().get(3).play(8);
         
-        result.stagePrint(cars);
+        result.printCurrentStatus(cars);
         
         assertThat(cars.getCars().get(0).getCurrentPosition()).isEqualTo(0);
         assertThat(cars.getCars().get(1).getCurrentPosition()).isEqualTo(0);
@@ -116,7 +116,7 @@ public class RacingGameTest {
         cars.getCars().get(2).play(3);
         cars.getCars().get(3).play(5);
         
-        result.stagePrint(cars);
+        result.printCurrentStatus(cars);
         
         assertThat(cars.getCars().get(0).getCurrentPosition()).isEqualTo(0);
         assertThat(cars.getCars().get(1).getCurrentPosition()).isEqualTo(0);
@@ -128,13 +128,13 @@ public class RacingGameTest {
         cars.getCars().get(2).play(2);
         cars.getCars().get(3).play(7);
         
-        result.stagePrint(cars);
+        result.printCurrentStatus(cars);
         
         assertThat(cars.getCars().get(0).getCurrentPosition()).isEqualTo(1);
         assertThat(cars.getCars().get(1).getCurrentPosition()).isEqualTo(0);
         assertThat(cars.getCars().get(2).getCurrentPosition()).isEqualTo(1);
         assertThat(cars.getCars().get(3).getCurrentPosition()).isEqualTo(3);
 
-        result.stagePrint(cars);
+        result.printCurrentStatus(cars);
     }
 }
