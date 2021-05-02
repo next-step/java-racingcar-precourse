@@ -6,6 +6,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -16,6 +17,29 @@ class RacingGameTest {
     @BeforeEach
     public void setup(){
         racingGame = new RacingGame();
+    }
+
+    @ParameterizedTest
+    @MethodSource("printResultParameters")
+    public void printResult(List<RacingCar> winners, String expected){
+        assertEquals(racingGame.printResult(winners),expected);
+    }
+    public static Stream<Arguments> printResultParameters(){
+        List<RacingCar> winners1 = new ArrayList<>();
+        winners1.add(new RacingCar("TEST1"));
+        List<RacingCar> winners2 = new ArrayList<>();
+        winners2.add(new RacingCar("TEST2"));
+        winners2.add(new RacingCar("TEST3"));
+        List<RacingCar> winners3 = new ArrayList<>();
+        winners3.add(new RacingCar("TEST4"));
+        winners3.add(new RacingCar("TEST5"));
+        winners3.add(new RacingCar("TEST6"));
+        RacingCar car;
+        return Stream.of(
+                Arguments.of(winners1,"TEST1가 최종 우승했습니다."),
+                Arguments.of(winners2,"TEST2, TEST3가 최종 우승했습니다."),
+                Arguments.of(winners3,"TEST4, TEST5, TEST6가 최종 우승했습니다.")
+        );
     }
 
     @ParameterizedTest
