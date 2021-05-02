@@ -27,10 +27,10 @@ class RaceTest {
 	@DisplayName("사용자의 입력값을 자동차들과 라운드로 변환한다.")
 	@Test
 	void 사용자의_입력값을_자동차들과_라운드로_변환한다() {
-		List<Car> cars = this.race.getCars();
+		Cars cars = this.race.getCars();
 		Round round = this.race.getRound();
 		List<String> carNameStrings = new ArrayList<>();
-		for (Car car : cars) {
+		for (Car car : cars.getCars()) {
 			CarName carName = car.getCarName();
 			carNameStrings.add(carName.getName());
 		}
