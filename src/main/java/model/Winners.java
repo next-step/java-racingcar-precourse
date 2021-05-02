@@ -19,7 +19,7 @@ public class Winners {
         }
     }
 
-    public List<String> getWinnerNames() {
-        return winners;
+    public String getWinnerNames() {
+        return String.join(", ", winners);
     }
 }
