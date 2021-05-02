@@ -7,8 +7,8 @@ public class RacingCar {
     private final Name name;
     private final TravelDistance distance;
 
-    public RacingCar(String name) {
-        this.name = new Name(name);
+    public RacingCar(Name name) {
+        this.name = name;
         this.distance = new TravelDistance();
     }
 

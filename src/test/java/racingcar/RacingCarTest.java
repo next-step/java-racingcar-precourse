@@ -15,7 +15,7 @@ class RacingCarTest {
 
     @BeforeEach
     void setUp() {
-        racingCar = new RacingCar("hello");
+        racingCar = new RacingCar(new Name("hello"));
     }
 
     @ParameterizedTest
@@ -55,7 +55,7 @@ class RacingCarTest {
         String name = "greatThanFive";
 
         // when then
-        assertThatThrownBy(() -> new RacingCar(name))
+        assertThatThrownBy(() -> new Name(name))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("자동차의 이름은 5자 이하여야 합니다.");
     }
