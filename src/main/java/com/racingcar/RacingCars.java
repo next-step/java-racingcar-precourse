@@ -82,6 +82,6 @@ public class RacingCars {
 	}
 
 	public List<RacingCar> getValues() {
-		return this.values;
+		return Collections.unmodifiableList(this.values);
 	}
 }
