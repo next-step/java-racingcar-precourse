@@ -8,6 +8,7 @@ public class PositionPrinter {
     private static final String POSITION_PRINTING_STRING = "-";
 
     private Position position;
+
     public PositionPrinter(Position position) {
         this.position = position;
     }
