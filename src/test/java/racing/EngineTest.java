@@ -16,7 +16,7 @@ class EngineTest {
 	}
 
 	@DisplayName("엔진에서 0 에서 9 사이의 임의의 출력을 구한다.")
-	@RepeatedTest(100)
+	@RepeatedTest(10)
 	void 엔진에서_0_9_사이의_임의의_출력을_구한다() {
 		Power power = this.engine.getPower();
 

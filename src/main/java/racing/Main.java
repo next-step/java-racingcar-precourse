@@ -13,7 +13,7 @@ public class Main {
 		int tryCount = scanner.nextInt();
 
 		Race race = new Race(carNames, tryCount);
-		RaceResult result = race.start();
-		console.println(result.toMessage());
+		RaceRecord raceRecord = race.startRace();
+		console.println(raceRecord.toMessage());
 	}
 }
