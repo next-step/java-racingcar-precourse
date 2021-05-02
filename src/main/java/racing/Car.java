@@ -10,6 +10,10 @@ public class Car {
         this.mileage = new Mileage();
     }
 
+    public String getName() {
+        return name;
+    }
+
     public Mileage getMileage() {
         return this.mileage;
     }
@@ -27,7 +31,7 @@ public class Car {
 
     @Override
     public String toString() {
-        return "Car{name='" + name + ", mileage=" + mileage + '}';
+        return name + ":" + mileage.getValueAsDash();
     }
 
     private void validateName(String name) {

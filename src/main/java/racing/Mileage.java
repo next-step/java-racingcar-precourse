@@ -38,4 +38,8 @@ public class Mileage {
     public int getValue() {
         return mileage;
     }
+
+    public String getValueAsDash() {
+        return new String(new char[mileage]).replace("\0", "-");
+    }
 }

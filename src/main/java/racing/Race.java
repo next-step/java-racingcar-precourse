@@ -6,7 +6,11 @@ public class Race {
     private CarSet carset;
     private Round round;
     private EnergyGenerator generator;
-    private List<Car> winners;
+    private OnRoundStepListener listener;
+
+    public Race() {
+        this(null, null);
+    }
 
     public Race(CarSet carset, Round round) {
         this(carset, round, new EnergyGenerator());
@@ -16,22 +20,30 @@ public class Race {
         this.carset = carset;
         this.round = round;
         this.generator = generator;
-        this.winners = Collections.emptyList();
     }
 
+    public void setCars(CarSet carset) {
+        this.carset = carset;
+    }
+
+    public void setRound(Round round) {
+        this.round = round;
+    }
 
     public void start() {
         for (Integer ignored : round) {
             runStepCars();
         }
-
-        resetWinners();
+        notifyComplete();
     }
 
-    private void resetWinners() {
-        Mileage maxMileage = carset.reduce((mile, car) -> Mileage.max(mile, car.getMileage()), new Mileage(0));
+    public void setOnRoundStepListener(OnRoundStepListener listener) {
+        this.listener = listener;
+    }
 
-        this.winners = carset.reduce((acc, car) -> {
+    public List<Car> getWinners() {
+        Mileage maxMileage = carset.reduce((mile, car) -> Mileage.max(mile, car.getMileage()), new Mileage(0));
+        return carset.reduce((acc, car) -> {
             if (maxMileage.equals(car.getMileage())) {
                 acc.add(car);
             }
@@ -43,14 +55,27 @@ public class Race {
         for (Car car : carset) {
             car.injectEnergy(generator.generate());
         }
+        notifyStep();
     }
 
-    public List<Car> getWinners() {
-        return winners;
+    private void notifyStep() {
+        if (listener != null)
+            listener.onStep(carset);
+    }
+
+    private void notifyComplete() {
+        if (listener != null) {
+            List<Car> winners = getWinners();
+            listener.onComplete(winners);
+        }
     }
 
     @Override
     public String toString() {
         return "Race{carset=" + carset + ", round=" + round + '}';
+    }
+
+    public void setGenerator(EnergyGenerator generator) {
+        this.generator = generator;
     }
 }

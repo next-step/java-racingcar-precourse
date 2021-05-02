@@ -4,13 +4,16 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.function.BiFunction;
-import java.util.function.Function;
 
 public class CarSet implements Iterable<Car> {
     private List<Car> set;
 
     public CarSet(Car... cars) {
         this.set = Arrays.asList(cars);
+    }
+
+    public CarSet(List<Car> cars) {
+        this.set = cars;
     }
 
     public int length() {
