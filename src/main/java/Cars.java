@@ -50,5 +50,12 @@ public class Cars {
 		}
 	}
 
+	// 레이싱 횟수만큼 반복
+	public void goRace() {
+		for (Car car : carList) {
+			car.applyForwardOrNot(car.getForwardOrNot());
+		}
+	}
+
 
 }
