@@ -21,6 +21,16 @@ public class Car {
 		}
 	}
 
+	// 자동차 현재 주행거리 표시
+	public void printCurrentCarMileage() {
+		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append(carName).append(" : ");
+		for (int i = 0; i < this.carMileage; i++) {
+			stringBuilder.append("-");
+		}
+		System.out.println(stringBuilder.toString());
+	}
+
 	// 자동차 이름 검증
 	public static boolean isValidCarName(String carName) {
 		return 5 >= carName.length() && 1 <= carName.length();
