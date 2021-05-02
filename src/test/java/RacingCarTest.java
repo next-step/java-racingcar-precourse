@@ -15,4 +15,14 @@ class RacingCarTest {
         assertTrue(((res>=0 && res<=3)==(car.getCount()==0)));
         assertTrue(((res>=4)==(car.getCount()==1)));
     }
+
+    /**
+     * 전진 횟수가 정상적으로 출력 되는지 테스트
+     */
+    @Test
+    void printCurrentCount(){
+        RacingCar car = new RacingCar("TEST");
+        car.setCount(2);
+        assertEquals(car.printCurrentCount(),"TEST : --");
+    }
 }
