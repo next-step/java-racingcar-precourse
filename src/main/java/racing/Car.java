@@ -15,13 +15,6 @@ public class Car {
 
     @Override
     public boolean equals(Object other) {
-        if (this == other)
-            return true;
-
-        if (other == null || getClass() != other.getClass())
-            return false;
-
-        Car car = (Car) other;
-        return name.equals(car.name);
+        return Comparison.Equals(this, other, car -> name.equals(car.name));
     }
 }

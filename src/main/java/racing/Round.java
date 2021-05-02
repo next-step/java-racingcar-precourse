@@ -12,14 +12,7 @@ public class Round {
 
     @Override
     public boolean equals(Object other) {
-        if (this == other)
-            return true;
-
-        if (other == null || getClass() != other.getClass())
-            return false;
-
-        Round obj = (Round) other;
-        return round == obj.round;
+        return Comparison.Equals(this, other, obj -> round == obj.round);
     }
 
     private void validateRound(int input) {
