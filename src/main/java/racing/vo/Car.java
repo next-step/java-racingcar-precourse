@@ -4,7 +4,7 @@ public class Car implements Comparable<Car>{
     private CarName carName;
     private int carPosition;
     private StringBuilder positionText;
-    private static final int maxCount = 9;
+    private static final int MAX_COUNT = 9;
 
     public Car(String name) {
         this.carName = new CarName(name);
@@ -16,7 +16,7 @@ public class Car implements Comparable<Car>{
     }
 
     public int randomSetPosition(){
-        int randomNo =  (int)(Math.random()*maxCount);
+        int randomNo =  (int)(Math.random()*MAX_COUNT);
         if(randomNo>=4){
             carPosition++;
             positionText.append("-");
