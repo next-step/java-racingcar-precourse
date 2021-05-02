@@ -75,11 +75,8 @@ public class PlayRacingCar {
   * @since 2021. 05. 02
   */
  public static void moveRacingCar(RacingCar racingCar) {
-  int moveCount = racingCar.getMoveCount();
   int num = (int) (Math.random() * 9 + 1);
-  if(num >= 4) {
-   racingCar.setMoveCount(moveCount + 1);
-  }
+  if(num >= 4) racingCar.addMoveCount();
  }
  
  /**

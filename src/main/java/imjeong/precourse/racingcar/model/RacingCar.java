@@ -30,6 +30,14 @@ public class RacingCar {
  public void setMoveCount(int moveCount) {
   this.moveCount = moveCount;
  }
+ 
+ /**
+  * 자동차를 한 칸 전진시키기
+  * @since 2021. 05. 02
+  */
+ public void addMoveCount() {
+  this.moveCount += 1;
+ }
 
  @Override
  public String toString() {
