@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Car {
 
 	private final String carName;
@@ -37,6 +39,17 @@ public class Car {
 			return false;
 		}
 		return isValidCarNames(carNameArr);
+	}
+
+	// 자동차 이름 얻기
+	public String[] getCarNames() {
+		String[] carNameArr;
+		do {
+			System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+			carNameArr = new Scanner(System.in).nextLine().split(",");
+		} while (!isValidCar(carNameArr));
+
+		return carNameArr;
 	}
 
 }
