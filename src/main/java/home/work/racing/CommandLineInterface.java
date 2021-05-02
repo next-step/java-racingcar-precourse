@@ -41,4 +41,8 @@ public class CommandLineInterface {
 		return new GameCount(scanner.nextInt());
 	}
 
+	public void printLineSeperate() {
+		System.out.println();
+	}
+
 }
