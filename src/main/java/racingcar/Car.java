@@ -2,9 +2,10 @@ package racingcar;
 
 public class Car {
 
-    private final String name;
+    private String name;
     private int position = 0;
 
+    public Car() {}
 
     public Car(String name) {
         if(name.length() > 5){
@@ -17,7 +18,13 @@ public class Car {
         return position;
     }
 
-    public void forward() {
-        position++;
+    public String getName() {
+        return name;
+    }
+
+    public void forward(boolean isForwardCondition) {
+        if(isForwardCondition){
+            position++;
+        }
     }
 }

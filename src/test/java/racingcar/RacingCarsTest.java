@@ -27,9 +27,18 @@ public class RacingCarsTest {
     @DisplayName("자동차들 전진 테스트")
     void racingCarsForwardTest() {
         for (Car car : racingCars.carList){
-            car.forward();
+            car.forward(true);
             assertThat(car.getPosition()).isEqualTo(1);
         }
     }
 
+    @DisplayName("전진 조건에 따라 자동차 position을 전진 시켜준다.")
+    @Test
+    void carEvent() {
+        racingCars.carEvent(racingCars.carList);
+//        렌덤 값이 따라 전지과 멈춤의 assertThat 테스트를 어떻게 해야될지 어려움.
+//        for(Car car : racingCars.carList){
+//            System.out.println(car.getName() +"   //  "+car.getPosition());
+//        }
+    }
 }

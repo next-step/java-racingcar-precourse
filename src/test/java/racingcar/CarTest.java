@@ -33,7 +33,7 @@ public class CarTest {
     @DisplayName("자동차 전진 테스트")
     @Test
     void forwardCarTest() {
-        car.forward();
+        car.forward(true);
         assertThat(car.getPosition()).isEqualTo(1);
     }
 

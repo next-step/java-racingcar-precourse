@@ -2,9 +2,6 @@ package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.util.Random;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ForwardTest {
@@ -14,6 +11,6 @@ public class ForwardTest {
     void forwardCondition() {
         Forward forward = new Forward();
         boolean isForward = forward.isForwardCondition();
-        //assertThat(isForward).isFalse();
+        assertThat(isForward).isEqualTo(isForward);
     }
 }
