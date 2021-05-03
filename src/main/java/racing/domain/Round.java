@@ -4,15 +4,13 @@ import java.util.Objects;
 
 public class Round {
   private final Cars cars;
-  private final int countOfRemaining;
 
-  private Round(Cars cars, int countOfRemaining) {
+  private Round(Cars cars) {
     this.cars = cars;
-    this.countOfRemaining = countOfRemaining;
   }
 
-  public static Round record(Cars cars, int countOfRemaining) {
-    return new Round(cars, countOfRemaining);
+  public static Round record(Cars cars) {
+    return new Round(cars);
   }
 
   public Cars getCars() {
@@ -24,19 +22,18 @@ public class Round {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     Round round = (Round) o;
-    return countOfRemaining == round.countOfRemaining && Objects.equals(cars, round.cars);
+    return Objects.equals(cars, round.cars);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(cars, countOfRemaining);
+    return Objects.hash(cars);
   }
 
   @Override
   public String toString() {
     return "Round{" +
             "cars=" + cars +
-            ", countOfRemaining=" + countOfRemaining +
             '}';
   }
 }

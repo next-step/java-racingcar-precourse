@@ -18,11 +18,11 @@ class RoundTest {
 
     // when
     cars = cars.race(alwaysForward);
-    Round roundOne = Round.record(cars, 3);
+    Round roundOne = Round.record(cars);
     cars = cars.race(alwaysForward);
-    Round roundTwo = Round.record(cars, 2);
+    Round roundTwo = Round.record(cars);
     cars = cars.race(alwaysForward);
-    Round roundThree = Round.record(cars, 1);
+    Round roundThree = Round.record(cars);
 
     // then
     assertAll(

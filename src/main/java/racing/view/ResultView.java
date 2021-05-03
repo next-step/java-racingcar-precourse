@@ -2,8 +2,7 @@ package racing.view;
 
 import racing.domain.Car;
 import racing.domain.Round;
-
-import java.util.List;
+import racing.domain.Rounds;
 
 public final class ResultView {
   private static final String EXECUTE_RESULT = "\n실행 결과";
@@ -14,10 +13,10 @@ public final class ResultView {
 
   }
 
-  public static void printExecute(List<Round> rounds) {
+  public static void printExecute(Rounds rounds) {
     System.out.println(EXECUTE_RESULT);
 
-    for (Round round : rounds) {
+    for (Round round : rounds.getValues()) {
       printResultOfRound(round);
       System.out.println();
     }
