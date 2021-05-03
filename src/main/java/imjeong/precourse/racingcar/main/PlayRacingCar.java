@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import imjeong.precourse.racingcar.model.RacingCar;
+import imjeong.precourse.racingcar.model.RacingCars;
 import imjeong.precourse.racingcar.util.InputValidationUtil;
 
 /**
@@ -49,21 +50,40 @@ public class PlayRacingCar {
   * @since 2021. 05. 01
   */
  public static void startRacing() {
-  boolean finishedRacing = false;
-  List<RacingCar> racingCars = setRacingInformation();
-  System.out.println("실행 결과");
-  while(!finishedRacing) {
-   for(RacingCar racingCar : racingCars) {
-    moveRacingCar(racingCar);
-    if(racingCar.getMoveCount() == FINISH_COUNT) finishedRacing = true;
-   }
-   
-   for(int i=0; i<racingCars.size(); i++) {
-    RacingCar racingCar = racingCars.get(i);
-    System.out.println(racingCar.toString());
-   }
-   System.out.println();
+  RacingCars racingCars = setRacingInformation();
+  System.out.println("\n실행 결과");
+  printRacingInformation(racingCars);
+  printRacingResult(racingCars.getFinishedCars(FINISH_COUNT));
+ }
+ 
+ /**
+  * 자동차 경주 결과 출력
+  * @param finishedCars
+  * @since 2021. 05. 03
+  */
+ public static void printRacingResult(List<RacingCar> finishedCars) {
+  String finishedCarNames = "";
+  for(int i=0; i<finishedCars.size(); i++) {
+   if(i != 0) finishedCarNames += ", ";
+   finishedCarNames += finishedCars.get(i).getName();
   }
+  System.out.println(finishedCarNames + "가 최종 우승했습니다.");
+ }
+ 
+ /**
+  * 레이싱 진행 상황 출력하기<br/>
+  * 자동차 이름 : 주행 거리 출력
+  * @param racingCars
+  * @since 2021. 05. 03
+  */
+ public static void printRacingInformation(RacingCars racingCars) {
+  List<RacingCar> racinCarList = racingCars.getRacingCars();
+  for(RacingCar racingCar : racinCarList) {
+   moveRacingCar(racingCar);
+   System.out.println(racingCar.toString());
+  }
+  System.out.println();
+  if(racingCars.getFinishedCars(FINISH_COUNT).size() == 0) printRacingInformation(racingCars);
  }
  
  /**
@@ -84,7 +104,7 @@ public class PlayRacingCar {
   * @return
   * @since 2021. 05. 02
   */
- public static List<RacingCar> setRacingInformation() {
+ public static RacingCars setRacingInformation() {
   String[] carNames = getInputCarNames();
   FINISH_COUNT = getMoveCount();
   return setRacingCars(carNames);
@@ -96,12 +116,12 @@ public class PlayRacingCar {
   * @return
   * @since 2021. 05. 02
   */
- public static List<RacingCar> setRacingCars(String[] carNames) {
+ public static RacingCars setRacingCars(String[] carNames) {
   List<RacingCar> racingCars = new ArrayList<RacingCar>();
   for(String carName : carNames) {
    racingCars.add(new RacingCar(carName, 0));
   }
-  return racingCars;
+  return new RacingCars(racingCars);
  }
  
  /**
