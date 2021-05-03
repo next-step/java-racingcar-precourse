@@ -2,7 +2,7 @@ package racingcar;
 
 import java.util.Random;
 
-public class Car {
+public class Car implements Comparable<Car> {
     private static final String DEFAULT_NAME = "ProjectCar";
 
     private String name;
@@ -43,5 +43,10 @@ public class Car {
 
         if (isMovable(picked)) move();
         return picked;
+    }
+
+    @Override
+    public int compareTo(Car that) {
+        return Integer.compare(this.position, that.position);
     }
 }

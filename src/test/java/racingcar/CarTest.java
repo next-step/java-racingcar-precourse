@@ -37,4 +37,38 @@ public class CarTest {
         Car car = new Car();
         assertThat(car.draw()).isBetween(0, 9);
     }
+
+    @Test
+    @DisplayName("포지션 비교 - 패배")
+    void compare_less() {
+        Car car1 = new Car("Car1");
+        Car car2 = new Car("Car2");
+
+        car2.move();
+
+        assertThat(car1).isLessThan(car2);
+    }
+
+    @Test
+    @DisplayName("포지션 비교 - 무승부")
+    void compare_equal() {
+        Car car1 = new Car("Car1");
+        Car car2 = new Car("Car2");
+
+        car1.move();
+        car2.move();
+
+        assertThat(car1).isEqualByComparingTo(car2);
+    }
+
+    @Test
+    @DisplayName("포지션 비교 - 승리")
+    void compare_win() {
+        Car car1 = new Car("Car1");
+        Car car2 = new Car("Car2");
+
+        car1.move();
+
+        assertThat(car1).isGreaterThan(car2);
+    }
 }
