@@ -18,6 +18,16 @@ public class Car {
         this.sb = new StringBuilder();
     }
 
+    public boolean isMovable(int num) {
+        boolean movable = num >= MOVABLE_VALUE;
+        if (movable) {
+            this.position++;
+            sb.append("-");
+        }
+
+        return movable;
+    }
+
     public void showGameStatus() {
         System.out.println(this.name + " : " + this.sb.toString());
     }
@@ -32,15 +42,5 @@ public class Car {
 
     private boolean isValidNameLength(String name) {
         return name.trim().length() > ARGUMENT_LENGTH || ValidationUtils.isBlank(name);
-    }
-
-    public boolean isMovable(int num) {
-        boolean movable = num >= MOVABLE_VALUE;
-        if (movable) {
-            this.position++;
-            sb.append("-");
-        }
-
-        return movable;
     }
 }
