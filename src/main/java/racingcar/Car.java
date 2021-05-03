@@ -10,6 +10,10 @@ public class Car {
 		return name;
 	}
 
+	public int getPosition() {
+		return position;
+	}
+
 	public Car(String name) {
 		this.name = isValidCarName(name);
 		this.position = 0;
