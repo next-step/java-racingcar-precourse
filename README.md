@@ -15,44 +15,35 @@
 * 자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다. 우승자는 한 명 이상일 수 있다.
 
 ## 기능 목록
-### 자동차 게임(Game)
-  * 게임을 시작
-  * 게임을 플레이
 
-### 자동차(Car)
-  * 이름을 반환한다.
-  * 현재 위치를 반환한다.
-  * 움직인다.
-  * 출력할 문자열을 반환한다.  
-  * 종류
-    * 레이싱자동차(RacingCar)
-        * 이름을 설정한다.
-### 자동차 그룹(CarGroup)
-  * 자동차들을 관리한다.
-  * 자동차들의 현재 상태를 문자열로 반환한다.
-### 자동차 움직임 생성자(CarMovingGenerator)
-  * 종류
-    * **랜덤한 움직임 생성(RandomCarMovingGeneratorImpl)**
-        * 현재 움직임 상태를 반환한다.
-            * 0에서 9사이에서 random 값을 구한 후 random 값이 4 이상일 경우 전진하고, 3이하의 값이면 멈춘다.
-### 자동자 움직임 상태(CarMovingStatus)
-  * 종류
-    * MOVE
-    * STOP
-### 심판(RacingReferee)
-  * 자동차 경주의 우승자를 판별한다.
-
-### 입력(Input)
-  * 사용자로부터 입력을 받는다.
-  * 종류
-    * **자동차 이름(CarNameInputImpl)**
-    * **시도 횟수(NumOfAttemptInputImpl)**
-
-### 입력 검증(InputVerifier)
-  * 사용자로부터 입력받은 값이 유효한지 검증한다.
-  * 종류
-    * **자동차 이름 검증(CarNameVerifierImpl)**
-    * **시도 횟수 검증(NumOfAttemptVerifierImpl**
-      
-### 출력(Display)
-  * 화면에 출력한다.
+-[x] main
+    * RacingCarApplication
+-[x] controller
+    * RacingCarGameController
+        * 게임 시작
+-[x] domain
+    * RacingCar
+        * 이름을 관리한다.
+        * 현재 위치를 반환한다.
+        * RacingCar 인스턴스를 생성한다.
+        * 움직인다.
+    * RacingCarGroup
+        * RacingCar 목록을 반환한다.
+    * RacingCarMovingStatus
+        * STOP
+        * GO
+-[x] service
+    * RacingCarService
+      * 문자열을 이용하여 RacingCarGroup을 생성한다.
+    * RefereeService
+        * RacingCarGroup을 이용하여 우승자들을 판별한다.
+    * RacingCarMovingService
+        * RacingCarGroup을 이용하여 RacingCar를 움직인다.
+        * RandomRacingCarMovingServiceImpl
+-[x] presentation
+    * Display
+        * 주어진 데이터를 출력 함.
+    * Input
+        * 사용자로부터 입력 받음.
+-[x] exception
+    * 각 상황에 맞는 사용자 정의 예외
