@@ -4,6 +4,7 @@ import constant.Constant;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Cars {
     private final List<Car> cars;
@@ -17,5 +18,18 @@ public class Cars {
 
     public int size() {
         return cars.size();
+    }
+
+    public void start(int moveCount) {
+        for (int i = 0; i < moveCount; i++) {
+            move();
+        }
+    }
+
+    public void move() {
+        Random random = new Random();
+        for (Car car : cars) {
+            car.movable(random.nextInt(Constant.RANDOM_LIMIT));
+        }
     }
 }

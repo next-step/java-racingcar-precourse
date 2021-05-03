@@ -13,12 +13,22 @@ public class Car {
         this.name = name;
     }
 
-    public int moveForward() {
+    public int movable(int condition) {
+        if (condition < 0 || condition > 9) {
+            throw new IllegalArgumentException("0 ~ 9사이만 가능");
+        }
+        if (condition >= 4) {
+            return move();
+        }
+        return stop();
+    }
+
+    private int move() {
         return ++position;
     }
 
     public int stop() {
-        return 0;
+        return position;
     }
 
     public String name() {
