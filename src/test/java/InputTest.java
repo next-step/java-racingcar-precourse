@@ -43,5 +43,15 @@ public class InputTest {
 		assertThat(StringUtils.isEmpty(null)).isTrue();
 		assertThat(StringUtils.isEmpty("hello")).isFalse();
 	}
+
+	@Test
+	public void 시도_횟수_검증() {
+		assertThat(new RunCount("1").isNotValidNumber("1")).isFalse();
+		assertThat(new RunCount("1").isNotValidNumber(" 1 ")).isFalse();
+		assertThatExceptionOfType(IllegalArgumentException.class)
+			.isThrownBy(() -> new RunCount("")).withMessageMatching("횟수를 입력하지 않았습니다");
+		assertThatExceptionOfType(IllegalArgumentException.class)
+			.isThrownBy(() -> new RunCount("ab")).withMessageMatching("숫자로만 입력해주세요");
+	}
 }
 

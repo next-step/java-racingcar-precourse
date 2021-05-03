@@ -25,13 +25,27 @@ public class InputView {
 		return carNames.replaceAll(" ", "").split(",");
 	}
 
+	public static String removeBlank(String runCount) {
+		return runCount.trim();
+	}
+
 	public static RunCount runCountView() {
 		Scanner scanner = new Scanner(System.in);
-		return inputRunCount(scanner);
+		RunCount runCount = null;
+		while (RunCount.isNull(runCount)) {
+			runCount = inputRunCount(scanner);
+		}
+		return runCount;
 	}
 
 	private static RunCount inputRunCount(Scanner scanner) {
-		System.out.println("시도할 회수는 몇회인가요?");
-		return new RunCount(scanner.nextLine());
+		RunCount runCount = null;
+		try {
+			System.out.println("시도할 회수는 몇회인가요?");
+			runCount = new RunCount(removeBlank(scanner.nextLine()));
+		} catch (IllegalArgumentException exception) {
+			System.out.println(exception.getMessage());
+		}
+		return runCount;
 	}
 }
