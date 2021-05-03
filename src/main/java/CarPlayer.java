@@ -21,15 +21,6 @@ public class CarPlayer {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(this.car.getCarName().toString() + " : ");
-
-        for (int i = 0; i < this.car.getMoveCount(); i++) {
-            sb.append("-");
-        }
-
-        sb.append(String.format(" (%d)", this.car.getMoveCount()));
-
-        return sb.toString();
+        return this.car.toString();
     }
 }

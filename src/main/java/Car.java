@@ -34,4 +34,15 @@ public class Car {
     public String printMoveHistory() {
         return this.moveHistory.toString();
     }
+
+    @Override
+    public String toString(){
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(this.getCarName().toString() + " : ");
+        sb.append(this.printMoveHistory());
+        sb.append(String.format(" (%d)", this.getMoveCount()));
+
+        return sb.toString();
+    }
 }
