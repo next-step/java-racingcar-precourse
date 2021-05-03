@@ -2,6 +2,7 @@ import java.util.Objects;
 
 public class RacingCar {
 	private final RacingCarName racingCarName;
+	private int moveCount;
 
 	RacingCar(String name) {
 		this.racingCarName = new RacingCarName(name);
@@ -26,5 +27,13 @@ public class RacingCar {
 
 	boolean isMoveNumber(int moveNumber) {
 		return moveNumber >= 4;
+	}
+
+	public int getMoveCount() {
+		return this.moveCount;
+	}
+
+	public void moveFront() {
+		this.moveCount++;
 	}
 }
