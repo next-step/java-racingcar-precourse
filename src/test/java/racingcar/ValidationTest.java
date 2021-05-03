@@ -54,4 +54,12 @@ public class ValidationTest {
 		assertThrows(IllegalArgumentException.class, () -> car.move(-1));
 		assertThrows(IllegalArgumentException.class, () -> car.move(10));
 	}
+
+	@Test
+	public void 자동차_이름은_공백_불가(){
+		//given
+		//when
+		//then
+		assertThrows(IllegalArgumentException.class, () -> new Car(""));
+	}
 }

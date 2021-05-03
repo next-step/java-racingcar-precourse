@@ -4,8 +4,15 @@ public class CarName {
 	private String name;
 
 	public CarName(String name) {
+		validationNotBlank(name);
 		validationCarNameLessThan5(name);
 		this.name = name;
+	}
+
+	private void validationNotBlank(String name){
+		if ("".equals(name)) {
+			throw new IllegalArgumentException("공백은 불가능합니다.");
+		}
 	}
 
 	private void validationCarNameLessThan5(String name) {
