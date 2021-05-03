@@ -1,7 +1,6 @@
-package Car;
-
 public class Car {
 	public static final int NAME_LENGTH_MAX = 5;
+	public static final int MOVE_CONDITION = 4;
 
 	private final String name;
 
@@ -16,4 +15,10 @@ public class Car {
 		return this.name;
 	}
 
+	public CarStatus move(int movePoint) {
+		if (movePoint >= MOVE_CONDITION) {
+			return CarStatus.FORWARD;
+		}
+		return CarStatus.STOP;
+	}
 }
