@@ -4,10 +4,11 @@ import java.util.Objects;
 
 public class Car {
     private final CarName name;
-    private int position = 0;
+    private final CarPosition position;
 
     public Car(String name) {
         this.name = new CarName(name);
+        this.position = new CarPosition();
     }
 
     public String getName() {
@@ -15,13 +16,11 @@ public class Car {
     }
 
     public int getPosition() {
-        return this.position;
+        return this.position.getPosition();
     }
 
     public void move(MoveStatus status) {
-        if (status != null && status.isMove()) {
-            this.position++;
-        }
+        this.position.move(status);
     }
 
     @Override
@@ -29,7 +28,7 @@ public class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return position == car.position && Objects.equals(name, car.name);
+        return Objects.equals(name, car.name) && Objects.equals(position, car.position);
     }
 
     @Override
