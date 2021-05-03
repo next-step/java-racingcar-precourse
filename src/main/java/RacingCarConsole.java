@@ -1,3 +1,5 @@
+import resulttypes.PlayResult;
+
 import java.util.Scanner;
 
 public class RacingCarConsole {

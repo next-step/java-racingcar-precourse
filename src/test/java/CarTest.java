@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import resulttypes.MoveResult;
 
 public class CarTest {
     private static final String TEST_CAR_NAME = "test";
@@ -37,11 +38,11 @@ public class CarTest {
     @DisplayName("자동차가 3번 움직이고 4번 멈춰있을 경우 전진한 내역을 출력한다.")
     void print_3_forward_4_stay() {
         for (int i = 0; i < 3; i++) {
-            car.tryMove(Car.FORWARD_RANDOM_VALUE);
+            car.tryMove(Car.MOVE_MIN_RANDOM_VALUE);
         }
 
         for (int i = 0; i < 4; i++) {
-            car.tryMove(Car.STAY_RANDOM_VALUE);
+            car.tryMove(Car.STAY_MAX_RANDOM_VALUE);
         }
 
         Assertions.assertThat(car.getMoveCount()).isEqualTo(3);

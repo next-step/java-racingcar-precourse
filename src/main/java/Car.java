@@ -1,6 +1,8 @@
+import resulttypes.MoveResult;
+
 public class Car {
-    public static final int FORWARD_RANDOM_VALUE = 4;
-    public static final int STAY_RANDOM_VALUE = 0;
+    public static final int MOVE_MIN_RANDOM_VALUE = 4;
+    public static final int STAY_MAX_RANDOM_VALUE = 3;
 
     private MoveHistory moveHistory;
     private CarName carname;
@@ -12,7 +14,7 @@ public class Car {
     }
 
     public MoveResult tryMove(int randomValue) {
-        if (randomValue >= FORWARD_RANDOM_VALUE) {
+        if (randomValue >= MOVE_MIN_RANDOM_VALUE) {
             this.moveHistory.add(new Movement());
 
             return MoveResult.FORWARD;

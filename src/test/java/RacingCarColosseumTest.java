@@ -37,7 +37,7 @@ public class RacingCarColosseumTest {
     void play_when_every_random_value_not_satisfy_trial_condition(String carNamesInput, String trialCountInput) {
         CarNameContainer carNameContainer = new CarNameContainer(carNamesInput.split(","));
         TrialCount trialCount = new TrialCount(trialCountInput);
-        when(this.randomGenerator.get()).thenReturn(Car.STAY_RANDOM_VALUE);
+        when(this.randomGenerator.get()).thenReturn(Car.STAY_MAX_RANDOM_VALUE);
 
         List<CarPlayer> winners = this.racingCarColosseum.play(carNameContainer, trialCount);
 
@@ -50,7 +50,7 @@ public class RacingCarColosseumTest {
     void play_when_every_random_value_satisfy_trial_condition(String carNamesInput, String trialCountInput) {
         CarNameContainer carNameContainer = new CarNameContainer(carNamesInput.split(","));
         TrialCount trialCount = new TrialCount(trialCountInput);
-        when(this.randomGenerator.get()).thenReturn(Car.FORWARD_RANDOM_VALUE);
+        when(this.randomGenerator.get()).thenReturn(Car.MOVE_MIN_RANDOM_VALUE);
 
         List<CarPlayer> winners = this.racingCarColosseum.play(carNameContainer, trialCount);
 
