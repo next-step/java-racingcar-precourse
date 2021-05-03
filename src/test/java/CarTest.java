@@ -1,4 +1,5 @@
 import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
@@ -9,8 +10,9 @@ class CarTest {
 		Car car1 = new Car("car1");
 		assertThat(car1.hasPassedNameRule(car1.getName())).isTrue();
 
-		Car car2 = new Car("5글자를넘자");
-		assertThat(car2.hasPassedNameRule(car2.getName())).isFalse();
+		assertThrows(IllegalArgumentException.class, () -> {
+			Car car2 = new Car("5글자를넘자");
+		});
 	}
 
 	@Test
