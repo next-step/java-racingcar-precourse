@@ -1,6 +1,6 @@
 package racingcar;
 
-public class Car {
+public class Car implements Comparable<Car> {
 	private CarName carName;
 	private CarDistance carDistance;
 
@@ -11,6 +11,10 @@ public class Car {
 
 	public String getCarName() {
 		return carName.getName();
+	}
+
+	public int getCarDistance() {
+		return carDistance.getDistance();
 	}
 
 	public int move(int condition) {
@@ -24,5 +28,10 @@ public class Car {
 			System.out.print("-");
 		}
 		System.out.println();
+	}
+
+	@Override
+	public int compareTo(Car comp) {
+		return comp.getCarDistance() - this.carDistance.getDistance();
 	}
 }
