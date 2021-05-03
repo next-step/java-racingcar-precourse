@@ -32,13 +32,14 @@ public class Race {
         }
     }
 
-    public void play() {
+    public String play() {
         for (Car car : cars) {
             if (getRandom() >= GO_CONDITION) {
                 car.go();
             }
             setMaxScore(car.getScore());
         }
+        return this.toString();
     }
 
     public String getWinner() {
