@@ -8,7 +8,6 @@ public class Car {
         if(name.length() > 5){
             throw new IllegalArgumentException();
         }
-
         this.name = name;
     }
 }
