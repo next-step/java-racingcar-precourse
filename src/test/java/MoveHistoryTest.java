@@ -14,9 +14,9 @@ public class MoveHistoryTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"3:---", "13:-------------", "32:--------------------------------"})
+    @CsvSource(value = {"3:---", "13:-------------", "32:--------------------------------"}, delimiter = ':')
     @DisplayName("여러번 전진한 내역을 보관 및 출력한다.")
-    void print_movements(int moveCount, int movePrint) {
+    void print_movements(int moveCount, String movePrint) {
         for (int i = 0; i < moveCount; i++) {
             this.moveHistory.add(new Movement());
         }
