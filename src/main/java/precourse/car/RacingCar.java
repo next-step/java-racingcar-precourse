@@ -18,6 +18,10 @@ public class RacingCar {
 		}
 	}
 
+	public String getCurrentStatus() {
+		return getCarName() + "\t: " + position.describeAsSymbol() + "\n";
+	}
+
 	public String getCarName() {
 		return name.getName();
 	}

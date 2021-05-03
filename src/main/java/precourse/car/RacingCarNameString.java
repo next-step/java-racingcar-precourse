@@ -1,5 +1,8 @@
 package precourse.car;
 
+import java.util.Arrays;
+import java.util.List;
+
 import precourse.race.CarRaceMessage;
 
 public class RacingCarNameString {
@@ -8,13 +11,13 @@ public class RacingCarNameString {
 	public static final int MIN_CAR_NUMBER = 2;
 	public static final int MIN_LENGTH = 1;
 	public static final int MAX_LENGTH = 5;
-	private final String[] carNames;
+	private final List<String> carNames;
 
 	public RacingCarNameString(String carNameString) {
 		String[] carNames = carNameString.split(CAR_NAME_DELIMITER);
 		validateCarNumber(carNames);
 		validateCarName(carNames);
-		this.carNames = carNames;
+		this.carNames = Arrays.asList(carNames);
 	}
 
 	private void validateCarNumber(String[] carNames) {
