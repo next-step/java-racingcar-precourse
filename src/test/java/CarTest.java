@@ -35,4 +35,15 @@ public class CarTest {
 		CarStatus carStatus = benz.isForward(3);
 		assertThat(carStatus).isEqualTo(CarStatus.STOP);
 	}
+
+	@Test
+	void 자동차_3번이동() {
+		Car benz = new Car("benz");
+		benz.forwardPosition();
+		benz.forwardPosition();
+		benz.forwardPosition();
+
+		benz.printName();
+		benz.printCurrentPosition();
+	}
 }

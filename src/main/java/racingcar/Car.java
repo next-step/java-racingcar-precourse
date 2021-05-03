@@ -37,10 +37,20 @@ public class Car {
 	}
 
 	public void forwardPosition() {
-		this.position++;
+		position++;
 	}
 
 	private boolean isMove(int moveValue) {
 		return moveValue >= MOVE_MIN_VALUE;
+	}
+
+	public void printName() {
+		System.out.print(name + ":");
+	}
+
+	public void printCurrentPosition() {
+		for (int i = 0; i < position; i++) {
+			System.out.print("-");
+		}
 	}
 }
