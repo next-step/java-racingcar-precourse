@@ -59,17 +59,13 @@
     * [x] Car 테스트
     * [x] Cars 테스트
     * [x] Stadium 테스트
+    * [x] Player 테스트       
     * [ ] RacingGame 테스트
-* [ ] 이름 입력 받기
-    * [ ] 쉼표 구분 받기
-    * [ ] 유효성 검사
-* [ ]
-* [ ]
+
 
 ## 설계
 * UI:
     * RacingGameApplication
-        * Player를 가진다.
         * Stadium을 가진다.    
 * Domain:
     * Accelerator
@@ -102,7 +98,8 @@
         * [x] Car위치를 비교할 수 있다.(car? Cars?)
         * [x] 최종 우승자들을 가질 수 있다 
     
-    * Stadium  
+    * Stadium
+        * Player를 가진다.  
         * 이름들을 요구 할 수 있다.
         * [x] 횟수를 요구 할 수 있다.
         * [x] Cars를 출발선에 세울 수 있다.(초기화)
@@ -110,10 +107,14 @@
         * [x] 우승자 ~~이름들~~ 차량들을 가질 수 있다. 
 
     * Player 
-        * 이름들을 입력 할 수 있다.
-        * 횟수를 입력 할 수 있다.
-        * 이름들을 전달 할 수 있다.(?)
-        * 횟수를 전달 할 수 있다. (?)
+        * [x] 이름들을 입력 할 수 있다. (5자리 이하)
+            * [x] 유효성 검증 : split
+            * [x] 유효성 검증 : 길이
+            * [x] 유효성 검증 : 공백
+        * [x] 횟수를 입력 할 수 있다.
+            * [x] 유효성 검증 : 숫자타입
+        * [x] 이름들을 전달 할 수 있다.(?)
+        * [x] 횟수를 전달 할 수 있다. (?)
     
 ## 참고사항
 * 과제제출방법 : <https://github.com/next-step/nextstep-docs/tree/master/precourse>
