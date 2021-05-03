@@ -10,7 +10,7 @@ import lombok.RequiredArgsConstructor;
 public class RacingCar {
 
 	private final String name;
-	private int location;
+	private int moveCount;
 
 	public static RacingCar create(String name) {
 		return new RacingCar(name);
@@ -18,19 +18,19 @@ public class RacingCar {
 
 	public void move(RacingCarMovingStatus status) {
 		if (RacingCarMovingStatus.GO == status) {
-			location++;
+			moveCount++;
 		}
 	}
 
 	@Override
 	public String toString() {
-		return name + " : " + getLocationMessage();
+		return name + " : " + getMoveCountMessage();
 	}
 
-	private String getLocationMessage() {
+	private String getMoveCountMessage() {
 		StringBuilder sb = new StringBuilder();
 
-		for (int i = 0; i < location; i++) {
+		for (int i = 0; i < moveCount; i++) {
 			sb.append('_');
 		}
 
