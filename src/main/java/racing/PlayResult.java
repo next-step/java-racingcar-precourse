@@ -1,5 +1,7 @@
 package racing;
 
+import java.util.Arrays;
+
 public class PlayResult {
     
     public static final String FINAL_WINNER_ANNOUNCE_MESSAGE = "가 최종 우승했습니다";
@@ -26,25 +28,29 @@ public class PlayResult {
     }
     
     private String findWinner(Cars cars) {
-        StringBuffer winnerCarsName = new StringBuffer();
-        int maxValue = 0;
+        return findWinnerCarsName(cars, findMaxValue(cars));
+    }
+    
+    private int findMaxValue(Cars cars) {
+        int array[] = new int[cars.getCars().size()];
         
         for (int i = 0; i < cars.getCars().size(); i++) {
-            maxValue = findMaxValue(cars.getCars().get(i), maxValue);
+            array[i] = cars.getCars().get(i).getCurrentPosition();
         }
+        Arrays.sort(array);
+        
+        return array[array.length - 1];
+    }
+    
+    private String findWinnerCarsName(Cars cars, int maxValue) {
+        StringBuffer winnerCarsName = new StringBuffer();
+
         for (int i = 0; i < cars.getCars().size(); i++) {
             winnerCarsName.append(findCoWinCars(cars.getCars().get(i), maxValue));
         }
-        String winnerList = winnerCarsName.toString();
+        String winner = winnerCarsName.toString();
         
-        return winnerList.substring(0, winnerList.length() - 1);
-    }
-    
-    private int findMaxValue(Car car, int maxValue) {
-        if (car.getCurrentPosition() >= maxValue) {
-            maxValue = car.getCurrentPosition();
-        }
-        return maxValue;
+        return winner.substring(0, winner.length() - 1);
     }
     
     private String findCoWinCars(Car car, int maxValue) {
