@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class CarRacing {
 
-    public static List<Cars> getCars(String cars, String sep) {
+    public List<Cars> getCars(String cars, String sep) {
         String[] carArr = cars.split(sep);
         List<Cars> carList = new ArrayList<>();
         for (int i = 0; i < carArr.length; i++) {
@@ -13,23 +13,26 @@ public class CarRacing {
         return carList;
     }
 
-    public static List<Cars> racing(List<Cars> carList, int num) {
+    public List<Cars> racing(List<Cars> carList, int num) {
         Random random = new Random();
-        while (num -- > 0) {
+        for (int i = 0; i < num; i++) {
             for (Cars car : carList) {
                 int randNum = random.nextInt(10);
                 if (randNum >= 4) {
                     car.setPosition(car.getPosition() + "-");
                 }
             }
+
+            System.out.println(i+1 + "번째 경주");
+            carList.forEach(c -> {
+                System.out.println(c.getName() + " : " + c.getPosition());
+            });
+            System.out.println();
         }
-        carList.forEach(c -> {
-            System.out.println(c.getName() + " / " + c.getPosition());
-        });
         return carList;
     }
 
-    public static String finish(List<Cars> finishRacing) {
+    public String finish(List<Cars> finishRacing) {
         int max = 0;
         for (Cars car : finishRacing) {
             if (max < car.getLength()) {
@@ -44,7 +47,7 @@ public class CarRacing {
             }
         }
 
-        String result = String.join(",", list);
+        String result = String.join(",", list) + "가 최종 우승했습니다.";
 
         return result;
     }
