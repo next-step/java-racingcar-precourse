@@ -85,11 +85,49 @@ public class CarNameInputGetterTest {
         String emptyUserInputSample = "1,2,3,4,";
         try {
             Method validateUserInputMethod = carNameInputGetter.getClass()
-                    .getDeclaredMethod("validateUserInput", String.class);
+                    .getDeclaredMethod("isValidateUserInput", String.class);
             validateUserInputMethod.setAccessible(true);
 
             Boolean isValid = (Boolean) validateUserInputMethod
                                     .invoke(carNameInputGetter, emptyUserInputSample);
+
+            assertThat(isValid).isTrue();
+
+        } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void isValidUserInputForOnlyCommaTest(){
+        String emptyUserInputSample = ",,,,,,,,,,,,";
+        try {
+            Method validateUserInputMethod = carNameInputGetter.getClass()
+                    .getDeclaredMethod("isValidateUserInput", String.class);
+            validateUserInputMethod.setAccessible(true);
+
+            Boolean isValid = (Boolean) validateUserInputMethod
+                    .invoke(carNameInputGetter, emptyUserInputSample);
+
+            assertThat(isValid).isFalse();
+
+        } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void isValidUserInputEmptyStringTest(){
+        String emptyUserInputSample = "";
+        try {
+            Method validateUserInputMethod = carNameInputGetter.getClass()
+                    .getDeclaredMethod("isValidateUserInput", String.class);
+            validateUserInputMethod.setAccessible(true);
+
+            Boolean isValid = (Boolean) validateUserInputMethod
+                    .invoke(carNameInputGetter, emptyUserInputSample);
+
+            assertThat(isValid).isFalse();
 
         } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
             e.printStackTrace();
