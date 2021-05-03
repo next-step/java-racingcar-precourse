@@ -10,6 +10,7 @@ public class GamePlayService {
 		List<Car> carList = creatCars(carNameArr);
 		Cars cars = new Cars(carList);
 		int playCount = getPlayCount();
+		playRace(cars, playCount);
 	}
 
 	// 자동차 목록 생성
@@ -19,6 +20,13 @@ public class GamePlayService {
 			carList.add(new Car(carName));
 		}
 		return carList;
+	}
+
+	// 레이스 시작
+	private void playRace(Cars cars, int playCount) {
+		for (int i = 0; i < playCount; i++) {
+			cars.goRace();
+		}
 	}
 
 	// 1 이상인지 검증
