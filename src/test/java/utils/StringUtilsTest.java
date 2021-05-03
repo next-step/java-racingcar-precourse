@@ -13,10 +13,10 @@ public class StringUtilsTest {
 		String startWithComma = ",1,2,3";
 		String noValueBetweenComma = "1,  ,3";
 
-		assertThat(ScannerUtils.isValidCarNames(normalInput)).isTrue();
-		assertThat(ScannerUtils.isValidCarNames(endWithComma)).isTrue();
-		assertThat(ScannerUtils.isValidCarNames(startWithComma)).isFalse();
-		assertThat(ScannerUtils.isValidCarNames(noValueBetweenComma)).isFalse();
+		assertThat(ScannerUtils.isValidCarNameUserInput(normalInput)).isTrue();
+		assertThat(ScannerUtils.isValidCarNameUserInput(endWithComma)).isTrue();
+		assertThat(ScannerUtils.isValidCarNameUserInput(startWithComma)).isFalse();
+		assertThat(ScannerUtils.isValidCarNameUserInput(noValueBetweenComma)).isFalse();
 	}
 
 	@Test
