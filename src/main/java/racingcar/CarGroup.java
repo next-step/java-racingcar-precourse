@@ -5,27 +5,11 @@ import java.util.List;
 
 public class CarGroup {
 	private List<Car> cars;
-	private int gameCount = 0;
+	private GameCount gameCount;
 
 	public CarGroup(List<String> carNames, String gameCount) {
 		this.cars = mapCar(carNames);
-		this.gameCount = isValidMoveCount(gameCount);
-	}
-
-	private int isValidMoveCount(String gameCount) {
-		if (isPresentString(gameCount)) {
-			throw new IllegalArgumentException("게임 진행 횟수를 입력하세요.");
-		}
-
-		if (!gameCount.chars().allMatch(Character::isDigit)) {
-			throw new IllegalArgumentException("숫자만 입력 가능합니다.");
-		}
-
-		return Integer.parseInt(gameCount);
-	}
-
-	private boolean isPresentString(String moveCount) {
-		return moveCount.trim().length() == 0 || moveCount == null;
+		this.gameCount = new GameCount(gameCount);
 	}
 
 	private List<Car> mapCar(List<String> carNames) {
@@ -46,7 +30,7 @@ public class CarGroup {
 	}
 
 	public void start() {
-		for (int i = 0; i < gameCount; i++) {
+		for (int i = 0; i < gameCount.getGameCount(); i++) {
 			progressGameCount();
 		}
 	}
