@@ -40,6 +40,7 @@ public class InputView {
         try {
             validateInputValue(inputValue, regexPattern);
         } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
             return getValidatedInputValue(text, regexPattern); // 입력 값이 유효하지 않으면 재입력
         }
 
