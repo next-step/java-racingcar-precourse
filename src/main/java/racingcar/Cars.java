@@ -3,16 +3,16 @@ package racingcar;
 import java.util.*;
 
 public class Cars {
-    TreeMap<String, Car> carHashMap;
+    TreeMap<String, Car> carMap;
 
     private void addCar(String name) {
         if (!ValidationUtils.isValidName(name)) return;
 
-        carHashMap.put(name, new Car(name));
+        carMap.put(name, new Car(name));
     }
 
     public Cars() {
-        carHashMap = new TreeMap<>();
+        carMap = new TreeMap<>();
     }
 
     public Cars(String[] carNames) {
@@ -22,11 +22,11 @@ public class Cars {
     }
 
     public boolean hasCar(String name) {
-        return carHashMap.containsKey(name);
+        return carMap.containsKey(name);
     }
 
     public int getNumOfCars() {
-        return carHashMap.size();
+        return carMap.size();
     }
 
     public void addCars(String[] carNames) {
@@ -36,7 +36,7 @@ public class Cars {
     }
 
     public void playRound() {
-        carHashMap.forEach((key, value) -> {
+        carMap.forEach((key, value) -> {
             value.draw();
             System.out.println(value.printCurrentPosition());
         });
@@ -44,13 +44,14 @@ public class Cars {
 
     public List<Car> getWinners() {
         List<Car> winners = new ArrayList<>();
-        Car maxCar = Collections.max(carHashMap.values());
+        Car maxCar = Collections.max(carMap.values());
 
-        for (Map.Entry<String, Car> entry : carHashMap.entrySet()) {
-            if (entry.getValue().compareTo(maxCar) == 0) {
-                winners.add(entry.getValue());
+        carMap.forEach((key, value) -> {
+            if (value.compareTo(maxCar) == 0) {
+                winners.add(value);
             }
-        }
+        });
+
         return winners;
     }
 }
