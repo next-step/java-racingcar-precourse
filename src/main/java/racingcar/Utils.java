@@ -3,7 +3,7 @@ package racingcar;
 import java.util.Scanner;
 
 public class Utils {
-	private static Scanner scanner;
+	private static Scanner scanner = new Scanner(System.in);
 
 	public static String getStringInput(){
 		return scanner.nextLine().trim();

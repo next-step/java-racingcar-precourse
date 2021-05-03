@@ -10,7 +10,7 @@ public class CarName {
 	}
 
 	private void validationNotBlank(String name){
-		if ("".equals(name)) {
+		if (name == null || name.isEmpty()) {
 			throw new IllegalArgumentException("공백은 불가능합니다.");
 		}
 	}

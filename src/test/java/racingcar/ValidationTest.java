@@ -32,7 +32,7 @@ public class ValidationTest {
 	}
 
 	@Test
-	public void 자동차_이동_조건은_0에서_9_사이의_값(){
+	public void 자동차_이동_조건은_0에서_9_사이의_값() {
 		//given
 		Car car = new Car("aaaa");
 
@@ -46,7 +46,7 @@ public class ValidationTest {
 	}
 
 	@Test
-	public void 자동차_이동_조건이_0에서_9_사이_값이_아니면_에러_발생(){
+	public void 자동차_이동_조건이_0에서_9_사이_값이_아니면_에러_발생() {
 		//given
 		Car car = new Car("aaaa");
 
@@ -56,10 +56,18 @@ public class ValidationTest {
 	}
 
 	@Test
-	public void 자동차_이름은_공백_불가(){
+	public void 자동차_이름은_공백_불가() {
 		//given
 		//when
 		//then
 		assertThrows(IllegalArgumentException.class, () -> new Car(""));
+	}
+
+	@Test
+	public void 자동차_이름은_NULL_불가() {
+		//given
+		//when
+		//then
+		assertThrows(IllegalArgumentException.class, () -> new Car(null));
 	}
 }
