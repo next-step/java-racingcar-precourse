@@ -6,26 +6,21 @@ public class GamePlayService {
 
 	// 게임 시작
 	public void startGame() {
-		String[] carNameArr = new Cars(null, 0).getCarNames();
-		List<Car> carList = creatCars(carNameArr);
-		int playCount = getPlayCount();
-		Cars cars = new Cars(carList, playCount);
+		Cars cars = creatCars();
 		playRace(cars);
-
-		String gameResult = "";
-		do {
-			gameResult = cars.creatRaceResult();
-		} while (0 == gameResult.length());
-		System.out.println(gameResult + "가 우승하였습니다");
+		printGameResult(cars);
 	}
 
 	// 자동차 목록 생성
-	private List<Car> creatCars(String[] carNameArr) {
+	private Cars creatCars() {
 		List<Car> carList = new ArrayList<>();
+		String[] carNameArr = new Cars(null, 0).getCarNames();
+		int playCount = getPlayCount();
+
 		for (String carName : carNameArr) {
 			carList.add(new Car(carName));
 		}
-		return carList;
+		return new Cars(carList, playCount);
 	}
 
 	// 레이스 시작
@@ -34,6 +29,16 @@ public class GamePlayService {
 			cars.goRace();
 		}
 	}
+
+	// 게임 결과 출력
+	private void printGameResult(Cars cars) {
+		String gameResult = "";
+		do {
+			gameResult = cars.creatRaceResult();
+		} while (0 == gameResult.length());
+		System.out.println(gameResult + "가 우승하였습니다");
+	}
+
 
 	// 1 이상인지 검증
 	boolean isAboveMinimum(int playCount) {
