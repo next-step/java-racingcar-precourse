@@ -7,9 +7,9 @@ public class Car {
 	private Distance distance;
 	private CarName name;
 
-	public Car(CarName name) {
+	public Car(String name) {
 		this.distance = new Distance();
-		this.name = name;
+		this.name = new CarName(name);
 	}
 
 	public void move(int condition) {
@@ -24,6 +24,21 @@ public class Car {
 
 	public String getCarName() {
 		return name.getName();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null || getClass() != obj.getClass()) {
+			return false;
+		}
+		Car other = (Car)obj;
+		if (name == null || other.name == null) {
+			return false;
+		}
+		return name.equals(other.name);
 	}
 
 }

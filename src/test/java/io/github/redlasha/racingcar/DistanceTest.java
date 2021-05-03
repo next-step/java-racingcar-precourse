@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 class DistanceTest {
 
 	@Test
-	void 거리는_한번_움질일때_1만큼_움직인다() {
+	void 거리는_한번_움질일때_1만큼_움직인다() { // @checkstyle:ignore
 		Distance distance = new Distance();
 		distance.add();
 		assertThat(distance.get()).isEqualTo(1);

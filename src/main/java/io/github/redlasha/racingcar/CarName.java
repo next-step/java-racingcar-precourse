@@ -15,4 +15,19 @@ public class CarName {
 		return this.name;
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null || getClass() != obj.getClass()) {
+			return false;
+		}
+		CarName other = (CarName)obj;
+		if (name == null || other.name == null) {
+			return false;
+		}
+		return name.equals(other.name);
+	}
+
 }
