@@ -23,4 +23,8 @@ public class RacingCar {
 	public int hashCode() {
 		return Objects.hash(racingCarName);
 	}
+
+	boolean isMoveNumber(int moveNumber) {
+		return moveNumber >= 4;
+	}
 }
