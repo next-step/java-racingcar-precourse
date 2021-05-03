@@ -1,8 +1,9 @@
 package com.tjnam.racingcargame;
 
-public class Car {
+public class Car implements Comparable<Car> {
     private CarName name;
     private CarPosition position;
+    private MovementModerator movementModerator = new MovementModerator();
     
     public Car (CarName name) {
         this.name = name;
@@ -21,4 +22,20 @@ public class Car {
         return this.position.getPosition();
     }
 
+    public void printStatus(){
+        System.out.print(name.getName() + " : ");
+        for (int i=0 ; i<position.getPosition() ; i++) {
+            System.out.print("-");
+        }
+        System.out.println("");
+    }
+
+    public boolean judgeMove(){
+        return movementModerator.canBeMove();
+    }
+
+    @Override
+    public int compareTo(Car o) {
+        return o.getPosition() - this.getPosition();
+    }
 }
