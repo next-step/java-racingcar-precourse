@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import java.util.Objects;
+
 public class MoveCount {
     private static final int MIN_NUMBER = 0;
     private static final String INVALID_MESSAGE = "0 보다 큰 숫자를 입력해 주세요.";
@@ -19,5 +21,25 @@ public class MoveCount {
 
     public int getCount() {
         return this.count;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MoveCount moveCount = (MoveCount) o;
+        return count == moveCount.count;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(count);
+    }
+
+    @Override
+    public String toString() {
+        return "MoveCount{" +
+                "count=" + count +
+                '}';
     }
 }

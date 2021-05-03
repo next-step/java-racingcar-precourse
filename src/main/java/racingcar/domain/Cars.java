@@ -8,6 +8,7 @@ import java.util.function.Predicate;
 
 public class Cars {
     private static final String NAME_SEPARATOR = ",";
+    private static final String INVALID_MESSAGE = "차량 이름을 5자리 이하로 입력해 주세요.";
     private static final String DUPLICATED_MESSAGE = "차량 이름이 중복되었습니다.";
 
     private final List<Car> cars;
@@ -24,12 +25,17 @@ public class Cars {
         List<Car> cars = new ArrayList<>();
         for (String name : userName.split(NAME_SEPARATOR)) {
             Car car = new Car(name);
-            if (cars.contains(car)) {
-                throw new IllegalArgumentException(DUPLICATED_MESSAGE);
-            }
+            validate(cars.contains(car), DUPLICATED_MESSAGE);
             cars.add(car);
         }
+        validate(cars.isEmpty(), INVALID_MESSAGE);
         return cars;
+    }
+
+    private void validate(boolean invalid, String message) {
+        if (invalid) {
+            throw new IllegalArgumentException(message);
+        }
     }
 
     public Car get(int index) {
