@@ -12,21 +12,24 @@
 - 자동차 이름은 쉼표(,)를 기준으로 구분하며 이름은 5자 이하만 가능하다. 
   - error: 이름이 5자 초과, 이름이 없음
 - 사용자는 몇 번의 이동을 할 것인지를 입력할 수 있어야 한다. 
-  - error: 0이하, number 아님
+  - error: 0이하
 - 전진하는 조건은 0에서 9사이에서 random값을 구한 후 random값이 4이상일 경우 전진하고, 3이하의 값이면 멈춘다. 
 - 자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다. 우승자는 한명 이상일 수 있다.
 
 -------
 
 - 경주 생성기: 
-  - RacingGame: CarEntires와 RacingTurn, IOPrinter을 입력으로 함. 
+  - RacingGame: CarEntires와 RacingTurn, RandomNumbersGeneratable, IOPrinter을 입력으로 함. 
     - start: 경기 시작
     - score: 점수 확인
+  - RandomNumbersGeneratable: RandomDice: size만큼의 랜덤한 수 리스트 생성 기능 제공
   - CarEntries: 자동차 입력을 위한 class. 쉼표로 구분된 문자열, 각 자동차명은 5자 이하 규칙 준수, 
     자동차 List 생성
+    - 우승자 판별 
   - RacingTurn: 전진 횟수를 위한 숫자 입력. 0이하인 경우 오류 처리
     - 이름과 거리 상태 표시
-  - DistanceComparator: 우승자 판별 및 출력
+  - IOPrinter
+    - 출력
 - 자동차: car
   - 전진: (랜덤) move
   - 자동차는 움직인 거리 상태를 가지고 있고 조회 가능하다

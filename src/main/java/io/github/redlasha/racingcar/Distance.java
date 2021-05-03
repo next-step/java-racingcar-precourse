@@ -1,6 +1,6 @@
 package io.github.redlasha.racingcar;
 
-public class Distance {
+public class Distance implements Comparable<Distance> {
 
 	private int distance;
 
@@ -16,8 +16,8 @@ public class Distance {
 		this.distance++;
 	}
 
-	public int get() {
-		return this.distance;
+	public Integer get() {
+		return Integer.valueOf(this.distance);
 	}
 
 	@Override
@@ -33,5 +33,12 @@ public class Distance {
 		}
 		return true;
 	}
+
+	@Override
+	public int compareTo(Distance o) {
+		return get().compareTo(o.get());
+	}
+	
+	
 
 }
