@@ -17,7 +17,7 @@ public class Game {
         Print.write("");
         Print.write(GameMessage.PLAY_RESULT);
 
-        for (int i = 0; i < gameCount.getGameCount(); i++) {
+        for (int i = 0; i < gameCount.getNumber(); i++) {
             run();
         }
         Print.write(getVictoryCarNames());

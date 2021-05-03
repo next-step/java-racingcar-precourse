@@ -1,13 +1,13 @@
 package racingcar;
 
 public class GameCount {
-    private final int gameCount;
+    private final int number;
 
     public GameCount(int gameCount) {
-        this.gameCount = gameCount;
+        this.number = gameCount;
     }
 
-    public int getGameCount() {
-        return gameCount;
+    public int getNumber() {
+        return this.number;
     }
 }
