@@ -21,6 +21,14 @@ public class Car {
     return moveRule.isForward() ? new Car(name, position.move()) : this;
   }
 
+  public String getName() {
+    return name.getValue();
+  }
+
+  public int getPosition() {
+    return position.getValue();
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;

@@ -14,6 +14,10 @@ public class Name {
     this.value = value;
   }
 
+  public String getValue() {
+    return value;
+  }
+
   private void checkValidLength(final String value) {
     if (value.length() > MAX) {
       throw new NameLengthExceedException(MAX);
