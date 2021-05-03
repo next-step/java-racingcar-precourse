@@ -1,15 +1,13 @@
 package racingcar;
 
-import java.util.Objects;
-
 public class Car {
 	private final int MAX_NAME_LENGTH = 5;
+	private final int MOVE_MIN_VALUE = 4;
 	private String name;
-	private int position;
+	private CarPosition carPosition = new CarPosition();
 
 	public Car(String name) {
 		this.name = isValidCarName(name);
-		this.position = 0;
 	}
 
 	private String isValidCarName(String name) {
@@ -26,26 +24,15 @@ public class Car {
 		return name.length() > MAX_NAME_LENGTH;
 	}
 
-	public CarStatus paly(int moveValue) {
+	public CarStatus isForward(int moveValue) {
 		if (isMove(moveValue)) {
+			carPosition.forwardPosition();
 			return CarStatus.GO;
 		}
-
 		return CarStatus.STOP;
 	}
 
 	private boolean isMove(int moveValue) {
-		return moveValue >= 4;
+		return moveValue >= MOVE_MIN_VALUE;
 	}
-
-	@Override
-	public boolean equals(Object o) {
-		if (this == o)
-			return true;
-		if (o == null || getClass() != o.getClass())
-			return false;
-		Car car = (Car)o;
-		return Objects.equals(name, car.name);
-	}
-
 }

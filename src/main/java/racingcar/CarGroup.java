@@ -44,4 +44,16 @@ public class CarGroup {
 	private boolean isPresentCar(List<String> carNames) {
 		return carNames.size() == 0 || carNames == null;
 	}
+
+	public void start() {
+		for (int i = 0; i < gameCount; i++) {
+			progressGameCount();
+		}
+	}
+
+	public void progressGameCount() {
+		for (Car car : this.cars) {
+			car.isForward(Generator.randomNumber());
+		}
+	}
 }

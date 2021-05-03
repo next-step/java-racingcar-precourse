@@ -25,14 +25,14 @@ public class CarTest {
 	@Test
 	void 자동차_이동() {
 		Car benz = new Car("benz");
-		CarStatus carStatus = benz.paly(4);
+		CarStatus carStatus = benz.isForward(4);
 		assertThat(carStatus).isEqualTo(CarStatus.GO);
 	}
 
 	@Test
 	void 자동차_정지() {
 		Car benz = new Car("benz");
-		CarStatus carStatus = benz.paly(3);
+		CarStatus carStatus = benz.isForward(3);
 		assertThat(carStatus).isEqualTo(CarStatus.STOP);
 	}
 }
