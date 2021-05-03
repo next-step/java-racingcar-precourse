@@ -16,7 +16,9 @@ public class Cars {
     }
 
     public void raceCars(){
-
+        cars.stream().filter(car-> car.judgeMove())
+                .forEach(car->car.moveCar());
+        printCarsPositionStatus();
     }
 
     public List<Car> getWinner(){
@@ -34,7 +36,10 @@ public class Cars {
 
     private void printCarsPositionStatus(){
         cars.stream().forEach(car->car.printStatus());
+        printLine();
     }
 
-
+    private void printLine(){
+        System.out.println("");
+    }
 }
