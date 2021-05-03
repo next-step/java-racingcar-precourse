@@ -3,7 +3,7 @@ package com.github.momentjin.core.model.car;
 import com.github.momentjin.core.model.Location;
 import com.github.momentjin.core.model.MovableObject;
 
-public class Car implements MovableObject {
+class Car implements MovableObject {
 
     private Location location;
     private final CarName name;
