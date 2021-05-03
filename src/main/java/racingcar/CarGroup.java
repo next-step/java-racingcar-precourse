@@ -51,4 +51,21 @@ public class CarGroup {
 
 		return maxPosition;
 	}
+
+	public String maxPositonCars(int maxPosition) {
+		String winners = "";
+
+		for (Car car : cars) {
+			winners += isEqualMaxPosition(car, maxPosition);
+		}
+
+		return winners;
+	}
+
+	private String isEqualMaxPosition(Car car, int maxPosition) {
+		if (car.getPosition() == maxPosition) {
+			return car.getName() + ",";
+		}
+		return "";
+	}
 }

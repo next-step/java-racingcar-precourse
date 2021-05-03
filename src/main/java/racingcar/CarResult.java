@@ -22,4 +22,9 @@ public class CarResult {
 			System.out.println();
 		}
 	}
+
+	public String selectWinners(CarGroup racing) {
+		int maxPosition = racing.getMaxPosition();
+		return racing.maxPositonCars(maxPosition);
+	}
 }
