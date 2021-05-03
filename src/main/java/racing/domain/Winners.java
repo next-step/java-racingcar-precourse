@@ -20,15 +20,19 @@ public class Winners {
     List<Car> winners = new ArrayList<>();
     Position positionOfWinner = cars.getMaxPosition();
     for (Car car : cars.getValues()) {
-      addWinner(winners, positionOfWinner, car);
+      addWinner(winners, car, isWinner(positionOfWinner, car));
     }
     return winners;
   }
 
-  private static void addWinner(List<Car> winners, Position positionOfWinner, Car car) {
-    if (positionOfWinner.equals(new Position(car.getPosition()))) {
+  private static void addWinner(List<Car> winners, Car car, boolean isWinner) {
+    if (isWinner) {
       winners.add(car);
     }
+  }
+
+  private static boolean isWinner(Position positionOfWinner, Car car) {
+    return positionOfWinner.equals(new Position(car.getPosition()));
   }
 
   public List<Car> getValues() {
