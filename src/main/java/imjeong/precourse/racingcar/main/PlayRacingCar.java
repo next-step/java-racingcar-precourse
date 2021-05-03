@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 import imjeong.precourse.racingcar.model.RacingCar;
 import imjeong.precourse.racingcar.model.RacingCars;
+import imjeong.precourse.racingcar.model.RacingCount;
 import imjeong.precourse.racingcar.util.InputValidationUtil;
 
 /**
@@ -16,7 +17,7 @@ import imjeong.precourse.racingcar.util.InputValidationUtil;
 public class PlayRacingCar {
  
  private static Scanner SCANNER = null; // 사용자 입력을 위한 Scanner 객체 초기화
- private static int FINISH_COUNT = 0;
+ private static RacingCount FINISH_COUNT = null;
  
  /**
   * Start Point.
@@ -53,7 +54,7 @@ public class PlayRacingCar {
   RacingCars racingCars = setRacingInformation();
   System.out.println("\n실행 결과");
   printRacingInformation(racingCars);
-  printRacingResult(racingCars.getFinishedCars(FINISH_COUNT));
+  printRacingResult(racingCars.getFinishedCars(FINISH_COUNT.getMoveCount()));
  }
  
  /**
@@ -83,7 +84,7 @@ public class PlayRacingCar {
    System.out.println(racingCar.toString());
   }
   System.out.println();
-  if(racingCars.getFinishedCars(FINISH_COUNT).size() == 0) printRacingInformation(racingCars);
+  if(racingCars.getFinishedCars(FINISH_COUNT.getMoveCount()).size() == 0) printRacingInformation(racingCars);
  }
  
  /**
@@ -141,10 +142,10 @@ public class PlayRacingCar {
   * @return
   * @since 2021. 05. 02
   */
- public static int getMoveCount() {
+ public static RacingCount getMoveCount() {
   System.out.println("시도할 횟수는 몇회인가요?");
   String moveCount = SCANNER.next();
   if(!InputValidationUtil.isValidNumber(moveCount)) return getMoveCount();
-  return Integer.parseInt(moveCount);
+  return new RacingCount(Integer.parseInt(moveCount));
  }
 }
