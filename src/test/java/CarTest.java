@@ -1,5 +1,7 @@
 import static org.assertj.core.api.Assertions.*;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 
 import racingcar.Car;
@@ -23,16 +25,40 @@ public class CarTest {
 	}
 
 	@Test
-	void 자동차_이동() {
+	void 자동차_1번_이동() {
 		Car benz = new Car("benz");
-		CarStatus carStatus = benz.isForward(4);
-		assertThat(carStatus).isEqualTo(CarStatus.GO);
+		benz.isForward(4);
+		assertThat(benz.getCarPosition().getPosition()).isEqualTo(1);
 	}
 
 	@Test
-	void 자동차_정지() {
+	void 자동차_2번_이동() {
 		Car benz = new Car("benz");
-		CarStatus carStatus = benz.isForward(3);
-		assertThat(carStatus).isEqualTo(CarStatus.STOP);
+		benz.isForward(4);
+		benz.isForward(4);
+		assertThat(benz.getCarPosition().getPosition()).isEqualTo(2);
+	}
+
+	@Test
+	void 자동차_2번_이동_1번_정지() {
+		Car benz = new Car("benz");
+		benz.isForward(4);
+		benz.isForward(4);
+		benz.isForward(3);
+		assertThat(benz.getCarPosition().getPosition()).isEqualTo(2);
+	}
+
+	@Test
+	void 자동차_2번_이동_1번_정지_History_출력() {
+		Car benz = new Car("benz");
+		benz.isForward(4);
+		benz.isForward(4);
+		benz.isForward(3);
+		assertThat(benz.getCarPosition().getPosition()).isEqualTo(2);
+
+		List<CarStatus> carStatusList = benz.getCarPosition().getCarStatusList();
+		for(CarStatus status : carStatusList) {
+			System.out.println(status);
+		}
 	}
 }

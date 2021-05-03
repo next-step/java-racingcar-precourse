@@ -4,10 +4,15 @@ public class Car {
 	private final int MAX_NAME_LENGTH = 5;
 	private final int MOVE_MIN_VALUE = 4;
 	private String name;
-	private CarPosition carPosition = new CarPosition();
+	private CarPosition carPosition;
+
+	public CarPosition getCarPosition() {
+		return carPosition;
+	}
 
 	public Car(String name) {
 		this.name = isValidCarName(name);
+		this.carPosition = new CarPosition();
 	}
 
 	private String isValidCarName(String name) {
@@ -24,12 +29,13 @@ public class Car {
 		return name.length() > MAX_NAME_LENGTH;
 	}
 
-	public CarStatus isForward(int moveValue) {
+	public void isForward(int moveValue) {
 		if (isMove(moveValue)) {
 			carPosition.forwardPosition();
-			return CarStatus.GO;
+			carPosition.saveHistory(CarStatus.GO);
+			return;
 		}
-		return CarStatus.STOP;
+		carPosition.saveHistory(CarStatus.STOP);
 	}
 
 	private boolean isMove(int moveValue) {
