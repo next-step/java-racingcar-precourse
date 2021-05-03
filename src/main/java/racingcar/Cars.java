@@ -1,6 +1,6 @@
 package racingcar;
 
-import java.util.HashMap;
+import java.util.*;
 
 public class Cars {
     HashMap<String, Car> carHashMap;
@@ -38,7 +38,19 @@ public class Cars {
     public void playRound() {
         carHashMap.forEach((key, value) -> {
             value.draw();
-            System.out.println(value);
+            System.out.println(value.printCurrentPosition());
         });
+    }
+
+    public List<Car> getWinners() {
+        List<Car> winners = new ArrayList<>();
+        Car maxCar = Collections.max(carHashMap.values());
+
+        for (Map.Entry<String, Car> entry : carHashMap.entrySet()) {
+            if (entry.getValue().compareTo(maxCar) == 0) {
+                winners.add(entry.getValue());
+            }
+        }
+        return winners;
     }
 }

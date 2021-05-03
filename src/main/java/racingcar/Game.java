@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Game {
@@ -40,6 +41,14 @@ public class Game {
             cars.playRound();
             System.out.println();
         }
+
+        List<Car> winners = cars.getWinners();
+
+        for (Car car : winners) {
+            System.out.print(car + ", ");
+        }
+
+        System.out.println(PRESENT_WINNER);
     }
 
     public Game() {

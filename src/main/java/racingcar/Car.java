@@ -28,6 +28,10 @@ public class Car implements Comparable<Car> {
         return stringBuilder.toString();
     }
 
+    public String toString() {
+        return this.name;
+    }
+
     public Car() {
         this(DEFAULT_NAME);
     }
