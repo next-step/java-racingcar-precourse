@@ -8,9 +8,9 @@ public class RacingCarGame {
     private RacingCarColosseum racingCarColosseum;
     private UserInputParser userInputParser;
 
-    public RacingCarGame() {
-        this.racingCarColosseum = new RacingCarColosseum(new RandomGenerator());
-        this.userInputParser = new UserInputParser();
+    public RacingCarGame(RacingCarColosseum racingCarColosseum, UserInputParser userInputParser) {
+        this.racingCarColosseum = racingCarColosseum;
+        this.userInputParser = userInputParser;
     }
 
     public PlayResult play(String carNamesInput, String trialCountInput) {

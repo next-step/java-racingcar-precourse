@@ -15,7 +15,7 @@ public class RacingCarConsole {
         String carNamesInput = askCarNamesInput(scanner);
         String trialCntInput = askTrialCntInput(scanner);
 
-        RacingCarGame game = new RacingCarGame();
+        RacingCarGame game = new RacingCarGame(new RacingCarColosseum(new RandomGenerator()), new UserInputParser());
 
         if (game.play(carNamesInput, trialCntInput) == PlayResult.INVALID_INPUT) {
             System.out.println(ABNORMAL_TERMINATE_MSG);
