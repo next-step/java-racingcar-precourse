@@ -4,11 +4,7 @@ public class Car {
 	private final int MAX_NAME_LENGTH = 5;
 	private final int MOVE_MIN_VALUE = 4;
 	private String name;
-	private CarPosition carPosition;
-
-	public CarPosition getCarPosition() {
-		return carPosition;
-	}
+	private int position;
 
 	public String getName() {
 		return name;
@@ -16,7 +12,7 @@ public class Car {
 
 	public Car(String name) {
 		this.name = isValidCarName(name);
-		this.carPosition = new CarPosition();
+		this.position = 0;
 	}
 
 	private String isValidCarName(String name) {
@@ -38,6 +34,10 @@ public class Car {
 			return CarStatus.GO;
 		}
 		return CarStatus.STOP;
+	}
+
+	public void forwardPosition() {
+		this.position++;
 	}
 
 	private boolean isMove(int moveValue) {
