@@ -1,7 +1,13 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
-See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+### [1.0.3](https://github.com/frostnight/java-racingcar-precourse/compare/v1.0.2...v1.0.3) (2021-05-03)
+
+
+### Bug Fixes
+
+* 자동차 클래스 패키지로 묶음 ([bbcfb6a](https://github.com/frostnight/java-racingcar-precourse/commit/bbcfb6a4686c4c104ea4ef52634cfafa8dbc6ab4))
 
 ### [1.0.2](https://github.com/frostnight/java-racingcar-precourse/compare/v1.0.1...v1.0.2) (2021-05-03)
 
