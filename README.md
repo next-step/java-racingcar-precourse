@@ -23,4 +23,4 @@
 |6|완주한 자동차가 있는 경우 자동차의 이름을 화면에 출력|
 
 ## 프로젝트 결과
-![프로젝트 결과](./images/results.jpg)
+![프로젝트 결과](https://github.com/InmookJeong/java-racingcar-precourse/blob/master/images/results.JPG?raw=true)
