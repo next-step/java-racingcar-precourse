@@ -5,13 +5,19 @@ import java.util.StringJoiner;
 public class Cars {
 
 	private final List<Car> carList;
+	private final int playCount;
 
-	public Cars(List<Car> carList) {
+	public Cars(List<Car> carList, int playCount) {
 		this.carList = carList;
+		this.playCount = playCount;
 	}
 
 	public List<Car> getCarList() {
 		return carList;
+	}
+
+	public int getPlayCount() {
+		return playCount;
 	}
 
 	// 자동차 이름 목록 검증
@@ -60,17 +66,17 @@ public class Cars {
 	}
 
 	// 게임 결과 생성
-	public String creatRaceResult(int playCount) {
+	public String creatRaceResult() {
 		StringJoiner stringJoiner = new StringJoiner(", ");
 		for (Car car : carList) {
-			stringJoiner = getWinnerName(car, playCount, stringJoiner);
+			stringJoiner = getWinnerName(car, stringJoiner);
 		}
 		return stringJoiner.toString();
 	}
 
 	// 우승 자동차 이름 얻기
-	public StringJoiner getWinnerName(Car car, int playCount, StringJoiner stringJoiner) {
-		if (car.isWinner(playCount)) {
+	public StringJoiner getWinnerName(Car car, StringJoiner stringJoiner) {
+		if (car.isWinner(getPlayCount())) {
 			stringJoiner.add(car.getCarName());
 		}
 		return stringJoiner;

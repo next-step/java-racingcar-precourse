@@ -6,15 +6,15 @@ public class GamePlayService {
 
 	// 게임 시작
 	public void startGame() {
-		String[] carNameArr = new Cars(null).getCarNames();
+		String[] carNameArr = new Cars(null, 0).getCarNames();
 		List<Car> carList = creatCars(carNameArr);
-		Cars cars = new Cars(carList);
 		int playCount = getPlayCount();
-		playRace(cars, playCount);
+		Cars cars = new Cars(carList, playCount);
+		playRace(cars);
 
 		String gameResult = "";
 		do {
-			gameResult = cars.creatRaceResult(playCount);
+			gameResult = cars.creatRaceResult();
 		} while (0 == gameResult.length());
 		System.out.println(gameResult + "가 우승하였습니다");
 	}
@@ -29,8 +29,8 @@ public class GamePlayService {
 	}
 
 	// 레이스 시작
-	private void playRace(Cars cars, int playCount) {
-		for (int i = 0; i < playCount; i++) {
+	private void playRace(Cars cars) {
+		for (int i = 0; i < cars.getPlayCount(); i++) {
 			cars.goRace();
 		}
 	}
