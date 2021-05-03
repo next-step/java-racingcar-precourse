@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.2](https://github.com/frostnight/java-racingcar-precourse/compare/v1.0.1...v1.0.2) (2021-05-03)
+
+
+### Tests
+
+* Car 객체 테스트 ([341f391](https://github.com/frostnight/java-racingcar-precourse/commit/341f39172242f02e828000687c4ded2f64ea6568))
+* Car 클래스 move 메소드 테스트 ([096d78e](https://github.com/frostnight/java-racingcar-precourse/commit/096d78e8958a2f0fd39b89627ead958b7e8b0ca1))
+
 ### [1.0.1](https://github.com/frostnight/java-racingcar-precourse/compare/v1.0.0...v1.0.1) (2021-05-03)
 
 
