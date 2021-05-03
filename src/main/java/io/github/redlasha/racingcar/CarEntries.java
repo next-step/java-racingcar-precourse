@@ -5,7 +5,7 @@ import java.util.List;
 
 public class CarEntries {
 
-	private final int MAX_VALUE_INDEX = 0;
+	private static final int MAX_VALUE_INDEX = 0;
 
 	private final List<Car> carList;
 
@@ -37,13 +37,16 @@ public class CarEntries {
 		tempList.sort((c1, c2) -> {
 			return c2.getDistance().compareTo(c1.getDistance());
 		});
+		if (tempList.size() <= 0) {
+			return null;
+		}
 		return tempList.get(MAX_VALUE_INDEX).getDistance();
 	}
 
 	public List<Car> getWinners() {
 		Distance longestDistance = getLongestDistance();
 		final List<Car> winners = new ArrayList<>(carList);
-		winners.removeIf(car->{
+		winners.removeIf(car -> {
 			return !longestDistance.equals(car.getDistance());
 		});
 		return winners;
@@ -56,6 +59,5 @@ public class CarEntries {
 		}
 		return builder.toString();
 	}
-	
-	
+
 }

@@ -9,7 +9,7 @@ public class RacingGame {
 	private RacingTurn turn;
 	private RandomNumbersGeneratable randomGenerator;
 	private PrintStream printStream;
-	
+
 	public RacingGame(CarEntries entries, RacingTurn turn, RandomNumbersGeneratable randomGenerator, PrintStream out) {
 		this.entries = entries;
 		this.turn = turn;

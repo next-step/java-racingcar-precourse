@@ -47,7 +47,7 @@ class CarEntriesTest {
 	}
 
 	@Test
-	void 자동차_엔트리는_차의_개수를_조회할수_있다() {
+	void 자동차_엔트리는_차의_개수를_조회할수_있다() { // @checkstyle:ignore
 		String input = "abc,def,boron";
 
 		CarEntries entries = new CarEntries(input);
@@ -55,7 +55,7 @@ class CarEntriesTest {
 	}
 
 	@Test
-	void getLongestDistance_메서드로_가장_멀리간_거리를_구할수_있다() {
+	void getLongestDistance_메서드로_가장_멀리간_거리를_구할수_있다() { // @checkstyle:ignore
 		String input = "abc,def,boron";
 
 		CarEntries entries = new CarEntries(input);
@@ -67,7 +67,7 @@ class CarEntriesTest {
 	}
 
 	@Test
-	void getWinners_메서드로_우승자를_구할수_있다() {
+	void getWinners_메서드로_우승자를_구할수_있다() { // @checkstyle:ignore
 		String input = "abc,def,boron";
 
 		CarEntries entries = new CarEntries(input);
@@ -79,7 +79,7 @@ class CarEntriesTest {
 	}
 
 	@Test
-	void getWinners_메서드는_중복_우승자도_허용한다() {
+	void getWinners_메서드는_중복_우승자도_허용한다() { // @checkstyle:ignore
 		String input = "abc,def,boron";
 
 		CarEntries entries = new CarEntries(input);

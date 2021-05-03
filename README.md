@@ -16,10 +16,17 @@
 - 전진하는 조건은 0에서 9사이에서 random값을 구한 후 random값이 4이상일 경우 전진하고, 3이하의 값이면 멈춘다. 
 - 자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다. 우승자는 한명 이상일 수 있다.
 
--------
 
+
+## 개발을 위한 요구사항
+
+- 자동차: car
+  - 전진: (랜덤) move
+  - 자동차는 움직인 거리 상태를 가지고 있고 조회 가능하다
+  - CarName
+    - 이름 부여
 - 경주 생성기: 
-  - RacingGame: CarEntires와 RacingTurn, RandomNumbersGeneratable, IOPrinter을 입력으로 함. 
+  - RacingGame: CarEntires와 RacingTurn, RandomNumbersGeneratable, PrintStream을 입력으로 함. 
     - start: 경기 시작
     - score: 점수 확인
   - RandomNumbersGeneratable: RandomDice: size만큼의 랜덤한 수 리스트 생성 기능 제공
@@ -28,13 +35,12 @@
     - 우승자 판별 
   - RacingTurn: 전진 횟수를 위한 숫자 입력. 0이하인 경우 오류 처리
     - 이름과 거리 상태 표시
-  - IOPrinter
+  - PrintStream
     - 출력
-- 자동차: car
-  - 전진: (랜덤) move
-  - 자동차는 움직인 거리 상태를 가지고 있고 조회 가능하다
-  - CarName
-    - 이름 부여
+- 게임 런처
+  - 사용자 입력 값 처리
+  - 출력 문구 처리
+  - RacingGame 실행
 
 
 

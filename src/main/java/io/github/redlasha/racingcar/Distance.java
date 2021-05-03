@@ -2,8 +2,8 @@ package io.github.redlasha.racingcar;
 
 public class Distance implements Comparable<Distance> {
 
-	private static final String PRINT_UNIT = "-"; 
-	
+	private static final String PRINT_UNIT = "-";
+
 	private int distance;
 
 	public Distance() {
@@ -23,6 +23,14 @@ public class Distance implements Comparable<Distance> {
 	}
 
 	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + distance;
+		return result;
+	}
+
+	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
 			return true;
@@ -30,15 +38,16 @@ public class Distance implements Comparable<Distance> {
 		if (obj == null || getClass() != obj.getClass()) {
 			return false;
 		}
-		if (distance != ((Distance)obj).distance) {
+		Distance other = (Distance)obj;
+		if (distance != other.distance) {
 			return false;
 		}
 		return true;
 	}
 
 	@Override
-	public int compareTo(Distance o) {
-		return get().compareTo(o.get());
+	public int compareTo(Distance distance) {
+		return get().compareTo(distance.get());
 	}
 
 	public String stringValue() {
@@ -48,7 +57,5 @@ public class Distance implements Comparable<Distance> {
 		}
 		return builder.toString();
 	}
-	
-	
 
 }

@@ -26,6 +26,9 @@ public class GameLauncher {
 	}
 
 	static void printWinners(List<Car> winners) {
+		if (winners == null) {
+			throw new IllegalArgumentException("winners must be not null.");
+		}
 		String winnersName = "";
 		for (int i = 0; i < winners.size(); i++) {
 			String comma = (i == (winners.size() - 1)) ? "" : ", ";
