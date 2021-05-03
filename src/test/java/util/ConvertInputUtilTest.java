@@ -12,17 +12,17 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ConvertInputUtilTest {
 
-    @DisplayName("자동차 이름 입력_성공")
+    @DisplayName("자동차 이름 입력 - 입력한 개수가 일치해야한다.")
     @ParameterizedTest
     @CsvSource({
             "pobi, 1",
             "'pobi,crong,honux', 3"
     })
-    void TEST_getCarNameFromInput_Success(String name, int num) {
+    void TEST_getCarNameFromInput(String name, int num) {
         assertThat(ConvertInputUtil.getCarNameFromInput(name)).hasSize(num);
     }
 
-    @DisplayName("자동차 이름 입력_실패")
+    @DisplayName("자동차 이름 입력 - 실패 코드가 일치해야한다.")
     @ParameterizedTest
     @CsvSource({
             "'', CAR_NAME_EMPTY",
@@ -34,14 +34,14 @@ class ConvertInputUtilTest {
         assertThat(exception.getMessage()).isEqualTo(GameErrorCode.valueOf(error).getMsg());
     }
 
-    @DisplayName("시도 횟수 입력_성공")
+    @DisplayName("시도 횟수 입력 - 숫자 파싱에 성공해야한다.")
     @ParameterizedTest
     @ValueSource(strings = {"1", "10"})
-    void TEST_getCarNameFromInput_Success(String tryNum) {
+    void TEST_getCarNameFromInput(String tryNum) {
         assertThat(ConvertInputUtil.getTryNumberFromInput(tryNum)).isEqualTo(Integer.parseInt(tryNum));
     }
 
-    @DisplayName("시도 횟수 입력_실패")
+    @DisplayName("시도 횟수 입력 - 실패 코드가 일치해야한다.")
     @ParameterizedTest
     @ValueSource(strings = {"", "abc"})
     void TEST_getTryNumberFromInput_Fail(String tryNum) {

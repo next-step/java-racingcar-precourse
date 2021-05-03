@@ -8,7 +8,7 @@ import static util.RandomUtil.getRandom;
 
 class RandomUtilTest {
 
-    @DisplayName("랜덤 숫자 생성 테스트")
+    @DisplayName("랜덤 숫자 생성 - 0에서 9사이의 숫자여야한다.")
     @RepeatedTest(5)
     void TEST_getRandom(){
         assertThat(getRandom()).isBetween(0,9);
