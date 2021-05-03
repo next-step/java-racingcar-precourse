@@ -1,5 +1,6 @@
 import java.util.List;
 import java.util.Scanner;
+import java.util.StringJoiner;
 
 public class Cars {
 
@@ -58,5 +59,12 @@ public class Cars {
 		printCarsMileage();
 	}
 
+	// 우승 자동차 이름 얻기
+	public StringJoiner getWinnerName(Car car, int playCount, StringJoiner stringJoiner) {
+		if (car.isWinner(playCount)) {
+			stringJoiner.add(car.getCarName());
+		}
+		return stringJoiner;
+	}
 
 }
