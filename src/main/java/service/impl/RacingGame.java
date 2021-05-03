@@ -1,10 +1,11 @@
 package service.impl;
 
+import static view.RacingGameView.*;
+
 import model.RacingCars;
 import service.IRacingGame;
-import view.RacingGameView;
 
-public class RacingGame implements IRacingGame, RacingGameView {
+public class RacingGame implements IRacingGame {
 
 	private final RacingCars racingCars;
 
@@ -21,5 +22,10 @@ public class RacingGame implements IRacingGame, RacingGameView {
 			racingCars.nextRound();
 			printRoundResult(racingCars);
 		}
+	}
+
+	@Override
+	public void showWinners() {
+		printWinners(racingCars.getMaxMileageCarNames(racingCars.getMaxMileage()));
 	}
 }
