@@ -2,7 +2,7 @@ package com.tjnam.racingcargame;
 
 public class CarName {
 
-    private static String name;
+    private String name;
 
     public CarName(String name){
         this.name = name;
