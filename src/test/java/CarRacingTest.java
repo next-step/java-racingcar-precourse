@@ -38,15 +38,6 @@ public class CarRacingTest {
     @Test
     void ge4GoOrLe3Stop() {
         List<Cars> carList = CarRacing.getCars(cars, ",");
-
-        Random random = new Random();
-        while (num -- > 0) {
-            for (Cars car : carList) {
-                int randNum = random.nextInt(10);
-                if (randNum >= 4) {
-                    car.setPosition(car.getPosition() + "-");
-                }
-            }
-        }
+        CarRacing.racing(carList, num);
     }
 }
