@@ -73,7 +73,8 @@ public class CarNameInputGetterTest {
             Method convertStringToCarName = carNameInputGetter.getClass()
                     .getDeclaredMethod("convertStringToCarName", String[].class);
             convertStringToCarName.setAccessible(true);
-            List<CarName> carNameList = (List<CarName>) convertStringToCarName.invoke(carNameInputGetter, (Object) carNameInputs);
+            List<CarName> carNameList = (List<CarName>) convertStringToCarName
+                                            .invoke(carNameInputGetter, (Object) carNameInputs);
             assertThat(carNameList.size()).isEqualTo(5);
         } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
             e.printStackTrace();
@@ -84,11 +85,11 @@ public class CarNameInputGetterTest {
     public void validateUserInputTest(){
         String emptyUserInputSample = "1,2,3,4,";
         try {
-            Method validateUserInputMethod = carNameInputGetter.getClass()
+            Method isValidateUserInputMethod = carNameInputGetter.getClass()
                     .getDeclaredMethod("isValidateUserInput", String.class);
-            validateUserInputMethod.setAccessible(true);
+            isValidateUserInputMethod.setAccessible(true);
 
-            Boolean isValid = (Boolean) validateUserInputMethod
+            Boolean isValid = (Boolean) isValidateUserInputMethod
                                     .invoke(carNameInputGetter, emptyUserInputSample);
 
             assertThat(isValid).isTrue();
@@ -102,11 +103,11 @@ public class CarNameInputGetterTest {
     public void isValidUserInputForOnlyCommaTest(){
         String emptyUserInputSample = ",,,,,,,,,,,,";
         try {
-            Method validateUserInputMethod = carNameInputGetter.getClass()
+            Method isValidateUserInputMethod = carNameInputGetter.getClass()
                     .getDeclaredMethod("isValidateUserInput", String.class);
-            validateUserInputMethod.setAccessible(true);
+            isValidateUserInputMethod.setAccessible(true);
 
-            Boolean isValid = (Boolean) validateUserInputMethod
+            Boolean isValid = (Boolean) isValidateUserInputMethod
                     .invoke(carNameInputGetter, emptyUserInputSample);
 
             assertThat(isValid).isFalse();
@@ -120,14 +121,43 @@ public class CarNameInputGetterTest {
     public void isValidUserInputEmptyStringTest(){
         String emptyUserInputSample = "";
         try {
-            Method validateUserInputMethod = carNameInputGetter.getClass()
+            Method isValidateUserInputMethod = carNameInputGetter.getClass()
                     .getDeclaredMethod("isValidateUserInput", String.class);
-            validateUserInputMethod.setAccessible(true);
+            isValidateUserInputMethod.setAccessible(true);
 
-            Boolean isValid = (Boolean) validateUserInputMethod
+            Boolean isValid = (Boolean) isValidateUserInputMethod
                     .invoke(carNameInputGetter, emptyUserInputSample);
 
             assertThat(isValid).isFalse();
+
+        } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void checkCarNameInputIsExceedMaxLengthTest(){
+        String[] carNameList = new String[20];
+
+        for (int i=0 ; i<20 ; i++) {
+            carNameList[i] = "car" + i;
+        }
+
+        try {
+            Method isExceedNameMaxLengthMethod = carNameInputGetter.getClass()
+                    .getDeclaredMethod("isExceedNameMaxLength", String[].class);
+            isExceedNameMaxLengthMethod.setAccessible(true);
+
+            int exceedCount = (int) isExceedNameMaxLengthMethod.invoke(carNameInputGetter, (Object) carNameList);
+            assertThat(exceedCount).isEqualTo(0);
+
+            for (int i=0 ; i<5 ; i++) {
+                carNameList[i] = "carTest" + i;
+            }
+
+            exceedCount = (int) isExceedNameMaxLengthMethod.invoke(carNameInputGetter, (Object) carNameList);
+            assertThat(exceedCount).isEqualTo(5);
+
 
         } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
             e.printStackTrace();
