@@ -15,7 +15,7 @@ public class Game {
     public void play() {
 
         System.out.println();
-        System.out.println("실행 결과");
+        System.out.println(GameMessage.PLAY_RESULT);
 
         for (int i = 0; i < count; i++) {
             run();
@@ -57,6 +57,6 @@ public class Game {
     }
 
     public String getVictoryCarNames() {
-        return "최종 우승했습니다.";
+        return GameMessage.VICTORY_MESSAGE;
     }
 }
