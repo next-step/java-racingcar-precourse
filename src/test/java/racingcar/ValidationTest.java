@@ -4,55 +4,54 @@ import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class ValidationTest {
 
-	@Test
-	public void 자동차_이름은_5자_이하만_가능() {
+	@ParameterizedTest
+	@ValueSource(strings = {"a", "aa", "aaa", "aaaa", "aaaaa"})
+	public void 자동차_이름은_5자_이하만_가능(String carNames) {
 		//given
-		Car carWithFourLetterName = new Car("aaaa");
-		Car carWithDiveLetterName = new Car("aaaaa");
+		Car car = new Car(carNames);
 
 		//when
-		String fourLetterName = carWithFourLetterName.getCarName();
-		String fiveLetterName = carWithDiveLetterName.getCarName();
+		String carName = car.getCarName();
 
 		//then
-		assertThat(fourLetterName).hasSizeLessThanOrEqualTo(5);
-		assertThat(fiveLetterName).hasSizeLessThanOrEqualTo(5);
+		assertThat(carName).hasSizeLessThanOrEqualTo(5);
 	}
 
-	@Test
-	public void 자동차_이름이_6자_이상일_경우엔_에러_발생() {
+	@ParameterizedTest
+	@ValueSource(strings = {"aaaaaa", "aaaaaaa", "aaaaaaa"})
+	public void 자동차_이름이_6자_이상일_경우엔_에러_발생(String carNames) {
 		//given
 		//when
 		//then
-		assertThrows(IllegalArgumentException.class, () -> new Car("aaaaaa"));
-		assertThrows(IllegalArgumentException.class, () -> new Car("aaaaaaa"));
+		assertThrows(IllegalArgumentException.class, () -> new Car(carNames));
 	}
 
-	@Test
-	public void 자동차_이동_조건은_0에서_9_사이의_값() {
+	@ParameterizedTest
+	@ValueSource(ints = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9})
+	public void 자동차_이동_조건은_0에서_9_사이의_값(int condition) {
 		//given
-		Car car = new Car("aaaa");
+		Car car = new Car("car");
 
 		//when
-		int travelDistancefor0 = car.move(0);
-		int travelDistancefor9 = car.move(9);
+		int distance = car.move(condition);
 
 		//then
-		assertThat(travelDistancefor0).isExactlyInstanceOf(Integer.class);
-		assertThat(travelDistancefor9).isExactlyInstanceOf(Integer.class);
+		assertThat(distance).isExactlyInstanceOf(Integer.class);
 	}
 
-	@Test
-	public void 자동차_이동_조건이_0에서_9_사이_값이_아니면_에러_발생() {
+	@ParameterizedTest
+	@ValueSource(ints = {-1, -2, -3, 10, 11, 12})
+	public void 자동차_이동_조건이_0에서_9_사이_값이_아니면_에러_발생(int condition) {
 		//given
-		Car car = new Car("aaaa");
+		Car car = new Car("car");
 
 		//when
-		assertThrows(IllegalArgumentException.class, () -> car.move(-1));
-		assertThrows(IllegalArgumentException.class, () -> car.move(10));
+		assertThrows(IllegalArgumentException.class, () -> car.move(condition));
 	}
 
 	@Test
