@@ -52,7 +52,7 @@ public class Cars {
 
 	// 레이싱 1회 수행 및 주행거리 표시
 	public void goRace() {
-		for (Car car : carList) {
+		for (Car car : getCarList()) {
 			car.applyForwardOrNot(car.getForwardOrNot());
 			car.printCurrentCarMileage();
 		}
@@ -62,7 +62,7 @@ public class Cars {
 	// 게임 결과 생성
 	public String creatRaceResult() {
 		StringJoiner stringJoiner = new StringJoiner(", ");
-		for (Car car : carList) {
+		for (Car car : getCarList()) {
 			stringJoiner = getWinnerName(car, stringJoiner);
 		}
 		return stringJoiner.toString();
