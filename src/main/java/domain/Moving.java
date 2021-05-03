@@ -12,4 +12,9 @@ public class Moving {
     public void setMovableStrategy(MovableStrategy movableStrategy){
         this.movableStrategy = movableStrategy;
     }
+
+
+    public int getPos() {
+        return this.movableStrategy.getPos();
+    }
 }

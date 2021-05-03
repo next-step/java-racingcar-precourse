@@ -28,6 +28,11 @@ public class RacingCarStrategy implements MovableStrategy {
         }
     }
 
+    @Override
+    public int getPos() {
+        return pos;
+    }
+
     public static void isBetweenZeroAndNine(int num) {
         if (num < RACING_MOVING_NUMBER_MIN || num > RACING_MOVING_NUMBER_MAX) {
             throw new IllegalArgumentException();
