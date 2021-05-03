@@ -1,7 +1,6 @@
 package racingcar;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -28,7 +27,7 @@ public class ValidationTest {
 		//given
 		//when
 		//then
-		assertThrows(IllegalArgumentException.class, () -> new Car(carNames));
+		assertThatThrownBy(() -> new Car(carNames)).isExactlyInstanceOf(IllegalArgumentException.class);
 	}
 
 	@ParameterizedTest
@@ -51,22 +50,16 @@ public class ValidationTest {
 		Car car = new Car("car");
 
 		//when
-		assertThrows(IllegalArgumentException.class, () -> car.move(condition));
+		assertThatThrownBy(() -> car.move(condition)).isExactlyInstanceOf(IllegalArgumentException.class);
 	}
 
 	@Test
 	public void 자동차_이름은_공백_불가() {
-		//given
-		//when
-		//then
-		assertThrows(IllegalArgumentException.class, () -> new Car(""));
+		assertThatThrownBy(() -> new Car("")).isExactlyInstanceOf(IllegalArgumentException.class);
 	}
 
 	@Test
 	public void 자동차_이름은_NULL_불가() {
-		//given
-		//when
-		//then
-		assertThrows(IllegalArgumentException.class, () -> new Car(null));
+		assertThatThrownBy(() -> new Car(null)).isExactlyInstanceOf(IllegalArgumentException.class);
 	}
 }
