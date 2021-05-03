@@ -2,9 +2,13 @@ package com.woowacourse.racingcar;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Random;
 
 public class RacingCarGame {
 	private static int NAME_MAX_LENGTH = 5;
+	private static int MOVE_MIN_VALUE = 4;
 	
 	class RacingCar implements Comparable<RacingCar>{
 		String name;
@@ -45,6 +49,17 @@ public class RacingCarGame {
 	public void startGame() {
 		String inputCarNames = inputCarNames();
 		int inputLoopCnt = Integer.parseInt(inputLoopCount());
+		
+		String[] carNames = inputCarNames.split(",");
+		Map<String, RacingCar> racingCars = new LinkedHashMap<String, RacingCarGame.RacingCar>();
+		
+		for (int i = 0; i < carNames.length; i++) {
+			racingCars.put(carNames[i], new RacingCar(carNames[i]));
+		}
+		
+		for (int i = 0; i < inputLoopCnt; i++) {
+			moveCars(racingCars);
+		}
 	}
 	
 	public String inputCarNames() {
@@ -111,6 +126,24 @@ public class RacingCarGame {
 			return true;
 		} catch(NumberFormatException e) {
 			return false;
+		}
+	}
+	
+	public void moveCars(Map<String, RacingCar> cars) {
+		for (String carName : cars.keySet()) {
+			RacingCar car = cars.get(carName);
+			
+			moveCar(car);
+		}
+	}
+	
+	public void moveCar(RacingCar car) {
+		Random random = new Random();
+		int randomNum = (int)(random.nextInt(9)) + 1;
+		
+		if (randomNum >= MOVE_MIN_VALUE) {
+			car.setMoveCnt();
+			return;
 		}
 	}
 }
