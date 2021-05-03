@@ -17,6 +17,10 @@ public class Mileage {
         mileage++;
     }
 
+    public Integer getMileage() {
+        return mileage;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

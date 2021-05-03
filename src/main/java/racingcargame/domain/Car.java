@@ -5,6 +5,8 @@ import racingcargame.utility.Utility;
 public class Car {
     public static final int MOVE_THRESHOLD = 4;
     public static final int MILEAGE_INITIAL_VALUE = 0;
+    public static final String NAME_DELIMITER = ":";
+    public static final String PROGRESS_BAR = "-";
     CarName carName;
     Mileage mileage;
 
@@ -33,5 +35,16 @@ public class Car {
 
     public Mileage getMileage() {
         return mileage;
+    }
+
+    public String getResultString() {
+        StringBuilder resultStringBuilder = new StringBuilder();
+        resultStringBuilder.append(carName.getCarName());
+        resultStringBuilder.append(NAME_DELIMITER);
+        for (int i = 0; i < mileage.getMileage(); i++) {
+            resultStringBuilder.append(PROGRESS_BAR);
+        }
+        resultStringBuilder.append(System.lineSeparator());
+        return resultStringBuilder.toString();
     }
 }

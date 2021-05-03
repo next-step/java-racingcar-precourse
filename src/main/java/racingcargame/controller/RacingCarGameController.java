@@ -2,6 +2,7 @@ package racingcargame.controller;
 
 import racingcargame.service.RacingCarGameService;
 import racingcargame.view.ConsoleInput;
+import racingcargame.view.ConsoleOutput;
 
 public class RacingCarGameController {
     RacingCarGameService racingCarGameService;
@@ -17,7 +18,9 @@ public class RacingCarGameController {
     private void playRacingCarGame() {
         String carNames = ConsoleInput.inputRacingCarNames();
         racingCarGameService.makeCars(carNames);
-
-
+        Integer moveCount = ConsoleInput.inputMoveCount();
+        racingCarGameService.race(moveCount);
+        ConsoleOutput.printResultMessage();
+        ConsoleOutput.printResult(racingCarGameService.getResultString());
     }
 }
