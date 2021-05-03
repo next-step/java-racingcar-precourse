@@ -9,6 +9,10 @@ public class Car implements Comparable<Car> {
 		this.carDistance = new CarDistance();
 	}
 
+	public int move(int condition) {
+		return carDistance.move(condition);
+	}
+
 	public String getCarName() {
 		return carName.getName();
 	}
@@ -17,12 +21,7 @@ public class Car implements Comparable<Car> {
 		return carDistance.getDistance();
 	}
 
-	public int move(int condition) {
-		carDistance.move(condition);
-		return carDistance.getDistance();
-	}
-
-	public void printNameAndDistance() {
+	public void printCarStatus() {
 		System.out.print(getCarName() + ": ");
 		for (int i = 0; i < carDistance.getDistance(); i++) {
 			System.out.print("-");

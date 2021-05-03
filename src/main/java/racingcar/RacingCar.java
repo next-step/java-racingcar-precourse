@@ -39,23 +39,32 @@ public class RacingCar {
 	}
 
 	private void start() {
-		for (int i = 0; i < round.getCount(); i++) {
-			cars.moveCars();
-			cars.printCars();
-			System.out.println();
+		while (!round.isEnd()) {
+			int[] randomNumbers = getRandomNumbers(cars.getCarsLength());
+			cars.moveCars(randomNumbers);
+			cars.printCarsStatus();
+			round.reduceCount();
 		}
 	}
 
+	private int[] getRandomNumbers(int size) {
+		int[] randomNumbers = new int[size];
+		for (int i = 0; i < size; i++) {
+			randomNumbers[i] = Utils.getRandomNumberBetween0to9();
+		}
+		return randomNumbers;
+	}
+
 	private void printWinner() {
-		Iterator<Car> iterator = cars.findWinners().iterator();
+		Iterator<String> iterator = cars.findWinners().iterator();
 		while (iterator.hasNext()) {
-			System.out.print(iterator.next().getCarName());
+			System.out.print(iterator.next());
 			printComma(iterator);
 		}
 		System.out.println("가 최종 우승했습니다.");
 	}
 
-	private void printComma(Iterator<Car> iterator) {
+	private void printComma(Iterator<String> iterator) {
 		if (iterator.hasNext()) {
 			System.out.print(", ");
 		}

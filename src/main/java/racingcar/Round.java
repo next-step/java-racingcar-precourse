@@ -14,6 +14,14 @@ public class Round {
 		}
 	}
 
+	public void reduceCount(){
+		count--;
+	}
+
+	public boolean isEnd(){
+		return count == 0;
+	}
+
 	public int getCount() {
 		return count;
 	}

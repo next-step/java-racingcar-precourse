@@ -8,45 +8,64 @@ public class Cars {
 	private List<Car> cars;
 
 	public Cars(String[] carNames) {
-		if (carNames == null || carNames.length == 0) {
-			throw new IllegalArgumentException("공백은 불가능합니다.");
-		}
+		validateCarNamesIsNotNull(carNames);
+		validateCarNamesIsNotZeroLength(carNames);
 
-		List<Car> tempCarList = new ArrayList<>();
+		List<Car> cars = new ArrayList<>();
 		for (String carName : carNames) {
-			tempCarList.add(new Car(carName));
+			cars.add(new Car(carName));
 		}
 
-		cars = tempCarList;
+		this.cars = cars;
 	}
 
 	public Cars(List<Car> cars) {
 		this.cars = cars;
 	}
 
-	public void moveCars(){
-		for (Car car : cars) {
-			car.move(Utils.getRandomNumberBetween0to9());
+	private void validateCarNamesIsNotNull(String[] carNames) {
+		if (carNames == null) {
+			throw new IllegalArgumentException("NULL은 불가능합니다.");
 		}
 	}
 
-	public void printCars(){
-		for (Car car : cars) {
-			car.printNameAndDistance();
+	private void validateCarNamesIsNotZeroLength(String[] carNames) {
+		if (carNames.length == 0) {
+			throw new IllegalArgumentException("크기가 0인 배열은 불가능합니다.");
 		}
 	}
 
-	public List<Car> findWinners() {
+	public void moveCars(int[] randomNumbers) {
+		int size = cars.size();
+
+		for (int i = 0; i < size; i++) {
+			cars.get(i).move(randomNumbers[i]);
+		}
+	}
+
+	public List<String> findWinners() {
 		Collections.sort(cars);
 		int distance = cars.get(0).getCarDistance();
-		List<Car> winners = new ArrayList<>();
+		List<String> winnerNames = new ArrayList<>();
 		for (Car car : cars) {
 			if (car.getCarDistance() == distance) {
-				winners.add(car);
+				winnerNames.add(car.getCarName());
 			}
 		}
 
-		return winners;
+		return winnerNames;
+	}
+
+	public void printCarsStatus() {
+		for (Car car : cars) {
+			car.printCarStatus();
+		}
+		System.out.println();
+	}
+
+
+	public int getCarsLength(){
+		return cars.size();
 	}
 
 }

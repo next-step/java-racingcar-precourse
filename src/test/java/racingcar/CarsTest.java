@@ -38,10 +38,10 @@ public class CarsTest {
 		Cars cars = new Cars(Arrays.asList(blue, red, green));
 
 		//when
-		List<Car> winners = cars.findWinners();
+		List<String> winners = cars.findWinners();
 
 		//then
-		assertThat(winners).contains(red, green);
+		assertThat(winners).contains(red.getCarName(), green.getCarName());
 	}
 
 }
