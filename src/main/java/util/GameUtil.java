@@ -5,12 +5,16 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import car.Car;
+import model.Car;
 
 public class GameUtil {
 	private static final int INITIAL_POSITION = 0;
 	public static final int RANDOM_NUM_MAX = 9;
 	public static final int MOVABLE_MIN_INT = 4;
+
+	public static String removeAllSpaceInCarName(String carName) {
+		return carName.replaceAll(" ", "");
+	}
 
 	public static String[] splitNameByComma(String name) {
 		if (name == null) {
@@ -20,7 +24,6 @@ public class GameUtil {
 	}
 
 	public static int generateRandomNum() {
-		//return (int)Math.random() * 10;
 		return (int)(Math.random() * (RANDOM_NUM_MAX + 1));
 	}
 
@@ -35,7 +38,7 @@ public class GameUtil {
 		List<Car> carList = new ArrayList<>();
 		String[] strArray = GameUtil.splitNameByComma(input);
 		for (int i = 0; i < strArray.length; i++) {
-			carList.add(new Car(strArray[i], INITIAL_POSITION));
+			carList.add(new Car(strArray[i]));
 		}
 		return carList;
 	}

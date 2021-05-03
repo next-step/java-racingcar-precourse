@@ -7,12 +7,21 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import car.Car;
-import car.Cars;
+import model.Car;
+import model.Cars;
 
 public class GameUtilTest {
 
 	public static final int RANDOM_NUM_TEST_SIZE = 100;
+
+	@Test
+	@DisplayName("입력받은 문자열(자동차 이름)에 대한 공백제거 테스트")
+	public void removeAllSpaceInCarNameTest() {
+		// given
+		String input = "       pobi   ,    crong    ,     honux";
+		// when
+		assertThat(GameUtil.removeAllSpaceInCarName(input)).isEqualTo("pobi,crong,honux");
+	}
 
 	@Test
 	@DisplayName("입력받은 문자열에 대해서 콤마(,)기준으로 잘 나누는지 테스트")
@@ -70,9 +79,9 @@ public class GameUtilTest {
 
 		// then
 		assertThat(carList.size()).isEqualTo(3);
-		assertThat(carList.get(0)).isEqualTo(new Car("pobi", 0));
-		assertThat(carList.get(1)).isEqualTo(new Car("crong", 0));
-		assertThat(carList.get(2)).isEqualTo(new Car("honux", 0));
+		assertThat(carList.get(0).getName()).isEqualTo("pobi");
+		assertThat(carList.get(1).getName()).isEqualTo("crong");
+		assertThat(carList.get(2).getName()).isEqualTo("honux");
 	}
 
 	@Test

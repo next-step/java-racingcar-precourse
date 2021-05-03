@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import model.Cars;
 import util.GameUtil;
 
 public class CarsTest {

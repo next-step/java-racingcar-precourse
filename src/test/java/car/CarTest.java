@@ -5,12 +5,14 @@ import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import model.Car;
+
 public class CarTest {
 	@Test
 	@DisplayName("Car클래스의 forward함수의 테스트")
 	public void forwardTest() {
 		// given, when #1
-		Car pobiCar = new Car("pobi", 0);
+		Car pobiCar = new Car("pobi");
 
 		// then #1
 		assertThat(pobiCar.getPosition()).isEqualTo(0);
