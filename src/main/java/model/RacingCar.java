@@ -19,6 +19,15 @@ public class RacingCar {
 		return name;
 	}
 
+	public Mileage getMileage() {
+		return mileage;
+	}
+
+	public void move(final boolean isEnableMove) {
+		if (isEnableMove)
+			mileage.addValue();
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (o == null || getClass() != o.getClass())

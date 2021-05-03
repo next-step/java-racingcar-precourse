@@ -51,7 +51,7 @@ class RacingCarsTest {
 		/// region then
 		assertNotNull(actualRacingCars);
 		final AtomicInteger index = new AtomicInteger();
-		actualRacingCars.getRacingCars().forEach(
+		actualRacingCars.getValue().forEach(
 			racingCar -> assertEquals(expectedRacingCars[index.getAndIncrement()], racingCar)
 		);
 		/// endregion

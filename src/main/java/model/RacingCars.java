@@ -1,19 +1,28 @@
 package model;
 
 import java.util.LinkedHashSet;
+import java.util.Random;
 import java.util.Set;
 
 import exception.InvalidCarNameException;
 
 public class RacingCars {
-	private final Set<RacingCar> list;
+	private final Set<RacingCar> value;
 
 	public RacingCars(final String... carNames) {
-		list = setRacingCars(carNames);
+		value = setRacingCars(carNames);
 	}
 
-	public Set<RacingCar> getRacingCars() {
-		return list;
+	public Set<RacingCar> getValue() {
+		return value;
+	}
+
+	public void nextRound() {
+		value.forEach(racingCar -> racingCar.move(isEnableMove()));
+	}
+
+	private boolean isEnableMove() {
+		return new Random().nextInt(9) >= 4;
 	}
 
 	private Set<RacingCar> setRacingCars(final String... carNames) {

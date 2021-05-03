@@ -10,6 +10,25 @@ import exception.InvalidCarNameException;
 @DisplayName("경주용 자동차 테스트")
 class RacingCarTest {
 
+	@DisplayName("경주용 자동차 이동")
+	@Test
+	void moveRacingCar() {
+		/// region given
+		final boolean givenEnableMove = true;
+		RacingCar givenRacingCar = new RacingCar(new CarName("car"));
+		final Mileage expectedMileage = new Mileage();
+		expectedMileage.addValue();
+		/// endregion
+
+		/// region when
+		givenRacingCar.move(givenEnableMove);
+		/// endregion
+
+		/// region then
+		assertEquals(expectedMileage, givenRacingCar.getMileage());
+		/// endregion
+	}
+
 	@DisplayName("비어있는 경주용 자동차 이름")
 	@Test
 	void invalidRacingCarName() {
