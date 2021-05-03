@@ -1,6 +1,8 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
@@ -19,6 +21,27 @@ public class RacingCars {
 
 	public void nextRound() {
 		value.forEach(racingCar -> racingCar.move(isEnableMove()));
+	}
+
+	public Mileage getMaxMileage() {
+		Mileage mileage = new Mileage();
+		for (RacingCar racingCar : value) {
+			mileage = racingCar.getMileage().getValue() > mileage.getValue() ? racingCar.getMileage() : mileage;
+		}
+		return mileage;
+	}
+
+	public List<CarName> getMaxMileageCarNames(final Mileage maxMileage) {
+		List<CarName> maxMileageCarNames = new ArrayList<>();
+		for (RacingCar racingCar : value) {
+			addCarName(maxMileageCarNames, racingCar.getMileage().equals(maxMileage), racingCar.getName());
+		}
+		return maxMileageCarNames;
+	}
+
+	private void addCarName(final List<CarName> carNames, final boolean isEnableAdd, final CarName carName) {
+		if (isEnableAdd)
+			carNames.add(carName);
 	}
 
 	private boolean isEnableMove() {
