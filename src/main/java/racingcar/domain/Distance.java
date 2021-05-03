@@ -7,6 +7,10 @@ public class Distance {
         this.distance = 0;
     }
 
+    public Distance(int distance) {
+        this.distance = distance;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

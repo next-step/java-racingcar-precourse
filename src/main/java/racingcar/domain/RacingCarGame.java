@@ -1,6 +1,6 @@
 package racingcar.domain;
 
-import static racingcar.domain.rule.RacingCarGameRule.SEPERATOR;
+import static racingcar.domain.constant.RacingCarConstant.SEPERATOR;
 
 public class RacingCarGame {
     private static Cars cars;
@@ -17,4 +17,5 @@ public class RacingCarGame {
             // TODO 자동차 이동
         }
     }
+
 }

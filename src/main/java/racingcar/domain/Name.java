@@ -4,7 +4,7 @@ import racingcar.exception.NameException;
 
 import java.util.Objects;
 
-import static racingcar.domain.rule.RacingCarGameRule.*;
+import static racingcar.domain.constant.RacingCarConstant.*;
 
 public class Name {
 

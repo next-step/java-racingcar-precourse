@@ -9,7 +9,7 @@ import racingcar.exception.NameException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static racingcar.domain.rule.RacingCarGameRule.SEPERATOR;
+import static racingcar.domain.constant.RacingCarConstant.SEPERATOR;
 
 @DisplayName("자동차 목록 도메인 테스트")
 class CarsTest {
