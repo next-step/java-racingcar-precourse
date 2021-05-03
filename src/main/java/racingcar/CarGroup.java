@@ -30,14 +30,12 @@ public class CarGroup {
 	}
 
 	public void start() {
+		System.out.println();
+		System.out.println("실행결과");
 		for (int i = 0; i < gameCount.getGameCount(); i++) {
-			progressGameCount();
-		}
-	}
-
-	public void progressGameCount() {
-		for (Car car : this.cars) {
-			car.isForward(Generator.randomNumber());
+			CarResult result = new CarResult();
+			result.progressGameCount(cars);
+			System.out.println();
 		}
 	}
 }
