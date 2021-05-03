@@ -11,12 +11,15 @@ public class RacingCarName {
 	}
 
 	private void validateNameLength() {
+		if (StringUtils.isEmpty(this.name)) {
+			throw new IllegalArgumentException("빈 공백 혹은 값을 입력하지 않았습니다");
+		}
 		if (!isValidNameLength()) {
 			throw new IllegalArgumentException(
 				String.format("레이싱카의 이름은 길이가 %d 이상 %d 이하 이어야 합니다", MIN_LENGTH, MAX_LENGTH));
 		}
 	}
-	
+
 	boolean isValidNameLength() {
 		return this.name.length() >= MIN_LENGTH && this.name.length() <= MAX_LENGTH;
 	}

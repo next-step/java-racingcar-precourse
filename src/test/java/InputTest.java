@@ -36,5 +36,12 @@ public class InputTest {
 			.isThrownBy(() -> new RacingCarName(""))
 			.withMessageMatching("레이싱카의 이름은 길이가 \\d+ 이상 \\d+ 이하 이어야 합니다");
 	}
+
+	@Test
+	public void 공백_NULL_문자열_검증() {
+		assertThat(StringUtils.isEmpty("")).isTrue();
+		assertThat(StringUtils.isEmpty(null)).isTrue();
+		assertThat(StringUtils.isEmpty("hello")).isFalse();
+	}
 }
 
