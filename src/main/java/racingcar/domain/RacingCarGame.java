@@ -3,6 +3,7 @@ package racingcar.domain;
 import static racingcar.domain.constant.RacingCarConstant.SEPERATOR;
 
 public class RacingCarGame {
+    private static MoveCondition moveCondition = new MoveCondition();
     private static Cars cars;
     private static Round round;
 
@@ -14,7 +15,7 @@ public class RacingCarGame {
     public void play() {
         while (round.executable()) {
             round.execute();
-            // TODO 자동차 이동
+            cars.move(moveCondition);
         }
     }
 

@@ -10,6 +10,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DisplayName("이동조건 도메인 테스트")
 class MoveConditionTest {
 
+    MoveCondition moveCondition = new MoveCondition();
+
     @DisplayName("이동조건에 따라 이동거리 생성")
     @RepeatedTest(50)
     void 이동조건에_따라_이동거리_생성() {
@@ -17,7 +19,7 @@ class MoveConditionTest {
         ArrayList<Distance> distances = 유효한_이동거리_목록_생성();
 
         // when + then
-        assertThat(MoveCondition.getDistance()).isIn(distances);
+        assertThat(moveCondition.getMoveDistance()).isIn(distances);
     }
 
     private ArrayList<Distance> 유효한_이동거리_목록_생성() {

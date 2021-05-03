@@ -27,4 +27,7 @@ public class Car {
         return Objects.equals(name, car.name);
     }
 
+    public void move(Distance distance) {
+        this.distance.addDistance(distance);
+    }
 }

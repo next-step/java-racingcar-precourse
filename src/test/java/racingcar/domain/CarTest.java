@@ -45,4 +45,18 @@ class CarTest {
         // then
         assertThat(car1.equals(car2)).isFalse();
     }
+
+    @ParameterizedTest(name = "자동차 이동")
+    @ValueSource(ints = {1, 0, 9})
+    void 자동차_이동(int input) {
+        // given
+        Car car = new Car("자동차");
+        Distance distance = new Distance(input);
+
+        // when
+        car.move(distance);
+
+        // then
+        assertThat(car.getDistance()).isEqualTo(distance);
+    }
 }

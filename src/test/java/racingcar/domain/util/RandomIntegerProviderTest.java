@@ -11,6 +11,7 @@ class RandomIntegerProviderTest {
     @CsvSource({
             "1, 9"
             , "2, 100"
+            , "2, 2"
     })
     void 범위내_랜덤_정수_생성테스트(int minNumber, int maxNumber) {
         int randomNumber = RandomIntegerProvider.provideRandomNumber(minNumber, maxNumber);

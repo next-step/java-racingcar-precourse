@@ -47,4 +47,9 @@ public class Cars {
         return cars.size();
     }
 
+    public void move(MoveCondition moveCondition) {
+        for (Car car : cars) {
+            car.move(moveCondition.getMoveDistance());
+        }
+    }
 }
