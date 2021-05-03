@@ -1,18 +1,21 @@
 package domain;
 
-import static util.CarRacingConstants.CAR_START_POS;
 
-public class Car {
+import static util.CarRacingConstants.CAR_NAME_MAX;
+import static util.CarRacingConstants.CAR_NAME_MIN;
+
+public class Car extends Moving {
 
     private String carName;
-    private int pos;
+
 
     public Car(String carName) {
         hasSpaceInName(carName);
         isBetweenOneAndFive(carName);
         this.carName = carName;
-        this.pos = CAR_START_POS;
+
     }
+
 
     public static void hasSpaceInName(String carName) {
         if (carName.contains(" ")) {
@@ -21,9 +24,10 @@ public class Car {
     }
 
     public static void isBetweenOneAndFive(String carName) {
-        if (carName.length() < 1 || carName.length() > 5) {
+        if (carName.length() < CAR_NAME_MIN || carName.length() > CAR_NAME_MAX) {
             throw new IllegalArgumentException();
         }
     }
+
 
 }
