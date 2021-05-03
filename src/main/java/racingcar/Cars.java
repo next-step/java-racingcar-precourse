@@ -3,7 +3,7 @@ package racingcar;
 import java.util.*;
 
 public class Cars {
-    HashMap<String, Car> carHashMap;
+    TreeMap<String, Car> carHashMap;
 
     private void addCar(String name) {
         if (!ValidationUtils.isValidName(name)) return;
@@ -12,7 +12,7 @@ public class Cars {
     }
 
     public Cars() {
-        carHashMap = new HashMap<>();
+        carHashMap = new TreeMap<>();
     }
 
     public Cars(String[] carNames) {
