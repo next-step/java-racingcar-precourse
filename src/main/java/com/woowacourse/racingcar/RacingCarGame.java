@@ -5,7 +5,37 @@ import java.io.InputStreamReader;
 
 public class RacingCarGame {
 	private static int NAME_MAX_LENGTH = 5;
+	
+	class RacingCar implements Comparable<RacingCar>{
+		String name;
+		int moveCnt;
+		
+		RacingCar(String name) {
+			this.name = name;
+		}
+		
+		private String getCarName() {
+			return this.name;
+		}
 
+		private int getMoveCnt() {
+			return this.moveCnt;
+		}
+		
+		private void setCarName(String name) {
+			this.name = name;
+		}
+		
+		private void setMoveCnt() {
+			this.moveCnt += 1;
+		}
+
+		@Override
+		public int compareTo(RacingCar o) {
+			return this.moveCnt - o.moveCnt;
+		}
+	}
+	
 	public static void main(String[] args) {
 		RacingCarGame racingCarGame = new RacingCarGame();
 		
