@@ -40,7 +40,7 @@ public class RaceTest {
 
         race.start();
 
-        assertThat(race.getWinners()).isEqualTo(winners.getList());
+        assertThat(race.getWinners()).isEqualTo(winners);
     }
 
 }

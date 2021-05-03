@@ -1,7 +1,5 @@
 package racing;
 
-import java.util.List;
-
 public class GameController implements OnRoundStepListener{
     private final Race race;
     private final OutputProvider outputProvider;
@@ -32,7 +30,7 @@ public class GameController implements OnRoundStepListener{
     }
 
     @Override
-    public void onComplete(List<Car> winners) {
+    public void onComplete(CarSet winners) {
         this.outputProvider.addCompleteResult(winners);
     }
 

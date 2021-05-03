@@ -1,17 +1,10 @@
 package racing;
 
-import java.util.List;
-
 public class Output {
-    public static final String DELIMITER_CAR_NAME = ",";
     private final String output;
 
     public Output(String output) {
         this.output = output;
-    }
-
-    public Output(List<String> names) {
-        this(String.join(DELIMITER_CAR_NAME, names));
     }
 
     @Override

@@ -1,7 +1,5 @@
 package racing;
 
-import java.util.*;
-
 public class Race {
     private CarSet carset;
     private Round round;
@@ -38,14 +36,14 @@ public class Race {
         this.listener = listener;
     }
 
-    public List<Car> getWinners() {
+    public CarSet getWinners() {
         Mileage maxMileage = carset.reduce((mile, car) -> Mileage.max(mile, car.getMileage()), new Mileage(0));
         return carset.reduce((acc, car) -> {
             if (maxMileage.equals(car.getMileage())) {
-                acc.add(car);
+                return acc.concat(car);
             }
             return acc;
-        }, new ArrayList<>());
+        }, new CarSet());
     }
 
     private void runStepCars() {
@@ -62,7 +60,7 @@ public class Race {
 
     private void notifyComplete() {
         if (listener != null) {
-            List<Car> winners = getWinners();
+            CarSet winners = getWinners();
             listener.onComplete(winners);
         }
     }

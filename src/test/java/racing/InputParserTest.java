@@ -5,11 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class InputParserTest {
@@ -17,11 +12,9 @@ public class InputParserTest {
     @Test
     void parseName_shouldParseCarName() {
         String inputNames = "abc,def,ghi";
-        List<Car> expect = Stream.of("abc", "def", "ghi")
-                .map(Car::new)
-                .collect(Collectors.toList());
+        CarSet expect = new CarSet(new Car("abc"), new Car("def"), new Car("ghi"));
 
-        List<Car> actual = InputParser.parseCarNames(inputNames);
+        CarSet actual = InputParser.parseCarNames(inputNames);
 
         Assertions.assertEquals(actual, expect);
     }
@@ -40,6 +33,14 @@ public class InputParserTest {
         Round actual = InputParser.parseRound(inputRound);
 
         assertThat(actual).isEqualTo(expect);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"A", "", "1A"})
+    void parseRounds_shouldThrowNotNumericInput(String inputRound) {
+        Assertions.assertThrows(IllegalArgumentException.class, () ->
+                InputParser.parseRound(inputRound)
+        );
     }
 
     @ParameterizedTest

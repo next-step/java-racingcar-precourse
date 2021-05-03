@@ -1,6 +1,5 @@
 package racing;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class App {
@@ -15,8 +14,8 @@ public class App {
 
     private static void initInput(GameController controller, Scanner scanner) {
         System.out.println(controller.flushOutput());
-        List<Car> cars = InputParser.parseCarNames(scanner.nextLine());
-        controller.setCars(new CarSet(cars));
+        CarSet cars = InputParser.parseCarNames(scanner.nextLine());
+        controller.setCars(cars);
 
         System.out.println(controller.flushOutput());
         Round round = InputParser.parseRound(scanner.nextLine());

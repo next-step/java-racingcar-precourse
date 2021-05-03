@@ -10,6 +10,6 @@ public class CarSetTest {
     void create() {
         CarSet set = new CarSet(new Car("abc"), new Car("def"));
 
-        assertThat(set.length()).isEqualTo(2);
+        assertThat(set.size()).isEqualTo(2);
     }
 }
