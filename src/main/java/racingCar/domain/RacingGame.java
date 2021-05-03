@@ -3,10 +3,18 @@ package racingCar.domain;
 public class RacingGame {
 
   private final Cars cars;
-  private final TryCount tryCount;
+  private TryCount tryCount;
 
   public RacingGame(String[] carNames, int tryCount) {
     this.cars = new Cars(carNames);
     this.tryCount = new TryCount(tryCount);
+  }
+
+  public void race() {
+    tryCount = tryCount.decrease();
+  }
+
+  public boolean availableGame() {
+    return tryCount.isAvailableGame();
   }
 }

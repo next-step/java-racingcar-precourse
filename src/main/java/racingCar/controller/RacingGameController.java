@@ -11,7 +11,9 @@ public class RacingGameController {
 
     RacingGame racingGame = new RacingGame(carNames, tryCount);
 
-
+    while(racingGame.availableGame()) {
+      racingGame.race();
+    }
 
   }
 
