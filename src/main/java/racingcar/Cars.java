@@ -48,12 +48,16 @@ public class Cars {
 		int distance = cars.get(0).getCarDistance();
 		List<String> winnerNames = new ArrayList<>();
 		for (Car car : cars) {
-			if (car.getCarDistance() == distance) {
-				winnerNames.add(car.getCarName());
-			}
+			isWinner(car, distance, winnerNames);
 		}
 
 		return winnerNames;
+	}
+
+	private void isWinner(Car car, int distance, List<String> winnerNames) {
+		if (car.getCarDistance() == distance) {
+			winnerNames.add(car.getCarName());
+		}
 	}
 
 	public void printCarsStatus() {
