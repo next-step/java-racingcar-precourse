@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 class RuleTest {
 
     @Test
-    void nothing() {
+    void forwardTest() {
 
         // given
         int firstNumber = 3;
