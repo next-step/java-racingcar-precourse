@@ -16,13 +16,7 @@ public class Winners {
                 .getPositions()
                 .getMaxPosition();
 
-        for (CarHistory carHistory : carHistories.getCarHistories()) {
-            addPositionIfMax(carHistory, maxPosition);
-        }
-    }
-
-    private void addPositionIfMax(CarHistory carHistory, Position maxPosition) {
-        if (carHistory.getPosition().equals(maxPosition)) {
+        for (CarHistory carHistory : carHistories.findByPosition(maxPosition)) {
             winners.add(new Winner(carHistory.getCarName()));
         }
     }

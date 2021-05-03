@@ -29,6 +29,16 @@ public class CarHistories {
         return new Positions(positions);
     }
 
+    public List<CarHistory> findByPosition(Position comparePosition) {
+        List<CarHistory> samePositionHistories = new ArrayList<>();
+
+        for(CarHistory carHistory : carHistories) {
+            addCarHistoryIfSamePosition(samePositionHistories, carHistory, comparePosition);
+        }
+
+        return samePositionHistories;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -40,5 +50,11 @@ public class CarHistories {
     @Override
     public int hashCode() {
         return Objects.hash(carHistories);
+    }
+
+    private void addCarHistoryIfSamePosition(List<CarHistory> carHistories, CarHistory carHistory, Position comparePosition) {
+        if (carHistory.getPosition().equals(comparePosition)) {
+            carHistories.add(carHistory);
+        }
     }
 }
