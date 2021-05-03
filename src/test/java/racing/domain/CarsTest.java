@@ -38,4 +38,19 @@ class CarsTest {
             .containsExactly(new Car("gmoon").move(alwaysForward),
                     new Car("guest").move(alwaysForward));
   }
+
+  @Test
+  @DisplayName("자동차들의 최대 위치 값을 반환한다.")
+  void getMaxPosition() {
+    // given
+    String input = "gmoon,guest";
+    Cars newCars = Cars.generateFromInputString(input);
+
+    // when
+    MoveRule alwaysForward = () -> true;
+    Cars actual = newCars.race(alwaysForward);
+
+    // then
+    assertThat(actual.getMaxPosition()).isEqualTo(Position.create().move());
+  }
 }

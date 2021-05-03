@@ -29,6 +29,14 @@ public class Cars {
     return new Cars(racingCars);
   }
 
+  public Position getMaxPosition() {
+    Position position = Position.create();
+    for (Car car : values) {
+      position = position.max(car.getPosition());
+    }
+    return position;
+  }
+
   public List<Car> getValues() {
     return values;
   }
