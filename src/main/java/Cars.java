@@ -59,6 +59,15 @@ public class Cars {
 		printCarsMileage();
 	}
 
+	// 게임 결과 생성
+	public String creatRaceResult(int playCount) {
+		StringJoiner stringJoiner = new StringJoiner(", ");
+		for (Car car : carList) {
+			stringJoiner = getWinnerName(car, playCount, stringJoiner);
+		}
+		return stringJoiner.toString();
+	}
+
 	// 우승 자동차 이름 얻기
 	public StringJoiner getWinnerName(Car car, int playCount, StringJoiner stringJoiner) {
 		if (car.isWinner(playCount)) {
