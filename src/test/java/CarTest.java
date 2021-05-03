@@ -42,4 +42,24 @@ public class CarTest {
 		CarStatus status = car.move(3);
 		assertThat(status).isEqualTo(CarStatus.STOP);
 	}
+
+	@Test
+	@DisplayName("자동차가 이동하는 조건을 만족 했을 경우 실제로 이동하였는지 검사")
+	public void checkMovePoint() {
+		car.move(4);
+		car.move(5);
+		car.move(6);
+		car.move(8);
+		assertThat(car.getMovePoint()).isEqualTo(4);
+	}
+
+	@Test
+	@DisplayName("자동차의 위치가 변경되지 않았는지 검사")
+	public void doNotGainMovePoint() {
+		car.move(2);
+		car.move(1);
+		car.move(2);
+		car.move(3);
+		assertThat(car.getMovePoint()).isEqualTo(0);
+	}
 }
