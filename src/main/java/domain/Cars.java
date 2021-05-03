@@ -1,5 +1,7 @@
 package domain;
 
+import constant.Constant;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +10,7 @@ public class Cars {
 
     public Cars(String names) {
         this.cars = new ArrayList<>();
-        for(String name : names.split(",")) {
+        for(String name : names.split(Constant.CAR_NAME_DELEMETER)) {
             this.cars.add(new Car(name));
         }
     }
