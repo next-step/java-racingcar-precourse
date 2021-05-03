@@ -5,8 +5,7 @@ import java.util.List;
 
 /**
  * 일급 컬렉션을 활용한 RacingCars Model
- * @param finishCount
- * @return
+ * @author In Mook, Jeong
  * @since 2021. 05. 03
  */
 public class RacingCars {
