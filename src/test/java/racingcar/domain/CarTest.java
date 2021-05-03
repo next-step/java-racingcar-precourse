@@ -16,7 +16,11 @@ public class CarTest {
 
         car = new Car("에스턴마틴");
         assertThat(car.getName()).isEqualTo("에스턴마틴");
+    }
 
+    @Test
+    @DisplayName("유효하지 않은 이름")
+    void invalidName() {
         invalidName(null);
         invalidName("");
         invalidName("   ");
@@ -24,7 +28,8 @@ public class CarTest {
     }
 
     private void invalidName(String name) {
-        assertThat(catchThrowable(() -> new Car(name))).isInstanceOf(IllegalArgumentException.class);
+        assertThat(catchThrowable(() -> new Car(name)))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test

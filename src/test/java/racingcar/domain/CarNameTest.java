@@ -13,13 +13,19 @@ public class CarNameTest {
     void constructor() {
         assertThat(new CarName("하스").getName()).isEqualTo("하스");
         assertThat(new CarName("에스턴마틴").getName()).isEqualTo("에스턴마틴");
+    }
+
+    @Test
+    @DisplayName("유효하지 않은 이름")
+    void invalidName() {
         invalidName(null);
         invalidName("");
         invalidName("레이싱포인트");
     }
 
     private void invalidName(String name) {
-        assertThat(catchThrowable(() -> new CarName(name))).isInstanceOf(IllegalArgumentException.class);
+        assertThat(catchThrowable(() -> new CarName(name)))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
 }
