@@ -11,6 +11,12 @@ public class GamePlayService {
 		Cars cars = new Cars(carList);
 		int playCount = getPlayCount();
 		playRace(cars, playCount);
+
+		String gameResult = "";
+		do {
+			gameResult = cars.creatRaceResult(playCount);
+		} while (0 == gameResult.length());
+		System.out.println(gameResult + "가 우승하였습니다");
 	}
 
 	// 자동차 목록 생성
