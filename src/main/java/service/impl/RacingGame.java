@@ -16,7 +16,7 @@ public class RacingGame implements IRacingGame, RacingGameView {
 	public void play() {
 		int roundNum = getRoundNum();
 
-		System.out.println("실행 결과");
+		System.out.println("\n실행 결과");
 		for (int i = 0; i < roundNum; i++) {
 			racingCars.nextRound();
 			printRoundResult(racingCars);

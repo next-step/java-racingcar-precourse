@@ -13,12 +13,20 @@ public interface RacingGameView {
 		return new Scanner(System.in).nextLine().split(",");
 	}
 
-	default int getRoundNum() {
+	public static int getRoundNum() {
 		System.out.println("시도할 회수는 몇회인가요?");
-		return new Scanner(System.in).nextInt();
+		int roundNum;
+		try {
+			roundNum = new Scanner(System.in).nextInt();
+		} catch (InputMismatchException ignored) {
+			roundNum = -1;
+		}
+		if (roundNum < 0)
+			throw new RacingGameException("유효하지 않은 수가 입력되었습니다.");
+		return roundNum;
 	}
 
-	default void printRoundResult(final RacingCars racingCars) {
+	public static void printRoundResult(final RacingCars racingCars) {
 		for (RacingCar racingCar : racingCars.getValue()) {
 			System.out.println(
 				racingCar.getName().getValue() + " : " + makeProgressBar(racingCar.getMileage())
@@ -28,6 +36,14 @@ public interface RacingGameView {
 	}
 
 	default String makeProgressBar(final Mileage mileage) {
+		StringBuilder stringBuilder = new StringBuilder();
+		for (int i = 0; i < mileage.getValue(); i++) {
+			stringBuilder.append("-");
+		}
+		return stringBuilder.toString();
+	}
+
+	private static String makeProgressBar(final Mileage mileage) {
 		StringBuilder stringBuilder = new StringBuilder();
 		for (int i = 0; i < mileage.getValue(); i++) {
 			stringBuilder.append("-");
