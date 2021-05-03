@@ -4,9 +4,11 @@ import static racingcar.Utils.*;
 
 public class RacingCar {
 	private Cars cars;
+	private Round round;
 
-	public void start() {
+	public void run() {
 		initCars();
+		initRound();
 	}
 
 	private void initCars() {
@@ -19,4 +21,16 @@ public class RacingCar {
 		}
 	}
 
+	private void initRound() {
+		try {
+			System.out.println("시도할 횟수는 몇 회인가요?");
+			round = new Round(Integer.parseInt(getStringInput()));
+		} catch (NumberFormatException exception) {
+			System.out.println("정수를 입력하세요.");
+			initRound();
+		} catch (IllegalArgumentException exception) {
+			System.out.println(exception.getMessage());
+			initRound();
+		}
+	}
 }
