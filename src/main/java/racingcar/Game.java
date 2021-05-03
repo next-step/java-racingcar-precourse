@@ -4,12 +4,12 @@ import java.util.List;
 
 public class Game {
 
-    private int count = 0;
-    List<RacingCar> racingCars;
+    private GameCount gameCount;
+    private List<RacingCar> racingCars;
 
-    public Game(List<RacingCar> racingCars, int count) {
+    public Game(List<RacingCar> racingCars, GameCount gameCount) {
         this.racingCars = racingCars;
-        this.count = count;
+        this.gameCount = gameCount;
     }
 
     public void play() {
@@ -17,7 +17,7 @@ public class Game {
         Print.write("");
         Print.write(GameMessage.PLAY_RESULT);
 
-        for (int i = 0; i < count; i++) {
+        for (int i = 0; i < gameCount.getGameCount(); i++) {
             run();
         }
         Print.write(getVictoryCarNames());

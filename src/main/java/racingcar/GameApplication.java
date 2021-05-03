@@ -12,8 +12,7 @@ public class GameApplication {
         String carsName = scanner.nextLine();
         List<RacingCar> racingCars = RacingCarFactory.create(carsName);
         Print.write(GameMessage.INPUT_NUMBER_OF_ADVANCES);
-        int gameCount = scanner.nextInt();
-
+        GameCount gameCount = new GameCount(scanner.nextInt());
         Game game = new Game(racingCars, gameCount);
         game.play();
     }
