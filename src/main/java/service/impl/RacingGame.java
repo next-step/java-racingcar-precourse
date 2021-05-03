@@ -2,9 +2,9 @@ package service.impl;
 
 import model.RacingCars;
 import service.IRacingGame;
-import view.IRacingGameView;
+import view.RacingGameView;
 
-public class RacingGame implements IRacingGame, IRacingGameView {
+public class RacingGame implements IRacingGame, RacingGameView {
 
 	private final RacingCars racingCars;
 
@@ -14,7 +14,12 @@ public class RacingGame implements IRacingGame, IRacingGameView {
 
 	@Override
 	public void play() {
+		int roundNum = getRoundNum();
 
+		System.out.println("실행 결과");
+		for (int i = 0; i < roundNum; i++) {
+			racingCars.nextRound();
+			printRoundResult(racingCars);
+		}
 	}
-
 }
