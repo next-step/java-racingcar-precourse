@@ -32,4 +32,12 @@ public class Cars {
             car.movable(random.nextInt(Constant.RANDOM_LIMIT));
         }
     }
+
+    public String resultString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for(Car car : this.cars) {
+            stringBuilder.append(car.resultString() + Constant.NEW_LINE);
+        }
+        return stringBuilder.toString();
+    }
 }

@@ -13,8 +13,13 @@ public class InputView {
         System.out.println(str);
     }
 
-    public String question(String q) {
+    public String questionToString(String q) {
         this.print(q);
         return this.scanner.nextLine();
+    }
+
+    public int questionToInt(String q) {
+        this.print(q);
+        return this.scanner.nextInt();
     }
 }

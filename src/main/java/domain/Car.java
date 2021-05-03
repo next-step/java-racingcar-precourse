@@ -1,5 +1,7 @@
 package domain;
 
+import constant.Constant;
+
 public class Car {
     public static final int START_POSITION = 0;
     private final String name;
@@ -33,5 +35,9 @@ public class Car {
 
     public String name() {
         return name;
+    }
+
+    public String resultString() {
+        return name + Constant.CAR_MOVE_STRING.repeat(position);
     }
 }
