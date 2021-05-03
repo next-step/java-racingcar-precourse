@@ -16,7 +16,7 @@ public class Car implements Comparable<Car> {
         position++;
     }
 
-    public String toString() {
+    public String printCurrentPosition() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(name);
         stringBuilder.append(":");

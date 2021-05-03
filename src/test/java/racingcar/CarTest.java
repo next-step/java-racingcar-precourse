@@ -28,7 +28,7 @@ public class CarTest {
             car.move();
         }
 
-        assertThat(car.toString()).isEqualTo(result);
+        assertThat(car.printCurrentPosition()).isEqualTo(result);
     }
 
     @Test
