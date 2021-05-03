@@ -1,5 +1,6 @@
 import domain.Car;
 import domain.Cars;
+import domain.MoveCalculator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -41,7 +42,8 @@ public class racingTest {
     @Test
     void checkRandomValueTest() {
         Cars cars = new Cars("Test1");
-        assertThat(cars.getRandomValue()).isLessThanOrEqualTo(9).isGreaterThanOrEqualTo(0);
+        MoveCalculator moveCalculator = new MoveCalculator();
+        assertThat(moveCalculator.getRandomValue()).isLessThanOrEqualTo(9).isGreaterThanOrEqualTo(0);
     }
 
     @DisplayName("차량 이동에 따른 거리값 설정 체크.")

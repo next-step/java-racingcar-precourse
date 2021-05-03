@@ -7,11 +7,9 @@ import java.util.List;
 
 public class Cars {
 
-    private static final int BASIC_NUM = 4;
-
-    private static final int LIMIT_NUMBER_SIZE = 9;
-
     private static final String SPLIT_MARK = ",";
+
+    private MoveCalculator moveCalculator = new MoveCalculator();
 
     private List<Car> cars = new ArrayList<>();
 
@@ -36,42 +34,10 @@ public class Cars {
         return cars;
     }
 
-    public void moveForward(Cars cars) {
-        for(Car car : cars.getCars()){
-            if(isGreaterThanCheckValue()) car.moveCar();
-        }
-    }
-
-    public boolean isGreaterThanCheckValue() {
-        return getRandomValue() >= BASIC_NUM;
-    }
-
-    public int getRandomValue(){
-        return (int) (Math.random() * LIMIT_NUMBER_SIZE);
-    }
-
-    public void getWinnerCar(){
-        List<Car> winnerCars = new ArrayList<>();
-        int maxDistance = 0;
-        for(Car playingCar : cars){
-
-            if(maxDistance == playingCar.getCarDistance().getDistance()){
-                winnerCars.add(playingCar);
-            }
-
-            if (maxDistance < playingCar.getCarDistance().getDistance()) {
-                maxDistance = playingCar.getCarDistance().getDistance();
-                winnerCars.clear();
-                winnerCars.add(playingCar);
-
-            }
-        }
-        printWinner(winnerCars);
-    }
-
-    public void printWinner(List<Car> winnerCars){
+    public void printWinner(){
+        List<Car> winnerCars = moveCalculator.getWinnerCar(cars);
         StringBuilder sb = new StringBuilder();
-        for(Car winnerCar : winnerCars){
+        for(Car winnerCar : moveCalculator.getWinnerCar(cars)){
             sb.append(winnerCar.getCarName().getName());
 
             if(winnerCars.indexOf(winnerCar) != winnerCars.size()-1){
@@ -82,4 +48,7 @@ public class Cars {
         System.out.println(sb + Message.OUTPUT_MSG_WINNER_COMMENT);
     }
 
+    public void moveForward(Cars cars) {
+        moveCalculator.moveForward(cars);
+    }
 }

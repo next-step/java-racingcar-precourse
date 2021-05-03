@@ -35,7 +35,8 @@ public class Racing {
     }
 
     public void getRaceWinner(){
-        cars.getWinnerCar();
+        //cars.getWinnerCar();
+        cars.printWinner();
     }
 
 }

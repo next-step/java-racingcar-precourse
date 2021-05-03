@@ -4,7 +4,7 @@ public class Distance {
 
     private static final String BAR = "-";
 
-    int distance;
+    private int distance;
 
     public Distance(int distance) {
         this.distance = distance;
