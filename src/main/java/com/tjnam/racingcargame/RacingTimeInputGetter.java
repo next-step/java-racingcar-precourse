@@ -12,7 +12,7 @@ public class RacingTimeInputGetter {
 
         do {
             userInput = this.getUserRacingTimeInput();
-            inputResult = validateRacingTime(userInput);
+            inputResult = isValidateRacingTime(userInput);
         } while (inputResult);
 
         return userInput;
@@ -26,8 +26,8 @@ public class RacingTimeInputGetter {
         System.out.println("시도할 회수는 몇회인가요?");
     }
 
-    private boolean validateRacingTime(int userInput){
-        return userInput > 0;
+    private boolean isValidateRacingTime(int userInput){
+        return userInput <= 0;
     }
 
 

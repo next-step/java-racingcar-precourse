@@ -22,24 +22,24 @@ public class RacingTimeInputGetterTest {
 
         try {
             Method validateRacingTimeMethod = racingTimeInputGetter.getClass()
-                    .getDeclaredMethod("validateRacingTime", int.class);
+                    .getDeclaredMethod("isValidateRacingTime", int.class);
             validateRacingTimeMethod.setAccessible(true);
 
             int racingTimeInput = 0;
             boolean isValid = (boolean) validateRacingTimeMethod.invoke(racingTimeInputGetter, racingTimeInput);
-            assertThat(isValid).isFalse();
+            assertThat(isValid).isTrue();
 
             racingTimeInput = 1;
             isValid = (boolean) validateRacingTimeMethod.invoke(racingTimeInputGetter, racingTimeInput);
-            assertThat(isValid).isTrue();
+            assertThat(isValid).isFalse();
 
             racingTimeInput = 5000;
             isValid = (boolean) validateRacingTimeMethod.invoke(racingTimeInputGetter, racingTimeInput);
-            assertThat(isValid).isTrue();
+            assertThat(isValid).isFalse();
 
             racingTimeInput = -200;
             isValid = (boolean) validateRacingTimeMethod.invoke(racingTimeInputGetter, racingTimeInput);
-            assertThat(isValid).isFalse();
+            assertThat(isValid).isTrue();
 
         } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
             e.printStackTrace();
