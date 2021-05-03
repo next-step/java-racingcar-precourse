@@ -24,7 +24,7 @@
 -[x] domain
     * RacingCar
         * 이름을 관리한다.
-        * 현재 위치를 반환한다.
+        * 움직인 횟수를 반환한다.
         * RacingCar 인스턴스를 생성한다.
         * 움직인다.
     * RacingCarGroup
