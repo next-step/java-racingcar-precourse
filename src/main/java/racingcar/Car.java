@@ -10,6 +10,10 @@ public class Car {
 		return carPosition;
 	}
 
+	public String getName() {
+		return name;
+	}
+
 	public Car(String name) {
 		this.name = isValidCarName(name);
 		this.carPosition = new CarPosition();
@@ -29,13 +33,11 @@ public class Car {
 		return name.length() > MAX_NAME_LENGTH;
 	}
 
-	public void isForward(int moveValue) {
+	public CarStatus isForward(int moveValue) {
 		if (isMove(moveValue)) {
-			carPosition.forwardPosition();
-			carPosition.saveHistory(CarStatus.GO);
-			return;
+			return CarStatus.GO;
 		}
-		carPosition.saveHistory(CarStatus.STOP);
+		return CarStatus.STOP;
 	}
 
 	private boolean isMove(int moveValue) {
