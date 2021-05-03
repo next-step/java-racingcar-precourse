@@ -1,0 +1,14 @@
+{
+  "name": "java-racingcar-precourse",
+  "version": "1.0.1",
+  "main": "index.js",
+  "repository": "https://github.com/frostnight/java-racingcar-precourse.git",
+  "author": "frostnight <frostnightsong@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "standard-version": "^9.2.0"
+  },
+  "scripts": {
+    "release": "standard-version"
+  }
+}
