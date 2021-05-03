@@ -1,19 +1,18 @@
 package com.racingcar.domain;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
+@EqualsAndHashCode(exclude = {"name"})
+@Getter
 public class RacingCar {
-	@NonNull
-	@Getter
-	private String name;
 
-	@Getter
+	private final String name;
 	private int location;
 
-	public static RacingCar create(String name){
+	public static RacingCar create(String name) {
 		return new RacingCar(name);
 	}
 
