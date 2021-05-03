@@ -50,19 +50,13 @@ public class Cars {
 		return carNameArr;
 	}
 
-	// 모든 자동차 주행거리 표시
-	public void printCarsMileage() {
-		for (Car car : carList) {
-			car.printCurrentCarMileage();
-		}
-	}
-
-	// 레이싱 1회 수행
+	// 레이싱 1회 수행 및 주행거리 표시
 	public void goRace() {
 		for (Car car : carList) {
 			car.applyForwardOrNot(car.getForwardOrNot());
+			car.printCurrentCarMileage();
 		}
-		printCarsMileage();
+		System.out.println(""); // 레이스 1회 구분라인
 	}
 
 	// 게임 결과 생성
