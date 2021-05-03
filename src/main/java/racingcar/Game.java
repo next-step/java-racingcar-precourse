@@ -1,6 +1,6 @@
 package racingcar;
 
-import java.util.List;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class Game {
@@ -18,37 +18,48 @@ public class Game {
         round = scanner.nextInt();
     }
 
-    private String[] requireCars() {
+    private String[] askCars() {
         System.out.println(REQUIRE_NAMES);
         String input = scanner.nextLine();
         return input.split(",");
     }
 
     private void addCars() {
-        String[] inputNames = requireCars();
+        String[] inputNames = askCars();
         cars.addCars(inputNames);
     }
 
-    public void play() {
+    private void requireCars() {
         while (!ValidationUtils.isPlayable(cars)) {
             addCars();
         }
+    }
 
+    private void decideWinners() {
+        Iterator<Car> iterator = cars.getWinners().iterator();
+        Car next = iterator.next();
+        System.out.print(next);
+
+        while (iterator.hasNext()) {
+            next = iterator.next();
+            System.out.print(", " + next);
+        }
+
+        System.out.println(PRESENT_WINNER);
+    }
+
+    public void play() {
+        requireCars();
         requireRounds();
 
         System.out.println(PLAY_RESULT);
+
         for (int i = 0; i < round; i++) {
             cars.playRound();
             System.out.println();
         }
 
-        List<Car> winners = cars.getWinners();
-
-        for (Car car : winners) {
-            System.out.print(car + ", ");
-        }
-
-        System.out.println(PRESENT_WINNER);
+        decideWinners();
     }
 
     public Game() {
