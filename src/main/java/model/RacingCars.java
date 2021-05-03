@@ -44,6 +44,10 @@ public class RacingCars {
 			carNames.add(carName);
 	}
 
+	/**
+	 * 0 ~ 9 사이의 랜덤 값이 주어짐
+	 * 랜덤 값이 4이상이면 이동가능
+	 */
 	private boolean isEnableMove() {
 		return new Random().nextInt(9) >= 4;
 	}
