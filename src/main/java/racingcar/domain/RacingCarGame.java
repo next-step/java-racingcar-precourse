@@ -10,4 +10,11 @@ public class RacingCarGame {
         this.cars = new Cars(carNames.split(SEPERATOR));
         this.round = new Round(round);
     }
+
+    public void play() {
+        while (round.executable()) {
+            round.execute();
+            // TODO 자동차 이동
+        }
+    }
 }

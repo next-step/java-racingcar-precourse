@@ -1,7 +1,7 @@
 package racingcar.domain;
 
-import racingcar.exception.DuplicateNameException;
-import racingcar.exception.InvalidSizeOfCarsException;
+import racingcar.exception.CarsException;
+import racingcar.exception.NameException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +24,7 @@ public class Cars {
 
     private void hasMoreThanOne(String[] carNames) {
         if (carNames == null || carNames.length == 0) {
-            throw new InvalidSizeOfCarsException();
+            throw new CarsException.InvalidCountException();
         }
     }
 
@@ -35,7 +35,7 @@ public class Cars {
 
     private void checkDuplicate(Car car) {
         if (isContains(car)) {
-            throw new DuplicateNameException();
+            throw new NameException.DuplicateException();
         }
     }
 

@@ -1,7 +1,6 @@
 package racingcar.domain;
 
-import racingcar.exception.RoundInvalidRangeException;
-import racingcar.exception.RoundNumberFormatException;
+import racingcar.exception.RoundException;
 
 public class Round {
     private int round;
@@ -10,7 +9,7 @@ public class Round {
         try {
             setRound(Integer.parseInt(round));
         } catch (NumberFormatException e) {
-            throw new RoundNumberFormatException();
+            throw new RoundException.NumberFormatException();
         }
     }
 
@@ -21,7 +20,7 @@ public class Round {
 
     private void isMoreThanOne(int round) {
         if (round <= 0) {
-            throw new RoundInvalidRangeException();
+            throw new RoundException.InvalidRangeException();
         }
     }
 
@@ -31,5 +30,17 @@ public class Round {
         if (o == null || getClass() != o.getClass()) return false;
         Round round1 = (Round) o;
         return round == round1.round;
+    }
+
+    public void execute() {
+        if (executable()) {
+            round--;
+            return;
+        }
+        throw new RoundException.ExceedExecutableNumberException();
+    }
+
+    public boolean executable() {
+        return round > 0;
     }
 }

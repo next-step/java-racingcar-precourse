@@ -13,6 +13,7 @@ public class RacingCarMain {
 
     public static void start() {
         generateRacingCarGame(askCarNames(), askRound());
+        racingcarGame.play();
     }
 
     private static void generateRacingCarGame(String carNames, String round) {

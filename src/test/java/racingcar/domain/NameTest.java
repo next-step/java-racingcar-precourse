@@ -3,8 +3,7 @@ package racingcar.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.exception.NameHasInvalidCharacterException;
-import racingcar.exception.NameHasInvalidLengthException;
+import racingcar.exception.NameException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -26,14 +25,14 @@ class NameTest {
     @ValueSource(strings = {"abcdef", ""})
     void 범위초과시_예외발생(String input) {
         // when + then
-        assertThatThrownBy(() -> new Name(input)).isInstanceOf(NameHasInvalidLengthException.class);
+        assertThatThrownBy(() -> new Name(input)).isInstanceOf(NameException.InvalidLengthException.class);
     }
 
     @ParameterizedTest(name = "유효하지 않은 문자열 예외발생")
     @ValueSource(strings = {"ab,cd", ","})
     void 유효하지_않은_문자열_예외발생(String input) {
         // when + then
-        assertThatThrownBy(() -> new Name(input)).isInstanceOf(NameHasInvalidCharacterException.class);
+        assertThatThrownBy(() -> new Name(input)).isInstanceOf(NameException.InvalidCharacterException.class);
     }
 
 }
