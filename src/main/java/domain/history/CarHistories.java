@@ -19,6 +19,10 @@ public class CarHistories {
         return Collections.unmodifiableList(carHistories);
     }
 
+    public List<CarHistory> getWinners() {
+        return findByPosition(getPositions().getMaxPosition());
+    }
+
     public Positions getPositions() {
         List<Position> positions = new ArrayList<>();
 
@@ -27,16 +31,6 @@ public class CarHistories {
         }
 
         return new Positions(positions);
-    }
-
-    public List<CarHistory> findByPosition(Position comparePosition) {
-        List<CarHistory> samePositionHistories = new ArrayList<>();
-
-        for(CarHistory carHistory : carHistories) {
-            addCarHistoryIfSamePosition(samePositionHistories, carHistory, comparePosition);
-        }
-
-        return samePositionHistories;
     }
 
     @Override
@@ -50,6 +44,16 @@ public class CarHistories {
     @Override
     public int hashCode() {
         return Objects.hash(carHistories);
+    }
+
+    private List<CarHistory> findByPosition(Position comparePosition) {
+        List<CarHistory> samePositionHistories = new ArrayList<>();
+
+        for(CarHistory carHistory : carHistories) {
+            addCarHistoryIfSamePosition(samePositionHistories, carHistory, comparePosition);
+        }
+
+        return samePositionHistories;
     }
 
     private void addCarHistoryIfSamePosition(List<CarHistory> carHistories, CarHistory carHistory, Position comparePosition) {

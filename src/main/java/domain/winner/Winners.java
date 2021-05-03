@@ -2,7 +2,6 @@ package domain.winner;
 
 import domain.history.CarHistories;
 import domain.history.CarHistory;
-import domain.position.Position;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,11 +11,7 @@ public class Winners {
     private List<Winner> winners = new ArrayList<>();
 
     public Winners(CarHistories carHistories) {
-        Position maxPosition = carHistories
-                .getPositions()
-                .getMaxPosition();
-
-        for (CarHistory carHistory : carHistories.findByPosition(maxPosition)) {
+        for (CarHistory carHistory : carHistories.getWinners()) {
             winners.add(new Winner(carHistory.getCarName()));
         }
     }
