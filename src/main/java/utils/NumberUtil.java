@@ -2,14 +2,14 @@ package utils;
 
 import java.util.Random;
 
-public class RandomNumberGenerator {
+public class NumberUtil {
     private final Random random;
 
-    public RandomNumberGenerator() {
+    public NumberUtil() {
         this.random = new Random();
     }
 
-    public int create() {
+    public int createBetweenZeroToNine() {
         return this.random.nextInt(10);
     }
 }

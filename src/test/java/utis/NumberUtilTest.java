@@ -7,7 +7,7 @@ import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class RandomNumberGeneratorTest {
+public class NumberUtilTest {
     @DisplayName("0 부터 9까지의 랜덤한 숫자 생성 테스트")
     @Test
     void random_range_test() {

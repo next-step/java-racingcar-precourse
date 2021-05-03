@@ -7,8 +7,8 @@ public class Car {
     private static final int MOVABLE_VALUE = 4;
     private static final String ILLEGAL_ARGUMENT_MESSAGE = "자동차 이름은 5자 이하여야 합니다.";
     private final String name;
+    private final StringBuilder sb;
     private int position = 0;
-    private StringBuilder sb;
 
     public Car(String name) {
         if (isValidNameLength(name)) {
@@ -19,7 +19,15 @@ public class Car {
     }
 
     public void showGameStatus() {
-        System.out.println(this.name + " : " + sb.toString());
+        System.out.println(this.name + " : " + this.sb.toString());
+    }
+
+    public int getPosition() {
+        return this.position;
+    }
+
+    public String getName() {
+        return this.name;
     }
 
     private boolean isValidNameLength(String name) {
@@ -34,13 +42,5 @@ public class Car {
         }
 
         return movable;
-    }
-
-    public int getPosition() {
-        return this.position;
-    }
-
-    public String getName() {
-        return this.name;
     }
 }

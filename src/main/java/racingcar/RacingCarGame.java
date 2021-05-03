@@ -1,6 +1,6 @@
 package racingcar;
 
-import utils.RandomNumberGenerator;
+import utils.NumberUtil;
 import utils.ValidationUtils;
 
 import java.util.ArrayList;
@@ -25,7 +25,7 @@ public class RacingCarGame {
     }
 
     public void start() {
-        RandomNumberGenerator generator = new RandomNumberGenerator();
+        NumberUtil generator = new NumberUtil();
         for (int i = 0; i < count; i++) {
             cars.play(generator);
         }

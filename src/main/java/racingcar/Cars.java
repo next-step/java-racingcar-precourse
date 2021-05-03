@@ -1,6 +1,6 @@
 package racingcar;
 
-import utils.RandomNumberGenerator;
+import utils.NumberUtil;
 
 import java.util.List;
 
@@ -11,9 +11,9 @@ public class Cars {
         this.cars = cars;
     }
 
-    public void play(RandomNumberGenerator generator) {
+    public void play(NumberUtil generator) {
         for (Car car : cars) {
-            car.isMovable(generator.create());
+            car.isMovable(generator.createBetweenZeroToNine());
             car.showGameStatus();
         }
     }
