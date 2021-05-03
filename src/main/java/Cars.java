@@ -50,11 +50,12 @@ public class Cars {
 		}
 	}
 
-	// 레이싱 횟수만큼 반복
+	// 레이싱 1회 수행
 	public void goRace() {
 		for (Car car : carList) {
 			car.applyForwardOrNot(car.getForwardOrNot());
 		}
+		printCarsMileage();
 	}
 
 
