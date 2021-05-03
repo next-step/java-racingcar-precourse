@@ -47,7 +47,7 @@ public class RacingCarGamePlayer {
 
 	private static String toScoreInformation(Map<String, Integer> scoresOfRound) {
 		StringBuffer sb = new StringBuffer("");
-		String carNames[] = scoresOfRound.keySet().toArray(new String[0]);
+		String []carNames = scoresOfRound.keySet().toArray(new String[0]);
 		for (int i = 0; i < carNames.length; i++) {
 			sb.append("\n" + carNames[i] + " : " + toDash(scoresOfRound.get(carNames[i])));
 		}
