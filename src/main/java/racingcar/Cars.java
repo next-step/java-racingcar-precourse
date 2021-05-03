@@ -17,11 +17,23 @@ public class Cars {
 			tempCarList.add(new Car(carName));
 		}
 
-		new Cars(tempCarList);
+		cars = tempCarList;
 	}
 
 	public Cars(List<Car> cars) {
 		this.cars = cars;
+	}
+
+	public void moveCars(){
+		for (Car car : cars) {
+			car.move(Utils.getRandomNumberBetween0to9());
+		}
+	}
+
+	public void printCars(){
+		for (Car car : cars) {
+			car.printNameAndDistance();
+		}
 	}
 
 	public List<Car> findWinners() {

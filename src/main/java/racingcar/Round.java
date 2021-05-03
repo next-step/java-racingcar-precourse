@@ -13,4 +13,8 @@ public class Round {
 			throw new IllegalArgumentException("1 이상의 수를 입력하세요.");
 		}
 	}
+
+	public int getCount() {
+		return count;
+	}
 }
