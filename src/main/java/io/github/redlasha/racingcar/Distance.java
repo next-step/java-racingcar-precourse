@@ -2,6 +2,8 @@ package io.github.redlasha.racingcar;
 
 public class Distance implements Comparable<Distance> {
 
+	private static final String PRINT_UNIT = "-"; 
+	
 	private int distance;
 
 	public Distance() {
@@ -37,6 +39,14 @@ public class Distance implements Comparable<Distance> {
 	@Override
 	public int compareTo(Distance o) {
 		return get().compareTo(o.get());
+	}
+
+	public String stringValue() {
+		StringBuilder builder = new StringBuilder();
+		for (int i = 0; i < distance; i++) {
+			builder.append(PRINT_UNIT);
+		}
+		return builder.toString();
 	}
 	
 	

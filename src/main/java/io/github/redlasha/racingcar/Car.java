@@ -26,6 +26,10 @@ public class Car {
 		return name.getName();
 	}
 
+	public String currentStatus() {
+		return String.format("%s\t: %s%s", name.getName(), distance.stringValue(), System.lineSeparator());
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {

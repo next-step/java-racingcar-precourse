@@ -18,7 +18,7 @@ class RacingGameTest {
 
 		RacingGame game = new RacingGame(entries, turn, size -> {
 			return Arrays.asList(4, 3, 3);
-		});
+		}, System.out);
 
 		game.start();
 
@@ -34,7 +34,7 @@ class RacingGameTest {
 
 		RacingGame game = new RacingGame(entries, turn, size -> {
 			return Arrays.asList(1, 5, 4);
-		});
+		}, System.out);
 
 		game.start();
 

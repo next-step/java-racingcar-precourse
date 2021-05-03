@@ -48,4 +48,14 @@ public class CarEntries {
 		});
 		return winners;
 	}
+
+	String currentStatus() {
+		StringBuilder builder = new StringBuilder();
+		for (Car car : carList) {
+			builder.append(car.currentStatus());
+		}
+		return builder.toString();
+	}
+	
+	
 }
