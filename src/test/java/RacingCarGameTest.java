@@ -1,15 +1,16 @@
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
+import java.util.Optional;
+
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+
 import resulttypes.PlayResult;
-
-import java.util.Optional;
-
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 public class RacingCarGameTest {
     private RacingCarGame racingCarGame;
@@ -19,9 +20,8 @@ public class RacingCarGameTest {
     @BeforeEach
     void setup()
     {
-        this.racingCarColosseum = mock(RacingCarColosseum.class);
-        this.userInputParser = mock(UserInputParser.class);
-
+        this.racingCarColosseum = new RacingCarColosseum(new RandomGenerator());
+        this.userInputParser = new UserInputParser();
         this.racingCarGame = new RacingCarGame(this.racingCarColosseum, this.userInputParser);
     }
 
@@ -44,15 +44,23 @@ public class RacingCarGameTest {
     @CsvSource(value = {"pobi,crong,honux:5", "pobi, crong, honux:10", "pobi, crong   , honux:7", "korsa, 12345, !@$, a, b, c:20"},
             delimiter = ':')
     void user_input_car_name_is_not_valid(String carNamesInput, String trialCountInput){
-        when(this.userInputParser.parseCarNames(any())).thenReturn(Optional.ofNullable(null));
-        Assertions.assertThat(this.racingCarGame.play(carNamesInput, trialCountInput)).isEqualTo(PlayResult.INVALID_INPUT);
+        UserInputParser userInputParserMock = mock(UserInputParser.class);
+        RacingCarGame racingCarGameWithMock = new RacingCarGame(this.racingCarColosseum, userInputParserMock);
+
+        when(userInputParserMock.parseCarNames(any())).thenReturn(Optional.ofNullable(null));
+
+        Assertions.assertThat(racingCarGameWithMock.play(carNamesInput, trialCountInput)).isEqualTo(PlayResult.INVALID_INPUT);
     }
 
     @ParameterizedTest
     @CsvSource(value = {"pobi,crong,honux:5", "pobi, crong, honux:10", "pobi, crong   , honux:7", "korsa, 12345, !@$, a, b, c:20"},
             delimiter = ':')
     void user_input_trial_count_is_not_valid(String carNamesInput, String trialCountInput){
-        when(this.userInputParser.parseTrialCount(any())).thenReturn(Optional.ofNullable(null));
-        Assertions.assertThat(this.racingCarGame.play(carNamesInput, trialCountInput)).isEqualTo(PlayResult.INVALID_INPUT);
+        UserInputParser userInputParserMock = mock(UserInputParser.class);
+        RacingCarGame racingCarGameWithMock = new RacingCarGame(this.racingCarColosseum, userInputParserMock);
+
+        when(userInputParserMock.parseTrialCount(any())).thenReturn(Optional.ofNullable(null));
+
+        Assertions.assertThat(racingCarGameWithMock.play(carNamesInput, trialCountInput)).isEqualTo(PlayResult.INVALID_INPUT);
     }
 }
