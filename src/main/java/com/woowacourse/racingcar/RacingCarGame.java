@@ -135,6 +135,7 @@ public class RacingCarGame {
 			
 			moveCar(car);
 		}
+		printMoveTrace(cars);
 	}
 	
 	public void moveCar(RacingCar car) {
@@ -145,5 +146,25 @@ public class RacingCarGame {
 			car.setMoveCnt();
 			return;
 		}
+	}
+	
+	public void printMoveTrace(Map<String, RacingCar> cars) {
+		for (String carName : cars.keySet()) {
+			RacingCar car = cars.get(carName);
+			
+			System.out.println(carName + " : " + toHyphen(car.getMoveCnt()));
+		}
+		
+		System.out.println("");
+	}
+	
+	public String toHyphen(int cnt) {
+		StringBuilder sb = new StringBuilder();
+		
+		for (int i = 0; i < cnt; i++) {
+			sb.append("-");
+		}
+		
+		return sb.toString();
 	}
 }
