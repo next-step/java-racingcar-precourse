@@ -33,23 +33,19 @@ public class PlayResult {
     
     private int findMaxValue(Cars cars) {
         int array[] = new int[cars.getCars().size()];
-        
         for (int i = 0; i < cars.getCars().size(); i++) {
             array[i] = cars.getCars().get(i).getCurrentPosition();
         }
         Arrays.sort(array);
-        
         return array[array.length - 1];
     }
     
     private String findWinnerCarsName(Cars cars, int maxValue) {
         StringBuffer winnerCarsName = new StringBuffer();
-
         for (int i = 0; i < cars.getCars().size(); i++) {
             winnerCarsName.append(findCoWinCars(cars.getCars().get(i), maxValue));
         }
         String winner = winnerCarsName.toString();
-        
         return winner.substring(0, winner.length() - 1);
     }
     

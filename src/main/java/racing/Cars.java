@@ -14,12 +14,10 @@ public class Cars {
     public PlayResult play() {
         PlayResult result = new PlayResult();
         RandomNumber random;
-        
         for (int i = 0; i < cars.size(); i++) {
             random = new RandomNumber();
             cars.get(i).play(random.getRandomNumber());
         }
-        
         return result;
     }
     
@@ -30,11 +28,9 @@ public class Cars {
     private static List<Car> carList(String userInput) {
         List<Car> cars = new ArrayList<>();
         String[] carNameArray = userInput.replace(" ", "").split(",");
-        
         for (int i = 0; i < carNameArray.length; i++) {
             cars.add(new Car(carNameArray[i]));
         }
-        
         return cars;
     }
     
