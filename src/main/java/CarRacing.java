@@ -1,13 +1,15 @@
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.stream.Collectors;
 
 public class CarRacing {
 
     public static List<Cars> getCars(String cars, String sep) {
         String[] carArr = cars.split(sep);
-        List<Cars> carList = Arrays.stream(carArr).map(s -> s.trim()).map(Cars::new).collect(Collectors.toList());
+        List<Cars> carList = new ArrayList<>();
+        for (int i = 0; i < carArr.length; i++) {
+            carList.add(new Cars(carArr[i].trim()));
+        }
         return carList;
     }
 
@@ -21,6 +23,29 @@ public class CarRacing {
                 }
             }
         }
+        carList.forEach(c -> {
+            System.out.println(c.getName() + " / " + c.getPosition());
+        });
         return carList;
+    }
+
+    public static String finish(List<Cars> finishRacing) {
+        int max = 0;
+        for (Cars car : finishRacing) {
+            if (max < car.getLength()) {
+                max = car.getLength();
+            }
+        }
+
+        List<String> list = new ArrayList<>();
+        for (Cars car : finishRacing) {
+            if (max == car.getLength()) {
+                list.add(car.getName());
+            }
+        }
+
+        String result = String.join(",", list);
+
+        return result;
     }
 }

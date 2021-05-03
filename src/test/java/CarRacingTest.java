@@ -10,12 +10,13 @@ public class CarRacingTest {
 
     private int num;
     private String cars;
+    List<Cars> carList;
 
     @BeforeEach
     void setUp() {
         num = 5;
         cars = "SM5, pobi, honux, niro";
-
+        carList = CarRacing.getCars(cars, ",");
     }
 
     @Test
@@ -37,7 +38,13 @@ public class CarRacingTest {
 
     @Test
     void ge4GoOrLe3Stop() {
-        List<Cars> carList = CarRacing.getCars(cars, ",");
         CarRacing.racing(carList, num);
     }
+
+    @Test
+    void winnerCars() {
+        List<Cars> finishRacing = CarRacing.racing(carList, num);
+        String result = CarRacing.finish(finishRacing);
+        System.out.println(result + "가 최종 우승했습니다.");
+   }
 }

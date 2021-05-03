@@ -24,4 +24,8 @@ public class Cars {
     public void setPosition(String position) {
         this.position = position;
     }
+
+    public int getLength() {
+        return this.position.length();
+    }
 }
