@@ -5,6 +5,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 
+import java.util.Random;
+
 import static org.assertj.core.api.Assertions.*;
 
 public class CarTest {
@@ -34,4 +36,7 @@ public class CarTest {
         car.forward();
         assertThat(car.getPosition()).isEqualTo(1);
     }
+
+
+
 }
