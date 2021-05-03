@@ -13,14 +13,14 @@ public class CarTest {
 
 	@BeforeEach
 	void setUp() throws ValidatorException {
-		car = new Car("카1");
+		car = new Car("pobi");
 	}
 
 	@Test
 	@DisplayName("차에 랜덤값을 전달하여 이동 여부 테스트")
 	void isMoveTest() {
-		assertThat(car.isMove(3)).isFalse();
-		assertThat(car.isMove(4)).isTrue();
+		assertThat(car.isMovable(3)).isFalse();
+		assertThat(car.isMovable(4)).isTrue();
 	}
 
 	@Test
@@ -30,5 +30,13 @@ public class CarTest {
 		assertThat(car.move(4)).isEqualTo(1);
 		assertThat(car.move(1)).isEqualTo(1);
 		assertThat(car.move(9)).isEqualTo(2);
+	}
+
+	@Test
+	@DisplayName("현재 차의 정보를 출력")
+	void printCarInfo() {
+		assertThat(car.toString()).isEqualTo("pobi : ");
+		moveCarTest();
+		assertThat(car.toString()).isEqualTo("pobi : --");
 	}
 }

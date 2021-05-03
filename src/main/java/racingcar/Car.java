@@ -20,12 +20,12 @@ public class Car {
 		return name.length() < MIN_NAME_LENGTH || name.length() > MAX_NAME_LENGTH;
 	}
 
-	public boolean isMove(int random) {
+	public boolean isMovable(int random) {
 		return random >= MIN_MOVE_VALUE;
 	}
 
 	public int move(int random) {
-		if(isMove(random)) {
+		if(isMovable(random)) {
 			this.stepForward();
 		}
 		return distance;
@@ -33,5 +33,18 @@ public class Car {
 
 	private void stepForward() {
 		this.distance++;
+	}
+
+	@Override
+	public String toString() {
+		return this.name + " : " + this.printDistance();
+	}
+
+	private String printDistance() {
+		StringBuilder stringDistance = new StringBuilder();
+		for (int i = 0; i < distance; i++) {
+			stringDistance.append("-");
+		}
+		return stringDistance.toString();
 	}
 }
