@@ -1,12 +1,25 @@
 package racingcar;
 
+import static org.assertj.core.api.Assertions.*;
+
 import java.util.Arrays;
 import java.util.List;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class CarsTest {
+
+	@Test
+	public void 크기가_0인_배열_입력시_객체_생성_실패() {
+		String[] carNames = new String[0];
+		assertThatThrownBy(() -> new Cars(carNames)).isExactlyInstanceOf(IllegalArgumentException.class);
+	}
+
+	@Test
+	public void NULL_입력시_객체_생성_실패() {
+		String[] carNames = null;
+		assertThatThrownBy(() -> new Cars(carNames)).isExactlyInstanceOf(IllegalArgumentException.class);
+	}
 
 	@Test
 	public void 자동차_경주_우승자_찾기() {
@@ -28,6 +41,7 @@ public class CarsTest {
 		List<Car> winners = cars.findWinners();
 
 		//then
-		Assertions.assertThat(winners).contains(red, green);
+		assertThat(winners).contains(red, green);
 	}
+
 }

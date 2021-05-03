@@ -7,6 +7,19 @@ import java.util.List;
 public class Cars {
 	private List<Car> cars;
 
+	public Cars(String[] carNames) {
+		if (carNames == null || carNames.length == 0) {
+			throw new IllegalArgumentException("공백은 불가능합니다.");
+		}
+
+		List<Car> tempCarList = new ArrayList<>();
+		for (String carName : carNames) {
+			tempCarList.add(new Car(carName));
+		}
+
+		new Cars(tempCarList);
+	}
+
 	public Cars(List<Car> cars) {
 		this.cars = cars;
 	}
