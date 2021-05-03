@@ -1,3 +1,5 @@
+package car;
+
 public class MovePosition {
 	public static final int FORWARD_CONDITION = 4;
 

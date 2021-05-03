@@ -1,3 +1,5 @@
+package car;
+
 public class Car {
 	public static final int NAME_LENGTH_MAX = 5;
 
