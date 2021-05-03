@@ -34,4 +34,18 @@ class PositionTest {
     assertThat(actual)
             .isEqualTo(new Position(Position.MIN + 1));
   }
+
+  @Test
+  @DisplayName("int 타입의 매개 변수와 비교하여 큰 수를 반환한다.")
+  void max() {
+    // given
+    int other = 1;
+    Position min = Position.create();
+
+    // when
+    Position actual = min.max(other);
+
+    //
+    assertThat(actual).isEqualTo(Position.create().move());
+  }
 }

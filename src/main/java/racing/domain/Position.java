@@ -28,6 +28,10 @@ public class Position {
     return new Position(value + 1);
   }
 
+  public Position max(int position) {
+    return new Position(Integer.max(value, position));
+  }
+
   public int getValue() {
     return value;
   }
