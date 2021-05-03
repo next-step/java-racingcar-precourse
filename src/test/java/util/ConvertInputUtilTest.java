@@ -1,5 +1,6 @@
 package util;
 
+import constant.GameErrorCode;
 import exception.GameException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -23,9 +24,14 @@ class ConvertInputUtilTest {
 
     @DisplayName("자동차 이름 입력_실패")
     @ParameterizedTest
-    @ValueSource(strings = {"", "aaaaaa", "pobi,pobi"})
-    void TEST_getCarNameFromInput_Fail(String name) {
-        assertThrows(GameException.class, () -> ConvertInputUtil.getCarNameFromInput(name));
+    @CsvSource({
+            "'', CAR_NAME_EMPTY",
+            "aaaaaa, CAR_NAME_SIZE_OVER",
+            "'pobi,pobi', CAR_NAME_OVERLAP"
+    })
+    void TEST_getCarNameFromInput_Fail(String name, String error) {
+        Throwable exception = assertThrows(GameException.class, () -> ConvertInputUtil.getCarNameFromInput(name));
+        assertThat(exception.getMessage()).isEqualTo(GameErrorCode.valueOf(error).getMsg());
     }
 
     @DisplayName("시도 횟수 입력_성공")
@@ -39,6 +45,7 @@ class ConvertInputUtilTest {
     @ParameterizedTest
     @ValueSource(strings = {"", "abc"})
     void TEST_getTryNumberFromInput_Fail(String tryNum) {
-        assertThrows(GameException.class, () -> ConvertInputUtil.getTryNumberFromInput(tryNum));
+        Throwable exception = assertThrows(GameException.class, () -> ConvertInputUtil.getTryNumberFromInput(tryNum));
+        assertThat(exception.getMessage()).isEqualTo(GameErrorCode.TRY_NUMBER_PARSING.getMsg());
     }
 }
