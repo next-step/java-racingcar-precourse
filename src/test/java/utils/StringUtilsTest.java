@@ -18,4 +18,17 @@ public class StringUtilsTest {
 		assertThat(ScannerUtils.isValidCarNames(startWithComma)).isFalse();
 		assertThat(ScannerUtils.isValidCarNames(noValueBetweenComma)).isFalse();
 	}
+
+	@Test
+	void isValidPlayNumber() {
+		String zero = "0";
+		String numberWithCharacter = "1o";
+		String validNumber = "10";
+		String negativeNumber = "-10";
+
+		assertThat(ScannerUtils.isValidPlayNumber(zero)).isFalse();
+		assertThat(ScannerUtils.isValidPlayNumber(numberWithCharacter)).isFalse();
+		assertThat(ScannerUtils.isValidPlayNumber(validNumber)).isTrue();
+		assertThat(ScannerUtils.isValidPlayNumber(negativeNumber)).isFalse();
+	}
 }

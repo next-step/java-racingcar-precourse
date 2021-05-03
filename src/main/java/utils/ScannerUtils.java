@@ -30,4 +30,33 @@ public class ScannerUtils {
 
 		return true;
 	}
+
+	public static int getPlayNumberFromUser() {
+		System.out.println("시도할 회수는 몇회인가요?");
+		Scanner sc = new Scanner(System.in);
+		String playNumber = sc.next();
+		while (!isValidPlayNumber(playNumber)) {
+			System.out.println("시도할 회수를 다시 입력해주세요.");
+			playNumber = sc.next();
+		}
+		return Integer.parseInt(playNumber);
+	}
+
+	public static boolean isValidPlayNumber(String userInput) {
+		int playNumber = 0;
+
+		try {
+			playNumber = Integer.parseInt(userInput);
+		} catch (NumberFormatException e) {
+			System.out.println("숫자만 입력 가능합니다.");
+			return false;
+		}
+
+		if (playNumber <= 0) {
+			System.out.println("회수는 0 이상이어야 합니다.");
+			return false;
+		}
+
+		return true;
+	}
 }
