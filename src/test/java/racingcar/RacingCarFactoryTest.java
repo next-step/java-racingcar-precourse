@@ -15,12 +15,27 @@ class RacingCarFactoryTest {
     void createTest() {
 
         // given
-        String carsName = "grace,mia,violate,terry,jeni";
+        String carsName = "grace,mia,ve,terry,jeni,s";
 
         // when
         List<RacingCar> cars = RacingCarFactory.create(carsName);
 
         // then
         assertThat(cars.size()).isEqualTo(carsName.split(",").length);
+    }
+
+
+    @Test
+    @DisplayName("0자보다 크고 5자를 초과하지 않는 이름만 자동차를 생성")
+    void createValidationTest() {
+
+        // given
+        String carsName = ",mia,violate,terry,jeni,,arabian";
+
+        // when
+        List<RacingCar> cars = RacingCarFactory.create(carsName);
+
+        // then
+        assertThat(cars.size()).isEqualTo(3);
     }
 }
