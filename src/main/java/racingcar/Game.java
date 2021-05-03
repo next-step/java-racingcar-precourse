@@ -4,8 +4,9 @@ import java.util.List;
 
 public class Game {
 
-    private GameCount gameCount;
-    private List<RacingCar> racingCars;
+    private final GameCount gameCount;
+    private final List<RacingCar> racingCars;
+    private int maxForward = 0;
 
     public Game(List<RacingCar> racingCars, GameCount gameCount) {
         this.racingCars = racingCars;
@@ -20,7 +21,7 @@ public class Game {
         for (int i = 0; i < gameCount.getNumber(); i++) {
             run();
         }
-        Print.write(getVictoryCarNames());
+        Print.write(getVictoryMessage());
     }
 
     private void run() {
@@ -56,7 +57,35 @@ public class Game {
         Print.write(sb.toString());
     }
 
-    public String getVictoryCarNames() {
-        return GameMessage.VICTORY_MESSAGE;
+    public String getVictoryMessage() {
+        searchMaxForward();
+        return searchVictoryRacingCar() + GameMessage.VICTORY_MESSAGE;
+    }
+
+    private String searchVictoryRacingCar() {
+        return getVictoryRacingCarNames();
+    }
+
+    private String getVictoryRacingCarNames() {
+        StringBuilder victoryCarNames = new StringBuilder();
+
+        for (RacingCar racingCar : racingCars) {
+            if (racingCar.getNumberOfAdvances() == this.maxForward) {
+                victoryCarNames.append(racingCar.getName());
+                victoryCarNames.append(",");
+            }
+        }
+
+        victoryCarNames.deleteCharAt(victoryCarNames.length() - 1);
+
+        return victoryCarNames.toString();
+    }
+
+    private void searchMaxForward() {
+        for (RacingCar racingCar : racingCars) {
+            if (this.maxForward < racingCar.getNumberOfAdvances()) {
+                this.maxForward = racingCar.getNumberOfAdvances();
+            }
+        }
     }
 }
