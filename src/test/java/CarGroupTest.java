@@ -1,4 +1,4 @@
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.assertj.core.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,5 +31,22 @@ public class CarGroupTest {
 		assertThatIllegalArgumentException().isThrownBy(() -> {
 			new CarGroup(carNames, gameCount);
 		}).withMessageContaining("숫자만 입력 가능합니다.");
+	}
+
+	@Test
+	void 레이싱_가장_먼_거리() {
+		List<String> carNames = new ArrayList<>();
+		carNames.add("benz");
+		carNames.add("bmw");
+
+		CarGroup racing = new CarGroup(carNames, "5");
+
+		racing.getCars().get(0).forwardPosition(); // benz 이동
+		racing.getCars().get(0).forwardPosition(); // benz 이동
+		racing.getCars().get(0).forwardPosition(); // benz 이동
+
+		racing.getCars().get(1).forwardPosition(); // bmw 이동
+
+		assertThat(racing.getMaxPosition()).isEqualTo(3);
 	}
 }

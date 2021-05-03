@@ -7,6 +7,10 @@ public class CarGroup {
 	private List<Car> cars;
 	private GameCount gameCount;
 
+	public List<Car> getCars() {
+		return cars;
+	}
+
 	public CarGroup(List<String> carNames, String gameCount) {
 		this.cars = mapCar(carNames);
 		this.gameCount = new GameCount(gameCount);
@@ -37,5 +41,14 @@ public class CarGroup {
 			result.progressGameCount(cars);
 			System.out.println();
 		}
+	}
+
+	public int getMaxPosition() {
+		int maxPosition = 0;
+		for (Car car : cars) {
+			maxPosition = Math.max(maxPosition, car.getPosition());
+		}
+
+		return maxPosition;
 	}
 }
