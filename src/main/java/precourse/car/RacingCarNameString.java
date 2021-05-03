@@ -20,6 +20,10 @@ public class RacingCarNameString {
 		this.carNames = Arrays.asList(carNames);
 	}
 
+	public List<String> getCarNames() {
+		return carNames;
+	}
+
 	private void validateCarNumber(String[] carNames) {
 		if (carNames.length < MIN_CAR_NUMBER) {
 			throw new IllegalArgumentException(CarRaceMessage.INVALID_CAR_NUMBER);

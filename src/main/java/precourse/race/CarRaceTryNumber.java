@@ -9,6 +9,10 @@ public class CarRaceTryNumber {
 		this.tryNumber = validateTryNumber(tryNumber);
 	}
 
+	public int getNumber() {
+		return tryNumber;
+	}
+
 	private int validateTryNumber(String tryNumber) {
 		int number = validateTryNumberIsNumeric(tryNumber);
 		return validateTryNumberRange(number);

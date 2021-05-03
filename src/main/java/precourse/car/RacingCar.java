@@ -22,6 +22,10 @@ public class RacingCar {
 		return getCarName() + "\t: " + position.describeAsSymbol() + "\n";
 	}
 
+	public boolean isWinner(int maxPosition) {
+		return position.isMaxPosition(maxPosition);
+	}
+
 	public String getCarName() {
 		return name.getName();
 	}

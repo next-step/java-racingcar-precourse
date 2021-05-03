@@ -17,6 +17,10 @@ public class RacingCarPosition {
 		return builder.toString();
 	}
 
+	public boolean isMaxPosition(int maxPosition) {
+		return position == maxPosition;
+	}
+
 	public int getNumber() {
 		return position;
 	}
