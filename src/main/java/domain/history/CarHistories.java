@@ -4,6 +4,7 @@ import domain.position.Position;
 import domain.position.Positions;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -11,11 +12,11 @@ public class CarHistories {
     private List<CarHistory> carHistories;
 
     public CarHistories(List<CarHistory> carHistories) {
-        this.carHistories = carHistories;
+        this.carHistories = new ArrayList<>(carHistories);
     }
 
     public List<CarHistory> getCarHistories() {
-        return new ArrayList<>(carHistories);
+        return Collections.unmodifiableList(carHistories);
     }
 
     public Positions getPositions() {

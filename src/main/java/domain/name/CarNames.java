@@ -1,6 +1,7 @@
 package domain.name;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -18,7 +19,7 @@ public class CarNames {
     }
 
     public List<CarName> getNames() {
-        return new ArrayList<>(names);
+        return Collections.unmodifiableList(names);
     }
 
     @Override

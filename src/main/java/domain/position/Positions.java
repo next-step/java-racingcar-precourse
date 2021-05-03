@@ -9,7 +9,7 @@ public class Positions {
     private List<Position> positions;
 
     public Positions(List<Position> positions) {
-        this.positions = positions;
+        this.positions = new ArrayList<>(positions);
     }
 
     public Position getMaxPosition() {
@@ -17,7 +17,7 @@ public class Positions {
     }
 
     public List<Position> getPositions() {
-        return new ArrayList<>(positions);
+        return Collections.unmodifiableList(positions);
     }
 
     @Override
