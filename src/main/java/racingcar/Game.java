@@ -14,13 +14,13 @@ public class Game {
 
     public void play() {
 
-        System.out.println();
-        System.out.println(GameMessage.PLAY_RESULT);
+        Print.write("");
+        Print.write(GameMessage.PLAY_RESULT);
 
         for (int i = 0; i < count; i++) {
             run();
         }
-        System.out.println(getVictoryCarNames());
+        Print.write(getVictoryCarNames());
     }
 
     private void run() {
@@ -30,7 +30,7 @@ public class Game {
             boolean forward = Rule.forward(Generator.randomNumber());
             forwardWhenTheRulesAreOkay(racingCar, forward);
         }
-        System.out.println();
+        Print.write("");
     }
 
     private void forwardWhenTheRulesAreOkay(RacingCar racingCar, boolean forward) {
@@ -53,7 +53,7 @@ public class Game {
             sb.append("-");
         }
 
-        System.out.println(sb.toString());
+        Print.write(sb.toString());
     }
 
     public String getVictoryCarNames() {
