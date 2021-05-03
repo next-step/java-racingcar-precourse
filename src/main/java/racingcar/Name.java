@@ -2,6 +2,8 @@ package racingcar;
 
 public class Name {
 
+    private static final int MAX_NAME_LENGTH = 5;
+
     private final String name;
 
     public Name(String name) {
@@ -14,7 +16,7 @@ public class Name {
     }
 
     private void validLength(String name) {
-        if (name.length() > 5)
+        if (name.length() > MAX_NAME_LENGTH)
             throw new IllegalArgumentException("자동차의 이름은 5자 이하여야 합니다.");
     }
 

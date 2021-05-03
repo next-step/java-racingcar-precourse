@@ -2,35 +2,31 @@ package racingcar;
 
 public class RacingCar {
 
-    public static final int MOVE_MINIMUM_VALUE = 4;
+    private static final int MIN_MOVE_FORWARD_RANDOM_VALUE = 4;
 
     private final Name name;
-    private final TravelDistance distance;
+    private final TravelDistance travelDistance;
 
     public RacingCar(Name name) {
         this.name = name;
-        this.distance = new TravelDistance();
+        this.travelDistance = new TravelDistance();
     }
 
     public void moveForward(int random) {
-        if (isMove(random))
-            distance.increase();
+        if (isMoveForward(random))
+            travelDistance.increase();
     }
 
     public String getName() {
         return this.name.getName();
     }
 
-    public int getDistance() {
-        return this.distance.getDistance();
+    public int getTravelDistance() {
+        return this.travelDistance.getDistance();
     }
 
-    public TravelDistance getTravelDistance() {
-        return distance;
-    }
-
-    private boolean isMove(int random) {
-        return random >= MOVE_MINIMUM_VALUE;
+    private boolean isMoveForward(int random) {
+        return random >= MIN_MOVE_FORWARD_RANDOM_VALUE;
     }
 
     @Override

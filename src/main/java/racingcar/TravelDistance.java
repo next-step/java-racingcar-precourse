@@ -4,30 +4,12 @@ public class TravelDistance {
 
     private int distance;
 
-    public TravelDistance() {
-
-    }
-
-    private TravelDistance(int distance) {
-        this.distance = distance;
-    }
-
-    public static TravelDistance create(int distance) {
-        validDistance(distance);
-        return new TravelDistance(distance);
-    }
-
     public void increase() {
         this.distance++;
     }
 
     public int getDistance() {
         return distance;
-    }
-
-    private static void validDistance(int distance) {
-        if (distance < 0)
-            throw new IllegalArgumentException("이동 거리가 음수일 수 없습니다.");
     }
 
     @Override

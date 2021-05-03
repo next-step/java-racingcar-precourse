@@ -2,12 +2,10 @@ package racingcar;
 
 import utils.RandomValueGenerator;
 
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class RacingCars {
+
     private final Set<RacingCar> racingCars;
 
     public RacingCars(Set<Name> names) {
@@ -25,28 +23,24 @@ public class RacingCars {
     }
 
     public List<String> getWinners() {
-        int max = getMax();
+        int maxTravelDistance = getMaxTravelDistance();
 
         List<String> winners = new ArrayList<>();
         for (RacingCar racingCar : racingCars)
-            addWinners(winners, racingCar, max);
+            addWinners(winners, racingCar, maxTravelDistance);
 
         return winners;
     }
 
-    private void addWinners(List<String> winners, RacingCar racingCar, int max) {
-        if (isWinner(racingCar, max))
+    private void addWinners(List<String> winners, RacingCar racingCar, int maxTravelDistance) {
+        if (Objects.equals(racingCar.getTravelDistance(), maxTravelDistance))
             winners.add(racingCar.getName());
     }
 
-    private boolean isWinner(RacingCar racingCar, int max) {
-        return racingCar.getDistance() == max;
-    }
-
-    private int getMax() {
-        int max = 0;
+    private int getMaxTravelDistance() {
+        int maxTravelDistance = 0;
         for (RacingCar racingCar : racingCars)
-            max = Math.max(racingCar.getDistance(), max);
-        return max;
+            maxTravelDistance = Math.max(racingCar.getTravelDistance(), maxTravelDistance);
+        return maxTravelDistance;
     }
 }
