@@ -5,16 +5,16 @@ import racingCar.view.InputView;
 
 public class RacingGameController {
 
-  public void start() {
-    String[] carNames = InputView.inputCarNames();
-    int tryCount = InputView.inputTryCount();
+    public void start() {
+        String[] carNames = InputView.inputCarNames();
+        int tryCount = InputView.inputTryCount();
 
-    RacingGame racingGame = new RacingGame(carNames, tryCount);
+        RacingGame racingGame = new RacingGame(carNames, tryCount);
 
-    while(racingGame.availableGame()) {
-      racingGame.race();
+        while (racingGame.availableGame()) {
+            racingGame.race();
+        }
+
     }
-
-  }
 
 }
