@@ -30,7 +30,7 @@ public class Cars {
 	}
 
 	// 자동차 이름 목록 검증
-	private boolean isValidCarNames(String[] carNameArr) {
+	public boolean isValidCarNames(String[] carNameArr) {
 		int validCarNameResult = VALID_CAR_NAME_RESULT;
 		for (String carName : carNameArr) {
 			validCarNameResult += Car.isValidCarName(carName);
@@ -39,7 +39,7 @@ public class Cars {
 	}
 
 	// 사용자 입력 자동차 이름들 검증
-	private boolean isValidCar(String[] carNameArr) {
+	public boolean isValidCar(String[] carNameArr) {
 		if (!Car.isValidCarCount(carNameArr)) {
 			return false;
 		}
@@ -58,7 +58,7 @@ public class Cars {
 	}
 
 	// 레이스 1회 수행 및 주행거리 표시
-	private void goRace() {
+	public void goRace() {
 		for (Car car : getCarList()) {
 			car.applyForwardOrNot();
 			car.printCurrentCarMileage();
@@ -74,14 +74,14 @@ public class Cars {
 	}
 
 	// 우승 자동차 이름 얻기
-	private void getWinnerName(Car car, StringJoiner stringJoiner, int currentRaceCount) {
+	public void getWinnerName(Car car, StringJoiner stringJoiner, int currentRaceCount) {
 		if (car.isWinner(currentRaceCount)) {
 			stringJoiner.add(car.getCarName());
 		}
 	}
 
 	// 게임 결과 생성
-	private String creatRaceResult(int currentRaceCount) {
+	public String creatRaceResult(int currentRaceCount) {
 		StringJoiner stringJoiner = new StringJoiner(WINNER_SPLITTER);
 		for (Car car : getCarList()) {
 			getWinnerName(car, stringJoiner, currentRaceCount);
