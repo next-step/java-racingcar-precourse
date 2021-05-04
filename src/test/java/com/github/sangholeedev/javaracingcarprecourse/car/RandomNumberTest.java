@@ -46,5 +46,12 @@ class RandomNumberTest {
 		assertThat(randomNumber.getNumber()).isLessThanOrEqualTo(9);
 	}
 
-
+	@Test
+	@DisplayName("랜덤숫자_random값_4이상_테스트")
+	void 랜덤숫자_random값_4이상_테스트() {
+		// given
+		randomNumber.generate();
+		// when & then
+		assertThat(randomNumber.isGreaterThanOrEqualTo4()).isEqualTo(randomNumber.getNumber() >= 4);
+	}
 }

@@ -18,4 +18,8 @@ public class RandomNumber {
 	public void generate() {
 		this.number = ThreadLocalRandom.current().nextInt(MIN, MAX);
 	}
+
+	public boolean isGreaterThanOrEqualTo4() {
+		return number >= 4;
+	}
 }
