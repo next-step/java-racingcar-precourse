@@ -1,4 +1,4 @@
-import utils.ScannerUtils;
+import utils.Validator;
 
 public class Car {
 
@@ -6,7 +6,7 @@ public class Car {
 	private int position;
 
 	Car(String name) {
-		if (!ScannerUtils.isValidCarName(name)) {
+		if (!Validator.isValidCarName(name)) {
 			throw new IllegalArgumentException("사용할 수 없는 이름입니다. :" + name);
 		}
 		this.name = name;
