@@ -50,7 +50,7 @@ public class Cars {
 		return carNameArr;
 	}
 
-	// 레이싱 1회 수행 및 주행거리 표시
+	// 레이스 1회 수행 및 주행거리 표시
 	public void goRace() {
 		for (Car car : getCarList()) {
 			car.applyForwardOrNot();

@@ -59,7 +59,7 @@ public class GamePlayService {
 		}
 	}
 
-	// 레이싱 횟수 얻기
+	// 레이스 횟수 얻기
 	int getRaceCount() {
 		String raceCount;
 		do {
