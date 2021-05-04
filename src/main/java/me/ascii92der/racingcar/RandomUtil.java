@@ -1,7 +1,5 @@
 package me.ascii92der.racingcar;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class RandomUtil {

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
-    private List<Car> carGroup;
+    private final List<Car> carGroup;
     private static final String SEPARATE_CHAR = ",";
 
 
