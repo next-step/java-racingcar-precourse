@@ -10,7 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CarsTest {
     @Test
     @DisplayName("입력된_자동차_이름_배열_반환_4개")
-    void string_car_names_to_list(){
+    void string_car_names_to_list() {
         String carNames = "hello,jeju,kirk,land";
         List<String> listCar = Cars.carNamesToList(carNames);
         assertThat(listCar).contains("hello");
@@ -21,7 +21,7 @@ public class CarsTest {
 
     @Test
     @DisplayName("입력된_자동차_이름_배열_반환_1개")
-    void string_car_names_to_list2(){
+    void string_car_names_to_list2() {
         String carNames = "hello";
         List<String> listCar = Cars.carNamesToList(carNames);
         assertThat(listCar).contains("hello");
