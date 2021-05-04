@@ -1,14 +1,16 @@
 package be.kooru;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class CarGame {
 
     private final List<Car> cars;
 
-    public CarGame(List<Car> cars) {
-        this.cars = cars;
+    public CarGame(Collection cars) {
+        // 외부에서 주입된 Collection이 변경되면 내부적으로 영향을 줄 수 있다고 판단
+        this.cars = new ArrayList<>(cars);
     }
 
     public void start() {
