@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.1](https://github.com/frostnight/java-racingcar-precourse/compare/v1.2.0...v1.2.1) (2021-05-04)
+
+
+### Bug Fixes
+
+* Car 이동 현황 print 기능 추가 및 예외 처리 추가 ([09aa2b7](https://github.com/frostnight/java-racingcar-precourse/commit/09aa2b7a0196ca48987b99ee5ea037f94840bc56))
+
 ## [1.2.0](https://github.com/frostnight/java-racingcar-precourse/compare/v1.1.0...v1.2.0) (2021-05-04)
 
 
