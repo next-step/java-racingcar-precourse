@@ -2,10 +2,11 @@ import java.util.Objects;
 
 public class RacingCar {
 	private final RacingCarName racingCarName;
-	private int moveCount;
+	private final MoveCount moveCount;
 
 	RacingCar(String name) {
 		this.racingCarName = new RacingCarName(name);
+		this.moveCount = new MoveCount(0);
 	}
 
 	@Override
@@ -29,11 +30,18 @@ public class RacingCar {
 		return moveNumber >= 4;
 	}
 
-	public int getMoveCount() {
+	public RacingCarName getRacingCarName() {
+		return racingCarName;
+	}
+
+	public MoveCount getMoveCount() {
 		return this.moveCount;
 	}
 
-	public void moveFront() {
-		this.moveCount++;
+	public void move() {
+		int randomNumber = RandomUtils.getRandomNumber();
+		if (isMoveNumber(randomNumber)) {
+			this.moveCount.plus();
+		}
 	}
 }

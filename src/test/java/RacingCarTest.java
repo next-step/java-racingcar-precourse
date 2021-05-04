@@ -20,9 +20,9 @@ public class RacingCarTest {
 
 	@Test
 	public void 전진_테스트() {
-		racingCar.moveFront();
-		assertThat(racingCar.getMoveCount()).isEqualTo(1);
-		racingCar.moveFront();
-		assertThat(racingCar.getMoveCount()).isEqualTo(2);
+		racingCar.getMoveCount().plus();
+		assertThat(racingCar.getMoveCount().get()).isEqualTo(1);
+		racingCar.getMoveCount().plus();
+		assertThat(racingCar.getMoveCount().get()).isEqualTo(2);
 	}
 }
