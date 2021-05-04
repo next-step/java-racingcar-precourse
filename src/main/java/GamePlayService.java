@@ -4,6 +4,12 @@ import java.util.Scanner;
 
 public class GamePlayService {
 
+	private static final String MESSAGE_VICTORY_CARS = "가 우승하였습니다.";
+	private static final String MESSAGE_PLEASE_ENTER_GREATER_THAN_ONE = "1이상의 숫자를 입력해 주세요.";
+	private static final String MESSAGE_PLEASE_ENTER_NUMBER = "숫자를 입력해 주세요.";
+	private static final String MESSAGE_NUMBER_ATTEMPTS = "시도할 회수는 몇 회인가요?";
+	private static final int MINIMUM_RACE_COUNT = 1;
+
 	// 게임 시작
 	public void startGame() {
 		Cars cars = creatCars();
@@ -36,14 +42,14 @@ public class GamePlayService {
 		do {
 			gameResult = cars.creatRaceResult();
 		} while (0 == gameResult.length());
-		System.out.println(gameResult + "가 우승하였습니다");
+		System.out.println(gameResult + MESSAGE_VICTORY_CARS);
 	}
 
 
 	// 1 이상인지 검증
 	boolean isAboveMinimum(int raceCount) {
-		if (1 > raceCount) {
-			System.out.println("1이상의 숫자를 입력해 주세요.");
+		if (MINIMUM_RACE_COUNT > raceCount) {
+			System.out.println(MESSAGE_PLEASE_ENTER_GREATER_THAN_ONE);
 			return false;
 		}
 		return true;
@@ -54,7 +60,7 @@ public class GamePlayService {
 		try {
 			return isAboveMinimum(Integer.parseInt(raceCount));
 		} catch (NumberFormatException e) {
-			System.out.println("숫자를 입력해 주세요.");
+			System.out.println(MESSAGE_PLEASE_ENTER_NUMBER);
 			return false;
 		}
 	}
@@ -63,7 +69,7 @@ public class GamePlayService {
 	int getRaceCount() {
 		String raceCount;
 		do {
-			System.out.println("시도할 회수는 몇 회인가요?");
+			System.out.println(MESSAGE_NUMBER_ATTEMPTS);
 			raceCount = new Scanner(System.in).nextLine();
 		} while (!isNumber(raceCount));
 		return Integer.parseInt(raceCount);

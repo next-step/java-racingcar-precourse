@@ -7,6 +7,10 @@ public class Cars {
 	private final List<Car> carList;
 	private final int raceCount;
 
+	private static final String MESSAGE_PLEASE_INPUT_CAR_NAMES = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
+	private static final String CAR_NAMES_SPLITTER = ",";
+	private static final String WINNER_SPLITTER = ", ";
+
 	public Cars(List<Car> carList, int raceCount) {
 		this.carList = carList;
 		this.raceCount = raceCount;
@@ -43,8 +47,8 @@ public class Cars {
 	public String[] getCarNames() {
 		String[] carNameArr;
 		do {
-			System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-			carNameArr = new Scanner(System.in).nextLine().split(",");
+			System.out.println(MESSAGE_PLEASE_INPUT_CAR_NAMES);
+			carNameArr = new Scanner(System.in).nextLine().split(CAR_NAMES_SPLITTER);
 		} while (!isValidCar(carNameArr));
 
 		return carNameArr;
@@ -61,7 +65,7 @@ public class Cars {
 
 	// 게임 결과 생성
 	public String creatRaceResult() {
-		StringJoiner stringJoiner = new StringJoiner(", ");
+		StringJoiner stringJoiner = new StringJoiner(WINNER_SPLITTER);
 		for (Car car : getCarList()) {
 			stringJoiner = getWinnerName(car, stringJoiner);
 		}
