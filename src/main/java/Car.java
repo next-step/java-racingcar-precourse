@@ -14,6 +14,9 @@ public class Car {
 	private static final int RANDOM_VALUE_MAX = 10;
 	private static final int FORWARD_CONDITIONS_VALUE = 4;
 
+	private static final int VALID_CAR_NAME_FALSE = 1;
+	private static final int VALID_CAR_NAME_TRUE = 0;
+
 	private final String carName;
 	private int carMileage;
 
@@ -52,12 +55,12 @@ public class Car {
 	}
 
 	// 자동차 이름 검증
-	public static boolean isValidCarName(String carName) {
+	public static int isValidCarName(String carName) {
 		if (CAR_NAME_LENGTH_MAX >= carName.length() && CAR_NAME_LENGTH_MIN <= carName.length()) {
-			return true;
+			return VALID_CAR_NAME_TRUE;
 		}
 		System.out.println(MESSAGE_NAME_LENGTH_CONDITION_NOT_MET);
-		return false;
+		return VALID_CAR_NAME_FALSE;
 	}
 
 	// 자동차 대수 검증

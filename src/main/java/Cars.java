@@ -12,6 +12,10 @@ public class Cars {
 	private static final String CAR_NAMES_SPLITTER = ",";
 	private static final String WINNER_SPLITTER = ", ";
 
+	private static final int VALID_CAR_NAME_RESULT = 0;
+	private static final int STRING_LENGTH_ZERO = 0;
+	private static final int MINIMUM_RACE_COUNT = 1;
+
 	public Cars(List<Car> carList, int raceCount) {
 		this.carList = carList;
 		this.raceCount = raceCount;
@@ -27,13 +31,11 @@ public class Cars {
 
 	// 자동차 이름 목록 검증
 	private boolean isValidCarNames(String[] carNameArr) {
-		int loopCount = 0;
-		boolean validCarNameResult = true;
-		while (loopCount < carNameArr.length && validCarNameResult) {
-			validCarNameResult = Car.isValidCarName(carNameArr[loopCount]);
-			loopCount++;
+		int validCarNameResult = VALID_CAR_NAME_RESULT;
+		for (String carName : carNameArr) {
+			validCarNameResult += Car.isValidCarName(carName);
 		}
-		return loopCount == carNameArr.length && validCarNameResult;
+		return VALID_CAR_NAME_RESULT == validCarNameResult;
 	}
 
 	// 사용자 입력 자동차 이름들 검증
@@ -94,7 +96,7 @@ public class Cars {
 		do {
 			gameResult = creatRaceResult(raceCount);
 			raceCount--;
-		} while (0 == gameResult.length() && 0 < raceCount);
+		} while (STRING_LENGTH_ZERO == gameResult.length() && MINIMUM_RACE_COUNT <= raceCount);
 		System.out.println(gameResult + MESSAGE_VICTORY_CARS);
 	}
 
