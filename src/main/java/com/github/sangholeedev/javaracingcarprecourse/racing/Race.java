@@ -33,10 +33,10 @@ public class Race {
 	}
 
 	public RaceResults raceGame() {
-		List<RaceResult> raceResultList = new ArrayList<>();
+		final RaceResults raceResults = new RaceResults();
 		for (int i = 0; i < raceCount.getCount(); i++) {
-			raceResultList.add(racing());
+			raceResults.report(racing());
 		}
-		return new RaceResults(raceResultList);
+		return raceResults;
 	}
 }

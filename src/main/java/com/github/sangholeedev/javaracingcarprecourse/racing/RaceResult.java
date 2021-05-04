@@ -18,6 +18,9 @@ public class RaceResult {
 		raceResults.put(car, drive);
 	}
 
+	public Map<Car, CarDrivenStatus> getRaceResults() {
+		return raceResults;
+	}
 	public String print() {
 		StringBuilder printString = new StringBuilder();
 		for (Car car : raceResults.keySet()) {
