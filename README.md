@@ -5,3 +5,17 @@
 
 ## 과제 제출 과정
 * [과제 제출 방법](https://github.com/next-step/nextstep-docs/tree/master/precourse)
+
+---
+## 기능 목록
+* 자동차
+    * 이름 부여
+    * 출력
+    * 전진
+    * 멈춤
+    
+* 사용자
+    * 이동횟수
+    
+* 경주 게임
+    * 우승자
