@@ -14,10 +14,18 @@ public class Car {
 		return carName;
 	}
 
+	public int getCarMileage() {
+		return carMileage;
+	}
+
+	private void increaseCarMileage() {
+		this.carMileage++;
+	}
+
 	// 자동차 전진 여부 적용
 	public void applyForwardOrNot() {
 		if (4 <= new Random(System.nanoTime()).nextInt(10)) {
-			this.carMileage++;
+			increaseCarMileage();
 		}
 	}
 
@@ -25,7 +33,7 @@ public class Car {
 	public void printCurrentCarMileage() {
 		StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.append(carName).append(" : ");
-		for (int i = 0; i < this.carMileage; i++) {
+		for (int i = 0; i < getCarMileage(); i++) {
 			stringBuilder.append("-");
 		}
 		System.out.println(stringBuilder.toString());
@@ -43,7 +51,7 @@ public class Car {
 
 	// 자동차 우승 여부 얻기
 	public boolean isWinner(int playCount) {
-		return this.carMileage == playCount;
+		return getCarMileage() == playCount;
 	}
 
 }
