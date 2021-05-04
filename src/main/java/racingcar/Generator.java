@@ -9,8 +9,8 @@ public class Generator {
 
     private Generator() {}
 
-    public static int randomNumber() {
+    public static Number randomNumber() {
 
-        return new Random().nextInt(MAX_NUMBER) + MIN_NUMBER;
+        return new Number(new Random().nextInt(MAX_NUMBER) + MIN_NUMBER);
     }
 }

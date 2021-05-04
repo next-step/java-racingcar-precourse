@@ -6,7 +6,7 @@ public class Rule {
 
     private Rule() {}
 
-    public static boolean forward(int number) {
-        return number >= FORWARD_NUMBER;
+    public static boolean forward(Number number) {
+        return number.get() >= FORWARD_NUMBER;
     }
 }
