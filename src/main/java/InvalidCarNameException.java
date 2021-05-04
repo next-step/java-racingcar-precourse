@@ -1,5 +1,3 @@
-package NoCarNameException;
-
 public class InvalidCarNameException extends Exception {
 
     public InvalidCarNameException(String s) {

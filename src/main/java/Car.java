@@ -1,13 +1,16 @@
-import NoCarNameException.InvalidCarNameException;
-
 public class Car {
     String name;
+    int position;
+    int moveCount;
 
     private Car(){}
 
     public Car(String name) throws InvalidCarNameException {
         setName(name);
+        position = 0;
+        moveCount = 0;
     }
+
 
     private Car setName(String name) throws InvalidCarNameException {
         invalidCheck(name);
@@ -23,5 +26,39 @@ public class Car {
 
     public String getName() {
         return name;
+    }
+
+    public void moveOrDont(int accelValue) {
+        this.moveCount++;
+        if (accelValue < 4) {
+            // do nothing
+            return;
+        }
+
+        if (accelValue >= 4) {
+            move();
+            return;
+        }
+
+    }
+
+    public int getPosition() {
+        return this.position;
+    }
+
+    private void move() {
+        this.position++;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
+    }
+
+    public int getMoveCount() {
+        return moveCount;
+    }
+
+    public void setMoveCount(int moveCount) {
+        this.moveCount = moveCount;
     }
 }
