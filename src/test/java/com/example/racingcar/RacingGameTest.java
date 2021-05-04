@@ -2,7 +2,6 @@ package com.example.racingcar;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.*;
 
 class RacingGameTest {
@@ -17,13 +16,23 @@ class RacingGameTest {
 
     @Test
     void newName_ShouldThrowException() {
-        assertThatIllegalArgumentException().isThrownBy(() -> { new Name("aaaaaa"); });
-        assertThatIllegalArgumentException().isThrownBy(() -> { new Name(""); });
-        assertThatIllegalArgumentException().isThrownBy(() -> { new Name(null); });
+        assertThatIllegalArgumentException().isThrownBy(() -> new Name("aaaaaa"));
+        assertThatIllegalArgumentException().isThrownBy(() -> new Name(""));
+        assertThatIllegalArgumentException().isThrownBy(() -> new Name(null));
     }
 
     @Test
     void newName_ShouldNotThrowException() {
-        assertThatCode(() -> { new Name("aaa"); }).doesNotThrowAnyException();
+        assertThatCode(() -> new Name("aaa")).doesNotThrowAnyException();
+    }
+
+    @Test
+    void newCar_ShouldThrowException() {
+        assertThatIllegalArgumentException().isThrownBy(() -> new Car(null));
+    }
+
+    @Test
+    void newCar_ShouldNotThrowException() {
+        assertThatCode(() -> new Car(new Name("aaa"))).doesNotThrowAnyException();
     }
 }
