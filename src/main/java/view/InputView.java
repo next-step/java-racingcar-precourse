@@ -1,10 +1,10 @@
 package view;
 
-import domain.name.CarNames;
-import domain.TryCount;
-
 import java.io.InputStream;
 import java.util.Scanner;
+
+import domain.TryCount;
+import domain.name.CarNames;
 
 public class InputView {
     private Scanner scanner = null;

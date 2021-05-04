@@ -1,10 +1,10 @@
 package view.print;
 
-import domain.winner.Winner;
-import domain.winner.Winners;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import domain.winner.Winner;
+import domain.winner.Winners;
 
 public class WinnersPrinter {
     private static final String WINNER_JOIN = ", ";

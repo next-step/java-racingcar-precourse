@@ -1,9 +1,9 @@
 package domain.history;
 
-import domain.position.Position;
-import domain.name.CarName;
-
 import java.util.Objects;
+
+import domain.name.CarName;
+import domain.position.Position;
 
 public class CarHistory {
     private CarName carName;
@@ -27,10 +27,15 @@ public class CarHistory {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        CarHistory that = (CarHistory) o;
+    public boolean equals(Object dest) {
+        if (this == dest) {
+            return true;
+        }
+        if (dest == null || getClass() != dest.getClass()) {
+            return false;
+        }
+
+        CarHistory that = (CarHistory) dest;
         return Objects.equals(carName, that.carName) && Objects.equals(position, that.position);
     }
 

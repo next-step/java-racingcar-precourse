@@ -1,8 +1,8 @@
 package domain.winner;
 
-import domain.name.CarName;
-
 import java.util.Objects;
+
+import domain.name.CarName;
 
 public class Winner {
     private CarName carName;
@@ -16,10 +16,15 @@ public class Winner {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Winner winner = (Winner) o;
+    public boolean equals(Object dest) {
+        if (this == dest) {
+            return true;
+        }
+        if (dest == null || getClass() != dest.getClass()) {
+            return false;
+        }
+
+        Winner winner = (Winner) dest;
         return Objects.equals(carName, winner.carName);
     }
 

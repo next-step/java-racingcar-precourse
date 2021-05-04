@@ -1,8 +1,8 @@
-import domain.name.CarNames;
 import domain.Game;
+import domain.TryCount;
+import domain.name.CarNames;
 import view.InputView;
 import view.PrintView;
-import domain.TryCount;
 
 public class App {
     public static void main(String[] args) {

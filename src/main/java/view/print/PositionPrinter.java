@@ -1,8 +1,8 @@
 package view.print;
 
-import domain.history.CarHistory;
-
 import java.io.StringWriter;
+
+import domain.history.CarHistory;
 
 public class PositionPrinter {
     private static final String POSITION_PRINTING_STRING = "-";

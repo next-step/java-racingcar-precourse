@@ -1,13 +1,13 @@
 package domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import domain.history.CarHistories;
 import domain.history.CarHistory;
 import domain.name.CarName;
 import domain.name.CarNames;
 import domain.strategy.MoveStrategy;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Cars {
     private List<Car> cars = new ArrayList<>();

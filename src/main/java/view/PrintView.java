@@ -1,8 +1,8 @@
 package view;
 
+import domain.Game;
 import domain.history.CarHistories;
 import domain.history.CarHistory;
-import domain.Game;
 import view.print.PositionPrinter;
 import view.print.WinnersPrinter;
 

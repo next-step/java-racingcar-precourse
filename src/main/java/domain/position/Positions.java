@@ -21,10 +21,15 @@ public class Positions {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Positions positions1 = (Positions) o;
+    public boolean equals(Object dest) {
+        if (this == dest) {
+            return true;
+        }
+        if (dest == null || getClass() != dest.getClass()) {
+            return false;
+        }
+
+        Positions positions1 = (Positions) dest;
         return Objects.equals(positions, positions1.positions);
     }
 

@@ -1,12 +1,12 @@
 package domain.history;
 
-import domain.position.Position;
-import domain.position.Positions;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+
+import domain.position.Position;
+import domain.position.Positions;
 
 public class CarHistories {
     private List<CarHistory> carHistories;
@@ -34,10 +34,15 @@ public class CarHistories {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        CarHistories that = (CarHistories) o;
+    public boolean equals(Object dest) {
+        if (this == dest) {
+            return true;
+        }
+        if (dest == null || getClass() != dest.getClass()) {
+            return false;
+        }
+
+        CarHistories that = (CarHistories) dest;
         return Objects.equals(carHistories, that.carHistories);
     }
 
@@ -49,14 +54,16 @@ public class CarHistories {
     private List<CarHistory> findByPosition(Position comparePosition) {
         List<CarHistory> samePositionHistories = new ArrayList<>();
 
-        for(CarHistory carHistory : carHistories) {
+        for (CarHistory carHistory : carHistories) {
             addCarHistoryIfSamePosition(samePositionHistories, carHistory, comparePosition);
         }
 
         return samePositionHistories;
     }
 
-    private void addCarHistoryIfSamePosition(List<CarHistory> carHistories, CarHistory carHistory, Position comparePosition) {
+    private void addCarHistoryIfSamePosition(List<CarHistory> carHistories,
+                                             CarHistory carHistory,
+                                             Position comparePosition) {
         if (carHistory.getPosition().equals(comparePosition)) {
             carHistories.add(carHistory);
         }
