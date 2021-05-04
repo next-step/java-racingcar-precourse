@@ -14,26 +14,27 @@ public class RacingCarGame {
 	private static int MOVE_MIN_VALUE = 4;
 	
 	class RacingCar implements Comparable<RacingCar>{
-		String name;
-		int moveCnt;
+		private String name;
+		private int moveCnt;
 		
 		RacingCar(String name) {
 			this.name = name;
+			this.moveCnt = 0;
 		}
 		
-		private String getCarName() {
+		public String getCarName() {
 			return this.name;
 		}
 
-		private int getMoveCnt() {
+		public int getMoveCnt() {
 			return this.moveCnt;
 		}
 		
-		private void setCarName(String name) {
+		public void setCarName(String name) {
 			this.name = name;
 		}
 		
-		private void setMoveCnt() {
+		public void setMoveCnt() {
 			this.moveCnt += 1;
 		}
 
