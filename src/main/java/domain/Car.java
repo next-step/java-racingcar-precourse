@@ -33,9 +33,9 @@ public class Car {
         return this.carName.name();
     }
 
-    public Car move() {
+    public void move() {
         checkOverflowNumber(this.distance);
-        return new Car(this.distance + 1, this.carName);
+        this.distance++;
     }
 
     public boolean isMovable(int number) {
@@ -46,6 +46,17 @@ public class Car {
         if (distance == Integer.MAX_VALUE) {
             throw new ArithmeticException("자동차가 움직일수 있는 범위를 넘었습니다.(Integer 범위를 넘었습니다.)");
         }
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(carName.name() + ": ");
+
+        for (int i = 0; i < distance; i++) {
+            sb.append("-");
+        }
+        return sb.toString();
     }
 
     @Override

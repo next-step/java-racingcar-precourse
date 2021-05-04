@@ -13,7 +13,6 @@ public class Cars {
     public Cars(List<Car> carList) {
         this.carList = carList;
         checkDuplicateCar();
-
     }
 
     public List<Car> carList() {
@@ -73,5 +72,12 @@ public class Cars {
         return carSet.size() == this.carList.size();
     }
 
-
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for(Car car: currentFirstCarList()){
+            sb.append(car.carName()+",");
+        }
+        return sb.substring(0,sb.length()-1);
+    }
 }

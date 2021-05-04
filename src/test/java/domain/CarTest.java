@@ -32,10 +32,10 @@ class CarTest {
     @DisplayName("Car move Test")
     void moveCar() {
         Car car = new Car(new Name("test"));
-        Car movedCar = car.move();
+        car.move();
         assertAll(
-                () -> assertThat(movedCar.carName()).isEqualTo("test"),
-                () -> assertThat(movedCar.distance()).isEqualTo(1)
+                () -> assertThat(car.carName()).isEqualTo("test"),
+                () -> assertThat(car.distance()).isEqualTo(1)
         );
     }
 
