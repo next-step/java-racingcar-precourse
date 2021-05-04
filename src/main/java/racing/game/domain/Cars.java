@@ -41,6 +41,7 @@ public class Cars {
 		for (Car car : carList) {
 			System.out.println(car.getResultGraph());
 		}
+		System.out.println("");
 	}
 
 	public void registCars(List<String> carNames) {
