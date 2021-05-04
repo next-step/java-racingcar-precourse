@@ -7,7 +7,7 @@
 * [과제 제출 방법](https://github.com/next-step/nextstep-docs/tree/master/precourse)
 
 
-##구현 내용
+## 구현 내용
 1. 입력 / 출력 (완료)
 - 입력
   - 자동차 이름 입력(완료)
