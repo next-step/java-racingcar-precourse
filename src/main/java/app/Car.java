@@ -42,9 +42,8 @@ public class Car {
 	}
 
 	public void setName(String name) throws NameException, NullPointerException {
-		
-		if(name == null || name.length() ==0 ) {
-			throw new NullPointerException();
+		if(name == null || name.length() == 0 ) {
+			throw new NullPointerException("이름이 너무 짧습니다");
 		}
 		if(name.length() > 5) {
 			throw new NameException("이름이 너무 깁니다.");

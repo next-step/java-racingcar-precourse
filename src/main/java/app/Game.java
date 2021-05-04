@@ -12,20 +12,14 @@ public class Game {
 	}
 
 	public void play() {
-		int N = 0;
-		try {
-			inputCarName();
-			N = inputPlayRound();
-		} catch (NullPointerException e) {
-			System.out.println("이름의 길이가 너무 짧습니다.");
-			return;
-		} catch (NameException e) {
-			System.out.println(e.toString());
-			return;
-		} catch (Exception e) {
-			System.out.println("에러가 발생했습니다. 다시 진행하세요.");
+		int N = input();
+		if (N == 0) {
 			return;
 		}
+		run(N);
+	}
+
+	private void run(int N) {
 		System.out.println("실행 결과");
 		for (int i = 0; i < N; i++) {
 			playGame();
@@ -35,26 +29,43 @@ public class Game {
 		printWinner(winCarList);
 	}
 
-	private ArrayList<Car> calculateWinner() {
-		int answer = 0;
-		for (Car c : list) {
-			answer = Calculate(answer, c.getPosition());
+	private int input() {
+		int N = 0;
+		try {
+			inputCarName();
+			N = inputPlayRound();
+		} catch (NullPointerException | NameException e) {
+			return 0;
 		}
+		return N;
+	}
+
+	private ArrayList<Car> calculateWinner() {
+		int answer = calculateMaximum();
+		ArrayList<Car> ret = calculateWinners(answer);
+		return ret;
+	}
+
+	private ArrayList<Car> calculateWinners(int answer) {
 		ArrayList<Car> ret = new ArrayList<Car>();
 		for (Car c : list) {
-			Calculate(answer, c, ret);
+			checkCarIsWinner(answer, c, ret);
 		}
 		return ret;
 	}
 
-	private void Calculate(int answer, Car c, ArrayList<Car> ret) {
+	private int calculateMaximum() {
+		int answer = 0;
+		for (Car c : list) {
+			answer = Math.max(answer, c.getPosition());
+		}
+		return answer;
+	}
+
+	private void checkCarIsWinner(int answer, Car c, ArrayList<Car> ret) {
 		if (c.getPosition() == answer) {
 			ret.add(c);
 		}
-	}
-
-	private int Calculate(int answer, Integer position) {
-		return Math.max(answer, position);
 	}
 
 	private void printWinner(ArrayList<Car> winCarList) {
@@ -83,7 +94,7 @@ public class Game {
 		return ret;
 	}
 
-	private void inputCarName() throws Exception {
+	private void inputCarName() throws NameException, NullPointerException {
 		System.out.println("경주할 자동차 이름을 클릭하세요.(이름은 쉼표(,) 기준으로 구분)");
 		String line = Reader.getInstance().readLine();
 		StringTokenizer st = new StringTokenizer(line, ",");
