@@ -5,3 +5,11 @@
 
 ## 과제 제출 과정
 * [과제 제출 방법](https://github.com/next-step/nextstep-docs/tree/master/precourse)
+
+## 구현할 기능 목록
+* 패키지 생성하고, 클래스 추가하기
+* Car 클래스의 구성 요소(Name, Distance) 구현하기
+* Car 클래스 구현하기
+* Cars 일급 컬렉션 구현하기
+* RacingGame 클래스의 입력 부분 구현하기
+* RacingGame 클래스의 게임 진행 부분 구현하기
