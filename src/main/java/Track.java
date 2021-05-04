@@ -19,8 +19,6 @@ public class Track {
         this.carList.addAll(cars);
     }
 
-
-
     public void race() {
         for (Car car : carList) {
             car.moveOrDont(generateAccelValue());
@@ -57,5 +55,9 @@ public class Track {
 
     private boolean isIndexOverflow(int index) {
         return carList.size() <= index;
+    }
+
+    public List<Car> getCarList() {
+        return carList;
     }
 }

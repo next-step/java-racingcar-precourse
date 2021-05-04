@@ -42,4 +42,9 @@ public class UserInterface {
         return cars;
     }
 
+    public static int inputRaceCount() throws Exception {
+        RetryHelper<Void, Integer> retryHelper = new RetryHelper<>(new InputNumberCommand());
+        int raceCount = retryHelper.execute();
+        return raceCount;
+    }
 }
