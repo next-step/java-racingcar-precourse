@@ -52,4 +52,27 @@ public class RacingCars {
 			racingCar.move();
 		}
 	}
+
+	int maxCount() {
+		int currentMaxCount = -1;
+		for (RacingCar racingCar : this.get()) {
+			currentMaxCount = Math.max(currentMaxCount, racingCar.getMoveCount().get());
+		}
+		return currentMaxCount;
+	}
+
+	public List<String> getWinners() {
+		int maxCount = maxCount();
+		List<String> winners = new ArrayList<String>();
+		for (RacingCar racingCar : this.cars) {
+			addWinner(maxCount, racingCar, winners);
+		}
+		return winners;
+	}
+
+	private void addWinner(int maxCount, RacingCar racingCar, List<String> winners) {
+		if (maxCount == racingCar.getMoveCount().get()) {
+			winners.add(racingCar.getRacingCarName().get());
+		}
+	}
 }
