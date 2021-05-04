@@ -4,7 +4,7 @@ import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 public class CarTest {
-	private static final int DEFAULT_POSITION = 0;
+	public static final int DEFAULT_POSITION = 0;
 
 	@Test
 	void 자동차_이름을_부여한다() {
