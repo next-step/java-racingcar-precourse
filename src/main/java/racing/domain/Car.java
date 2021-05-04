@@ -4,10 +4,6 @@ import java.util.Random;
 
 public class Car {
 
-  private static Random RANDOM = new Random();
-  private static final int BOUND = 10;
-  private static final int MOVE_CONDITION = 4;
-
   private final String name;
   private final Position position;
 
@@ -27,11 +23,11 @@ public class Car {
     return this;
   }
 
-  public Car move() {
-    return move(() -> RANDOM.nextInt(BOUND) >= MOVE_CONDITION);
-  }
-
   public int position() {
     return position.getPosition();
+  }
+
+  public String name() {
+    return name;
   }
 }
