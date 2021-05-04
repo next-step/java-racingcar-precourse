@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class RacingCar {
+
     /**
      * 게임 스타트
      * @throws Exception
@@ -15,6 +16,22 @@ public class RacingCar {
         System.out.println("시도할 회수는 몇회인가요?");
         String roundInput = scanner.next();
         int rounds = Integer.parseInt(roundInput);
+
+        System.out.println("실행 결과");
+        String[] progresses = new String[carNames.length];
+        for(int i = 0; i < rounds; i++) {
+            for(int ii = 0; ii < carNames.length; ii++) {
+                int random = generateRandomNumber();
+                if(progresses[ii] == null) {
+                    progresses[ii] = "";
+                }
+                if(random >= 4) {
+                    progresses[ii] += "-";
+                }
+                System.out.println(carNames[ii] + " : " + progresses[ii]);
+            }
+            System.out.println();
+        }
 
         scanner.close();
     }
@@ -35,6 +52,14 @@ public class RacingCar {
         }
 
         return carNamesArr;
+    }
+
+    /**
+     * 한자릿수 난수 생성
+     * @return
+     */
+    public int generateRandomNumber() {
+        return (int) (Math.random() * 10);
     }
 
 }
