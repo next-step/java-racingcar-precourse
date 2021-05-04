@@ -75,5 +75,14 @@ public class Car {
 		}
 		return name + " : " + sb.toString();
 	}
+	
+	@Override
+	public boolean equals(Object param) {
+		Car car = (Car) param;
+		if(this.isWin == car.isWin && this.name.equals(car.name) && this.position == car.position) {
+			return true;
+		}
+		return false;
+	}
 
 }
