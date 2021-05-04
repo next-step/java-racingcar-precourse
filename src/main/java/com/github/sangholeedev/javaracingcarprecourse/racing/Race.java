@@ -31,4 +31,12 @@ public class Race {
 		}
 		return raceResult;
 	}
+
+	public RaceResults raceGame() {
+		List<RaceResult> raceResultList = new ArrayList<>();
+		for (int i = 0; i < raceCount.getCount(); i++) {
+			raceResultList.add(racing());
+		}
+		return new RaceResults(raceResultList);
+	}
 }
