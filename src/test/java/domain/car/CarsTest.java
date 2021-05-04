@@ -31,7 +31,8 @@ class CarsTest {
 		CarNames carNames = new CarNames("test,1213,pobi");
 		Cars cars = Cars.of(carNames);
 
-		CarMoveResults results = cars.move();
+		cars.move();
+		CarMoveResults results = cars.getCurrentMoveResults();
 
 		assertThat(results).isNotNull();
 		assertThat(results.getCarMoveResults().size()).isEqualTo(expectedSize);

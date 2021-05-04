@@ -26,7 +26,8 @@ public class Game {
 
 	public void start(MoveCount moveCount) {
 		for (int i = 0; i < moveCount.getCount(); i++) {
-			allResult.add(cars.move());
+			cars.move();
+			allResult.add(cars.getCurrentMoveResults());
 		}
 	}
 

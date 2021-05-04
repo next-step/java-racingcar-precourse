@@ -27,11 +27,17 @@ public class Cars {
 		return new Cars(cars);
 	}
 
-	public CarMoveResults move(){
-		CarMoveResults results = new CarMoveResults();
+	public void move(){
 		for (Car car : cars) {
 			car.move();
-			results.addCarMoveResult(CarMoveResult.of(car.getCarName(), car.getPosition()));
+		}
+	}
+
+	public CarMoveResults getCurrentMoveResults(){
+		CarMoveResults results = new CarMoveResults();
+
+		for (Car car : this.cars) {
+			results.addCarMoveResult(car.getCurrentMoveResult());
 		}
 
 		return results;

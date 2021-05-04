@@ -8,6 +8,10 @@ public class MoveCount {
 		this.count = count;
 	}
 
+	public MoveCount(String count) {
+		this.count = Integer.valueOf(count);
+	}
+
 	public int getCount() {
 		return this.count;
 	}

@@ -1,6 +1,8 @@
 package domain.car;
 
 import domain.car.name.CarName;
+import domain.car.result.CarMoveResult;
+import domain.car.result.CarMoveResults;
 import domain.car.strategy.MovableStrategy;
 import domain.car.strategy.RandomMovableStrategy;
 
@@ -8,7 +10,7 @@ public class Car {
 
 	private final CarName carName;
 
-	private final Position position;
+	private Position position;
 
 	private final MovableStrategy movableStrategy;
 
@@ -44,7 +46,11 @@ public class Car {
 
 	public void move() {
 		if(movableStrategy.movable()){
-			this.position.increment();
+			this.position = position.increment();
 		}
+	}
+
+	public CarMoveResult getCurrentMoveResult() {
+		return CarMoveResult.of(this.carName, this.position);
 	}
 }

@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.*;
 
 import java.util.List;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -29,7 +28,7 @@ class GameTest {
 			CarMoveResults results = allResult.get(i);
 
 			for (CarMoveResult carMoveResult : results.getCarMoveResults()) {
-				assertThat(carMoveResult.getPosition()).isEqualTo(new Position(i));
+				assertThat(carMoveResult.getPosition()).isEqualTo(new Position(i + 2));
 			}
 		}
 

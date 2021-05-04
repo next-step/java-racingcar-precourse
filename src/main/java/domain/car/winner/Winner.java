@@ -20,6 +20,10 @@ public class Winner {
 		return new Winner(carName);
 	}
 
+	public CarName getCarName() {
+		return carName;
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o)
