@@ -2,11 +2,14 @@ package com.example.racingcar;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.*;
 
 class RacingGameTest {
     @Test
-    void getDistance_IsValid() {
+    void getDistance_ShouldBeValid() {
         Distance distance = new Distance();
         distance.go();
         distance.go();
@@ -34,5 +37,41 @@ class RacingGameTest {
     @Test
     void newCar_ShouldNotThrowException() {
         assertThatCode(() -> new Car(new Name("aaa"))).doesNotThrowAnyException();
+    }
+
+    @Test
+    void newCars_ShouldThrowException() {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            List<Car> carList = new ArrayList<>();
+            new Cars(carList);
+        });
+    }
+
+    @Test
+    void getMaxDistance_ShouldBeValid() {
+        List<Car> carList = new ArrayList<>();
+        carList.add(new Car(new Name("aaa")));
+        carList.add(new Car(new Name("bbb")));
+        carList.add(new Car(new Name("ccc")));
+        carList.get(0).goOrNot(true);
+        carList.get(1).goOrNot(true);
+        carList.get(1).goOrNot(true);
+        carList.get(1).goOrNot(true);
+        assertThat(new Cars(carList).getMaxDistance().getDistance())
+                .isEqualTo(3);
+    }
+
+    @Test
+    void findCar_ShouldBeValid() {
+        List<Car> carList = new ArrayList<>();
+        carList.add(new Car(new Name("aaa")));
+        carList.add(new Car(new Name("bbb")));
+        carList.add(new Car(new Name("ccc")));
+        carList.get(0).goOrNot(true);
+        carList.get(1).goOrNot(true);
+        Cars cars = new Cars(carList);
+        Distance distance = new Distance();
+        distance.go();
+        assertThat(cars.findCar(distance).getNames()).isEqualTo("aaa,bbb");
     }
 }
