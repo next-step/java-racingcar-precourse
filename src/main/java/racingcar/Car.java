@@ -8,7 +8,7 @@ public class Car implements Comparable<Car> {
 	private CarDistance distance;
 
 	public Car(String name) throws ValidatorException {
-		if (RacingRule.isInvalidCarName(name)) {
+		if (ValidationUtils.isInvalidCarName(name)) {
 			throw new ValidatorException(INVALID_CAR_NAME_MESSAGE);
 		}
 		this.name = name;

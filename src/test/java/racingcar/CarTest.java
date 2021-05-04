@@ -17,13 +17,6 @@ public class CarTest {
 	}
 
 	@Test
-	@DisplayName("차에 랜덤값을 전달하여 이동 여부 테스트")
-	void isMoveTest() {
-		assertThat(RacingRule.isMovable(3)).isFalse();
-		assertThat(RacingRule.isMovable(4)).isTrue();
-	}
-
-	@Test
 	@DisplayName("차에 랜덤값을 전달하여 이동 거리 테스트")
 	void moveCarTest() {
 		assertThat(car.move(3)).isEqualTo(0);

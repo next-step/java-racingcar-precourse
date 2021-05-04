@@ -6,18 +6,18 @@ import java.util.List;
 import sun.security.validator.ValidatorException;
 
 public class RacingCar {
-	private final List<Car> cars;
+	private final Cars cars;
 
 	public RacingCar(List<String> userCars) throws ValidatorException {
 		List<Car> cars = new ArrayList<>();
-		for (int i = 0; i < userCars.size(); i++) {
-			cars.add(new Car(userCars.get(i)));
+		for (String carName : userCars) {
+			cars.add(new Car(carName));
 		}
-		this.cars = cars;
+		this.cars = new Cars(cars);
 	}
 
 	public void playAndPrintResult() {
-		for (Car car : cars) {
+		for (Car car : cars.getCars()) {
 			car.move(RandomUtils.make());
 			System.out.println(car);
 		}
@@ -26,17 +26,13 @@ public class RacingCar {
 
 	public String getWinners() {
 		Winners winners = new Winners();
-		int max = this.getMaxDistance();
+		int max = cars.getMaxDistance();
 
-		for (int i = 0; i < cars.size(); i++) {
-			winners.addWinner(max, cars.get(i));
+		for (Car car : cars.getCars()) {
+			winners.addWinner(max, car);
 		}
 
 		return winners.toString();
 	}
 
-	private int getMaxDistance() {
-		cars.sort(Car::compareTo);
-		return cars.get(0).getDistance();
-	}
 }

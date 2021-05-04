@@ -24,6 +24,6 @@ public class ValidationTest {
 		assertThrows(ValidatorException.class, ValidationTest::nullName);
 
 		Car car = new Car("가나다라마");
-		assertThat(RacingRule.isInvalidCarName(car.getName())).isFalse();
+		assertThat(ValidationUtils.isInvalidCarName(car.getName())).isFalse();
 	}
 }
