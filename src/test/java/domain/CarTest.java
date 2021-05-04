@@ -50,4 +50,14 @@ class CarTest {
         );
     }
 
+    @Test
+    @DisplayName("Int 범위 넘어서면 에러내는 테스트")
+    void intOverflowMoveCar() {
+        assertThatThrownBy(() -> {
+            Car car = new Car(Integer.MAX_VALUE, new Name("test"));
+            car.move();
+        }).isInstanceOf(ArithmeticException.class)
+                .hasMessageContaining("자동차가 움직일수 있는 범위를 넘었습니다.(Integer 범위를 넘었습니다.)");
+    }
+
 }

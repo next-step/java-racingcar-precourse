@@ -6,7 +6,6 @@ public class Name {
 
     private String name;
     private static final int NAME_MAX_LENGTH = 5;
-    private static final int NAME_MIN_LENGTH = 1;
 
     public Name(String name) {
         checkLengthName(name);
@@ -27,7 +26,7 @@ public class Name {
             throw new IllegalArgumentException("이름은 5글자 이내로 입력하여주세요!");
         }
 
-        if(!isOnlyEnglish(name)){
+        if (!isOnlyEnglish(name)) {
             throw new IllegalArgumentException("이름은 영어대소문자로 입력해야합니다.");
         }
     }
