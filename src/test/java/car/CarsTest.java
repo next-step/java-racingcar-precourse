@@ -49,4 +49,15 @@ class CarsTest {
 			assertThat(car.getCarIndex().getIndex()).isEqualTo(0);
 		}
 	}
+
+	@Test
+	@DisplayName("자동차들 움직임을 눈으로 확인")
+	void showCarIndex() {
+		cars.race(Arrays.asList(0, 5, 8));
+		cars.showCarsIndex();
+		cars.race(Arrays.asList(2, 6, 3));
+		cars.showCarsIndex();
+		cars.race(Arrays.asList(1, 7, 5));
+		cars.showCarsIndex();
+	}
 }

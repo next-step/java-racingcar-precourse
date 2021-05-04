@@ -14,7 +14,7 @@ public class Cars {
 		this.carCount = carList.size();
 	}
 
-	public static List<Car> mapCarList(String names) {
+	public List<Car> mapCarList(String names) {
 		List<Car> carList = new ArrayList<>();
 		List<String> carNameList = Arrays.asList(names.split(","));
 		for (String name : carNameList) {
@@ -29,6 +29,13 @@ public class Cars {
 			car.updateMoveIndex(car.move(movePoints.get(i)));
 			carList.set(i, car);
 		}
+	}
+
+	public void showCarsIndex() {
+		for (int i = 0; i < carList.size(); i++) {
+			carList.get(i).showCarIndexStatus();
+		}
+		System.out.println();
 	}
 
 	List<Car> callCarList() {

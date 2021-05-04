@@ -40,9 +40,7 @@ public class Car {
 	}
 
 	public void showCarIndexStatus() {
-		if (getCarIndex().isIndex()) {
-			System.out.print(getName() + ":");
-		}
+		System.out.print(getName() + ":");
 		for (int i = 0; i < getCarIndex().getIndex(); i++) {
 			System.out.print("-");
 		}
