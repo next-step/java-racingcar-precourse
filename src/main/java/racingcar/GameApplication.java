@@ -4,15 +4,32 @@ import java.util.Scanner;
 
 public class GameApplication {
 
-    public static void main(String[] args) {
+    private static final Scanner SCANNER;
+    private static String carsName;
+    private static GameCount gameCount;
 
+    static {
+        SCANNER = new Scanner(System.in);
+    }
+
+    public static void main(String[] args) {
+        inputRacingCarName();
+        inputNumberOfAdvances();
+        playGame();
+    }
+
+    private static void inputRacingCarName() {
         Print.write(GameMessage.INPUT_RACING_CAR_NAME);
-        Scanner scanner = new Scanner(System.in);
-        String carsName = scanner.nextLine();
-        RacingCars racingCars = RacingCarFactory.create(carsName);
+        carsName = SCANNER.nextLine();
+    }
+
+    private static void inputNumberOfAdvances() {
         Print.write(GameMessage.INPUT_NUMBER_OF_ADVANCES);
-        GameCount gameCount = new GameCount(scanner.nextInt());
-        Game game = new Game(racingCars, gameCount);
-        game.play();
+        gameCount = new GameCount(SCANNER.nextInt());
+    }
+
+    private static void playGame() {
+        RacingCars racingCars = RacingCarFactory.create(carsName);
+        new Game(racingCars, gameCount).play();
     }
 }
