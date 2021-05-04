@@ -10,6 +10,6 @@ public class Accelerator {
 	}
 
 	public static int generateRandomNum() {
-		return new Random().nextInt(9);
+		return new Random().nextInt(RacingSystemProperties.RANDOM_INT_BOUND);
 	}
 }
