@@ -7,7 +7,9 @@ import org.junit.jupiter.api.Test;
 public class RandomTest {
 	@Test
 	void makeRandomValueTest() {
-		assertThat(RandomUtils.make()).isLessThan(10);
-		assertThat(RandomUtils.make()).isGreaterThan(0);
+		for (int i = 0; i < 1000000; i++) {
+			assertThat(RandomUtils.make()).isLessThan(10);
+			assertThat(RandomUtils.make()).isGreaterThanOrEqualTo(0);
+		}
 	}
 }
