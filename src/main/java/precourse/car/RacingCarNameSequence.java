@@ -1,22 +1,22 @@
 package precourse.car;
 
-import java.util.Arrays;
-import java.util.List;
-
 import precourse.race.CarRaceMessage;
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class RacingCarNameSequence {
 
 	public static final String CAR_NAME_DELIMITER = ",";
 	public static final int MIN_CAR_NUMBER = 2;
-	public static final int MIN_LENGTH = 1;
-	public static final int MAX_LENGTH = 5;
 	private final List<String> carNames;
 
 	public RacingCarNameSequence(String carNameSequence) {
 		String[] carNames = carNameSequence.split(CAR_NAME_DELIMITER);
 		validateCarNumber(carNames);
-		validateCarName(carNames);
+		validateDuplication(carNames);
 		this.carNames = Arrays.asList(carNames);
 	}
 
@@ -30,16 +30,14 @@ public class RacingCarNameSequence {
 		}
 	}
 
-	private void validateCarName(String[] carNameArray) {
-		for (String carName : carNameArray) {
-			validateCarNameLength(carName.trim());
+	private void validateDuplication(String[] carNames) {
+		Set<String> carNameSet = new HashSet<>();
+		for (String carName : carNames) {
+			carNameSet.add(carName.trim());
 		}
-	}
 
-	private void validateCarNameLength(String carName) {
-		int carNameLength = carName.length();
-		if (carName.length() < MIN_LENGTH || carNameLength > MAX_LENGTH) {
-			throw new IllegalArgumentException(CarRaceMessage.INVALID_CAR_NAME_LENGTH);
+		if (carNames.length != carNameSet.size()) {
+			throw new IllegalArgumentException();
 		}
 	}
 
