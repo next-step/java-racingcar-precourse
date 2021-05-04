@@ -7,6 +7,10 @@ public class CarDistance {
 		return distance;
 	}
 
+	public void increase() {
+		distance++;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder stringDistance = new StringBuilder();
@@ -14,9 +18,5 @@ public class CarDistance {
 			stringDistance.append("-");
 		}
 		return stringDistance.toString();
-	}
-
-	public void increase() {
-		distance++;
 	}
 }
