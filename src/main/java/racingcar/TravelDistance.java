@@ -2,14 +2,14 @@ package racingcar;
 
 public class TravelDistance {
 
-    private int distance;
+    private int travelDistance;
 
     public void increase() {
-        this.distance++;
+        this.travelDistance++;
     }
 
-    public int getDistance() {
-        return distance;
+    public int getTravelDistance() {
+        return travelDistance;
     }
 
     @Override
@@ -19,11 +19,11 @@ public class TravelDistance {
 
         TravelDistance that = (TravelDistance) o;
 
-        return distance == that.distance;
+        return travelDistance == that.travelDistance;
     }
 
     @Override
     public int hashCode() {
-        return distance;
+        return travelDistance;
     }
 }

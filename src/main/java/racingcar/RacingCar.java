@@ -22,7 +22,7 @@ public class RacingCar {
     }
 
     public int getTravelDistance() {
-        return this.travelDistance.getDistance();
+        return this.travelDistance.getTravelDistance();
     }
 
     private boolean isMoveForward(int random) {
