@@ -12,4 +12,8 @@ public enum CarDrivenStatus {
 	public String print() {
 		return printString;
 	}
+
+	public boolean isGo() {
+		return this == GO;
+	}
 }

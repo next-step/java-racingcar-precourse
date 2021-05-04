@@ -43,8 +43,18 @@ class RaceTest {
 	@Test
 	@DisplayName("레이스_게임_출력_테스트")
 	void 레이스_게임_출력_테스트() {
-		final String print = race.raceGame().print();
-		System.out.println(print);
-		assertThat(print).isNotNull();
+		assertThat(race.raceGame().print()).isNotNull();
+	}
+
+	@Test
+	@DisplayName("레이스_게임_우승자_테스트")
+	void 레이스_게임_우승자_테스트() {
+		assertThat(race.raceGame().winners()).isNotNull();
+	}
+
+	@Test
+	@DisplayName("레이스_게임_우승자_출력_테스트")
+	void 레이스_게임_우승자_출력_테스트() {
+		assertThat(race.raceGame().winners().print()).isNotNull();
 	}
 }

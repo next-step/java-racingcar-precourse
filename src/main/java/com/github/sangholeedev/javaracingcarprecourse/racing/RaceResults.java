@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import com.github.sangholeedev.javaracingcarprecourse.car.Car;
 import com.github.sangholeedev.javaracingcarprecourse.car.CarDrivenStatus;
@@ -11,16 +12,30 @@ import com.github.sangholeedev.javaracingcarprecourse.car.CarDrivenStatus;
 public class RaceResults {
 	private final Map<Car, List<CarDrivenStatus>> raceResults;
 	public static final String COLON = ":";
+	private final Map<Car, Integer> raceGoMap;
 
 	public RaceResults() {
 		this.raceResults = new LinkedHashMap<>();
+		this.raceGoMap = new LinkedHashMap<>();
 	}
 
 	public void report(RaceResult racing) {
 		for (Car car : racing.getRaceResults().keySet()) {
-			getCarDrivenStatuses(car).add(racing.getRaceResults().get(car));
+			final CarDrivenStatus drivenStatus = racing.getRaceResults().get(car);
+			countGoMap(car, drivenStatus);
+			getCarDrivenStatuses(car).add(drivenStatus);
 			raceResults.put(car, getCarDrivenStatuses(car));
 		}
+	}
+
+	private void countGoMap(Car car, CarDrivenStatus drivenStatus) {
+		if (drivenStatus.isGo()) {
+			raceGoMap.put(car, Optional.ofNullable(raceGoMap.get(car)).orElse(0) + 1);
+		}
+	}
+
+	public Map<Car, Integer> getRaceGoMap() {
+		return raceGoMap;
 	}
 
 	private List<CarDrivenStatus> getCarDrivenStatuses(Car car) {
@@ -48,5 +63,9 @@ public class RaceResults {
 			printString.append(carDrivenStatus.print());
 		}
 		return printString.toString();
+	}
+
+	public Winners winners() {
+		return new Winners(this);
 	}
 }
