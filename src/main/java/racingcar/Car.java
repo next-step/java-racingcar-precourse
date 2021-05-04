@@ -16,13 +16,11 @@ public class Car implements Comparable<Car> {
         return o.positionIndex - this.positionIndex;
     }
 
-    public String move(GoStop goStop) {
+    public void move(GoStop goStop) {
         if (goStop.isGo()) {
             this.position = position + "-";
             this.positionIndex = positionIndex + 1;
         }
-
-        return position;
     }
 
     public String getPosition() {

@@ -5,6 +5,7 @@ import java.util.*;
 public class RacingCar {
     private static InputOutput io = new InputOutput();
     private static List<Car> carList = new ArrayList<>();
+    private static Cars cars;
     private static Message message;
 
     private static int MAX_VALUE = Integer.MIN_VALUE;
@@ -47,16 +48,16 @@ public class RacingCar {
 
     public void turn() {
         io.print(message.GAME_RESULT);
-        for (int i = 0; i < carList.size(); i++) {
-            io.print(carList.get(i).getName() + " : " + carList.get(i).move(GoStop.getRandomNumber()));
-        }
-        io.print("");
+
+        cars.moveCar();
+        io.print(cars.printCar().toString());
     }
 
     public static void initCar(List<String> carNameList) {
         for (int i = 0; i < carNameList.size(); i++) {
             carList.add(new Car(carNameList.get(i)));
         }
+        cars = new Cars(carList);
     }
 
     public static List<String> separateName(String input) {

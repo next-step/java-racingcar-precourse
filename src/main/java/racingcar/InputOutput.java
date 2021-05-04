@@ -14,4 +14,8 @@ public class InputOutput {
     public static void print(String output) {
         System.out.println(output);
     }
+
+    public static void print() {
+        System.out.println();
+    }
 }

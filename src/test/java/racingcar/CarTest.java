@@ -17,12 +17,14 @@ public class CarTest {
     @Test
     @DisplayName("GO이면 전진")
     void go() {
-        assertThat(car.move(GoStop.GO)).isEqualTo("-");
+        car.move(GoStop.GO);
+        assertThat(car.getPosition()).isEqualTo("-");
     }
 
     @Test
     @DisplayName("STOP이면 정지")
     void stop() {
-        assertThat(car.move(GoStop.STOP)).isEqualTo("");
+        car.move(GoStop.STOP);
+        assertThat(car.getPosition()).isEqualTo("");
     }
 }
