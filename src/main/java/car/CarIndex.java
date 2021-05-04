@@ -14,4 +14,11 @@ public class CarIndex {
 		return this.index;
 	}
 
+	public boolean isIndex() {
+		if (index > 0) {
+			return true;
+		}
+		return false;
+	}
+
 }
