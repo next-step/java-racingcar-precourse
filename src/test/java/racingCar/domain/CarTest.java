@@ -23,7 +23,7 @@ class CarTest {
     void move_test() {
         Car car = new Car(TEST_CAR, 0);
         car.move(() -> true);
-        assertThat(car.getPosition()).isEqualTo(new Position(1));
+        assertThat(car.getPosition()).isEqualTo(1);
     }
 
     @DisplayName("자동차가 안움직이는 경우")
@@ -31,7 +31,7 @@ class CarTest {
     void not_move_test() {
         Car car = new Car(TEST_CAR, 0);
         car.move(() -> false);
-        assertThat(car.getPosition()).isEqualTo(new Position(0));
+        assertThat(car.getPosition()).isEqualTo(0);
     }
 
 }

@@ -23,4 +23,8 @@ public class RacingGame {
     public boolean availableGame() {
         return tryCount.isAvailableGame();
     }
+
+    public List<Car> winnerCars() {
+        return cars.determineWinners();
+    }
 }

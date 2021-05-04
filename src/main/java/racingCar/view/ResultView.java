@@ -7,4 +7,8 @@ public class ResultView {
     public static void printResultIntro() {
         System.out.println(RESULT_INTRO);
     }
+
+    public static void printError(String errorMsg) {
+        System.out.println(errorMsg);
+    }
 }
