@@ -1,23 +1,18 @@
 package utils;
 
-import java.util.Arrays;
+import java.security.InvalidParameterException;
 import java.util.List;
 
 public class ValidationUtils {
-    public static boolean validName(String carName) {
-        return carName.length() <= 5;
+    public static void validName(String carName) {
+        if (carName.length() > 5) {
+            throw new InvalidParameterException("자동차 이름은 5자 이하로 입력해 주세요.");
+        }
     }
 
-    // TODO 더 좋은 방법으로 다시 짜기
-    public static boolean duplicateName(List<String> carList) {
-        int count = 0;
-
-        for (String car : carList) {
-            if (carList.contains(car)) {
-                count++;
-            }
+    public static void duplicateCarName(List<String> carList, List<String> compareList) {
+        if (carList.size() != compareList.size()) {
+            throw new InvalidParameterException("중복되는 자동차 이름이 있습니다.");
         }
-
-        return count > 1;
     }
 }

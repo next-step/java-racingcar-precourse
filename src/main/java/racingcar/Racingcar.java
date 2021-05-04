@@ -1,11 +1,8 @@
 package racingcar;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Scanner;
-import java.util.Random;
-import java.util.Collections;
+import utils.ValidationUtils;
+
+import java.util.*;
 
 public class Racingcar {
     private Scanner scanner = new Scanner(System.in);
@@ -32,6 +29,9 @@ public class Racingcar {
         for (String carName : carNameList) {
             carMap.put(carName, 0);
         }
+
+        List<String> compareList = new ArrayList<>(carMap.keySet());
+        ValidationUtils.duplicateCarName(carNameList, compareList);
     }
 
     private void inputRaceNum() {
