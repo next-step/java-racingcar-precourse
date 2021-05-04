@@ -71,6 +71,7 @@ public class RacingGame {
      * 시도 횟수 만큼 게임을 진행한다
      */
     public void playGame() {
+        System.out.println("실행 결과");
         for (int i = 0; i < this.proceedCount; i++) {
             process();
         }
@@ -78,6 +79,7 @@ public class RacingGame {
 
     private void process() {
         this.cars.getCars().forEach(car -> car.proceed(racingExecutor.proceed(generateProceedNumber())));
+        printProcess();
     }
 
     /**
@@ -89,10 +91,29 @@ public class RacingGame {
         return RNG.generate(PROCEED_NUMBER_BOUND);
     }
 
+
+    /**
+     * 실행 결과 출력
+     */
+    private void printProcess() {
+        StringBuilder sb = new StringBuilder();
+        this.cars.getCars().forEach(car -> sb.append(car.getName()).append(": ").append(StringUtils.getIterableDashes(car.getProceedCount())).append("\n"));
+        System.out.println(sb);
+    }
+
     /**
      * 경기 결과 확인
      */
     public void openResult() {
         this.cars.validateWinners();
+        printResult();
+    }
+
+    /**
+     * 경기 결과 출력
+     */
+    private void printResult() {
+        String winnerNames = String.join(", ", this.cars.getWinnerNames());
+        System.out.println(winnerNames + WINNER_GUIDE);
     }
 }
