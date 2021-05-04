@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Winners {
-	List<String> winners = new ArrayList<>();
+	private List<String> winners = new ArrayList<>();
 
 	public void addWinner(int maxDistance, Car car) {
 		if (isWinner(maxDistance, car)) {

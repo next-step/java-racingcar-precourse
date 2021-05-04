@@ -3,12 +3,13 @@ package racingcar;
 import sun.security.validator.ValidatorException;
 
 public class Car implements Comparable<Car> {
+	public static final String INVALID_CAR_NAME_MESSAGE = "자동차 이름은 5자 이하만 가능합니다!";
 	private final String name;
 	private CarDistance distance;
 
 	public Car(String name) throws ValidatorException {
 		if (RacingRule.isInvalidCarName(name)) {
-			throw new ValidatorException("Car name invalid!");
+			throw new ValidatorException(INVALID_CAR_NAME_MESSAGE);
 		}
 		this.name = name;
 		this.distance = new CarDistance();

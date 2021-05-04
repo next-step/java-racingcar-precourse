@@ -16,7 +16,7 @@ public class RacingCar {
 		this.cars = cars;
 	}
 
-	public void play() {
+	public void playAndPrintResult() {
 		for (Car car : cars) {
 			car.move(RandomUtils.make());
 			System.out.println(car);

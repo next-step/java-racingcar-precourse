@@ -22,10 +22,10 @@ public class RacingCarTest {
 	@Test
 	@DisplayName("레이싱 게임 이동 결과 확인")
 	void playTest() {
-		racingCar.play();
-		racingCar.play();
-		racingCar.play();
-		racingCar.play();
+		racingCar.playAndPrintResult();
+		racingCar.playAndPrintResult();
+		racingCar.playAndPrintResult();
+		racingCar.playAndPrintResult();
 	}
 
 	@Test
