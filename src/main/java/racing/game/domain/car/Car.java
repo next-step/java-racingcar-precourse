@@ -53,7 +53,6 @@ public class Car {
 		resultGraph.append(carName)
 			.append(RacingSystemProperties.CAR_NAME_DELIMITER)
 			.append(getPositionGraph(this.position));
-		getPositionGraph(position);
 		return resultGraph.toString();
 	}
 
