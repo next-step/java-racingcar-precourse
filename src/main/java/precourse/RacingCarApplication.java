@@ -1,15 +1,15 @@
 package precourse;
 
+import java.util.Scanner;
+
 import precourse.car.RacingCarFactory;
 import precourse.car.RacingCarNameSequence;
 import precourse.car.RacingCars;
 import precourse.race.CarRace;
-import precourse.race.CarRaceMessage;
 import precourse.race.CarRaceAttemptNumber;
+import precourse.race.CarRaceMessage;
 import precourse.race.CarRaceWinners;
 import precourse.utility.ConsoleUI;
-
-import java.util.Scanner;
 
 public class RacingCarApplication {
 
@@ -23,7 +23,7 @@ public class RacingCarApplication {
 		CarRace carRace = new CarRace(racingCars, attemptNumber);
 		CarRaceWinners carRaceWinners = carRace.start();
 		String winners = carRaceWinners.getWinners();
-		ConsoleUI.show(winners + "가 최종 우승했습니다.");
+		ConsoleUI.show(CarRaceMessage.announceRaceWinners(winners));
 	}
 
 	private static CarRaceAttemptNumber receiveAttemptNumber() {

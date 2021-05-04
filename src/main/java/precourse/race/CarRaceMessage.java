@@ -9,5 +9,10 @@ public class CarRaceMessage {
 	public static final String INVALID_CAR_NAME_LENGTH = "[알림] 유효하지 않은 자동차 이름 길이입니다.";
 	public static final String INVALID_ATTEMPT_NUMBER = "[알림] 올바른 시도 횟수가 아닙니다.";
 	public static final String INVALID_MOVEMENT_NUMBER = "[알림] 유효하지 않은 범위의 숫자입니다.";
+	private static final String ANNOUNCE_RACE_WINNERS = "가 최종 우승했습니다.";
+
+	public static String announceRaceWinners(String winners) {
+		return winners + ANNOUNCE_RACE_WINNERS;
+	}
 
 }
