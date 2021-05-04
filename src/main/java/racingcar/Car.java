@@ -2,16 +2,25 @@ package racingcar;
 
 import sun.security.validator.ValidatorException;
 
-public class Car {
+public class Car implements Comparable<Car> {
 	public static final int MIN_NAME_LENGTH = 1;
 	public static final int MAX_NAME_LENGTH = 5;
 	public static final int MIN_MOVE_VALUE = 4;
-	private String name;
+	private final String name;
+
+	public String getName() {
+		return name;
+	}
+
+	public int getDistance() {
+		return distance;
+	}
+
 	private int distance = 0;
 
 	public Car(String name) throws ValidatorException {
 		this.name = name;
-		if(this.isInvalidName()) {
+		if (this.isInvalidName()) {
 			throw new ValidatorException("Car name invalid!");
 		}
 	}
@@ -25,7 +34,7 @@ public class Car {
 	}
 
 	public int move(int random) {
-		if(isMovable(random)) {
+		if (isMovable(random)) {
 			this.stepForward();
 		}
 		return distance;
@@ -35,16 +44,26 @@ public class Car {
 		this.distance++;
 	}
 
-	@Override
-	public String toString() {
-		return this.name + " : " + this.printDistance();
-	}
-
 	private String printDistance() {
 		StringBuilder stringDistance = new StringBuilder();
 		for (int i = 0; i < distance; i++) {
 			stringDistance.append("-");
 		}
 		return stringDistance.toString();
+	}
+
+	@Override
+	public int compareTo(Car car) {
+		if (this.getDistance() < car.getDistance()) {
+			return 1;
+		} else if (this.getDistance() > car.getDistance()) {
+			return -1;
+		}
+		return 0;
+	}
+
+	@Override
+	public String toString() {
+		return this.name + " : " + this.printDistance();
 	}
 }
