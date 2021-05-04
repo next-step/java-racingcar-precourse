@@ -19,7 +19,7 @@ public class RacingCar {
 	}
 
 	public String getCurrentStatus() {
-		return getCarName() + "\t: " + position.describeAsSymbol() + "\n";
+		return getCarName() + " : " + position.describeAsSymbol() + "\n";
 	}
 
 	public boolean isWinner(int maxPosition) {

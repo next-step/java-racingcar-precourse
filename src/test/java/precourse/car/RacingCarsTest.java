@@ -16,7 +16,7 @@ public class RacingCarsTest {
 		RacingCars racingCars = new RacingCars(Arrays.asList("pobi", "crong", "honux"));
 		CarRaceAttemptResult attemptResult = racingCars.drive();
 		assertThat(attemptResult.createResultMessage())
-				.contains("pobi\t:").contains("crong\t:").contains("honux\t:");
+				.contains("pobi :").contains("crong :").contains("honux :");
 	}
 
 }
