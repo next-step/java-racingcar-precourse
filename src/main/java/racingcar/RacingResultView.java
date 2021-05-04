@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.List;
+import racingcar.Constant;
 
 public class RacingResultView {
 
@@ -18,6 +19,6 @@ public class RacingResultView {
 
     public void getWinner(List<String> winners){
         String names = String.join(",", winners);
-        System.out.println(names + "가 최종 우승했습니다.");
+        System.out.println(names + Constant.RACING_RESULT);
     }
 }
