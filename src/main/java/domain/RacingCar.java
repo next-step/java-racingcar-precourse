@@ -14,14 +14,14 @@ public class RacingCar {
 	}
 
 	@Override
-	public boolean equals(Object o) {
-		if (this == o) {
+	public boolean equals(Object racingCar) {
+		if (this == racingCar) {
 			return true;
 		}
-		if (o == null || getClass() != o.getClass()) {
+		if (racingCar == null || getClass() != racingCar.getClass()) {
 			return false;
 		}
-		RacingCar car = (RacingCar)o;
+		RacingCar car = (RacingCar)racingCar;
 		return Objects.equals(racingCarName, car.racingCarName);
 	}
 
