@@ -10,7 +10,7 @@ public class RacingCarName {
 
 	public RacingCarName(String carName) {
 		String trimmedCarName = carName.trim();
-		validateCarName(trimmedCarName);
+		validateCarNameLength(trimmedCarName);
 		this.carName = trimmedCarName;
 	}
 
@@ -18,7 +18,7 @@ public class RacingCarName {
 		return carName;
 	}
 
-	private void validateCarName(String carName) {
+	private void validateCarNameLength(String carName) {
 		int carNameLength = carName.length();
 		if (carNameLength < MIN_LENGTH || carNameLength > MAX_LENGTH) {
 			throw new IllegalArgumentException(CarRaceMessage.INVALID_CAR_NAME_LENGTH);
