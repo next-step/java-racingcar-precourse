@@ -28,7 +28,7 @@ class CarTest {
 
 	@Test
 	@DisplayName("자동차 현재 주행거리 표시")
-	public void printCurrentCarMileage() {
+	void printCurrentCarMileage() {
 		StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.append(classCar.getCarName()).append(" : ");
 		for (int i = 0; i < classCar.getCarMileage(); i++) {
@@ -37,6 +37,15 @@ class CarTest {
 		System.out.println(stringBuilder.toString());
 		assertThat(stringBuilder.toString())
 			.isEqualTo("테스트 자동차 : ----------");
+	}
+
+	@Test
+	@DisplayName("자동차 이름 검증")
+	void isValidCarName() {
+		assertThat(Car.isValidCarName("1")).isEqualTo(0);
+		assertThat(Car.isValidCarName("12345")).isEqualTo(0);
+		assertThat(Car.isValidCarName("")).isEqualTo(1);
+		assertThat(Car.isValidCarName("123456")).isEqualTo(1);
 	}
 
 }
