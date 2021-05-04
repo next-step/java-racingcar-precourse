@@ -1,21 +1,17 @@
 package racingcar;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.Scanner;
 
 public class InputOutput {
-    public static List<String> separateName(String input) {
-        List<String> carNameList = new ArrayList<>();
-        carNameList.addAll(Arrays.asList(input.split(",")));
+    private static Scanner scan = new Scanner(System.in);
 
-        return carNameList;
+    public static String input() {
+        String input = scan.nextLine();
+
+        return input;
     }
 
-    public static boolean checkLen(String carName) {
-        if(carName.length() <= 5) {
-            return true;
-        }
-        return false;
+    public static void print(String output) {
+        System.out.println(output);
     }
 }
