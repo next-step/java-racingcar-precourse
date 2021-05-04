@@ -5,20 +5,30 @@ import java.util.List;
 import java.util.Scanner;
 
 public class RacingGame {
+
     public RacingGame() {
 
     }
 
     public void Start() {
-
+        Cars cars = inputCars();
+        Turn turn = inputTurn();
+        System.out.println("실행 결과");
+        while (turn.next()) {
+            cars.go();
+            System.out.println(cars.getCurrentState());
+        }
+        Distance maxDistance = cars.getMaxDistance();
+        Cars winner = cars.findCar(maxDistance);
+        System.out.println(winner.getNames() + "가 최종 우승했습니다.");
     }
 
     private Cars inputCars() {
         String inputCarNames = inputCarNames();
         String[] carNames = inputCarNames.split(",");
         List<Car> carList = new ArrayList<>();
-        for (String name : carNames) {
-            Name carName = new Name(name);
+        for (int i = 0; i < carNames.length; i++) {
+            Name carName = new Name(carNames[i]);
             Car car = new Car(carName);
             carList.add(car);
         }
@@ -38,4 +48,5 @@ public class RacingGame {
         String inputTurn = sc.nextLine();
         return new Turn(Integer.parseInt(inputTurn));
     }
+
 }
