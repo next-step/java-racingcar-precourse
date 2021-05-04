@@ -4,7 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -18,10 +18,8 @@ public class RacingPlayerTest {
 
     @BeforeEach
     void setUp() {
-        carNameList = new ArrayList<>();
-        carNameList.add("pobi");
-        carNameList.add("crong");
-        carNameList.add("honux");
+        String arr = "pobi,crong,honux";
+        carNameList = Arrays.asList(arr.split(","));
         racingPlayer = new RacingPlayer(carNameList);
 
     }

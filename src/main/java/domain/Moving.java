@@ -5,7 +5,7 @@ import domain.strategy.MovableStrategy;
 public class Moving {
     private MovableStrategy movableStrategy;
 
-    public void move(int num){
+    public void move(int num) {
         movableStrategy.move(num);
     }
 

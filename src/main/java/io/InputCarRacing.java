@@ -8,8 +8,11 @@ public class InputCarRacing {
 
     private String carNames;
     private int turnCnt = 0;
-    private final Scanner scan = new Scanner(System.in);
+    private final Scanner scan;
 
+    public InputCarRacing() {
+        scan = new Scanner(System.in);
+    }
 
     public String[] inputCarNames() {
         do {

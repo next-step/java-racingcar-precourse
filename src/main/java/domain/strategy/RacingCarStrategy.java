@@ -1,13 +1,11 @@
 package domain.strategy;
 
 
-import util.*;
 import static util.CarRacingConstants.*;
 
 public class RacingCarStrategy implements MovableStrategy {
 
     private int pos;
-    private final NumberUtils NumberUtils = new NumberUtils();
 
     public RacingCarStrategy() {
         this.pos = CAR_START_POS;

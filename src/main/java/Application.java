@@ -9,6 +9,5 @@ public class Application {
         manager.start();
         manager.result();
 
-
     }
 }
