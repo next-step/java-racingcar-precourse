@@ -15,7 +15,7 @@ public class Cars {
 
   private final List<Car> cars;
 
-  private Cars(List<Car> cars) {
+  public Cars(List<Car> cars) {
     this.cars = cars;
   }
 
@@ -35,11 +35,19 @@ public class Cars {
     return moveByStrategy(() -> RANDOM.nextInt(BOUND) >= MOVE_CONDITION);
   }
 
-  public Map<String, Integer> position() {
+  public Map<String, Integer> result() {
     Map<String, Integer> position = new HashMap<>();
     for (Car car : cars) {
       position.put(car.name(), car.position());
     }
     return position;
+  }
+
+  public List<String> getNames() {
+    List<String> names = new ArrayList<>();
+    for (Car car : cars) {
+      names.add(car.name());
+    }
+    return names;
   }
 }
