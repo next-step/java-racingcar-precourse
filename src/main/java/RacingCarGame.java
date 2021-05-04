@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class RacingCarGame {
 	private RacingCars racingCars;
 	private RunCount runCount;
@@ -5,6 +7,7 @@ public class RacingCarGame {
 	public void gameStart() {
 		gameInit();
 		gameProcessing();
+		gameEnding();
 	}
 
 	private void gameInit() {
@@ -18,5 +21,10 @@ public class RacingCarGame {
 			this.racingCars.moveCars();
 			OutputView.currentCarsView(i, this.racingCars);
 		}
+	}
+
+	private void gameEnding() {
+		List<String> winners = this.racingCars.getWinners();
+		OutputView.winnerView(winners);
 	}
 }

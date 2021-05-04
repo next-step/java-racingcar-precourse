@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class OutputView {
 	public static void currentCarsView(int count, RacingCars racingCars) {
 		if (count == 0) {
@@ -15,5 +17,9 @@ public class OutputView {
 			builder.append("-");
 		}
 		return builder.toString();
+	}
+
+	public static void winnerView(List<String> racingCars) {
+		System.out.printf("%s가 최종 우승했습니다\n", String.join(",", racingCars));
 	}
 }
