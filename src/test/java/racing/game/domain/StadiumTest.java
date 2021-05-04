@@ -17,9 +17,8 @@ class StadiumTest {
 	@BeforeAll
 	public static void setUp() {
 		carNames = Arrays.asList("벤츠", "bmw", "HYUNDAI", "KIA");
-		stadium = new Stadium(carNames);
+		stadium = new Stadium(carNames,10);
 
-		stadium.setLapCount(10);
 		stadium.startLap();
 	}
 

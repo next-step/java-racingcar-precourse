@@ -54,19 +54,22 @@
 
 ## TODO List
 * [X] 도메인 분석 설계
-* [ ] 도메인별 테스트
+* [X] 도메인별 테스트
     * [x] Accelerator 테스트
     * [x] Car 테스트
     * [x] Cars 테스트
     * [x] Stadium 테스트
     * [x] Player 테스트       
-    * [ ] RacingGame 테스트
+    * [x] RacingGameApplication 테스트
 
 
 ## 설계
 * UI:
     * RacingGameApplication
-        * Stadium을 가진다.    
+        * ~~Player를 가진다.~~  
+        * ~~Stadium을 가진다.~~
+        >> 지역변수로 처리
+        * [x] 게임을 실행한다.    
 * Domain:
     * Accelerator
         * [X]  ~~값을 가진다.~~ 경계 값을 가진다.
@@ -99,9 +102,11 @@
         * [x] 최종 우승자들을 가질 수 있다 
     
     * Stadium
-        * Player를 가진다.  
-        * 이름들을 요구 할 수 있다.
-        * [x] 횟수를 요구 할 수 있다.
+        
+        * [x] ~~이름들을 요구 할 수 있다.~~
+        * [x] ~~횟수를 요구 할 수 있다.~~
+        >> 생성자로 처리
+        
         * [x] Cars를 출발선에 세울 수 있다.(초기화)
         * [x] 진행 횟수를 증가 시킬 수 있다. => 루프진행
         * [x] 우승자 ~~이름들~~ 차량들을 가질 수 있다. 

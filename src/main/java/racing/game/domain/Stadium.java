@@ -7,8 +7,9 @@ public class Stadium {
 	int lapCount;
 	List<Car> winnerCars;
 
-	public Stadium(List<String> carNames) {
+	public Stadium(List<String> carNames, int lapCount) {
 		cars = new Cars(carNames);
+		this.lapCount = lapCount;
 		lapCount = 0;
 	}
 
@@ -16,16 +17,11 @@ public class Stadium {
 		return cars.size();
 	}
 
-	public void setLapCount(int lapCount) {
-		this.lapCount = lapCount;
-	}
-
 	public void startLap() {
 		for (int i = 0; i < lapCount; i++) {
 			cars.runLab();
 			cars.showLabStatus();
 		}
-		System.out.println();
 	}
 
 	public List<Car> chooseWinnerCars() {

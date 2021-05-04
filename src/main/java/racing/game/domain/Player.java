@@ -27,7 +27,7 @@ public class Player {
 		}
 	}
 
-	public void receiveLapCount(){
+	public void receiveLapCount() {
 		boolean keepGoing = true;
 		while (keepGoing) {
 			System.out.println("시도할 회수는 몇회인가요?");
@@ -39,19 +39,12 @@ public class Player {
 		}
 	}
 
-	public List<String> getCarNameList(){
+	public List<String> getCarNameList() {
 		return receivedNames.getSplittedTextList();
 	}
 
-	public int getLapCount(){
+	public int getLapCount() {
 		return receivedLapCount.getLapCount();
-	}
-
-	public static void main(String[] args){
-		Player player = new Player();
-
-		player.receiveName();
-		player.receiveLapCount();
 	}
 
 }
