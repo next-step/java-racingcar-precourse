@@ -6,9 +6,9 @@ public class Car {
 
 	private String name;
 	private Integer position;
-	private boolean isWin;
+	private Boolean isWin;
 
-	public Car(String name, int position, boolean isWin) {
+	public Car(String name, Integer position, Boolean isWin) {
 		super();
 		this.name = name;
 		this.position = position;
@@ -31,7 +31,7 @@ public class Car {
 	public void go() {
 		Random rand = new Random();   
 	    // Generate random integers in range 0 to 9   
-	    int r = rand.nextInt(10);     
+	    Integer r = rand.nextInt(10);     
 		if(r >= 4) {
 			this.position += 1;			
 		}
@@ -70,7 +70,7 @@ public class Car {
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		for (int i = 0; i < position; i++) {
+		for (Integer i = 0; i < position; i++) {
 			sb.append("-");
 		}
 		return name + " : " + sb.toString();

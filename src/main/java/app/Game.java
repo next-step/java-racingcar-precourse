@@ -12,16 +12,16 @@ public class Game {
 	}
 
 	public void play() {
-		int N = input();
+		Integer N = input();
 		if (N == 0) {
 			return;
 		}
 		run(N);
 	}
 
-	public void run(int N) {
+	public void run(Integer N) {
 		System.out.println("실행 결과");
-		for (int i = 0; i < N; i++) {
+		for (Integer i = 0; i < N; i++) {
 			playGame();
 			printOutCome();
 		}
@@ -29,24 +29,24 @@ public class Game {
 		printWinner(winCarList);
 	}
 
-	public int input() {
-		int N = 0;
+	public Integer input() {
+		Integer roundNum = 0;
 		try {
 			inputCarName();
-			N = inputPlayRound();
+			roundNum = inputPlayRound();
 		} catch (NullPointerException | NameException e) {
 			return 0;
 		}
-		return N;
+		return roundNum;
 	}
 
 	public ArrayList<Car> calculateWinner() {
-		int answer = calculateMaximum();
+		Integer answer = calculateMaximum();
 		ArrayList<Car> ret = calculateWinners(answer);
 		return ret;
 	}
 
-	public ArrayList<Car> calculateWinners(int answer) {
+	public ArrayList<Car> calculateWinners(Integer answer) {
 		ArrayList<Car> ret = new ArrayList<Car>();
 		for (Car c : list) {
 			checkCarIsWinner(answer, c, ret);
@@ -54,22 +54,22 @@ public class Game {
 		return ret;
 	}
 
-	public int calculateMaximum() {
-		int answer = 0;
+	public Integer calculateMaximum() {
+		Integer answer = 0;
 		for (Car c : list) {
 			answer = Math.max(answer, c.getPosition());
 		}
 		return answer;
 	}
 
-	public void checkCarIsWinner(int answer, Car c, ArrayList<Car> ret) {
+	public void checkCarIsWinner(Integer answer, Car c, ArrayList<Car> ret) {
 		if (c.getPosition() == answer) {
 			ret.add(c);
 		}
 	}
 
 	public void printWinner(ArrayList<Car> winCarList) {
-		for (int i = 0; i < winCarList.size() - 1; i++) {
+		for (Integer i = 0; i < winCarList.size() - 1; i++) {
 			System.out.print(winCarList.get(i).getName() + ", ");
 		}
 		System.out.println(winCarList.get(winCarList.size() - 1).getName() + "가 최종 우승했습니다.");
@@ -88,9 +88,9 @@ public class Game {
 		System.out.println();
 	}
 
-	public int inputPlayRound() {
+	public Integer inputPlayRound() {
 		System.out.println("시도할 횟수는 몇회인가요?");
-		int ret = Reader.getInstance().readInt();
+		Integer ret = Reader.getInstance().readInt();
 		return ret;
 	}
 
