@@ -46,9 +46,8 @@ public class Cars {
 	public void showWinners() {
 		StringBuilder sb = new StringBuilder();
 		boolean hasOneWinnerOnly = true;
-		sb.append(getWinnerList());
 		for (Car car : cars) {
-			if (this.max < car.getPosition()) {
+			if (this.max > car.getPosition()) {
 				continue;
 			}
 
@@ -64,13 +63,4 @@ public class Cars {
 		System.out.println(sb.toString());
 	}
 
-	private String getWinnerList() {
-		List<String> winners = new ArrayList<>();
-		for (Car car : cars) {
-			if (this.max == car.getPosition()) {
-				winners.add(car.getName());
-			}
-		}
-		return winners.toString();
-	}
 }
