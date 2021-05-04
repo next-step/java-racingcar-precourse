@@ -28,5 +28,11 @@ class RaceTest {
 		assertThat(race.racing()).isNotNull();
 	}
 
+	@Test
+	@DisplayName("레이스_레이싱_결과_출력_테스트")
+	void 레이스_레이싱_결과_출력_테스트() {
+		assertThat(race.racing().print()).isNotNull();
+	}
+
 
 }
