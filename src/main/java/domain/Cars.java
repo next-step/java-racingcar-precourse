@@ -5,6 +5,7 @@ import constant.Constant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class Cars {
     private final List<Car> cars;
@@ -31,6 +32,7 @@ public class Cars {
         for (Car car : cars) {
             car.movable(random.nextInt(Constant.RANDOM_LIMIT));
         }
+        System.out.println(resultString());
     }
 
     public String resultString() {
@@ -39,5 +41,20 @@ public class Cars {
             stringBuilder.append(car.resultString() + Constant.NEW_LINE);
         }
         return stringBuilder.toString();
+    }
+
+    public int maxPosition() {
+        int maxPosition = 0;
+        for(Car car : this.cars) {
+            maxPosition = Math.max(maxPosition, car.getPosition());
+        }
+        return maxPosition;
+    }
+
+    public List<String> winners() {
+        return this.cars.stream()
+                .filter(car -> car.getPosition() == maxPosition())
+                .map(car -> car.name())
+                .collect(Collectors.toList());
     }
 }

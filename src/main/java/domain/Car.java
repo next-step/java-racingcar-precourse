@@ -40,4 +40,8 @@ public class Car {
     public String resultString() {
         return name + Constant.CAR_MOVE_STRING.repeat(position);
     }
+
+    public int getPosition() {
+        return position;
+    }
 }
