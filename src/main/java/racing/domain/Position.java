@@ -17,7 +17,7 @@ public class Position {
   }
 
   public Position() {
-    this(0);
+    this(MIN);
   }
 
   public Position move() {

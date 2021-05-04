@@ -50,4 +50,27 @@ public class Cars {
     }
     return names;
   }
+
+  public Cars getWinner() {
+    int winnerPosition = getWinnerPosition();
+    List<Car> winners = new ArrayList<>();
+    for (Car car : cars) {
+      addWinner(winnerPosition, winners, car);
+    }
+    return new Cars(winners);
+  }
+
+  private int getWinnerPosition() {
+    int max = 0;
+    for (Car car : cars) {
+      max = Math.max(max, car.position());
+    }
+    return max;
+  }
+
+  private void addWinner(int winnerPosition, List<Car> winners, Car car) {
+    if (car.position() == winnerPosition) {
+      winners.add(car);
+    }
+  }
 }

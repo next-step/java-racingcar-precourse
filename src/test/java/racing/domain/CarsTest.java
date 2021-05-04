@@ -3,6 +3,7 @@ package racing.domain;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.List;
 import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -35,6 +36,24 @@ class CarsTest {
   @Test
   void getNames() {
     assertThat(cars.getNames()).containsExactly("bong", "dong", "jung");
+  }
+
+  @Test
+  @DisplayName("우승자를 구한다.")
+  void getMaxPosition() {
+    Car car1 = new Car("bong");
+    car1 = car1.move(() -> true);
+    car1 = car1.move(() -> true);
+    Car car2 = new Car("dong");
+    car2 = car2.move(() -> true);
+    car2 = car2.move(() -> true);
+    Car car3 = new Car("jung");
+    car3 = car3.move(() -> false);
+    car3 = car3.move(() -> false);
+    Cars cars = new Cars(car1, car2, car3);
+
+    assertThat(cars.getWinner().getNames())
+        .containsExactly(car1.name(), car2.name());
   }
 
 }

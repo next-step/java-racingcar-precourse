@@ -22,14 +22,16 @@ public class Racing {
     Cars cars = createCars(carNames);
     int tryCount = inputView.getTryCount();
     moves(cars, tryCount);
+
   }
 
   private void moves(Cars cars, int tryCount) {
     for (int i = 0; i < tryCount; i++) {
       cars = cars.moveByStrategy();
-      resultView.print(cars.getNames(), cars.result());
+      resultView.print(cars);
       System.out.println();
     }
+    resultView.printWinner(cars.getWinner());
   }
 
   private Cars createCars(String[] carNames) {
