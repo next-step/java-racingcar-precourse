@@ -29,12 +29,7 @@ public class Car {
 	}
 
 	private boolean isMove() {    //테스트 위해 상태 저장, 상태 저장할 필요 있을까?
-		currentMoveState = Accelerator.isMove();
-		return currentMoveState;
-	}
-
-	public int getCurrentLapCount() {
-		return currentLapCount;
+		return Accelerator.isMove();
 	}
 
 	public void addCurrentLapCount() {

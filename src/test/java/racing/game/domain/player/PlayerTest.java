@@ -39,7 +39,6 @@ class PlayerTest {
 	@CsvSource(value = {"over5Character,false", "다섯자이상입니다,false", "apple,true", "다섯자글자,true", "네자글자,true"})
 	@DisplayName("5자 이하 유효성 검사")
 	public void under5Character(String eachName, boolean expected) {
-
 		assertThat(Validator.isUnder5Character(eachName)).isEqualTo(expected);
 	}
 

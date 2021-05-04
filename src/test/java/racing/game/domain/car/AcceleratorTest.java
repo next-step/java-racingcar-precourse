@@ -9,11 +9,7 @@ import org.junit.jupiter.api.Test;
 class AcceleratorTest {
 	@Test
 	@DisplayName("전진 여부 전달을 검증 한다.")
-	public void accelerate() { //Alt + Shift + F10 : 테스트 실행
-		// assertThat(Accelerator.validNo(9)).isTrue();
-		// assertThat(Accelerator.validNo(4)).isTrue();
-		// assertThat(Accelerator.validNo(3)).isFalse();
-		// assertThat(Accelerator.validNo(0)).isFalse();
+	public void accelerate() {
 		assertThat(Accelerator.isMove()).isFalse();
 	}
 

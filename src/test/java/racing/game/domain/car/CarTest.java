@@ -19,7 +19,6 @@ class CarTest {
 	@Test
 	@DisplayName("이동 했는지 여부 확인")
 	public void getCarInfo() {
-
 		int prePosition = car.getPosition();
 		car.movePosition();
 

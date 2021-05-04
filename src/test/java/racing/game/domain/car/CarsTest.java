@@ -9,7 +9,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class CarsTest {
-
 	private static Cars cars;
 
 	@BeforeAll
@@ -19,7 +18,6 @@ class CarsTest {
 		cars.add(new Car("car2"));
 		cars.add(new Car("car3"));
 		cars.add(new Car("car4"));
-
 	}
 
 	@Test
