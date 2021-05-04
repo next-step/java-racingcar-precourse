@@ -11,6 +11,10 @@ public class RacingCars {
 		validMinimumCarCount();
 	}
 
+	public List<RacingCar> get() {
+		return this.cars;
+	}
+
 	private void validMinimumCarCount() {
 		if (this.isNotMinimumCarCount()) {
 			throw new IllegalArgumentException("최소 갯수가 맞지 않습니다");
@@ -41,5 +45,11 @@ public class RacingCars {
 
 	boolean containOverlappedCar() {
 		return this.cars.size() != new HashSet<RacingCar>(this.cars).size();
+	}
+
+	public void moveCars() {
+		for (RacingCar racingCar : this.cars) {
+			racingCar.move();
+		}
 	}
 }

@@ -9,6 +9,10 @@ public class RunCount {
 		this.count = Integer.parseInt(count);
 	}
 
+	public Integer get() {
+		return this.count;
+	}
+
 	public static boolean isNull(RunCount runCount) {
 		return runCount == null;
 	}

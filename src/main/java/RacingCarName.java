@@ -11,6 +11,10 @@ public class RacingCarName {
 		validateNameLength();
 	}
 
+	public String get() {
+		return this.name;
+	}
+
 	private void validateNameLength() {
 		if (!isValidNameLength()) {
 			throw new IllegalArgumentException(
