@@ -10,7 +10,7 @@ import com.racingcar.domain.RacingCarMovingStrategy;
 
 public class RacingCarMovingServiceImpl implements RacingCarMovingService {
 	private static final int MAX = 9;
-	private static final int MIN = 1;
+	private static final int MIN = 0;
 	private static final int THRESHOLD = 4;
 
 	private final RacingCarMovingStrategy strategy;

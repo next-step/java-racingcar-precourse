@@ -52,7 +52,7 @@ class RacingCarMovingServiceImplTest {
 
 	@DisplayName("입력받은 Seed의 값이 범위를 벗어나는 경우에 대한 예외처리 테스트")
 	@ParameterizedTest
-	@ValueSource(ints = {-1, 0, 10})
+	@ValueSource(ints = {-1, 10})
 	void testMovingException(int seed) {
 		MockMovingStrategy mockMovingStrategy = new MockMovingStrategy(seed);
 		RacingCarMovingService movingService = new RacingCarMovingServiceImpl(mockMovingStrategy);
