@@ -53,8 +53,15 @@ class CarTest {
 	void isValidCarCount() {
 		String[] test1 = {"1"};
 		String[] test2 = {"1", "2"};
+		assertThat(Car.isValidCarCount(test2)).isTrue();
 		assertThat(Car.isValidCarCount(test1)).isFalse();
-		assertThat(Car.isValidCarCount(test2)).isFalse();
+	}
+
+	@Test
+	@DisplayName("자동차 우승 여부 얻기")
+	void isWinner() {
+		assertThat(classCar.isWinner(10)).isTrue();
+		assertThat(classCar.isWinner(11)).isFalse();
 	}
 
 }
