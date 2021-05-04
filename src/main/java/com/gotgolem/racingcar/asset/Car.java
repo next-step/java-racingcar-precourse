@@ -2,6 +2,9 @@ package com.gotgolem.racingcar.asset;
 
 public class Car {
 
+	private static final int MAX_NAME_LENGTH = 5;
+
+
 	private final String name;
 
 	public Car(String name) {
@@ -16,7 +19,7 @@ public class Car {
 	}
 
 	private boolean isInvalid(String name) {
-		return name == null || name.isEmpty() || name.length() > 5;
+		return name == null || name.isEmpty() || name.length() > MAX_NAME_LENGTH;
 	}
 
 }
