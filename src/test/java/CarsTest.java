@@ -16,4 +16,15 @@ class CarsTest {
 		assertThat(classCars.isValidCarNames(carNamesArr2)).isFalse();
 	}
 
+	@Test
+	@DisplayName("사용자 입력 자동차 이름들 검증")
+	void isValidCar() {
+		String[] carNamesArr1 = {"1", "2", "3", "4", "5"};
+		String[] carNamesArr2 = {"1", "123456"};
+		String[] carNamesArr3 = {"1"};
+		assertThat(classCars.isValidCar(carNamesArr1)).withFailMessage("carNamesArr1").isTrue();
+		assertThat(classCars.isValidCar(carNamesArr2)).withFailMessage("carNamesArr2").isFalse();
+		assertThat(classCars.isValidCar(carNamesArr3)).withFailMessage("carNamesArr3").isFalse();
+	}
+
 }
