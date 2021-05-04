@@ -28,8 +28,10 @@ public class RacingGame {
 				if (car.isCarPositionBigger(winnerPosition))
 					winnerPosition = car.getCarPosition();
 			}
+			OutputView.printNewLine();
 		}
 		findWinner();
+		printResult();
 	}
 
 	public void findWinner() {
@@ -40,4 +42,7 @@ public class RacingGame {
 		}
 	}
 
+	public void printResult() {
+		OutputView.printWinner(Winners);
+	}
 }

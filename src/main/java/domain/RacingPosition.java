@@ -25,5 +25,6 @@ public class RacingPosition {
 		for (int i = 0; i < position; i++) {
 			sb.append("-");
 		}
+		OutputView.printPosition(sb.toString());
 	}
 }
