@@ -12,7 +12,9 @@ public class RacingCar {
         String carNameInput = scanner.next();
         String[] carNames = parseCarNames(carNameInput);
         
-        System.out.println("시도할 횟수");
+        System.out.println("시도할 회수는 몇회인가요?");
+        String roundInput = scanner.next();
+        int rounds = Integer.parseInt(roundInput);
 
         scanner.close();
     }
