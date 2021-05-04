@@ -4,7 +4,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 public class TrialCountTest {
-
     @ParameterizedTest
     @CsvSource(value = {"12:12", "1234:1234", "43:43", "5:5", "23:23"}, delimiter = ':')
     @DisplayName("사용자가 정상적인 시도 횟수를 입력할 경우 TrialCount 객체에 입력값을 보관한다.")

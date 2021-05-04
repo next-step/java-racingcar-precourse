@@ -18,8 +18,7 @@ public class RacingCarGameTest {
     private UserInputParser userInputParser;
 
     @BeforeEach
-    void setup()
-    {
+    void setup() {
         this.racingCarColosseum = new RacingCarColosseum(new RandomGenerator());
         this.userInputParser = new UserInputParser();
         this.racingCarGame = new RacingCarGame(this.racingCarColosseum, this.userInputParser);
@@ -36,14 +35,14 @@ public class RacingCarGameTest {
     @ParameterizedTest
     @CsvSource(value = {"pobipobi, crongcrong, honuxhonux:5", "pobi,crong,honux:!@", "korsa, 213, :3a"}, delimiter = ':')
     @DisplayName("사용자가 비정상적인 값을 입력했을 경우 게임을 진행하지 않는다.")
-    void not_play_when_input_is_invalid(String playerNamesInput, String trialCountInput){
+    void not_play_when_input_is_invalid(String playerNamesInput, String trialCountInput) {
         Assertions.assertThat(this.racingCarGame.play(playerNamesInput, trialCountInput)).isEqualTo(PlayResult.INVALID_INPUT);
     }
 
     @ParameterizedTest
     @CsvSource(value = {"pobi,crong,honux:5", "pobi, crong, honux:10", "pobi, crong   , honux:7", "korsa, 12345, !@$, a, b, c:20"},
             delimiter = ':')
-    void user_input_car_name_is_not_valid(String playerNamesInput, String trialCountInput){
+    void user_input_car_name_is_not_valid(String playerNamesInput, String trialCountInput) {
         UserInputParser userInputParserMock = mock(UserInputParser.class);
         RacingCarGame racingCarGameWithMock = new RacingCarGame(this.racingCarColosseum, userInputParserMock);
 
@@ -55,7 +54,7 @@ public class RacingCarGameTest {
     @ParameterizedTest
     @CsvSource(value = {"pobi,crong,honux:5", "pobi, crong, honux:10", "pobi, crong   , honux:7", "korsa, 12345, !@$, a, b, c:20"},
             delimiter = ':')
-    void user_input_trial_count_is_not_valid(String playerNamesInput, String trialCountInput){
+    void user_input_trial_count_is_not_valid(String playerNamesInput, String trialCountInput) {
         UserInputParser userInputParserMock = mock(UserInputParser.class);
         RacingCarGame racingCarGameWithMock = new RacingCarGame(this.racingCarColosseum, userInputParserMock);
 

@@ -1,7 +1,6 @@
 import java.util.Optional;
 
 public class UserInputParser {
-
     public Optional<PlayerNameContainer> parsePlayerNames(String userInput) {
         PlayerNameContainer playerNames = null;
 

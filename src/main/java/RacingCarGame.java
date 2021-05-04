@@ -4,6 +4,7 @@ import java.util.Optional;
 
 public class RacingCarGame {
     private static final String WINNER_MSG_TAIL = "가 최종 우승했습니다.";
+
     private RacingCarColosseum racingCarColosseum;
     private UserInputParser userInputParser;
 

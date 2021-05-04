@@ -1,12 +1,13 @@
 public class CarPlayer {
-    private PlayerName playerName;
     private Car car;
+    private PlayerName playerName;
     private RandomGenerator randomGenerator;
 
     public CarPlayer(PlayerName playerName, RandomGenerator randomGenerator) {
         this.playerName = playerName;
-        this.car = new Car();
         this.randomGenerator = randomGenerator;
+
+        this.car = new Car();
     }
 
     public void tryMoveCar() {

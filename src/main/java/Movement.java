@@ -1,6 +1,6 @@
 public class Movement {
     @Override
-    public String toString(){
+    public String toString() {
         return "-";
     }
 }

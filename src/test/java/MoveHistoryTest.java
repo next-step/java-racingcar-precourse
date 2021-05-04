@@ -5,7 +5,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 public class MoveHistoryTest {
-
     private MoveHistory moveHistory;
 
     @BeforeEach

@@ -8,7 +8,6 @@ import org.junit.jupiter.params.provider.CsvSource;
 import resulttypes.MoveResult;
 
 public class CarTest {
-
     private Car car;
 
     @BeforeEach
