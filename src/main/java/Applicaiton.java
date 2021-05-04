@@ -9,5 +9,7 @@ public class Applicaiton {
 		InputView.askCarNames();
 		InputView.askRoundCount();
 
+		RacingGame racingGame = new RacingGame(InputView.getCarNames(), InputView.getRoundCount());
+		racingGame.run();
 	}
 }
