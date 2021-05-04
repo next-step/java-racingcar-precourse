@@ -4,8 +4,8 @@ public class Car {
 
 	private static final int MAX_NAME_LENGTH = 5;
 
-
 	private final String name;
+	private int mileage;
 
 	public Car(String name) {
 		if (isInvalid(name)) {
@@ -16,6 +16,16 @@ public class Car {
 
 	public String getName() {
 		return name;
+	}
+
+	public int getMileage() {
+		return mileage;
+	}
+
+	public void drive(Driving driving) {
+		if (driving.isMove()) {
+			mileage++;
+		}
 	}
 
 	private boolean isInvalid(String name) {
