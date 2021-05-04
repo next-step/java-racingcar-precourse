@@ -18,13 +18,13 @@ public class Main {
         int racingCount = inputView.inputRacingCount();
 
         List<Car> carList = new ArrayList<>();
-        for(String carName : carNames){
+        for (String carName : carNames) {
             carList.add(new Car(carName));
         }
 
         Cars cars = new Cars(carList);
 
-        RacingGame racingGame  = new RacingGame(racingCount,cars);
+        RacingGame racingGame = new RacingGame(racingCount, cars);
 
         Cars winners = racingGame.startRacing();
         OutputView outputView = new OutputView();

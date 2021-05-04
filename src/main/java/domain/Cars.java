@@ -75,9 +75,9 @@ public class Cars {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for(Car car: currentFirstCarList()){
-            sb.append(car.carName()+",");
+        for (Car car : currentFirstCarList()) {
+            sb.append(car.carName() + ",");
         }
-        return sb.substring(0,sb.length()-1);
+        return sb.substring(0, sb.length() - 1);
     }
 }
