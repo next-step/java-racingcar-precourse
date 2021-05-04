@@ -22,4 +22,11 @@ class RaceTest {
 		assertThat(race).isNotNull();
 	}
 
+	@Test
+	@DisplayName("레이스_레이싱_테스트")
+	void 레이스_레이싱_테스트() {
+		assertThat(race.racing()).isNotNull();
+	}
+
+
 }

@@ -9,6 +9,11 @@ public class Car {
 		this.randomNumber = new RandomNumber();
 	}
 
+	public Car(CarName carName) {
+		this.carName = carName;
+		this.randomNumber = new RandomNumber();
+	}
+
 	public String print() {
 		return carName.getName();
 	}
