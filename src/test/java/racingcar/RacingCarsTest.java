@@ -9,7 +9,7 @@ public class RacingCarsTest {
     RacingCars racingCars;
     @BeforeEach
     void setUp() {
-        String names = "aaaa,bbbb,cccc,dddd,eeee,ffff";
+        String names = "pobi,crong,honux";
         racingCars = new RacingCars(names);
     }
 
@@ -40,6 +40,7 @@ public class RacingCarsTest {
     }
 
     @Test
+    @DisplayName("사용자 수 만큼 carEvent 실행")
     void startRacing() {
         int count= 5;
         racingCars.startRacing(count);
