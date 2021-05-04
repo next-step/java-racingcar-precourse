@@ -7,12 +7,15 @@ import java.util.*;
 public class Racingcar {
     private Scanner scanner = new Scanner(System.in);
     private List<String> carNameList = new ArrayList<>();
-    private int tryNum = 0;
     private HashMap<String, Integer> carMap;
 
     public void run() {
         inputCarNames();
         inputRaceNum();
+
+        System.out.println("시도할 횟수는 몇회인가요?");
+        final int tryNum = Integer.parseInt(scanner.nextLine());
+
         System.out.println("실행결과 :");
         for (int i = 0; i < tryNum; i++) {
             racing();
@@ -35,8 +38,6 @@ public class Racingcar {
     }
 
     private void inputRaceNum() {
-        System.out.println("시도할 횟수는 몇회인가요?");
-        tryNum = Integer.parseInt(scanner.nextLine());
     }
 
     private void racing() {
@@ -51,11 +52,11 @@ public class Racingcar {
     }
 
     public String visualDistance(int moveCount) {
-        StringBuffer stringBuffer = new StringBuffer();
+        StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < moveCount; i++) {
-            stringBuffer.append("-");
+            stringBuilder.append("-");
         }
-        return stringBuffer.toString();
+        return stringBuilder.toString();
     }
 
     public void setRaceNum(String carName, int flagNum) {
@@ -65,16 +66,16 @@ public class Racingcar {
     }
 
     public String winner(List<String> carNameList) {
-        String winner = "";
+        StringBuilder stringBuilder = new StringBuilder();
 
         Collections.sort(carNameList, (object1, object2) -> (carMap.get(object2).compareTo(carMap.get(object1))));
 
         for (String carName : carNameList) {
             if (carMap.get(carName).equals(carMap.get(carNameList.get(0)))) {
-                winner = winner + ", " + carName;
+                stringBuilder.append(", ").append(carName);
             }
         }
 
-        return winner.substring(2);
+        return stringBuilder.substring(2);
     }
 }
