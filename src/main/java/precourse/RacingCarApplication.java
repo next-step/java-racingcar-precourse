@@ -40,8 +40,8 @@ public class RacingCarApplication {
 	private static RacingCarNameSequence receiveCarNameSequence() {
 		try {
 			ConsoleUI.show(CarRaceMessage.ASK_CAR_NAMES_AS_STRING);
-			String carNameString = scanner.next();
-			return new RacingCarNameSequence(carNameString);
+			String carNameSequence = scanner.next();
+			return new RacingCarNameSequence(carNameSequence);
 		} catch (IllegalArgumentException e) {
 			ConsoleUI.show(e.getMessage());
 			return receiveCarNameSequence();

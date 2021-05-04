@@ -13,8 +13,8 @@ public class RacingCarNameSequence {
 	public static final int MAX_LENGTH = 5;
 	private final List<String> carNames;
 
-	public RacingCarNameSequence(String carNameString) {
-		String[] carNames = carNameString.split(CAR_NAME_DELIMITER);
+	public RacingCarNameSequence(String carNameSequence) {
+		String[] carNames = carNameSequence.split(CAR_NAME_DELIMITER);
 		validateCarNumber(carNames);
 		validateCarName(carNames);
 		this.carNames = Arrays.asList(carNames);
