@@ -86,7 +86,7 @@ public class RacingCar {
     }
 
     public static void limitName(String carName) {
-        if(carName.length() > 5 || carName.length() <= 0) {
+        if (carName.length() > 5 || carName.length() <= 0) {
             throw new IllegalArgumentException(message.CAR_NAME_5_MORE_THAN_ERROR);
         }
     }
