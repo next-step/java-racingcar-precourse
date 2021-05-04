@@ -26,6 +26,10 @@ public class Car {
 		return Car.of(carName, position, new RandomMovableStrategy());
 	}
 
+	public static Car of(String carName, MovableStrategy movableStrategy) {
+		return Car.of(carName, new Position(), movableStrategy);
+	}
+
 	public static Car of(String carName, Position position, MovableStrategy movableStrategy) {
 		return new Car(CarName.of(carName), position, movableStrategy);
 	}
