@@ -1,7 +1,10 @@
-package racing.game.domain;
+package racing.game.domain.player;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import racing.game.properties.RacingMessage;
+import racing.game.util.Validator;
 
 public class ReceivedNames {
 	private String receivedNameText;
@@ -25,11 +28,11 @@ public class ReceivedNames {
 
 	private void validateText(String trimedText) {
 		if (!Validator.isUnder5Character(trimedText)) {
-			System.out.println("자동차의 이름이 5자를 초과합니다.");
+			System.out.println(RacingMessage.VALID_NAME_LENGTH);
 			validated = false;
 		}
-		if(!Validator.isNotEmpty(trimedText)){
-			System.out.println(",와 ,사이에 공백이 들어갈 수 없습니다.");
+		if (!Validator.isNotEmpty(trimedText)) {
+			System.out.println(RacingMessage.VALID_NOT_EMPTY);
 			validated = false;
 		}
 	}

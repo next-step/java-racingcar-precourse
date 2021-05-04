@@ -1,10 +1,10 @@
-package racing.game.domain;
+package racing.game.domain.car;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
-	List<Car> carList;
+	private List<Car> carList;
 
 	public Cars() {
 		carList = new ArrayList<>();
@@ -41,7 +41,7 @@ public class Cars {
 		for (Car car : carList) {
 			System.out.println(car.getResultGraph());
 		}
-		System.out.println("");
+		System.out.println(""); //Lap 구분 줄
 	}
 
 	public void registCars(List<String> carNames) {
@@ -59,7 +59,7 @@ public class Cars {
 	}
 
 	private int comparePosition(int winnerPosition, Car car) {
-		if (car.getPosition() > winnerPosition){
+		if (car.getPosition() > winnerPosition) {
 			winnerPosition = car.getPosition();
 		}
 		return winnerPosition;

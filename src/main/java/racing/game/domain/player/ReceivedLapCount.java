@@ -1,6 +1,7 @@
-package racing.game.domain;
+package racing.game.domain.player;
 
-import java.util.List;
+import racing.game.properties.RacingMessage;
+import racing.game.util.Validator;
 
 public class ReceivedLapCount {
 	private String receivedNameText;
@@ -14,7 +15,7 @@ public class ReceivedLapCount {
 
 	private void validateLapCount() {
 		if (!Validator.isNumeric(receivedNameText)) {
-			System.out.println("숫자 형식이 아닙니다.");
+			System.out.println(RacingMessage.VALID_NUMERIC);
 			validated = false;
 		}
 	}

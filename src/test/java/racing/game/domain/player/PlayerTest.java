@@ -1,4 +1,4 @@
-package racing.game.domain;
+package racing.game.domain.player;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -9,6 +9,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+
+import racing.game.util.Validator;
 
 class PlayerTest {
 	static Player player;

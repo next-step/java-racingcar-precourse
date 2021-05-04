@@ -1,16 +1,19 @@
-package racing.game.domain;
+package racing.game.domain.stadium;
 
 import java.util.List;
 
+import racing.game.domain.car.Car;
+import racing.game.domain.car.Cars;
+import racing.game.properties.RacingMessage;
+
 public class Stadium {
-	Cars cars;
-	int lapCount;
-	List<Car> winnerCars;
+	private Cars cars;
+	private int lapCount;
+	private List<Car> winnerCars;
 
 	public Stadium(List<String> carNames, int lapCount) {
 		cars = new Cars(carNames);
 		this.lapCount = lapCount;
-		lapCount = 0;
 	}
 
 	public int size() {
@@ -33,9 +36,9 @@ public class Stadium {
 		StringBuffer winners = new StringBuffer();
 		for (Car car : winnerCars) {
 			joinDelemiter(winners);
-			winners.append(car.carName);
+			winners.append(car.getCarName());
 		}
-		winners.append(" 이 우승했습니다.");
+		winners.append(RacingMessage.INFO_WINNER);
 		return winners.toString();
 	}
 

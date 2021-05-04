@@ -1,7 +1,9 @@
-package racing.game.domain;
+package racing.game.util;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import racing.game.properties.RacingSystemProperties;
 
 public class Validator {
 	public static boolean isUnder5Character(String eachName) {

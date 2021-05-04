@@ -1,4 +1,7 @@
-package racing.game.domain;
+package racing.game;
+
+import racing.game.domain.player.Player;
+import racing.game.domain.stadium.Stadium;
 
 public class RacingGameApplication {
 

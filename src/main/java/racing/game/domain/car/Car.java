@@ -1,10 +1,10 @@
-package racing.game.domain;
+package racing.game.domain.car;
 
 public class Car {
-	String carName;
-	int position;
-	int currentLapCount;
-	boolean currentMoveState;
+	private String carName;
+	private int position;
+	private int currentLapCount;
+	private boolean currentMoveState;
 
 	public Car(String carName) {
 		this.carName = carName;
