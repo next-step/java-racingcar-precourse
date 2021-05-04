@@ -6,7 +6,7 @@ import static util.CarRacingConstants.CAR_NAME_MIN;
 
 public class Car extends Moving {
 
-    private String carName;
+    private final String carName;
 
 
     public Car(String carName) {
@@ -29,5 +29,8 @@ public class Car extends Moving {
         }
     }
 
+    public String getCarName() {
+        return carName;
+    }
 
 }

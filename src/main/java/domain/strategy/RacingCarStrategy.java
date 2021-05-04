@@ -6,7 +6,7 @@ import static util.CarRacingConstants.*;
 
 public class RacingCarStrategy implements MovableStrategy {
 
-    private static int pos;
+    private int pos;
     private final NumberUtils NumberUtils = new NumberUtils();
 
     public RacingCarStrategy() {
