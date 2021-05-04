@@ -4,6 +4,7 @@ import util.StringUtils;
 
 public class RunCount {
 	private final Integer count;
+	private final String NUMBER_REGEX_PATTERN = "^[1-9][0-9]*$";
 
 	public RunCount(String count) {
 		StringUtils.validateEmptyString(count);
@@ -13,15 +14,15 @@ public class RunCount {
 		this.count = Integer.parseInt(count);
 	}
 
-	public Integer get() {
-		return this.count;
-	}
-
 	public static boolean isNull(RunCount runCount) {
 		return runCount == null;
 	}
 
+	public Integer get() {
+		return this.count;
+	}
+
 	public boolean isNotValidNumber(String count) {
-		return !count.matches("^[1-9][0-9]*$");
+		return !count.matches(NUMBER_REGEX_PATTERN);
 	}
 }

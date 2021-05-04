@@ -6,6 +6,8 @@ import domain.RacingCar;
 import domain.RacingCars;
 
 public class OutputView {
+	private static final String POSITION_LENGH_STRING = "-";
+
 	public static void currentCarsView(int count, RacingCars racingCars) {
 		if (count == 0) {
 			System.out.println("실행 결과");
@@ -19,7 +21,7 @@ public class OutputView {
 	public static String mapCount(int moveCount) {
 		StringBuilder builder = new StringBuilder();
 		for (int i = 0; i < moveCount; i++) {
-			builder.append("-");
+			builder.append(POSITION_LENGH_STRING);
 		}
 		return builder.toString();
 	}

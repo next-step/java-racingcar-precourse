@@ -9,15 +9,15 @@ public class RacingCarGame {
 	private RacingCars racingCars;
 	private RunCount runCount;
 
+	private void gameInit() {
+		this.racingCars = InputView.racingCarNamesView();
+		this.runCount = InputView.runCountView();
+	}
+
 	public void gameStart() {
 		gameInit();
 		gameProcessing();
 		gameEnding();
-	}
-
-	private void gameInit() {
-		this.racingCars = InputView.racingCarNamesView();
-		this.runCount = InputView.runCountView();
 	}
 
 	private void gameProcessing() {

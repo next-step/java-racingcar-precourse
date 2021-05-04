@@ -13,6 +13,10 @@ public class RacingCars {
 		validMinimumCarCount();
 	}
 
+	public static boolean isNull(RacingCars racingCars) {
+		return racingCars == null;
+	}
+
 	public List<RacingCar> get() {
 		return this.cars;
 	}
@@ -35,10 +39,6 @@ public class RacingCars {
 			cars.add(new RacingCar(carName));
 		}
 		return cars;
-	}
-
-	public static boolean isNull(RacingCars racingCars) {
-		return racingCars == null;
 	}
 
 	public boolean isNotMinimumCarCount() {
