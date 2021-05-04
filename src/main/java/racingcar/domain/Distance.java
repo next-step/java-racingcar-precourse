@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import java.util.Objects;
+
 public class Distance {
     private int distance;
 
@@ -11,11 +13,11 @@ public class Distance {
         this.distance = distance;
     }
 
-    public void addDistance(Distance distance){
-        this.distance += distance.asInt();
+    public void addDistance(Distance distance) {
+        this.distance += distance.getDistance();
     }
 
-    private int asInt(){
+    public int getDistance() {
         return distance;
     }
 
@@ -25,6 +27,11 @@ public class Distance {
         if (o == null || getClass() != o.getClass()) return false;
         Distance distance1 = (Distance) o;
         return distance == distance1.distance;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(distance);
     }
 
     @Override

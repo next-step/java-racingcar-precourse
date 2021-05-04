@@ -14,6 +14,11 @@ public class RacingCarMain {
     public static void start() {
         generateRacingCarGame(askCarNames(), askRound());
         racingcarGame.play();
+        printRaceResult();
+    }
+
+    private static void printRaceResult() {
+        RacingCarIO.printRaceResult(racingcarGame.getRaceRecords());
     }
 
     private static void generateRacingCarGame(String carNames, String round) {

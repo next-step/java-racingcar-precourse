@@ -52,4 +52,9 @@ public class Cars {
             car.move(moveCondition.getMoveDistance());
         }
     }
+
+    public List<Car> getCars() {
+        return cars;
+    }
+
 }

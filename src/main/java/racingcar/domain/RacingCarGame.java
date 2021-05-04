@@ -1,22 +1,33 @@
 package racingcar.domain;
 
-import static racingcar.domain.constant.RacingCarConstant.SEPERATOR;
+import static racingcar.domain.constant.RacingCarConstant.SEPARATOR;
 
 public class RacingCarGame {
     private static MoveCondition moveCondition = new MoveCondition();
     private static Cars cars;
     private static Round round;
+    private static RaceRecords raceRecords;
 
     public RacingCarGame(String carNames, String round) {
-        this.cars = new Cars(carNames.split(SEPERATOR));
+        this.cars = new Cars(carNames.split(SEPARATOR));
         this.round = new Round(round);
+        this.raceRecords = new RaceRecords();
     }
 
     public void play() {
         while (round.executable()) {
-            round.execute();
-            cars.move(moveCondition);
+            executeRound();
         }
+    }
+
+    private void executeRound() {
+        round.execute();
+        cars.move(moveCondition);
+        raceRecords.saveLapTime(cars.getCars());
+    }
+
+    public String getRaceRecords() {
+        return raceRecords.getRaceRecords();
     }
 
 }

@@ -3,20 +3,24 @@ package racingcar.domain;
 import java.util.Objects;
 
 public class Car {
-    private Name name;
+    private CarName carName;
     private Distance distance;
 
     public Car(String name) {
-        this.name = new Name(name);
+        this.carName = new CarName(name);
         this.distance = new Distance();
     }
 
-    public Name getName() {
-        return name;
+    public String getCarName() {
+        return carName.getName();
     }
 
-    public Distance getDistance() {
-        return distance;
+    public int getDistance() {
+        return distance.getDistance();
+    }
+
+    public void move(Distance distance) {
+        this.distance.addDistance(distance);
     }
 
     @Override
@@ -24,10 +28,11 @@ public class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return Objects.equals(name, car.name);
+        return Objects.equals(carName, car.carName);
     }
 
-    public void move(Distance distance) {
-        this.distance.addDistance(distance);
+    @Override
+    public int hashCode() {
+        return Objects.hash(carName);
     }
 }

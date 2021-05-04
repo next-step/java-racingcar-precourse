@@ -16,8 +16,8 @@ class CarTest {
         // when
         Car car = new Car(input);
         // then
-        assertThat(car.getName()).isEqualTo(new Name(input));
-        assertThat(car.getDistance()).isEqualTo(new Distance());
+        assertThat(car.getCarName()).isEqualTo(input);
+        assertThat(car.getDistance()).isEqualTo(0);
     }
 
     @ParameterizedTest(name = "자동차 이름이 같을 경우 같은 객체")
@@ -57,6 +57,6 @@ class CarTest {
         car.move(distance);
 
         // then
-        assertThat(car.getDistance()).isEqualTo(distance);
+        assertThat(car.getDistance()).isEqualTo(input);
     }
 }

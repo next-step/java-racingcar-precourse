@@ -9,7 +9,7 @@ import racingcar.exception.NameException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static racingcar.domain.constant.RacingCarConstant.SEPERATOR;
+import static racingcar.domain.constant.RacingCarConstant.SEPARATOR;
 
 @DisplayName("자동차 목록 도메인 테스트")
 class CarsTest {
@@ -18,9 +18,9 @@ class CarsTest {
     @ValueSource(strings = {"car1,car2,car3", "car1, ,car3", "car1", " ,car2"})
     void 자동차_목록_생성(String input) {
         // when
-        Cars cars = new Cars(input.split(SEPERATOR));
+        Cars cars = new Cars(input.split(SEPARATOR));
         // then
-        assertThat(cars.getSize()).isEqualTo(input.split(SEPERATOR).length);
+        assertThat(cars.getSize()).isEqualTo(input.split(SEPARATOR).length);
     }
 
     @DisplayName("자동차 0개 입력시 예외발생")
@@ -34,7 +34,7 @@ class CarsTest {
     @ValueSource(strings = {"car1,car1,car3", " , ,car3"})
     void 자동차_이름_중복_예외발생(String input) {
         // when + then
-        assertThatThrownBy(() -> new Cars(input.split(SEPERATOR))).isInstanceOf(NameException.DuplicateException.class);
+        assertThatThrownBy(() -> new Cars(input.split(SEPARATOR))).isInstanceOf(NameException.DuplicateException.class);
     }
 
 }

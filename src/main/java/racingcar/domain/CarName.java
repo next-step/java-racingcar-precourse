@@ -6,11 +6,11 @@ import java.util.Objects;
 
 import static racingcar.domain.constant.RacingCarConstant.*;
 
-public class Name {
+public class CarName {
 
     private String name;
 
-    public Name(String name) {
+    public CarName(String name) {
         checkLength(name);
         checkInvalidCharacter(name);
         this.name = name;
@@ -23,7 +23,7 @@ public class Name {
     }
 
     private void checkInvalidCharacter(String name) {
-        if (name.indexOf(SEPERATOR) >= 0) {
+        if (name.indexOf(SEPARATOR) >= 0) {
             throw new NameException.InvalidCharacterException();
         }
     }
@@ -32,15 +32,20 @@ public class Name {
         return name == null ? 0 : name.length();
     }
 
-    public String asString() {
-        return name == null ? "" : name;
+    public String getName() {
+        return name;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Name name1 = (Name) o;
-        return Objects.equals(name, name1.name);
+        CarName carName1 = (CarName) o;
+        return Objects.equals(name, carName1.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
     }
 }

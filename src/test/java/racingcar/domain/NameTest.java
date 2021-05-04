@@ -15,24 +15,24 @@ class NameTest {
     @ValueSource(strings = {"abcde", "1234", "일이삼사오"})
     void 한자리_이상_다섯자_이하의_이름_생성(String input) {
         // when
-        Name name = new Name(input);
+        CarName carName = new CarName(input);
         // then
-        assertThat(name.asString()).isEqualTo(input);
-        assertThat(name.getLength()).isBetween(1, 5);
+        assertThat(carName.getName()).isEqualTo(input);
+        assertThat(carName.getLength()).isBetween(1, 5);
     }
 
     @ParameterizedTest(name = "범위초과시 예외발생")
     @ValueSource(strings = {"abcdef", ""})
     void 범위초과시_예외발생(String input) {
         // when + then
-        assertThatThrownBy(() -> new Name(input)).isInstanceOf(NameException.InvalidLengthException.class);
+        assertThatThrownBy(() -> new CarName(input)).isInstanceOf(NameException.InvalidLengthException.class);
     }
 
     @ParameterizedTest(name = "유효하지 않은 문자열 예외발생")
     @ValueSource(strings = {"ab,cd", ","})
     void 유효하지_않은_문자열_예외발생(String input) {
         // when + then
-        assertThatThrownBy(() -> new Name(input)).isInstanceOf(NameException.InvalidCharacterException.class);
+        assertThatThrownBy(() -> new CarName(input)).isInstanceOf(NameException.InvalidCharacterException.class);
     }
 
 }
