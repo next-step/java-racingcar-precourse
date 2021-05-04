@@ -6,10 +6,11 @@ public class CarName {
     private final String name;
     private static final int MIN_NAME_LENGTH = 1;
     private static final int MAX_NAME_LENGTH = 5;
+    private static final String INVALID_CAR_NAME_LENGTH = "자동차 이름은 5자까지만 가능합니다.";
 
     public CarName(String name) {
         if (validName(name)) {
-            throw new IllegalArgumentException("자동차 이름은 5자까지만 가능합니다.");
+            throw new IllegalArgumentException(INVALID_CAR_NAME_LENGTH);
         }
         this.name = name;
     }

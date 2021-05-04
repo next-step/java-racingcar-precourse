@@ -11,15 +11,5 @@ public class RandomUtil {
     public static int generateRandomNumber() {
         return random.nextInt(BOUND);
     }
-//
-//    public static List<Integer> generateRandomNumbers(int size) {
-//        List<Integer> randomNumbers = new ArrayList<>();
-//
-//        for (int i = 0; i < size; i++) {
-//            int randomNumber = generateRandomNumber();
-//            randomNumbers.add(randomNumber);
-//        }
-//
-//        return randomNumbers;
-//    }
+
 }

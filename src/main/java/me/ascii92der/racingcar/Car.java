@@ -10,8 +10,8 @@ public class Car {
         this.carName = new CarName(name);
     }
 
-    public boolean canMove(int moveNumer) {
-        return moveNumer >= MOVE_JUDGED_NUMBER;
+    public boolean canMove(int moveNumber) {
+        return moveNumber >= MOVE_JUDGED_NUMBER;
     }
 
     public int moveCar(int moveNumber) {
@@ -21,4 +21,11 @@ public class Car {
         return position;
     }
 
+    public int getPosition() {
+        return position;
+    }
+
+    public String getCarName() {
+        return carName.getName();
+    }
 }
