@@ -34,3 +34,9 @@
         - 전달받은 자동차 이름으로 Cars 생성
         - 전달받은 시도할 회수만큼 모든 자동차 이동(Cars.moveAll)
         - 우승자 출력
+
+## 클래스간 로직 흐름
+![class-logic-image](https://raw.githubusercontent.com/cobiyu/java-racingcar-precourse/cobiyu/src/main/resources/logic.jpeg)
+
+## 클래스 다이어그램
+![class-diagram](https://raw.githubusercontent.com/cobiyu/java-racingcar-precourse/cobiyu/src/main/resources/class.jpeg)
