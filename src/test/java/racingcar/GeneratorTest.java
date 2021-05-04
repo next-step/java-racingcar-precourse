@@ -13,10 +13,10 @@ class GeneratorTest {
 
         for (int i = 0; i < 10000; i++) {
             // when
-            int randomNumber = Generator.randomNumber();
+            Number randomNumber = Generator.randomNumber();
 
             // then
-            assertThat(randomNumber).isBetween(1, 9);
+            assertThat(randomNumber.get()).isBetween(1, 9);
         }
     }
 }

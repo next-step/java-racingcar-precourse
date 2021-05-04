@@ -10,8 +10,8 @@ class RuleTest {
     void forwardTest() {
 
         // given
-        int firstNumber = 3;
-        int secondNumber = 4;
+        Number firstNumber = new Number(3);
+        Number secondNumber = new Number(4);
 
         // when
         boolean firstForward = Rule.forward(firstNumber);
