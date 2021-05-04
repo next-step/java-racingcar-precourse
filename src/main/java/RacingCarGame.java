@@ -16,6 +16,7 @@ public class RacingCarGame {
 		int count = this.runCount.get();
 		for (int i = 0; i < count; i++) {
 			this.racingCars.moveCars();
+			OutputView.currentCarsView(i, this.racingCars);
 		}
 	}
 }
