@@ -1,6 +1,7 @@
 package racingCar.controller;
 
 import racingCar.domain.Car;
+import racingCar.domain.Cars;
 import racingCar.domain.ExceedCarNameException;
 import racingCar.domain.RacingGame;
 import racingCar.view.InputView;
@@ -23,9 +24,8 @@ public class RacingGameController {
                 TryResultsView tryResultsView = racingGame.race();
                 tryResultsView.print();
             }
-            List<Car> winnerCars = racingGame.winnerCars();
-
-
+            Cars winnerCars = racingGame.winnerCars();
+            ResultView.printWinners(winnerCars);
         } catch (ExceedCarNameException e) {
             ResultView.printError(e.getMessage());
         }

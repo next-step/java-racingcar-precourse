@@ -24,7 +24,7 @@ public class RacingGame {
         return tryCount.isAvailableGame();
     }
 
-    public List<Car> winnerCars() {
-        return cars.determineWinners();
+    public Cars winnerCars() {
+        return new Cars(cars.determineWinners());
     }
 }

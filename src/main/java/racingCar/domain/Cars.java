@@ -47,4 +47,10 @@ public class Cars {
                 .orElse(-1);
     }
 
+    public String getWinnerNames() {
+        return cars.stream()
+                .map(car -> car.getName())
+                .collect(Collectors.joining(","));
+    }
+
 }
