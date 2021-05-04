@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CarPlayerContainer {
+    private static final String PLAYER_NAME_SEPERATE_STRING = ", ";
+
     private List<CarPlayer> carPlayers;
 
     public CarPlayerContainer() {
@@ -41,7 +43,7 @@ public class CarPlayerContainer {
         int lastIndex = this.carPlayers.size() - 1;
 
         for (int i = 0; i < lastIndex; i++) {
-            sb.append(this.carPlayers.get(i).getPlayerName() + ", ");
+            sb.append(this.carPlayers.get(i).getPlayerName() + PLAYER_NAME_SEPERATE_STRING);
         }
 
         if (this.carPlayers.size() != 0) {

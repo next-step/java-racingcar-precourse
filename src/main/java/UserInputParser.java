@@ -1,11 +1,13 @@
 import java.util.Optional;
 
 public class UserInputParser {
+    private static final String INPUT_PLAYER_NAME_SEPERATOR = ",";
+
     public Optional<PlayerNameContainer> parsePlayerNames(String userInput) {
         PlayerNameContainer playerNames = null;
 
         try {
-            playerNames = new PlayerNameContainer(userInput.split(","));
+            playerNames = new PlayerNameContainer(userInput.split(INPUT_PLAYER_NAME_SEPERATOR));
         } catch (IllegalArgumentException e) {
         }
 

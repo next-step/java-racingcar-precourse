@@ -1,6 +1,6 @@
 public class RacingCarColosseum {
-    public static final String GAME_TURN_HEAD_MSG_FORMAT = "[%d 번째 시도]";
-    public static final String START_GAME_HEADER_MSG = "[ 실행 결과 ]";
+    private static final String GAME_TURN_HEAD_MSG_FORMAT = "[%d 번째 시도]";
+    private static final String START_GAME_HEADER_MSG = "[ 실행 결과 ]";
 
     private RandomGenerator randomGenerator;
 

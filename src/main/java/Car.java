@@ -3,6 +3,7 @@ import resulttypes.MoveResult;
 public class Car {
     public static final int MOVE_MIN_RANDOM_VALUE = 4;
     public static final int STAY_MAX_RANDOM_VALUE = 3;
+    private static final String MOVE_COUNT_STRING_FORMAT = " (%d)";
 
     private MoveHistory moveHistory;
 
@@ -33,7 +34,7 @@ public class Car {
         StringBuilder sb = new StringBuilder();
 
         sb.append(this.printMoveHistory());
-        sb.append(String.format(" (%d)", this.getMoveCount()));
+        sb.append(String.format(MOVE_COUNT_STRING_FORMAT, this.getMoveCount()));
 
         return sb.toString();
     }

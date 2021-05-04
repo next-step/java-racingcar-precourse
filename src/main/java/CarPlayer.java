@@ -1,4 +1,6 @@
 public class CarPlayer {
+    private static final String NAME_INDICATE_STRING = " : ";
+
     private Car car;
     private PlayerName playerName;
     private RandomGenerator randomGenerator;
@@ -26,7 +28,7 @@ public class CarPlayer {
     public String toString() {
         StringBuilder sb = new StringBuilder();
 
-        sb.append(this.playerName.toString() + " : ");
+        sb.append(this.playerName.toString() + NAME_INDICATE_STRING);
         sb.append(this.car.toString());
 
         return sb.toString();
