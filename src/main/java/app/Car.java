@@ -74,7 +74,4 @@ public class Car {
 		return name + " : " + sb.toString();
 	}
 
-	public void play() {
-	}
-
 }
