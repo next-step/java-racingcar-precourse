@@ -32,6 +32,9 @@
     * RacingCarMovingStatus
         * STOP
         * GO
+    * RacingCarMovingStrategy
+        * RacingCarMovingStatus 반환한다.
+        * RandomRacingCarMovingStrategyImpl
 -[x] service
     * RacingCarService
       * 문자열을 이용하여 RacingCarGroup을 생성한다.
@@ -39,7 +42,7 @@
         * RacingCarGroup을 이용하여 우승자들을 판별한다.
     * RacingCarMovingService
         * RacingCarGroup을 이용하여 RacingCar를 움직인다.
-        * RandomRacingCarMovingServiceImpl
+        * RacingCarMovingServiceImpl
 -[x] presentation
     * Display
         * 주어진 데이터를 출력 함.
