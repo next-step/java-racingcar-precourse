@@ -18,4 +18,13 @@ public class RacingCarGameTest {
 		car.setMoveCnt();
 		assertEquals(car.getMoveCnt(), 1);
 	}
+	
+	@Test
+	public void testMoveCar() {
+		RacingCarGame racingCarGame = new RacingCarGame();
+		RacingCar car = racingCarGame.new RacingCar("�躴ö");
+		racingCarGame.moveCar(car);
+		
+		assertEquals(car.getMoveCnt(), 1);
+	}
 }
