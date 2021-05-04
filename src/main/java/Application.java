@@ -7,6 +7,7 @@ public class Application {
 
         manager.setup();
         manager.start();
+        manager.result();
 
 
     }

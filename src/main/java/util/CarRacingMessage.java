@@ -11,4 +11,8 @@ public class CarRacingMessage {
     public static String INPUT_NUMBER_AGAIN_MESSAGE = "숫자 형식으로 입력해주세요.";
 
     public static String OVER_INT_RANGE = "정수 범위를 초과하셨습니다.";
+
+    public static String RUN_RESULT = "실행 결과";
+
+    public static String WINNER_INTRODUCE = "가 최종 우승했습니다.";
 }

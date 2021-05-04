@@ -7,7 +7,6 @@ import java.util.List;
 
 import static util.CarRacingConstants.RACING_MOVING_NUMBER_MAX;
 import static util.CarRacingConstants.RACING_MOVING_NUMBER_MIN;
-
 import util.*;
 
 public class RacingPlayer {
@@ -20,7 +19,7 @@ public class RacingPlayer {
         carList = new ArrayList<>();
     }
 
-    public List<Car> getCarList() {
+    public List<Car> getCarList(){
         return carList;
     }
 
