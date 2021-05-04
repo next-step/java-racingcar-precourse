@@ -3,53 +3,34 @@ package racingcar;
 import sun.security.validator.ValidatorException;
 
 public class Car implements Comparable<Car> {
-	public static final int MIN_NAME_LENGTH = 1;
-	public static final int MAX_NAME_LENGTH = 5;
-	public static final int MIN_MOVE_VALUE = 4;
 	private final String name;
+	private CarDistance distance;
 
 	public String getName() {
 		return name;
 	}
 
 	public int getDistance() {
-		return distance;
+		return distance.getDistance();
 	}
-
-	private int distance = 0;
 
 	public Car(String name) throws ValidatorException {
-		this.name = name;
-		if (this.isInvalidName()) {
+		if (RacingRule.isInvalidCarName(name)) {
 			throw new ValidatorException("Car name invalid!");
 		}
-	}
-
-	public boolean isInvalidName() {
-		return name.length() < MIN_NAME_LENGTH || name.length() > MAX_NAME_LENGTH;
-	}
-
-	public boolean isMovable(int random) {
-		return random >= MIN_MOVE_VALUE;
+		this.name = name;
+		this.distance = new CarDistance();
 	}
 
 	public int move(int random) {
-		if (isMovable(random)) {
+		if (RacingRule.isMovable(random)) {
 			this.stepForward();
 		}
-		return distance;
+		return getDistance();
 	}
 
 	private void stepForward() {
-		this.distance++;
-	}
-
-	private String printDistance() {
-		StringBuilder stringDistance = new StringBuilder();
-		for (int i = 0; i < distance; i++) {
-			stringDistance.append("-");
-		}
-		return stringDistance.toString();
+		distance.increase();
 	}
 
 	@Override
@@ -64,6 +45,6 @@ public class Car implements Comparable<Car> {
 
 	@Override
 	public String toString() {
-		return this.name + " : " + this.printDistance();
+		return this.name + " : " + distance;
 	}
 }

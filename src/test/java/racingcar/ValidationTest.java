@@ -23,8 +23,7 @@ public class ValidationTest {
 		assertThrows(ValidatorException.class, ValidationTest::overName);
 		assertThrows(ValidatorException.class, ValidationTest::nullName);
 
-		Car car2 = new Car("가나다라마");
-		assertThat(car2.isInvalidName()).isFalse();
+		Car car = new Car("가나다라마");
+		assertThat(RacingRule.isInvalidCarName(car.getName())).isFalse();
 	}
-
 }
