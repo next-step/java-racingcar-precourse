@@ -8,20 +8,21 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
     private Car car;
+
     @BeforeEach
     void setUp() {
-        car = new Car("-");
+        car = new Car("");
     }
 
     @Test
-    @DisplayName("random 값이 4이상이면 전진")
+    @DisplayName("GO이면 전진")
     void go() {
-        assertThat(car.move(7)).isEqualTo("--");
+        assertThat(car.move(GoStop.GO)).isEqualTo("-");
     }
 
     @Test
-    @DisplayName("random 값이 3이하이면 정지")
+    @DisplayName("STOP이면 정지")
     void stop() {
-        assertThat(car.move(3)).isEqualTo("-");
+        assertThat(car.move(GoStop.STOP)).isEqualTo("");
     }
 }
