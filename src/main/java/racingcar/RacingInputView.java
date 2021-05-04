@@ -2,7 +2,7 @@ package racingcar;
 
 import java.util.Scanner;
 
-public class RacingView {
+public class RacingInputView {
     Scanner scanner = new Scanner(System.in);
     private String[] cars;
     private int eventCount;

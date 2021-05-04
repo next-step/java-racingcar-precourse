@@ -10,13 +10,14 @@ public class RacingCarsTest {
     @BeforeEach
     void setUp() {
         String names = "pobi,crong,honux";
-        racingCars = new RacingCars(names);
+
+        racingCars = new RacingCars(names.split(","));
     }
 
     @DisplayName("자동차 , split 후 생성")
     @Test
     void splitArrayToRacingCarsTest() {
-        assertThat(racingCars.carList.size()).isEqualTo(6);
+        assertThat(racingCars.carList.size()).isEqualTo(3);
     }
 
     @Test

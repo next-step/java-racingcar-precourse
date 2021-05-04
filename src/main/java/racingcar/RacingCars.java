@@ -8,9 +8,9 @@ public class RacingCars {
 
     List<Car> carList;
 
-    public RacingCars(String cars) {
+    public RacingCars(String[] cars) {
         this.carList = new ArrayList<>();
-        for(String name : cars.split(",")){
+        for(String name : cars){
             carList.add(new Car(name));
         }
     }
