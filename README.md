@@ -9,11 +9,17 @@
 #[기능구현 List]
  
 ##Main 
-    -InputVuuw Class로 참가할 자동차와 시도회수를 입력받는다.
-    -RacingGame을 시작한다.
-    -우승자를  OutputView로 결과를 보여준다. 
+    1) InputView Class로 참가할 자동차 개수와 이름,게임 횟수를 입력 받는다.
+    2) Cars class 참여하는 자동차 클래스를 만든다.
+        -Car 객체 생성
+    3) RacingGame을 시작한다.
+        -input: Cars,gameCount
+        -output: Winner        
+    4) 우승자를 OutputView로 결과를 보여준다.
+        -input: Winner
+
 ##Name
-    -5글자길이 초과금지
+    -길이검증 (1-5글자 길이만 허용)
     -영어만 사용가능
     -빈칸 금지
 

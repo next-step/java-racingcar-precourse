@@ -5,9 +5,10 @@ import java.util.Scanner;
 
 public class InputView {
 
-    private Scanner sc = new Scanner(System.in);
+    private Scanner sc;
 
-    public String[] inputPaticipateInRacingGame() {
+    public String[] inputCarParticipateInRacingGame() {
+        sc = new Scanner(System.in);
         return sc.nextLine().split(",");
     }
 }
