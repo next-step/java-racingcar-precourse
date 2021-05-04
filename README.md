@@ -5,3 +5,15 @@
 
 ## 과제 제출 과정
 * [과제 제출 방법](https://github.com/next-step/nextstep-docs/tree/master/precourse)
+
+
+## 기능 목록
+
+- StringUtils 추가
+- Condition 추가
+- 조건을 생성하는 ConditionGenerator 추가
+    - 랜덤한 조건을 생성하는 ConditionGenerator 추가
+- 경주차 추가
+- 경주차 그룹 추가
+- 우승 그룹 추가
+- 게임 추가
