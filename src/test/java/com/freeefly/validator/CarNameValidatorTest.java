@@ -25,7 +25,7 @@ class CarNameValidatorTest {
     @DisplayName("차 이름의 길이(0 < n <= 5) 가 맞지 않을 경우 false 를 리턴해야 한다")
     @Test
     void testCarNameLength() {
-        String input = "GM3,K5,Diablo";
+        String input = "tobi,freeefly,sam";
         Boolean nameValid = validator.isNameValid(input);
         assertFalse(nameValid);
     }

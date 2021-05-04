@@ -15,12 +15,9 @@ public class CarNameValidator {
     private Boolean isNameLengthValid(String[] names) {
         Boolean isNameLengthValid = true;
         for (int i = 0; i < names.length; i++) {
-            isNameLengthValid = isNameLengthValid(names[i]);
+            isNameLengthValid &= names[i].length() > 0 && names[i].length() <= CAR_NAME_LENGTH_LIMIT;
         }
         return isNameLengthValid;
     }
 
-    private boolean isNameLengthValid(String name) {
-        return name.length() > 0 && name.length() <= CAR_NAME_LENGTH_LIMIT;
-    }
 }
