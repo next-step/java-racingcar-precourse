@@ -34,6 +34,9 @@ public class InputTest {
 		assertThat(carName.isValidNameLength()).isTrue();
 		assertThatExceptionOfType(IllegalArgumentException.class)
 			.isThrownBy(() -> new RacingCarName(""))
+			.withMessageMatching("빈 공백 혹은 값을 입력하지 않았습니다");
+		assertThatExceptionOfType(IllegalArgumentException.class)
+			.isThrownBy(() -> new RacingCarName("람보르기니 스포츠카"))
 			.withMessageMatching("레이싱카의 이름은 길이가 \\d+ 이상 \\d+ 이하 이어야 합니다");
 	}
 
@@ -42,6 +45,12 @@ public class InputTest {
 		assertThat(StringUtils.isEmpty("")).isTrue();
 		assertThat(StringUtils.isEmpty(null)).isTrue();
 		assertThat(StringUtils.isEmpty("hello")).isFalse();
+		assertThatExceptionOfType(IllegalArgumentException.class)
+			.isThrownBy(() -> StringUtils.validateEmptyString(null))
+			.withMessageMatching("빈 공백 혹은 값을 입력하지 않았습니다");
+		assertThatExceptionOfType(IllegalArgumentException.class)
+			.isThrownBy(() -> StringUtils.validateEmptyString(""))
+			.withMessageMatching("빈 공백 혹은 값을 입력하지 않았습니다");
 	}
 
 	@Test
@@ -50,7 +59,7 @@ public class InputTest {
 		assertThatExceptionOfType(IllegalArgumentException.class)
 			.isThrownBy(() -> new RunCount("01")).withMessageMatching("1 이상의 알맞은 숫자로만 입력해주세요");
 		assertThatExceptionOfType(IllegalArgumentException.class)
-			.isThrownBy(() -> new RunCount("")).withMessageMatching("횟수를 입력하지 않았습니다");
+			.isThrownBy(() -> new RunCount("")).withMessageMatching("빈 공백 혹은 값을 입력하지 않았습니다");
 		assertThatExceptionOfType(IllegalArgumentException.class)
 			.isThrownBy(() -> new RunCount("ab")).withMessageMatching("1 이상의 알맞은 숫자로만 입력해주세요");
 	}

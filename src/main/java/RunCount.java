@@ -2,9 +2,7 @@ public class RunCount {
 	private final Integer count;
 
 	public RunCount(String count) {
-		if (StringUtils.isEmpty(count)) {
-			throw new IllegalArgumentException("횟수를 입력하지 않았습니다");
-		}
+		StringUtils.validateEmptyString(count);
 		if (isNotValidNumber(count)) {
 			throw new IllegalArgumentException("1 이상의 알맞은 숫자로만 입력해주세요");
 		}
