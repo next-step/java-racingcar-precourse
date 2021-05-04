@@ -6,17 +6,17 @@ import precourse.utility.ConsoleUI;
 public class CarRace {
 
 	private final RacingCars racingCars;
-	private final CarRaceTryNumber tryNumber;
+	private final CarRaceAttemptNumber attemptNumber;
 
-	public CarRace(RacingCars racingCars, CarRaceTryNumber tryNumber) {
+	public CarRace(RacingCars racingCars, CarRaceAttemptNumber attemptNumber) {
 		this.racingCars = racingCars;
-		this.tryNumber = tryNumber;
+		this.attemptNumber = attemptNumber;
 	}
 
 	public CarRaceWinners start() {
 		ConsoleUI.show(CarRaceMessage.BEGIN_PRINTING_RESULT);
-		for (int i = 0; i < tryNumber.getNumber(); i++) {
-			CarRaceTryResult raceResult = racingCars.drive();
+		for (int i = 0; i < attemptNumber.getNumber(); i++) {
+			CarRaceAttemptResult raceResult = racingCars.drive();
 			ConsoleUI.show(raceResult.createResultMessage());
 		}
 		return racingCars.getCarRaceWinners();

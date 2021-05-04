@@ -6,7 +6,7 @@ public class MovementNumberGenerator {
 
 	public static final int BOUND_NUMBER = 10;
 
-	public static MovementNumber createMovementNumber() {
+	public static MovementNumber createRandomMovementNumber() {
 		int number = new Random().nextInt(BOUND_NUMBER);
 		return new MovementNumber(number);
 	}

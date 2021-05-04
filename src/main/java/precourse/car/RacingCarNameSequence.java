@@ -5,7 +5,7 @@ import java.util.List;
 
 import precourse.race.CarRaceMessage;
 
-public class RacingCarNameString {
+public class RacingCarNameSequence {
 
 	public static final String CAR_NAME_DELIMITER = ",";
 	public static final int MIN_CAR_NUMBER = 2;
@@ -13,7 +13,7 @@ public class RacingCarNameString {
 	public static final int MAX_LENGTH = 5;
 	private final List<String> carNames;
 
-	public RacingCarNameString(String carNameString) {
+	public RacingCarNameSequence(String carNameString) {
 		String[] carNames = carNameString.split(CAR_NAME_DELIMITER);
 		validateCarNumber(carNames);
 		validateCarName(carNames);

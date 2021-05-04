@@ -27,10 +27,10 @@ public class RacingCar {
 	}
 
 	public String getCarName() {
-		return name.getName();
+		return name.getValue();
 	}
 
 	public int getPosition() {
-		return position.getNumber();
+		return position.getValue();
 	}
 }

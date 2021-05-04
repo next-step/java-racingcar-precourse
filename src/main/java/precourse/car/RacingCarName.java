@@ -14,7 +14,7 @@ public class RacingCarName {
 		this.carName = trimmedCarName;
 	}
 
-	public String getName() {
+	public String getValue() {
 		return carName;
 	}
 

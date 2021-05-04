@@ -1,50 +1,50 @@
 package precourse;
 
-import java.util.Scanner;
-
 import precourse.car.RacingCarFactory;
-import precourse.car.RacingCarNameString;
+import precourse.car.RacingCarNameSequence;
 import precourse.car.RacingCars;
 import precourse.race.CarRace;
 import precourse.race.CarRaceMessage;
-import precourse.race.CarRaceTryNumber;
+import precourse.race.CarRaceAttemptNumber;
 import precourse.race.CarRaceWinners;
 import precourse.utility.ConsoleUI;
+
+import java.util.Scanner;
 
 public class RacingCarApplication {
 
 	private static final Scanner scanner = new Scanner(System.in);
 
 	public static void main(String[] args) {
-		RacingCarNameString racingCarNameString = receiveCarNameString();
-		CarRaceTryNumber tryNumber = receiveTryNumber();
-		RacingCars racingCars = RacingCarFactory.createNewCars(racingCarNameString);
+		RacingCarNameSequence racingCarNameSequence = receiveCarNameSequence();
+		CarRaceAttemptNumber attemptNumber = receiveAttemptNumber();
+		RacingCars racingCars = RacingCarFactory.createNewCars(racingCarNameSequence);
 
-		CarRace carRace = new CarRace(racingCars, tryNumber);
+		CarRace carRace = new CarRace(racingCars, attemptNumber);
 		CarRaceWinners carRaceWinners = carRace.start();
 		String winners = carRaceWinners.getWinners();
 		ConsoleUI.show(winners + "가 최종 우승했습니다.");
 	}
 
-	private static CarRaceTryNumber receiveTryNumber() {
+	private static CarRaceAttemptNumber receiveAttemptNumber() {
 		try {
-			ConsoleUI.show(CarRaceMessage.ASK_TRY_NUMBER);
-			String tryNumber = scanner.next();
-			return new CarRaceTryNumber(tryNumber);
+			ConsoleUI.show(CarRaceMessage.ASK_ATTEMPT_NUMBER);
+			String attemptNumber = scanner.next();
+			return new CarRaceAttemptNumber(attemptNumber);
 		} catch (IllegalArgumentException e) {
 			ConsoleUI.show(e.getMessage());
-			return receiveTryNumber();
+			return receiveAttemptNumber();
 		}
 	}
 
-	private static RacingCarNameString receiveCarNameString() {
+	private static RacingCarNameSequence receiveCarNameSequence() {
 		try {
 			ConsoleUI.show(CarRaceMessage.ASK_CAR_NAMES_AS_STRING);
 			String carNameString = scanner.next();
-			return new RacingCarNameString(carNameString);
+			return new RacingCarNameSequence(carNameString);
 		} catch (IllegalArgumentException e) {
 			ConsoleUI.show(e.getMessage());
-			return receiveCarNameString();
+			return receiveCarNameSequence();
 		}
 	}
 

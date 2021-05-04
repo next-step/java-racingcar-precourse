@@ -3,7 +3,7 @@ package precourse.car;
 import java.util.ArrayList;
 import java.util.List;
 
-import precourse.race.CarRaceTryResult;
+import precourse.race.CarRaceAttemptResult;
 import precourse.race.CarRaceWinners;
 import precourse.utility.MovementNumber;
 import precourse.utility.MovementNumberGenerator;
@@ -16,12 +16,12 @@ public class RacingCars {
 		this.racingCars = createNewCars(carNames);
 	}
 
-	public CarRaceTryResult drive() {
+	public CarRaceAttemptResult drive() {
 		for (RacingCar racingCar : racingCars) {
-			MovementNumber number = MovementNumberGenerator.createMovementNumber();
+			MovementNumber number = MovementNumberGenerator.createRandomMovementNumber();
 			racingCar.decideMovement(number);
 		}
-		return new CarRaceTryResult(racingCars);
+		return new CarRaceAttemptResult(racingCars);
 	}
 
 	public CarRaceWinners getCarRaceWinners() {

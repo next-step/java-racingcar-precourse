@@ -7,41 +7,41 @@ import org.junit.jupiter.api.Test;
 
 import precourse.race.CarRaceMessage;
 
-class RacingCarNameStringTest {
+class RacingCarNameSequenceTest {
 
 	@Test
 	@DisplayName("자동차 이름은 쉼표(,)로 구분한다.")
 	void carNamesSplitByComma() {
-		assertThatNoException().isThrownBy(() -> new RacingCarNameString("a,b,c"));
+		assertThatNoException().isThrownBy(() -> new RacingCarNameSequence("a,b,c"));
 		assertThatIllegalArgumentException()
-			.isThrownBy(() -> new RacingCarNameString("a|b|c"))
+			.isThrownBy(() -> new RacingCarNameSequence("a|b|c"))
 			.withMessage(CarRaceMessage.INVALID_CAR_NUMBER);
 	}
 
 	@Test
 	@DisplayName("자동차는 2대 이상이어야 한다.")
 	void carNumberMustBeMoreThan2() {
-		assertThatNoException().isThrownBy(() -> new RacingCarNameString("pobi,crong,honux"));
+		assertThatNoException().isThrownBy(() -> new RacingCarNameSequence("pobi,crong,honux"));
 		assertThatIllegalArgumentException()
-			.isThrownBy(() -> new RacingCarNameString("pobi"))
+			.isThrownBy(() -> new RacingCarNameSequence("pobi"))
 			.withMessage(CarRaceMessage.INVALID_CAR_NUMBER);
 	}
 
 	@Test
 	@DisplayName("자동차 이름은 공백이 될 수 없다.")
 	void spaceIsInvalidCarName() {
-		assertThatNoException().isThrownBy(() -> new RacingCarNameString(" a, bcd"));
+		assertThatNoException().isThrownBy(() -> new RacingCarNameSequence(" a, bcd"));
 		assertThatIllegalArgumentException()
-			.isThrownBy(() -> new RacingCarNameString("pobi, "))
+			.isThrownBy(() -> new RacingCarNameSequence("pobi, "))
 			.withMessage(CarRaceMessage.INVALID_CAR_NAME_LENGTH);
 	}
 
 	@Test
 	@DisplayName("자동차 이름은 1자 이상 5자 이하여야 한다.")
 	void carNameMustBeLessThan5() {
-		assertThatNoException().isThrownBy(() -> new RacingCarNameString("a,equus"));
+		assertThatNoException().isThrownBy(() -> new RacingCarNameSequence("a,equus"));
 		assertThatIllegalArgumentException()
-			.isThrownBy(() -> new RacingCarNameString("porsche,volkswagen"))
+			.isThrownBy(() -> new RacingCarNameSequence("porsche,volkswagen"))
 			.withMessage(CarRaceMessage.INVALID_CAR_NAME_LENGTH);
 	}
 

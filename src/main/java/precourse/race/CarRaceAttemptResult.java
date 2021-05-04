@@ -4,11 +4,11 @@ import java.util.List;
 
 import precourse.car.RacingCar;
 
-public class CarRaceTryResult {
+public class CarRaceAttemptResult {
 
 	private final List<RacingCar> racingCars;
 
-	public CarRaceTryResult(List<RacingCar> racingCars) {
+	public CarRaceAttemptResult(List<RacingCar> racingCars) {
 		this.racingCars = racingCars;
 	}
 

@@ -21,7 +21,7 @@ public class RacingCarPosition {
 		return position == maxPosition;
 	}
 
-	public int getNumber() {
+	public int getValue() {
 		return position;
 	}
 
