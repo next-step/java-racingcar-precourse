@@ -1,6 +1,8 @@
 package io;
 
+import java.util.HashSet;
 import java.util.Scanner;
+import java.util.Set;
 
 import static util.CarRacingMessage.*;
 
@@ -19,7 +21,7 @@ public class InputCarRacing {
             System.out.println(START_MESSAGE);
             carNames = scan.nextLine().trim();
 
-        } while (!validSpaceInName(carNames));
+        } while ((!validSpaceInName(carNames)));
 
         return spiltCarName(carNames);
     }
@@ -34,8 +36,21 @@ public class InputCarRacing {
             System.out.println(SPACE_IS_NOT_ALLOW);
             return false;
         }
+        return duplicateNameRemoval(carNames);
+    }
+
+    public boolean duplicateNameRemoval(String carNames) {
+        Set<String> set = new HashSet<String>();
+        for (String name : spiltCarName(carNames)) {
+            set.add(name);
+        }
+        if (set.size() != spiltCarName(carNames).length) {
+            System.out.println(DUPLICATION_IS_NOT_ALLOW);
+            return false;
+        }
         return true;
     }
+
 
     public int inputTurnCnt() {
         do {
@@ -57,7 +72,6 @@ public class InputCarRacing {
 
         return false;
     }
-
 
 
 }

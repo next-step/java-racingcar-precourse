@@ -30,4 +30,13 @@ public class InputCarRacingTest {
     }
 
 
+    @ParameterizedTest
+    @DisplayName("자동차 이름이 중복될 경우 반환 결과 확인")
+    @ValueSource(strings = "java,is,java" )
+    void 이름_중복시_다시입력_테스트(String str) {
+
+        assertThat(inputCarRacing.validSpaceInName(str)).isFalse();
+    }
+
+
 }

@@ -15,4 +15,6 @@ public class CarRacingMessage {
     public static String RUN_RESULT = "\n\n실행 결과";
 
     public static String WINNER_INTRODUCE = "가 최종 우승했습니다.";
+
+    public static String DUPLICATION_IS_NOT_ALLOW = "중복되는 이름은 입력할 수 없습니다.";
 }
