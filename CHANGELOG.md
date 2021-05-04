@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.4](https://github.com/frostnight/java-racingcar-precourse/compare/v1.2.3...v1.2.4) (2021-05-04)
+
+
+### Bug Fixes
+
+* Car 인덱스 상태 출력 수정 및 Cars 출력 기능 추가 ([811cb6f](https://github.com/frostnight/java-racingcar-precourse/commit/811cb6f2b4e06b1aeda9e57519c387ac74855653))
+
 ### [1.2.3](https://github.com/frostnight/java-racingcar-precourse/compare/v1.2.2...v1.2.3) (2021-05-04)
 
 
