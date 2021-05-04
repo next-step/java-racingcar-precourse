@@ -47,6 +47,15 @@ public class Cars {
     }
   }
 
+  /**
+   * 결과 반환
+   *
+   * @return 레이싱 결과 객체
+   */
+  public RacingResult getRacingResult(){
+    return new RacingResult(this);
+  }
+
   public List<Car> getCars() {
     return cars;
   }
