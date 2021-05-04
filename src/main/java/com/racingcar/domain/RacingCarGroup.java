@@ -2,6 +2,8 @@ package com.racingcar.domain;
 
 import java.util.List;
 
+import com.racingcar.common.message.Messages;
+
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +20,7 @@ public class RacingCarGroup {
 
 		for (RacingCar car : racingCarList) {
 			sb.append(car.toString());
+			sb.append(Messages.NEW_LINE);
 		}
 
 		return sb.toString();

@@ -16,7 +16,7 @@ public class RefereeServiceImpl implements RefereeService {
 	@Override
 	public List<RacingCarDTO> judge(RacingCarGroup carGroup) {
 		if (carGroup.getRacingCarList().isEmpty()) {
-			throw new RacingCarException(Messages.JUDGE_WINNER_EXCEPTION);
+			throw new RacingCarException(Messages.JUDGE_WINNER_EXCEPTION_MESSAGE);
 		}
 		return getWinners(carGroup.getRacingCarList());
 	}

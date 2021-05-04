@@ -50,7 +50,7 @@ class RefereeServiceImplTest {
 
 		RefereeService refereeService = new RefereeServiceImpl();
 		assertThatThrownBy(() -> refereeService.judge(carGroup)).isInstanceOf(RacingCarException.class)
-			.hasMessage(Messages.JUDGE_WINNER_EXCEPTION);
+			.hasMessage(Messages.JUDGE_WINNER_EXCEPTION_MESSAGE);
 	}
 
 }
