@@ -35,4 +35,9 @@ class CarTest {
 		assertThatThrownBy(() -> new Car("이름이5자가넘을때")).isInstanceOf(IllegalArgumentException.class);
 	}
 
+	@Test
+	@DisplayName("자동차_전진_멈춤_테스트")
+	void 자동차_전진_멈춤_테스트() {
+		assertThat(car.drive()).isEqualTo(car.getRandomNumber().isGreaterThanOrEqualTo4() ? CarDrivenStatus.GO : CarDrivenStatus.STOP);
+	}
 }
