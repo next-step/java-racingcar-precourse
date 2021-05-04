@@ -1,9 +1,9 @@
 package com.github.sangholeedev.javaracingcarprecourse.car;
 
 public class Car {
-	private final String name;
+	private final CarName carName;
 
-	public Car(String name) {
-		this.name = name;
+	public Car(String carName) {
+		this.carName = new CarName(carName);
 	}
 }
