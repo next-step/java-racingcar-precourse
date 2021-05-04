@@ -20,38 +20,10 @@ public class RacingCar {
 
         System.out.println();
         System.out.println();
-        System.out.println("실행 결과");
-        String[] progresses = new String[carNames.length];
-        for(int i = 0; i < rounds; i++) {
-            for(int ii = 0; ii < carNames.length; ii++) {
-                int random = generateRandomNumber();
-                if(progresses[ii] == null) {
-                    progresses[ii] = "";
-                }
-                if(random >= 4) {
-                    progresses[ii] += "-";
-                }
-                System.out.println(carNames[ii] + " : " + progresses[ii]);
-            }
-            System.out.println();
-        }
 
-        int maxLength = 0;
-        for(String progress: progresses) {
-            if(progress.length() > maxLength) {
-                maxLength = progress.length();
-            }
-        }
-
-        ArrayList<String> winners = new ArrayList<String>();
-        for(int i = 0; i < carNames.length; i++) {
-            if(progresses[i].length() == maxLength) {
-                winners.add(carNames[i]);
-            }
-        }
+        String[] progresses = progress(carNames, rounds);
         
-        System.out.println();
-        System.out.println(String.join(",", winners) + "가 최종 우승했습니다.");
+        checkWinner(carNames, progresses);
 
         scanner.close();
     }
@@ -80,6 +52,56 @@ public class RacingCar {
      */
     public int generateRandomNumber() {
         return (int) (Math.random() * 10);
+    }
+
+    /**
+     * 게임 진행
+     * @param carNames
+     * @param rounds
+     * @return
+     */
+    public String[] progress(String[] carNames, int rounds) {
+        System.out.println("실행 결과");
+        String[] progresses = new String[carNames.length];
+        for(int i = 0; i < rounds; i++) {
+            for(int ii = 0; ii < carNames.length; ii++) {
+                int random = generateRandomNumber();
+                if(progresses[ii] == null) {
+                    progresses[ii] = "";
+                }
+                if(random >= 4) {
+                    progresses[ii] += "-";
+                }
+                System.out.println(carNames[ii] + " : " + progresses[ii]);
+            }
+            System.out.println();
+        }
+
+        return progresses;
+    }
+
+    /**
+     * 우승자 확인
+     * @param carNames
+     * @param progresses
+     */
+    public void checkWinner(String[] carNames, String[] progresses) {
+        int maxLength = 0;
+        for(String progress: progresses) {
+            if(progress.length() > maxLength) {
+                maxLength = progress.length();
+            }
+        }
+
+        ArrayList<String> winners = new ArrayList<String>();
+        for(int i = 0; i < carNames.length; i++) {
+            if(progresses[i].length() == maxLength) {
+                winners.add(carNames[i]);
+            }
+        }
+        
+        System.out.println();
+        System.out.println(String.join(", ", winners) + "가 최종 우승했습니다.");
     }
 
 }
