@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/frostnight/java-racingcar-precourse/compare/v1.1.0...v1.2.0) (2021-05-04)
+
+
+### Features
+
+* 랜덤으로 0부터 9까지 이동 포인트 획득 static 모듈 개발 ([385be72](https://github.com/frostnight/java-racingcar-precourse/commit/385be7282689c236c9d5ba436dab1b66131cfd35))
+
 ## [1.1.0](https://github.com/frostnight/java-racingcar-precourse/compare/v1.0.4...v1.1.0) (2021-05-04)
 
 
