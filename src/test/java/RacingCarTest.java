@@ -36,11 +36,11 @@ public class RacingCarTest {
 		RacingCar firstCar = racingCars.get().get(0);
 		RacingCar secondCar = racingCars.get().get(1);
 		firstCar.getPosition().plus();
-		assertThat(racingCars.maxCount()).isEqualTo(1);
+		assertThat(racingCars.maxPosition()).isEqualTo(1);
 		plusRacingCar(secondCar, 2);
-		assertThat(racingCars.maxCount()).isEqualTo(2);
+		assertThat(racingCars.maxPosition()).isEqualTo(2);
 		plusRacingCar(firstCar, 2);
-		assertThat(racingCars.maxCount()).isEqualTo(3);
+		assertThat(racingCars.maxPosition()).isEqualTo(3);
 	}
 
 	private void plusRacingCar(RacingCar racingCar, int plusCount) {

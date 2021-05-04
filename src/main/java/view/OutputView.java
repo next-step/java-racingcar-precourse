@@ -13,20 +13,21 @@ public class OutputView {
 			System.out.println("실행 결과");
 		}
 		for (RacingCar racingCar : racingCars.get()) {
-			System.out.printf("%s: %s%n", racingCar.getRacingCarName().get(), mapCount(racingCar.getPosition().get()));
+			System.out.printf("%s: %s%n", racingCar.getRacingCarName().get(),
+				mapPosition(racingCar.getPosition().get()));
 		}
 		System.out.println();
 	}
 
-	public static String mapCount(int moveCount) {
+	public static String mapPosition(int position) {
 		StringBuilder builder = new StringBuilder();
-		for (int i = 0; i < moveCount; i++) {
+		for (int i = 0; i < position; i++) {
 			builder.append(POSITION_LENGH_STRING);
 		}
 		return builder.toString();
 	}
 
 	public static void winnerView(List<String> racingCars) {
-		System.out.printf("%s가 최종 우승했습니다\n", String.join(",", racingCars));
+		System.out.printf("%s가 최종 우승했습니다.\n", String.join(",", racingCars));
 	}
 }

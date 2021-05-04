@@ -55,25 +55,25 @@ public class RacingCars {
 		}
 	}
 
-	public int maxCount() {
-		int currentMaxCount = -1;
+	public int maxPosition() {
+		int currentMaxPosition = -1;
 		for (RacingCar racingCar : this.get()) {
-			currentMaxCount = Math.max(currentMaxCount, racingCar.getPosition().get());
+			currentMaxPosition = Math.max(currentMaxPosition, racingCar.getPosition().get());
 		}
-		return currentMaxCount;
+		return currentMaxPosition;
 	}
 
 	public List<String> getWinners() {
-		int maxCount = maxCount();
+		int maxPosition = maxPosition();
 		List<String> winners = new ArrayList<String>();
 		for (RacingCar racingCar : this.cars) {
-			addWinner(maxCount, racingCar, winners);
+			addWinner(maxPosition, racingCar, winners);
 		}
 		return winners;
 	}
 
-	private void addWinner(int maxCount, RacingCar racingCar, List<String> winners) {
-		if (maxCount == racingCar.getPosition().get()) {
+	private void addWinner(int maxPosition, RacingCar racingCar, List<String> winners) {
+		if (maxPosition == racingCar.getPosition().get()) {
 			winners.add(racingCar.getRacingCarName().get());
 		}
 	}
