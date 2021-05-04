@@ -74,4 +74,10 @@ class RacingGameTest {
         distance.go();
         assertThat(cars.findCar(distance).getNames()).isEqualTo("aaa,bbb");
     }
+
+    @Test
+    void newTurn_ShouldThrowException() {
+        assertThatIllegalArgumentException().isThrownBy(() -> new Turn(0));
+        assertThatIllegalArgumentException().isThrownBy(() -> new Turn(-1));
+    }
 }
