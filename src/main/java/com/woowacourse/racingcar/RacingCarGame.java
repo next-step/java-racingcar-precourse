@@ -2,7 +2,10 @@ package com.woowacourse.racingcar;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -60,6 +63,8 @@ public class RacingCarGame {
 		for (int i = 0; i < inputLoopCnt; i++) {
 			moveCars(racingCars);
 		}
+		
+		printWinner(racingCars);
 	}
 	
 	public String inputCarNames() {
@@ -166,5 +171,26 @@ public class RacingCarGame {
 		}
 		
 		return sb.toString();
+	}
+	
+	public void printWinner(Map<String, RacingCar> cars) {
+		List<RacingCar> winners = new ArrayList<RacingCar>();
+		
+		for (String car : cars.keySet()) {
+			winners.add(cars.get(car));
+		}
+		
+		Collections.sort(winners);
+		int max = winners.get(winners.size() - 1).getMoveCnt();
+		
+		String msg = "";
+		for (String carName : cars.keySet()) {
+			if (cars.get(carName).getMoveCnt() >= max) {
+				msg += msg == "" ? carName : "," + carName;
+			}
+		}
+		msg += "(이)가 최종 우승했습니다.";
+		
+		System.out.println(msg);
 	}
 }
