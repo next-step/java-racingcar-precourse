@@ -1,6 +1,5 @@
 import resulttypes.PlayResult;
 
-import java.util.List;
 import java.util.Optional;
 
 public class RacingCarGame {
@@ -27,24 +26,8 @@ public class RacingCarGame {
     }
 
     private void playInColosseum(CarNameContainer carNameContainer, TrialCount trialCount) {
-        List<CarPlayer> winners = this.racingCarColosseum.play(carNameContainer, trialCount);
+        CarPlayerContainer winners = this.racingCarColosseum.play(carNameContainer, trialCount);
 
-        String winnerMsg = this.getWinnerMessage(winners);
-
-        System.out.println(winnerMsg);
-    }
-
-    private String getWinnerMessage(List<CarPlayer> winners) {
-        StringBuilder sb = new StringBuilder();
-
-        for (int i = 0; i < winners.size(); i++) {
-            sb.append(winners.get(i).getCarName());
-            if (i != winners.size() - 1) {
-                sb.append(", ");
-            }
-        }
-        sb.append(WINNER_MSG_TAIL);
-
-        return sb.toString();
+        System.out.println(winners.toString() + WINNER_MSG_TAIL);
     }
 }

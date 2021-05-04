@@ -9,7 +9,7 @@ public class RacingCarColosseum {
         this.randomGenerator = randomGenerator;
     }
 
-    public List<CarPlayer> play(CarNameContainer carNameContainer, TrialCount trialCount) {
+    public CarPlayerContainer play(CarNameContainer carNameContainer, TrialCount trialCount) {
         CarPlayerContainer carPlayerContainer = this.createCarPlayers(carNameContainer);
 
         System.out.println(START_GAME_HEADER_MSG);

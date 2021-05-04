@@ -26,7 +26,7 @@ public class RacingCarColosseumTest {
         CarNameContainer carNameContainer = new CarNameContainer(carNamesInput.split(","));
         TrialCount trialCount = new TrialCount(trialCountInput);
 
-        List<CarPlayer> winners = this.racingCarColosseum.play(carNameContainer, trialCount);
+        CarPlayerContainer winners = this.racingCarColosseum.play(carNameContainer, trialCount);
 
         Assertions.assertThat(winners.size()).isGreaterThan(0);
     }
@@ -39,7 +39,7 @@ public class RacingCarColosseumTest {
         TrialCount trialCount = new TrialCount(trialCountInput);
         when(this.randomGenerator.get()).thenReturn(Car.STAY_MAX_RANDOM_VALUE);
 
-        List<CarPlayer> winners = this.racingCarColosseum.play(carNameContainer, trialCount);
+        CarPlayerContainer winners = this.racingCarColosseum.play(carNameContainer, trialCount);
 
         Assertions.assertThat(winners.size()).isEqualTo(carNameContainer.size());
     }
@@ -52,7 +52,7 @@ public class RacingCarColosseumTest {
         TrialCount trialCount = new TrialCount(trialCountInput);
         when(this.randomGenerator.get()).thenReturn(Car.MOVE_MIN_RANDOM_VALUE);
 
-        List<CarPlayer> winners = this.racingCarColosseum.play(carNameContainer, trialCount);
+        CarPlayerContainer winners = this.racingCarColosseum.play(carNameContainer, trialCount);
 
         Assertions.assertThat(winners.size()).isEqualTo(carNameContainer.size());
     }

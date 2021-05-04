@@ -12,19 +12,43 @@ public class CarPlayerContainer {
         this.carPlayers.add(carPlayer);
     }
 
+    public int size() {
+        return this.carPlayers.size();
+    }
+
+    public CarPlayer get(int index) {
+        return this.carPlayers.get(index);
+    }
+
     public List<CarPlayer> getPlayers() {
         return this.carPlayers;
     }
 
-    public List<CarPlayer> getWinners() {
+    public CarPlayerContainer getWinners() {
+        CarPlayerContainer winners = new CarPlayerContainer();
         int maxMoveCount = this.getMaxMoveCount();
 
-        List<CarPlayer> winners = new ArrayList<>();
         for (CarPlayer carPlayer : this.carPlayers) {
             this.tryWinner(carPlayer, maxMoveCount, winners);
         }
 
         return winners;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        int lastIndex = this.carPlayers.size() - 1;
+
+        for (int i = 0; i < lastIndex; i++) {
+            sb.append(this.carPlayers.get(i).getCarName() + ", ");
+        }
+
+        if (this.carPlayers.size() != 0) {
+            sb.append(this.carPlayers.get(lastIndex).getCarName());
+        }
+
+        return sb.toString();
     }
 
     private int getMaxMoveCount() {
@@ -37,7 +61,7 @@ public class CarPlayerContainer {
         return maxMoveCount;
     }
 
-    private void tryWinner(CarPlayer carPlayer, int maxMoveCount, List<CarPlayer> winners) {
+    private void tryWinner(CarPlayer carPlayer, int maxMoveCount, CarPlayerContainer winners) {
         if (carPlayer.getMoveCount() == maxMoveCount) {
             winners.add(carPlayer);
         }
