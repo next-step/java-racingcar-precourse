@@ -6,7 +6,7 @@ public class RunCount {
 			throw new IllegalArgumentException("횟수를 입력하지 않았습니다");
 		}
 		if (isNotValidNumber(count)) {
-			throw new IllegalArgumentException("숫자로만 입력해주세요");
+			throw new IllegalArgumentException("1 이상의 알맞은 숫자로만 입력해주세요");
 		}
 		this.count = Integer.parseInt(count);
 	}
@@ -16,7 +16,6 @@ public class RunCount {
 	}
 
 	boolean isNotValidNumber(String count) {
-		System.out.println(count.trim());
-		return !count.matches("^[1-9]+$");
+		return !count.matches("^[1-9][0-9]*$");
 	}
 }
