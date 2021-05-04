@@ -1,6 +1,7 @@
 package racingcargame.service;
 
 import racingcargame.domain.Cars;
+import racingcargame.domain.Winners;
 
 public class RacingCarGameService {
     Cars cars;
@@ -21,5 +22,10 @@ public class RacingCarGameService {
 
     public String getResultString() {
         return raceResult.toString();
+    }
+
+    public String getWinnerMessage() {
+        Winners winners = cars.getWinners();
+        return winners.getWinnersName();
     }
 }

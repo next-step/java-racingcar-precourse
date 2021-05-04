@@ -20,7 +20,7 @@ public class RacingCarGameController {
         racingCarGameService.makeCars(carNames);
         Integer moveCount = ConsoleInput.inputMoveCount();
         racingCarGameService.race(moveCount);
-        ConsoleOutput.printResultMessage();
         ConsoleOutput.printResult(racingCarGameService.getResultString());
+        ConsoleOutput.printWinnerMessage(racingCarGameService.getWinnerMessage());
     }
 }

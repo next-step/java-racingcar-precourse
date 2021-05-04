@@ -19,6 +19,10 @@ public class Cars {
         return new Cars(cars);
     }
 
+    public int size() {
+        return cars.size();
+    }
+
     public void randomMove() {
         for (Car car : cars) {
             car.randomMove();
@@ -31,5 +35,30 @@ public class Cars {
             resultString.append(car.getResultString());
         }
         return resultString.toString();
+    }
+
+    public Winners getWinners() {
+        Integer maxMileage = 0;
+        Winners winners = new Winners();
+        for (Car car : cars) {
+            maxMileage = addWinner(maxMileage, winners, car);
+        }
+        return winners;
+    }
+
+    private Integer addWinner(Integer maxMileage, Winners winners, Car car) {
+        if (maxMileage.equals(car.getMileage().getMileage())) {
+            winners.add(car);
+        }
+        if (maxMileage < car.getMileage().getMileage()) {
+            maxMileage = car.getMileage().getMileage();
+            winners.clear();
+            winners.add(car);
+        }
+        return maxMileage;
+    }
+
+    public Car get(int i) {
+        return cars.get(i);
     }
 }
