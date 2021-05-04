@@ -12,8 +12,8 @@ public class ValidationUtils {
     public static boolean duplicateName(List<String> carList) {
         int count = 0;
 
-        for(String car : carList){
-            if(carList.contains(car)){
+        for (String car : carList) {
+            if (carList.contains(car)) {
                 count++;
             }
         }
