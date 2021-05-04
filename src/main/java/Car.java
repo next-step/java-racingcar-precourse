@@ -2,6 +2,9 @@ import java.util.Random;
 
 public class Car {
 
+	private static final String MESSAGE_REQUIRES_MORE_THAN_ONE = "2대 이상의 자동차가 필요합니다.";
+	private static final String MESSAGE_NAME_LENGTH_CONDITION_NOT_MET = "자동차 이름은 1~5자로 해주세요.";
+
 	private static final String CAR_NAMES_SPLITTER = " : ";
 	private static final String CAR_MILEAGE_CHARACTER = "-";
 
@@ -50,12 +53,20 @@ public class Car {
 
 	// 자동차 이름 검증
 	public static boolean isValidCarName(String carName) {
-		return CAR_NAME_LENGTH_MAX >= carName.length() && CAR_NAME_LENGTH_MIN <= carName.length();
+		if (CAR_NAME_LENGTH_MAX >= carName.length() && CAR_NAME_LENGTH_MIN <= carName.length()) {
+			return true;
+		}
+		System.out.println(MESSAGE_NAME_LENGTH_CONDITION_NOT_MET);
+		return false;
 	}
 
 	// 자동차 대수 검증
 	public static boolean isValidCarCount(String[] carNameArr) {
-		return MINIMUM_NUMBER_CAR <= carNameArr.length;
+		if (MINIMUM_NUMBER_CAR <= carNameArr.length) {
+			return true;
+		}
+		System.out.println(MESSAGE_REQUIRES_MORE_THAN_ONE);
+		return false;
 	}
 
 	// 자동차 우승 여부 얻기
