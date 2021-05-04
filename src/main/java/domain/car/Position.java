@@ -9,27 +9,27 @@ public class Position implements Comparable<Position> {
 
 	private Integer value;
 
+	public Position() {
+		this(DEFAULT_VALUE);
+	}
+
 	public Position(Integer value) {
 		validateValue(value);
 		this.value = value;
 	}
 
-	private void validateValue(Integer value) {
-		if(value < DEFAULT_VALUE) {
-			throw new IllegalArgumentException(DEFAULT_UNDER_ERROR_MESSAGE);
-		}
-	}
-
-	public Position() {
-		this(DEFAULT_VALUE);
+	public void increment() {
+		this.value++;
 	}
 
 	public Integer getValue() {
 		return value;
 	}
 
-	public void increment() {
-		this.value++;
+	private void validateValue(Integer value) {
+		if(value < DEFAULT_VALUE) {
+			throw new IllegalArgumentException(DEFAULT_UNDER_ERROR_MESSAGE);
+		}
 	}
 
 	@Override
