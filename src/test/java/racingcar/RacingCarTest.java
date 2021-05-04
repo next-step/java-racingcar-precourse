@@ -8,14 +8,10 @@ import java.util.Arrays;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingCarTest {
-    @Test
-    void play() {
-
-    }
 
     @Test
     @DisplayName("자동차의 이름 구분")
-    void separateCarName() {
+    void separate_car_name() {
         assertThat(RacingCar.separateName("pobi,crong,honux")).isEqualTo(Arrays.asList("pobi", "crong", "honux"));
     }
 
