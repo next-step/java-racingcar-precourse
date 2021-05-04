@@ -33,8 +33,9 @@
         * STOP
         * GO
     * RacingCarMovingStrategy
-        * RacingCarMovingStatus 반환한다.
+        * MovingSeed를 반환한다.
         * RandomRacingCarMovingStrategyImpl
+    * MovingSeed
 -[x] service
     * RacingCarService
       * 문자열을 이용하여 RacingCarGroup을 생성한다.
