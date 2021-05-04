@@ -2,7 +2,7 @@ package racingcar;
 
 public class RacingCar {
 
-    private String name;
+    private final String name;
     private int numberOfAdvances = 0;
 
     public RacingCar(String name) {
