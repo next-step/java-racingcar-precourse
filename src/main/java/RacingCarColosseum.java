@@ -1,5 +1,3 @@
-import java.util.List;
-
 public class RacingCarColosseum {
     public static final String GAME_TURN_HEAD_MSG_FORMAT = "[%d 번째 시도]";
     public static final String START_GAME_HEADER_MSG = "[ 실행 결과 ]";
@@ -9,8 +7,8 @@ public class RacingCarColosseum {
         this.randomGenerator = randomGenerator;
     }
 
-    public CarPlayerContainer play(CarNameContainer carNameContainer, TrialCount trialCount) {
-        CarPlayerContainer carPlayerContainer = this.createCarPlayers(carNameContainer);
+    public CarPlayerContainer play(PlayerNameContainer playerNameContainer, TrialCount trialCount) {
+        CarPlayerContainer carPlayerContainer = this.createCarPlayers(playerNameContainer);
 
         System.out.println(START_GAME_HEADER_MSG);
         proceedGameTurns(carPlayerContainer, trialCount);
@@ -18,11 +16,11 @@ public class RacingCarColosseum {
         return carPlayerContainer.getWinners();
     }
 
-    private CarPlayerContainer createCarPlayers(CarNameContainer carNameContainer) {
+    private CarPlayerContainer createCarPlayers(PlayerNameContainer playerNameContainer) {
         CarPlayerContainer carPlayerContainer = new CarPlayerContainer();
 
-        for (CarName carName : carNameContainer.getNames()) {
-            carPlayerContainer.add(new CarPlayer(carName, this.randomGenerator));
+        for (PlayerName playerName : playerNameContainer.getNames()) {
+            carPlayerContainer.add(new CarPlayer(playerName, this.randomGenerator));
         }
 
         return carPlayerContainer;

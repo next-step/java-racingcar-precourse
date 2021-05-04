@@ -2,8 +2,8 @@ public class CarPlayer {
     private Car car;
     private RandomGenerator randomGenerator;
 
-    public CarPlayer(CarName carname, RandomGenerator randomGenerator) {
-        this.car = new Car(carname);
+    public CarPlayer(PlayerName playerName, RandomGenerator randomGenerator) {
+        this.car = new Car(playerName);
         this.randomGenerator = randomGenerator;
     }
 
@@ -15,8 +15,8 @@ public class CarPlayer {
         return this.car.getMoveCount();
     }
 
-    public CarName getCarName() {
-        return this.car.getCarName();
+    public PlayerName getPlayerName() {
+        return this.car.getPlayerName();
     }
 
     @Override

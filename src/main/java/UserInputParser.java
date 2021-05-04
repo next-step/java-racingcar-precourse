@@ -2,15 +2,15 @@ import java.util.Optional;
 
 public class UserInputParser {
 
-    public Optional<CarNameContainer> parseCarNames(String userInput) {
-        CarNameContainer carNameContainer = null;
+    public Optional<PlayerNameContainer> parsePlayerNames(String userInput) {
+        PlayerNameContainer playerNameContainer = null;
 
         try {
-            carNameContainer = new CarNameContainer(userInput.split(","));
+            playerNameContainer = new PlayerNameContainer(userInput.split(","));
         } catch (IllegalArgumentException e) {
         }
 
-        return Optional.ofNullable(carNameContainer);
+        return Optional.ofNullable(playerNameContainer);
     }
 
     public Optional<TrialCount> parseTrialCount(String trialCntInput) {

@@ -12,17 +12,17 @@ public class RacingCarConsole {
     public static void main(String args[]) {
         Scanner scanner = new Scanner(System.in);
 
-        String carNamesInput = askCarNamesInput(scanner);
+        String playerNamesInput = askPlayerNamesInput(scanner);
         String trialCntInput = askTrialCntInput(scanner);
 
         RacingCarGame game = new RacingCarGame(new RacingCarColosseum(new RandomGenerator()), new UserInputParser());
 
-        if (game.play(carNamesInput, trialCntInput) == PlayResult.INVALID_INPUT) {
+        if (game.play(playerNamesInput, trialCntInput) == PlayResult.INVALID_INPUT) {
             System.out.println(ABNORMAL_TERMINATE_MSG);
         }
     }
 
-    private static String askCarNamesInput(Scanner scanner) {
+    private static String askPlayerNamesInput(Scanner scanner) {
         System.out.println(WELCOME_MSG);
         System.out.println(REQUEST_CAR_NAME_MSG);
 

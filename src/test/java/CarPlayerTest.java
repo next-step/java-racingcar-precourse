@@ -16,7 +16,7 @@ public class CarPlayerTest {
     @BeforeEach
     void setup() {
         this.randomGenerator = mock(RandomGenerator.class);
-        this.carPlayer = new CarPlayer(new CarName(TEST_CAR_NAME), this.randomGenerator);
+        this.carPlayer = new CarPlayer(new PlayerName(TEST_CAR_NAME), this.randomGenerator);
     }
 
     @ParameterizedTest

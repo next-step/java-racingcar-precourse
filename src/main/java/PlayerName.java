@@ -1,4 +1,4 @@
-public class CarName {
+public class PlayerName {
     private static final String CAR_NAME_CONDITION_EXCEPTION_MSG = "자동차 이름은 5글자 이하이고 비어있지 않아야 합니다.";
     private static final String CAR_NAME_CONDITION_CONSOLE_MSG = CAR_NAME_CONDITION_EXCEPTION_MSG + "(자동차 이름: %s)";
     private static final int NAME_MIN_LENGTH = 1;
@@ -6,7 +6,7 @@ public class CarName {
 
     private String name;
 
-    public CarName(String name) {
+    public PlayerName(String name) {
         String trimmedName = name.trim();
 
         if (trimmedName.length() < NAME_MIN_LENGTH || trimmedName.length() > NAME_MAX_LENGTH) {

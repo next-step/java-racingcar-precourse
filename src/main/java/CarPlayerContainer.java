@@ -41,11 +41,11 @@ public class CarPlayerContainer {
         int lastIndex = this.carPlayers.size() - 1;
 
         for (int i = 0; i < lastIndex; i++) {
-            sb.append(this.carPlayers.get(i).getCarName() + ", ");
+            sb.append(this.carPlayers.get(i).getPlayerName() + ", ");
         }
 
         if (this.carPlayers.size() != 0) {
-            sb.append(this.carPlayers.get(lastIndex).getCarName());
+            sb.append(this.carPlayers.get(lastIndex).getPlayerName());
         }
 
         return sb.toString();

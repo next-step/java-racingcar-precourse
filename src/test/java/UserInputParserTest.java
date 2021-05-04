@@ -16,20 +16,20 @@ public class UserInputParserTest {
 
     @ParameterizedTest
     @CsvSource(value = {"pobi,crong,honux", "pobi,alex,sand,krosa", "i,am,groot", "ionic,tesla,ford,audi"})
-    @DisplayName("사용자가 정상적인 자동차 이름을 입력한 경우 CarNameContainer가 담긴 Optional 객체를 반환한다.")
-    void parse_valid_car_names_input(String carNamesInput) {
-        Optional<CarNameContainer> mayCarNameContainer = this.userInputParser.parseCarNames(carNamesInput);
+    @DisplayName("사용자가 정상적인 자동차 이름을 입력한 경우 PlayerNameContainer가 담긴 Optional 객체를 반환한다.")
+    void parse_valid_player_names_input(String playerNamesInput) {
+        Optional<PlayerNameContainer> mayPlayerNameContainer = this.userInputParser.parsePlayerNames(playerNamesInput);
 
-        Assertions.assertThat(mayCarNameContainer.isPresent()).isTrue();
+        Assertions.assertThat(mayPlayerNameContainer.isPresent()).isTrue();
     }
 
     @ParameterizedTest
     @CsvSource(value = {"wrterddf,2314cx", "12308d,192887ds,!@8c8*cc", "&*(sd1", "czvzxdeterd,!))*Fdf"})
     @DisplayName("사용자가 비정상적인 자동차 이름을 입력한 경우 null이 담긴 Optional 객체를 반환한다.")
-    void parse_invalid_car_names_input(String carNamesInput) {
-        Optional<CarNameContainer> mayCarNameContainer = this.userInputParser.parseCarNames(carNamesInput);
+    void parse_invalid_player_names_input(String playerNamesInput) {
+        Optional<PlayerNameContainer> mayPlayerNameContainer = this.userInputParser.parsePlayerNames(playerNamesInput);
 
-        Assertions.assertThat(mayCarNameContainer.isPresent()).isFalse();
+        Assertions.assertThat(mayPlayerNameContainer.isPresent()).isFalse();
     }
 
     @ParameterizedTest

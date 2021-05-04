@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+
 import resulttypes.MoveResult;
 
 public class CarTest {
@@ -13,7 +14,7 @@ public class CarTest {
 
     @BeforeEach
     void setup() {
-        this.car = new Car(new CarName(TEST_CAR_NAME));
+        this.car = new Car(new PlayerName(TEST_CAR_NAME));
     }
 
     @ParameterizedTest
