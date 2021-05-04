@@ -18,6 +18,12 @@ class CarsTest {
 	}
 
 	@Test
+	@DisplayName("자동차 몇대 인지 확인")
+	void countCar() {
+		assertThat(cars.getCarCount()).isEqualTo(3);
+	}
+
+	@Test
 	@DisplayName("자동차들이 전부 움직였는지 확인")
 	void moveForwardAll() {
 		cars.race(Arrays.asList(4, 5, 8));

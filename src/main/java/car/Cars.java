@@ -7,9 +7,11 @@ import java.util.List;
 public class Cars {
 
 	private List<Car> carList;
+	private int carCount;
 
 	public Cars(String names) {
 		this.carList = mapCarList(names);
+		this.carCount = carList.size();
 	}
 
 	public static List<Car> mapCarList(String names) {
@@ -31,5 +33,9 @@ public class Cars {
 
 	List<Car> callCarList() {
 		return this.carList;
+	}
+
+	public int getCarCount() {
+		return carCount;
 	}
 }
