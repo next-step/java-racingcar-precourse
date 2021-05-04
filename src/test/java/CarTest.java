@@ -48,4 +48,13 @@ class CarTest {
 		assertThat(Car.isValidCarName("123456")).isEqualTo(1);
 	}
 
+	@Test
+	@DisplayName("자동차 대수 검증")
+	void isValidCarCount() {
+		String[] test1 = {"1"};
+		String[] test2 = {"1", "2"};
+		assertThat(Car.isValidCarCount(test1)).isFalse();
+		assertThat(Car.isValidCarCount(test2)).isFalse();
+	}
+
 }
