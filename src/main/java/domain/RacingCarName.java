@@ -1,11 +1,15 @@
+package domain;
+
 import java.util.Objects;
+
+import util.StringUtils;
 
 public class RacingCarName {
 	private static final Integer MIN_LENGTH = 1;
 	private static final Integer MAX_LENGTH = 5;
 	private final String name;
 
-	RacingCarName(String name) {
+	public RacingCarName(String name) {
 		this.name = name;
 		StringUtils.validateEmptyString(this.name);
 		validateNameLength();
@@ -22,7 +26,7 @@ public class RacingCarName {
 		}
 	}
 
-	boolean isValidNameLength() {
+	public boolean isValidNameLength() {
 		return this.name.length() >= MIN_LENGTH && this.name.length() <= MAX_LENGTH;
 	}
 

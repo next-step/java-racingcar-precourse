@@ -1,4 +1,9 @@
+package view;
+
 import java.util.Scanner;
+
+import domain.RacingCars;
+import domain.RunCount;
 
 public class InputView {
 	public static RacingCars racingCarNamesView() {

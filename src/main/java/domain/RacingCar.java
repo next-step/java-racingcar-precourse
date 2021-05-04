@@ -1,10 +1,14 @@
+package domain;
+
 import java.util.Objects;
+
+import util.RandomUtils;
 
 public class RacingCar {
 	private final RacingCarName racingCarName;
 	private final MoveCount moveCount;
 
-	RacingCar(String name) {
+	public RacingCar(String name) {
 		this.racingCarName = new RacingCarName(name);
 		this.moveCount = new MoveCount(0);
 	}
@@ -26,7 +30,7 @@ public class RacingCar {
 		return Objects.hash(racingCarName);
 	}
 
-	boolean isMoveNumber(int moveNumber) {
+	public boolean isMoveNumber(int moveNumber) {
 		return moveNumber >= 4;
 	}
 

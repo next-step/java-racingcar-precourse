@@ -1,3 +1,5 @@
+package util;
+
 public class StringUtils {
 	public static void validateEmptyString(String s) {
 		if (isEmpty(s)) {

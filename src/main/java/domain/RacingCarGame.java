@@ -1,4 +1,9 @@
+package domain;
+
 import java.util.List;
+
+import view.InputView;
+import view.OutputView;
 
 public class RacingCarGame {
 	private RacingCars racingCars;

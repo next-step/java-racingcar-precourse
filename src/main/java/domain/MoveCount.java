@@ -1,3 +1,5 @@
+package domain;
+
 public class MoveCount {
 	private int count;
 
@@ -9,7 +11,7 @@ public class MoveCount {
 		return this.count;
 	}
 
-	void plus() {
+	public void plus() {
 		this.count++;
 	}
 }

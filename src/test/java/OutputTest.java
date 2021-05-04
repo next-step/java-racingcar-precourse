@@ -2,6 +2,8 @@ import static org.assertj.core.api.AssertionsForInterfaceTypes.*;
 
 import org.junit.jupiter.api.Test;
 
+import view.OutputView;
+
 public class OutputTest {
 	@Test
 	public void 레이싱카_이동_거리_출력_검증() {

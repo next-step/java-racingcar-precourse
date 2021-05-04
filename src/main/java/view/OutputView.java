@@ -1,4 +1,9 @@
+package view;
+
 import java.util.List;
+
+import domain.RacingCar;
+import domain.RacingCars;
 
 public class OutputView {
 	public static void currentCarsView(int count, RacingCars racingCars) {
@@ -11,7 +16,7 @@ public class OutputView {
 		System.out.println();
 	}
 
-	static String mapCount(int moveCount) {
+	public static String mapCount(int moveCount) {
 		StringBuilder builder = new StringBuilder();
 		for (int i = 0; i < moveCount; i++) {
 			builder.append("-");

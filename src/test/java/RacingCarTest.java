@@ -3,6 +3,9 @@ import static org.assertj.core.api.AssertionsForInterfaceTypes.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import domain.RacingCar;
+import domain.RacingCars;
+
 public class RacingCarTest {
 	private RacingCar racingCar;
 	private RacingCars racingCars;

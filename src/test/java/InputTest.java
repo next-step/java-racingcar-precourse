@@ -2,6 +2,12 @@ import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import domain.RacingCarName;
+import domain.RacingCars;
+import domain.RunCount;
+import util.StringUtils;
+import view.InputView;
+
 public class InputTest {
 	@Test
 	public void 레이싱카_네이밍_분리_테스트() {

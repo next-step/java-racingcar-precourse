@@ -1,3 +1,7 @@
+package domain;
+
+import util.StringUtils;
+
 public class RunCount {
 	private final Integer count;
 
@@ -17,7 +21,7 @@ public class RunCount {
 		return runCount == null;
 	}
 
-	boolean isNotValidNumber(String count) {
+	public boolean isNotValidNumber(String count) {
 		return !count.matches("^[1-9][0-9]*$");
 	}
 }

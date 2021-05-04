@@ -1,3 +1,5 @@
+package domain;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -5,7 +7,7 @@ import java.util.List;
 public class RacingCars {
 	private final List<RacingCar> cars;
 
-	RacingCars(String[] cars) {
+	public RacingCars(String[] cars) {
 		this.cars = mapRacingCar(cars);
 		validateOverlappedCarName();
 		validMinimumCarCount();
@@ -39,11 +41,11 @@ public class RacingCars {
 		return racingCars == null;
 	}
 
-	boolean isNotMinimumCarCount() {
+	public boolean isNotMinimumCarCount() {
 		return this.cars.size() < 2;
 	}
 
-	boolean containOverlappedCar() {
+	public boolean containOverlappedCar() {
 		return this.cars.size() != new HashSet<RacingCar>(this.cars).size();
 	}
 
@@ -53,7 +55,7 @@ public class RacingCars {
 		}
 	}
 
-	int maxCount() {
+	public int maxCount() {
 		int currentMaxCount = -1;
 		for (RacingCar racingCar : this.get()) {
 			currentMaxCount = Math.max(currentMaxCount, racingCar.getMoveCount().get());

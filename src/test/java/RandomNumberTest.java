@@ -1,5 +1,7 @@
 import org.junit.jupiter.api.Test;
 
+import util.RandomUtils;
+
 public class RandomNumberTest {
 	private final int RANDOM_TEST_COUNT = 100;
 
