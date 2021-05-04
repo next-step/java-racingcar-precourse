@@ -1,5 +1,7 @@
 package com.freeefly.validator;
 
+import static com.freeefly.config.RacingConfig.CAR_NAME_LENGTH_LIMIT;
+
 public class CarNameValidator {
     public Boolean isNameValid(String carNames) {
         String[] names = carNames.split(",");
@@ -19,6 +21,6 @@ public class CarNameValidator {
     }
 
     private boolean isNameLengthValid(String name) {
-        return name.length() > 0 && name.length() <= 5;
+        return name.length() > 0 && name.length() <= CAR_NAME_LENGTH_LIMIT;
     }
 }
