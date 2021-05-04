@@ -7,35 +7,35 @@ public class RacingCarColosseum {
         this.randomGenerator = randomGenerator;
     }
 
-    public CarPlayerContainer play(PlayerNameContainer playerNameContainer, TrialCount trialCount) {
-        CarPlayerContainer carPlayerContainer = this.createCarPlayers(playerNameContainer);
+    public CarPlayerContainer play(PlayerNameContainer playerNames, TrialCount trialCount) {
+        CarPlayerContainer carPlayers = this.createCarPlayers(playerNames);
 
         System.out.println(START_GAME_HEADER_MSG);
-        proceedGameTurns(carPlayerContainer, trialCount);
+        proceedGameTurns(carPlayers, trialCount);
 
-        return carPlayerContainer.getWinners();
+        return carPlayers.getWinners();
     }
 
-    private CarPlayerContainer createCarPlayers(PlayerNameContainer playerNameContainer) {
-        CarPlayerContainer carPlayerContainer = new CarPlayerContainer();
+    private CarPlayerContainer createCarPlayers(PlayerNameContainer playerNames) {
+        CarPlayerContainer carPlayers = new CarPlayerContainer();
 
-        for (PlayerName playerName : playerNameContainer.getNames()) {
-            carPlayerContainer.add(new CarPlayer(playerName, this.randomGenerator));
+        for (PlayerName playerName : playerNames.getNames()) {
+            carPlayers.add(new CarPlayer(playerName, this.randomGenerator));
         }
 
-        return carPlayerContainer;
+        return carPlayers;
     }
 
-    private void proceedGameTurns(CarPlayerContainer carPlayerContainer, TrialCount trialCount) {
+    private void proceedGameTurns(CarPlayerContainer carPlayers, TrialCount trialCount) {
         for (int i = 0; i < trialCount.getTrialCount(); i++) {
             System.out.println(String.format(GAME_TURN_HEAD_MSG_FORMAT, i + 1));
-            this.proceedGameTurn(carPlayerContainer);
+            this.proceedGameTurn(carPlayers);
             System.out.println();
         }
     }
 
-    private void proceedGameTurn(CarPlayerContainer carPlayerContainer) {
-        for (CarPlayer player : carPlayerContainer.getPlayers()) {
+    private void proceedGameTurn(CarPlayerContainer carPlayers) {
+        for (CarPlayer player : carPlayers.getPlayers()) {
             player.tryMoveCar();
             System.out.println(player.toString());
         }

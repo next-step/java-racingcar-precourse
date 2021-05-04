@@ -13,20 +13,20 @@ public class RacingCarGame {
     }
 
     public PlayResult play(String playerNamesInput, String trialCountInput) {
-        Optional<PlayerNameContainer> mayPlayerNameContainer = this.userInputParser.parsePlayerNames(playerNamesInput);
+        Optional<PlayerNameContainer> mayPlayerNames = this.userInputParser.parsePlayerNames(playerNamesInput);
         Optional<TrialCount> mayTrialCount = this.userInputParser.parseTrialCount(trialCountInput);
 
-        if (!mayPlayerNameContainer.isPresent() || !mayTrialCount.isPresent()) {
+        if (!mayPlayerNames.isPresent() || !mayTrialCount.isPresent()) {
             return PlayResult.INVALID_INPUT;
         }
 
-        this.playInColosseum(mayPlayerNameContainer.get(), mayTrialCount.get());
+        this.playInColosseum(mayPlayerNames.get(), mayTrialCount.get());
 
         return PlayResult.PLAYED;
     }
 
-    private void playInColosseum(PlayerNameContainer playerNameContainer, TrialCount trialCount) {
-        CarPlayerContainer winners = this.racingCarColosseum.play(playerNameContainer, trialCount);
+    private void playInColosseum(PlayerNameContainer playerNames, TrialCount trialCount) {
+        CarPlayerContainer winners = this.racingCarColosseum.play(playerNames, trialCount);
 
         System.out.println(winners.toString() + WINNER_MSG_TAIL);
     }

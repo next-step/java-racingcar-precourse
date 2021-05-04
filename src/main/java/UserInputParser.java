@@ -3,14 +3,14 @@ import java.util.Optional;
 public class UserInputParser {
 
     public Optional<PlayerNameContainer> parsePlayerNames(String userInput) {
-        PlayerNameContainer playerNameContainer = null;
+        PlayerNameContainer playerNames = null;
 
         try {
-            playerNameContainer = new PlayerNameContainer(userInput.split(","));
+            playerNames = new PlayerNameContainer(userInput.split(","));
         } catch (IllegalArgumentException e) {
         }
 
-        return Optional.ofNullable(playerNameContainer);
+        return Optional.ofNullable(playerNames);
     }
 
     public Optional<TrialCount> parseTrialCount(String trialCntInput) {

@@ -7,11 +7,11 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class CarPlayerContainerTest {
-    private CarPlayerContainer carPlayerContainer;
+    private CarPlayerContainer carPlayers;
 
     @BeforeEach
     void setup() {
-        this.carPlayerContainer = new CarPlayerContainer();
+        this.carPlayers = new CarPlayerContainer();
     }
 
     @Test
@@ -21,11 +21,11 @@ public class CarPlayerContainerTest {
             CarPlayer carPlayer = mock(CarPlayer.class);
             when(carPlayer.getMoveCount()).thenReturn(i);
 
-            this.carPlayerContainer.add(carPlayer);
+            this.carPlayers.add(carPlayer);
         }
 
-        Assertions.assertThat(this.carPlayerContainer.getWinners().size()).isGreaterThan(0);
-        Assertions.assertThat(this.carPlayerContainer.getWinners().get(0).getMoveCount()).isEqualTo(9);
+        Assertions.assertThat(this.carPlayers.getWinners().size()).isGreaterThan(0);
+        Assertions.assertThat(this.carPlayers.getWinners().get(0).getMoveCount()).isEqualTo(9);
     }
 
     @Test
@@ -35,11 +35,11 @@ public class CarPlayerContainerTest {
             CarPlayer carPlayer = mock(CarPlayer.class);
             when(carPlayer.getMoveCount()).thenReturn(i);
 
-            this.carPlayerContainer.add(carPlayer);
+            this.carPlayers.add(carPlayer);
         }
 
-        Assertions.assertThat(this.carPlayerContainer.getWinners().size()).isGreaterThan(0);
-        Assertions.assertThat(this.carPlayerContainer.getWinners().get(0).getMoveCount()).isEqualTo(9);
+        Assertions.assertThat(this.carPlayers.getWinners().size()).isGreaterThan(0);
+        Assertions.assertThat(this.carPlayers.getWinners().get(0).getMoveCount()).isEqualTo(9);
     }
 
     @Test
@@ -49,10 +49,10 @@ public class CarPlayerContainerTest {
             CarPlayer carPlayer = mock(CarPlayer.class);
             when(carPlayer.getMoveCount()).thenReturn(i % 3);
 
-            this.carPlayerContainer.add(carPlayer);
+            this.carPlayers.add(carPlayer);
         }
 
-        Assertions.assertThat(this.carPlayerContainer.getWinners().size()).isEqualTo(3);
-        Assertions.assertThat(this.carPlayerContainer.getWinners().get(0).getMoveCount()).isEqualTo(2);
+        Assertions.assertThat(this.carPlayers.getWinners().size()).isEqualTo(3);
+        Assertions.assertThat(this.carPlayers.getWinners().get(0).getMoveCount()).isEqualTo(2);
     }
 }

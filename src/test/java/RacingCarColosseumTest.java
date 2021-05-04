@@ -21,10 +21,10 @@ public class RacingCarColosseumTest {
     @CsvSource(value = {"zcv,wer,qwer:5", "pobi,crong,honux,korsa:10"}, delimiter = ':')
     @DisplayName("게임이 진행되고 나면 적어도 한 명 이상의 우승자가 나와야 한다.")
     void play_on_normal_case(String playerNamesInput, String trialCountInput) {
-        PlayerNameContainer playerNameContainer = new PlayerNameContainer(playerNamesInput.split(","));
+        PlayerNameContainer playerNames = new PlayerNameContainer(playerNamesInput.split(","));
         TrialCount trialCount = new TrialCount(trialCountInput);
 
-        CarPlayerContainer winners = this.racingCarColosseum.play(playerNameContainer, trialCount);
+        CarPlayerContainer winners = this.racingCarColosseum.play(playerNames, trialCount);
 
         Assertions.assertThat(winners.size()).isGreaterThan(0);
     }
@@ -33,25 +33,25 @@ public class RacingCarColosseumTest {
     @CsvSource(value = {"zcv,wer,qwer:5", "pobi,crong,honux,korsa:10"}, delimiter = ':')
     @DisplayName("게임이 진행되고 모든 랜덤 값이 전진 조건을 만족하지 못하면 전원 우승자가 된다.")
     void play_when_every_random_value_not_satisfy_trial_condition(String playerNamesInput, String trialCountInput) {
-        PlayerNameContainer playerNameContainer = new PlayerNameContainer(playerNamesInput.split(","));
+        PlayerNameContainer playerNames = new PlayerNameContainer(playerNamesInput.split(","));
         TrialCount trialCount = new TrialCount(trialCountInput);
         when(this.randomGenerator.get()).thenReturn(Car.STAY_MAX_RANDOM_VALUE);
 
-        CarPlayerContainer winners = this.racingCarColosseum.play(playerNameContainer, trialCount);
+        CarPlayerContainer winners = this.racingCarColosseum.play(playerNames, trialCount);
 
-        Assertions.assertThat(winners.size()).isEqualTo(playerNameContainer.size());
+        Assertions.assertThat(winners.size()).isEqualTo(playerNames.size());
     }
 
     @ParameterizedTest
     @CsvSource(value = {"zcv,wer,qwer:5", "pobi,crong,honux,korsa:10"}, delimiter = ':')
     @DisplayName("게임이 진행되고 모든 랜덤 값이 전진 조건을 만족하면 전원 우승자가 된다.")
     void play_when_every_random_value_satisfy_trial_condition(String playerNamesInput, String trialCountInput) {
-        PlayerNameContainer playerNameContainer = new PlayerNameContainer(playerNamesInput.split(","));
+        PlayerNameContainer playerNames = new PlayerNameContainer(playerNamesInput.split(","));
         TrialCount trialCount = new TrialCount(trialCountInput);
         when(this.randomGenerator.get()).thenReturn(Car.MOVE_MIN_RANDOM_VALUE);
 
-        CarPlayerContainer winners = this.racingCarColosseum.play(playerNameContainer, trialCount);
+        CarPlayerContainer winners = this.racingCarColosseum.play(playerNames, trialCount);
 
-        Assertions.assertThat(winners.size()).isEqualTo(playerNameContainer.size());
+        Assertions.assertThat(winners.size()).isEqualTo(playerNames.size());
     }
 }
