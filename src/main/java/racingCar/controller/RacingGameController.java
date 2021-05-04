@@ -2,6 +2,7 @@ package racingCar.controller;
 
 import racingCar.domain.RacingGame;
 import racingCar.view.InputView;
+import racingCar.view.TryResultsView;
 
 public class RacingGameController {
 
@@ -12,7 +13,8 @@ public class RacingGameController {
         RacingGame racingGame = new RacingGame(carNames, tryCount);
 
         while (racingGame.availableGame()) {
-            racingGame.race();
+            TryResultsView tryResultsView = racingGame.race();
+            tryResultsView.print();
         }
 
     }

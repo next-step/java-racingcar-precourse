@@ -1,5 +1,9 @@
 package racingCar.domain;
 
+import racingCar.view.TryResultsView;
+
+import java.util.List;
+
 public class RacingGame {
 
     private final Cars cars;
@@ -10,9 +14,10 @@ public class RacingGame {
         this.tryCount = new TryCount(tryCount);
     }
 
-    public void race() {
-        cars.move();
+    public TryResultsView race() {
+        List<TryResult> tryResults = cars.move();
         tryCount = tryCount.decrease();
+        return new TryResultsView(tryResults);
     }
 
     public boolean availableGame() {

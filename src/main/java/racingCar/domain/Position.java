@@ -6,8 +6,15 @@ public class Position {
 
     private final int position;
 
-    public Position(final int position) {
-        this.position = position;
+    public Position(final int number) {
+        if (number < 0) {
+            throw new IllegalArgumentException("음수값을 가질 수 없습니다.");
+        }
+        this.position = number;
+    }
+
+    public int getPosition() {
+        return this.position;
     }
 
     public Position move() {
@@ -26,4 +33,6 @@ public class Position {
     public int hashCode() {
         return Objects.hash(position);
     }
+
+
 }

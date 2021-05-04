@@ -19,9 +19,12 @@ public class Cars {
         return carList;
     }
 
-    public void move() {
+    public List<TryResult> move() {
+        List<TryResult> tryResults = new ArrayList<>();
         for (Car car : cars) {
-            car.move(new RandomMovable());
+            tryResults.add(car.move(new RandomMovable()));
         }
+        return tryResults;
     }
+
 }
