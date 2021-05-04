@@ -6,6 +6,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Track {
     List<Car> carList;
 
+
     public Track() {
         this.carList = new ArrayList<>();
     }
@@ -13,6 +14,12 @@ public class Track {
     public void addCar(Car car) {
         this.carList.add(car);
     }
+
+    public void addCars(List<Car> cars) {
+        this.carList.addAll(cars);
+    }
+
+
 
     public void race() {
         for (Car car : carList) {
