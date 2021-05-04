@@ -1,6 +1,7 @@
 import dto.RaceResult;
 import model.Car;
 import model.RacingCars;
+import model.TryCount;
 import model.Winners;
 import util.RandomUtil;
 import view.InputView;
@@ -14,7 +15,7 @@ public class RacingCarGame {
     public void start() {
         InputView inputView = new InputView();
         RacingCars racingCars = inputRacingCars(inputView);
-        int tryCount = inputTryCount(inputView);
+        TryCount tryCount = inputTryCount(inputView);
         inputView.exit();
 
         play(racingCars, tryCount);
@@ -33,18 +34,19 @@ public class RacingCarGame {
         return new RacingCars(cars);
     }
 
-    private int inputTryCount(InputView inputView) {
+    private TryCount inputTryCount(InputView inputView) {
         String tryCount = inputView.inputTryCount();
-        return Integer.parseInt(tryCount);
+        return new TryCount(tryCount);
     }
 
-    private void play(RacingCars racingCars, int tryCount) {
+    private void play(RacingCars racingCars, TryCount tryCount) {
         OutputView.printResultIntro();
 
-        while (tryCount-- > 0) {
+        while (tryCount.isTrying()) {
             List<Integer> randomNumbers = RandomUtil.generateRandomNumbers(racingCars.getSize());
             RaceResult result = racingCars.race(randomNumbers);
             OutputView.printResult(result);
+            tryCount.decreaseCount();
         }
     }
 
