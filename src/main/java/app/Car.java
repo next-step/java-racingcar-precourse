@@ -1,5 +1,7 @@
 package app;
 
+import java.util.Random;
+
 public class Car {
 
 	private String name;
@@ -20,15 +22,30 @@ public class Car {
 		this.isWin = false;
 	}
 
+	public Car() {
+	}
+
 	public void go() {
-		this.position += 1;
+		Random rand = new Random();   
+	    // Generate random integers in range 0 to 9   
+	    int r = rand.nextInt(10);     
+		if(r >= 4) {
+			this.position += 1;			
+		}
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
+	public void setName(String name) throws NameException, NullPointerException {
+		
+		if(name == null || name.length() ==0 ) {
+			throw new NullPointerException();
+		}
+		if(name.length() > 5) {
+			throw new NameException("이름이 너무 깁니다.");
+		}
 		this.name = name;
 	}
 
@@ -55,6 +72,9 @@ public class Car {
 			sb.append("-");
 		}
 		return name + " : " + sb.toString();
+	}
+
+	public void play() {
 	}
 
 }
