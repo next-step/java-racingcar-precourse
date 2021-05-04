@@ -63,9 +63,9 @@ public class Game {
 
 	private void printWinner(ArrayList<Car> winCarList) {
 		for (int i = 0; i < winCarList.size() - 1; i++) {
-			System.out.print(winCarList.get(i) + ", ");
+			System.out.print(winCarList.get(i).getName() + ", ");
 		}
-		System.out.println(winCarList.get(winCarList.size() - 1) + "가 최종 우승했습니다.");
+		System.out.println(winCarList.get(winCarList.size() - 1).getName() + "가 최종 우승했습니다.");
 	}
 
 	private void playGame() {
@@ -76,8 +76,9 @@ public class Game {
 
 	private void printOutCome() {
 		for (Car car : list) {
-			car.toString();
+			System.out.println(car.toString());
 		}
+		System.out.println();
 	}
 
 	private void inputPlayRound() {
@@ -92,6 +93,7 @@ public class Game {
 		while (st.hasMoreTokens()) {
 			Car car = new Car();
 			list.add(car);
+			car.setName(st.nextToken().trim());
 		}
 	}
 

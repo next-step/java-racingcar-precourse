@@ -23,6 +23,9 @@ public class Car {
 	}
 
 	public Car() {
+		this.name = null;
+		this.position = 0;
+		this.isWin = false;
 	}
 
 	public void go() {
