@@ -5,11 +5,8 @@ public class Car {
     public static final int STAY_MAX_RANDOM_VALUE = 3;
 
     private MoveHistory moveHistory;
-    private PlayerName playerName;
 
-    public Car(PlayerName playerName) {
-        this.playerName = playerName;
-
+    public Car() {
         this.moveHistory = new MoveHistory();
     }
 
@@ -27,10 +24,6 @@ public class Car {
         return this.moveHistory.countMoves();
     }
 
-    public PlayerName getPlayerName() {
-        return this.playerName;
-    }
-
     public String printMoveHistory() {
         return this.moveHistory.toString();
     }
@@ -39,7 +32,6 @@ public class Car {
     public String toString(){
         StringBuilder sb = new StringBuilder();
 
-        sb.append(this.getPlayerName().toString() + " : ");
         sb.append(this.printMoveHistory());
         sb.append(String.format(" (%d)", this.getMoveCount()));
 

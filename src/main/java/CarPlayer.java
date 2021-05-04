@@ -1,9 +1,11 @@
 public class CarPlayer {
+    private PlayerName playerName;
     private Car car;
     private RandomGenerator randomGenerator;
 
     public CarPlayer(PlayerName playerName, RandomGenerator randomGenerator) {
-        this.car = new Car(playerName);
+        this.playerName = playerName;
+        this.car = new Car();
         this.randomGenerator = randomGenerator;
     }
 
@@ -16,11 +18,16 @@ public class CarPlayer {
     }
 
     public PlayerName getPlayerName() {
-        return this.car.getPlayerName();
+        return this.playerName;
     }
 
     @Override
     public String toString() {
-        return this.car.toString();
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(this.playerName.toString() + " : ");
+        sb.append(this.car.toString());
+
+        return sb.toString();
     }
 }

@@ -8,13 +8,12 @@ import org.junit.jupiter.params.provider.CsvSource;
 import resulttypes.MoveResult;
 
 public class CarTest {
-    private static final String TEST_CAR_NAME = "test";
 
     private Car car;
 
     @BeforeEach
     void setup() {
-        this.car = new Car(new PlayerName(TEST_CAR_NAME));
+        this.car = new Car();
     }
 
     @ParameterizedTest
