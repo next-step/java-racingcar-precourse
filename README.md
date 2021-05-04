@@ -6,7 +6,7 @@
 ## 과제 제출 과정
 * [과제 제출 방법](https://github.com/next-step/nextstep-docs/tree/master/precourse)
 
-## 구현할 구현 목록
+## 구현할 기능 목록
 
 * 경주 할 자동차 이름 Input View 단에서 입력(UI)
 * 입력 받은 경주 자동차 입력 검증
