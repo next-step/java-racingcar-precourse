@@ -2,7 +2,9 @@ package car;
 
 import static org.assertj.core.api.Assertions.*;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -59,5 +61,32 @@ class CarsTest {
 		cars.showCarsIndex();
 		cars.race(Arrays.asList(1, 7, 5));
 		cars.showCarsIndex();
+	}
+
+	@Test
+	@DisplayName("우승자 자동차 리스트 확인")
+	void findWinnerCar() {
+		cars.race(Arrays.asList(0, 5, 5));
+		cars.race(Arrays.asList(2, 6, 6));
+		cars.race(Arrays.asList(5, 7, 7));
+		cars.race(Arrays.asList(3, 5, 5));
+		List<Car> maxCars = new ArrayList<>();
+		List<Car> carList = cars.callCarList();
+		cars.findWinnerCar(maxCars, carList.get(0));
+		cars.findWinnerCar(maxCars, carList.get(1));
+		cars.findWinnerCar(maxCars, carList.get(2));
+		assertThat(maxCars.get(0).getName()).isEqualTo("crong");
+		assertThat(maxCars.get(1).getName()).isEqualTo("honux");
+	}
+
+	@Test
+	@DisplayName("우승자 확인")
+	void findWinner() {
+		cars.race(Arrays.asList(0, 5, 5));
+		cars.race(Arrays.asList(2, 6, 6));
+		cars.race(Arrays.asList(5, 7, 7));
+		cars.race(Arrays.asList(3, 5, 5));
+		String winner = cars.reportRace();
+		System.out.println(winner);
 	}
 }
