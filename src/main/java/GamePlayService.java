@@ -15,17 +15,17 @@ public class GamePlayService {
 	private Cars creatCars() {
 		List<Car> carList = new ArrayList<>();
 		String[] carNameArr = new Cars(null, 0).getCarNames();
-		int playCount = getPlayCount();
+		int raceCount = getRaceCount();
 
 		for (String carName : carNameArr) {
 			carList.add(new Car(carName));
 		}
-		return new Cars(carList, playCount);
+		return new Cars(carList, raceCount);
 	}
 
 	// 레이스 시작
 	private void playRace(Cars cars) {
-		for (int i = 0; i < cars.getPlayCount(); i++) {
+		for (int i = 0; i < cars.getRaceCount(); i++) {
 			cars.goRace();
 		}
 	}
@@ -41,8 +41,8 @@ public class GamePlayService {
 
 
 	// 1 이상인지 검증
-	boolean isAboveMinimum(int playCount) {
-		if (1 > playCount) {
+	boolean isAboveMinimum(int raceCount) {
+		if (1 > raceCount) {
 			System.out.println("1이상의 숫자를 입력해 주세요.");
 			return false;
 		}
@@ -50,9 +50,9 @@ public class GamePlayService {
 	}
 
 	// 숫자인지 검증
-	boolean isNumber(String playCount) {
+	boolean isNumber(String raceCount) {
 		try {
-			return isAboveMinimum(Integer.parseInt(playCount));
+			return isAboveMinimum(Integer.parseInt(raceCount));
 		} catch (NumberFormatException e) {
 			System.out.println("숫자를 입력해 주세요.");
 			return false;
@@ -60,13 +60,13 @@ public class GamePlayService {
 	}
 
 	// 레이싱 횟수 얻기
-	int getPlayCount() {
-		String playCount;
+	int getRaceCount() {
+		String raceCount;
 		do {
 			System.out.println("시도할 회수는 몇 회인가요?");
-			playCount = new Scanner(System.in).nextLine();
-		} while (!isNumber(playCount));
-		return Integer.parseInt(playCount);
+			raceCount = new Scanner(System.in).nextLine();
+		} while (!isNumber(raceCount));
+		return Integer.parseInt(raceCount);
 	}
 
 }

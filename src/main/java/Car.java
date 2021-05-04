@@ -50,8 +50,8 @@ public class Car {
 	}
 
 	// 자동차 우승 여부 얻기
-	public boolean isWinner(int playCount) {
-		return getCarMileage() == playCount;
+	public boolean isWinner(int raceCount) {
+		return getCarMileage() == raceCount;
 	}
 
 }
