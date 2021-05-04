@@ -28,4 +28,17 @@ class PositionTest {
 
 		assertThat(position.getValue()).isEqualTo(expectedValue);
 	}
+
+	@Test
+	@DisplayName("기본값 보다 작은 값을 가질 수 없음")
+	void minimalValue(){
+		int value = 0;
+		String message = "기본값 1 보다 작을 수 없습니다.";
+
+		assertThatIllegalArgumentException()
+			.isThrownBy(() -> new Position(value))
+			.withMessage(message)
+		;
+
+	}
 }
