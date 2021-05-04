@@ -29,5 +29,10 @@ class CarTest {
 		assertThat(car.print()).isEqualTo(name);
 	}
 
+	@Test
+	@DisplayName("자동차_이름_5자이하_테스트")
+	void 자동차_이름_5자이하_테스트() {
+		assertThatThrownBy(() -> new Car("이름이5자가넘을때")).isInstanceOf(IllegalArgumentException.class);
+	}
 
 }
