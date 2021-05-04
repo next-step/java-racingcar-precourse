@@ -51,4 +51,15 @@ class CarsTest {
 		}
 	}
 
+	@Test
+	@DisplayName("레이스 시작")
+	public void playRace() {
+		for (int i = 0; i < classCars.getRaceCount(); i++) {
+			classCars.goRace();
+		}
+		for (Car car : classCars.getCarList()) {
+			assertThat(car.getCarMileage()).isBetween(0, 10);
+		}
+	}
+
 }
