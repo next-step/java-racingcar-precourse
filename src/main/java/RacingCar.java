@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class RacingCar {
@@ -17,6 +18,8 @@ public class RacingCar {
         String roundInput = scanner.next();
         int rounds = Integer.parseInt(roundInput);
 
+        System.out.println();
+        System.out.println();
         System.out.println("실행 결과");
         String[] progresses = new String[carNames.length];
         for(int i = 0; i < rounds; i++) {
@@ -32,6 +35,23 @@ public class RacingCar {
             }
             System.out.println();
         }
+
+        int maxLength = 0;
+        for(String progress: progresses) {
+            if(progress.length() > maxLength) {
+                maxLength = progress.length();
+            }
+        }
+
+        ArrayList<String> winners = new ArrayList<String>();
+        for(int i = 0; i < carNames.length; i++) {
+            if(progresses[i].length() == maxLength) {
+                winners.add(carNames[i]);
+            }
+        }
+        
+        System.out.println();
+        System.out.println(String.join(",", winners) + "가 최종 우승했습니다.");
 
         scanner.close();
     }
