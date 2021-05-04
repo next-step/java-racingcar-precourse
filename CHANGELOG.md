@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/frostnight/java-racingcar-precourse/compare/v1.2.5...v1.3.0) (2021-05-04)
+
+
+### Features
+
+* 우승자 확인 기능 추가 ([d76ee60](https://github.com/frostnight/java-racingcar-precourse/commit/d76ee60d95f379f9181392345c69545889c11508))
+
 ### [1.2.5](https://github.com/frostnight/java-racingcar-precourse/compare/v1.2.4...v1.2.5) (2021-05-04)
 
 ### [1.2.4](https://github.com/frostnight/java-racingcar-precourse/compare/v1.2.3...v1.2.4) (2021-05-04)
