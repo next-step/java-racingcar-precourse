@@ -3,6 +3,7 @@ package com;
 import java.util.Scanner;
 
 import com.racingcar.RacingCars;
+import com.racingcar.input.TryCount;
 
 public class RacingCarManager {
 	private static final String START_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
@@ -17,14 +18,14 @@ public class RacingCarManager {
 			RacingCars racingCars = RacingCars.of(sc.nextLine());
 
 			System.out.println(REPEAT_COUNT_MESSAGE);
-			start(racingCars, sc.nextInt());
+			start(racingCars, new TryCount(sc.nextLine()));
 
 			System.out.println(RacingCars.winnerNamesIn(racingCars) + FINAL_RESULT_MESSAGE);
 		}
 	}
 
-	public static void start(RacingCars racingCars, int repeatCount) {
-		for (int i = 0; i < repeatCount; i++) {
+	public static void start(RacingCars racingCars, TryCount tryCount) {
+		for (int i = 0; i < tryCount.getValue(); i++) {
 			racingCars.startByCar();
 			racingCars.printNameAndLocationByCar();
 
