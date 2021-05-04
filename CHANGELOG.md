@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/frostnight/java-racingcar-precourse/compare/v1.0.4...v1.1.0) (2021-05-04)
+
+
+### Features
+
+* 사용자 입력 기능 개발 ([adb15ee](https://github.com/frostnight/java-racingcar-precourse/commit/adb15eef12d514ca76fa5787e69af307bc4db5ad))
+
 ### [1.0.4](https://github.com/frostnight/java-racingcar-precourse/compare/v1.0.3...v1.0.4) (2021-05-04)
 
 ### [1.0.3](https://github.com/frostnight/java-racingcar-precourse/compare/v1.0.2...v1.0.3) (2021-05-03)
