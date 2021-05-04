@@ -26,6 +26,7 @@ public class RaceResults {
 			getCarDrivenStatuses(car).add(drivenStatus);
 			raceResults.put(car, getCarDrivenStatuses(car));
 		}
+		System.out.println(print());
 	}
 
 	private void countGoMap(Car car, CarDrivenStatus drivenStatus) {
