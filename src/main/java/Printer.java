@@ -23,7 +23,7 @@ public class Printer {
 
     private static String generatePositionDash(Car car) {
         StringBuilder stringBuffer = new StringBuilder();
-        for (int i=0;i<car.getPosition();i++) {
+        for (int i = 0; i < car.getPosition(); i++) {
             stringBuffer.append("-");
         }
         return stringBuffer.toString();
@@ -31,5 +31,21 @@ public class Printer {
 
     public static void printRaceStart() {
         System.out.println("실행 결과");
+    }
+
+    public static void printWinners(List<Car> winners) {
+        System.out.println(getWinnerString(winners) + "가 최종우승 했습니다.");
+
+    }
+
+    private static String getWinnerString(List<Car> winners) {
+        StringBuilder stringBuffer = new StringBuilder();
+        for (Car car : winners){
+            stringBuffer.append(car.getName());
+            stringBuffer.append(",");
+        }
+        stringBuffer.deleteCharAt(stringBuffer.length()-1);
+        return stringBuffer.toString();
+
     }
 }

@@ -25,7 +25,12 @@ public class GameProcessController {
         while (raceCount++ < maxRaceCount) {
             race();
         }
+        finalPhase();
 
+    }
+
+    private void finalPhase() {
+        Printer.printWinners(track.getWinners());
     }
 
     private void race() {
