@@ -7,12 +7,14 @@ import java.util.List;
 public class Winners {
 	List<String> winners = new ArrayList<>();
 
-	public void add(String name) {
-		winners.add(name);
+	public void addWinner(int maxDistance, Car car) {
+		if (maxDistance == car.getDistance()) {
+			winners.add(car.getName());
+		}
 	}
 
 	@Override
 	public String toString() {
-		return Arrays.toString(winners.toArray()).replaceAll("\\[","").replaceAll("]","");
+		return Arrays.toString(winners.toArray()).replaceAll("\\[", "").replaceAll("]", "");
 	}
 }

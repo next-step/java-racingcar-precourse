@@ -26,20 +26,17 @@ public class RacingCar {
 
 	public String getWinners() {
 		Winners winners = new Winners();
-		int max;
-		cars.sort(Car::compareTo);
-		max = cars.get(0).getDistance();
+		int max = this.getMaxDistance();
 
 		for (int i = 0; i < cars.size(); i++) {
-			addWinner(winners, max, cars.get(i));
+			winners.addWinner(max, cars.get(i));
 		}
 
 		return winners.toString();
 	}
 
-	private void addWinner(Winners winners, int max, Car car) {
-		if (max == car.getDistance()) {
-			winners.add(car.getName());
-		}
+	private int getMaxDistance() {
+		cars.sort(Car::compareTo);
+		return cars.get(0).getDistance();
 	}
 }
