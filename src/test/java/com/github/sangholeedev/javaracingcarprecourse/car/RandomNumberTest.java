@@ -26,4 +26,25 @@ class RandomNumberTest {
 	void 랜덤숫자_조회_테스트() {
 		assertThat(randomNumber.getNumber()).isEqualTo(-1);
 	}
+
+	@Test
+	@DisplayName("랜덤숫자_random값_생성테스트")
+	void 랜덤숫자_random값_생성테스트() {
+		// given
+		randomNumber.generate();
+		// when & then
+		assertThat(randomNumber.getNumber()).isNotEqualTo(-1);
+	}
+
+	@Test
+	@DisplayName("랜덤숫자_random값_0_9_사이테스트")
+	void 랜덤숫자_random값_0_9_사이테스트() {
+		// given
+		randomNumber.generate();
+		// when & then
+		assertThat(randomNumber.getNumber()).isGreaterThanOrEqualTo(0);
+		assertThat(randomNumber.getNumber()).isLessThanOrEqualTo(9);
+	}
+
+
 }
