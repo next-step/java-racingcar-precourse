@@ -9,9 +9,9 @@ public class RetryHelperTest {
         RetryableCommand retryableCommand = new RetryableCommand();
         RetryHelper<Boolean, Integer> retryHelper = new RetryHelper<>(retryableCommand);
         assertThrows(Exception.class, () -> {
-            retryHelper.executeWithRetry(true);
+            retryHelper.execute(true);
         });
-        assertEquals(retryHelper.executeWithRetry(false), 1);
+        assertEquals(retryHelper.execute(false), 1);
 
     }
 
