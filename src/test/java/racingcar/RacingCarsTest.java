@@ -40,7 +40,7 @@ public class RacingCarsTest {
     }
 
     @Test
-    @DisplayName("사용자 수 만큼 carEvent 실행")
+    @DisplayName("사용자 숫자 만큼 carEvent 실행")
     void startRacing() {
         int count= 5;
         racingCars.startRacing(count);
