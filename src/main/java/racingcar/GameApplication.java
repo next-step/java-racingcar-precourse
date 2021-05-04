@@ -10,7 +10,7 @@ public class GameApplication {
         Print.write(GameMessage.INPUT_RACING_CAR_NAME);
         Scanner scanner = new Scanner(System.in);
         String carsName = scanner.nextLine();
-        List<RacingCar> racingCars = RacingCarFactory.create(carsName);
+        RacingCars racingCars = RacingCarFactory.create(carsName);
         Print.write(GameMessage.INPUT_NUMBER_OF_ADVANCES);
         GameCount gameCount = new GameCount(scanner.nextInt());
         Game game = new Game(racingCars, gameCount);

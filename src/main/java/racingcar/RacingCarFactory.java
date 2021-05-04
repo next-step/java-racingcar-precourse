@@ -7,10 +7,10 @@ public class RacingCarFactory {
 
     private RacingCarFactory() {}
 
-    private static List<RacingCar> racingCars;
+    private static RacingCars racingCars;
 
-    public static List<RacingCar> create(String carsName) {
-        racingCars = new ArrayList<>();
+    public static RacingCars create(String carsName) {
+        racingCars = new RacingCars();
         String[] carNames = carsName.split(",");
 
         for (String carName : carNames) {
@@ -23,7 +23,7 @@ public class RacingCarFactory {
     private static void generateIfNameCountBetweenOneAndFive(String carName) {
         if (Validation.checkNameLength(carName)) {
             RacingCar racingCar = new RacingCar(carName);
-            racingCars.add(racingCar);
+            racingCars.addRacingCar(racingCar);
         }
     }
 }

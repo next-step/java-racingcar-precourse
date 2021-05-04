@@ -1,14 +1,12 @@
 package racingcar;
 
-import java.util.List;
-
 public class Game {
 
     private final GameCount gameCount;
-    private final List<RacingCar> racingCars;
+    private final RacingCars racingCars;
     private int maxForward = 0;
 
-    public Game(List<RacingCar> racingCars, GameCount gameCount) {
+    public Game(RacingCars racingCars, GameCount gameCount) {
         this.racingCars = racingCars;
         this.gameCount = gameCount;
     }
@@ -26,7 +24,7 @@ public class Game {
 
     private void run() {
 
-        for (RacingCar racingCar : racingCars) {
+        for (RacingCar racingCar : racingCars.getRacingCars()) {
 
             boolean forward = Rule.forward(Generator.randomNumber());
             forwardWhenTheRulesAreOkay(racingCar, forward);
@@ -57,7 +55,7 @@ public class Game {
         Print.write(sb.toString());
     }
 
-    public String getVictoryMessage() {
+    private String getVictoryMessage() {
         searchMaxForward();
         return searchVictoryRacingCar() + GameMessage.VICTORY_MESSAGE;
     }
@@ -69,7 +67,7 @@ public class Game {
     private String getVictoryRacingCarNames() {
         StringBuilder victoryCarNames = new StringBuilder();
 
-        for (RacingCar racingCar : racingCars) {
+        for (RacingCar racingCar : racingCars.getRacingCars()) {
             if (racingCar.getNumberOfAdvances() == this.maxForward) {
                 victoryCarNames.append(racingCar.getName());
                 victoryCarNames.append(",");
@@ -82,7 +80,7 @@ public class Game {
     }
 
     private void searchMaxForward() {
-        for (RacingCar racingCar : racingCars) {
+        for (RacingCar racingCar : racingCars.getRacingCars()) {
             if (this.maxForward < racingCar.getNumberOfAdvances()) {
                 this.maxForward = racingCar.getNumberOfAdvances();
             }

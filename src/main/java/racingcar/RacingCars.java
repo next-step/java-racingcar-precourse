@@ -1,15 +1,28 @@
 package racingcar;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RacingCars {
-    private final List<RacingCar> racingCar;
+    private final List<RacingCar> racingCars;
 
-    public RacingCars(List<RacingCar> racingCar) {
-        this.racingCar = racingCar;
+    public RacingCars() {
+        this.racingCars = new ArrayList<>();
     }
 
-    public List<RacingCar> getRacingCar() {
-        return racingCar;
+    public RacingCars(List<RacingCar> racingCars) {
+        this.racingCars = racingCars;
+    }
+
+    public List<RacingCar> getRacingCars() {
+        return this.racingCars;
+    }
+
+    public void addRacingCar(RacingCar racingCar) {
+        this.racingCars.add(racingCar);
+    }
+
+    public int getSize() {
+        return this.racingCars.size();
     }
 }
