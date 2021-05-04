@@ -18,7 +18,8 @@ public class RacingCarMain {
     }
 
     private static void printRaceResult() {
-        RacingCarIO.printRaceResult(racingcarGame.getRaceRecords());
+        RacingCarIO.printExecuteResult(racingcarGame.getRaceRecords());
+        RacingCarIO.printWinners(racingcarGame.getWinner());
     }
 
     private static void generateRacingCarGame(String carNames, String round) {

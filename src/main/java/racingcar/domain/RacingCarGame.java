@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import java.util.List;
+
 import static racingcar.domain.constant.RacingCarConstant.SEPARATOR;
 
 public class RacingCarGame {
@@ -28,6 +30,10 @@ public class RacingCarGame {
 
     public String getRaceRecords() {
         return raceRecords.getRaceRecords();
+    }
+
+    public List<Car> getWinner() {
+        return cars.getWinners();
     }
 
 }

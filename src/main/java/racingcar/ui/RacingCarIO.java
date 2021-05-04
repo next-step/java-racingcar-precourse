@@ -1,5 +1,8 @@
 package racingcar.ui;
 
+import racingcar.domain.Car;
+
+import java.util.List;
 import java.util.Scanner;
 
 import static racingcar.ui.message.IOMessage.*;
@@ -17,13 +20,39 @@ public class RacingCarIO {
         return scanner.nextLine();
     }
 
-    public static void printRaceResult(String raceRecords) {
-        printlnMessage(RACE_RESULT.getMessage());
+    public static void printExecuteResult(String raceRecords) {
+        printlnMessage(EXECUTE_RESULT.getMessage());
         printlnMessage(raceRecords);
+    }
+
+    public static void printWinners(List<Car> winner) {
+        String winnerNames = toNames(winner);
+        printlnMessage(winnerNames + WINNER_SUFFIX.getMessage());
+    }
+
+    private static String toNames(List<Car> winner) {
+        StringBuilder sb = new StringBuilder();
+        int size = winner.size();
+        for (int i = 0; i < size; i++) {
+            sb.append(winner.get(i).getCarName());
+            sb.append(separator(size, i));
+        }
+        return sb.toString();
+    }
+
+    private static String separator(int size, int idx) {
+        if (size - 1 > idx) {
+            return ", ";
+        }
+        return "";
     }
 
     public static void printlnMessage(String message) {
         System.out.println(message);
+    }
+
+    public static void printMessage(String message) {
+        System.out.print(message);
     }
 
 }

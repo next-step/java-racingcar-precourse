@@ -4,6 +4,7 @@ import racingcar.exception.CarsException;
 import racingcar.exception.NameException;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Cars {
@@ -55,6 +56,30 @@ public class Cars {
 
     public List<Car> getCars() {
         return cars;
+    }
+
+    public List<Car> getWinners() {
+        List<Car> winners = new ArrayList<>();
+        int maxDistance = getMaxDistance();
+        for (Car car : cars) {
+            addWinner(winners, maxDistance, car);
+        }
+        return winners;
+    }
+
+    private void addWinner(List<Car> winners, int maxDistance, Car car) {
+        if (car.getDistance() == maxDistance) {
+            winners.add(car);
+        }
+    }
+
+    private int getMaxDistance() {
+        Collections.sort(cars);
+        return getFirstDistance();
+    }
+
+    private int getFirstDistance() {
+        return cars.get(0).getDistance();
     }
 
 }
