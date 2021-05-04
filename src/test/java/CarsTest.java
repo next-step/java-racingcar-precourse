@@ -51,7 +51,7 @@ class CarsTest {
 
 	@Test
 	@DisplayName("레이스 1회 수행 및 주행거리 표시")
-	public void goRace() {
+	void goRace() {
 		getClassCars().goRace();
 		List<Car> carList = getClassCars().getCarList();
 		for (Car car : carList) {
@@ -62,7 +62,7 @@ class CarsTest {
 
 	@Test
 	@DisplayName("레이스 시작")
-	public void playRace() {
+	void playRace() {
 		for (int i = 0; i < getClassCars().getRaceCount(); i++) {
 			getClassCars().goRace();
 		}
