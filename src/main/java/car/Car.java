@@ -8,6 +8,11 @@ public class Car {
 	private CarIndex carIndex;
 
 	public Car(String name) {
+
+		if ("".equals(name)) {
+			throw new IllegalArgumentException("자동차 이름은 필수이다.");
+		}
+
 		if (name.length() > NAME_LENGTH_MAX) {
 			throw new IllegalArgumentException("자동차 이름은 " + NAME_LENGTH_MAX + "자 이하만 가능하다.");
 		}
@@ -32,5 +37,15 @@ public class Car {
 
 	public void updateMoveIndex(CarStatus carStatus) {
 		this.carIndex.addIndex(carStatus);
+	}
+
+	public void showCarIndexStatus() {
+		if (getCarIndex().isIndex()) {
+			System.out.print(getName() + ":");
+		}
+		for (int i = 0; i < getCarIndex().getIndex(); i++) {
+			System.out.print("-");
+		}
+		System.out.println();
 	}
 }

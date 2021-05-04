@@ -64,4 +64,17 @@ public class CarTest {
 		car.updateMoveIndex(car.move(3));
 		assertThat(car.getCarIndex().getIndex()).isEqualTo(0);
 	}
+
+	@Test
+	@DisplayName("자동차 4번 이동 위치 상태 확인")
+	public void printMoveIndex() {
+		car.updateMoveIndex(car.move(5));
+		car.updateMoveIndex(car.move(4));
+		car.updateMoveIndex(car.move(3));
+		car.updateMoveIndex(car.move(6));
+		car.updateMoveIndex(car.move(7));
+		assertThat(car.getCarIndex().isIndex()).isTrue();
+		assertThat(car.getCarIndex().getIndex()).isEqualTo(4);
+		car.showCarIndexStatus();
+	}
 }
