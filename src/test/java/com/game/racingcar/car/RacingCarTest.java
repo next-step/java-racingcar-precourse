@@ -1,5 +1,6 @@
 package com.game.racingcar.car;
 
+import com.game.racingcar.car.impl.RacingCar;
 import com.game.racingcar.car.input.AccelPower;
 import com.game.racingcar.car.input.CarName;
 import com.game.racingcar.car.input.CarOption;
@@ -23,7 +24,7 @@ class RacingCarTest {
     @DisplayName("자동차 테스트 : 이동 테스트 > 직진")
     public void car_go_forward_test() {
         // given
-        Car car = new RacingCar(carOption, CarName.of("test1"));
+        Car car = RacingCar.of(CarName.of("test1"));
         Position expectedPosition = new Position();
         expectedPosition.moveRight();
         AccelPower accelPower = AccelPower.of(carOption.getMinPowerForMove());
@@ -41,7 +42,7 @@ class RacingCarTest {
     @DisplayName("자동차 테스트 : 이동 테스트 > 정지")
     public void car_stop_test() {
         // given
-        Car car = new RacingCar(carOption, CarName.of("test2"));
+        Car car = RacingCar.of(CarName.of("test2"));
         Position expectedPosition = new Position();
         AccelPower accelPower = AccelPower.of(carOption.getMinPowerForMove() - 1);
 

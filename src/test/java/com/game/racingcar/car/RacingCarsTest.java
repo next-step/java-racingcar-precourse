@@ -1,5 +1,7 @@
 package com.game.racingcar.car;
 
+import com.game.racingcar.car.impl.RacingCar;
+import com.game.racingcar.car.impl.RacingCars;
 import com.game.racingcar.car.input.AccelPower;
 import com.game.racingcar.car.input.CarName;
 import com.game.racingcar.car.input.CarOption;
@@ -24,10 +26,10 @@ class RacingCarsTest {
     @DisplayName("전체 자동차 출력 테스트")
     void printWholeCarsPosition() {
         // given
-        Car car1 = new RacingCar(carOption, CarName.of("car1"));
-        Car car2 = new RacingCar(carOption, CarName.of("car2"));
-        Car car3 = new RacingCar(carOption, CarName.of("car3"));
-        Car car4 = new RacingCar(carOption, CarName.of("car4"));
+        Car car1 = RacingCar.of(CarName.of("car1"));
+        Car car2 = RacingCar.of(CarName.of("car2"));
+        Car car3 = RacingCar.of(CarName.of("car3"));
+        Car car4 = RacingCar.of(CarName.of("car4"));
 
         Cars cars = new RacingCars();
         cars.addCar(car1);
@@ -57,10 +59,10 @@ class RacingCarsTest {
     @DisplayName("최장거리 이동 자동차 목록 획득 테스트")
     void getLongestDistanceMovingCarsTest() {
         // given
-        Car car1 = new RacingCar(carOption, CarName.of("car1"));
-        Car car2 = new RacingCar(carOption, CarName.of("car2"));
-        Car car3 = new RacingCar(carOption, CarName.of("car3"));
-        Car car4 = new RacingCar(carOption, CarName.of("car4"));
+        Car car1 = RacingCar.of(CarName.of("car1"));
+        Car car2 = RacingCar.of(CarName.of("car2"));
+        Car car3 = RacingCar.of(CarName.of("car3"));
+        Car car4 = RacingCar.of(CarName.of("car4"));
 
         Cars cars = new RacingCars();
         cars.addCar(car1);
@@ -77,7 +79,7 @@ class RacingCarsTest {
         car4.move(AccelPower.of(carOption.getMinPowerForMove()));
 
         // when
-        List<Car> longestDistanceMovingCars = cars.getWinners();
+        List<Car> longestDistanceMovingCars = cars.getWinnerCars();
 
         // then
         assertThat(longestDistanceMovingCars.size()).isEqualTo(2);

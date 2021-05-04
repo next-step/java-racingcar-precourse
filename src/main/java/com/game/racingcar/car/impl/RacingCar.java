@@ -1,5 +1,6 @@
-package com.game.racingcar.car;
+package com.game.racingcar.car.impl;
 
+import com.game.racingcar.car.Car;
 import com.game.racingcar.car.input.AccelPower;
 import com.game.racingcar.car.input.CarName;
 import com.game.racingcar.car.input.CarOption;
@@ -12,12 +13,12 @@ public class RacingCar implements Car {
     private CarName carName;
     private Position position = new Position();
 
-    public RacingCar(CarOption carOption, CarName carName) {
+    private RacingCar(CarOption carOption, CarName carName) {
         this.carOption = carOption;
         this.carName = carName;
     }
 
-    public static RacingCar of(CarName carName){
+    public static Car of(CarName carName){
         return new RacingCar(new CarOption(), carName);
     }
 
@@ -64,7 +65,7 @@ public class RacingCar implements Car {
     }
 
     @Override
-    public CarName getCarName() {
-        return this.carName;
+    public String getCarName() {
+        return this.carName.getName();
     }
 }

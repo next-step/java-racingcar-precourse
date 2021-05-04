@@ -1,4 +1,8 @@
-package com.game.racingcar.car;
+package com.game.racingcar.car.impl;
+
+import com.game.racingcar.car.Car;
+import com.game.racingcar.car.Cars;
+import com.game.racingcar.car.input.AccelPower;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -7,22 +11,31 @@ import java.util.List;
 
 public class RacingCars extends Cars {
     @Override
+    public void moveAllCars() {
+        for (int i = 0; i < this.cars.size(); i++) {
+            this.cars.get(i).move(AccelPower.getRandomAccelPower());
+        }
+    }
+
+    @Override
     public void printWholeCarsPosition() {
         for (Car car :
                 this.cars) {
             car.printPosition();
         }
+        this.printEnter();
+    }
+
+    private void printEnter() {
+        System.out.println();
     }
 
     @Override
-    public List<Car> getWinners() {
+    public List<Car> getWinnerCars() {
         List<Car> winners = new ArrayList<>();
 
         // 오름차순 정렬
         List<Car> sortedCars = getCarsSortedByMovingDistanceDesc();
-
-        // TODO : 제거
-        this.printWholeCarsPosition();
 
         for (int i = 0; i < sortedCars.size(); i++) {
             addWinner(winners, sortedCars.get(i));
@@ -44,10 +57,6 @@ public class RacingCars extends Cars {
             return true;
         }
 
-        System.out.println("============");
-        System.out.println("max = " + maxMovingCar.getCarName());
-        System.out.println("max = " + maxMovingCar.getMovingDistance());
-
         if (maxMovingCar.getMovingDistance() <= car.getMovingDistance()) {
             return true;
         }
@@ -58,10 +67,7 @@ public class RacingCars extends Cars {
     private List<Car> getCarsSortedByMovingDistanceDesc() {
         List<Car> sortedCars = new ArrayList<>();
         sortedCars.addAll(cars);
-//        Collections.copy(sortedCars, cars);
-
         sortedCars.sort(Comparator.reverseOrder());
-
         return sortedCars;
     }
 }

@@ -15,5 +15,5 @@ public interface Car extends Comparable<Car> {
 
     int compareTo(Car car);
 
-    CarName getCarName();
+    String getCarName();
 }

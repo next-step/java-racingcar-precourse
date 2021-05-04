@@ -1,5 +1,7 @@
 package com.game.racingcar.car.input;
 
+import com.game.racingcar.car.input.exception.CarNameNotValidException;
+
 public class CarName {
 
     private static final int MAX_LENGTH_OF_CAR_NAME = 5;
@@ -11,17 +13,13 @@ public class CarName {
     }
 
     public static CarName of(String name) {
-        if (!isValidCarName(name)) {
-            return null;
-        }
         return new CarName(name);
     }
 
-    private static boolean isValidCarName(String name) {
+    public static void isValidCarName(String name) {
         if (name.length() > MAX_LENGTH_OF_CAR_NAME) {
-            return false;
+            throw new CarNameNotValidException();
         }
-        return true;
     }
 
     public String getName() {
