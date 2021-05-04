@@ -3,11 +3,13 @@ package com.racingcar.domain;
 import java.util.List;
 
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor
 public class RacingCarGroup {
+	@NonNull
 	private final List<RacingCar> racingCarList;
 
 	@Override
