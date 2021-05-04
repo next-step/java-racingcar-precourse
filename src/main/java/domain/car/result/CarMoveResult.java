@@ -1,6 +1,6 @@
 package domain.car.result;
 
-import domain.car.CarName;
+import domain.car.name.CarName;
 import domain.car.Position;
 
 public class CarMoveResult {

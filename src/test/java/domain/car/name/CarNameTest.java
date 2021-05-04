@@ -1,4 +1,4 @@
-package domain.car;
+package domain.car.name;
 
 import static org.assertj.core.api.Assertions.*;
 

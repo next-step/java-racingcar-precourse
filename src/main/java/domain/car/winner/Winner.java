@@ -2,7 +2,7 @@ package domain.car.winner;
 
 import java.util.Objects;
 
-import domain.car.CarName;
+import domain.car.name.CarName;
 
 public class Winner {
 

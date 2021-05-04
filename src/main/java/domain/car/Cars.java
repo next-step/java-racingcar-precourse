@@ -3,9 +3,12 @@ package domain.car;
 import java.util.ArrayList;
 import java.util.List;
 
+import domain.car.name.CarName;
+import domain.car.name.CarNames;
 import domain.car.result.CarMoveResult;
 import domain.car.result.CarMoveResults;
 import domain.car.strategy.MovableStrategy;
+import domain.car.strategy.RandomMovableStrategy;
 
 public class Cars {
 
@@ -15,11 +18,11 @@ public class Cars {
 		this.cars.addAll(cars);
 	}
 
-	public static Cars of(List<Car> cars) {
-		return new Cars(cars);
+	public static Cars of(CarNames carNames) {
+		return Cars.of(carNames, new RandomMovableStrategy());
 	}
 
-	public static Cars of(List<String> carNames, MovableStrategy movableStrategy) {
+	public static Cars of(CarNames carNames, MovableStrategy movableStrategy) {
 		List<Car> cars = generateCars(carNames, movableStrategy);
 		return new Cars(cars);
 	}
@@ -34,10 +37,10 @@ public class Cars {
 		return results;
 	}
 
-	private static List<Car> generateCars(List<String> carNames, MovableStrategy movableStrategy) {
+	private static List<Car> generateCars(CarNames carNames, MovableStrategy movableStrategy) {
 		List<Car> cars = new ArrayList<>();
-		for (String carName : carNames) {
-			Car car = Car.of(carName, movableStrategy);
+		for (CarName carName : carNames.getNames()) {
+			Car car = Car.of(carName.toString(), movableStrategy);
 			cars.add(car);
 		}
 		return cars;

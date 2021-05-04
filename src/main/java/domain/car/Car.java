@@ -1,6 +1,6 @@
 package domain.car;
 
-import domain.car.strategy.ConditionMovableStrategy;
+import domain.car.name.CarName;
 import domain.car.strategy.MovableStrategy;
 import domain.car.strategy.RandomMovableStrategy;
 

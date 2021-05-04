@@ -15,12 +15,6 @@ public class CarMoveResults {
 		this.carMoveResults.add(result);
 	}
 
-	public Position getMaxPosition(){
-		List<CarMoveResult> copyResults = new ArrayList<>(carMoveResults);
-		copyResults.sort(Comparator.comparing(CarMoveResult::getPosition).reversed());
-		return copyResults.get(0).getPosition();
-	}
-
 	public List<CarMoveResult> getCarMoveResults() {
 		return Collections.unmodifiableList(carMoveResults);
 	}
@@ -34,6 +28,12 @@ public class CarMoveResults {
 		}
 
 		return result;
+	}
+
+	private Position getMaxPosition(){
+		List<CarMoveResult> copyResults = new ArrayList<>(carMoveResults);
+		copyResults.sort(Comparator.comparing(CarMoveResult::getPosition).reversed());
+		return copyResults.get(0).getPosition();
 	}
 
 	private void addCarMoveResultIfSamePosition(List<CarMoveResult> result, CarMoveResult carMoveResult, Position position) {

@@ -1,4 +1,4 @@
-package domain.car;
+package domain.car.name;
 
 import java.util.Objects;
 
