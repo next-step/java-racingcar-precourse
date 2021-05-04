@@ -4,6 +4,8 @@ import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 class PositionTest {
 
@@ -39,6 +41,16 @@ class PositionTest {
 			.isThrownBy(() -> new Position(value))
 			.withMessage(message)
 		;
-
 	}
+
+	@ParameterizedTest
+	@DisplayName("포지션끼리 비교가 되야함")
+	@CsvSource(value = {"1:1:true", "1:2:false"}, delimiter = ':')
+	void comparison(int firstValue, int secondValue, boolean expected){
+		Position firstPosition = new Position(firstValue);
+		Position secondPosition = new Position(secondValue);
+
+		assertThat(firstPosition.equals(secondPosition)).isEqualTo(expected);
+	}
+
 }
