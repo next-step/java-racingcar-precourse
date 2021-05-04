@@ -24,4 +24,21 @@ public class CarMoveResults {
 	public List<CarMoveResult> getCarMoveResults() {
 		return Collections.unmodifiableList(carMoveResults);
 	}
+
+	public List<CarMoveResult> getMaxPositionCar() {
+		List<CarMoveResult> result = new ArrayList<>();
+		Position maxPosition = getMaxPosition();
+
+		for (CarMoveResult carMoveResult : this.carMoveResults) {
+			addCarMoveResultIfSamePosition(result, carMoveResult, maxPosition);
+		}
+
+		return result;
+	}
+
+	private void addCarMoveResultIfSamePosition(List<CarMoveResult> result, CarMoveResult carMoveResult, Position position) {
+		if(carMoveResult.getPosition().equals(position)) {
+			result.add(carMoveResult);
+		}
+	}
 }
