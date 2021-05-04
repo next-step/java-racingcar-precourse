@@ -53,7 +53,7 @@ public class Cars {
 	// 레이싱 1회 수행 및 주행거리 표시
 	public void goRace() {
 		for (Car car : getCarList()) {
-			car.applyForwardOrNot(car.getForwardOrNot());
+			car.applyForwardOrNot();
 			car.printCurrentCarMileage();
 		}
 		System.out.println(""); // 레이스 1회 구분라인
