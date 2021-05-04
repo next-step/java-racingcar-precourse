@@ -16,12 +16,12 @@
 
 ## 기능 목록
 
--[x] main
+- [x] main
     * RacingCarApplication
--[x] controller
+- [x] controller
     * RacingCarGameController
         * 게임 시작
--[x] domain
+- [x] domain
     * RacingCar
         * 이름을 관리한다.
         * 움직인 횟수를 반환한다.
@@ -36,7 +36,7 @@
         * MovingSeed를 반환한다.
         * RandomRacingCarMovingStrategyImpl
     * MovingSeed
--[x] service
+- [x] service
     * RacingCarService
       * 문자열을 이용하여 RacingCarGroup을 생성한다.
     * RefereeService
@@ -44,10 +44,10 @@
     * RacingCarMovingService
         * RacingCarGroup을 이용하여 RacingCar를 움직인다.
         * RacingCarMovingServiceImpl
--[x] presentation
+- [x] presentation
     * Display
         * 주어진 데이터를 출력 함.
     * Input
         * 사용자로부터 입력 받음.
--[x] exception
+- [x] exception
     * 각 상황에 맞는 사용자 정의 예외
