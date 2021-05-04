@@ -60,6 +60,8 @@ honux : ----
 pobi : -----
 crong : ----
 honux : -----
+
+pobi, honux가 최종 우승했습니다.
 ```
 
 ---
