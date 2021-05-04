@@ -27,4 +27,11 @@ public class ValidationTest {
 		assertThat(Validation.isDuplicateCarNameExists(splits)).isEqualTo(expectedResult);
 	}
 
+	@ParameterizedTest
+	@CsvSource(value = {"1.5,false", "2,true"})
+	@DisplayName("시도 횟수가 1 이상의 정수  자연수인지 검증한다")
+	void validateRoundCountTest(String roundCount, boolean expectedResult) {
+		// then
+		assertThat(Validation.validateRoundCount(roundCount)).isEqualTo(expectedResult);
+	}
 }

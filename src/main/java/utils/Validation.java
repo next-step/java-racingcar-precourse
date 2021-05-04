@@ -8,6 +8,7 @@ public class Validation {
 	public static final int MAX_CARNAME_LENGTH = 5;
 	public static final int MIN_CARNAME_LENGTH = 0;
 	public static final int MIN_CAR_COUNT = 1;
+	public static final int MIN_ROUND_COUNT = 0;
 
 	public static boolean validateCarName(String[] splittedCarNames) {
 		for (String carName : splittedCarNames) {
@@ -40,4 +41,29 @@ public class Validation {
 		return splittedCarNamesList.length != splittedCarNamesSet.size();
 	}
 
+	public static boolean validateRoundCount(String roundCount) {
+		if (!isValidInteger(roundCount)) {
+			System.out.println("자연수가 아닙니다.");
+			return false;
+		}
+
+		if (!isValidCountRange(Integer.parseInt(roundCount))) {
+			System.out.println("자연수가 아닙니다.");
+			return false;
+		}
+		return true;
+	}
+
+	public static boolean isValidInteger(String inputRoundCount) {
+		try {
+			Integer.parseInt(inputRoundCount);
+		} catch (NumberFormatException e) {
+			return false;
+		}
+		return true;
+	}
+
+	public static boolean isValidCountRange(int roundCount) {
+		return roundCount > MIN_ROUND_COUNT;
+	}
 }
