@@ -35,7 +35,7 @@ public class InputTest {
 	}
 
 	@Test
-	public void 레이싱카_이름_검증() {
+	public void 레이싱카_이름_길이_검증() {
 		RacingCarName carName = new RacingCarName("K5");
 		assertThat(carName.isValidNameLength()).isTrue();
 		assertThatExceptionOfType(IllegalArgumentException.class)
