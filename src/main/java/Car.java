@@ -47,7 +47,7 @@ public class Car {
 	// 자동차 현재 주행거리 표시
 	public void printCurrentCarMileage() {
 		StringBuilder stringBuilder = new StringBuilder();
-		stringBuilder.append(carName).append(CAR_NAMES_SPLITTER);
+		stringBuilder.append(getCarName()).append(CAR_NAMES_SPLITTER);
 		for (int i = 0; i < getCarMileage(); i++) {
 			stringBuilder.append(CAR_MILEAGE_CHARACTER);
 		}
