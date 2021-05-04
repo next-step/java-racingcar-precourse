@@ -19,9 +19,9 @@ public class ConsoleUiService {
 		return scanner.nextLine();
 	}
 
-	public int requestMatchCount() {
-		System.out.println("시도할 회수는 몇회인가요?");
-		return scanner.nextInt();
+	public String requestMatchCount() {
+		System.out.println("시도할 횟수는 몇회인가요?");
+		return scanner.nextLine();
 	}
 
 	public void printMatchResult(Cars cars) {
@@ -40,6 +40,10 @@ public class ConsoleUiService {
 			winners[i] = cars.getCar(i).getName();
 		}
 		System.out.printf("%s가 최종 우승했습니다.\n", String.join(", ", winners));
+	}
+
+	public void printMessage(String message) {
+		System.out.println(message);
 	}
 
 }
