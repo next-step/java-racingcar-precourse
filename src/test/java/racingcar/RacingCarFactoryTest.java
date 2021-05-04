@@ -2,8 +2,6 @@ package racingcar;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.List;
-
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -18,10 +16,10 @@ class RacingCarFactoryTest {
         String carsName = "grace,mia,ve,terry,jeni,s";
 
         // when
-        List<RacingCar> cars = RacingCarFactory.create(carsName);
+        RacingCars cars = RacingCarFactory.create(carsName);
 
         // then
-        assertThat(cars.size()).isEqualTo(carsName.split(",").length);
+        assertThat(cars.getSize()).isEqualTo(carsName.split(",").length);
     }
 
 
@@ -33,9 +31,9 @@ class RacingCarFactoryTest {
         String carsName = ",mia,violate,terry,jeni,,arabian";
 
         // when
-        List<RacingCar> cars = RacingCarFactory.create(carsName);
+        RacingCars cars = RacingCarFactory.create(carsName);
 
         // then
-        assertThat(cars.size()).isEqualTo(3);
+        assertThat(cars.getSize()).isEqualTo(3);
     }
 }
