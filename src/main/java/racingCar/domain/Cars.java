@@ -18,4 +18,10 @@ public class Cars {
         }
         return carList;
     }
+
+    public void move() {
+        for (Car car : cars) {
+            car.move(new RandomMovable());
+        }
+    }
 }

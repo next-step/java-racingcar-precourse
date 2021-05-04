@@ -11,6 +11,7 @@ public class RacingGame {
     }
 
     public void race() {
+        cars.move();
         tryCount = tryCount.decrease();
     }
 
