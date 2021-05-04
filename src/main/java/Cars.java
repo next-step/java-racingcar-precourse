@@ -25,7 +25,7 @@ public class Cars {
 	}
 
 	// 자동차 이름 목록 검증
-	public boolean isValidCarNames(String[] carNameArr) {
+	private boolean isValidCarNames(String[] carNameArr) {
 		int loopCount = 0;
 		boolean validCarNameResult = true;
 		while (loopCount < carNameArr.length && validCarNameResult) {
@@ -36,7 +36,7 @@ public class Cars {
 	}
 
 	// 사용자 입력 자동차 이름들 검증
-	public boolean isValidCar(String[] carNameArr) {
+	private boolean isValidCar(String[] carNameArr) {
 		if (!Car.isValidCarCount(carNameArr)) {
 			return false;
 		}
@@ -67,17 +67,16 @@ public class Cars {
 	public String creatRaceResult() {
 		StringJoiner stringJoiner = new StringJoiner(WINNER_SPLITTER);
 		for (Car car : getCarList()) {
-			stringJoiner = getWinnerName(car, stringJoiner);
+			getWinnerName(car, stringJoiner);
 		}
 		return stringJoiner.toString();
 	}
 
 	// 우승 자동차 이름 얻기
-	public StringJoiner getWinnerName(Car car, StringJoiner stringJoiner) {
+	private void getWinnerName(Car car, StringJoiner stringJoiner) {
 		if (car.isWinner(getRaceCount())) {
 			stringJoiner.add(car.getCarName());
 		}
-		return stringJoiner;
 	}
 
 }

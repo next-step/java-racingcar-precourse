@@ -45,9 +45,8 @@ public class GamePlayService {
 		System.out.println(gameResult + MESSAGE_VICTORY_CARS);
 	}
 
-
 	// 1 이상인지 검증
-	boolean isAboveMinimum(int raceCount) {
+	private boolean isAboveMinimum(int raceCount) {
 		if (MINIMUM_RACE_COUNT > raceCount) {
 			System.out.println(MESSAGE_PLEASE_ENTER_GREATER_THAN_ONE);
 			return false;
@@ -56,7 +55,7 @@ public class GamePlayService {
 	}
 
 	// 숫자인지 검증
-	boolean isNumber(String raceCount) {
+	private boolean isNumber(String raceCount) {
 		try {
 			return isAboveMinimum(Integer.parseInt(raceCount));
 		} catch (NumberFormatException e) {
@@ -66,7 +65,7 @@ public class GamePlayService {
 	}
 
 	// 레이스 횟수 얻기
-	int getRaceCount() {
+	private int getRaceCount() {
 		String raceCount;
 		do {
 			System.out.println(MESSAGE_NUMBER_ATTEMPTS);
