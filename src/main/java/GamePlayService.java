@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class GamePlayService {
 
-	private static final String MESSAGE_VICTORY_CARS = "가 우승하였습니다.";
 	private static final String MESSAGE_PLEASE_ENTER_GREATER_THAN_ONE = "1이상의 숫자를 입력해 주세요.";
 	private static final String MESSAGE_PLEASE_ENTER_NUMBER = "숫자를 입력해 주세요.";
 	private static final String MESSAGE_NUMBER_ATTEMPTS = "시도할 회수는 몇 회인가요?";
@@ -13,8 +12,8 @@ public class GamePlayService {
 	// 게임 시작
 	public void startGame() {
 		Cars cars = creatCars();
-		playRace(cars);
-		printGameResult(cars);
+		cars.playRace(cars);
+		cars.printGameResult();
 	}
 
 	// 자동차 목록 생성
@@ -27,22 +26,6 @@ public class GamePlayService {
 			carList.add(new Car(carName));
 		}
 		return new Cars(carList, raceCount);
-	}
-
-	// 레이스 시작
-	private void playRace(Cars cars) {
-		for (int i = 0; i < cars.getRaceCount(); i++) {
-			cars.goRace();
-		}
-	}
-
-	// 게임 결과 출력
-	private void printGameResult(Cars cars) {
-		String gameResult = "";
-		do {
-			gameResult = cars.creatRaceResult();
-		} while (0 == gameResult.length());
-		System.out.println(gameResult + MESSAGE_VICTORY_CARS);
 	}
 
 	// 1 이상인지 검증
