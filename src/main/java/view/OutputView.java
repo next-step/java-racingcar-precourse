@@ -11,7 +11,7 @@ public class OutputView {
 			System.out.println("실행 결과");
 		}
 		for (RacingCar racingCar : racingCars.get()) {
-			System.out.printf("%s: %s%n", racingCar.getRacingCarName().get(), mapCount(racingCar.getMoveCount().get()));
+			System.out.printf("%s: %s%n", racingCar.getRacingCarName().get(), mapCount(racingCar.getPosition().get()));
 		}
 		System.out.println();
 	}

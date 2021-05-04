@@ -25,17 +25,17 @@ public class RacingCarTest {
 
 	@Test
 	public void 전진_테스트() {
-		racingCar.getMoveCount().plus();
-		assertThat(racingCar.getMoveCount().get()).isEqualTo(1);
-		racingCar.getMoveCount().plus();
-		assertThat(racingCar.getMoveCount().get()).isEqualTo(2);
+		racingCar.getPosition().plus();
+		assertThat(racingCar.getPosition().get()).isEqualTo(1);
+		racingCar.getPosition().plus();
+		assertThat(racingCar.getPosition().get()).isEqualTo(2);
 	}
 
 	@Test
 	public void 최대_거리_측정_테스트() {
 		RacingCar firstCar = racingCars.get().get(0);
 		RacingCar secondCar = racingCars.get().get(1);
-		firstCar.getMoveCount().plus();
+		firstCar.getPosition().plus();
 		assertThat(racingCars.maxCount()).isEqualTo(1);
 		plusRacingCar(secondCar, 2);
 		assertThat(racingCars.maxCount()).isEqualTo(2);
@@ -45,7 +45,7 @@ public class RacingCarTest {
 
 	private void plusRacingCar(RacingCar racingCar, int plusCount) {
 		for (int i = 0; i < plusCount; i++) {
-			racingCar.getMoveCount().plus();
+			racingCar.getPosition().plus();
 		}
 	}
 }

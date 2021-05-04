@@ -6,11 +6,11 @@ import util.RandomUtils;
 
 public class RacingCar {
 	private final RacingCarName racingCarName;
-	private final MoveCount moveCount;
+	private final Position position;
 
 	public RacingCar(String name) {
 		this.racingCarName = new RacingCarName(name);
-		this.moveCount = new MoveCount(0);
+		this.position = new Position(0);
 	}
 
 	@Override
@@ -38,14 +38,14 @@ public class RacingCar {
 		return racingCarName;
 	}
 
-	public MoveCount getMoveCount() {
-		return this.moveCount;
+	public Position getPosition() {
+		return this.position;
 	}
 
 	public void move() {
 		int randomNumber = RandomUtils.getRandomNumber();
 		if (isMoveNumber(randomNumber)) {
-			this.moveCount.plus();
+			this.position.plus();
 		}
 	}
 }

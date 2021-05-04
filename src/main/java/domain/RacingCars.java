@@ -58,7 +58,7 @@ public class RacingCars {
 	public int maxCount() {
 		int currentMaxCount = -1;
 		for (RacingCar racingCar : this.get()) {
-			currentMaxCount = Math.max(currentMaxCount, racingCar.getMoveCount().get());
+			currentMaxCount = Math.max(currentMaxCount, racingCar.getPosition().get());
 		}
 		return currentMaxCount;
 	}
@@ -73,7 +73,7 @@ public class RacingCars {
 	}
 
 	private void addWinner(int maxCount, RacingCar racingCar, List<String> winners) {
-		if (maxCount == racingCar.getMoveCount().get()) {
+		if (maxCount == racingCar.getPosition().get()) {
 			winners.add(racingCar.getRacingCarName().get());
 		}
 	}
