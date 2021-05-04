@@ -2,7 +2,7 @@ package domain.position;
 
 import java.util.Objects;
 
-public class Position implements Comparable {
+public class Position implements Comparable<Position> {
     private static final int MINIMUM_POSITION = 0;
     private static final int POSITION_INCREASE_COUNT = 1;
 
@@ -42,9 +42,7 @@ public class Position implements Comparable {
     }
 
     @Override
-    public int compareTo(Object o) {
-        Position dest = (Position) o;
-
+    public int compareTo(Position dest) {
         if (dest.toInt() > toInt()) {
             return -1;
         } else if (dest.toInt() < toInt()) {
