@@ -10,7 +10,7 @@ public class CarValidation {
     private static final int MIN_NAME_LENGTH = 1;
     private static final int MAX_NAME_LENGTH = 5;
 
-    public static void doThings(String[] cars) {
+    public static void isCarValidate(String[] cars) {
         Set<String> carSet = new HashSet<>();
         for (String car : cars) {
             isAvailableRange(car);

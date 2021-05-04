@@ -9,7 +9,7 @@ import java.util.List;
 public class CarController {
     public static String[] splitByComma(String inputCarName) {
         String[] car = inputCarName.split(",");
-        CarValidation.doThings(car);
+        CarValidation.isCarValidate(car);
         return car;
     }
 
