@@ -17,4 +17,15 @@ class PositionTest {
 
 		assertThat(value).isEqualTo(defaultValue);
 	}
+
+	@Test
+	@DisplayName("포지션의 값을 1씩 늘릴 수 있다.")
+	void increment(){
+		int expectedValue = 2;
+		Position position = new Position();
+
+		position.increment();
+
+		assertThat(position.getValue()).isEqualTo(expectedValue);
+	}
 }

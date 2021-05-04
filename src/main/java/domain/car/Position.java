@@ -4,7 +4,7 @@ public class Position {
 
 	public static final int DEFAULT_VALUE = 1;
 
-	private final Integer value;
+	private Integer value;
 
 	public Position(Integer value) {
 		this.value = value;
@@ -16,5 +16,9 @@ public class Position {
 
 	public Integer getValue() {
 		return value;
+	}
+
+	public void increment() {
+		this.value++;
 	}
 }
