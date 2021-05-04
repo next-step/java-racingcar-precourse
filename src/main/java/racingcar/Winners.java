@@ -8,9 +8,13 @@ public class Winners {
 	List<String> winners = new ArrayList<>();
 
 	public void addWinner(int maxDistance, Car car) {
-		if (maxDistance == car.getDistance()) {
+		if (isWinner(maxDistance, car)) {
 			winners.add(car.getName());
 		}
+	}
+
+	private boolean isWinner(int maxDistance, Car car) {
+		return maxDistance == car.getDistance();
 	}
 
 	@Override

@@ -6,20 +6,20 @@ public class Car implements Comparable<Car> {
 	private final String name;
 	private CarDistance distance;
 
-	public String getName() {
-		return name;
-	}
-
-	public int getDistance() {
-		return distance.getDistance();
-	}
-
 	public Car(String name) throws ValidatorException {
 		if (RacingRule.isInvalidCarName(name)) {
 			throw new ValidatorException("Car name invalid!");
 		}
 		this.name = name;
 		this.distance = new CarDistance();
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public int getDistance() {
+		return distance.getDistance();
 	}
 
 	public int move(int random) {
