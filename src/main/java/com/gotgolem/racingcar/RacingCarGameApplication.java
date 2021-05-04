@@ -20,9 +20,14 @@ public class RacingCarGameApplication {
 	private void start() {
 		final Cars cars = playerService.toCars(consoleUiService.requestCarNames());
 		final int matchCount = consoleUiService.requestMatchCount();
+
+		System.out.println("\n실행 결과");
 		for (int i = 0; i < matchCount; i++) {
 			carService.match(cars);
+			consoleUiService.printMatchResult(cars);
 		}
+		
+		consoleUiService.printWinners(cars.getTopMileageCars());
 	}
 
 	public static void main(String[] args) {

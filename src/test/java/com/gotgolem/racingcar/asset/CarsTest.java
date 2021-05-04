@@ -51,4 +51,29 @@ public class CarsTest {
 				.isThrownBy(() -> cars.getCar(3));
 	}
 
+	@Test
+	public void getTopMileageCars() {
+		final Car carA = new Car("A");
+		final Car carB = new Car("B");
+		final Car carC = new Car("C");
+		final Car carD = new Car("D");
+		final Cars cars = new Cars(Arrays.asList(carA, carB, carC, carD));
+
+		final Driving driving = new Driving(9);
+
+		carA.drive(driving);
+		carC.drive(driving);
+
+		final Cars topMileageCars = cars.getTopMileageCars();
+
+		assertThat(topMileageCars.size())
+				.isEqualTo(2);
+
+		assertThat(topMileageCars.getCar(0))
+				.isEqualTo(carA);
+
+		assertThat(topMileageCars.getCar(1))
+				.isEqualTo(carC);
+	}
+
 }
