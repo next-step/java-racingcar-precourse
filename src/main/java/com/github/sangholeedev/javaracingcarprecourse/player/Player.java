@@ -6,7 +6,7 @@ import java.util.List;
 import com.github.sangholeedev.javaracingcarprecourse.car.CarName;
 
 public class Player {
-	private List<CarName> carNames;
+	private final List<CarName> carNames;
 	private static final String SPLIT_WORD = ",";
 
 	public Player(final String carNamesString) {
@@ -17,11 +17,11 @@ public class Player {
 	}
 
 	private List<CarName> splitCarNameString(String carNamesString) {
-		List<CarName> carNames = new ArrayList<>();
+		List<CarName> carNamesList = new ArrayList<>();
 		for (String carName : carNamesString.split(SPLIT_WORD)) {
-			carNames.add(new CarName(carName));
+			carNamesList.add(new CarName(carName));
 		}
-		return carNames;
+		return carNamesList;
 	}
 
 	public List<CarName> getCarNames() {
