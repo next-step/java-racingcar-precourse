@@ -6,7 +6,7 @@ import model.Winners;
 
 public class OutputView {
 
-    public void printResult(RaceResult result) {
+    public static void printResult(RaceResult result) {
         for (CarResponse carResponse : result.getResponses()) {
             String carName = carResponse.getCarName();
             String displayHyphen = getDisplayHyphenByPosition(carResponse.getPosition());
@@ -15,7 +15,7 @@ public class OutputView {
         System.out.println();
     }
 
-    private String getDisplayHyphenByPosition(int position) {
+    private static String getDisplayHyphenByPosition(int position) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < position; i++) {
             sb.append('-');
@@ -23,8 +23,12 @@ public class OutputView {
         return sb.toString();
     }
 
-    public void printWinners(Winners winners) {
+    public static void printWinners(Winners winners) {
         String winnersJoin = winners.getWinnerNames();
         System.out.println(winnersJoin + " 가 최종 우승했습니다.");
+    }
+
+    public static void printResultIntro() {
+        System.out.println("실행 결과");
     }
 }

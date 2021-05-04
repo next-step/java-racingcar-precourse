@@ -39,19 +39,17 @@ public class RacingCarGame {
     }
 
     private void play(RacingCars racingCars, int tryCount) {
-        OutputView outputView = new OutputView();
-        System.out.println("실행 결과");
+        OutputView.printResultIntro();
 
         while (tryCount-- > 0) {
             List<Integer> randomNumbers = RandomUtil.generateRandomNumbers(racingCars.getSize());
             RaceResult result = racingCars.race(randomNumbers);
-            outputView.printResult(result);
+            OutputView.printResult(result);
         }
     }
 
     private void end(RacingCars racingCars) {
-        OutputView outputView = new OutputView();
         Winners winners = racingCars.getWinners();
-        outputView.printWinners(winners);
+        OutputView.printWinners(winners);
     }
 }
