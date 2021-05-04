@@ -14,9 +14,9 @@ class RacingCarServiceImplTest {
 	@DisplayName("예외처리_검사")
 	@ParameterizedTest
 	@ValueSource(strings = {"","a,a,a", "aa, , ",",","aaaaaaaa,"})
-	public void checkException(String input) {
+	void checkException(String input) {
 		RacingCarService racingCarService = new RacingCarServiceImpl();
 		assertThatThrownBy(() ->racingCarService.create(input)).isInstanceOf(RacingCarException.class)
-			.hasMessage(Messages.ERROR_MESSAGE);
+			.hasMessage(Messages.INVALID_INPUT_MESSAGE);
 	}
 }

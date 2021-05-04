@@ -29,7 +29,7 @@ public class RacingCarServiceImpl implements RacingCarService {
 		Set<String> nameSet = new HashSet<>(Arrays.asList(names));
 
 		if (nameSet.isEmpty() || names.length != nameSet.size()) {
-			throw new RacingCarException(Messages.ERROR_MESSAGE);
+			throw new RacingCarException(Messages.INVALID_INPUT_MESSAGE);
 		}
 	}
 
@@ -41,7 +41,7 @@ public class RacingCarServiceImpl implements RacingCarService {
 
 	private void checkNameLength(String name) {
 		if (name.trim().length() > MAX_NAME_LENGTH || name.trim().isEmpty()) {
-			throw new RacingCarException(Messages.ERROR_MESSAGE);
+			throw new RacingCarException(Messages.INVALID_INPUT_MESSAGE);
 		}
 	}
 
