@@ -9,6 +9,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import domain.car.result.CarMoveResults;
+import domain.car.strategy.ConditionMovableStrategy;
 
 class CarsTest {
 
@@ -33,5 +34,27 @@ class CarsTest {
 
 		assertThat(results).isNotNull();
 		assertThat(results.getCarMoveResults().size()).isEqualTo(expectedSize);
+	}
+
+	@Test
+	@DisplayName("자동차들의 move를 전부 호출 후 가장 높은 포지션 리턴")
+	void maxPosition(){
+		Position expectedMaxPosition = new Position(5);
+		Cars cars = Cars.of(
+			Arrays.asList(
+				makeCar("1번", 2),
+				makeCar("2번", 5),
+				makeCar("3번", 4),
+				makeCar("4번", 5)
+			)
+		);
+
+		CarMoveResults results = cars.move();
+
+		assertThat(results.getMaxPosition()).isEqualTo(expectedMaxPosition);
+	}
+
+	private Car makeCar(String carName, int position) {
+		return Car.of(carName, new Position(position), new ConditionMovableStrategy(false));
 	}
 }

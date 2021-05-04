@@ -17,4 +17,12 @@ public class CarMoveResult {
 	public static CarMoveResult of(CarName carName, Position position) {
 		return new CarMoveResult(carName, position);
 	}
+
+	public Position getPosition() {
+		return position;
+	}
+
+	public CarName getCarName() {
+		return carName;
+	}
 }

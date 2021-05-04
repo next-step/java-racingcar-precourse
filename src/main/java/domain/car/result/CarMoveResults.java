@@ -2,7 +2,10 @@ package domain.car.result;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+
+import domain.car.Position;
 
 public class CarMoveResults {
 	
@@ -10,6 +13,12 @@ public class CarMoveResults {
 
 	public void addCarMoveResult(CarMoveResult result) {
 		this.carMoveResults.add(result);
+	}
+
+	public Position getMaxPosition(){
+		List<CarMoveResult> copyResults = new ArrayList<>(carMoveResults);
+		copyResults.sort(Comparator.comparing(CarMoveResult::getPosition).reversed());
+		return copyResults.get(0).getPosition();
 	}
 
 	public List<CarMoveResult> getCarMoveResults() {
