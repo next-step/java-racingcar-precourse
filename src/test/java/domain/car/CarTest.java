@@ -16,4 +16,16 @@ class CarTest {
 
 		assertThat(car).isNotNull();
 	}
+
+	@Test
+	@DisplayName("자동차 이름과 위치정보를 가진다.")
+	void carNameAndPosition(){
+		String carName = "pobi";
+		Position position = new Position(1);
+
+		Car car = Car.of(carName, position);
+
+		assertThat(position).isEqualTo(car.getPosition());
+		assertThat(CarName.of(carName)).isEqualTo(car.getCarName());
+	}
 }
