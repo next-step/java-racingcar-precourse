@@ -12,7 +12,7 @@ public class CarGame {
 
     public CarGame(List<Car> cars) {
         // 외부에서 주입된 Collection이 변경되면 내부적으로 영향을 줄 수 있다고 판단
-        this.cars = Collections.unmodifiableList(cars);
+        this.cars = Collections.unmodifiableList(new ArrayList<>(cars));
     }
 
     public void start() {
