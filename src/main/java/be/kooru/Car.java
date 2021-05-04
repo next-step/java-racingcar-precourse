@@ -3,8 +3,8 @@ package be.kooru;
 public class Car {
 
     //모든 원시값과 문자열을 포장한다.
+    // Car에 관련한 Validation 로직은 Car Domain에서 책임지고 관리하는게 맞다고 판단.
     private static final int CAR_NAME_MAX_SIZE = 5;
-    private static final int CAR_ONE_STEP_STANDARD = 4;
 
     String name;
     int score;
@@ -23,8 +23,8 @@ public class Car {
         return score;
     }
 
-    public void addScore(int number) {
-        this.score += scoreCalculator(number);
+    protected void addScore(int score) {
+        this.score += score;
     }
 
     protected void validateCarName(String name) {
@@ -32,9 +32,4 @@ public class Car {
             throw new IllegalArgumentException("Over Car Name Length");
 
     }
-
-    protected int scoreCalculator(int value) {
-        return value >= CAR_ONE_STEP_STANDARD ? 1 : 0;
-    }
-
 }

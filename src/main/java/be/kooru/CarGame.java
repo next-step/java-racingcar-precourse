@@ -6,6 +6,8 @@ import java.util.List;
 
 public class CarGame {
 
+    private static final int CAR_GAME_RULE_ONE_STEP = 4;
+
     private final List<Car> cars;
 
     public CarGame(Collection cars) {
@@ -23,7 +25,7 @@ public class CarGame {
 
     protected void addCarScore(Car car) {
         int randomNumber = Util.generateRandomNumber(1, 0, 9)[0];
-        car.addScore(randomNumber);
+        car.addScore(scoreCalculator(randomNumber));
     }
 
     protected void printCarScore(Car car) {
@@ -58,4 +60,9 @@ public class CarGame {
                 .append("가 최종우승했습니다.");
         System.out.println(sb.toString());
     }
+
+    protected int scoreCalculator(int value) {
+        return value >= CAR_GAME_RULE_ONE_STEP ? 1 : 0;
+    }
+
 }
