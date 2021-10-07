@@ -2,6 +2,7 @@ package racinggame.car;
 
 import org.junit.jupiter.api.Test;
 import racinggame.domain.CarName;
+import racinggame.domain.CarNames;
 import racinggame.error.ValidationFailureException;
 import racinggame.domain.SeedForMove;
 
@@ -33,4 +34,11 @@ public class CarTest {
         assertThrows(ValidationFailureException.class, () -> CarName.from(""));
     }
 
+    @Test
+    public void 자동차_이름들_사이에만_쉼표가_존재하지않을경우_ValidationFailureException_발생(){
+        assertThrows(ValidationFailureException.class, () -> CarNames.from(",abc,bcd,ecf,"));
+        assertThrows(ValidationFailureException.class, () -> CarNames.from("abc,bcd,ecf,"));
+        assertThrows(ValidationFailureException.class, () -> CarNames.from(",abc,bcd,ecf"));
+        assertDoesNotThrow(() -> CarNames.from("abc,bcd,ecf"));
+    }
 }
