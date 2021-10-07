@@ -18,4 +18,12 @@ public class CarProgress {
     public int plus() {
         return progress++;
     }
+
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < progress; i++) {
+            result.append("-");
+        }
+        return result.toString();
+    }
 }

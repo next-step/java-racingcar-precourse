@@ -35,4 +35,12 @@ public class Car {
         return carProgress.get();
     }
 
+    public String toString() {
+        StringBuilder carInfo = new StringBuilder();
+        carInfo.append(carName.toString());
+        carInfo.append(" : ");
+        carInfo.append(carProgress.toString());
+        return carInfo.toString();
+    }
+
 }

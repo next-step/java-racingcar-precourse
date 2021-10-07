@@ -3,7 +3,7 @@ package racinggame.car;
 import javax.naming.LimitExceededException;
 
 public class CarName {
-    String name;
+    private String name;
 
     public CarName() {}
 
@@ -19,5 +19,16 @@ public class CarName {
         if (name.length() > 5) {
             throw new LimitExceededException("자동차 이름은 최대 5글자입니다.");
         }
+    }
+
+    public String get() {
+        return name;
+    }
+
+    public String toString() {
+        if (name == null) {
+            return "";
+        }
+        return name;
     }
 }
