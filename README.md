@@ -5,3 +5,14 @@
 
 ## 과제 제출 과정
 * [과제 제출 방법](https://github.com/next-step/nextstep-docs/tree/master/precourse)
+
+## 기능 목록
+* 자동차 이름 입력
+  * 5자리 이상 입력 시 검증 처리
+    * 클래스 - ValidationUtils
+      * 메소드 - validName
+* 시도할 횟수 입력
+  * 숫자가 아닌 문자 입력 시 검증 처리
+* 랜덤값(0~9)의 따라서 전진 및 정지
+* 우승자 출력
+  * 우승자가 1명 이상일 경우 (,) 로 구분 처리
