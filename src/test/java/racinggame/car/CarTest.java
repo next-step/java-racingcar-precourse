@@ -1,6 +1,7 @@
 package racinggame.car;
 
 import org.junit.jupiter.api.Test;
+import racinggame.domain.CarName;
 import racinggame.error.ValidationFailureException;
 import racinggame.domain.SeedForMove;
 
@@ -22,6 +23,14 @@ public class CarTest {
         assertTrue(SeedForMove.from(4).shouldMoving());
         assertTrue(SeedForMove.from(3).shouldStop());
         assertFalse(SeedForMove.from(4).shouldStop());
+    }
+
+    @Test
+    public void 자동차의_이름이_1자이상_5자_이하가_아닌경우_ValidationFailureException_발생() {
+        assertThrows(ValidationFailureException.class, () -> CarName.from("abcdefa"));
+        assertDoesNotThrow(() -> CarName.from("abcde"));
+        assertDoesNotThrow(() -> CarName.from("a"));
+        assertThrows(ValidationFailureException.class, () -> CarName.from(""));
     }
 
 }
