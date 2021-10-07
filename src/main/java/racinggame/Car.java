@@ -17,4 +17,8 @@ public class Car {
             distance++;
         }
     }
+
+    public String getCarNm(){
+        return this.carNm;
+    }
 }
