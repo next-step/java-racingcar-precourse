@@ -25,6 +25,7 @@
   - Players (자동차들) 
   - 자동차 (이름, position, 전진하기)
   - Race (Players, 이동, 우승자 목록 return )
+  - Wrapping 객체 (CarName, Position, RestIteration, GoOrNot)
 
 1. 자동차이름 입력받기 - RaceUI
 2. 잘못된 자동차 이름 입력 Exception 처리 - RaceUI
