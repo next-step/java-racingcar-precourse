@@ -19,4 +19,11 @@ public class ValidationUtilsTest {
         assertThat(ValidationUtils.validateCarName("큰자동차12")).isFalse();
         assertThat(ValidationUtils.validateCarName("자동차12")).isTrue();
     }
+
+    @Test
+    @DisplayName("게임을 시작할 수 있는가?")
+    void enablePlayGame(){
+        assertThat(ValidationUtils.enablePlayGame("pobi,crong,honux")).isTrue();
+        assertThat(ValidationUtils.enablePlayGame("pobi,pobi,pobi3,crong,honux")).isFalse();
+    }
 }
