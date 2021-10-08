@@ -7,25 +7,25 @@ public class Car {
     private static final char ROAD = '-';
 
     private final CarName name;
-    private int position;
     private final StringBuilder road;
+    private int position;
 
     public Car(String name) {
         this.name = new CarName(name);
-        this.position = ZERO;
         this.road = new StringBuilder();
+        this.position = ZERO;
     }
 
     public String getName() {
         return name.getName();
     }
 
-    public int getPosition() {
-        return position;
-    }
-
     public String getRoad() {
         return road.toString();
+    }
+
+    public int getPosition() {
+        return position;
     }
 
     public void move(MoveCondition condition) {
