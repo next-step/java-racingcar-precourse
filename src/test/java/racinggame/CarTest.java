@@ -6,13 +6,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
     @Test
-    void go(){
+    void go() {
         Car car = new Car("pobi");
         car.play(4);
         assertThat(car.getDistance()).isEqualTo(1);
     }
+
     @Test
-    void stop(){
+    void stop() {
         Car car = new Car("pobi");
         car.play(3);
         assertThat(car.getDistance()).isEqualTo(0);

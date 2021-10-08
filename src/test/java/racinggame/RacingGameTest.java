@@ -6,12 +6,13 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+
 public class RacingGameTest {
 
     @ParameterizedTest
-    @CsvSource(value = {"pobi,1,0","crong,6,1","ada,9,1"}, delimiter = ',')
+    @CsvSource(value = {"pobi,1,0", "crong,6,1", "ada,9,1"}, delimiter = ',')
     @DisplayName("자동차를 이동 시킨다.")
-    void move(String carNm, int distance, int result){
+    void move(String carNm, int distance, int result) {
         RacingGame game = new RacingGame(carNm);
         game.moveCar(0, distance);
         assertThat(game.getCars().get(0).getDistance()).isEqualTo(result);
@@ -19,7 +20,7 @@ public class RacingGameTest {
 
     @Test
     @DisplayName("이동거리가 가장 긴 자동차의 이동거리를 찾는다.")
-    void getMaxDistance(){
+    void getMaxDistance() {
         RacingGame game = new RacingGame("pobi,crong,ada");
         game.moveCar(0, 1);
         game.moveCar(1, 7);
@@ -29,7 +30,7 @@ public class RacingGameTest {
 
     @Test
     @DisplayName("우승차량인지 확인한다.")
-    void isWinner(){
+    void isWinner() {
         RacingGame game = new RacingGame("pobi,crong,ada");
         game.moveCar(0, 1);
         game.moveCar(1, 7);
@@ -41,7 +42,7 @@ public class RacingGameTest {
 
     @Test
     @DisplayName("우승자 리스트를 생성한다.")
-    void getWinners(){
+    void getWinners() {
         RacingGame game = new RacingGame("pobi,crong,ada");
         game.moveCar(0, 1);
         game.moveCar(1, 7);

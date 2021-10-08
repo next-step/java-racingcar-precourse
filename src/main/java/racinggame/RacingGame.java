@@ -9,36 +9,36 @@ public class RacingGame {
     private List<Car> cars = new ArrayList<Car>();
     private int cnt;
 
-    public RacingGame(String cars){
+    public RacingGame(String cars) {
         String[] arr = cars.split(",");
-        for(String item : arr){
+        for (String item : arr) {
             Car car = new Car(item);
             this.cars.add(car);
         }
     }
 
-    public List<Car> getCars(){
+    public List<Car> getCars() {
         return cars;
     }
 
-    public void setTryCnt(int cnt){
+    public void setTryCnt(int cnt) {
         this.cnt = cnt;
     }
 
-    public int getTryCnt(){
+    public int getTryCnt() {
         return cnt;
     }
 
-    public Car moveCar(int index, int number){
+    public Car moveCar(int index, int number) {
         Car car = cars.get(index);
         car.play(number);
         cars.set(index, car);
         return car;
     }
 
-    public int getMaxDistance(){
+    public int getMaxDistance() {
         int distance = 0;
-        for(int i=0;i<cars.size();i++){
+        for (int i = 0; i < cars.size(); i++) {
             distance = Math.max(distance, cars.get(i).getDistance());
         }
         return distance;
@@ -46,18 +46,19 @@ public class RacingGame {
 
 
     public boolean isWinner(int index) {
-        return getMaxDistance()==cars.get(index).getDistance();
+        return getMaxDistance() == cars.get(index).getDistance();
     }
 
-    public List<String> getWinners(){
+    public List<String> getWinners() {
         List<String> winners = new ArrayList<>();
-        for(int i=0;i<cars.size();i++){
+        for (int i = 0; i < cars.size(); i++) {
             winners.add(getWinner(i));
         }
-        while(winners.remove(null));
+        while (winners.remove(null)) ;
         return winners;
     }
-    public String getWinner(int idx){
-        return isWinner(idx)? cars.get(idx).getCarNm():null;
+
+    public String getWinner(int idx) {
+        return isWinner(idx) ? cars.get(idx).getCarNm() : null;
     }
 }

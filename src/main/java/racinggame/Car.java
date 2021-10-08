@@ -6,19 +6,21 @@ public class Car {
     private String carNm;
     private int distance = 0;
 
-    public Car(String carNm){
+    public Car(String carNm) {
         this.carNm = carNm;
     }
-    public int getDistance(){
+
+    public int getDistance() {
         return distance;
     }
-    public void play(int n){
-        if(MoveUtils.isGo(n)){
+
+    public void play(int n) {
+        if (MoveUtils.isGo(n)) {
             distance++;
         }
     }
 
-    public String getCarNm(){
+    public String getCarNm() {
         return this.carNm;
     }
 }
