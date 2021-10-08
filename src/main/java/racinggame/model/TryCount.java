@@ -63,6 +63,10 @@ public class TryCount {
 		return racingCount += RACING_COUNT;
 	}
 
+	public boolean isNotFinish() {
+		return racingCount < tryCount;
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o)

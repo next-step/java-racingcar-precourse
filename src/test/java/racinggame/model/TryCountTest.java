@@ -59,4 +59,24 @@ class TryCountTest {
 		);
 	}
 
+	@Test
+	@DisplayName("레이스의 횟수에 따라 종료 여부를 알 수 있다.")
+	public void isFinish() {
+		TryCount tryCount = new TryCount(3);
+		Assertions.assertAll(
+			() -> {
+				tryCount.tryRacing();
+				assertThat(tryCount.isNotFinish()).isTrue();
+			},
+			() -> {
+				tryCount.tryRacing();
+				assertThat(tryCount.isNotFinish()).isTrue();
+			},
+			() -> {
+				tryCount.tryRacing();
+				assertThat(tryCount.isNotFinish()).isFalse();
+			}
+		);
+	}
+
 }
