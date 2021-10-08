@@ -4,10 +4,20 @@ import java.util.Objects;
 
 public class Name {
 
+	private static final String CHECK_LIMIT_LENGTH_ERROR_MESSAGE = "이름의 길이는 최대 5글자 입니다.";
+	private static final int LIMIT_LENGTH = 5;
+	
 	private final String name;
 
 	public Name(String name) {
+		checkLimitLength(name);
 		this.name = name;
+	}
+
+	private void checkLimitLength(String name) {
+		if (name.length() > LIMIT_LENGTH) {
+			throw new IllegalArgumentException(CHECK_LIMIT_LENGTH_ERROR_MESSAGE);
+		}
 	}
 
 	@Override
