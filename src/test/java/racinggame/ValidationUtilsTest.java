@@ -13,11 +13,4 @@ public class ValidationUtilsTest {
 		assertThat(ValidationUtils.validCarNameContainsRest("12345")).isFalse();
 		assertThat(ValidationUtils.validCarNameContainsRest("123,45")).isTrue();
 	}
-
-	@Test
-	@DisplayName("(자동차 이름)5글자 이하인가?")
-	void length5() {
-		assertThat(ValidationUtils.validCarNameLength("12345")).isTrue();
-		assertThat(ValidationUtils.validCarNameLength("123456789")).isFalse();
-	}
 }

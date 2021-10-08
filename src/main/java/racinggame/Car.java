@@ -2,16 +2,16 @@ package racinggame;
 
 public class Car {
 
-	private String carName;
-	private int carMove;
+	private CarName carName;
+	private CarMove carMove;
 
-	public Car(String carName, int carMove) {
+	public Car(CarName carName, CarMove carMove) {
 		this.carName = carName;
 		this.carMove = carMove;
 	}
 
 	public CarStatus move() {
-		if (carMove >= 4) {
+		if (carMove.isGo()) {
 			return CarStatus.GO;
 		}
 		return CarStatus.STOP;
