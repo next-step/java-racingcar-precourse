@@ -10,6 +10,7 @@
  */
 package racinggame.utils;
 
+import racinggame.constants.UtilsConstant;
 import racinggame.exception.IncorrectInputException;
 
 public class Positive {
@@ -53,11 +54,11 @@ public class Positive {
 
     /**
      * @param value 전달받은 숫자
-     * @throws IncorrectInputException 입력한 수가 0 ~ 9 범위를 벗어난 경우 발생한다.
+     * @throws IncorrectInputException 제한된 범위를 벗어난 입력이 들어올 경우 발생한다.
      */
     private void validatePositive(int value) {
-        if (value < 0 || 9 < value) {
-            throw new IncorrectInputException("0 ~ 9 범위를 벗어난 수를 입력할 수 없습니다.");
+        if (value < UtilsConstant.MIN_NO || UtilsConstant.MAX_NO < value) {
+            throw new IncorrectInputException(String.format("%d ~ %d 범위를 벗어난 수를 입력할 수 없습니다.", UtilsConstant.MIN_NO, UtilsConstant.MAX_NO));
         }
     }
 }
