@@ -26,6 +26,10 @@ public class RacingGame {
 		tryCount.tryRacing();
 	}
 
+	public List<Car> findWinnerCars() {
+		return cars.findWinnerCars();
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o)

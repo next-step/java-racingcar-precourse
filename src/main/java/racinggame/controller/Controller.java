@@ -19,7 +19,7 @@ public class Controller {
 		while (racingGame.isNotFinish()) {
 			OutputView.printResultByRound(racingGame.racing());
 		}
-
+		
+		OutputView.printWinnerCars(racingGame.findWinnerCars());
 	}
-
 }
