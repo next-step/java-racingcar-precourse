@@ -12,8 +12,8 @@ public class CarTest {
     public void createCar(){
         Car car = new Car("lee");
 
-        String carName = car.ofName();
-        int carMoveCount = car.ofMoveCount();
+        String carName = car.getName();
+        int carMoveCount = car.getMoveCount();
 
         assertThat(carName).isEqualTo("lee");
         assertThat(carMoveCount).isEqualTo(1);

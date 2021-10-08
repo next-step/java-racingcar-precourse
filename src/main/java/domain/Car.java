@@ -10,11 +10,11 @@ public class Car {
         moveCount = new MoveCount();
     }
 
-    public String ofName(){
+    public String getName(){
         return name.getName();
     }
 
-    public int ofMoveCount(){
+    public int getMoveCount(){
         return moveCount.getMoveCount();
     }
 
