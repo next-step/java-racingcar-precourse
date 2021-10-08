@@ -7,6 +7,8 @@ import java.util.Objects;
 public class Cars {
 
 	private static final String REGEX = ",";
+	private static final String CHECK_DUPLICATION_ERROR_MESSAGE = "중복되는 자동차 이름이 존재 합니다.";
+	private static final int ZERO_POINT = 0;
 
 	private final List<Car> cars;
 
@@ -16,6 +18,7 @@ public class Cars {
 
 	public Cars(String name) {
 		String[] carsName = toSplit(name);
+		checkDuplication(carsName);
 		cars = toList(carsName);
 	}
 
@@ -29,6 +32,34 @@ public class Cars {
 			cars.add(new Car(carName));
 		}
 		return cars;
+	}
+
+	private void checkDuplication(String[] carsName) {
+		if (isSameName(carsName)) {
+			throw new IllegalArgumentException(CHECK_DUPLICATION_ERROR_MESSAGE);
+		}
+	}
+
+	private boolean isSameName(String[] carsName) {
+		boolean isExist = false;
+		for (int index = ZERO_POINT; index < carsName.length; index++) {
+			isExist = isSameName(isExist, index, carsName);
+		}
+		return isExist;
+	}
+
+	private boolean isSameName(boolean isExist, int index, String[] carsName) {
+		for (int subIndex = ZERO_POINT; subIndex < index; subIndex++) {
+			isExist = compareName(isExist, carsName[index], carsName[subIndex]);
+		}
+		return isExist;
+	}
+
+	private boolean compareName(boolean isExist, String name, String subName) {
+		if (new Car(name).equals(new Car(subName))) {
+			isExist = true;
+		}
+		return isExist;
 	}
 
 	public List<Car> getCars() {

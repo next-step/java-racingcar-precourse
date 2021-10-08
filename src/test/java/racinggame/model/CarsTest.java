@@ -1,6 +1,7 @@
 package racinggame.model;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Arrays;
 
@@ -26,5 +27,12 @@ class CarsTest {
 		Cars cars = new Cars(name);
 
 		assertThat(cars.getCars().size()).isEqualTo(nameCount);
+	}
+
+	@Test
+	@DisplayName("자동차들의 이름이 중복되면 예외가 발생한다.")
+	public void checkDuplication() {
+		assertThrows(IllegalArgumentException.class,
+			() -> new Cars("aaa,aaa,bbb"));
 	}
 }
