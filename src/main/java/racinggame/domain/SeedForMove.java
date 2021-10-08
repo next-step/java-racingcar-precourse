@@ -1,5 +1,6 @@
 package racinggame.domain;
 
+import nextstep.utils.Randoms;
 import racinggame.error.ValidationFailureException;
 import racinggame.type.Messages;
 
@@ -21,6 +22,10 @@ public class SeedForMove {
 
     public static SeedForMove from(int value) {
         return new SeedForMove(value);
+    }
+
+    public static SeedForMove random() {
+        return from(Randoms.pickNumberInRange(SEED_MIN_VALUE, SEED_MAX_VALUE));
     }
 
     public int getValue() {

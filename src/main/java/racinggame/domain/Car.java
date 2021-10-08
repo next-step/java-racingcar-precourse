@@ -10,7 +10,21 @@ public class Car {
         this.location = location;
     }
 
-    public static Car of(CarName name, CarLocation location) {
-        return new Car(name, location);
+    public static Car from(CarName name) {
+        return new Car(name, CarLocation.createLocation());
+    }
+
+    public void moveForwardBy(SeedForMove seed) {
+        if (seed.shouldMoving()) {
+            location.move();
+        }
+    }
+
+    public CarName getName() {
+        return name;
+    }
+
+    public CarLocation getLocation() {
+        return location;
     }
 }
