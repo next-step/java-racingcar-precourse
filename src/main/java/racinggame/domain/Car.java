@@ -2,7 +2,7 @@
  * Car
  * java-racingcar-precourse
  *
- * Version 0.2
+ * Version 0.3
  *
  * Created by 강래민 on 2021-10-08.
  *
@@ -17,13 +17,15 @@ import racinggame.utils.Positive;
 
 public class Car {
 
+    private Positive id;
     private CarName name;
     private StringBuilder sb = new StringBuilder();
 
     /**
+     * @param id 자동차 식별자
      * @param carName 입력받은 자동차 이름
      */
-    public Car(CarName carName) {
+    public Car(Positive id, CarName carName) {
         this.name = carName;
     }
 
@@ -60,7 +62,7 @@ public class Car {
 
     /**
      * 자동차의 이름과 위치를 조합하는 함수
-     * 
+     *
      * @return "자동차 이름 : 현재 위치"
      */
     @Override

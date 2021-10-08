@@ -1,8 +1,8 @@
 /*
- * CarManager
+ * CarService
  * java-racingcar-precourse
  *
- * Version 0.1
+ * Version 0.2
  *
  * Created by 강래민 on 2021-10-08.
  *
@@ -15,6 +15,7 @@ import racinggame.domain.Car;
 import racinggame.exception.IncorrectInputException;
 import racinggame.utils.CarName;
 import racinggame.utils.Common;
+import racinggame.utils.Positive;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -31,8 +32,10 @@ public class CarService {
      */
     public CarService(String input) {
         carList = new ArrayList<>();
+        Positive id = new Positive(1);
         for (CarName carName : validateCarNames(input)) {
-            carList.add(new Car(carName));
+            carList.add(new Car(id, carName));
+            id.plus();
         }
     }
 

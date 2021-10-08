@@ -2,7 +2,7 @@
  * CarName
  * java-racingcar-precourse
  *
- * Version 0.3
+ * Version 0.4
  *
  * Created by 강래민 on 2021-10-08.
  *
@@ -44,7 +44,7 @@ public class CarName {
      */
     private void validateCarName(String name) {
         if (Common.isNullOrEmpty(name) || UtilsConstant.MAX_CAR_NAME_LENGTH < name.length()) {
-            throw new IncorrectInputException(String.format("%d 글자보다 긴 이름을 입력할 수 없습니다.", UtilsConstant.MAX_CAR_NAME_LENGTH));
+            throw new IncorrectInputException(String.format("%d 글자를 초과하는 이름을 입력할 수 없습니다.", UtilsConstant.MAX_CAR_NAME_LENGTH));
         }
     }
 }

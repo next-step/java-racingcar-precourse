@@ -1,8 +1,8 @@
 /*
- * GameManagerTest
+ * CarServiceTest
  * java-racingcar-precourse
  *
- * Version 0.1
+ * Version 0.2
  *
  * Created by 강래민 on 2021-10-08.
  *
@@ -35,7 +35,7 @@ public class CarServiceTest {
         List<String> carNames = Arrays.asList(s.split(","));
 
         for (String carName : carNames) {
-            Car car = new Car(new CarName(carName));
+            Car car = new Car(new Positive(1), new CarName(carName));
             carList.add(car);
         }
 
@@ -50,7 +50,7 @@ public class CarServiceTest {
         List<String> carNames = Arrays.asList(s.split(","));
 
         for (String carName : carNames) {
-            Car car = new Car(new CarName(carName));
+            Car car = new Car(new Positive(1), new CarName(carName));
             carList.add(car);
         }
 

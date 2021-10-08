@@ -2,7 +2,7 @@
  * CarTest
  * java-racingcar-precourse
  *
- * Version 0.1
+ * Version 0.2
  *
  * Created by 강래민 on 2021-10-08.
  *
@@ -15,6 +15,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racinggame.domain.Car;
 import racinggame.utils.CarName;
+import racinggame.utils.Positive;
 
 public class CarTest {
     CarName carName;
@@ -23,7 +24,7 @@ public class CarTest {
     @BeforeEach
     void setUp() {
         carName = new CarName("이름");
-        car = new Car(carName);
+        car = new Car(new Positive(1), carName);
     }
 
     @Test
