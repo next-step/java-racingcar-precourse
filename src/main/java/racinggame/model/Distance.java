@@ -29,6 +29,10 @@ public class Distance {
 		return new Distance(distance + MOVE_POINT);
 	}
 
+	public int getDistance() {
+		return distance;
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o)

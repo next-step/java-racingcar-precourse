@@ -1,14 +1,19 @@
 package racinggame.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+
+import nextstep.utils.Randoms;
 
 public class Cars {
 
 	private static final String REGEX = ",";
 	private static final String CHECK_DUPLICATION_ERROR_MESSAGE = "중복되는 자동차 이름이 존재 합니다.";
 	private static final int ZERO_POINT = 0;
+	private static final int START_INCLUSIVE = 0;
+	private static final int END_INCLUSIVE = 9;
 
 	private final List<Car> cars;
 
@@ -62,6 +67,13 @@ public class Cars {
 		return isExist;
 	}
 
+	public List<Car> racing() {
+		for (Car car : cars) {
+			car.racing(Randoms.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE));
+		}
+		return Collections.unmodifiableList(cars);
+	}
+
 	public List<Car> getCars() {
 		return cars;
 	}
@@ -80,4 +92,5 @@ public class Cars {
 	public int hashCode() {
 		return Objects.hash(cars);
 	}
+
 }

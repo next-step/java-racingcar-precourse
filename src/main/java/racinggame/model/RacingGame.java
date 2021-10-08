@@ -1,5 +1,6 @@
 package racinggame.model;
 
+import java.util.List;
 import java.util.Objects;
 
 public class RacingGame {
@@ -10,6 +11,19 @@ public class RacingGame {
 	public RacingGame(Cars cars, TryCount tryCount) {
 		this.cars = cars;
 		this.tryCount = tryCount;
+	}
+
+	public boolean isNotFinish() {
+		return tryCount.isNotFinish();
+	}
+
+	public List<Car> racing() {
+		addRaceTryNumber();
+		return cars.racing();
+	}
+
+	private void addRaceTryNumber() {
+		tryCount.tryRacing();
 	}
 
 	@Override

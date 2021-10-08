@@ -6,11 +6,29 @@ public class Car {
 
 	private static final int ZERO_POINT = 0;
 	private final Name name;
-	private final Distance distance;
+	private Distance distance;
 
 	public Car(String name) {
 		this.name = new Name(name);
 		this.distance = new Distance(ZERO_POINT);
+	}
+
+	public Car(String name, int distance) {
+		this.name = new Name(name);
+		this.distance = new Distance(distance);
+	}
+
+	public Car racing(int conditionNumber) {
+		distance = distance.move(conditionNumber);
+		return this;
+	}
+
+	public String getName() {
+		return name.getName();
+	}
+
+	public int getDistance() {
+		return distance.getDistance();
 	}
 
 	@Override
