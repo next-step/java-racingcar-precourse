@@ -9,6 +9,9 @@
 ## 🚀목표 : 메서드 분리(1주차 미션) + 클래스 분리 
 
 ## 📝구현할 기능 목록 (21.10.07 작성)
+* 원시값 포장`(21.10.08 추가)`
+    * 0 ~ 9 까지 랜덤값 입력을 위한 클래스 생성
+    <br><br>
 * 자동차 생성
     * n대의 자동차 생성 가능
     * 전진 또는 멈춤 기능 필요
@@ -31,4 +34,73 @@
     * 실행 결과 출력
     * 우승자 출력
     * 게임 종료
-    <br><br>
+---
+## 🔧1차 과제에서 부족했던 부분 (21.10.08 작성)
+* 들여쓰기`1`제한 위반 (반복문)
+    > 1차 과제 목표인 메서드 분리를 통해 줄일 수 있었을 것이다.
+    ```java
+    while(condition) {
+      if(condition) {
+        ...
+      }
+    }
+    // or
+    for (condition) {
+      if(condition) {
+        ...
+      }
+    }
+    ```
+## 🎁원시값을 포장하라
+> integer 변수를 사용할때 보다 예외처리, 값 제어 등 유리한 부분이 많은 것 같다.
+```java
+public class Positive {
+
+    private int value;
+
+    /**
+     * String 값을 넘겨받는 생성자
+     *
+     * @param value 전달받은 숫자 문자열
+     */
+    public Positive(String value) {
+        int integer = Integer.parseInt(value);
+        validatePositive(integer);
+        this.value = integer;
+    }
+
+    /**
+     * int 값을 넘겨받는 생성자
+     *
+     * @param value 전달받은 숫자
+     */
+    public Positive(int value) {
+        validatePositive(value);
+        this.value = value;
+    }
+
+    /**
+     * value 값을 1 증가하는 로직
+     */
+    public void plus() {
+        value++;
+    }
+
+    /**
+     * @return 멤버변수 value 값을 반환
+     */
+    public int get() {
+        return value;
+    }
+
+    /**
+    * @param value 전달받은 숫자
+    * @throws IncorrectInputException 입력한 수가 0 ~ 9 범위를 벗어난 경우 발생한다.
+    */
+    private void validatePositive(int value) {
+        if (value < 0 || 9 < value) {
+            throw new IncorrectInputException("0 ~ 9 범위를 벗어난 수를 입력할 수 없습니다.");
+        }
+    }
+}
+```
