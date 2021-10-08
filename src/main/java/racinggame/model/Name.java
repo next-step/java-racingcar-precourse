@@ -5,12 +5,14 @@ import java.util.Objects;
 public class Name {
 
 	private static final String CHECK_EMPTY_ERROR_MESSAGE = "자동차 이름이 빈값 입니다.";
+	private static final String CHECK_NULL_ERROR_MESSAGE = "자동차 이름이 null 입니다.";
 	private static final String CHECK_LIMIT_LENGTH_ERROR_MESSAGE = "이름의 길이는 최대 5글자 입니다.";
 	private static final int LIMIT_LENGTH = 5;
 
 	private final String name;
 
 	public Name(String name) {
+		checkNull(name);
 		checkEmpty(name);
 		checkLimitLength(name);
 		this.name = name;
@@ -25,6 +27,12 @@ public class Name {
 	private void checkEmpty(String name) {
 		if (name.isEmpty()) {
 			throw new IllegalArgumentException(CHECK_EMPTY_ERROR_MESSAGE);
+		}
+	}
+
+	private void checkNull(String name) {
+		if (name == null) {
+			throw new IllegalArgumentException(CHECK_NULL_ERROR_MESSAGE);
 		}
 	}
 

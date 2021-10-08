@@ -29,4 +29,11 @@ class NameTest {
 		assertThrows(IllegalArgumentException.class,
 			() -> new Name(""));
 	}
+
+	@Test
+	@DisplayName("자동차 이름이 NULL 이면 예외가 발생한다.")
+	public void checkNull() {
+		assertThrows(IllegalArgumentException.class,
+			() -> new Name(null));
+	}
 }
