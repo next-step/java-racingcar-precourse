@@ -49,4 +49,15 @@ public class RacingGame {
         return getMaxDistance()==cars.get(index).getDistance();
     }
 
+    public List<String> getWinners(){
+        List<String> winners = new ArrayList<>();
+        for(int i=0;i<cars.size();i++){
+            winners.add(getWinner(i));
+        }
+        while(winners.remove(null));
+        return winners;
+    }
+    public String getWinner(int idx){
+        return isWinner(idx)? cars.get(idx).getCarNm():null;
+    }
 }

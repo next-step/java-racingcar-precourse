@@ -38,4 +38,14 @@ public class RacingGameTest {
         assertThat(game.isWinner(1)).isTrue();
         assertThat(game.isWinner(2)).isTrue();
     }
+
+    @Test
+    @DisplayName("우승자 리스트를 생성한다.")
+    void getWinners(){
+        RacingGame game = new RacingGame("pobi,crong,ada");
+        game.moveCar(0, 1);
+        game.moveCar(1, 7);
+        game.moveCar(2, 8);
+        assertThat(game.getWinners()).contains("crong").contains("ada");
+    }
 }
