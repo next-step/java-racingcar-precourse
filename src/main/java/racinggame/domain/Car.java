@@ -2,7 +2,7 @@
  * Car
  * java-racingcar-precourse
  *
- * Version 0.3
+ * Version 0.4
  *
  * Created by 강래민 on 2021-10-08.
  *
@@ -22,11 +22,19 @@ public class Car {
     private StringBuilder sb = new StringBuilder();
 
     /**
-     * @param id 자동차 식별자
+     * @param id      자동차 식별자
      * @param carName 입력받은 자동차 이름
      */
     public Car(Positive id, CarName carName) {
+        this.id = id;
         this.name = carName;
+    }
+
+    /**
+     * @return 자동차 이름
+     */
+    public Positive getId() {
+        return id;
     }
 
     /**

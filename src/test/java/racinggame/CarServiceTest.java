@@ -10,6 +10,7 @@
  */
 package racinggame;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racinggame.domain.Car;
 import racinggame.exception.IncorrectInputException;
@@ -25,6 +26,13 @@ import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CarServiceTest {
+
+    CarService carService;
+
+    @BeforeEach
+    void setUp(){
+        carService = new CarService();
+    }
 
     @Test
     public void 일급컬렉션_전_자동차_여러대_생성() throws Exception {
@@ -62,37 +70,52 @@ public class CarServiceTest {
     @Test
     public void 일급컬렉션_후_자동차_여러대_생성() throws Exception {
 
-        CarService carService = new CarService("abc,ele,wpp");
+        carService.inputCarNames("abc,ele,wpp");
 
-        assertThat(carService.getCarList().size()).isEqualTo(3);
+        assertThat(carService.findAll().size()).isEqualTo(3);
     }
 
     @Test
     public void 일급컬렉션_후_자동차_이름_오류() throws Exception {
-        System.out.println(assertThrows(IncorrectInputException.class, () -> new CarService("abc,ele,wpp333")).getMessage());
-        System.out.println(assertThrows(IncorrectInputException.class, () -> new CarService("")).getMessage());
-        System.out.println(assertThrows(IncorrectInputException.class, () -> new CarService(null)).getMessage());
+        System.out.println(assertThrows(IncorrectInputException.class, () -> carService.inputCarNames("abc,ele,wpp333")).getMessage());
+        System.out.println(assertThrows(IncorrectInputException.class, () -> carService.inputCarNames("")).getMessage());
+        System.out.println(assertThrows(IncorrectInputException.class, () -> carService.inputCarNames(null)).getMessage());
     }
 
     @Test
     public void 일급컬렉션_후_자동차_경주() throws Exception {
-        CarService carService = new CarService(",aaa,");
-
+        carService.inputCarNames(",aaa,");
         Positive positive = new Positive(3);
 
         for (int i = 0; i < positive.get(); i++) {
-            carService.getCarList().forEach(Car::action);
-            carService.getCarList().forEach(Car::print);
+            carService.findAll().forEach(Car::action);
+            carService.findAll().forEach(Car::print);
         }
     }
 
     @Test
     public void 자동차_동작_실행() throws Exception {
         //given
-        CarService carService = new CarService("abc,ele,wpp");
+        carService.inputCarNames("abc,ele,wpp");
         //when
         carService.action();
         //then
-        carService.getCarList().forEach(Car::print);
+        carService.findAll().forEach(Car::print);
+    }
+
+    @Test
+    public void 자동차_순위_매김() throws Exception {
+        //given
+        carService.inputCarNames("abc,ele,wpp");
+        //when
+        for(int i = 0; i < 5; i++){
+            carService.action();
+            carService.findAll().forEach(Car::print);
+            System.out.println();
+            System.out.println();
+        }
+        //then
+        List<Car> winner = carService.ranking();
+        winner.forEach(Car::print);
     }
 }
