@@ -3,7 +3,9 @@ package racinggame.model;
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -34,5 +36,21 @@ class CarsTest {
 	public void checkDuplication() {
 		assertThrows(IllegalArgumentException.class,
 			() -> new Cars("aaa,aaa,bbb"));
+	}
+
+	@Test
+	@DisplayName("레이싱의 최고 점수를 알수 있다.")
+	public void maxPosition() {
+		Cars cars = new Cars(getCars());
+
+		assertThat(cars.maxDistance()).isEqualTo(3);
+	}
+
+	private List<Car> getCars() {
+		List<Car> cars = new ArrayList<>();
+		cars.add(new Car("aaa", 3));
+		cars.add(new Car("bbb", 2));
+		cars.add(new Car("ccc", 1));
+		return cars;
 	}
 }

@@ -74,6 +74,18 @@ public class Cars {
 		return Collections.unmodifiableList(cars);
 	}
 
+	public int maxDistance() {
+		int maxDistance = ZERO_POINT;
+		for (Car car : cars) {
+			maxDistance = findMaxDistance(maxDistance, car);
+		}
+		return maxDistance;
+	}
+
+	private int findMaxDistance(int maxDistance, Car car) {
+		return Math.max(maxDistance, car.getDistance());
+	}
+
 	public List<Car> getCars() {
 		return cars;
 	}
