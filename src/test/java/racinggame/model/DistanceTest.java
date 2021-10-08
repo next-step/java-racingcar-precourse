@@ -22,4 +22,19 @@ class DistanceTest {
 		assertThrows(IllegalArgumentException.class,
 			() -> new Distance(-1));
 	}
+
+	@Test
+	@DisplayName("이동 조건 숫자가 4이상이면 1씩 증가한다.")
+	public void moveDistance() {
+		Distance distance = new Distance(0);
+
+		assertAll(
+			() -> assertThat(distance.move(4)).isEqualTo(new Distance(1)),
+			() -> {
+				Distance result1 = distance.move(4);
+				Distance result2 = result1.move(3);
+				assertThat(result2).isEqualTo(new Distance(1));
+			}
+		);
+	}
 }

@@ -6,6 +6,8 @@ public class Distance {
 
 	private static final String CHECK_POSITIVE_ERROR_MESSAGE = "이동거리는 음수가 될수 없습니다.";
 	private static final int ZERO_POINT = 0;
+	private static final int MOVE_CONDITION_NUMBER = 4;
+	private static final int MOVE_POINT = 1;
 
 	private final int distance;
 
@@ -18,6 +20,13 @@ public class Distance {
 		if (distance < ZERO_POINT) {
 			throw new IllegalArgumentException(CHECK_POSITIVE_ERROR_MESSAGE);
 		}
+	}
+
+	public Distance move(int conditionNumber) {
+		if (conditionNumber < MOVE_CONDITION_NUMBER) {
+			return this;
+		}
+		return new Distance(distance + MOVE_POINT);
 	}
 
 	@Override
