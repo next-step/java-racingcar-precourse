@@ -2,7 +2,7 @@
  * PositiveTest
  * java-racingcar-precourse
  *
- * Version 0.3
+ * Version 0.4
  *
  * Created by 강래민 on 2021-10-08.
  *
@@ -44,6 +44,9 @@ public class PositiveTest {
 
     @Test
     public void 비정상_문자열() throws Exception {
+        assertThat("-2".matches(UtilsConstant.ONLY_NUMBER_VALIDATE_REGEX)).isTrue();
+        assertThat("-2-2".matches(UtilsConstant.ONLY_NUMBER_VALIDATE_REGEX)).isFalse();
+        assertThat("2-".matches(UtilsConstant.ONLY_NUMBER_VALIDATE_REGEX)).isFalse();
         assertThat("1234".matches(UtilsConstant.ONLY_NUMBER_VALIDATE_REGEX)).isTrue();
         assertThat("ㄱㄴㄷ".matches(UtilsConstant.ONLY_NUMBER_VALIDATE_REGEX)).isFalse();
         assertThat("".matches(UtilsConstant.ONLY_NUMBER_VALIDATE_REGEX)).isFalse();
@@ -51,6 +54,9 @@ public class PositiveTest {
 
     @Test
     public void 비정상_문자열입력_생성() throws Exception {
+        assertThat(assertThrows(IncorrectInputException.class, () -> new Positive("-2")).getMessage()).contains("[ERROR]");
+        assertThat(assertThrows(IncorrectInputException.class, () -> new Positive("2+2")).getMessage()).contains("[ERROR]");
+        assertThat(assertThrows(IncorrectInputException.class, () -> new Positive("-2-2")).getMessage()).contains("[ERROR]");
         assertThat(assertThrows(IncorrectInputException.class, () -> new Positive("ㄱㄴㄷ")).getMessage()).contains("[ERROR]");
         assertThat(assertThrows(IncorrectInputException.class, () -> new Positive("")).getMessage()).contains("[ERROR]");
         assertThat(assertThrows(IncorrectInputException.class, () -> new Positive(null)).getMessage()).contains("[ERROR]");

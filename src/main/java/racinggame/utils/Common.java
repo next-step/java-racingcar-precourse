@@ -37,7 +37,7 @@ public final class Common {
      */
     public static void validateStringToInteger(String input) {
         if (isNullOrEmpty(input) || !input.matches(UtilsConstant.ONLY_NUMBER_VALIDATE_REGEX)) {
-            throw new IncorrectInputException("숫자만 입력할 수 있습니다.");
+            throw new IncorrectInputException("숫자가 아닌 문자열 또는 수식을 입력할 수 없습니다.");
         }
     }
 }
