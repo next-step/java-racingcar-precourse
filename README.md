@@ -46,7 +46,7 @@
       }
     }
     // or
-    for (condition) {
+    for(condition) {
       if(condition) {
         ...
       }

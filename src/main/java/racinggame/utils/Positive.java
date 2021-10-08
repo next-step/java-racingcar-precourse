@@ -2,7 +2,7 @@
  * Positive
  * java-racingcar-precourse
  *
- * Version 0.2
+ * Version 0.3
  *
  * Created by 강래민 on 2021-10-08.
  *
@@ -23,6 +23,7 @@ public class Positive {
      * @param value 전달받은 숫자 문자열
      */
     public Positive(String value) {
+        Common.validateStringToInteger(value);
         int integer = Integer.parseInt(value);
         validatePositive(integer);
         this.value = integer;
