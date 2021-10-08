@@ -7,6 +7,7 @@ public class TryCount {
 	private static final String INT_REG_EXP = "^\\d+$";
 	private static final String CHECK_MATCH_TYPE_ERROR_MESSAGE = "레이싱회수는 숫자만 가능 합니다.";
 	private static final String CHECK_MIN_TRY_COUNT_ERROR_MESSAGE = "레이싱회수는 0이하가 될수 없습니다.";
+	private static final String CHECK_EMPTY_ERROR_MESSAGE = "레이싱회수가 빈값 입니다.";
 	private static final int ZERO_POINT = 0;
 
 	private final int tryCount;
@@ -19,9 +20,16 @@ public class TryCount {
 	}
 
 	public TryCount(String tryCount) {
+		checkEmpty(tryCount);
 		checkMatchType(tryCount);
 		this.tryCount = toInt(tryCount);
 		this.racingCount = ZERO_POINT;
+	}
+
+	private void checkEmpty(String tryCount) {
+		if (tryCount.isEmpty()) {
+			throw new IllegalArgumentException(CHECK_EMPTY_ERROR_MESSAGE);
+		}
 	}
 
 	private void checkMatchType(String tryCount) {

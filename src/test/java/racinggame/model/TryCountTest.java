@@ -33,4 +33,11 @@ class TryCountTest {
 			() -> new TryCount(tryCount));
 	}
 
+	@Test
+	@DisplayName("레이스 시도횟수가 빈값이면 예외가 발생한다.")
+	public void checkEmpty() {
+		assertThrows(IllegalArgumentException.class,
+			() -> new TryCount(""));
+	}
+
 }
