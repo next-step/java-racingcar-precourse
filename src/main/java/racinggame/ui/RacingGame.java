@@ -1,35 +1,87 @@
 package racinggame.ui;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import racinggame.common.Labs;
+import racinggame.common.RacingCar;
+import racinggame.common.RacingCars;
+import racinggame.common.ResultBoard;
+import racinggame.exception.InvalidNameException;
+
 public final class RacingGame {
+	private final boolean VALID = true;
+	private final boolean INVALID = false;
+
 	private final InputDevice inputDevice;
 	private final OutputDevice outputDevice;
+	private final Circuit circuit;
+	private final Rule rule;
 
-	public RacingGame(InputDevice inputDevice, OutputDevice outputDevice) {
+	public RacingGame(InputDevice inputDevice, OutputDevice outputDevice, Circuit circuit, Rule rule) {
 		this.inputDevice = inputDevice;
 		this.outputDevice = outputDevice;
+		this.circuit = circuit;
+		this.rule = rule;
 	}
 
 	public void play() {
-		outputDevice.print("경주할 자동차 이름을 입력하세요");
-		String[] names = inputDevice.input().split(",");
+		RacingCars racingCars = makeRacingCars();
+		Labs labs = inputLabs();
 
-		for(String name : names){
-			if(name.length() > 5){
-				outputDevice.print("[ERROR]");
-			}
-		}
-
-		outputDevice.print("시도할 횟수는 몇회인가요?");
-		String times = inputDevice.input();
+		ResultBoard resultBoard = circuit.start(racingCars, labs, rule);
 
 		outputDevice.print("실행결과");
+		outputDevice.print(resultBoard.read());
+	}
 
-		String result = new StringBuilder()
-			.append("pobi : -\n")
-			.append("woni : ")
-			.append("최종 우승자는 pobi 입니다.")
-			.toString();
+	private RacingCars makeRacingCars() {
+		List<RacingCar> racingCars = new ArrayList<>();
 
-		outputDevice.print(result);
+		inputRacingCarNames()
+			.forEach(name -> racingCars.add(new RacingCar(rule, name)));
+
+		return new RacingCars(racingCars);
+	}
+
+	private List<String> inputRacingCarNames() {
+		String nameChunk;
+		do {
+			outputDevice.print("경주할 자동차 이름을 입력하세요");
+			nameChunk = inputDevice.input();
+		} while (checkNameByRule(nameChunk) == INVALID);
+
+		return Arrays.asList(nameChunk.split(","));
+	}
+
+	private boolean checkNameByRule(String nameChunk) {
+		try {
+			rule.validateNames(nameChunk);
+		} catch (InvalidNameException error) {
+			outputDevice.print(error.getMessage());
+			return INVALID;
+		}
+		return VALID;
+	}
+
+	private Labs inputLabs() {
+		Labs labs;
+
+		do {
+			outputDevice.print("시도할 횟수는 몇회인가요?");
+			labs = getLabs(inputDevice.input());
+		} while (labs == null);
+
+		return labs;
+	}
+
+	private Labs getLabs(String labString) {
+		try {
+			return new Labs(labString);
+		} catch (InvalidNameException | NumberFormatException error) {
+			outputDevice.print(error.getMessage());
+			return null;
+		}
 	}
 }
