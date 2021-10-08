@@ -10,9 +10,10 @@ public class TryCount {
 	private static final String CHECK_EMPTY_ERROR_MESSAGE = "레이싱회수가 빈값 입니다.";
 	private static final String CHECK_NULL_ERROR_MESSAGE = "레이싱회수가 null 입니다.";
 	private static final int ZERO_POINT = 0;
+	private static final int RACING_COUNT = 1;
 
 	private final int tryCount;
-	private final int racingCount;
+	private int racingCount;
 
 	public TryCount(int tryCount) {
 		checkMinTryCount(tryCount);
@@ -56,6 +57,10 @@ public class TryCount {
 		if (tryCount <= ZERO_POINT) {
 			throw new IllegalArgumentException(CHECK_MIN_TRY_COUNT_ERROR_MESSAGE);
 		}
+	}
+
+	public int tryRacing() {
+		return racingCount += RACING_COUNT;
 	}
 
 	@Override

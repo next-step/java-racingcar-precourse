@@ -3,6 +3,7 @@ package racinggame.model;
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -45,6 +46,17 @@ class TryCountTest {
 	public void checkNull() {
 		assertThrows(IllegalArgumentException.class,
 			() -> new TryCount(null));
+	}
+
+	@Test
+	@DisplayName("레이스는 한번 진행시 1씩 증가된다.")
+	public void tryRacing() {
+		TryCount tryCount = new TryCount(3);
+		Assertions.assertAll(
+			() -> assertThat(tryCount.tryRacing()).isEqualTo(1),
+			() -> assertThat(tryCount.tryRacing()).isEqualTo(2),
+			() -> assertThat(tryCount.tryRacing()).isEqualTo(3)
+		);
 	}
 
 }
