@@ -2,7 +2,7 @@
  * PositiveTest
  * java-racingcar-precourse
  *
- * Version 0.2
+ * Version 0.3
  *
  * Created by 강래민 on 2021-10-08.
  *
@@ -33,7 +33,6 @@ public class PositiveTest {
     @Test
     public void 입력범위_초과() throws Exception {
         assertThat(assertThrows(IncorrectInputException.class, () -> new Positive(-1)).getMessage()).contains("[ERROR]");
-        assertThat(assertThrows(IncorrectInputException.class, () -> new Positive(10)).getMessage()).contains("[ERROR]");
     }
 
     @Test
