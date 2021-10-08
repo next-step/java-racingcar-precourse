@@ -35,4 +35,13 @@ public class RacingGame {
         cars.set(index, car);
         return car;
     }
+
+    public int getMaxDistance(){
+        int distance = 0;
+        for(int i=0;i<cars.size();i++){
+            distance = Math.max(distance, cars.get(i).getDistance());
+        }
+        return distance;
+    }
+
 }

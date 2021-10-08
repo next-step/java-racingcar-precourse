@@ -17,4 +17,13 @@ public class RacingGameTest {
         assertThat(game.getCars().get(0).getDistance()).isEqualTo(result);
     }
 
+    @Test
+    @DisplayName("이동거리가 가장 긴 자동차의 이동거리를 찾는다.")
+    void getMaxDistance(){
+        RacingGame game = new RacingGame("pobi,crong,ada");
+        game.moveCar(0, 1);
+        game.moveCar(1, 7);
+        game.moveCar(2, 8);
+        assertThat(game.getMaxDistance()).isEqualTo(1);
+    }
 }
