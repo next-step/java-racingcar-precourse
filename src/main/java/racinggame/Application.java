@@ -8,5 +8,6 @@ public class Application {
         RacingGame racingGame = new RacingGame();
         List<Car> carList = racingGame.carSetup();
         Integer tryCount = racingGame.tryCountSetup();
+        racingGame.run(carList, tryCount);
     }
 }

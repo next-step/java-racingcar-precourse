@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import nextstep.utils.Console;
+import nextstep.utils.Randoms;
 import nextstep.utils.Valid;
 
 public class RacingGame {
@@ -72,5 +73,42 @@ public class RacingGame {
 		}
 		valid.setValid(true);
 		return valid;
+	}
+	public void run(List<Car> carList, Integer tryCount) {
+		System.out.println("실행결과");
+		Integer maxMoving = 0;
+		for (int i = 0; i < tryCount; i++) {
+			for (Car car : carList) {
+				int drive = Randoms.pickNumberInRange(0, 9);
+				if (drive >= 4) {
+					Integer move = car.getMove() + 1;
+					car.setMove(car.getMove() + 1);
+					if (maxMoving < move) {
+						maxMoving = move;
+					}
+				}
+			}
+			printRacingGame(carList);
+			System.out.println("");
+		}
+		gameResult(carList, maxMoving);
+	}
+	private void printRacingGame(List<Car> carList) {
+		for (Car car : carList) {
+			String moveStr = "";
+			for (int i = 0; i < car.getMove(); i++) {
+				moveStr += "-";
+			}
+			System.out.println(String.format("%s : %s", car.getCarName(), moveStr));
+		}
+	}
+	private void gameResult(List<Car> carList, Integer maxMoving) {
+		List<String> winnerList = new ArrayList<>();
+		for (Car car : carList) {
+			if (car.getMove() == maxMoving) {
+				winnerList.add(car.getCarName());
+			}
+		}
+		System.out.println(String.format("최종 우승자는 %s 입니다.", String.join(",",winnerList)));
 	}
 }
