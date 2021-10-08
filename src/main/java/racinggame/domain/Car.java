@@ -2,7 +2,7 @@
  * Car
  * java-racingcar-precourse
  *
- * Version 0.1
+ * Version 0.2
  *
  * Created by 강래민 on 2021-10-08.
  *
@@ -59,10 +59,19 @@ public class Car {
     }
 
     /**
+     * 자동차의 이름과 위치를 조합하는 함수
+     * 
      * @return "자동차 이름 : 현재 위치"
      */
     @Override
     public String toString() {
         return getName() + " : " + getPosition();
+    }
+
+    /**
+     * 자동차의 이름과 위치를 출력하기 위한 함수
+     */
+    public void print() {
+        System.out.println(this.toString());
     }
 }

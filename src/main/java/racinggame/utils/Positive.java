@@ -2,7 +2,7 @@
  * Positive
  * java-racingcar-precourse
  *
- * Version 0.1
+ * Version 0.2
  *
  * Created by 강래민 on 2021-10-08.
  *
@@ -57,8 +57,8 @@ public class Positive {
      * @throws IncorrectInputException 제한된 범위를 벗어난 입력이 들어올 경우 발생한다.
      */
     private void validatePositive(int value) {
-        if (value < UtilsConstant.MIN_NO || UtilsConstant.MAX_NO < value) {
-            throw new IncorrectInputException(String.format("%d ~ %d 범위를 벗어난 수를 입력할 수 없습니다.", UtilsConstant.MIN_NO, UtilsConstant.MAX_NO));
+        if (value < UtilsConstant.MIN_NO) {
+            throw new IncorrectInputException(String.format("%d 보다 작은 수를 입력할 수 없습니다.", UtilsConstant.MIN_NO));
         }
     }
 }
