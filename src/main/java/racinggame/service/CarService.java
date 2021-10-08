@@ -2,7 +2,7 @@
  * CarService
  * java-racingcar-precourse
  *
- * Version 0.4
+ * Version 0.5
  *
  * Created by 강래민 on 2021-10-08.
  *
@@ -42,6 +42,9 @@ public class CarService {
         carRepository.action();
     }
 
+    /**
+     * @return 최종 게임 우승자 목록
+     */
     public List<Car> ranking() {
         return carRepository.ranking();
     }
