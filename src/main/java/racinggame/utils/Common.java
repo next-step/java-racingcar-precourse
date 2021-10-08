@@ -2,7 +2,7 @@
  * Common
  * java-racingcar-precourse
  *
- * Version 0.2
+ * Version 0.3
  *
  * Created by 강래민 on 2021-10-08.
  *
@@ -34,6 +34,7 @@ public final class Common {
      * String 타입을 Integer 타입으로 변환할 수 있는지 검증
      *
      * @param input 입력받은 문자열
+     * @throws IncorrectInputException 숫자가 아닌 문자열 또는 수식을 입력하는 경우 발생한다.
      */
     public static void validateStringToInteger(String input) {
         if (isNullOrEmpty(input) || !input.matches(UtilsConstant.ONLY_NUMBER_VALIDATE_REGEX)) {

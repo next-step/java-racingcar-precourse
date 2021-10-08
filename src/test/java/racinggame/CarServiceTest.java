@@ -2,7 +2,7 @@
  * CarServiceTest
  * java-racingcar-precourse
  *
- * Version 0.2
+ * Version 0.3
  *
  * Created by 강래민 on 2021-10-08.
  *
@@ -25,7 +25,6 @@ import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CarServiceTest {
-
 
     @Test
     public void 일급컬렉션_전_자동차_여러대_생성() throws Exception {
@@ -70,9 +69,9 @@ public class CarServiceTest {
 
     @Test
     public void 일급컬렉션_후_자동차_이름_오류() throws Exception {
-        assertThrows(IncorrectInputException.class, () -> new CarService("abc,ele,wpp333"));
-        assertThrows(IncorrectInputException.class, () -> new CarService(""));
-        assertThrows(IncorrectInputException.class, () -> new CarService(null));
+        System.out.println(assertThrows(IncorrectInputException.class, () -> new CarService("abc,ele,wpp333")).getMessage());
+        System.out.println(assertThrows(IncorrectInputException.class, () -> new CarService("")).getMessage());
+        System.out.println(assertThrows(IncorrectInputException.class, () -> new CarService(null)).getMessage());
     }
 
     @Test
@@ -85,5 +84,15 @@ public class CarServiceTest {
             carService.getCarList().forEach(Car::action);
             carService.getCarList().forEach(Car::print);
         }
+    }
+
+    @Test
+    public void 자동차_동작_실행() throws Exception {
+        //given
+        CarService carService = new CarService("abc,ele,wpp");
+        //when
+        carService.action();
+        //then
+        carService.getCarList().forEach(Car::print);
     }
 }

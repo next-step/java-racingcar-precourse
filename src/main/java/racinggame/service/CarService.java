@@ -2,7 +2,7 @@
  * CarService
  * java-racingcar-precourse
  *
- * Version 0.2
+ * Version 0.3
  *
  * Created by 강래민 on 2021-10-08.
  *
@@ -10,7 +10,6 @@
  */
 package racinggame.service;
 
-import racinggame.constants.UtilsConstant;
 import racinggame.domain.Car;
 import racinggame.exception.IncorrectInputException;
 import racinggame.utils.CarName;
@@ -31,25 +30,25 @@ public class CarService {
      * @param input 사용자로부터 입력받은 차량 이름 목록
      */
     public CarService(String input) {
+        validateCarNames(input);
         carList = new ArrayList<>();
         Positive id = new Positive(1);
-        for (CarName carName : validateCarNames(input)) {
+        for (CarName carName : makeCarNameList(input.replaceAll(",", " ").trim())) {
             carList.add(new Car(id, carName));
             id.plus();
         }
     }
 
     /**
-     * 입력받은 자동차 이름의 유효성 판단하여 이름 목록을 반환
+     * 입력받은 자동차 이름의 유효성 판단
      *
      * @param input 사용자로부터 입력받은 문자열
-     * @return 자동차 이름 목록
+     * @throws IncorrectInputException 빈값 혹은 null 값을 전달받는 경우 발생한다.
      */
-    private List<CarName> validateCarNames(String input) {
+    private void validateCarNames(String input) {
         if (Common.isNullOrEmpty(input)) {
-            throw new IncorrectInputException(String.format("%d 글자보다 긴 이름을 입력할 수 없습니다.", UtilsConstant.MAX_CAR_NAME_LENGTH));
+            throw new IncorrectInputException("잘못된 문자열 입력입니다.");
         }
-        return makeCarNameList(input.replaceAll(",", " ").trim());
     }
 
     /**
@@ -71,5 +70,12 @@ public class CarService {
      */
     public List<Car> getCarList() {
         return carList;
+    }
+
+    /**
+     * 자동차 목록에 있는 자동차들의 전진 혹은 정지 동작 실행
+     */
+    public void action() {
+        getCarList().forEach(Car::action);
     }
 }
