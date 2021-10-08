@@ -2,20 +2,36 @@ package racinggame.utils;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static racinggame.utils.RacingGameUtils.isValidRacingCarNameLength;
+import static racinggame.utils.RacingGameUtils.racingCarNameSplit;
 
 public class RacingGameUtilsTest {
 
-    @ParameterizedTest(name = "자동차 이름 : {0} / 배열 사이즈 : {1}")
+    @ParameterizedTest(name = "자동차 이름 [{0}] 쉼표 기준으로 구분하면 배열 사이즈는 {1} 이다")
     @CsvSource(value = {  "pobi,crong,honux:3"
                         , "pobi,crong,honux,elice:4"
                         , "pobi,crong,honux,elice,mark:5" }
                         , delimiter = ':')
     void 입력받은_자동차_이름을_쉼표_기준으로_구분한다(String racingCarNameInput, int lengthInput) {
-        String regex = ",";
-        String[] racingCarNameSplit = RacingGameUtils.racingCarNameSplit(racingCarNameInput, regex);
+        String[] racingCarNameSplit = racingCarNameSplit(racingCarNameInput);
 
         assertThat(racingCarNameSplit.length).isEqualTo(lengthInput);
+    }
+
+    @ParameterizedTest(name = "자동차 이름 [{0}] 길이가 5자 초과면 False 이다")
+    @ValueSource(strings = { "pobi,crong,javaji,javamaster"
+                            , "abraham,aaliyah" })
+    void 쉼표_기준으로_구분한_자동차_이름의_길이가_5자_초과_False(String racingCarNameInput) {
+        assertThat(isValidRacingCarNameLength(racingCarNameInput)).isFalse();
+    }
+
+    @ParameterizedTest(name = "자동차 이름 [{0}] 길이가 5자 이하면 True 이다")
+    @ValueSource(strings = { "pobi,crong,honux"
+                            , "raham,liyah" })
+    void 쉼표_기준으로_구분한_자동차_이름의_길이가_5자_이하_True(String racingCarNameInput) {
+        assertThat(isValidRacingCarNameLength(racingCarNameInput)).isTrue();
     }
 }
