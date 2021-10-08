@@ -2,7 +2,7 @@
  * UtilsConstant
  * java-racingcar-precourse
  *
- * Version 0.1
+ * Version 0.2
  *
  * Created by 강래민 on 2021-10-08.
  *
@@ -17,5 +17,6 @@ public final class UtilsConstant {
 
     public static final int MIN_NO = 0;
     public static final int MAX_NO = 9;
-    public static final int MAX_CAR_NAME = 5;
+    public static final int MIN_CAR_FORWARD_NO = 4;
+    public static final int MAX_CAR_NAME_LENGTH = 5;
 }
