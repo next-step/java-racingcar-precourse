@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 class TryCountTest {
 
@@ -21,6 +23,14 @@ class TryCountTest {
 	public void checkMinCount() {
 		assertThrows(IllegalArgumentException.class,
 			() -> new TryCount(0));
+	}
+
+	@ParameterizedTest
+	@DisplayName("레이스 시도횟수가 숫자가 아니면 예외가 발생한다.")
+	@CsvSource(value = {"1Ab", "12!", "1ㄱㅁㅍ"})
+	public void checkMatchType(String tryCount) {
+		assertThrows(IllegalArgumentException.class,
+			() -> new TryCount(tryCount));
 	}
 
 }

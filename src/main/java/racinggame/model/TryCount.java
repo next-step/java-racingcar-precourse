@@ -4,6 +4,8 @@ import java.util.Objects;
 
 public class TryCount {
 
+	private static final String INT_REG_EXP = "^\\d+$";
+	private static final String CHECK_MATCH_TYPE_ERROR_MESSAGE = "레이싱회수는 숫자만 가능 합니다.";
 	private static final String CHECK_MIN_TRY_COUNT_ERROR_MESSAGE = "레이싱회수는 0이하가 될수 없습니다.";
 	private static final int ZERO_POINT = 0;
 
@@ -14,6 +16,24 @@ public class TryCount {
 		checkMinTryCount(tryCount);
 		this.tryCount = tryCount;
 		this.racingCount = ZERO_POINT;
+	}
+
+	public TryCount(String tryCount) {
+		checkMatchType(tryCount);
+		this.tryCount = toInt(tryCount);
+		this.racingCount = ZERO_POINT;
+	}
+
+	private void checkMatchType(String tryCount) {
+		if (!tryCount.matches(INT_REG_EXP)) {
+			throw new IllegalArgumentException(CHECK_MATCH_TYPE_ERROR_MESSAGE);
+		}
+	}
+
+	private int toInt(String tryCount) {
+		int count = Integer.parseInt(tryCount);
+		checkMinTryCount(count);
+		return count;
 	}
 
 	private void checkMinTryCount(int tryCount) {
