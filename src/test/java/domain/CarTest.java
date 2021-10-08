@@ -29,4 +29,33 @@ public class CarTest {
         }).isInstanceOf(CarException.class);
     }
 
+    @Test
+    @DisplayName("Random 값이 4일 경우 전진")
+    public void carMoveRandomValueFour(){
+        Car car = new Car("lee"){
+            @Override
+            public int getRandomNumber(){
+                return 4;
+            }
+        };
+        car.move();
+
+        assertThat(car.getMoveCount()).isEqualTo(2);
+    }
+
+    @Test
+    @DisplayName("Random 값이 3일 경우 정지")
+    public void carMoveRandomValueThree(){
+        Car car = new Car("lee"){
+            @Override
+            public int getRandomNumber(){
+                return 3;
+            }
+        };
+
+        car.move();
+
+        assertThat(car.getMoveCount()).isEqualTo(1);
+    }
+
 }

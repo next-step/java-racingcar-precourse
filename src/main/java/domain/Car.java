@@ -1,6 +1,7 @@
 package domain;
 
 import domain.exceptions.CarException;
+import nextstep.utils.Randoms;
 
 public class Car {
 
@@ -17,6 +18,15 @@ public class Car {
         if(carName.length() >5){
             throw new CarException("[ERROR]");
         }
+    }
+
+    public void move(){
+        int randomNumber = getRandomNumber();
+        moveCount.judgeMove(randomNumber);
+    }
+
+    protected int getRandomNumber(){
+        return Randoms.pickNumberInRange(0,9);
     }
 
     public String getName(){
