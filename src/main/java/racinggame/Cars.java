@@ -8,6 +8,7 @@ import java.util.List;
  * Description : 레이싱 게임 참가자 클래스
  */
 public class Cars {
+    public static final int ONE = 1;
     private final List<Car> users;
 
     public <T> Cars(List<Car> users) {
@@ -34,6 +35,6 @@ public class Cars {
 
     private boolean checkDupUser(List<Car> users, Car user) {
         /* Collections.frequency는 내부적으로 equals 메소드로 비교(Car 재정의) */
-        return Collections.frequency(users, user) > 1;
+        return Collections.frequency(users, user) > ONE;
     }
 }
