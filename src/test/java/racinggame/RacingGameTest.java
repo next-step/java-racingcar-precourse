@@ -26,4 +26,16 @@ public class RacingGameTest {
         game.moveCar(2, 8);
         assertThat(game.getMaxDistance()).isEqualTo(1);
     }
+
+    @Test
+    @DisplayName("우승차량인지 확인한다.")
+    void isWinner(){
+        RacingGame game = new RacingGame("pobi,crong,ada");
+        game.moveCar(0, 1);
+        game.moveCar(1, 7);
+        game.moveCar(2, 8);
+        assertThat(game.isWinner(0)).isFalse();
+        assertThat(game.isWinner(1)).isTrue();
+        assertThat(game.isWinner(2)).isTrue();
+    }
 }

@@ -44,4 +44,9 @@ public class RacingGame {
         return distance;
     }
 
+
+    public boolean isWinner(int index) {
+        return getMaxDistance()==cars.get(index).getDistance();
+    }
+
 }
