@@ -2,15 +2,17 @@ package racinggame.domain;
 
 import racinggame.error.ValidationFailureException;
 import racinggame.type.Messages;
+import racinggame.type.StringConstants;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
+import static racinggame.type.StringConstants.*;
+
 public class CarNames {
 
-    private static final String NAME_SEPARATOR = ",";
 
     private final List<CarName> names;
 
@@ -33,12 +35,12 @@ public class CarNames {
     }
 
     private static List<String> toSeparatedNames(String names) {
-        return Arrays.asList(names.split(NAME_SEPARATOR));
+        return Arrays.asList(names.split(NAME_SEPARATOR.getValue()));
     }
 
     private static void throwNotIfCommaBetweenThem(String name) {
         throwIfEmptyTrimmedName(name);
-        if (name.startsWith(NAME_SEPARATOR) || name.endsWith(NAME_SEPARATOR)) {
+        if (name.startsWith(NAME_SEPARATOR.getValue()) || name.endsWith(NAME_SEPARATOR.getValue())) {
             throw new ValidationFailureException(Messages.ERROR_INVALID_CAR_NAME.getMessage());
         }
     }

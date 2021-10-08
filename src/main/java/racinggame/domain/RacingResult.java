@@ -1,24 +1,26 @@
 package racinggame.domain;
 
+import static racinggame.type.StringConstants.LINE_FEED;
+
 public class RacingResult {
 
-    private final RacingRecords racingRecords;
+    private static final String RESULT_PREFIX = "실행결과";
+    private static final String RESULT_WINNERS_EXP = "최종 우승자는 %s 입니다.";
+
+    private final RacingTimesRecord racingTimesRecord;
     private final Cars winners;
 
     public RacingResult() {
-        racingRecords = new RacingRecords();
         winners = Cars.createCars();
-
+        racingTimesRecord = new RacingTimesRecord();
     }
 
     public void record(Cars cars) {
-        for (int i = 0; i < cars.size(); i++) {
-            racingRecords.addResult(RacingRecord.from(cars.get(i)));
-        }
+        racingTimesRecord.record(cars);
     }
 
     public int resultSize() {
-        return racingRecords.size();
+        return racingTimesRecord.size();
     }
 
     public void addWinner(Car car) {
@@ -33,9 +35,10 @@ public class RacingResult {
 
     @Override
     public String toString() {
-        return "RacingResult{" +
-                "racingRecords=" + racingRecords +
-                ", winners=" + winners +
-                '}';
+        return RESULT_PREFIX +
+                LINE_FEED +
+                racingTimesRecord.toString() +
+                LINE_FEED +
+                String.format(RESULT_WINNERS_EXP, winners.toString());
     }
 }

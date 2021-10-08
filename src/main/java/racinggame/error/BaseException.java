@@ -1,9 +1,8 @@
 package racinggame.error;
 
+import static racinggame.type.StringConstants.ERROR_TAG;
+
 public class BaseException extends RuntimeException {
-
-    private static final String ERROR_TAG = "[ERROR]";
-
     public BaseException(String message) {
         super(ERROR_TAG + message);
     }

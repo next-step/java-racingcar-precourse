@@ -1,5 +1,7 @@
 package racinggame.domain;
 
+import nextstep.utils.StringBuilderUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,10 +37,7 @@ public class Cars {
         for (Car car : cars) {
             sb.append(car.getName().getValue()).append(SEPARATOR);
         }
-        if (sb.length() > 0) {
-            sb.deleteCharAt(sb.lastIndexOf(SEPARATOR));
-        }
-        return sb.toString();
+        return StringBuilderUtils.deleteLastText(sb, SEPARATOR).toString();
     }
 
 }
