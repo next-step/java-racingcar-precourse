@@ -1,5 +1,7 @@
 package racinggame;
 
+import java.util.Objects;
+
 /**
  * Name : Car <br/>
  * Description : 자동차 클래스
@@ -26,5 +28,18 @@ public class Car {
 
     public String getName() {
         return this.name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return Objects.equals(name, car.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
     }
 }

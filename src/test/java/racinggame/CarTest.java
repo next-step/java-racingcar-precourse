@@ -2,8 +2,7 @@ package racinggame;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CarTest {
     @Test
@@ -22,5 +21,13 @@ public class CarTest {
         assertEquals("자동차 이름은 1~5자로 입력해 주세요.", assertThrows(IllegalArgumentException.class, () -> new Car("donydony")).getMessage());
         assertEquals("자동차 이름은 1~5자로 입력해 주세요.", assertThrows(IllegalArgumentException.class, () -> new Car("도니도니도니")).getMessage());
         assertEquals("자동차 이름은 1~5자로 입력해 주세요.", assertThrows(IllegalArgumentException.class, () -> new Car("dony!!")).getMessage());
+    }
+
+    @Test
+    void 자동차_이름_중복체크() {
+        String name = "dony";
+        Car car1 = new Car(name);
+        Car car2 = new Car(name);
+        assertTrue(car1.equals(car2));
     }
 }
