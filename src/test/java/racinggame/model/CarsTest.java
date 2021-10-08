@@ -39,11 +39,19 @@ class CarsTest {
 	}
 
 	@Test
-	@DisplayName("레이싱의 최고 점수를 알수 있다.")
-	public void maxPosition() {
+	@DisplayName("레이싱의 최고 이동거리를 알수 있다.")
+	public void maxDistance() {
 		Cars cars = new Cars(getCars());
 
 		assertThat(cars.maxDistance()).isEqualTo(3);
+	}
+
+	@Test
+	@DisplayName("레이싱의 최고이동거리를 가진 자동차를 알 수 있다.")
+	public void findWinnerCars() {
+		Cars cars = new Cars(getCars());
+
+		assertThat(cars.findWinnerCars()).containsExactly(new Car("aaa", 3));
 	}
 
 	private List<Car> getCars() {

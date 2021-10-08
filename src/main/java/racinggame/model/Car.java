@@ -23,6 +23,10 @@ public class Car {
 		return this;
 	}
 
+	public boolean isMaxDistance(int maxDistance) {
+		return distance.isMaxDistance(maxDistance);
+	}
+
 	public String getName() {
 		return name.getName();
 	}
@@ -45,4 +49,5 @@ public class Car {
 	public int hashCode() {
 		return Objects.hash(name, distance);
 	}
+
 }

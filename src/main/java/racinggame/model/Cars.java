@@ -74,6 +74,16 @@ public class Cars {
 		return Collections.unmodifiableList(cars);
 	}
 
+	public List<Car> findWinnerCars() {
+		List<Car> list = new ArrayList<>();
+		for (Car car : cars) {
+			if (car.isMaxDistance(maxDistance())) {
+				list.add(car);
+			}
+		}
+		return list;
+	}
+
 	public int maxDistance() {
 		int maxDistance = ZERO_POINT;
 		for (Car car : cars) {
