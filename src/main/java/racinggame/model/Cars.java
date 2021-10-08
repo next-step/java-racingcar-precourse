@@ -8,16 +8,18 @@ import java.util.List;
 
 public class Cars {
     private final List<Car> cars;
+    private int topPosition;
 
     public Cars(List<String> names) {
         this.cars = constructCars(names);
+        this.topPosition = 0;
     }
 
     private List<Car> constructCars(List<String> names) {
         List<Car> list = new ArrayList<>();
 
         for (String name : names) {
-            Car car = new Car(name);
+            Car car = new Car(name.trim());
             list.add(car);
         }
 
@@ -29,10 +31,15 @@ public class Cars {
 
         for (int i = 0; i < cars.size(); i++) {
             int number = numbers.get(i);
-            MoveCondition condition = new MoveCondition(number);
             Car car = cars.get(i);
-            car.move(condition);
+            moveOne(car, number);
         }
+    }
+
+    private void moveOne(Car car, int number) {
+        MoveCondition condition = new MoveCondition(number);
+        car.move(condition);
+        topPosition = Math.max(topPosition, car.getPosition());
     }
 
     private void validateSize(List<Integer> numbers) {
@@ -50,5 +57,22 @@ public class Cars {
         }
 
         return new MoveResults(results);
+    }
+
+    public List<String> getWinners() {
+        List<String> winners = new ArrayList<>();
+
+        for (Car car : cars) {
+            addNameIfTopPosition(winners, car);
+        }
+
+        return winners;
+    }
+
+    private void addNameIfTopPosition(List<String> winners, Car car) {
+        if (car.isTopPosition(topPosition)) {
+            String name = car.getName();
+            winners.add(name);
+        }
     }
 }

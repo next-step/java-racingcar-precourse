@@ -40,4 +40,8 @@ public class Car {
         position++;
         road.append(ROAD);
     }
+
+    public boolean isTopPosition(int topPosition) {
+        return position == topPosition;
+    }
 }
