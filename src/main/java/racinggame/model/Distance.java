@@ -29,6 +29,10 @@ public class Distance {
 		return new Distance(distance + MOVE_POINT);
 	}
 
+	public boolean isMaxDistance(int maxDistance) {
+		return distance == maxDistance;
+	}
+
 	public int getDistance() {
 		return distance;
 	}

@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 class DistanceTest {
 
@@ -36,5 +38,14 @@ class DistanceTest {
 				assertThat(result2).isEqualTo(new Distance(1));
 			}
 		);
+	}
+
+	@ParameterizedTest
+	@DisplayName("최대 이동값과 일치하면 true 이다.")
+	@CsvSource(value = {"2,1,false", "2,2,true", "2,3,false"})
+	public void isMaxDistance(int distance, int maxDistance, boolean isEqual) {
+		Distance result = new Distance(distance);
+
+		assertThat(result.isMaxDistance(maxDistance)).isEqualTo(isEqual);
 	}
 }
