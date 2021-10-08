@@ -25,4 +25,30 @@ public class InputView {
     private String[] splitCarNamesString(String carNamesString) {
         return carNamesString.split(",");
     }
+
+    public int inputLabCount() {
+        try {
+            System.out.println("시도할 횟수는 몇 회 인가요?");
+            return parseLabCountStringToInt(Console.readLine());
+        } catch (IllegalArgumentException iae) {
+            System.out.println(iae.getMessage());
+            return inputLabCount();
+        }
+    }
+
+    private int parseLabCountStringToInt(String labCountString) {
+        try {
+            int labCount = Integer.parseInt(labCountString);
+            validateLabCount(labCount);
+            return labCount;
+        } catch (NumberFormatException nfe) {
+            throw new IllegalArgumentException("[ERROR] 숫자만 입력해주세요.");
+        }
+    }
+
+    private void validateLabCount(int labCount) {
+        if (labCount <= 0) {
+            throw new IllegalArgumentException("[ERROR] 0보다 큰 숫자를 입력해주세요.");
+        }
+    }
 }
