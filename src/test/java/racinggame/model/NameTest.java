@@ -22,4 +22,11 @@ class NameTest {
 		assertThrows(IllegalArgumentException.class,
 			() -> new Name("racing"));
 	}
+
+	@Test
+	@DisplayName("자동차 이름이 빈값이면 예외가 발생한다.")
+	public void checkEmpty() {
+		assertThrows(IllegalArgumentException.class,
+			() -> new Name(""));
+	}
 }
