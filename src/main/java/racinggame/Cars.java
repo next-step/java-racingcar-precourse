@@ -37,4 +37,8 @@ public class Cars {
         /* Collections.frequency는 내부적으로 equals 메소드로 비교(Car 재정의) */
         return Collections.frequency(users, user) > ONE;
     }
+
+    public List<Car> getUsers() {
+        return Collections.unmodifiableList(users);
+    }
 }
