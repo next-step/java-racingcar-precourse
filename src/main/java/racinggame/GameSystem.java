@@ -3,12 +3,14 @@ package racinggame;
 import nextstep.utils.Console;
 
 public class GameSystem {
+    int count;
     Cars cars;
     RacingGame racingGame;
 
     public void gamePlay() {
         Display.enterName();
         enterCarNames();
+        initRacingGame();
 
         Display.enterTryCount();
         enterTryCount();
@@ -18,13 +20,18 @@ public class GameSystem {
 
     }
 
+    private void initRacingGame() {
+        racingGame = new RacingGame(cars);
+    }
+
     private void gameplay() {
-        racingGame.play();
+        for (int i = 0; i < count; i++) {
+            Display.gameResult(racingGame.play());
+        }
     }
 
     private void enterTryCount() {
-        int count = Integer.parseInt(Console.readLine());
-        racingGame = new RacingGame(cars, count);
+        count = Integer.parseInt(Console.readLine());
     }
 
     private void enterCarNames() {
