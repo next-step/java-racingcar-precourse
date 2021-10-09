@@ -1,6 +1,7 @@
 package racinggame;
 
 import org.junit.jupiter.api.Test;
+import racinggame.domain.Round;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;

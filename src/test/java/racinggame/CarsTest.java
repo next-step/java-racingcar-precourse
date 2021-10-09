@@ -2,6 +2,8 @@ package racinggame;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import racinggame.domain.Car;
+import racinggame.domain.Cars;
 
 import java.util.Arrays;
 import java.util.List;
