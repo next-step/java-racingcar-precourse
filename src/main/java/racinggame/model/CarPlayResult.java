@@ -1,6 +1,10 @@
 package racinggame.model;
 
 public enum CarPlayResult {
-	STOP, FORWARD
+	STOP, FORWARD;
+
+	boolean isForward() {
+		return this == FORWARD;
+	}
 
 }
