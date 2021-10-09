@@ -2,6 +2,7 @@ package racinggame;
 
 public class Position {
 
+	private static final String ROAD_SHAPE = "-";
 	protected int position;
 
 	public void move(Generator generator) {
@@ -10,8 +11,16 @@ public class Position {
 		}
 	}
 
-	public int getPosition() {
-		return position;
+	public String getRoadShape() {
+		StringBuffer sb = new StringBuffer();
+		for (int i = 0; i < position; i++) {
+			sb.append(ROAD_SHAPE);
+		}
+		return sb.toString();
+	}
+
+	public boolean farAwayThan(Position position) {
+		return this.position > position.position;
 	}
 
 	@Override
