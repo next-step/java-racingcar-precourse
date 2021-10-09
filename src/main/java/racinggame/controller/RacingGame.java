@@ -13,38 +13,29 @@ import racinggame.domain.Winner;
  * Description : 레이싱 게임 객체
  */
 public class RacingGame {
-    private InputView inputView;
+    public static final int START_INCLUSIVE = 0;
+    public static final int END_INCLUSIVE = 9;
+    private final InputView inputView;
 
     public RacingGame(InputView inputView) {
         this.inputView = inputView;
     }
 
     public void play() {
-        //이름을 입력
         Cars users = new Cars(inputView.inputUserName());
-        //라운드를 입력
         Round round = new Round(inputView.inputRound());
         ResultView resultView = new ResultView(users);
-        //게임실행
         while (round.isRemainRound()){
             run(users);
-            //라운드별 결과 출력
             resultView.printResult();
             round.decreaseCount();
         }
-        //위너 판별
-        Winner winner = new Winner(users);
-        resultView.printWinner(winner.getWinner());
+        resultView.printWinner(new Winner(users).getWinner());
     }
 
     private void run(Cars users) {
         for (Car user : users.getUsers()) {
-            user.move(Randoms.pickNumberInRange(0, 9));
+            user.move(Randoms.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE));
         }
-    }
-
-    public static void main(String[] args) {
-        RacingGame game = new RacingGame(new InputView());
-        game.play();
     }
 }

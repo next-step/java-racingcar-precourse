@@ -9,6 +9,8 @@ import racinggame.domain.Cars;
  */
 public class ResultView {
     public static final String DISTANCE_MARK = "-";
+    public static final String FRONT_WINNER_TEXT = "최종 우승자는 ";
+    public static final String BACK_WINNER_TEXT = " 입니다.";
     private final Cars users;
 
     public ResultView(Cars users) {
@@ -31,6 +33,6 @@ public class ResultView {
     }
 
     public void printWinner(String winnerNames) {
-        System.out.println("최종 우승자는 "+winnerNames+" 입니다.");
+        System.out.println(FRONT_WINNER_TEXT +winnerNames+ BACK_WINNER_TEXT);
     }
 }
