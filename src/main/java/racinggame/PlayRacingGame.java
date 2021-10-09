@@ -27,7 +27,7 @@ class PlayRacingGame {
             cars = Cars.of(carName, new RandomMove());
 
         } catch (Exception e) {
-            System.out.println("[ERROR] "+e.getMessage());
+            System.out.println("[ERROR] " + e.getMessage());
             startGame();
         }
     }

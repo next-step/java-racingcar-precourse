@@ -11,7 +11,7 @@ public class ResultView {
     public void printCarsDistance(Cars cars, int tryCount) {
 
         for (Car car : cars.getCars()) {
-            carDistance.append(car.getCarName()).append(":");
+            carDistance.append(car.getCarName()).append(" : ");
             printCarDistance(car, tryCount);
             carDistance.append("\n");
         }
@@ -38,6 +38,6 @@ public class ResultView {
 
     public void printWinners(Cars cars) {
         Winners winners = Winners.of(cars.getCars());
-        System.out.println("최종 우승자는 "+winners.winners()+" 입니다.");
+        System.out.println("최종 우승자는 " + winners.winners() + " 입니다.");
     }
 }

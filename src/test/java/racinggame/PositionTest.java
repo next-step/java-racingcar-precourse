@@ -23,6 +23,7 @@ class PositionTest {
         assertThat(position.matchPosition(0)).isTrue();
 
     }
+
     @Test
     void positionCompare() {
 

@@ -18,13 +18,13 @@ class CarsTest {
     void carListInitTest() {
 
         Cars cars = Cars.of(carNames, () -> true);
-        for(int i=0; i<cars.carCount(); i++) {
+        for (int i = 0; i < cars.carCount(); i++) {
             assertThat(cars.getCars().get(i).getCarName()).isEqualTo(carNames.split(",")[i]);
         }
 
         cars.moveCars();
 
-        for(Car car :cars.getCars()){
+        for (Car car : cars.getCars()) {
             assertThat(car.matchPostion(1)).isTrue();
         }
     }
