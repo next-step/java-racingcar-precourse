@@ -2,7 +2,7 @@
  * GameManager
  * java-racingcar-precourse
  *
- * Version 0.1
+ * Version 0.2
  *
  * Created by 강래민 on 2021-10-09.
  *
@@ -52,9 +52,17 @@ public final class GameManager {
     }
 
     /**
+     * 유효성 검사 통과 후 게임 진행 및 종료 로직
+     */
+    public static void start() {
+        running();
+        gameOver();
+    }
+
+    /**
      * 사용자로부터 입력받은 시도 횟수를 맞춰 실행하는 로직
      */
-    public static void running() {
+    private static void running() {
         for (int i = 0; i < tryCount.get(); i++) {
             carService.action();
             carService.getRaceResult().print();
@@ -64,7 +72,7 @@ public final class GameManager {
     /**
      * 최종 레이스 결과를 가지고 우승자 출력
      */
-    public static void gameOver(){
+    private static void gameOver() {
         carService.getRaceResult().printWinner();
     }
 }
