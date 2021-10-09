@@ -8,7 +8,11 @@ import java.util.List;
 
 public class RacingSevice {
 
-    public void mvCar(List<Car> carsInfo, String countTxt) throws Exception {
+    public void endRacing(List<Car> carsInfo){
+
+    }
+
+    public List<Car> mvCar(List<Car> carsInfo, String countTxt) throws Exception {
 
         int forCount = this.getCount(countTxt);
         String resultMvText  = "";
@@ -24,9 +28,9 @@ public class RacingSevice {
                 }
                 System.out.println(car.getCarNm()+" : " + resultMvText);
             }
-            System.out.println("======================");
+            System.out.println("========================");
         }
-
+        return carsInfo;
     }
 
     public boolean isMove(){

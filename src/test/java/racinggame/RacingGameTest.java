@@ -46,5 +46,14 @@ public class RacingGameTest {
         List<Car> carsInfo = carService.createCar("car11,car2,car3,car4,car5");
         racingSevice.mvCar(carsInfo,"9");
     }
+
+    @Test
+    @DisplayName("차량 움직이기 처리 결과 리턴")
+    public void end() throws Exception {
+        CarService carService = new CarService();
+        RacingSevice racingSevice = new RacingSevice();
+        List<Car> carsInfo = carService.createCar("car11,car2,car3,car4,car5");
+        racingSevice.mvCar(carsInfo,"9");
+    }
 }
 
