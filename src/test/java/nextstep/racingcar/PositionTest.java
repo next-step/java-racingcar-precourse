@@ -30,4 +30,16 @@ class PositionTest {
 		assertEquals(expected, position.toString());
 	}
 
+	@DisplayName("현재 자동차가 마지막 지점에 도달한 여부를 알려준다.")
+	@ParameterizedTest(name = "{displayName} / 자동차 position : {0} / 위치 : {1}")
+	@CsvSource(value = {"0:false", "4:false", "5:true"}, delimiter = ':')
+	void finish(int currentPosition, boolean expected) {
+		// given
+		final int maxPosition = 5;
+		final Position position = new Position(currentPosition);
+
+		// when then
+		assertEquals(expected, position.finish(maxPosition));
+	}
+
 }

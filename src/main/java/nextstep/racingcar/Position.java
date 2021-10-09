@@ -47,4 +47,8 @@ public class Position {
 	public int hashCode() {
 		return Objects.hash(position);
 	}
+
+	public boolean finish(int maxPosition) {
+		return position == maxPosition;
+	}
 }
