@@ -22,9 +22,16 @@ public class ValidationUtil {
         return true;
     }
 
+    public static Integer getValidateCount(final String countString) {
+        if (!isValidateCount(countString)) {
+            System.out.println("[ERROR] 숫자는 1 이상만 가능합니다.");
+            return 0;
+        }
+        return Integer.parseInt(countString);
+    }
+
     public static boolean isValidateCount(final String countString) {
         if (!isInteger(countString) || Integer.parseInt(countString) < 1) {
-            System.out.println("[ERROR] 숫자는 1 이상만 가능합니다.");
             return false;
         }
         return true;

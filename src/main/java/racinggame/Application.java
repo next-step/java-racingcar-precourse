@@ -36,7 +36,7 @@ public class Application {
             inputCount = inputCount.replaceAll(" ", "");
             isValidateInput = ValidationUtil.isValidateCount(inputCount);
 
-            playCount = Integer.parseInt(inputCount);
+            playCount = ValidationUtil.getValidateCount(inputCount);
 
         } while(!isValidateInput);
 
@@ -47,6 +47,7 @@ public class Application {
             System.out.println();
         }
 
+        GameUtil.printLastResult(players);
     }
 
 }

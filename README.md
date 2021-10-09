@@ -33,4 +33,5 @@
 
 ## 4. 결과 출력
 ### 1) 게임이 끝난 후 List 내 점수가 가장 높은 Player를 찾아낸다
+* Comparator 구현해 max 메서드 사용
 ### 2) 해당 Player와 점수가 같은 Player들을 다시 List에 담고 결과를 출력한다
