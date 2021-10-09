@@ -2,10 +2,10 @@ package racinggame.common;
 
 import racinggame.exception.InvalidNumberException;
 
-public class Labs {
+public class Lap {
 	private final int labs;
 
-	public Labs(String consoleInput) {
+	public Lap(String consoleInput) {
 		validateLabs(consoleInput);
 		validatePositiveNumber(consoleInput);
 

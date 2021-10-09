@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import racinggame.common.Labs;
+import racinggame.common.Lap;
 import racinggame.racingcar.RacingCar;
 import racinggame.common.RacingCars;
 import racinggame.common.ResultBoard;
@@ -28,9 +28,9 @@ public final class RacingGame {
 
 	public void play() {
 		RacingCars racingCars = makeRacingCars();
-		Labs labs = inputLabs();
+		Lap lap = inputLabs();
 
-		ResultBoard resultBoard = circuit.start(racingCars, labs, rule);
+		ResultBoard resultBoard = circuit.start(racingCars, lap, rule);
 
 		outputDevice.print("실행결과");
 		outputDevice.print(resultBoard.read());
@@ -65,20 +65,20 @@ public final class RacingGame {
 		return VALID;
 	}
 
-	private Labs inputLabs() {
-		Labs labs;
+	private Lap inputLabs() {
+		Lap lap;
 
 		do {
 			outputDevice.print("시도할 횟수는 몇회인가요?");
-			labs = getLabs(inputDevice.input());
-		} while (labs == null);
+			lap = getLabs(inputDevice.input());
+		} while (lap == null);
 
-		return labs;
+		return lap;
 	}
 
-	private Labs getLabs(String labString) {
+	private Lap getLabs(String labString) {
 		try {
-			return new Labs(labString);
+			return new Lap(labString);
 		} catch (InvalidNameException | NumberFormatException error) {
 			outputDevice.print(error.getMessage());
 			return null;
