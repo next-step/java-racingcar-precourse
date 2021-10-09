@@ -42,4 +42,28 @@ class CarTest {
             .isThrownBy(() -> new Car(name))
             .withMessageContaining("5글자 이상 또는 비어있는 이름으로 자동차를 생성할 수 없습니다.");
     }
+
+    @DisplayName("3이상 9이하일 때만 전진하는지 테스트")
+    @Test
+    void moveForwardOrStop_success() {
+        Car car = new Car("test");
+        car.moveForwardOrStop(0);
+        assertThat(car.getStep()).isEqualTo(0);
+        car.moveForwardOrStop(3);
+        assertThat(car.getStep()).isEqualTo(0);
+        car.moveForwardOrStop(4);
+        assertThat(car.getStep()).isEqualTo(1);
+        car.moveForwardOrStop(9);
+        assertThat(car.getStep()).isEqualTo(2);
+    }
+
+    @DisplayName("범위 밖의 숫자로 전진하려고 할 때 에러 던지는지 테스트")
+    @ParameterizedTest
+    @ValueSource(ints = {-1, 10})
+    void moveForwardOrStop_throwsException(int randomNumber) {
+        assertThatExceptionOfType(IllegalArgumentException.class)
+            .isThrownBy(() -> new Car("test").moveForwardOrStop(randomNumber))
+            .withMessageContaining("0에서 9 사이의 숫자로만 이동할지 판단 가능합니다.");
+    }
+
 }
