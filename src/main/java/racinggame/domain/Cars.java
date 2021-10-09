@@ -55,7 +55,7 @@ public class Cars {
             return merge(cars, car);
         }
 
-        return new ArrayList<>();
+        return new ArrayList<>(cars);
     }
 
     private Distance max() {

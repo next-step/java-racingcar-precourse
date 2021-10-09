@@ -9,7 +9,7 @@ import java.util.Objects;
 public class RacingGame {
 
     private Cars cars;
-    private Boolean isFinish;
+    private boolean isFinish;
 
     public RacingGame(final Cars cars) {
         this.cars = cars;
@@ -20,7 +20,7 @@ public class RacingGame {
         this.isFinish = isFinish;
     }
 
-    public RacingGame next(final MoveStrategy moveStrategy) {
+    public RacingGame next(final MoveStrategy moveStrategy, boolean isFinish) {
         checkFinishGame();
         cars.move(moveStrategy);
         return new RacingGame(cars, isFinish);
@@ -43,12 +43,12 @@ public class RacingGame {
         return new Winners(this.cars.winners());
     }
 
-    public void finish() {
-        this.isFinish = true;
-    }
-
     public Cars getCars() {
         return new Cars(cars);
+    }
+
+    public Boolean isFinish() {
+        return isFinish;
     }
 
     @Override

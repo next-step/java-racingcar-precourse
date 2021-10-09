@@ -17,13 +17,12 @@ public class Application {
         int attempts = inputView.enterAttempts();
 
         ConsoleOutputView outputView = new ConsoleOutputView();
-        RandomMoveStrategy moveStrategy = new RandomMoveStrategy();
 
         RacingGame racingGame = new RacingGame(cars);
+        RandomMoveStrategy moveStrategy = new RandomMoveStrategy();
 
         for (int i = 0; i < attempts; i++) {
-            RacingGame next = racingGame.next(moveStrategy);
-            outputView.print(next);
+            outputView.print(racingGame.next(moveStrategy, attempts - 1 == i));
         }
     }
 }
