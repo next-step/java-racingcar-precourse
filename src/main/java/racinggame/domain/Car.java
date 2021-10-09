@@ -1,13 +1,23 @@
 package racinggame.domain;
 
+import racinggame.domain.strategy.MoveStrategy;
+
 import java.util.Objects;
 
 public class Car {
 
-    private final Name name;
+    private Name name;
+    private int distance;
 
     public Car(final String name) {
         this.name = Name.of(name);
+    }
+
+    public void move(final MoveStrategy moveStrategy) {
+        boolean distance = moveStrategy.move();
+        if (distance) {
+            this.distance++;
+        }
     }
 
     @Override

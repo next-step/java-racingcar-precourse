@@ -11,4 +11,11 @@ class CarTest {
         assertDoesNotThrow(() -> new Car("abc").equals(new Car("abc")));
     }
 
+    @Test
+    void 움직이는_경우() {
+        assertDoesNotThrow(() -> {
+            Car car = new Car("abc");
+            car.move(() -> true);
+        });
+    }
 }

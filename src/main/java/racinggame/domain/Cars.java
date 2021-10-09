@@ -1,5 +1,7 @@
 package racinggame.domain;
 
+import racinggame.domain.strategy.MoveStrategy;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -12,6 +14,12 @@ public class Cars {
 
     public Cars(final List<Car> cars) {
         this.cars = cars;
+    }
+
+    public void move(final MoveStrategy moveStrategy) {
+        for (Car car : cars) {
+            car.move(moveStrategy);
+        }
     }
 
     public Cars(final String names) {
