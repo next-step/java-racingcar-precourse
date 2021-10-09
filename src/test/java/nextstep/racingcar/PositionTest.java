@@ -1,10 +1,14 @@
 package nextstep.racingcar;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+
+import nextstep.exception.InvalidPositionException;
 
 class PositionTest {
 
@@ -40,6 +44,17 @@ class PositionTest {
 
 		// when then
 		assertEquals(expected, position.finish(maxPosition));
+	}
+
+	@DisplayName("자동차의 위치는 0보다 큰 위치만을 갖는다.")
+	@Test
+	void create() {
+		// given:none
+
+		// when then
+		assertThatThrownBy(() -> new Position(-1))
+			.isInstanceOf(InvalidPositionException.class)
+			.hasMessageContaining(InvalidPositionException.INVALID_POSITION);
 	}
 
 }

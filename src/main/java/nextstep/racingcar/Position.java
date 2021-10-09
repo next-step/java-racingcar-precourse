@@ -2,9 +2,12 @@ package nextstep.racingcar;
 
 import java.util.Objects;
 
+import nextstep.exception.InvalidPositionException;
+
 public class Position {
 
-	private static final int MINIMUM_REQUIREMENT_FOR_MOVEMENT = 4;
+	private static final int MIN_REQUIREMENT_FOR_MOVEMENT = 4;
+	private static final int MIN_POSITION = 0;
 	private static final String DASH = "-";
 
 	private final int position;
@@ -14,11 +17,18 @@ public class Position {
 	}
 
 	public Position(int position) {
+		if (inValid(position)) {
+			throw new InvalidPositionException();
+		}
 		this.position = position;
 	}
 
+	private boolean inValid(int position) {
+		return position < MIN_POSITION;
+	}
+
 	public Position move(int input) {
-		if (input >= MINIMUM_REQUIREMENT_FOR_MOVEMENT) {
+		if (input >= MIN_REQUIREMENT_FOR_MOVEMENT) {
 			return new Position(position + 1);
 		}
 		return this;
