@@ -14,5 +14,6 @@ public class GameController {
 
     public void start() {
         gameService.initialize();
+        gameService.racingStart();
     }
 }
