@@ -70,4 +70,52 @@ random : 4 -> moveCount 1 move
 random : 1 -> moveCount 0 stop
 
 ---
+gameCount: 1  
+cars  
+car1 name : a, moveCount : 0  
+car2 name : b, moveCount : 0  
+car3 name : c, moveCount : 0
 
+a random : 4 -> moveCount : 1 move
+
+---
+gameCount: 1  
+cars  
+car1 name : a, moveCount : 0  
+car2 name : b, moveCount : 0  
+car3 name : c, moveCount : 0
+
+a random : 0 -> moveCount : 0 stop
+
+---
+gameCount: 1  
+cars  
+car1 name : a, moveCount : 0  
+car2 name : b, moveCount : 0  
+car3 name : c, moveCount : 0  
+
+a random : 4 -> moveCount : 1 move  
+b random : 5 -> moveCount : 1 move 
+c random : 9 -> moveCount : 1 move 
+
+---
+gameCount: 1  
+cars  
+car1 name : a, moveCount : 0  
+car2 name : b, moveCount : 0  
+car3 name : c, moveCount : 0
+
+a random : 1 -> moveCount : 0 stop  
+b random : 2 -> moveCount : 0 stop
+c random : 0 -> moveCount : 0 stop
+
+---
+gameCount: 1  
+cars  
+car1 name : a, moveCount : 0  
+car2 name : b, moveCount : 0  
+car3 name : c, moveCount : 0
+
+a random : 4 -> moveCount : 1 stop  
+b random : 5 -> moveCount : 1 stop
+c random : 0 -> moveCount : 0 stop
