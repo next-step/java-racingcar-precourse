@@ -1,16 +1,14 @@
 package racinggame.model;
 
-import java.util.List;
-
 public class RoundResult {
 
-	private List<Car> cars;
+	private final Cars cars;
 
-	public RoundResult(List<Car> cars) {
+	public RoundResult(Cars cars) {
 		this.cars = cars;
 	}
 
 	public int numberOfCar() {
-		return cars.size();
+		return cars.numberOfCar();
 	}
 }
