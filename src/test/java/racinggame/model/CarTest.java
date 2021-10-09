@@ -45,4 +45,16 @@ class CarTest {
 			.isInstanceOf(IllegalArgumentException.class)
 			.hasMessage("자동차는 5글자 이하의 이름이어야 합니다.");
 	}
+
+	@DisplayName("입력받은 값이 4이상 이면 전진")
+	@ParameterizedTest
+	@ValueSource(ints = {4, 6, 9})
+	void go(int number) {
+		final Car car = Car.valueOf("car-1");
+		int beforePosition = car.getPosition();
+		car.move(number);
+		int currentPosition = car.getPosition();
+
+		assertThat(currentPosition).isEqualTo(beforePosition + 1);
+	}
 }
