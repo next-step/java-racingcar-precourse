@@ -21,14 +21,14 @@ public class RacingGameTest {
         game.setCount(count);
 
         for (int i = 0; i < count; i++) {
-            assertThat(game.isPlaying()).isTrue();
+            assertThat(game.canPlay()).isTrue();
             MoveResults results = game.moveOnce(Arrays.asList(0, 0, 0));
             assertThat(results.getOutput()).contains("alice : ");
             assertThat(results.getOutput()).contains("bob : ");
             assertThat(results.getOutput()).contains("cook : ");
         }
 
-        assertThat(game.isPlaying()).isFalse();
+        assertThat(game.canPlay()).isFalse();
     }
 
     @DisplayName("시도 횟수는 0 보다 커야함")
@@ -51,7 +51,7 @@ public class RacingGameTest {
         assertThat(results.getOutput()).contains("alice : ");
         assertThat(results.getOutput()).contains("bob : ");
         assertThat(results.getOutput()).contains("cook : -");
-        assertThat(game.isPlaying()).isFalse();
+        assertThat(game.canPlay()).isFalse();
 
         String winners = game.getWinners();
         assertThat(winners).isEqualTo("cook");
@@ -68,7 +68,7 @@ public class RacingGameTest {
         assertThat(results.getOutput()).contains("alice : ");
         assertThat(results.getOutput()).contains("bob : -");
         assertThat(results.getOutput()).contains("cook : -");
-        assertThat(game.isPlaying()).isFalse();
+        assertThat(game.canPlay()).isFalse();
 
         String winners = game.getWinners();
         assertThat(winners).isEqualTo("bob,cook");

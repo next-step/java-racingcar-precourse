@@ -23,8 +23,12 @@ public class RacingGame {
         this.count = new TryCount(count);
     }
 
-    public boolean isPlaying() {
+    public boolean canPlay() {
         return count != null && count.canPlaying();
+    }
+
+    public boolean canNotPlay() {
+        return !canPlay();
     }
 
     public MoveResults moveOnce(List<Integer> randomNumbers) {
