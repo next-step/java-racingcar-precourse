@@ -11,10 +11,7 @@ class CarTest {
     @DisplayName("전달 받은 이름으로 자동차 이름을 가져올 수 있는지 테스트")
     @Test
     void getName_success() {
-        String name = "test";
-        Car car = new Car("test");
-
-        assertThat(car.getName()).isEqualTo(name);
+        assertThat(new Car("test").getName()).isEqualTo("test");
     }
 
     @DisplayName("자동차 1스텝 전진 성공 테스트")
