@@ -13,6 +13,7 @@ public class OutputView {
 	private static final String DISTANCE_EXPRESSION = "-";
 	private static final String FINAL_WINNERS_MESSAGE = "최종 우승자는 %s 입니다.";
 	private static final String DELIMITER = ",";
+	private static final String ERROR_TITLE = "[ERROR]";
 
 	public static void printResult() {
 		System.out.println(RESULT_MESSAGE);
@@ -43,5 +44,9 @@ public class OutputView {
 			cars.add(winnerCar.getName());
 		}
 		return cars.toString();
+	}
+
+	public static void printErrorMessage(String errorMessage) {
+		System.out.println(ERROR_TITLE + errorMessage);
 	}
 }

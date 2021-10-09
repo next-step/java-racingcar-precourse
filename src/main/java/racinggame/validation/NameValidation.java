@@ -101,6 +101,9 @@ public class NameValidation {
 		return errorStatus;
 	}
 
+	public String getErrorMessage() {
+		return message;
+	}
 
 	@Override
 	public boolean equals(Object o) {
