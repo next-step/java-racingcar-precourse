@@ -1,7 +1,6 @@
 package domain;
 
 import domain.exceptions.CarException;
-import nextstep.utils.Randoms;
 
 public class Car {
 
@@ -20,13 +19,8 @@ public class Car {
         }
     }
 
-    public void move(){
-        int randomNumber = getRandomNumber();
+    public void move(int randomNumber){
         moveCount.judgeMove(randomNumber);
-    }
-
-    protected int getRandomNumber(){
-        return Randoms.pickNumberInRange(0,9);
     }
 
     public String getName(){
