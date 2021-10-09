@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Car {
 
-    private Name name;
+    private final Name name;
 
     public Car(final String name) {
         this.name = Name.of(name);

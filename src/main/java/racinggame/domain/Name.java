@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public class Name {
 
-    private String name;
+    private final String name;
 
     private Name(final String name) {
         checkNameLength(name);
