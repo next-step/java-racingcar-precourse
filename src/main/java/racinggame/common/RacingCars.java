@@ -3,6 +3,8 @@ package racinggame.common;
 import java.util.ArrayList;
 import java.util.List;
 
+import racinggame.racingcar.RacingCar;
+
 public final class RacingCars {
 	private final List<RacingCar> racingCars;
 

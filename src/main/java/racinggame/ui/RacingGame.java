@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import racinggame.common.Labs;
-import racinggame.common.RacingCar;
+import racinggame.racingcar.RacingCar;
 import racinggame.common.RacingCars;
 import racinggame.common.ResultBoard;
 import racinggame.exception.InvalidNameException;

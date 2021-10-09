@@ -7,6 +7,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import racinggame.exception.InvalidNameException;
+import racinggame.racingcar.Name;
 
 class NameTest {
 

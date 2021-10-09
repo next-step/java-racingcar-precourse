@@ -1,4 +1,4 @@
-package racinggame.common;
+package racinggame.racingcar;
 
 import racinggame.exception.InvalidNameException;
 
@@ -17,7 +17,7 @@ public class Name {
 		}
 	}
 
-	public String valueOf (){
+	public String valueOf() {
 		return name;
 	}
 }
