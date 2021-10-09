@@ -21,4 +21,29 @@ public class RaceService {
         }
         return Cars.of(carList);
     }
+
+    public List<String> getWinner(Cars cars) {
+        final int max = getMaxPosition(cars.getCars());
+        return retrieveWinnerWithMaxValue(cars.getCars(), max);
+    }
+
+    private List<String> retrieveWinnerWithMaxValue(List<Car> carsList, int max) {
+        List<String> winners = new ArrayList<>();
+        for (Car car : carsList) {
+            if (car.getCarPosition().getValue() == max) {
+                winners.add(car.getCarName().getName());
+            }
+        }
+        return winners;
+    }
+
+    private int getMaxPosition(List<Car> carsList) {
+        int max = Integer.MIN_VALUE;
+        for (Car car : carsList) {
+            if (car.getCarPosition().getValue() > max) {
+                max = car.getCarPosition().getValue();
+            }
+        }
+        return max;
+    }
 }

@@ -7,6 +7,8 @@ import racinggame.domain.Cars;
 import racinggame.domain.InputCarsName;
 import racinggame.domain.Player;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.*;
 
 public class RaceServiceTest {
@@ -38,6 +40,22 @@ public class RaceServiceTest {
         assertThat(cars.getCars().size()).isEqualTo(3);
         assertThat(cars.getCars().get(0).getCarName().getName()).isEqualTo("1번차");
     }
-    
+
+    @Test
+    @DisplayName("우승자 알려주기")
+    void getWinner() {
+        //given
+        final RaceService raceService = new RaceService();
+        final String[] carNameList = {"1번차", "2번차", "3번차"};
+        final Cars cars = raceService.createCars(carNameList);
+        //when
+        cars.getCars().get(0).move();
+        cars.getCars().get(0).move();
+        cars.getCars().get(0).move();
+        List<String> winners = raceService.getWinner(cars);
+        //then
+        assertThat(winners.size()).isEqualTo(1);
+        assertThat(winners.get(0)).isEqualTo("1번차");
+    }
 
 }
