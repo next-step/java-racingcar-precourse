@@ -1,7 +1,18 @@
 package racinggame;
 
+import racinggame.controller.RacingGame;
+import racinggame.view.User;
+
 public class Application {
-    public static void main(String[] args) {
-        // TODO 자동차 경주 게임 구현
-    }
+
+	private static User user = new User();
+	private static RacingGame racingGame = null;
+
+	public static void main(String[] args) {
+		do {
+			racingGame = new RacingGame(user);
+		} while ((!racingGame.isReady()));
+
+		racingGame.play();
+	}
 }

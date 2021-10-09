@@ -11,6 +11,7 @@ public class Car {
 	}
 
 	public CarStatus move() {
+		carMove.move();
 		if (carMove.isGo()) {
 			return CarStatus.GO;
 		}

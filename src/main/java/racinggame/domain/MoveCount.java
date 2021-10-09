@@ -1,14 +1,14 @@
 package racinggame.domain;
 
 public class MoveCount {
-	public static final String ERROR_MESSAGE = "[ERROR] 이동횟수는 숫자로만 입력이 가능합니다.";
+	public static final String ERROR_MESSAGE = "[ERROR] 시도횟수는 숫자로만 입력이 가능합니다.";
 
 	private int moveCount;
 
 	public MoveCount(String moveCount) {
 		try {
 			this.moveCount = validatePositive(moveCount);
-		} catch (IllegalArgumentException ex) {
+		} catch (NumberFormatException ex) {
 			throw new IllegalArgumentException(ERROR_MESSAGE);
 		}
 	}
@@ -21,4 +21,7 @@ public class MoveCount {
 		return result;
 	}
 
+	public boolean isEnd(int tryCount) {
+		return moveCount == tryCount;
+	}
 }

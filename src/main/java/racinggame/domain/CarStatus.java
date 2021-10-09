@@ -1,5 +1,9 @@
 package racinggame.domain;
 
 public enum CarStatus {
-	GO, STOP
+	GO, STOP;
+
+	public boolean isGo() {
+		return this == GO;
+	}
 }
