@@ -14,13 +14,12 @@ class RacingCarNameTest {
         assertThat(new RacingCarName(racingCarNameInput).getRacingCarName()).isEqualTo(racingCarNameInput);
     }
 
-    @ParameterizedTest(name = "{0} 자동차 이름 객체 유효성을 검증한다")
+    @ParameterizedTest(name = "[{0}] 자동차 이름 객체 유효성을 검증한다")
     @ValueSource(strings = {"javaji", ""})
     void 자동차_이름_객체_유효성을_검증한다(String racingCarNameInput) {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> {
                     new RacingCarName(racingCarNameInput);
                 }).withMessage(ERROR_MESSAGE);
-
     }
 }
