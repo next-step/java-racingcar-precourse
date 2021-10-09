@@ -15,7 +15,7 @@ public class PlayerTest {
         //given
         final Player player = new Player();
         //when
-        player.inputRaceNumber(RaceNumber.of(2));
+        player.inputRaceNumber(RaceNumber.of("2"));
         player.inputCarsName(InputCarsName.of("1번차,2번차,3번차"));
         //then
         assertThat(player.getInputCarsName().getName()).isEqualTo("1번차,2번차,3번차");
