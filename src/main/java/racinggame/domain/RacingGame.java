@@ -18,10 +18,10 @@ public class RacingGame {
         this.isFinish = isFinish;
     }
 
-    public RacingGame next(final MoveStrategy moveStrategy, boolean isFinish) {
+    public void next(final MoveStrategy moveStrategy, boolean isFinish) {
         checkFinishGame();
-        cars.move(moveStrategy);
-        return new RacingGame(cars, isFinish);
+        this.cars.move(moveStrategy);
+        this.isFinish = isFinish;
     }
 
     private void checkFinishGame() {

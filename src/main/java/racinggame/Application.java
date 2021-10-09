@@ -32,7 +32,8 @@ public class Application {
         RandomMoveStrategy moveStrategy = new RandomMoveStrategy();
 
         for (int i = 0; i < attempts; i++) {
-            outputView.print(racingGame.next(moveStrategy, attempts - 1 == i));
+            racingGame.next(moveStrategy, attempts - 1 == i);
+            outputView.print(racingGame);
         }
     }
 }
