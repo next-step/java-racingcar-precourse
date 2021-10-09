@@ -16,4 +16,8 @@ public class Car {
 		}
 		return CarStatus.STOP;
 	}
+
+	public String getCarName() {
+		return carName.getCarName();
+	}
 }
