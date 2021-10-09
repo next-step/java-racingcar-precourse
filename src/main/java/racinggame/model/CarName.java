@@ -3,6 +3,8 @@ package racinggame.model;
 import java.util.Objects;
 import java.util.Optional;
 
+import racinggame.exception.InvalidCarNameException;
+
 public class CarName {
 
 	private static final int NAME_MAX_LENGTH = 5;
@@ -27,10 +29,10 @@ public class CarName {
 
 	private void validateName(String name) {
 		if (isNullOrEmpty(name)) {
-			throw new IllegalArgumentException(NAME_EXCEPTION_MESSAGE);
+			throw new InvalidCarNameException(NAME_EXCEPTION_MESSAGE);
 		}
 		if (name.length() > NAME_MAX_LENGTH) {
-			throw new IllegalArgumentException(String.format(NAME_LENGTH_EXCEPTION_MESSAGE, NAME_MAX_LENGTH));
+			throw new InvalidCarNameException(String.format(NAME_LENGTH_EXCEPTION_MESSAGE, NAME_MAX_LENGTH));
 		}
 	}
 

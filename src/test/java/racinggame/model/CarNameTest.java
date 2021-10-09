@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import racinggame.exception.InvalidCarNameException;
+
 @DisplayName("자동차 이름에 대한 테스트")
 class CarNameTest {
 
@@ -26,15 +28,15 @@ class CarNameTest {
 		final String ERROR_MESSAGE = "자동차의 이름이 잘못되었습니다.";
 
 		assertThatThrownBy(() -> CarName.valueOf(null))
-			.isInstanceOf(IllegalArgumentException.class)
+			.isInstanceOf(InvalidCarNameException.class)
 			.hasMessage(ERROR_MESSAGE);
 
 		assertThatThrownBy(() -> CarName.valueOf(""))
-			.isInstanceOf(IllegalArgumentException.class)
+			.isInstanceOf(InvalidCarNameException.class)
 			.hasMessage(ERROR_MESSAGE);
 
 		assertThatThrownBy(() -> CarName.valueOf(" "))
-			.isInstanceOf(IllegalArgumentException.class)
+			.isInstanceOf(InvalidCarNameException.class)
 			.hasMessage(ERROR_MESSAGE);
 	}
 
@@ -42,7 +44,7 @@ class CarNameTest {
 	@Test
 	void create_name_length_exception() {
 		assertThatThrownBy(() -> CarName.valueOf("car123"))
-			.isInstanceOf(IllegalArgumentException.class)
+			.isInstanceOf(InvalidCarNameException.class)
 			.hasMessage("자동차는 5글자 이하의 이름이어야 합니다.");
 	}
 }

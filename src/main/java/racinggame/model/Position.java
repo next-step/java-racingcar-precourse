@@ -2,14 +2,25 @@ package racinggame.model;
 
 import java.util.Objects;
 
+import racinggame.exception.InvalidPositionException;
+
 public class Position {
 
+	private static final int MIN_POSITION_INDEX = 0;
+	private static final String POSITION_NEGATIVE_EXCEPTION_MESSAGE = "포지션은 %d보다 작을 수 없습니다.";
 	private static final int INCREASE_POSITION_INDEX = 1;
 
 	private final int position;
 
 	private Position(int position) {
+		validatePosition(position);
 		this.position = position;
+	}
+
+	private void validatePosition(int position) {
+		if (position < MIN_POSITION_INDEX) {
+			throw new InvalidPositionException(String.format(POSITION_NEGATIVE_EXCEPTION_MESSAGE, MIN_POSITION_INDEX));
+		}
 	}
 
 	public static Position valueOf(int position) {
