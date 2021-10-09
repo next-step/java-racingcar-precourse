@@ -6,9 +6,19 @@ import racinggame.domain.strategy.RandomMoveStrategy;
 import racinggame.view.ConsoleInputView;
 import racinggame.view.ConsoleOutputView;
 
+
 public class Application {
 
     public static void main(String[] args) {
+        try {
+            playGame();
+        } catch (Exception e) {
+            System.out.println("[ERROR] " + e.getMessage());
+            playGame();
+        }
+    }
+
+    private static void playGame() {
         ConsoleInputView inputView = new ConsoleInputView();
 
         String names = inputView.enterNames();

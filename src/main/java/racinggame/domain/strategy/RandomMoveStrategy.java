@@ -1,10 +1,12 @@
 package racinggame.domain.strategy;
 
+import nextstep.utils.Randoms;
+
 public class RandomMoveStrategy implements MoveStrategy {
 
     @Override
     public boolean move() {
-        int random = (int) (Math.random() * 10);
+        int random = Randoms.pickNumberInRange(0, 9);
         return isMove(random);
     }
 

@@ -1,7 +1,5 @@
 package racinggame.domain;
 
-import racinggame.domain.exceptions.BusinessException;
-import racinggame.domain.exceptions.FinishGameException;
 import racinggame.domain.strategy.MoveStrategy;
 
 import java.util.Objects;
@@ -28,13 +26,13 @@ public class RacingGame {
 
     private void checkFinishGame() {
         if (isFinish) {
-            throw new FinishGameException();
+            throw new IllegalStateException("게임이 종료되었습니다.");
         }
     }
 
     private void checkWinners() {
         if (!isFinish) {
-            throw new BusinessException("종료되지 않은 게임은 우승자가 없습니다.");
+            throw new IllegalStateException("종료되지 않은 게임은 우승자가 없습니다.");
         }
     }
 

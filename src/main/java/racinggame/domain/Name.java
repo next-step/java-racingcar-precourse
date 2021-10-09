@@ -1,7 +1,7 @@
 package racinggame.domain;
 
-import racinggame.domain.exceptions.InvalidNameLengthException;
 
+import java.util.NoSuchElementException;
 import java.util.Objects;
 
 public class Name {
@@ -23,7 +23,7 @@ public class Name {
 
     private void checkNameLength(final String name) {
         if (name.length() > 5) {
-            throw new InvalidNameLengthException();
+            throw new NoSuchElementException("이름은 다섯 글자를 넘을 수 없습니다.");
         }
     }
 

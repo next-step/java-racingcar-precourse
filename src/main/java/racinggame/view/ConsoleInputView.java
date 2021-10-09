@@ -1,7 +1,6 @@
 package racinggame.view;
 
 import nextstep.utils.Console;
-import racinggame.domain.exceptions.BusinessException;
 
 public class ConsoleInputView {
 
@@ -19,7 +18,7 @@ public class ConsoleInputView {
             System.out.println(ATTEMPTS_INPUT_SUMMARY);
             return Integer.parseInt(Console.readLine());
         } catch (NumberFormatException e) {
-            throw new BusinessException(ATTEMPTS_PARSE_ERROR_MESSAGE);
+            throw new NumberFormatException(ATTEMPTS_PARSE_ERROR_MESSAGE);
         }
     }
 }
