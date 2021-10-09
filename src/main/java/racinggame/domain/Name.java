@@ -8,17 +8,17 @@ public class Name {
 
 	private Name(String value) {
 		this.value = value;
-		if (isLengthOver()) {
-			throw new IllegalArgumentException("이름은 "+MAX_NAME_LENGTH+"자 이하만 가능합니다.");
-		}
+		checkLengthOver();
 	}
 
 	public static Name of(String value) {
 		return new Name(value);
 	}
 
-	private boolean isLengthOver() {
-		return value.length() > MAX_NAME_LENGTH;
+	private void checkLengthOver() {
+		if (value.length() > MAX_NAME_LENGTH) {
+			throw new IllegalArgumentException("이름은 "+MAX_NAME_LENGTH+"자 이하만 가능합니다.");
+		}
 	}
 
 	public String getValue() {
