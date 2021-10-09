@@ -6,10 +6,18 @@ import static org.assertj.core.api.Assertions.*;
 public class CarTest {
 	
 	@Test
-	void ÀÚµ¿Â÷_»ı¼º() {
-		//Car car=new Car("¾Å¾ÅÀÌ");
+	void go() {
+		Car car=new Car("¾Å¾ÅÀÌ");
+		car.gogo(5);
+		assertThat(car.Car_distance()).isEqualTo(1);
 		
-		//assertThat(car).isNotNull();
+	}
+	
+	@Test
+	void stop(){
+		Car car=new Car("ºØºØÀÌ");
+		car.gogo(2);
+		assertThat(car.Car_distance()).isEqualTo(0);
 	}
 
 }
