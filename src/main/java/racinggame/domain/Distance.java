@@ -3,7 +3,6 @@ package racinggame.domain;
 import java.util.Objects;
 
 public class Distance {
-	private static final String PRESENT_CHAR = "-";
 	private int length;
 
 	private Distance(int length) {
@@ -32,10 +31,5 @@ public class Distance {
 	@Override
 	public int hashCode() {
 		return Objects.hash(length);
-	}
-
-	@Override
-	public String toString() {
-		return new String(new char[length]).replace("\0", PRESENT_CHAR);
 	}
 }

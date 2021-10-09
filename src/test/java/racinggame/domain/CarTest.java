@@ -16,8 +16,8 @@ public class CarTest {
 					.thenReturn(4);
 			Car car = new Car(Name.of("Tico"));
 			car.move();
-			assertThat(car.getDistance()).isEqualTo(Distance.of(1));
-			assertThat(car.getDistance().toString()).isEqualTo("-");
+			assertThat(car.getDistance())
+					.isEqualTo(Distance.of(1));
 		}
 	}
 
@@ -28,8 +28,8 @@ public class CarTest {
 					.thenReturn(3);
 			Car car = new Car(Name.of("Tico"));
 			car.move();
-			assertThat(car.getDistance()).isEqualTo(Distance.of(0));
-			assertThat(car.getDistance().toString()).isEqualTo("");
+			assertThat(car.getDistance())
+					.isEqualTo(Distance.of(0));
 		}
 	}
 }
