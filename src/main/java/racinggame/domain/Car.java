@@ -7,16 +7,16 @@ import java.util.Objects;
 public class Car {
 
     private Name name;
-    private int distance;
+    private Distance distance;
 
     public Car(final String name) {
         this.name = Name.of(name);
     }
 
     public void move(final MoveStrategy moveStrategy) {
-        boolean distance = moveStrategy.move();
-        if (distance) {
-            this.distance++;
+        boolean isMovable = moveStrategy.move();
+        if (isMovable) {
+            this.distance = Distance.move(this.distance);
         }
     }
 
