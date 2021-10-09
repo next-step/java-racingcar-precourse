@@ -4,9 +4,9 @@ import DTO.Car;
 import custom.utils.ValidationUtils;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import service.RacingService;
+import service.CarService;
+import service.RacingSevice;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -23,11 +23,30 @@ public class RacingGameTest {
     }
 
     @Test
+    @DisplayName("차량 객체 생성")
     public void setObject () throws Exception {
-        RacingService racingService = new RacingService();
+        CarService carService = new CarService();
         //racingService.createCar("car1,care134");
-        racingService.createCar("car11,car2,car3,car4,car5");
+        carService.createCar("car11,car2,car3,car4,car5");
     }
+
+    @Test
+    @DisplayName("값에따른 움직임 프로세스 처리")
+    public void mvCar() throws Exception {
+        RacingSevice racingSevice = new RacingSevice();
+        racingSevice.isMove("-3");
+    }
+
+    /*
+    @Test
+    @DisplayName("차량 움직이기 처리")
+    public void mvCar() throws Exception {
+        CarService carService = new CarService();
+        RacingSevice racingSevice = new RacingSevice();
+        List<Car> carsInfo = carService.createCar("car11,car2,car3,car4,car5");
+        racingSevice.mvCar(carsInfo,"3");
+    }
+    */
 
 }
 

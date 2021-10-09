@@ -4,10 +4,9 @@ import DTO.Car;
 import custom.utils.ValidationUtils;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-public class RacingService {
+public class CarService {
 
     List<Car> carsInfo = null;
 
