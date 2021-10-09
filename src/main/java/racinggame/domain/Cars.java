@@ -22,6 +22,10 @@ public class Cars implements Iterable<Car> {
 		return cars.get(index);
 	}
 
+	public int size() {
+		return cars.size();
+	}
+
 	public void move() {
 		for (Car car : cars) {
 			car.move();
