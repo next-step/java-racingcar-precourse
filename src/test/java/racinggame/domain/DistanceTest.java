@@ -12,9 +12,11 @@ class DistanceTest {
 
     @Test
     void 생성() {
-        assertEquals(Distance.of(3), Distance.of(3));
-        assertEquals(Distance.of(Distance.of(3)), Distance.of(3));
-        assertEquals(Distance.of(3).value(), 3);
+        int distance = 3;
+
+        assertEquals(Distance.of(distance), Distance.of(distance));
+        assertEquals(Distance.of(Distance.of(distance)), Distance.of(distance));
+        assertEquals(Distance.of(distance).value(), distance);
     }
 
     @Test

@@ -13,9 +13,11 @@ class NameTest {
 
     @Test
     void 생성() {
-        assertEquals(Name.of("abc"), Name.of("abc"));
-        assertEquals(Name.of(Name.of("abc")), Name.of("abc"));
-        assertEquals(Name.of("abc").value(), "abc");
+        String name = "abc";
+
+        assertEquals(Name.of(name), Name.of(name));
+        assertEquals(Name.of(Name.of(name)), Name.of(name));
+        assertEquals(Name.of(name).value(), name);
     }
 
     @ParameterizedTest
