@@ -1,7 +1,5 @@
 package racinggame.manage;
 
-
-
 public class managing {
 
 	public static final int STANDARD_NUM=3;

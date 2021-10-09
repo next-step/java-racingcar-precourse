@@ -1,11 +1,12 @@
 package racinggame.manage;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 public class managing_test {
 
 	@Test
-	//@DisplayName("3 이하이면  STOP, 4 이상이면 GO")
+	@DisplayName("3 이하이면  STOP, 4 이상이면 GO")
 
 	void is_Go() {
 		assertThat(managing.isGo(4)).isTrue();
