@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+@DisplayName("자동차 이름에 대한 테스트")
 class CarNameTest {
 
 	@DisplayName("자동차는 이름을 입력받아 생성한다")
