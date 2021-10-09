@@ -1,6 +1,6 @@
-package domain;
+package domainTest;
 
-import domain.exceptions.CarException;
+import domainTest.exceptions.CarException;
 import nextstep.utils.Randoms;
 
 public class Car {

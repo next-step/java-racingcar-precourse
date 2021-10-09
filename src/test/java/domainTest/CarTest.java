@@ -1,6 +1,6 @@
-package domain;
+package domainTest;
 
-import domain.exceptions.CarException;
+import domainTest.exceptions.CarException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

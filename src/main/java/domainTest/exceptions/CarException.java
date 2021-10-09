@@ -1,4 +1,4 @@
-package domain.exceptions;
+package domainTest.exceptions;
 
 public class CarException extends IllegalArgumentException {
 
