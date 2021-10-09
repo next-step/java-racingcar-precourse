@@ -5,6 +5,7 @@ import java.util.Objects;
 public class RacingCar {
 
 	private static final int MIN_REQUIREMENT_FOR_MOVEMENT = 4;
+	private static final String DELIMITER = " : ";
 
 	private final CarName carName;
 	private final Position position;
@@ -28,6 +29,10 @@ public class RacingCar {
 			return new RacingCar(carName, position.move());
 		}
 		return this;
+	}
+
+	public String toString() {
+		return carName + DELIMITER + position;
 	}
 
 	@Override

@@ -59,4 +59,14 @@ public class RacingCarTest {
 		assertEquals(new RacingCar(carName, expected), racingCar.move(input));
 	}
 
+	@DisplayName("자동차의 이름과 위치를 출력한다.")
+	@Test
+	void print() {
+		// given
+		final RacingCar racingCar = new RacingCar("hello", 5);
+
+		// when then
+		assertEquals("hello : -----", racingCar.toString());
+	}
+
 }
