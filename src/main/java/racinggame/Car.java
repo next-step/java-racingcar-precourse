@@ -15,7 +15,7 @@ public class Car {
 	}
 
 	public void printCurrentStatus() {
-		System.out.println(String.format("%s : %s\n", getName(), getRoadShape()));
+		System.out.println(String.format("%s : %s", getName(), getRoadShape()));
 	}
 
 	private String getRoadShape() {
