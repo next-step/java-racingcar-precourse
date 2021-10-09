@@ -19,6 +19,17 @@ public class RacingGameUtilsTest {
         assertThat(racingCarNameSplit(racingCarNameInput).length).isEqualTo(lengthInput);
     }
 
+    @ParameterizedTest(name = "자동차 이름 [{0}] 길이가 0자 이하면 IllegalArgumentException 발생한다")
+    @ValueSource(strings = {","})
+    void 쉼표_기준으로_구분한_자동차_이름의_길이가_0자_이하_IllegalArgumentException_발생한다(String racingCarNameInput) {
+        for (String racingCarName : racingCarNameSplit(racingCarNameInput)) {
+            assertThatIllegalArgumentException()
+                    .isThrownBy(() -> {
+                        isValidRacingCarNameLengthLimit(racingCarName);
+                    });
+        }
+    }
+
     @ParameterizedTest(name = "자동차 이름 [{0}] 길이가 5자 초과면 IllegalArgumentException 발생한다")
     @ValueSource(strings = {"javaji,javamaster"})
     void 쉼표_기준으로_구분한_자동차_이름의_길이가_5자_초과_IllegalArgumentException_발생한다(String racingCarNameInput) {
@@ -36,7 +47,7 @@ public class RacingGameUtilsTest {
                         , " pobi , crong , honux :pobi,crong,honux" }
                         , delimiter = ':')
     void 쉼표_기준으로_구분한_자동차_이름의_앞뒤_공백을_제거한다(String before, String after) {
-        String[] beforeNames = trim(racingCarNameSplit(before));
+        String[] beforeNames = racingCarNameSplit(before);
         String[] afterNames = racingCarNameSplit(after);
 
         for (int i = 0; i < beforeNames.length; i++) {

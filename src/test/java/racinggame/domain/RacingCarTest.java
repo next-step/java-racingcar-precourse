@@ -4,7 +4,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -23,14 +22,7 @@ public class RacingCarTest {
     @ParameterizedTest(name = "자동차 이름 검증이 완료되면, 자동차 리스트를 생성하고 반환한다")
     @CsvSource(value = {"pobi,crong,honux:3"}, delimiter = ':')
     void 자동차_이름_검증이_완료되면_자동차_리스트를_생성하고_반환한다(String racingCarNameInput, int sizeInput) {
-        List<RacingCar> racingCarList = new ArrayList<>();
-
-        String[] racingCarNameSplit = racingCarNameSplit(racingCarNameInput);
-        for (String racingCarName : racingCarNameSplit) {
-            racingCarList.add(new RacingCar(racingCarName));
-        }
-
-        RacingCars racingCars = new RacingCars(racingCarList);
+        RacingCars racingCars = new RacingCars(getRacingCarList(racingCarNameInput));
 
         assertThat(racingCars.getRacingCars()).isInstanceOf(List.class);
         assertThat(racingCars.getRacingCars().size()).isEqualTo(sizeInput);
