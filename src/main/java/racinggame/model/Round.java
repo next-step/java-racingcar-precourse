@@ -1,5 +1,8 @@
 package racinggame.model;
 
+import java.util.Collections;
+import java.util.List;
+
 public class Round {
 
 	private static final int FINISH_ROUND_COUNT = 0;
@@ -21,8 +24,8 @@ public class Round {
 		return this.cars.findWinners();
 	}
 
-	public Cars getCars() {
-		return this.cars;
+	public List<Car> getCars() {
+		return Collections.unmodifiableList(this.cars.getCars());
 	}
 
 	public boolean isFinishRound() {
