@@ -8,4 +8,8 @@ public class Display {
     public static void enterTryCount() {
         System.out.println("시도할 횟수는 몇회인가요?");
     }
+
+    public static void executeText() {
+        System.out.println("실행 결과");
+    }
 }

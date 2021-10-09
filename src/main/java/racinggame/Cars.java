@@ -1,5 +1,7 @@
 package racinggame;
 
+import nextstep.utils.Randoms;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,5 +26,11 @@ public class Cars {
 
     public List<Car> getCars() {
         return cars;
+    }
+
+    public void play() {
+        for (Car car : cars) {
+            car.moved(Randoms.pickNumberInRange(0, 9));
+        }
     }
 }
