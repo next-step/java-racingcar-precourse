@@ -10,6 +10,23 @@ public class RacingSevice {
 
     public void endRacing(List<Car> carsInfo){
 
+        int maxMv = 0;
+        String resultCar = "";
+
+        for (Car car : carsInfo) {
+            if(maxMv < car.getCarMvInfo()){
+                maxMv = car.getCarMvInfo();
+            }
+        }
+
+        for (Car car : carsInfo) {
+            if(maxMv == car.getCarMvInfo()){
+                resultCar += resultCar.length() !=0 ? ','+car.getCarNm() : car.getCarNm();
+            }
+        }
+
+        System.out.println("최종우숭자는 "+resultCar+" 입니다.");
+
     }
 
     public List<Car> mvCar(List<Car> carsInfo, String countTxt) throws Exception {
