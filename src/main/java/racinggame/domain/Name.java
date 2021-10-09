@@ -1,5 +1,7 @@
 package racinggame.domain;
 
+import racinggame.domain.exceptions.InvalidNameLengthException;
+
 import java.util.Objects;
 
 public class Name {
@@ -7,7 +9,14 @@ public class Name {
     private String name;
 
     private Name(final String name) {
+        checkNameLength(name);
         this.name = name;
+    }
+
+    private void checkNameLength(final String name) {
+        if (name.length() > 5) {
+            throw new InvalidNameLengthException();
+        }
     }
 
     public static Name of(final String name) {
