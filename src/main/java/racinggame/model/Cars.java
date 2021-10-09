@@ -10,6 +10,7 @@ public class Cars {
 
 	private static final String EMPTY_NAME_EXCEPTION_MESSAGE = "자동차는 %d대 이상이어야 합니다.";
 	private static final int MIN_CAR_SIZE = 2;
+	private static final int ZERO = 0;
 
 	private final List<Car> cars;
 
@@ -37,6 +38,33 @@ public class Cars {
 		}
 
 		return new Cars(this.cars);
+	}
+
+	public Winners findWinners() {
+		int maxPosition = findMaxPosition();
+		List<Winner> winners = new ArrayList<>();
+		for (Car car : cars) {
+			addWinner(maxPosition, winners, car);
+		}
+		return new Winners(winners);
+	}
+
+	private void addWinner(int maxPosition, List<Winner> winners, Car car) {
+		if (isMaxPosition(maxPosition, car)) {
+			winners.add(new Winner(car.getName()));
+		}
+	}
+
+	private boolean isMaxPosition(int maxPosition, Car car) {
+		return maxPosition == car.getPosition();
+	}
+
+	private int findMaxPosition() {
+		int max = ZERO;
+		for (Car car : cars) {
+			max = Math.max(max, car.getPosition());
+		}
+		return max;
 	}
 
 	public int numberOfCar() {

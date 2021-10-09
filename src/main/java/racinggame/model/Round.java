@@ -1,5 +1,7 @@
 package racinggame.model;
 
+import java.util.Collections;
+
 public class Round {
 
 	private final Cars cars;
@@ -8,7 +10,15 @@ public class Round {
 		this.cars = cars;
 	}
 
-	public RoundResult play() {
-		return new RoundResult(cars.move());
+	public Round play() {
+		return new Round(this.cars.move());
+	}
+
+	public Winners findWinners() {
+		return this.cars.findWinners();
+	}
+
+	public Cars getCars() {
+		return this.cars;
 	}
 }
