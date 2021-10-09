@@ -2,10 +2,7 @@ package racinggame.domain;
 
 import racinggame.domain.strategy.MoveStrategy;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class Cars {
 
@@ -40,6 +37,47 @@ public class Cars {
 
     public List<Car> elements() {
         return Collections.unmodifiableList(cars);
+    }
+
+    public List<Car> winners() {
+        List<Car> cars = new ArrayList<>();
+        for (Car car : this.cars) {
+            cars = mergeIfMaxDistanceIsEqual(cars, car);
+        }
+        return Collections.unmodifiableList(cars);
+    }
+
+    private List<Car> mergeIfMaxDistanceIsEqual(final List<Car> cars, final Car car) {
+        Distance distance = car.getDistance();
+        Distance maxDistance = max();
+
+        if (distance.equals(maxDistance)) {
+            return merge(cars, car);
+        }
+
+        return new ArrayList<>();
+    }
+
+    private Distance max() {
+        LinkedList<Distance> distances = mapToDistance();
+        Collections.sort(distances);
+        return distances.getLast();
+    }
+
+    private LinkedList<Distance> mapToDistance() {
+        LinkedList<Distance> distances = new LinkedList<>();
+        for (Car car : this.cars) {
+            Distance distance = car.getDistance();
+            distances.add(distance);
+        }
+        return distances;
+    }
+
+    private List<Car> merge(final List<Car> cars, final Car car) {
+        List<Car> list = new ArrayList<>();
+        list.addAll(cars);
+        list.addAll(Collections.singletonList(car));
+        return list;
     }
 
     @Override

@@ -2,7 +2,7 @@ package racinggame.domain;
 
 import java.util.Objects;
 
-public class Distance {
+public class Distance implements Comparable<Distance> {
 
     private final int distance;
 
@@ -24,6 +24,11 @@ public class Distance {
 
     public int value() {
         return distance;
+    }
+
+    @Override
+    public int compareTo(Distance o) {
+        return this.distance - o.distance;
     }
 
     @Override
