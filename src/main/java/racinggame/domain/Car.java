@@ -20,17 +20,14 @@ public class Car {
 	}
 
 	public void setName(String name) {
-		if(!validName(name)) {
+		if (!validName(name)) {
 			throw new IllegalArgumentException(ErrorMessage.ERROR_CAR_INPUT_NAME);
 		}
 		this.name = name;
 	}
 
 	public boolean validName(String name) {
-		if (name != null && name.trim().length() != 0 && name.trim().length() <= 5) {
-			return true;
-		}
-		return false;
+		return name != null && name.trim().length() != 0 && name.trim().length() <= 5;
 	}
 
 	public String getName() {
@@ -46,5 +43,14 @@ public class Car {
 	}
 
 	public void stop() {
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder disStr = new StringBuilder();
+		for (int i = 0; i < distance; i++) {
+			disStr.append("-");
+		}
+		return name + ":" + disStr;
 	}
 }

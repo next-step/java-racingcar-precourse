@@ -83,4 +83,13 @@ public class CarTest {
 		assertThat(car.getDistance()).isEqualTo(0);
 	}
 
+	@Test
+	void 문자열_변환() {
+		car = new Car("test");
+		car.go();
+		car.go();
+		car.go();
+		assertThat(car.toString()).contains("test:---");
+	}
+
 }
