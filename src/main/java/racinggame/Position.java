@@ -5,8 +5,8 @@ public class Position {
 	private static final String ROAD_SHAPE = "-";
 	protected int position;
 
-	public void move(Strategy generator) {
-		if (generator.canMove()) {
+	public void move(Strategy strategy) {
+		if (strategy.canMove()) {
 			this.position++;
 		}
 	}

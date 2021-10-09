@@ -11,10 +11,10 @@ public class Cars {
 		this.cars = cars;
 	}
 
-	public void race(Strategy generator) {
+	public void race(Strategy strategy) {
 
 		for (Car car : cars) {
-			car.move(generator);
+			car.move(strategy);
 			car.printCurrentStatus();
 		}
 	}

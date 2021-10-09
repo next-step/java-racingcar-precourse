@@ -41,10 +41,10 @@ public class RaceGame {
 
 	private void race(Cars cars, int count) {
 
-		Strategy generator = new RandomStrategy();
+		Strategy strategy = new RandomStrategy();
 		System.out.println("실행 결과");
 		do {
-			cars.race(generator);
+			cars.race(strategy);
 			System.out.println();
 		} while (--count > 0);
 

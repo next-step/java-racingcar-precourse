@@ -10,8 +10,8 @@ public class Car {
 		this.position = new Position();
 	}
 
-	public void move(Strategy generator) {
-		position.move(generator);
+	public void move(Strategy strategy) {
+		position.move(strategy);
 	}
 
 	public void printCurrentStatus() {
