@@ -4,6 +4,8 @@ import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class CarTest {
     @DisplayName("전달 받은 이름으로 자동차 이름을 가져올 수 있는지 테스트")
@@ -23,5 +25,21 @@ class CarTest {
         assertThat(car.getStep()).isEqualTo(1);
         car.moveForward();
         assertThat(car.getStep()).isEqualTo(2);
+    }
+
+    @DisplayName("자동차 이름 5글자 이하일 때 성공 테스트")
+    @ParameterizedTest
+    @ValueSource(strings = {"1", "12", "123", "1234", "12345"})
+    void constructCar_successWhenNameLengthIs5OrLess(String name) {
+        new Car(name);
+    }
+
+    @DisplayName("자동차 이름 5글자 이상 또는 null이나 비어있을 때 에러 던지는지 테스트")
+    @ParameterizedTest
+    @ValueSource(strings = {"", "123456"})
+    void constructCar_throwsErrorWhenNameIsNullOrEmptyOrHigherThan5(String name) {
+        assertThatExceptionOfType(IllegalArgumentException.class)
+            .isThrownBy(() -> new Car(name))
+            .withMessageContaining("5글자 이상 또는 비어있는 이름으로 자동차를 생성할 수 없습니다.");
     }
 }
