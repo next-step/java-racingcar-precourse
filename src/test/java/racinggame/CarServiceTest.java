@@ -2,7 +2,7 @@
  * CarServiceTest
  * java-racingcar-precourse
  *
- * Version 0.3
+ * Version 0.4
  *
  * Created by 강래민 on 2021-10-08.
  *
@@ -13,6 +13,7 @@ package racinggame;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racinggame.domain.Car;
+import racinggame.domain.RaceResult;
 import racinggame.exception.IncorrectInputException;
 import racinggame.service.CarService;
 import racinggame.utils.CarName;
@@ -68,14 +69,6 @@ public class CarServiceTest {
     }
 
     @Test
-    public void 일급컬렉션_후_자동차_여러대_생성() throws Exception {
-
-        carService.inputCarNames("abc,ele,wpp");
-
-        assertThat(carService.findAll().size()).isEqualTo(3);
-    }
-
-    @Test
     public void 일급컬렉션_후_자동차_이름_오류() throws Exception {
         System.out.println(assertThrows(IncorrectInputException.class, () -> carService.inputCarNames("abc,ele,wpp333")).getMessage());
         System.out.println(assertThrows(IncorrectInputException.class, () -> carService.inputCarNames("")).getMessage());
@@ -88,8 +81,8 @@ public class CarServiceTest {
         Positive positive = new Positive(3);
 
         for (int i = 0; i < positive.get(); i++) {
-            carService.findAll().forEach(Car::action);
-            carService.findAll().forEach(Car::print);
+            carService.action();
+            carService.getRaceResult().print();
         }
     }
 
@@ -100,7 +93,8 @@ public class CarServiceTest {
         //when
         carService.action();
         //then
-        carService.findAll().forEach(Car::print);
+        carService.getRaceResult().print();
+
     }
 
     @Test
@@ -110,12 +104,11 @@ public class CarServiceTest {
         //when
         for(int i = 0; i < 5; i++){
             carService.action();
-            carService.findAll().forEach(Car::print);
-            System.out.println();
-            System.out.println();
+            carService.getRaceResult().print();
         }
         //then
-        List<Car> winner = carService.ranking();
-        winner.forEach(Car::print);
+        RaceResult raceResult = carService.getRaceResult();
+        raceResult.ranking();
+        raceResult.print();
     }
 }

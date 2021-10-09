@@ -2,7 +2,7 @@
  * CarRepository
  * java-racingcar-precourse
  *
- * Version 0.1
+ * Version 0.2
  *
  * Created by 강래민 on 2021-10-09.
  *
@@ -11,8 +11,8 @@
 package racinggame.repository;
 
 import racinggame.domain.Car;
+import racinggame.domain.RaceResult;
 import racinggame.exception.IncorrectInputException;
-import racinggame.utils.CarComparator;
 import racinggame.utils.CarName;
 import racinggame.utils.Common;
 import racinggame.utils.Positive;
@@ -20,7 +20,6 @@ import racinggame.utils.Positive;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 
 public class CarRepository {
 
@@ -39,6 +38,13 @@ public class CarRepository {
             carList.add(new Car(new Positive(id.get()), carName));
             id.plus();
         }
+    }
+
+    /**
+     * 자동차 목록에 있는 자동차들의 전진 혹은 정지 동작 실행
+     */
+    public void action() {
+        carList.forEach(Car::action);
     }
 
     /**
@@ -68,36 +74,11 @@ public class CarRepository {
     }
 
     /**
-     * 자동차 목록에 있는 자동차들의 전진 혹은 정지 동작 실행
-     */
-    public void action() {
-        carList.forEach(Car::action);
-    }
-
-    /**
-     * 전체 차량 목록 조회
+     * List<Car>를 반환하는 것보다 이름부터 명확하고 기능을 모아 효과적인 컬렉션을 전달한다.
      *
-     * @return 차량 목록
+     * @return 레이싱 결과
      */
-    public List<Car> findAll() {
-        return carList;
-    }
-
-    /**
-     * 차량의 거리와 순번 순으로 정렬 후 우승자를 찾아 나머지 차량은 제거
-     *
-     * @return 우승자 목록
-     */
-    public List<Car> ranking() {
-        carList.sort(new CarComparator());
-        findWinnerAndRemoveOtherCar(carList.get(0));
-        return carList;
-    }
-
-    /**
-     * @param winner 전달받은 우승자 정보
-     */
-    private void findWinnerAndRemoveOtherCar(Car winner) {
-        carList.removeIf(car -> !Objects.equals(car.getPosition(), winner.getPosition()));
+    public RaceResult getRaceResult() {
+        return new RaceResult(carList);
     }
 }

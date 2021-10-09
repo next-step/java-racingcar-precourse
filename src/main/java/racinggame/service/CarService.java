@@ -2,7 +2,7 @@
  * CarService
  * java-racingcar-precourse
  *
- * Version 0.5
+ * Version 0.6
  *
  * Created by 강래민 on 2021-10-08.
  *
@@ -10,10 +10,8 @@
  */
 package racinggame.service;
 
-import racinggame.domain.Car;
+import racinggame.domain.RaceResult;
 import racinggame.repository.CarRepository;
-
-import java.util.List;
 
 public class CarService {
 
@@ -29,13 +27,6 @@ public class CarService {
     }
 
     /**
-     * @return 자동차 목록
-     */
-    public List<Car> findAll() {
-        return carRepository.findAll();
-    }
-
-    /**
      * 자동차 목록에 있는 자동차들의 전진 혹은 정지 동작 실행
      */
     public void action() {
@@ -43,9 +34,9 @@ public class CarService {
     }
 
     /**
-     * @return 최종 게임 우승자 목록
+     * @return 레이싱 결과
      */
-    public List<Car> ranking() {
-        return carRepository.ranking();
+    public RaceResult getRaceResult() {
+        return carRepository.getRaceResult();
     }
 }
