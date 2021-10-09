@@ -32,6 +32,16 @@ public class CarTest {
         assertThatThrownBy(() -> Car.of(CarName.of("")))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorCode.NAME_NOT_BLANK.getMessage());
+    }
 
+    @Test
+    @DisplayName("자동차 값이 전진 테스트")
+    void move() {
+        //given
+        final Car car = Car.of(CarName.of("씽씽이"));
+        //when
+        car.move();
+        //then
+        assertThat(car.getCarPosition().getValue()).isEqualTo(1);
     }
 }
