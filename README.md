@@ -38,6 +38,7 @@
     * 필요 정보
         * 이름
         * 이동 횟수
+        * 현재 이동 상태
 
 
 * 레이스를 등록한다.
@@ -65,8 +66,8 @@
 
 ---
 car name : a, moveCount : 0  
-random : 4 -> moveCount 1 pass  
-random : 1 -> moveCount 0 fail 
+random : 4 -> moveCount 1 move  
+random : 1 -> moveCount 0 stop
 
 ---
 
