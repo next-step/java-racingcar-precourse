@@ -19,4 +19,9 @@ public class CarName {
 	private boolean invalid(String name) {
 		return name.length() < MIN_NAME_LENGTH || name.length() > MAX_NAME_LENGTH;
 	}
+
+	@Override
+	public String toString() {
+		return name;
+	}
 }
