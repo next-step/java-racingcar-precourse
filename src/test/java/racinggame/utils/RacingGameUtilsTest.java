@@ -75,4 +75,14 @@ public class RacingGameUtilsTest {
                 .withMessage(ERROR_MESSAGE);
     }
 
+    @ParameterizedTest(name = "[{0}] 입력값은 숫자만 유효하다")
+    @ValueSource(strings = {"a", "B", "%", "한글"})
+    void 입력값은_숫자만_유효하다(String readLine) {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> {
+                    isValidOnlyNumber(readLine);
+                })
+                .withMessage(ERROR_MESSAGE);
+    }
+
 }
