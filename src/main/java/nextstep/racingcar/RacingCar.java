@@ -35,6 +35,10 @@ public class RacingCar {
 		return carName + DELIMITER + position;
 	}
 
+	public Position getGreaterPosition(Position input) {
+		return new Position(Math.max(position.getPosition(), input.getPosition()));
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o)

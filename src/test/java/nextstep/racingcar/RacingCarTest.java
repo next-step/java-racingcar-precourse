@@ -69,4 +69,13 @@ public class RacingCarTest {
 		assertEquals("hello : -----", racingCar.toString());
 	}
 
+	@DisplayName("임의의 위치와 자동차의 위치를 비교하여, 더 큰 위치를 반환한다.")
+	@Test
+	void getGreaterPosition() {
+		// given
+		final RacingCar racingCar = new RacingCar("hello", 15);
+
+		// when then
+		assertEquals(new Position(15), racingCar.getGreaterPosition(new Position(10)));
+	}
 }

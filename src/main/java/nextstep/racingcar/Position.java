@@ -39,6 +39,10 @@ public class Position {
 		return builder.toString();
 	}
 
+	public int getPosition() {
+		return position;
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o)
@@ -53,5 +57,4 @@ public class Position {
 	public int hashCode() {
 		return Objects.hash(position);
 	}
-
 }
