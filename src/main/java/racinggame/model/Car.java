@@ -15,11 +15,11 @@ public class Car {
 		totalTravel = new TotalTravel();
 	}
 
-	public String getName() {
+	String getName() {
 		return carName.toString();
 	}
 
-	public CarPlayResult play(int value) {
+	CarPlayResult play(int value) {
 		return value < MIN_VALUE_FORWARD ? CarPlayResult.STOP : CarPlayResult.FORWARD;
 	}
 
@@ -30,7 +30,7 @@ public class Car {
 		}
 	}
 
-	public int getTotalTravel() {
+	int getTotalTravel() {
 		return totalTravel.get();
 	}
 
