@@ -2,6 +2,7 @@ package racinggame;
 
 import static org.assertj.core.api.Assertions.*;
 
+import java.util.NoSuchElementException;
 import java.util.stream.Stream;
 
 import org.junit.jupiter.api.DisplayName;
@@ -16,7 +17,8 @@ class NameTest {
 	@MethodSource("provideNamesWithLongLength")
 	@DisplayName("이름 예외처리")
 	void nameExceptionTest(String name, String message) {
-		assertThatIllegalArgumentException().isThrownBy(() -> new TestName(name)).withMessage(message);
+		assertThatExceptionOfType(NoSuchElementException.class).isThrownBy(() -> new TestName(name))
+			.withMessage(message);
 	}
 
 	@Test
