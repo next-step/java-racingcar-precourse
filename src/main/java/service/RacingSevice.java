@@ -8,7 +8,29 @@ import java.util.List;
 
 public class RacingSevice {
 
-    public void isMove(String countStr) throws Exception {
+    public void mvCar(List<Car> carsInfo, String mvText) throws Exception {
+
+        int mvInt = 0;
+        for (Car car: carsInfo) {
+            mvInt = this.isMove(mvText);
+            car.setCarMvInfo(mvInt);
+        }
+
+        for (Car car : carsInfo) {
+            System.out.println("차량명 : " + car.getCarNm() + "");
+        }
+
+    }
+
+    public boolean isMove(int randomCount){
+        //int randomCount = Randoms.pickNumberInRange(0,9);
+        if(randomCount > 9){
+            return false;
+        }
+        return randomCount > 3 ? true : false;
+    }
+
+    public int isMove(String countStr) throws Exception {
       int count = this.getCount(countStr);
 
       int mvCount = 0;
@@ -17,6 +39,7 @@ public class RacingSevice {
         randomCount = Randoms.pickNumberInRange(0,9);
         if(randomCount > 3){ mvCount++;}
       }
+      return mvCount;
     }
 
     private int getCount(String countStr) throws Exception {
@@ -34,10 +57,5 @@ public class RacingSevice {
 
         return count;
     }
-
-    public void mvCar(List<Car> carsInfo, String mvText) {
-
-    }
-
 
 }
