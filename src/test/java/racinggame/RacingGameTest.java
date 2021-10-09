@@ -34,7 +34,8 @@ public class RacingGameTest {
     @DisplayName("값에따른 움직임 프로세스 처리")
     public void mvCar() throws Exception {
         RacingSevice racingSevice = new RacingSevice();
-        racingSevice.isMove("-3");
+        //racingSevice.isMove("-3");
+        racingSevice.isMove("6");
     }
 
     /*

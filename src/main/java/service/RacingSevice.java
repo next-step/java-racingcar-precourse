@@ -2,6 +2,7 @@ package service;
 
 import DTO.Car;
 import custom.utils.ValidationUtils;
+import nextstep.utils.Randoms;
 
 import java.util.List;
 
@@ -9,8 +10,13 @@ public class RacingSevice {
 
     public void isMove(String countStr) throws Exception {
       int count = this.getCount(countStr);
-      System.out.println("count :: " + count );
 
+      int mvCount = 0;
+      int randomCount;
+      for(int i=0; i<count; i++){
+        randomCount = Randoms.pickNumberInRange(0,9);
+        if(randomCount > 3){ mvCount++;}
+      }
     }
 
     private int getCount(String countStr) throws Exception {
