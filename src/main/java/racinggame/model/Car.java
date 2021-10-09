@@ -21,13 +21,8 @@ public class Car {
 		return value < MIN_VALUE_FORWARD ? CarPlayResult.STOP : CarPlayResult.FORWARD;
 	}
 
-	public void roll(int times) {
-		for(int i = 0; i < times; i++) {
-			move(play(Randoms.pickNumberInRange(0, 9)));
-		}
-	}
-
-	private void move(CarPlayResult result) {
+	public void roll() {
+		CarPlayResult result = play(Randoms.pickNumberInRange(0, 9));
 		if (result.isForward()) {
 			totalTravel.moveForward();
 		}

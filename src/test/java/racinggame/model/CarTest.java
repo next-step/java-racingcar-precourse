@@ -36,13 +36,19 @@ public class CarTest {
 	}
 
 	@Test
-	void 입력_횟수만큼_움직이고_움직인_총_길이값_반환() {
+	void 움직인_총_길이값_반환() {
 		try (final MockedStatic<Randoms> mockRandoms = mockStatic(Randoms.class)) {
 			mockRandoms
 					.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
 					.thenReturn(MOVING_FORWARD, MOVING_FORWARD, STOP, MOVING_FORWARD);
 			Car car = new Car("bus");
-			car.roll(4);
+			car.roll();
+			assertThat(car.getTotalTravel()).isEqualTo(1);
+			car.roll();
+			assertThat(car.getTotalTravel()).isEqualTo(2);
+			car.roll();
+			assertThat(car.getTotalTravel()).isEqualTo(2);
+			car.roll();
 			assertThat(car.getTotalTravel()).isEqualTo(3);
 		}
 	}
