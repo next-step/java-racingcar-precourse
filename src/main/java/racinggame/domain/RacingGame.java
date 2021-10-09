@@ -1,6 +1,5 @@
-package racinggame;
+package racinggame.domain;
 
-import racinggame.domain.Cars;
 import racinggame.domain.strategy.MoveStrategy;
 
 import java.util.Objects;
@@ -15,8 +14,12 @@ public class RacingGame {
         this.cars = cars;
     }
 
-    public Cars next() {
+    public RacingGame next() {
         cars.move(moveStrategy);
+        return new RacingGame(moveStrategy, cars);
+    }
+
+    public Cars getCars() {
         return new Cars(cars);
     }
 

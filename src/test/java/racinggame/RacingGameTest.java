@@ -2,6 +2,7 @@ package racinggame;
 
 import org.junit.jupiter.api.Test;
 import racinggame.domain.Cars;
+import racinggame.domain.RacingGame;
 import racinggame.domain.strategy.MoveStrategy;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

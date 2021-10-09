@@ -14,8 +14,16 @@ public class Distance {
         return new Distance(distance);
     }
 
+    public static Distance of(final Distance distance) {
+        return new Distance(distance.distance);
+    }
+
     public static Distance move(final Distance distance) {
         return new Distance(distance.distance + 1);
+    }
+
+    public int value() {
+        return distance;
     }
 
     @Override

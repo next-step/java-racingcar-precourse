@@ -13,14 +13,22 @@ public class Name {
         this.name = name;
     }
 
+    public static Name of(final Name name) {
+        return new Name(name.name);
+    }
+
+    public static Name of(final String name) {
+        return new Name(name);
+    }
+
     private void checkNameLength(final String name) {
         if (name.length() > 5) {
             throw new InvalidNameLengthException();
         }
     }
 
-    public static Name of(final String name) {
-        return new Name(name);
+    public String value() {
+        return name;
     }
 
     @Override

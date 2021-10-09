@@ -13,7 +13,7 @@ public class Cars {
     private final List<Car> cars;
 
     public Cars(final List<Car> cars) {
-        this.cars = Collections.unmodifiableList(cars);
+        this.cars = cars;
     }
 
     public Cars(final Cars cars) {
@@ -36,6 +36,10 @@ public class Cars {
         for (Car car : cars) {
             car.move(moveStrategy);
         }
+    }
+
+    public List<Car> elements() {
+        return Collections.unmodifiableList(cars);
     }
 
     @Override

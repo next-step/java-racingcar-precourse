@@ -11,6 +11,7 @@ public class Car {
 
     public Car(final String name) {
         this.name = Name.of(name);
+        this.distance = Distance.of(0);
     }
 
     public void move(final MoveStrategy moveStrategy) {
@@ -18,6 +19,14 @@ public class Car {
         if (isMovable) {
             this.distance = Distance.move(this.distance);
         }
+    }
+
+    public Name getName() {
+        return Name.of(this.name);
+    }
+
+    public Distance getDistance() {
+        return Distance.of(this.distance);
     }
 
     @Override

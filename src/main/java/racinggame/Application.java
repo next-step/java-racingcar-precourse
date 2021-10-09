@@ -1,7 +1,9 @@
 package racinggame;
 
 import racinggame.domain.Cars;
+import racinggame.domain.RacingGame;
 import racinggame.view.ConsoleInputView;
+import racinggame.view.ConsoleOutputView;
 
 public class Application {
 
@@ -15,10 +17,12 @@ public class Application {
 
         RacingGame racingGame = new RacingGame(() -> true, cars);
 
+        ConsoleOutputView outputView = new ConsoleOutputView();
+        outputView.print(racingGame);
         for (int i = 0; i < attempts; i++) {
-            Cars next = racingGame.next();
+            RacingGame next = racingGame.next();
+            outputView.print(next);
         }
-
 
     }
 
