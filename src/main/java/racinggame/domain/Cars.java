@@ -1,8 +1,9 @@
 package racinggame.domain;
 
+import java.util.Iterator;
 import java.util.List;
 
-public class Cars {
+public class Cars implements Iterable<Car> {
 	private final List<Car> cars;
 
 	public Cars(List<Car> cars) {
@@ -15,6 +16,10 @@ public class Cars {
 
 	public List<Car> getCars() {
 		return cars;
+	}
+
+	public Car get(int index) {
+		return cars.get(index);
 	}
 
 	public void move() {
@@ -39,5 +44,10 @@ public class Cars {
 		if (car.getName().equals(nextCar.getName())) {
 			throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
 		}
+	}
+
+	@Override
+	public Iterator<Car> iterator() {
+		return cars.iterator();
 	}
 }
