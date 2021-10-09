@@ -19,7 +19,7 @@ public class CarTest {
         int carMoveCount = car.getMoveCount();
 
         assertThat(carName).isEqualTo("lee");
-        assertThat(carMoveCount).isEqualTo(1);
+        assertThat(carMoveCount).isEqualTo(0);
     }
 
     @Test
@@ -33,30 +33,20 @@ public class CarTest {
     @Test
     @DisplayName("Random 값이 4일 경우 전진")
     public void carMoveRandomValueFour(){
-        Car car = new Car("lee"){
-            @Override
-            public int getRandomNumber(){
-                return 4;
-            }
-        };
-        car.move();
+        Car car = new Car("lee");
+        car.move(4);
 
-        assertThat(car.getMoveCount()).isEqualTo(2);
+        assertThat(car.getMoveCount()).isEqualTo(1);
     }
 
     @Test
     @DisplayName("Random 값이 3일 경우 정지")
     public void carMoveRandomValueThree(){
-        Car car = new Car("lee"){
-            @Override
-            public int getRandomNumber(){
-                return 3;
-            }
-        };
+        Car car = new Car("lee");
 
-        car.move();
+        car.move(3);
 
-        assertThat(car.getMoveCount()).isEqualTo(1);
+        assertThat(car.getMoveCount()).isEqualTo(0);
     }
 
 }
