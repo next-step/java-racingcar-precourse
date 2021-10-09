@@ -15,7 +15,7 @@ class RoundTest {
 	@DisplayName("하나의 게임을 생성")
 	@Test
 	void create() {
-		Round round = new Round(Cars.of(new RandomMoveStrategy(), "car-1", "car-2"));
+		Round round = new Round(Cars.of(new RandomMoveStrategy(), "car-1", "car-2"), 1);
 
 		assertThat(round).isNotNull();
 	}
@@ -25,11 +25,28 @@ class RoundTest {
 	void winner_round() {
 		Round round = new Round(Cars.of(Arrays.asList(
 			Car.of(() -> true, "car-1"),
-			Car.of(() -> false, "car-2")))
+			Car.of(() -> false, "car-2"))),
+			1
 		);
 		Round result = round.play();
 
 		final Winners winners = result.findWinners();
 		assertThat(winners.getWinners()).containsExactly(new Winner("car-1"));
+	}
+
+	@DisplayName("마지막 라운드인지 확인한다")
+	@Test
+	void finish_round() {
+		Round round = new Round(Cars.of(Arrays.asList(
+			Car.of(() -> true, "car-1"),
+			Car.of(() -> false, "car-2"))),
+			2
+		);
+
+		Round firstPlay = round.play();
+		assertThat(firstPlay.isFinishRound()).isFalse();
+
+		Round secondPlay = firstPlay.play();
+		assertThat(secondPlay.isFinishRound()).isTrue();
 	}
 }
