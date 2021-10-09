@@ -9,7 +9,10 @@ import java.util.Objects;
 public class Car {
     public static final int MAX_NAME_LENGTH = 5;
     public static final int MIN_NAME_LENGTH = 1;
+    public static final int START_POSITON = 0;
+    public static final int MOVE_FOWARD = 1;
     private String name;
+    private int position;
 
     public Car() {
         throw new IllegalArgumentException("자동차 이름은 필수 입니다. 입력해 주세요.");
@@ -20,6 +23,7 @@ public class Car {
             throw new IllegalArgumentException("자동차 이름은 1~5자로 입력해 주세요.");
         }
         this.name = name;
+        this.position = START_POSITON;
     }
 
     private boolean isInvalidName(String name) {
@@ -41,5 +45,15 @@ public class Car {
     @Override
     public int hashCode() {
         return Objects.hash(name);
+    }
+
+    public int getPosition() {
+        return this.position;
+    }
+
+    public void move(int randomNumber) {
+        if(MoveStatus.MOVE == CarMove.getMoveStatus(randomNumber)) {
+            this.position += MOVE_FOWARD;
+        }
     }
 }

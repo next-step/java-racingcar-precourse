@@ -40,4 +40,18 @@ public class CarTest {
         Car car1 = new Car("dony");
         assertTrue(car.equals(car1));
     }
+
+    @Test
+    void 자동차_전진_멈춤() {
+        //초기 위치 확인
+        assertEquals(car.getPosition(), 0);
+
+        //자동차 전진 멈춤 테스트
+        car.move(3); //멈춤
+        assertEquals(car.getPosition(), 0);
+        car.move(5); //전진
+        assertEquals(car.getPosition(), 1);
+        car.move(9); //전진
+        assertEquals(car.getPosition(), 2);
+    }
 }
