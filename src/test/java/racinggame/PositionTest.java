@@ -10,10 +10,10 @@ public class PositionTest {
 	@Test
 	@DisplayName("Position 이동")
 	void moveTest() {
-		Position position = new Position();
+		TestPosition position = new TestPosition();
 		position.move(() -> true);
 		position.move(() -> false);
-		assertThat(position).isEqualTo(new Position(1));
+		assertThat(position).isEqualTo(new TestPosition(1));
 	}
 
 }

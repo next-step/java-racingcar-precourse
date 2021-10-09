@@ -2,15 +2,7 @@ package racinggame;
 
 public class Position {
 
-	private int position;
-
-	public Position() {
-		this(0);
-	}
-
-	public Position(int position) {
-		this.position = position;
-	}
+	protected int position;
 
 	public void move(Generator generator) {
 		if (generator.canMove()) {
