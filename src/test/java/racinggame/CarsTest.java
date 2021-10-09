@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racinggame.domain.Car;
 import racinggame.domain.Cars;
+import racinggame.domain.ErrorCode;
 
 import java.util.Arrays;
 import java.util.List;
@@ -12,7 +13,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CarsTest {
-
     private Cars users;
 
     @BeforeEach
@@ -22,12 +22,12 @@ public class CarsTest {
 
     @Test
     void 레이싱참가_자동차_이름_중복() {
-        assertEquals("레이싱 게임 참가 자동차의 이름은 중복될 수 없습니다.", assertThrows(IllegalArgumentException.class, () -> new Cars(Arrays.asList(new Car("dony"), new Car("dony")))).getMessage());
+        assertEquals("[ERROR] 레이싱 게임 참가 자동차의 이름은 중복될 수 없습니다.", assertThrows(IllegalArgumentException.class, () -> new Cars(Arrays.asList(new Car("dony"), new Car("dony")))).getMessage());
     }
 
     @Test
     void 레이싱게임_참가_자동차_없을때() {
-        assertEquals("레이싱 게임 참가 자동차는 1대이상 이어야 합니다.", assertThrows(IllegalArgumentException.class, () -> new Cars()).getMessage());
+        assertEquals("[ERROR] 레이싱 게임 참가 자동차는 1대이상 이어야 합니다.", assertThrows(IllegalArgumentException.class, () -> new Cars()).getMessage());
     }
 
     @Test

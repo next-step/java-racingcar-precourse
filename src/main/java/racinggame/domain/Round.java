@@ -5,20 +5,32 @@ package racinggame.domain;
  * Description : 레이싱 게임 라운드
  */
 public class Round {
+    public static final int ZERO = 0;
     private int count;
 
     public Round(int count) {
         if (count == 0) {
-            throw new IllegalArgumentException("시도할 횟수는 0보다 커야 합니다.");
+            System.out.println(ErrorCode.ROUND_COUNT_ZERO.getMessage());
+            throw new IllegalArgumentException(ErrorCode.ROUND_COUNT_ZERO.getMessage());
         }
         this.count = count;
     }
 
     public Round() {
-        this(0);
+        this(ZERO);
     }
 
     public int getCount() {
         return this.count;
+    }
+
+    public void decreaseCount() {
+        if (getCount() > ZERO) {
+            this.count -= 1;
+        }
+    }
+
+    public boolean isRemainRound() {
+        return this.count > ZERO;
     }
 }

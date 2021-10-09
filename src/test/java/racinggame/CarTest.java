@@ -4,6 +4,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racinggame.domain.Car;
 
+import java.util.NoSuchElementException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CarTest {
@@ -17,7 +19,7 @@ public class CarTest {
 
     @Test
     void 자동차_객체_생성() {
-        assertEquals("자동차 이름은 필수 입니다. 입력해 주세요.", assertThrows(IllegalArgumentException.class, () -> new Car()).getMessage());
+        assertEquals("[ERROR] 자동차 이름은 필수 입니다. 입력해 주세요.", assertThrows(IllegalArgumentException.class, () -> new Car()).getMessage());
     }
 
     @Test
@@ -35,7 +37,7 @@ public class CarTest {
     }
 
     private void assertCarNameLengthOneToFive(String name) {
-        assertEquals("자동차 이름은 1~5자로 입력해 주세요.", assertThrows(IllegalArgumentException.class, () -> new Car(name)).getMessage());
+        assertEquals("[ERROR] 자동차 이름은 1~5자로 입력해 주세요.", assertThrows(NoSuchElementException.class, () -> new Car(name)).getMessage());
     }
 
     @Test

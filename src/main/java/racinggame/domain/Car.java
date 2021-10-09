@@ -10,22 +10,23 @@ import java.util.Objects;
 public class Car {
     public static final int MAX_NAME_LENGTH = 5;
     public static final int MIN_NAME_LENGTH = 1;
-    public static final int START_POSITON = 0;
-    public static final int MOVE_FOWARD = 1;
-    private String name;
+    public static final int START_POSITION = 0;
+    public static final int MOVE_FORWARD = 1;
+    private final String name;
     private int position;
 
     public Car() {
-        throw new IllegalArgumentException("[ERROR] 자동차 이름은 필수 입니다. 입력해 주세요.");
+        System.out.println(ErrorCode.BLANK_NAME.getMessage());
+        throw new IllegalArgumentException(ErrorCode.BLANK_NAME.getMessage());
     }
 
     public Car(String name) {
-        if (isInvalidName(name))  {
-            System.out.println("[ERROR] 자동차 이름은 1~5자로 입력해 주세요.");
-            throw new NoSuchElementException("[ERROR] 자동차 이름은 1~5자로 입력해 주세요.");
+        if (isInvalidName(name)) {
+            System.out.println(ErrorCode.NAME_LENGTH_1TO5.getMessage());
+            throw new NoSuchElementException(ErrorCode.NAME_LENGTH_1TO5.getMessage());
         }
         this.name = name;
-        this.position = START_POSITON;
+        this.position = START_POSITION;
     }
 
     private boolean isInvalidName(String name) {
@@ -37,10 +38,10 @@ public class Car {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Car car = (Car) o;
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        Car car = (Car) object;
         return Objects.equals(name, car.name);
     }
 
@@ -54,8 +55,8 @@ public class Car {
     }
 
     public void move(int randomNumber) {
-        if(MoveStatus.MOVE == CarMove.getMoveStatus(randomNumber)) {
-            this.position += MOVE_FOWARD;
+        if (MoveStatus.MOVE == CarMove.getMoveStatus(randomNumber)) {
+            this.position += MOVE_FORWARD;
         }
     }
 }

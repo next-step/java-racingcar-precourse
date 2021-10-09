@@ -14,13 +14,15 @@ public class Cars {
 
     public <T> Cars(List<Car> users) {
         if (this.hasDupUser(users)) {
-            throw new IllegalArgumentException("레이싱 게임 참가 자동차의 이름은 중복될 수 없습니다.");
+            System.out.println(ErrorCode.DUPLICATION_NAME.getMessage());
+            throw new IllegalArgumentException(ErrorCode.DUPLICATION_NAME.getMessage());
         }
         this.users = users;
     }
 
     public Cars() {
-        throw new IllegalArgumentException("레이싱 게임 참가 자동차는 1대이상 이어야 합니다.");
+        System.out.println(ErrorCode.NEED_MORE_USERS.getMessage());
+        throw new IllegalArgumentException(ErrorCode.NEED_MORE_USERS.getMessage());
     }
 
     public int getUserCount() {
