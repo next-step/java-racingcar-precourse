@@ -20,7 +20,7 @@ import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mockStatic;
 
 public abstract class NSTest {
-    private static final Duration TEST_TIMEOUT = Duration.ofSeconds(1L);
+    private static final Duration TEST_TIMEOUT = Duration.ofSeconds(5L);
 
     private PrintStream standardOut;
     private OutputStream captor;
@@ -64,6 +64,9 @@ public abstract class NSTest {
     }
 
     protected void verify(final String... args) {
+        System.out.println("woody log start");
+        System.out.println(output());
+        System.out.println("woody log end");
         assertThat(output()).contains(args);
     }
 
