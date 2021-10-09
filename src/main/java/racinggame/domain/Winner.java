@@ -9,7 +9,7 @@ import java.util.Comparator;
  */
 public class Winner {
     public static final String NAME_SEPARATOR = ",";
-    private Cars users;
+    private final Cars users;
 
     public Winner(Cars users) {
         this.users = users;
@@ -17,9 +17,8 @@ public class Winner {
 
     public String getWinner() {
         StringBuilder winnerName = new StringBuilder();
-        int maxPosition = Collections.max(users.getUsers(), Comparator.comparingInt(Car::getPosition)).getPosition();
         for (Car user : users.getUsers()) {
-            mapWinnerName(winnerName, maxPosition, user);
+            mapWinnerName(winnerName, users.getMaxPosition(), user);
         }
 
         return replaceLastSeparator(winnerName);

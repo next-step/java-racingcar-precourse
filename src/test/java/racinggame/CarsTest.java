@@ -42,4 +42,21 @@ public class CarsTest {
         assertEquals(cars.get(1).getName(), "chuny");
         assertEquals(cars.get(2).getName(), "junny");
     }
+
+    @Test
+    void 레이싱게임_중_가장_앞에있는_자동차_포지션_가져오기() {
+        List<Car> cars = users.getUsers();
+        cars.get(0).move(5);
+        cars.get(1).move(3);
+        cars.get(2).move(1);
+
+        assertEquals(users.getMaxPosition(), 1);
+
+        cars.get(0).move(5);
+        cars.get(1).move(3);
+        cars.get(2).move(1);
+
+        assertEquals(users.getMaxPosition(), 2);
+
+    }
 }

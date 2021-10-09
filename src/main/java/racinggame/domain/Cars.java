@@ -1,6 +1,7 @@
 package racinggame.domain;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -40,5 +41,9 @@ public class Cars {
 
     public List<Car> getUsers() {
         return Collections.unmodifiableList(users);
+    }
+
+    public int getMaxPosition() {
+        return Collections.max(getUsers(), Comparator.comparingInt(Car::getPosition)).getPosition();
     }
 }
