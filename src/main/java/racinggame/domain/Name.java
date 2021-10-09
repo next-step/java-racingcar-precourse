@@ -6,6 +6,7 @@ import java.util.Objects;
 
 public class Name {
 
+    private static final int NAME_MAX_LENGTH = 5;
     private final String name;
 
     private Name(final String name) {
@@ -22,7 +23,7 @@ public class Name {
     }
 
     private void checkNameLength(final String name) {
-        if (name.length() > 5) {
+        if (name.length() > NAME_MAX_LENGTH) {
             throw new NoSuchElementException("이름은 다섯 글자를 넘을 수 없습니다.");
         }
     }

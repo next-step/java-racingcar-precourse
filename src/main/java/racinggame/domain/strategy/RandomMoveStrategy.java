@@ -7,10 +7,10 @@ public class RandomMoveStrategy implements MoveStrategy {
     @Override
     public boolean move() {
         int random = Randoms.pickNumberInRange(0, 9);
-        return isMove(random);
+        return isMovableRange(random);
     }
 
-    private boolean isMove(final int random) {
+    private boolean isMovableRange(final int random) {
         return random >= 4 && random < 10;
     }
 }

@@ -11,6 +11,7 @@ public class ConsoleOutputView {
     private static final String HYPHEN = "-";
 
     public ConsoleOutputView() {
+        System.out.println();
         System.out.println(EXECUTION_RESULT_PRINT_FORMAT);
     }
 
@@ -22,6 +23,7 @@ public class ConsoleOutputView {
     private void printProgressBars(final RacingGame game) {
         Cars cars = game.getCars();
         for (Car car : cars.elements()) {
+
             Name name = car.getName();
             String progressBar = getProgressBar(car);
 

@@ -24,15 +24,14 @@ public class Application {
         String names = inputView.enterNames();
         Cars cars = new Cars(names);
 
-        int attempts = inputView.enterAttempts();
+        int numberOfAttempts = inputView.enterAttempts();
 
         ConsoleOutputView outputView = new ConsoleOutputView();
 
         RacingGame racingGame = new RacingGame(cars);
-        RandomMoveStrategy moveStrategy = new RandomMoveStrategy();
 
-        for (int i = 0; i < attempts; i++) {
-            racingGame.next(moveStrategy, attempts - 1 == i);
+        for (int i = 0; i < numberOfAttempts; i++) {
+            racingGame.next(new RandomMoveStrategy(), numberOfAttempts - 1 == i);
             outputView.print(racingGame);
         }
     }
