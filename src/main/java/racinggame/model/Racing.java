@@ -21,10 +21,10 @@ public class Racing {
         return winner.substring(0, winner.length()-1);
     }
 
-    public static boolean goOrStop(int val) {
+    public static MoveStatus goOrStop(int val) {
         if(val > 4) {
-            return true;
+            return MoveStatus.GO;
         }
-        return false;
+        return MoveStatus.STOP;
     }
 }
