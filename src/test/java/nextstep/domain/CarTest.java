@@ -32,4 +32,12 @@ class CarTest {
         assertThatExceptionOfType(NoSuchElementException.class)
                 .isThrownBy(() -> new Car(name));
     }
+
+    @Test
+    void 자동차_이동() {
+        Car car = new Car("car");
+        MoveResult result = car.move(4);
+        assertThat(result.getName()).isEqualTo("car");
+        assertThat(result.getDistance()).isEqualTo(1);
+    }
 }

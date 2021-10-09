@@ -1,17 +1,22 @@
 package nextstep.domain;
 
+import javax.xml.transform.Result;
 import java.util.NoSuchElementException;
 import java.util.Objects;
 
 public class Car {
 
     private static final int MAX_LENGTH = 5;
+    private static final int DEFAULT_DISTANCE = 0;
+    private static final int MIN_MOVABLE_VALUE = 4;
 
     private final String name;
+    private int distance;
 
     public Car(String name) {
         checkName(name);
         this.name = name;
+        this.distance = DEFAULT_DISTANCE;
     }
 
     private void checkName(String name) {
@@ -25,5 +30,12 @@ public class Car {
 
     public String getName() {
         return this.name;
+    }
+
+    public MoveResult move(int number) {
+        if (number >= MIN_MOVABLE_VALUE) {
+            this.distance++;
+        }
+        return new MoveResult(this.name, this.distance);
     }
 }
