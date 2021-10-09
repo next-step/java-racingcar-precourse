@@ -12,4 +12,12 @@ public class Car {
     public String getName() {
         return name;
     }
+
+    public void moveForward() {
+        step++;
+    }
+
+    public int getStep() {
+        return step;
+    }
 }
