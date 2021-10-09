@@ -16,7 +16,7 @@ public class RacingGameUtils {
     }
 
     public static void isValidRacingCarNameLengthLimit(String racingCarName) {
-        if (racingCarName.length() <= RACING_CAR_NAME_LENGTH_MIN && racingCarName.length() > RACING_CAR_NAME_LENGTH_LIMIT) {
+        if (racingCarName.length() <= RACING_CAR_NAME_LENGTH_MIN || racingCarName.length() > RACING_CAR_NAME_LENGTH_LIMIT) {
             throw new IllegalArgumentException(ERROR_MESSAGE);
         }
     }
