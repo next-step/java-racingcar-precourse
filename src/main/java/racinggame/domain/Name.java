@@ -2,20 +2,24 @@ package racinggame.domain;
 
 import java.util.Objects;
 
-public class Car {
+public class Name {
 
-    private Name name;
+    private String name;
 
-    public Car(final String name) {
-        this.name = Name.of(name);
+    private Name(final String name) {
+        this.name = name;
+    }
+
+    public static Name of(final String name) {
+        return new Name(name);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Car car = (Car) o;
-        return Objects.equals(name, car.name);
+        Name name1 = (Name) o;
+        return Objects.equals(name, name1.name);
     }
 
     @Override
