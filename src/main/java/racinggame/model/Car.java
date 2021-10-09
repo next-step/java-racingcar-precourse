@@ -11,4 +11,9 @@ public class Car {
 		return carName.toString();
 	}
 
+	public CarPlayResult play(int value) {
+		return value < 4 ? CarPlayResult.STOP : CarPlayResult.FORWARD;
+	}
+
+
 }

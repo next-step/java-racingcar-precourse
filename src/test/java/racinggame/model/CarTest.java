@@ -12,4 +12,18 @@ public class CarTest {
 				.extracting(car -> car.getName())
 				.isEqualTo("a");
 	}
+
+	@Test
+	void 정지() {
+		Car car = new Car("bus");
+		assertThat(car.play(0)).isEqualTo(CarPlayResult.STOP);
+		assertThat(car.play(3)).isEqualTo(CarPlayResult.STOP);
+	}
+
+	@Test
+	void 전진() {
+		Car car = new Car("bus");
+		assertThat(car.play(4)).isEqualTo(CarPlayResult.FORWARD);
+		assertThat(car.play(9)).isEqualTo(CarPlayResult.FORWARD);
+	}
 }
