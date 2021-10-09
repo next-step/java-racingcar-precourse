@@ -1,4 +1,4 @@
-package racinggame;
+package racinggame.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +18,6 @@ public class Cars {
 			validateCarNameIsEmpty(carNames);
 			addCars(carNames);
 		} catch (IllegalArgumentException ex) {
-			System.out.println(ex.getMessage());
 			throw new IllegalArgumentException(ex.getMessage());
 		}
 	}

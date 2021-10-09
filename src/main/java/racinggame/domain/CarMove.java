@@ -1,4 +1,4 @@
-package racinggame;
+package racinggame.domain;
 
 public class CarMove {
 	public static final int MIN = 0;

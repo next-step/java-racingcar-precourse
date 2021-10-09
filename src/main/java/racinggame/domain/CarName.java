@@ -1,4 +1,4 @@
-package racinggame;
+package racinggame.domain;
 
 public class CarName {
 	public static final String ERROR_MESSAGE = "[ERROR] 자동차 이름은 5글자 이하로 입력해주세요.";

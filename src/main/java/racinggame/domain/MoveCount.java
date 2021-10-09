@@ -1,4 +1,4 @@
-package racinggame;
+package racinggame.domain;
 
 public class MoveCount {
 	public static final String ERROR_MESSAGE = "[ERROR] 이동횟수는 숫자로만 입력이 가능합니다.";
@@ -9,7 +9,6 @@ public class MoveCount {
 		try {
 			this.moveCount = validatePositive(moveCount);
 		} catch (IllegalArgumentException ex) {
-			System.out.println(ERROR_MESSAGE);
 			throw new IllegalArgumentException(ERROR_MESSAGE);
 		}
 	}
