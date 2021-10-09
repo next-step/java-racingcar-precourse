@@ -17,4 +17,19 @@ public class Cars {
 		}
 		return cars;
 	}
+
+	public void roll() {
+		for (Car car : cars) {
+			car.roll();
+		}
+	}
+
+	public String getStatus() {
+		StringBuffer sbStatus = new StringBuffer();
+		for (Car car : cars) {
+			sbStatus.append(car.getStatus());
+			sbStatus.append("\n");
+		}
+		return sbStatus.toString();
+	}
 }

@@ -1,5 +1,7 @@
 package racinggame.model;
 
+import java.util.Collections;
+
 import nextstep.utils.Randoms;
 
 public class Car {
@@ -30,5 +32,9 @@ public class Car {
 
 	public int getTotalTravel() {
 		return totalTravel.get();
+	}
+
+	public String getStatus() {
+		return carName + " : " + String.join("", Collections.nCopies(totalTravel.get(), "-"));
 	}
 }
