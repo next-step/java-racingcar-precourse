@@ -71,7 +71,26 @@ public class NameValidation {
 	}
 
 	public boolean isEmpty(String name) {
-		return name.isEmpty();
+		String[] names = name.split(REGEX);
+		if (name.isEmpty()) {
+			return true;
+		}
+		return checkNamesEmpty(names);
+	}
+
+	private boolean checkNamesEmpty(String[] names) {
+		boolean isEmpty = false;
+		for (String name : names) {
+			isEmpty = checkEmptyByName(isEmpty, name);
+		}
+		return isEmpty;
+	}
+
+	private boolean checkEmptyByName(boolean isEmpty, String name) {
+		if (name.isEmpty()) {
+			isEmpty = true;
+		}
+		return isEmpty;
 	}
 
 	public boolean isNull(String name) {
@@ -81,6 +100,7 @@ public class NameValidation {
 	public boolean isProblem() {
 		return errorStatus;
 	}
+
 
 	@Override
 	public boolean equals(Object o) {
@@ -96,4 +116,5 @@ public class NameValidation {
 	public int hashCode() {
 		return Objects.hash(errorStatus, message);
 	}
+
 }
