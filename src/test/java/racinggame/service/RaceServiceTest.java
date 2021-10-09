@@ -48,10 +48,10 @@ public class RaceServiceTest {
         final RaceService raceService = new RaceService();
         final String[] carNameList = {"1번차", "2번차", "3번차"};
         final Cars cars = raceService.createCars(carNameList);
+        cars.getCars().get(0).move();
+        cars.getCars().get(0).move();
+        cars.getCars().get(0).move();
         //when
-        cars.getCars().get(0).move();
-        cars.getCars().get(0).move();
-        cars.getCars().get(0).move();
         List<String> winners = raceService.getWinner(cars);
         //then
         assertThat(winners.size()).isEqualTo(1);

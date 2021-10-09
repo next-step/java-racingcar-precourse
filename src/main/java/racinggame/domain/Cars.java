@@ -14,7 +14,22 @@ public class Cars {
         return cars;
     }
 
+
+
+    public void racing() {
+        for (Car car : cars) {
+            car.racing();
+        }
+    }
+
+
     public static Cars of(List<Car> cars) {
         return new Cars(cars);
+    }
+
+    public void printResult() {
+        for (Car car : cars) {
+            car.printResult();
+        }
     }
 }

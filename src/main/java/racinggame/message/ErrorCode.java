@@ -1,4 +1,4 @@
-package racinggame.domain;
+package racinggame.message;
 
 public enum ErrorCode {
 

@@ -1,9 +1,8 @@
 package racinggame.service;
 
-import racinggame.domain.Car;
-import racinggame.domain.CarName;
-import racinggame.domain.Cars;
-import racinggame.domain.InputCarsName;
+import nextstep.utils.Console;
+import racinggame.domain.*;
+import racinggame.message.MessageType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +26,17 @@ public class RaceService {
         return retrieveWinnerWithMaxValue(cars.getCars(), max);
     }
 
+
+    public void inputCarsName(Player player) {
+        System.out.println(MessageType.INPUT_CAR_NAME);
+        player.inputCarsName(InputCarsName.of(Console.readLine()));
+    }
+
+    public void inputRaceNumber(Player player) {
+        System.out.println(MessageType.INPUT_RACE_NUMBER);
+        player.inputRaceNumber(RaceNumber.of(Console.readLine()));
+    }
+
     private List<String> retrieveWinnerWithMaxValue(List<Car> carsList, int max) {
         List<String> winners = new ArrayList<>();
         for (Car car : carsList) {
@@ -46,4 +56,6 @@ public class RaceService {
         }
         return max;
     }
+
+
 }

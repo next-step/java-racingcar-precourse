@@ -2,6 +2,7 @@ package racinggame.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racinggame.message.ErrorCode;
 
 import static org.assertj.core.api.Assertions.*;
 

@@ -1,5 +1,7 @@
 package racinggame.domain;
 
+import racinggame.message.ErrorCode;
+
 public class CarName {
 
     private final String name;

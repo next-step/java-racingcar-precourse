@@ -1,5 +1,7 @@
 package racinggame.domain;
 
+import racinggame.message.ErrorCode;
+
 import java.util.regex.Pattern;
 
 public class RaceNumber {
