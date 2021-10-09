@@ -1,9 +1,19 @@
 package racinggame.model;
 
-public class Round {
-    private final int racingRound;
+import racinggame.exception.ValidationException;
 
-    public Round(int racingRound) {
-        this.racingRound = racingRound;
+public class Round {
+    private final int round;
+
+    public Round(String round) {
+        if (!validateRound(round)) {
+            throw new ValidationException();
+        }
+        this.round = Integer.parseInt(round);
     }
+
+    private boolean validateRound(String round) {
+        return round.matches("^[0-9]{1}$");
+    }
+    
 }
