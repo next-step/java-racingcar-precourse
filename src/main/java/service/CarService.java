@@ -8,15 +8,10 @@ import java.util.List;
 
 public class CarService {
 
-    List<Car> carsInfo = null;
-
-    public List<Car> createCar(String inputText) throws Exception {
-
-        System.out.println("START CAR CREATE PROCESS");
+   public List<Car> createCar(String inputText) throws Exception {
 
         List<String> carTxtList = this.chageList(inputText);
-
-        carsInfo = new ArrayList<Car>();
+        List<Car> carsInfo = new ArrayList<Car>();
         Car car = null;
         for (String str : carTxtList) {
             car = new Car();

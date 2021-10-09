@@ -6,6 +6,7 @@ public class Car {
     private int  carMvInfo;
 
     public Car() {
+        this.carMvInfo = 0;
     }
 
     public String getCarNm() {
