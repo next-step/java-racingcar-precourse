@@ -5,6 +5,7 @@ import java.util.Objects;
 public class Position {
 
 	private static final int MINIMUM_REQUIREMENT_FOR_MOVEMENT = 4;
+	private static final String DASH = "-";
 
 	private final int position;
 
@@ -17,10 +18,19 @@ public class Position {
 	}
 
 	public Position move(int input) {
-		if(input >= MINIMUM_REQUIREMENT_FOR_MOVEMENT) {
+		if (input >= MINIMUM_REQUIREMENT_FOR_MOVEMENT) {
 			return new Position(position + 1);
 		}
 		return this;
+	}
+
+	public String toString() {
+		final StringBuilder builder = new StringBuilder();
+		for (int i = 0; i < position; i++) {
+			builder.append(DASH);
+		}
+
+		return builder.toString();
 	}
 
 	@Override

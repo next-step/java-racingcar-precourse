@@ -18,4 +18,16 @@ class PositionTest {
 		// when then
 		assertEquals(new Position(expected), position.move(input));
 	}
+
+	@DisplayName("현재 자동차의 위치를 Dash 를 이용하여 표현한다.")
+	@ParameterizedTest(name = "{displayName} / 자동차 position : {0} / 위치 : {1}")
+	@CsvSource(value = {"0:''", "3:---"}, delimiter = ':')
+	void toString(int pos, String expected) {
+		// given
+		final Position position = new Position(pos);
+
+		// when then
+		assertEquals(expected, position.toString());
+	}
+
 }
