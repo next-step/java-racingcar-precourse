@@ -20,7 +20,7 @@ import org.mockito.MockedStatic;
 import nextstep.utils.Randoms;
 
 public abstract class NSTest {
-	private static final Duration TEST_TIMEOUT = Duration.ofSeconds(1L);
+	private static final Duration TEST_TIMEOUT = Duration.ofSeconds(5L);
 
 	private PrintStream standardOut;
 	private OutputStream captor;

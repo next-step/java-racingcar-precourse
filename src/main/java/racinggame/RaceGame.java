@@ -10,7 +10,14 @@ public class RaceGame {
 
 	public void start() {
 
-		Cars cars = init();
+		Cars cars;
+		try {
+			cars = init();
+		} catch (NoSuchElementException e) {
+			System.out.println(e.getMessage());
+			return;
+		}
+
 		int count = readCount();
 		race(cars, count);
 		printWinners(cars);
@@ -38,6 +45,7 @@ public class RaceGame {
 		System.out.println("실행 결과");
 		do {
 			cars.race(generator);
+			System.out.println();
 		} while (--count > 0);
 
 	}
@@ -52,17 +60,8 @@ public class RaceGame {
 	}
 
 	private Cars init() {
-
-		while (true) {
-			try {
-				String[] names = readNames();
-				List<Car> carList = createCarList(names);
-				return new Cars(carList);
-			} catch (NoSuchElementException e) {
-				System.out.println(e.getMessage());
-				continue;
-			}
-		}
+		String[] names = readNames();
+		return new Cars(createCarList(names));
 	}
 
 	private int readCount() {
