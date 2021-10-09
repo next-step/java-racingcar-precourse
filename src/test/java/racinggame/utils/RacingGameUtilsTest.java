@@ -65,4 +65,14 @@ public class RacingGameUtilsTest {
                 .withMessage(ERROR_MESSAGE);
     }
 
+    @ParameterizedTest(name = "경주의 시도할 횟수[{0}]는 0보다 큰 숫자를 입력해야 한다")
+    @ValueSource(ints = {0, -10})
+    void 경주의_시도할_횟수는_0_보다_큰_숫자를_입력해야_한다(int tryCount) {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> {
+                    isValidTryCountGreaterThanZero(tryCount);
+                })
+                .withMessage(ERROR_MESSAGE);
+    }
+
 }
