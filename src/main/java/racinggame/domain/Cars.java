@@ -13,26 +13,29 @@ public class Cars {
     private final List<Car> cars;
 
     public Cars(final List<Car> cars) {
-        this.cars = cars;
+        this.cars = Collections.unmodifiableList(cars);
+    }
+
+    public Cars(final Cars cars) {
+        this(cars.cars);
+    }
+
+    public Cars(final String names) {
+        this(initCars(names));
+    }
+
+    private static List<Car> initCars(final String names) {
+        List<Car> cars = new ArrayList<>();
+        for (String name : names.split(NAME_SPLIT_REGEX)) {
+            cars.add(new Car(name));
+        }
+        return cars;
     }
 
     public void move(final MoveStrategy moveStrategy) {
         for (Car car : cars) {
             car.move(moveStrategy);
         }
-    }
-
-    public Cars(final String names) {
-        List<Car> cars = initCars(names);
-        this.cars = Collections.unmodifiableList(cars);
-    }
-
-    private List<Car> initCars(final String names) {
-        List<Car> cars = new ArrayList<>();
-        for (String name : names.split(NAME_SPLIT_REGEX)) {
-            cars.add(new Car(name));
-        }
-        return cars;
     }
 
     @Override

@@ -11,6 +11,14 @@ public class Application {
         String names = inputView.enterNames();
         Cars cars = new Cars(names);
 
+        int attempts = inputView.enterAttempts();
+
+        RacingGame racingGame = new RacingGame(() -> true, cars);
+
+        for (int i = 0; i < attempts; i++) {
+            Cars next = racingGame.next();
+        }
+
 
     }
 
