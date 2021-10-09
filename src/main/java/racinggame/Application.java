@@ -3,6 +3,7 @@ package racinggame;
 import nextstep.utils.Console;
 
 import racinggame.core.Player;
+import racinggame.utils.GameUtil;
 import racinggame.utils.ValidationUtil;
 
 import java.util.List;
@@ -38,6 +39,13 @@ public class Application {
             playCount = Integer.parseInt(inputCount);
 
         } while(!isValidateInput);
+
+        System.out.println("\n실행 결과");
+
+        for (int i = 0; i < playCount; i++) {
+            GameUtil.playGame(players);
+            System.out.println();
+        }
 
     }
 
