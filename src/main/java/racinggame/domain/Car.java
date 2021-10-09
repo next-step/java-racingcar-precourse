@@ -27,7 +27,7 @@ public class Car {
      */
     public int moveStep(){
         if (Randoms.pickNumberInRange(0,9) >= 4){
-            System.out.println("this.currentStep += 1");
+//            System.out.println("this.currentStep += 1");
             this.currentStep += 1;
             return currentStep;
         }
