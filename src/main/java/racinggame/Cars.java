@@ -11,7 +11,7 @@ public class Cars {
 		this.cars = cars;
 	}
 
-	public void race(Generator generator) {
+	public void race(Strategy generator) {
 
 		for (Car car : cars) {
 			car.move(generator);

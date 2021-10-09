@@ -2,7 +2,7 @@ package racinggame;
 
 import nextstep.utils.Randoms;
 
-public class RandomGenerator implements Generator {
+public class RandomStrategy implements Strategy {
 
 	protected static final int BASE_VALUE = 4;
 

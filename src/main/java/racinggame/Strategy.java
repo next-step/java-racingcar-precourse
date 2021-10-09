@@ -1,6 +1,6 @@
 package racinggame;
 
-public interface Generator {
+public interface Strategy {
 
 	boolean canMove();
 }

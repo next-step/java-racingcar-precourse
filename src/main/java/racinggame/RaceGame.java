@@ -34,7 +34,7 @@ public class RaceGame {
 
 	private void race(Cars cars, int count) {
 
-		Generator generator = new RandomGenerator();
+		Strategy generator = new RandomStrategy();
 		System.out.println("실행 결과");
 		do {
 			cars.race(generator);
