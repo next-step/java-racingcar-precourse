@@ -1,7 +1,6 @@
 package racinggame.utils;
 
 public class RacingGameUtils {
-
     public static final String SPLIT_REGEX = ",";
     public static final String ERROR_MESSAGE = "[ERROR]";
     public static final int RACING_CAR_NAME_LENGTH_LIMIT = 5;
@@ -10,11 +9,10 @@ public class RacingGameUtils {
         return racingCarNameInput.split(SPLIT_REGEX);
     }
 
-    public static boolean isValidRacingCarNameLengthLimit(String racingCarName) {
+    public static void isValidRacingCarNameLengthLimit(String racingCarName) {
         if (racingCarName.length() > RACING_CAR_NAME_LENGTH_LIMIT) {
             throw new IllegalArgumentException(ERROR_MESSAGE);
         }
-        return true;
     }
 
     public static String[] trim(String[] target) {
@@ -23,5 +21,4 @@ public class RacingGameUtils {
         }
         return target;
     }
-
 }

@@ -30,14 +30,6 @@ public class RacingGameUtilsTest {
         }
     }
 
-    @ParameterizedTest(name = "자동차 이름 [{0}] 길이가 5자 이하면 True 이다")
-    @ValueSource(strings = {"pobi,crong,honux"})
-    void 쉼표_기준으로_구분한_자동차_이름의_길이가_5자_이하_True(String racingCarNameInput) {
-        for (String racingCarName : racingCarNameSplit(racingCarNameInput)) {
-            assertThat(isValidRacingCarNameLengthLimit(racingCarName)).isTrue();
-        }
-    }
-
     @ParameterizedTest(name = "자동차 이름 [{0}] 공백을 제거한다")
     @CsvSource(value = {  "pobi ,crong ,honux :pobi,crong,honux"
                         , " pobi, crong, honux:pobi,crong,honux"

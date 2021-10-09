@@ -1,19 +1,21 @@
 package racinggame.domain;
 
 public class RacingCar {
-    private String carName;
+    private RacingCarName racingCarName;
     private int movesCount;
 
-    public RacingCar(String carName) {
-        this.carName = carName;
+    public RacingCar(String racingCarName) {
+        this.racingCarName = new RacingCarName(racingCarName);
         this.movesCount = 0;
     }
 
-    public String getCarName() {
-        return carName;
+    public String getRacingCarName() {
+        return racingCarName.getRacingCarName();
     }
 
     public int getMovesCount() {
         return movesCount;
     }
+
+
 }
