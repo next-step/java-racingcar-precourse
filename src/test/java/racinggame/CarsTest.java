@@ -15,7 +15,7 @@ public class CarsTest {
         class Context_with_correct {
             @DisplayName("',' 기준으로 분리한다.")
             @Test
-            void car_name_length() {
+            void split_car_name() {
                 String carsName = "prr,rupi,edi";
                 Cars cars = new Cars(carsName);
                 assertThat(cars.cars).contains("prr", "rupi", "edi");
