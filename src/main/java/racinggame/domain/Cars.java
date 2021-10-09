@@ -49,9 +49,9 @@ public class Cars {
 
     private List<Car> mergeIfMaxDistanceIsEqual(final List<Car> cars, final Car car) {
         Distance distance = car.getDistance();
-        Distance maxDistance = max();
+        Distance max = max();
 
-        if (distance.equals(maxDistance)) {
+        if (distance.equals(max)) {
             return merge(cars, car);
         }
 
