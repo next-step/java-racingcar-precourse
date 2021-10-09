@@ -1,4 +1,4 @@
-package domainTest;
+package domain;
 
 public class Name {
     private String name;
