@@ -16,7 +16,8 @@ public class CarsTest {
     @DisplayName("경주하는 차들 일급 컬렉션으로 만들기")
     void createCars() {
         //given
-        final Cars cars = Cars.of(Arrays.asList(Car.of("1번차"), Car.of("2번차"), Car.of("3번차")));
+
+        final Cars cars = Cars.of(Arrays.asList(Car.of(CarName.of("1번차")), Car.of(CarName.of("2번차")), Car.of(CarName.of("3번차"))));
         //when
         final List<Car> carList = cars.getCars();
         //then
@@ -31,14 +32,12 @@ public class CarsTest {
         final String[] inputList = input.split(",");
         ArrayList<Car> carList = new ArrayList<>();
         //when
-        for (String carName : inputList) {
-            carList.add(Car.of(carName));
+        for (String name : inputList) {
+            carList.add(Car.of(CarName.of(name)));
         }
         final Cars cars = Cars.of(carList);
         //then
-        assertThat(cars.getCars().get(0).getName()).isEqualTo("1번차");
-        assertThat(cars.getCars().get(1).getName()).isEqualTo("2번차");
-        assertThat(cars.getCars().get(2).getName()).isEqualTo("3번차");
+        assertThat(cars.getCars().get(0).getCarName().getName()).isEqualTo("1번차");
 
     }
 }
