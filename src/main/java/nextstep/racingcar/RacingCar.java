@@ -4,6 +4,8 @@ import java.util.Objects;
 
 public class RacingCar {
 
+	private static final int MIN_REQUIREMENT_FOR_MOVEMENT = 4;
+
 	private final CarName carName;
 	private final Position position;
 
@@ -22,7 +24,10 @@ public class RacingCar {
 	}
 
 	public RacingCar move(int input) {
-		return new RacingCar(carName, position.move(input));
+		if (input >= MIN_REQUIREMENT_FOR_MOVEMENT) {
+			return new RacingCar(carName, position.move());
+		}
+		return this;
 	}
 
 	@Override
