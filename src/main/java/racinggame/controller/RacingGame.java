@@ -17,6 +17,7 @@ public class RacingGame {
         Cars cars = inputView.inputCarName();
         int labCount = inputView.inputLabCount();
         playLabs(cars, labCount);
+        outputView.printWinners(cars.getWinners());
     }
 
     private void playLabs(Cars cars, int labCount) {

@@ -32,4 +32,8 @@ public class Car {
     private boolean isMove(int value) {
         return value >= MOVE_CONDITION;
     }
+
+    public boolean isMaxPosition(int maxPosition) {
+        return this.position.getPosition() == maxPosition;
+    }
 }

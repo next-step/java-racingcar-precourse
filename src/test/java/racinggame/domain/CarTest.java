@@ -49,6 +49,15 @@ public class CarTest {
         }, 3);
     }
 
+    @Test
+    void 현재_위치와_입력받은_위치가_일치하는지_확인() {
+        // tryRace로 이동 성공하도록 한 뒤 비교
+        assertRandomTest(() -> {
+            car.tryRace();
+            assertThat(car.isMaxPosition(1)).isTrue();
+        }, 4);
+    }
+
     private void assertRandomTest(final Executable executable, final int thenResult) {
         try (MockedStatic<Randoms> mockRandoms = mockStatic(Randoms.class)) {
             mockRandoms.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
