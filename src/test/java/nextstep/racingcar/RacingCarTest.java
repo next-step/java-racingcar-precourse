@@ -2,10 +2,12 @@ package nextstep.racingcar;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import nextstep.exception.InvalidCarNameException;
@@ -43,6 +45,18 @@ public class RacingCarTest {
 		assertThatThrownBy(() -> new RacingCar("hello", -1))
 			.isInstanceOf(InvalidPositionException.class)
 			.hasMessageContaining(InvalidPositionException.INVALID_POSITION);
+	}
+
+	@DisplayName("자동차의 위치를 변경한다.")
+	@ParameterizedTest(name = "{displayName} / 입력값 : {0} / 위치 : 0 -> {1}")
+	@CsvSource(value = {"3:0", "4:1"}, delimiter = ':')
+	void move(int input, int expected) {
+		// given
+		final String carName = "hello";
+		final RacingCar racingCar = new RacingCar(carName);
+
+		// when then
+		assertEquals(new RacingCar(carName, expected), racingCar.move(input));
 	}
 
 }
