@@ -2,7 +2,7 @@
  * CarRepository
  * java-racingcar-precourse
  *
- * Version 0.2
+ * Version 0.3
  *
  * Created by 강래민 on 2021-10-09.
  *
@@ -48,6 +48,15 @@ public class CarRepository {
     }
 
     /**
+     * List<Car>를 반환하는 것보다 이름부터 명확하고 기능을 모아 효과적인 컬렉션을 전달한다.
+     *
+     * @return 레이싱 결과
+     */
+    public RaceResult getRaceResult() {
+        return new RaceResult(carList);
+    }
+
+    /**
      * 입력받은 자동차 이름의 유효성 판단
      *
      * @param input 사용자로부터 입력받은 문자열
@@ -71,14 +80,5 @@ public class CarRepository {
             result.add(new CarName(carName));
         }
         return result;
-    }
-
-    /**
-     * List<Car>를 반환하는 것보다 이름부터 명확하고 기능을 모아 효과적인 컬렉션을 전달한다.
-     *
-     * @return 레이싱 결과
-     */
-    public RaceResult getRaceResult() {
-        return new RaceResult(carList);
     }
 }

@@ -2,7 +2,7 @@
  * CarServiceTest
  * java-racingcar-precourse
  *
- * Version 0.4
+ * Version 0.5
  *
  * Created by 강래민 on 2021-10-08.
  *
@@ -108,7 +108,6 @@ public class CarServiceTest {
         }
         //then
         RaceResult raceResult = carService.getRaceResult();
-        raceResult.ranking();
-        raceResult.print();
+        raceResult.printWinner();
     }
 }
