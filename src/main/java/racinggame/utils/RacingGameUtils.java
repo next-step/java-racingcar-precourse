@@ -10,6 +10,7 @@ public class RacingGameUtils {
     public static final String ERROR_MESSAGE = "[ERROR]";
     public static final int RACING_CAR_NAME_LENGTH_MIN = 0;
     public static final int RACING_CAR_NAME_LENGTH_LIMIT = 5;
+    public static final int TRY_COUNT_MIN_VALUE = 0;
 
     public static String[] racingCarNameSplit(String racingCarNameInput) {
         return trim(racingCarNameInput.split(SPLIT_REGEX));
@@ -35,4 +36,11 @@ public class RacingGameUtils {
         }
         return racingCarList;
     }
+
+    public static void isValidTryCountGreaterThanZero(int tryCount) {
+        if (tryCount <= TRY_COUNT_MIN_VALUE) {
+            throw new IllegalArgumentException(ERROR_MESSAGE);
+        }
+    }
+
 }
