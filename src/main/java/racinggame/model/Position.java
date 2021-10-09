@@ -1,12 +1,10 @@
 package racinggame.model;
 
+import java.util.Objects;
+
 public class Position {
 
 	private static final int INCREASE_POSITION_INDEX = 1;
-	private static final int MOVED_INDEX = 4;
-	private static final int MOVE_NUMBER_MIN_INDEX = 0;
-	private static final int MOVE_NUMBER_MAX_INDEX = 9;
-	private static final String MOVE_NUMBER_EXCEPTION_MESSAGE = "입력 값은 0~9 사이여야 합니다.";
 
 	private final int position;
 
@@ -22,22 +20,26 @@ public class Position {
 		return position;
 	}
 
-	public Position move(int moveNumber) {
-		if (moveNumber < MOVE_NUMBER_MIN_INDEX || moveNumber > MOVE_NUMBER_MAX_INDEX) {
-			throw new IllegalArgumentException(MOVE_NUMBER_EXCEPTION_MESSAGE);
-		}
-		return new Position(moveAction(this.position, moveNumber));
+	public Position move() {
+		return new Position(moveAction(this.position));
 	}
 
-	private int moveAction(int position, int moveNumber) {
-		if (isMoved(moveNumber)) {
-			return position + INCREASE_POSITION_INDEX;
-		}
-
-		return position;
+	private int moveAction(int position) {
+		return position + INCREASE_POSITION_INDEX;
 	}
 
-	private boolean isMoved(int moveNumber) {
-		return moveNumber >= MOVED_INDEX;
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+		Position position1 = (Position)o;
+		return position == position1.position;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(position);
 	}
 }

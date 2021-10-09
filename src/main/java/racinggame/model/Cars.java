@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import nextstep.utils.Randoms;
+import racinggame.strategy.MoveStrategy;
 
 public class Cars {
 
@@ -18,18 +18,22 @@ public class Cars {
 		this.cars = cars;
 	}
 
-	public static Cars of(String... names) {
+	public static Cars of(MoveStrategy moveStrategy, String... names) {
 		List<Car> cars = new ArrayList<>();
 		for (String name : names) {
-			cars.add(Car.valueOf(name));
+			cars.add(Car.of(moveStrategy, name));
 		}
 
 		return new Cars(cars);
 	}
 
+	public static Cars of(List<Car> cars) {
+		return new Cars(cars);
+	}
+
 	public Cars move() {
 		for (Car car : cars) {
-			car.move(Randoms.pickNumberInRange(0, 9));
+			car.move();
 		}
 
 		return new Cars(this.cars);
