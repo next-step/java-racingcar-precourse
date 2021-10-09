@@ -17,7 +17,6 @@ public class Cars {
         for (String carName : carNames) {
             cars.add(new Car(carName));
         }
-
         this.cars = cars;
     }
 
