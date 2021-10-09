@@ -2,16 +2,17 @@ package racinggame.utils;
 
 public class RacingGameUtils {
 
-    private static final String SPLIT_REGEX = ",";
-    private static final int RACING_CAR_NAME_LENGTH_LIMIT = 5;
+    public static final String SPLIT_REGEX = ",";
+    public static final String ERROR_MESSAGE = "[ERROR]";
+    public static final int RACING_CAR_NAME_LENGTH_LIMIT = 5;
 
     public static String[] racingCarNameSplit(String racingCarNameInput) {
         return racingCarNameInput.split(SPLIT_REGEX);
     }
 
-    public static boolean isValidRacingCarNameLength(String racingCarName) {
+    public static boolean isValidRacingCarNameLengthLimit(String racingCarName) {
         if (racingCarName.length() > RACING_CAR_NAME_LENGTH_LIMIT) {
-            return false;
+            throw new IllegalArgumentException(ERROR_MESSAGE);
         }
         return true;
     }
@@ -22,4 +23,5 @@ public class RacingGameUtils {
         }
         return target;
     }
+
 }
