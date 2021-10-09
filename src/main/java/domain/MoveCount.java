@@ -2,7 +2,7 @@ package domain;
 
 public class MoveCount {
 
-    private int moveCount = 1;
+    private int moveCount = 0;
 
     public int getMoveCount() {
         return moveCount;
