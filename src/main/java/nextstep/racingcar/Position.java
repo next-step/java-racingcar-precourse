@@ -17,13 +17,13 @@ public class Position {
 	}
 
 	public Position(int position) {
-		if (inValid(position)) {
+		if (invalid(position)) {
 			throw new InvalidPositionException();
 		}
 		this.position = position;
 	}
 
-	private boolean inValid(int position) {
+	private boolean invalid(int position) {
 		return position < MIN_POSITION;
 	}
 
