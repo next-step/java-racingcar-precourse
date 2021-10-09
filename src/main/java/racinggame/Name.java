@@ -1,9 +1,11 @@
 package racinggame;
 
+import java.util.NoSuchElementException;
+
 public class Name {
 
-	protected static final String OUT_OF_LENGTH_MESSAGE = "이름은 5글자 이하만 가능합니다.";
-	protected static final String MUST_BE_NOT_EMPTY = "이름을 입력하세요.";
+	protected static final String OUT_OF_LENGTH_MESSAGE = "[ERROR] 이름은 5글자 이하만 가능합니다.";
+	protected static final String MUST_BE_NOT_EMPTY = "[ERROR] 이름을 입력하세요.";
 
 	private static final int MAX_LEN = 5;
 	private final String name;
@@ -11,11 +13,11 @@ public class Name {
 	public Name(String name) {
 
 		if (name == null || name.isEmpty()) {
-			throw new IllegalArgumentException(MUST_BE_NOT_EMPTY);
+			throw new NoSuchElementException(MUST_BE_NOT_EMPTY);
 		}
 
 		if (name.length() > MAX_LEN) {
-			throw new IllegalArgumentException(OUT_OF_LENGTH_MESSAGE);
+			throw new NoSuchElementException(OUT_OF_LENGTH_MESSAGE);
 		}
 
 		this.name = name;
