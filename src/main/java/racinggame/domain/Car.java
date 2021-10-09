@@ -2,9 +2,6 @@ package racinggame.domain;
 
 public class Car {
     private static final int MAX_NAME_LENGTH = 5;
-    private static final int RANDOM_MIN_NUMBER = 0;
-    private static final int RANDOM_MAX_NUMBER = 9;
-    private static final int MIN_MOVE_FORWARD_NUMBER = 4;
 
     private final String name;
     private int step;
@@ -21,19 +18,12 @@ public class Car {
         return name;
     }
 
-    public void moveForward() {
-        step++;
-    }
-
     public int getStep() {
         return step;
     }
 
-    public void moveForwardOrStop(int i) {
-        if (i < RANDOM_MIN_NUMBER || i > RANDOM_MAX_NUMBER) {
-            throw new IllegalArgumentException("0에서 9 사이의 숫자로만 이동할지 판단 가능합니다.");
-        }
-        if (i >= MIN_MOVE_FORWARD_NUMBER) {
+    public void moveForwardOrStop(MoveStatus moveStatus) {
+        if (moveStatus.isForward()) {
             step++;
         }
     }
