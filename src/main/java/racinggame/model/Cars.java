@@ -75,4 +75,8 @@ public class Cars {
             winners.add(name);
         }
     }
+
+    public int size() {
+        return cars.size();
+    }
 }
