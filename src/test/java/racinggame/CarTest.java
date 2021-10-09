@@ -30,6 +30,8 @@ public class CarTest {
         assertCarNameLengthOneToFive("donydony");
         assertCarNameLengthOneToFive("도니도니도니");
         assertCarNameLengthOneToFive("dony!!");
+        assertCarNameLengthOneToFive(" ");
+        assertCarNameLengthOneToFive("");
     }
 
     private void assertCarNameLengthOneToFive(String name) {

@@ -1,5 +1,6 @@
 package racinggame.domain;
 
+import java.util.NoSuchElementException;
 import java.util.Objects;
 
 /**
@@ -15,19 +16,20 @@ public class Car {
     private int position;
 
     public Car() {
-        throw new IllegalArgumentException("자동차 이름은 필수 입니다. 입력해 주세요.");
+        throw new IllegalArgumentException("[ERROR] 자동차 이름은 필수 입니다. 입력해 주세요.");
     }
 
     public Car(String name) {
         if (isInvalidName(name))  {
-            throw new IllegalArgumentException("자동차 이름은 1~5자로 입력해 주세요.");
+            System.out.println("[ERROR] 자동차 이름은 1~5자로 입력해 주세요.");
+            throw new NoSuchElementException("[ERROR] 자동차 이름은 1~5자로 입력해 주세요.");
         }
         this.name = name;
         this.position = START_POSITON;
     }
 
     private boolean isInvalidName(String name) {
-        return name.length() < MIN_NAME_LENGTH || name.length() > MAX_NAME_LENGTH;
+        return name.trim().length() < MIN_NAME_LENGTH || name.trim().length() > MAX_NAME_LENGTH;
     }
 
     public String getName() {
