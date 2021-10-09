@@ -6,10 +6,14 @@ import java.util.List;
 import java.util.Set;
 
 import racinggame.exception.InvalidNameException;
+import racinggame.racingcar.Racing;
 import racinggame.ui.Rule;
 
-public class RacingRule implements Rule {
+public final class RacingRule implements Rule {
 	private final String DELIMITER = ",";
+	private final int DICE_MIN = 0;
+	private final int DICE_MAX = 9;
+	private final int JUDGE_VALUE = 3;
 
 	@Override
 	public void validateNames(String nameChunk) throws InvalidNameException {
@@ -36,5 +40,23 @@ public class RacingRule implements Rule {
 		if (nameSet.size() != names.size()) {
 			throw new InvalidNameException("[ERROR] 중복된 이름을 사용할 수 없습니다.");
 		}
+	}
+
+	@Override
+	public int diceMax() {
+		return this.DICE_MAX;
+	}
+
+	@Override
+	public int diceMin() {
+		return this.DICE_MIN;
+	}
+
+	@Override
+	public Racing drive(int diceValue) {
+		if(diceValue >= DICE_MIN && diceValue <= JUDGE_VALUE){
+			return Racing.STOP;
+		}
+		return Racing.FORWARD;
 	}
 }
