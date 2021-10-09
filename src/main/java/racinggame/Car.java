@@ -5,7 +5,7 @@ public class Car {
     private Position position;
     private MoveStrategy moveStrategy;
 
-    public Car(CarName carName, MoveStrategy moveStrategy) {
+    private Car(CarName carName, MoveStrategy moveStrategy) {
         this.carName = carName;
         this.position = Position.of();
         this.moveStrategy = moveStrategy;
@@ -19,11 +19,19 @@ public class Car {
         return carName.getCarName();
     }
 
-    public void move(){
+    public void move() {
         position.move(moveStrategy.move());
     }
 
     public boolean matchPostion(int position) {
         return this.position.matchPosition(position);
     }
+    public boolean equalsPosition(Car car){
+        return this.position.equals(car.position);
+    }
+
+    public Boolean comparePostion(Car car) {
+        return this.position.comparePosition(car.position);
+    }
+
 }
