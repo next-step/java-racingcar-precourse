@@ -1,6 +1,6 @@
-package view;
+package racinggame.view;
 
-import nextstep.utils.*;
+import nextstep.utils.Console;
 
 public class InputView {
 	
@@ -14,6 +14,5 @@ public class InputView {
 		return Console.readLine();
 		
 	}
-	
 
 }
