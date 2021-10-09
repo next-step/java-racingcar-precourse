@@ -15,19 +15,32 @@ public class Car {
 	}
 
 	public void printCurrentStatus() {
-		System.out.println(String.format("%s : %s", getName(), getPosition()));
+		System.out.println(String.format("%s : %s\n", getName(), getRoadShape()));
 	}
 
-	private String getName() {
+	private String getRoadShape() {
+		return position.getRoadShape();
+	}
+
+	public String getName() {
 		return name.getName();
 	}
 
-	private String getPosition() {
-		StringBuffer sb = new StringBuffer();
-		for (int i = 0; i < position.getPosition(); i++) {
-			sb.append("-");
+	public boolean isWinner(Position farthestPosition) {
+		return this.position.equals(farthestPosition);
+	}
+
+	public Position getFarthestPosition(Position position) {
+
+		if (this.position.equals(position)) {
+			return this.position;
 		}
-		return sb.toString();
+
+		if (this.position.farAwayThan(position)) {
+			return this.position;
+		}
+
+		return position;
 	}
 
 }

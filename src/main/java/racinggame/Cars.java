@@ -1,5 +1,6 @@
 package racinggame;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
@@ -17,4 +18,27 @@ public class Cars {
 			car.printCurrentStatus();
 		}
 	}
+
+	public List<Car> findWinners() {
+		return findWinners(getFarthestPosition());
+	}
+
+	private List<Car> findWinners(Position farthestPosition) {
+		List<Car> winners = new ArrayList<Car>();
+		for (Car car : cars) {
+			if (car.isWinner(farthestPosition)) {
+				winners.add(car);
+			}
+		}
+		return winners;
+	}
+
+	private Position getFarthestPosition() {
+		Position position = new Position();
+		for (Car car : cars) {
+			position = car.getFarthestPosition(position);
+		}
+		return position;
+	}
+
 }
