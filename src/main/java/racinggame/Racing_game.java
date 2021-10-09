@@ -32,7 +32,7 @@ public class Racing_game {
 	
 	public Car moving_Car(int idx, int num) {
 		Car car=cars.get(idx);
-		//차의 넘버를 구하는 로직
+		car.gogo(num);
 		cars.set(idx, car);
 		return car;
 	}
@@ -61,8 +61,7 @@ public class Racing_game {
 	}
 	
 	public String get_winner(int idx) {
-		return "차량 넘버를 가져오는 함수";
-		//return find_winner(idx) ? cars.get(idx).getCarNm():null;
+		return find_winner(idx) ? cars.get(idx).getCar_num():null;
 	}
 
 }
