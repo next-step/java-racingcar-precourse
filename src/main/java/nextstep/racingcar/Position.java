@@ -54,7 +54,4 @@ public class Position {
 		return Objects.hash(position);
 	}
 
-	public boolean finish(int maxPosition) {
-		return position == maxPosition;
-	}
 }
