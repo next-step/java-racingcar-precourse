@@ -2,16 +2,20 @@ package racinggame.domain;
 
 public class InputValidator {
 
-	public void validCarName(String input) {
-		checkEmptyInput(input, "[ERROR] 빈 문자열 입력, 다시 입력해주세요: ");
+	public boolean validCarName(String input) {
+		checkEmptyInput(input, "[ERROR] 빈 문자열 입력");
 		checkNumberOfCarNames(input);
 		checkEmptyCarName(input);
+
+		return true;
 	}
 
-	public void validTryNumber(String input) {
-		checkEmptyInput(input, "[ERROR] 빈 문자열 입력, 다시 입력해주세요");
+	public boolean validTryNumber(String input) {
+		checkEmptyInput(input, "[ERROR] 빈 문자열 입력");
 		checkDigitOnly(input);
 		checkGreaterThenOne(input);
+
+		return true;
 	}
 
 	private void checkEmptyInput(String input, String errorMessage) {
@@ -26,14 +30,14 @@ public class InputValidator {
 
 		String[] carNames = input.split(",");
 		if (carNames.length < numOfCarNames) {
-			throw new IllegalArgumentException("[ERROR] 자동자 이름 개수 부족, 다시 입력해주세요: ");
+			throw new IllegalArgumentException("[ERROR] 자동자 이름 개수 부족");
 		}
 	}
 
 	private void checkEmptyCarName(String input) {
 		String[] carNames = input.split(",");
 		for (String carName : carNames) {
-			checkEmptyInput(carName, "[ERROR] 빈 자동자 이름 입력, 다시 입력해주세요: ");
+			checkEmptyInput(carName, "[ERROR] 빈 자동자 이름 입력");
 		}
 	}
 
@@ -41,14 +45,14 @@ public class InputValidator {
 		try {
 			Integer.parseInt(input);
 		} catch (NumberFormatException exception) {
-			throw new IllegalArgumentException("[ERROR] 문자 입력, 다시 입력해주세요: ");
+			throw new IllegalArgumentException("[ERROR] 문자 입력");
 		}
 	}
 
 	private void checkGreaterThenOne(String input) {
 		int number = Integer.parseInt(input);
 		if (number < 1) {
-			throw new IllegalArgumentException("[ERROR] 1보다 작은 수 입력, 다시 입력해주세요: ");
+			throw new IllegalArgumentException("[ERROR] 1보다 작은 수 입력");
 		}
 	}
 }
