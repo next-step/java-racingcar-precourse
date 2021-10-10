@@ -13,5 +13,6 @@ public class CarTest {
 		CarName carName = CarName.of("abcde");
 		Car car = Car.of(carName);
 		assertThat(car.getCarName().getName()).isEqualTo("abcde");
+		assertThat(car.getPosition().getPosition()).isEqualTo(0);
 	}
 }
