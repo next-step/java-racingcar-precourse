@@ -17,6 +17,14 @@ public class ApplicationTest extends NSTest {
     }
 
     @Test
+    void 정지_정지_전진_정지_전진_공동우승() {
+        assertRandomTest(() -> {
+            run("pobi,woni,goni,sani,bani", "1");
+            verify("pobi : ", "woni : ", "goni : -", "sani : ", "bani : -", "최종 우승자는 goni,bani 입니다.");
+        }, STOP, STOP, MOVING_FORWARD, STOP, MOVING_FORWARD);
+    }
+
+    @Test
     void 전진_정지() {
         assertRandomTest(() -> {
             run("pobi,woni", "1");
@@ -28,6 +36,14 @@ public class ApplicationTest extends NSTest {
     void 이름에_대한_예외_처리() {
         assertSimpleTest(() -> {
             runNoLineFound("pobi,javaji");
+            verify(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 실행_횟수_대한_예외_처리() {
+        assertSimpleTest(() -> {
+            runNoLineFound("pobi,java", "a");
             verify(ERROR_MESSAGE);
         });
     }
