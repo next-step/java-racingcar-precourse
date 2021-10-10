@@ -9,7 +9,7 @@ public class CarName {
 	}
 
 	private void validateCarName(String carName) {
-		if (carName.length() > 5 || carName.length() < 1) {
+		if (carName.length() < 1 || carName.length() > 5) {
 			throw new IllegalArgumentException();
 		}
 	}
