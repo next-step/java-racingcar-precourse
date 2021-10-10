@@ -23,15 +23,6 @@ public class CarService {
            return initCar();
        }
 
-    /*
-       try {
-           carsInfo = this.createCar(inputText);
-       } catch (Exception e) {
-           System.out.println(e.getMessage());
-           this.initCar();
-           return null;
-       }
-       */
        return carsInfo;
    }
 
@@ -69,6 +60,5 @@ public class CarService {
         }
         return carTxtList;
     }
-
 
 }

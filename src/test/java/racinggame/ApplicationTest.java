@@ -25,6 +25,14 @@ public class ApplicationTest extends NSTest {
     }
 
     @Test
+    void 입력값_확인처리_2() {
+        assertSimpleTest(() -> {
+            run("pobi,woni", "2");
+            verify("");
+        });
+    }
+
+    @Test
     void 전진_정지() {
         assertRandomTest(() -> {
             run("pobi,woni", "1");

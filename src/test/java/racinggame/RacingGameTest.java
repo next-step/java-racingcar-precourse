@@ -44,7 +44,7 @@ public class RacingGameTest {
         CarService carService = new CarService();
         RacingSevice racingSevice = new RacingSevice();
         List<Car> carsInfo = carService.createCar("car11,car2,car3,car4,car5");
-        racingSevice.mvCar(carsInfo,"9");
+        racingSevice.mvCar(carsInfo,9);
     }
 
     @Test
@@ -53,7 +53,7 @@ public class RacingGameTest {
         CarService carService = new CarService();
         RacingSevice racingSevice = new RacingSevice();
         List<Car> carsInfo = carService.createCar("car2,car2,car3,car4,car5");
-        carsInfo = racingSevice.mvCar(carsInfo,"5");
+        carsInfo = racingSevice.mvCar(carsInfo,5);
         racingSevice.endRacing(carsInfo);
     }
 }
