@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import racinggame.common.Lap;
+import racinggame.circuit.FinalRecord;
+import racinggame.circuit.Lap;
 import racinggame.racingcar.RacingCar;
-import racinggame.common.RacingCars;
-import racinggame.common.ResultBoard;
+import racinggame.circuit.RacingCars;
 import racinggame.exception.InvalidNameException;
 
 public final class RacingGame {
@@ -30,10 +30,10 @@ public final class RacingGame {
 		RacingCars racingCars = makeRacingCars();
 		Lap lap = inputLabs();
 
-		ResultBoard resultBoard = circuit.start(racingCars, lap, rule);
+		FinalRecord finalRecord = circuit.start(racingCars, lap);
 
 		outputDevice.print("실행결과");
-		outputDevice.print(resultBoard.read());
+		outputDevice.print(finalRecord.write());
 	}
 
 	private RacingCars makeRacingCars() {

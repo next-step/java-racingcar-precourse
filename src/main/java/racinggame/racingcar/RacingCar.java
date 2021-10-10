@@ -1,5 +1,7 @@
 package racinggame.racingcar;
 
+import java.util.Objects;
+
 import racinggame.ui.Rule;
 
 public final class RacingCar {
@@ -15,7 +17,7 @@ public final class RacingCar {
 		this.name = new Name(name);
 	}
 
-	public void nextBehavior() {;
+	public void pushPedal() {
 		move(rollDice());
 	}
 
@@ -28,11 +30,24 @@ public final class RacingCar {
 		location += next.movable();
 	}
 
-	public String getName() {
-		return name.valueOf();
+	public LapRecord record() {
+		return new LapRecord(name, location);
 	}
 
-	public int currentLocation() {
-		return location;
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+		RacingCar racingCar = (RacingCar)o;
+		return location == racingCar.location && rule.equals(racingCar.rule) && dice.equals(racingCar.dice)
+			&& name.equals(
+			racingCar.name);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(rule, dice, name, location);
 	}
 }

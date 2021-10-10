@@ -1,4 +1,4 @@
-package racinggame.common;
+package racinggame.circuit;
 
 import static org.assertj.core.api.Assertions.*;
 

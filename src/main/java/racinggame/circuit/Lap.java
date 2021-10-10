@@ -1,20 +1,22 @@
-package racinggame.common;
+package racinggame.circuit;
+
+import java.util.Objects;
 
 import racinggame.exception.InvalidNumberException;
 
 public class Lap {
-	private final int labs;
+	private final int laps;
 
 	public Lap(String consoleInput) {
-		validateLabs(consoleInput);
+		validateLaps(consoleInput);
 		validatePositiveNumber(consoleInput);
 
-		this.labs = Integer.parseInt(consoleInput);
+		this.laps = Integer.parseInt(consoleInput);
 	}
 
-	private void validateLabs(String labs) {
+	private void validateLaps(String laps) {
 		try {
-			Integer.parseInt(labs);
+			Integer.parseInt(laps);
 		} catch (NumberFormatException error) {
 			throw new NumberFormatException("[ERROR] 1 이상 자연수를 입력하세요.");
 		}
@@ -28,7 +30,7 @@ public class Lap {
 		}
 	}
 
-	public int getLabs() {
-		return labs;
+	public int getLaps() {
+		return laps;
 	}
 }

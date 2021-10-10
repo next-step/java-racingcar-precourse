@@ -9,7 +9,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import nextstep.test.NSTest;
 import nextstep.utils.Console;
-import racinggame.common.ResultBoard;
 import racinggame.rule.RacingRule;
 
 class RacingGameTest extends NSTest {
@@ -85,14 +84,14 @@ class RacingGameTest extends NSTest {
 		}
 
 		static Circuit circuit() {
-			return (racingCars, labs, rule) -> {
+			return (racingCars, labs) -> {
 				String result = new StringBuilder()
 					.append("pobi : -\n")
 					.append("woni : ")
 					.append("최종 우승자는 pobi 입니다.")
 					.toString();
 
-				return new ResultBoard(result);
+				return null;
 			};
 		}
 

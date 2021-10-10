@@ -27,13 +27,17 @@ class RacingCarTest {
 	@ValueSource(ints = {4, 5, 6, 7, 8, 9})
 	void move(int diceValue) {
 		try (final MockedStatic<Randoms> mockRandoms = mockStatic(Randoms.class)) {
+			//given
 			mockRandoms.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
 				.thenReturn(diceValue);
+			LapRecord pastLapRecord = racingCar.record();
 
-			int pastLocation = racingCar.currentLocation();
-			racingCar.nextBehavior();
+			//when
+			racingCar.pushPedal();
 
-			assertThat(racingCar.currentLocation()).isEqualTo(pastLocation + 1);
+			//then
+			LapRecord currentLapRecord = racingCar.record();
+			assertThat(currentLapRecord.getScore()).isEqualTo(pastLapRecord.getScore() + 1);
 		}
 	}
 
@@ -42,13 +46,18 @@ class RacingCarTest {
 	@ValueSource(ints = {0, 1, 2, 3})
 	void stop(int diceValue) {
 		try (final MockedStatic<Randoms> mockRandoms = mockStatic(Randoms.class)) {
+			//given
 			mockRandoms.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
 				.thenReturn(diceValue);
 
-			int pastLocation = racingCar.currentLocation();
-			racingCar.nextBehavior();
+			LapRecord pastLapRecord = racingCar.record();
 
-			assertThat(racingCar.currentLocation()).isEqualTo(pastLocation);
+			//when
+			racingCar.pushPedal();
+
+			//then
+			LapRecord currentLabRecord = racingCar.record();
+			assertThat(currentLabRecord.getScore()).isEqualTo(pastLapRecord.getScore());
 		}
 	}
 
