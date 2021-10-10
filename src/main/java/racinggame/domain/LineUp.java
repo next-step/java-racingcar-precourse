@@ -1,5 +1,4 @@
 package racinggame.domain;
-import java.util.ArrayList;
 import java.util.List;
 
 public class LineUp {
@@ -15,11 +14,12 @@ public class LineUp {
 		}
 	}
 
-	public List<Car> getCars() {
-		System.out.println(cars);
-		ArrayList<Car> newCars = new ArrayList<>(this.cars);
-		System.out.println(newCars);
+	public Record getRecord() {
+		Record record = new Record();
+		for (Car car : cars) {
+			record.add(car);
+		}
 
-		return new ArrayList<>(this.cars);
+		return record;
 	}
 }
