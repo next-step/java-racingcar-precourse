@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'org.ec4j.editorconfig' version '0.0.3'
 }
 
 group 'camp.nextstep.edu'
@@ -30,3 +31,12 @@ test {
         }
     }
 }
+
+compileJava.options.encoding = 'UTF-8'
+compileTestJava.options.encoding = 'UTF-8'
+
+editorconfig {
+    excludes = ['build']
+}
+
+check.dependsOn editorconfigCheck
