@@ -82,10 +82,6 @@ public class Cars {
 		return Math.max(maxDistance, car.getDistance());
 	}
 
-	public List<Car> getCars() {
-		return cars;
-	}
-
 	@Override
 	public boolean equals(Object o) {
 		if (this == o)

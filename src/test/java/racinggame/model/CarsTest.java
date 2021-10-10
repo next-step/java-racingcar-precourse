@@ -9,7 +9,6 @@ import java.util.List;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 class CarsTest {
@@ -22,13 +21,35 @@ class CarsTest {
 		assertThat(cars).isEqualTo(new Cars(Arrays.asList(new Car("aaa"), new Car("bbb"))));
 	}
 
-	@ParameterizedTest
+	@Test
 	@DisplayName("자동차이름들은 , 구분자로 분리된다. ")
-	@CsvSource(value = {"aa,bb,cc;3", "aa,bb;2", "aa.bb;1", "aa:bb,cc;2"}, delimiter = ';')
-	public void toSplit(String name, int nameCount) {
-		Cars cars = new Cars(name);
+	public void toSplit() {
+		assertAll(
+			() -> {
+				Cars cars = new Cars("aa,bb,cc");
+				assertThat(cars).isEqualTo(new Cars(getCars("aa", "bb", "cc")));
+			},
+			() -> {
+				Cars cars = new Cars("aa,bb");
+				assertThat(cars).isEqualTo(new Cars(getCars("aa", "bb")));
+			},
+			() -> {
+				Cars cars = new Cars("aa.bb");
+				assertThat(cars).isEqualTo(new Cars(getCars("aa.bb")));
+			},
+			() -> {
+				Cars cars = new Cars("aa:bb,cc");
+				assertThat(cars).isEqualTo(new Cars(getCars("aa:bb", "cc")));
+			}
+		);
+	}
 
-		assertThat(cars.getCars().size()).isEqualTo(nameCount);
+	private List<Car> getCars(String... names) {
+		List<Car> cars = new ArrayList<>();
+		for (String name : names) {
+			cars.add(new Car(name));
+		}
+		return cars;
 	}
 
 	@Test
