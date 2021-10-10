@@ -21,4 +21,14 @@ public class RacingCars {
 
         return Collections.max(movesCounts);
     }
+
+    public List<RacingCar> getWinners() {
+        List<RacingCar> winners = new ArrayList<>();
+        racingCars.forEach(racingCar -> {
+            if (getMaxMovesCount() == racingCar.getMovesCount()) {
+                winners.add(racingCar);
+            }
+        });
+        return winners;
+    }
 }
