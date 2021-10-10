@@ -33,4 +33,8 @@ public class Cars {
         }
         return results;
     }
+
+    public List<Car> getCars() {
+        return this.cars;
+    }
 }

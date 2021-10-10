@@ -1,6 +1,5 @@
 package nextstep.domain;
 
-import javax.xml.transform.Result;
 import java.util.NoSuchElementException;
 import java.util.Objects;
 
@@ -28,14 +27,26 @@ public class Car {
         }
     }
 
-    public String getName() {
-        return this.name;
-    }
-
     public MoveResult move(int number) {
         if (number >= MIN_MOVABLE_VALUE) {
             this.distance++;
         }
         return new MoveResult(this.name, this.distance);
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public int getDistance() {
+        return distance;
+    }
+
+    public boolean isEqual(int distance) {
+        return this.distance == distance;
+    }
+
+    public boolean isGreaterThanEqual(int distance) {
+        return this.distance >= distance;
     }
 }
