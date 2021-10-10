@@ -9,7 +9,7 @@ class NameValidationTest {
 
 	@Test
 	@DisplayName("입력받는 이름의 상태체크를 생성한다.")
-	public void createNameValidation(){
+	public void createNameValidation() {
 		NameValidation nameValidation = new NameValidation();
 
 		assertThat(nameValidation).isEqualTo(new NameValidation());
@@ -17,7 +17,7 @@ class NameValidationTest {
 
 	@Test
 	@DisplayName("입력받은 이름이 null 이면 error 상태는 true 이다.")
-	public void checkNull(){
+	public void checkNull() {
 		NameValidation nameValidation = new NameValidation();
 
 		NameValidation result = nameValidation.checkInputStatus(null);
@@ -26,7 +26,7 @@ class NameValidationTest {
 
 	@Test
 	@DisplayName("입력받은 이름이 빈값 이면 error 상태는 true 이다.")
-	public void checkEmpty(){
+	public void checkEmpty() {
 		NameValidation nameValidation = new NameValidation();
 
 		NameValidation result = nameValidation.checkInputStatus("");
@@ -35,7 +35,7 @@ class NameValidationTest {
 
 	@Test
 	@DisplayName("입력받는 이름별 크기가 5보다 크면 error 상태는 true 이다.")
-	public void isSuitableSize(){
+	public void isSuitableSize() {
 		NameValidation nameValidation = new NameValidation();
 
 		NameValidation result = nameValidation.checkInputStatus("java,racing");
@@ -44,7 +44,7 @@ class NameValidationTest {
 
 	@Test
 	@DisplayName("입력받는 이름에 중복이 있으면 error 상태는 true 이다.")
-	public void isDuplication(){
+	public void isDuplication() {
 		NameValidation nameValidation = new NameValidation();
 
 		NameValidation result = nameValidation.checkInputStatus("aaa,aaa,bbb");
