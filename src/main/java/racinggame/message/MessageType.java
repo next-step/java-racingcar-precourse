@@ -6,7 +6,9 @@ public enum MessageType {
     INPUT_RACE_NUMBER("시도할 회수는 몇회인가요?"),
     RACING_RESULT("실행 결과"),
     RACING_WINNER_START("최종 우승자는 "),
-    RACING_WINNER_END(" 입니다.");
+    RACING_WINNER_END(" 입니다."),
+
+    COMMA(",");
 
     private String message;
 

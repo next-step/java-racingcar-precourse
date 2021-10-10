@@ -9,8 +9,10 @@ import java.util.List;
 
 public class RaceService {
 
+    private static final String COMMA = ",";
+
     public String[] splitNameWithComma(InputCarsName inputCarsName) {
-        return inputCarsName.getName().split(",");
+        return inputCarsName.getName().split(COMMA);
     }
 
     public Cars createCars(String[] carNameList) {
