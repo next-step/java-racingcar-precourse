@@ -28,4 +28,21 @@ class RacingCarsTest {
                     new RacingCars(getRacingCarList(racingCarNameInput));
                 }).withMessage(ERROR_MESSAGE);
     }
+
+    @ParameterizedTest(name = "가장 큰 전진 횟수를 반환한다")
+    @ValueSource(strings = {"pobi,crong,honux"})
+    void 가장_큰_전진_횟수를_반환한다(String racingCarNameInput) {
+        RacingCars racingCars = new RacingCars(getRacingCarList(racingCarNameInput));
+        List<RacingCar> racingCarList = racingCars.getRacingCars();
+        /* 1회 */
+        racingCarList.get(0).move();
+        racingCarList.get(1).stop();
+        racingCarList.get(2).stop();
+        /* 2회 */
+        racingCarList.get(0).move();
+        racingCarList.get(1).move();
+        racingCarList.get(2).stop();
+
+        assertThat(racingCars.getMaxMovesCount()).isEqualTo(2);
+    }
 }
