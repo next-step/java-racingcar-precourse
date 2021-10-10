@@ -11,6 +11,7 @@ public class LineUp {
 	public void drive() {
 		for (Car car : cars) {
 			car.drive();
+			printRecord(car);
 		}
 	}
 
@@ -21,5 +22,9 @@ public class LineUp {
 		}
 
 		return record;
+	}
+
+	private void printRecord(Car car) {
+		System.out.println(car.getRecord());
 	}
 }

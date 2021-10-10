@@ -5,7 +5,7 @@ public class InputValidator {
 	public boolean validCarName(String input) {
 		checkEmptyInput(input, "[ERROR] 빈 문자열 입력");
 		checkNumberOfCarNames(input);
-		checkEmptyCarName(input);
+		checkCarNameLength(input);
 
 		return true;
 	}
@@ -34,10 +34,16 @@ public class InputValidator {
 		}
 	}
 
-	private void checkEmptyCarName(String input) {
+	private void checkCarNameLength(String input) {
 		String[] carNames = input.split(",");
 		for (String carName : carNames) {
-			checkEmptyInput(carName, "[ERROR] 빈 자동자 이름 입력");
+			lengthShouldLessThen(5, carName, "[ERROR] 자동차 이름은 5이하만 가능");
+		}
+	}
+
+	private void lengthShouldLessThen(Integer validLength, String input, String errorMessage) {
+		if (input.length() > validLength) {
+			throw new IllegalArgumentException(errorMessage);
 		}
 	}
 

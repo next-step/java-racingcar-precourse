@@ -12,8 +12,10 @@ public class Race {
 	}
 
 	public void drive() {
+		System.out.println("실행 결과");
 		for (int i = 0; i < tryNumber; i++) {
 			lineUp.drive();
+			System.out.println("\n");
 		}
 
 		award(lineUp.getRecord());

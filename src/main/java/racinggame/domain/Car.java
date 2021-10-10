@@ -31,4 +31,13 @@ public class Car {
 	public Distance getDistance() {
 		return distance;
 	}
+
+	public String getRecord() {
+		StringBuilder sb = new StringBuilder(name).append(" : ");
+		for (int i = 0; i<distance.getValue(); i++) {
+			sb.append("-");
+		}
+
+		return sb.toString();
+	}
 }
