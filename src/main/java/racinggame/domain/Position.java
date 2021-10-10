@@ -4,21 +4,21 @@ public class Position {
 
 	private static final int START_POSITION_VALUE = 0;
 
-	private int position;
+	private int value;
 
-	private Position(int position) {
-		this.position = position;
+	private Position(int value) {
+		this.value = value;
 	}
 
 	public static Position init() {
 		return new Position(START_POSITION_VALUE);
 	}
 
-	public int getPosition() {
-		return this.position;
+	public int getValue() {
+		return this.value;
 	}
 
 	public void move() {
-		position++;
+		value++;
 	}
 }

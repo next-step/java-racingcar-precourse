@@ -1,7 +1,5 @@
 package racinggame.domain;
 
-import java.util.Objects;
-
 import nextstep.utils.Randoms;
 
 public class Car {
@@ -10,19 +8,19 @@ public class Car {
 	private static final int MAX_NUMBER = 9;
 	private static final int MOVE_NUMBER = 4;
 
-	private final CarName name;
+	private final Name name;
 	private final Position position;
 
-	private Car(CarName name) {
+	private Car(Name name) {
 		this.name = name;
 		this.position = Position.init();
 	}
 
-	public static Car of(CarName name) {
+	public static Car of(Name name) {
 		return new Car(name);
 	}
 
-	public CarName getCarName() {
+	public Name getName() {
 		return name;
 	}
 

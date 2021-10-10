@@ -11,7 +11,7 @@ public class PositionTest {
 	@Test
 	void create() {
 		Position position = Position.init();
-		assertThat(position.getPosition()).isEqualTo(0);
+		assertThat(position.getValue()).isEqualTo(0);
 	}
 
 }

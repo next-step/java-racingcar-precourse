@@ -10,20 +10,20 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 public class CarTest {
 
-	private CarName carName;
+	private Name name;
 	private Car car;
 
 	@BeforeEach
 	void setUp() {
-		carName = CarName.of("abcde");
-		car = Car.of(carName);
+		name = Name.of("abcde");
+		car = Car.of(name);
 	}
 
 	@DisplayName("자동차 생성")
 	@Test
 	void create() {
-		assertThat(car.getCarName().getName()).isEqualTo("abcde");
-		assertThat(car.getPosition().getPosition()).isEqualTo(0);
+		assertThat(car.getName().getValue()).isEqualTo("abcde");
+		assertThat(car.getPosition().getValue()).isEqualTo(0);
 	}
 
 	@DisplayName("4이상일 때 전진하는지 확인")
@@ -31,7 +31,7 @@ public class CarTest {
 	@ValueSource(ints = {4, 5, 6, 7, 8, 9})
 	void move(int value) {
 		car.move(value);
-		assertThat(car.getPosition().getPosition()).isEqualTo(1);
+		assertThat(car.getPosition().getValue()).isEqualTo(1);
 	}
 
 	@DisplayName("3이하일 때 멈추는지 확인")
@@ -39,6 +39,6 @@ public class CarTest {
 	@ValueSource(ints = {1, 2, 3})
 	void stop(int value) {
 		car.move(value);
-		assertThat(car.getPosition().getPosition()).isEqualTo(0);
+		assertThat(car.getPosition().getValue()).isEqualTo(0);
 	}
 }
