@@ -16,6 +16,4 @@ public class RacingCar {
     public int getMovesCount() {
         return movesCount;
     }
-
-
 }
