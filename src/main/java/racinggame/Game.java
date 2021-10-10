@@ -11,6 +11,8 @@ public class Game {
     List<Car> winnerCars = new ArrayList<>();
 
     public void play() {
+        int rollCount = 0;
+        List<Car> cars = new ArrayList<>();
         while(cars.size() < 2){
             cars = inputToCarList();
         }
