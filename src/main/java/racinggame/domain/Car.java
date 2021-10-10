@@ -28,6 +28,10 @@ public class Car {
         return carName;
     }
 
+    public int getDistance() {
+        return distance;
+    }
+
     public String getDistanceStr() {
         StringBuilder distanceStr = new StringBuilder();
         for(int i=0; i<this.distance; i++) {

@@ -30,4 +30,8 @@ public class Command {
     public void println() {
         System.out.println();
     }
+
+    public void printWinner(String winnerStr) {
+        System.out.println("최종 우승자는 " + winnerStr + " 입니다.");
+    }
 }

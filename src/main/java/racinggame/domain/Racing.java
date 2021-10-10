@@ -23,13 +23,50 @@ public class Racing {
         this.attemptCount = Integer.parseInt(attemptCountStr);
     }
 
-    public void oneTurn() {
+    public List<String> getWinnerStr() {
+        List<String> winner = new ArrayList<>();
+        int highScore = getHighScore();
+        for(Car car : this.cars) {
+            addWinner(winner, highScore, car);
+        }
+        return winner;
+    }
+
+    private void addWinner(List<String> winner, int highScore, Car car){
+        if(car.getDistance() == highScore) {
+            winner.add(car.getCarName());
+        }
+    }
+
+    private int getHighScore() {
+        int highScore = 0;
+        for(Car car : this.cars) {
+            highScore = checkHighScore(highScore, car.getDistance());
+        }
+        return highScore;
+    }
+
+    private int checkHighScore(int highScore, int distance) {
+        if(distance >= highScore) {
+            highScore = distance;
+        }
+        return highScore;
+    }
+
+    public void playRacing(Command command) {
+        for(int i=0; i<getAttemptCount(); i++) {
+            oneTurn();
+            printOneTurnResult(command);
+        }
+    }
+
+    private void oneTurn() {
         for(Car car : this.cars) {
             car.goAndStop(Randoms.pickNumberInRange(0, 9));
         }
     }
 
-    public void printOneTurnResult(Command command) {
+    private void printOneTurnResult(Command command) {
         for(Car car : this.cars) {
             command.printCar(car);
         }
@@ -56,14 +93,14 @@ public class Racing {
         duplicated(cars);
     }
 
-    public void attemptCountValidation(String attemptCountStr) {
+    private void attemptCountValidation(String attemptCountStr) {
         final Matcher matcher = ATTEMPT_COUNT_PATTERN.matcher(attemptCountStr);
         if(!matcher.matches()) {
             throw new IllegalArgumentException();
         }
     }
 
-    public int getAttemptCount() {
+    private int getAttemptCount() {
         return attemptCount;
     }
 }
