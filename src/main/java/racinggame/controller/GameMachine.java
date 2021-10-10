@@ -9,6 +9,7 @@ import racinggame.view.InputView;
 import racinggame.view.OutputView;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class GameMachine {
 
@@ -30,6 +31,7 @@ public class GameMachine {
             printRaceGameResult(raceFinishResult);
         } catch (RaceGameException rge) {
             outputView.printErrorMessage(rge.getMessage());
+            throw new NoSuchElementException();
         }
     }
 
