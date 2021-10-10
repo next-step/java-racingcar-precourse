@@ -1,7 +1,6 @@
 package racinggame.domain;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.*;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -18,7 +17,7 @@ import nextstep.utils.Randoms;
 @DisplayName("Record 클래스")
 class RecordTest {
 
-	Map<String, Record> recordPerWinner= new HashMap<>();
+	final Map<String, Record> recordPerWinner= new HashMap<>();
 
 	@BeforeEach
 	void setTestData() {

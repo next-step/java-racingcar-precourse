@@ -1,6 +1,5 @@
 package racinggame.domain;
 
-import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.*;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;

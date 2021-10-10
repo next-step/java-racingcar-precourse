@@ -20,7 +20,6 @@ public class Record {
 
 		String winners = sb.toString();
 		return String.join(",", winners.split(","));
-
 	}
 
 	private String getWinner(String carName, Integer maxDistance) {

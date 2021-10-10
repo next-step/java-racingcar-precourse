@@ -2,25 +2,21 @@ package racinggame.domain;
 
 public class InputValidator {
 
-	public boolean validCarName(String input) {
-		checkEmptyInput(input, "[ERROR] 빈 문자열 입력");
+	public void validCarName(String input) {
+		checkEmptyInput(input);
 		checkNumberOfCarNames(input);
 		checkCarNameLength(input);
-
-		return true;
 	}
 
-	public boolean validTryNumber(String input) {
-		checkEmptyInput(input, "[ERROR] 빈 문자열 입력");
+	public void validTryNumber(String input) {
+		checkEmptyInput(input);
 		checkDigitOnly(input);
 		checkGreaterThenOne(input);
-
-		return true;
 	}
 
-	private void checkEmptyInput(String input, String errorMessage) {
+	private void checkEmptyInput(String input) {
 		if (input.isEmpty()) {
-			throw new IllegalArgumentException(errorMessage);
+			throw new IllegalArgumentException("[ERROR] 빈 문자열 입력");
 		}
 	}
 
@@ -37,13 +33,13 @@ public class InputValidator {
 	private void checkCarNameLength(String input) {
 		String[] carNames = input.split(",");
 		for (String carName : carNames) {
-			lengthShouldLessThen(5, carName, "[ERROR] 자동차 이름은 5이하만 가능");
+			lengthShouldLessThen(carName);
 		}
 	}
 
-	private void lengthShouldLessThen(Integer validLength, String input, String errorMessage) {
-		if (input.length() > validLength || input.length() < 1) {
-			throw new IllegalArgumentException(errorMessage);
+	private void lengthShouldLessThen(String input) {
+		if (input.length() > 5 || input.length() < 1) {
+			throw new IllegalArgumentException("[ERROR] 자동차 이름은 5이하만 가능");
 		}
 	}
 
