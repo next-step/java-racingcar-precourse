@@ -20,12 +20,11 @@ public abstract class InputValidation {
 		this.message = message;
 	}
 
-	public boolean isEmpty(String inputValue) {
-		String[] values = inputValue.split(REGEX);
-		if (inputValue.isEmpty()) {
+	public boolean isEmptyOrIsNull(String inputValue) {
+		if (inputValue == null || inputValue.isEmpty()) {
 			return true;
 		}
-		return checkEmptyByEachValue(values);
+		return checkEmptyByEachValue(inputValue.split(REGEX));
 	}
 
 	private boolean checkEmptyByEachValue(String[] values) {
@@ -41,10 +40,6 @@ public abstract class InputValidation {
 			isEmpty = true;
 		}
 		return isEmpty;
-	}
-
-	public boolean isNull(String inputValue) {
-		return inputValue == null;
 	}
 
 	public boolean isProblem() {

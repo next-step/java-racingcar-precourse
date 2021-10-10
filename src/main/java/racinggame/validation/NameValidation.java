@@ -6,8 +6,7 @@ import java.util.Set;
 
 public class NameValidation extends InputValidation {
 
-	private static final String CHECK_EMPTY_ERROR_MESSAGE = "자동차 이름이 빈값 입니다.";
-	private static final String CHECK_NULL_ERROR_MESSAGE = "자동차 이름이 null 입니다.";
+	private static final String CHECK_EMPTY_OR_NULL_ERROR_MESSAGE = "자동차 이름이 빈값 또는 NULL 입니다.";
 	private static final String CHECK_LIMIT_LENGTH_ERROR_MESSAGE = "이름의 길이는 최대 5글자 입니다.";
 	private static final String CHECK_DUPLICATION_ERROR_MESSAGE = "중복되는 자동차 이름이 존재 합니다.";
 	private static final int LIMIT_LENGTH = 5;
@@ -22,11 +21,8 @@ public class NameValidation extends InputValidation {
 
 	@Override
 	public NameValidation checkInputStatus(String name) {
-		if (isNull(name)) {
-			return new NameValidation(true, CHECK_NULL_ERROR_MESSAGE);
-		}
-		if (isEmpty(name)) {
-			return new NameValidation(true, CHECK_EMPTY_ERROR_MESSAGE);
+		if (isEmptyOrIsNull(name)) {
+			return new NameValidation(true, CHECK_EMPTY_OR_NULL_ERROR_MESSAGE);
 		}
 		if (isSuitableSize(name)) {
 			return new NameValidation(true, CHECK_LIMIT_LENGTH_ERROR_MESSAGE);
