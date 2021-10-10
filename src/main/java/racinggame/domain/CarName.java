@@ -1,5 +1,7 @@
 package racinggame.domain;
 
+import racinggame.message.ErrorMessage;
+
 public class CarName {
 	private final String carName;
 
@@ -9,8 +11,12 @@ public class CarName {
 	}
 
 	private void validateCarName(String carName) {
+		if (carName == null) {
+			throw new NullPointerException(ErrorMessage.INVALID_CAR_NAME.name());
+		}
+
 		if (carName.length() < 1 || carName.length() > 5) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException(ErrorMessage.INVALID_CAR_NAME.name());
 		}
 	}
 

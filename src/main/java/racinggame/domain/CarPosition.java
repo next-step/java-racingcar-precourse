@@ -1,5 +1,7 @@
 package racinggame.domain;
 
+import racinggame.message.ErrorMessage;
+
 public class CarPosition {
 	private int carPosition;
 
@@ -20,7 +22,7 @@ public class CarPosition {
 
 	private void validateDistance(int distance) {
 		if (distance < 0 || distance > 9) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException(ErrorMessage.INVALID_CAR_DISTANCE.name());
 		}
 	}
 }

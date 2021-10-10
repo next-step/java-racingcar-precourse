@@ -3,6 +3,10 @@ package racinggame.domain;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import racinggame.message.ErrorMessage;
 
 class CarPositionTest {
 	@Test
@@ -19,6 +23,17 @@ class CarPositionTest {
 			CarPosition carPosition = new CarPosition(0);
 			carPosition.increase(10);
 		});
+	}
+
+	@ParameterizedTest
+	@ValueSource(ints = {-1, 10})
+	void 잘못된_이동거리일_경우_INVALID_CAR_DISTANCE를_메시지로_반환하는지(int distance) {
+		CarPosition carPosition = new CarPosition(0);
+		try {
+			carPosition.increase(distance);
+		} catch (IllegalArgumentException e) {
+			assertEquals(ErrorMessage.INVALID_CAR_DISTANCE, ErrorMessage.valueOf(e.getMessage()));
+		}
 	}
 
 	@Test

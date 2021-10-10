@@ -3,6 +3,12 @@ package racinggame.domain;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EmptySource;
+import org.junit.jupiter.params.provider.NullSource;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import racinggame.message.ErrorMessage;
 
 class CarNameTest {
 	@Test
@@ -24,5 +30,17 @@ class CarNameTest {
 		assertThrows(NullPointerException.class, () -> {
 			new CarName(null);
 		});
+	}
+
+	@ParameterizedTest
+	@ValueSource(strings = {"여섯자자동차"})
+	@EmptySource
+	@NullSource
+	void 잘못된_자동차_이름인_경우_INVALID_CAR_NAME을_메시지로_반환하는지(String carName) {
+		try {
+			new CarName(carName);
+		} catch (IllegalArgumentException | NullPointerException e) {
+			assertEquals(ErrorMessage.INVALID_CAR_NAME, ErrorMessage.valueOf(e.getMessage()));
+		}
 	}
 }
