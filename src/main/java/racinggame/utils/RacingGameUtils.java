@@ -11,6 +11,7 @@ public class RacingGameUtils {
     public static final int RACING_CAR_NAME_LENGTH_MIN = 0;
     public static final int RACING_CAR_NAME_LENGTH_LIMIT = 5;
     public static final int TRY_COUNT_MIN_VALUE = 0;
+    public static final int CHECK_NUMBER_VALUE = 4;
 
     public static String[] racingCarNameSplit(String racingCarNameInput) {
         return trim(racingCarNameInput.split(SPLIT_REGEX));
@@ -58,5 +59,12 @@ public class RacingGameUtils {
     public static void isValidTryCount(String readLine) {
         isValidOnlyNumber(readLine);
         isValidTryCountGreaterThanZero(Integer.parseInt(readLine));
+    }
+
+    public static boolean isMoved(int pickNumber) {
+        if (pickNumber >= CHECK_NUMBER_VALUE) {
+            return true;
+        }
+        return false;
     }
 }
