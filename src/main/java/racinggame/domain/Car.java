@@ -4,13 +4,13 @@ import racinggame.common.Constant;
 
 public class Car {
 
-    private String name;
+    private final String name;
 
     private String result;
 
     private int rank;
 
-    public Car(String name) {
+    public Car(final String name) {
         this.name = name;
         this.result = Constant.STR_EMPTY;
     }
