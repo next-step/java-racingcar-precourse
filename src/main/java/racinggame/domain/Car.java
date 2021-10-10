@@ -1,26 +1,27 @@
 package racinggame.domain;
 
 import racinggame.domain.boxing.CarName;
+import racinggame.domain.boxing.Position;
 import racinggame.domain.strategy.Strategy;
 
 public class Car {
 
 	public final CarName carName;
-	public int position;
+	public Position position;
 	public Strategy moveStrategy;
 
 	public Car(CarName carName, Strategy moveStrategy) {
 		this.carName = carName;
-		this.position = 0;
 		this.moveStrategy = moveStrategy;
+		position = new Position(0);
 	}
 
 	public void move() {
 		if(moveStrategy.isMovable())
-			position++;
+			position.movePosition();
 	}
 
 	public int getPosition() {
-		return position;
+		return position.getPosition();
 	}
 }
