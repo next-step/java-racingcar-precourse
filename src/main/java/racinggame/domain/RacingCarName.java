@@ -6,7 +6,7 @@ public class RacingCarName {
     private String racingCarName;
 
     public RacingCarName(String racingCarName) {
-        validation(racingCarName);
+        validateRacingCarName(racingCarName);
         this.racingCarName = racingCarName;
     }
 
@@ -14,7 +14,7 @@ public class RacingCarName {
         return racingCarName;
     }
 
-    public void validation(String racingCarName) {
+    public void validateRacingCarName(String racingCarName) {
         isValidRacingCarNameLengthLimit(racingCarName);
     }
 }
