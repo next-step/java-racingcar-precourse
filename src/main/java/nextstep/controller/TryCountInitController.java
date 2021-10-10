@@ -19,8 +19,9 @@ public class TryCountInitController {
 	}
 
 	private static TryCount createTryCount() {
+		OutputView.printForAskingTryCountInput();
+
 		try {
-			OutputView.printForAskingTryCountInput();
 			return createTryCountByTryCount(InputView.getTryCountInput());
 		} catch (RuntimeException e) {
 			OutputView.printErrorMessage(e);

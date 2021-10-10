@@ -24,9 +24,11 @@ public class RacingCarInitController {
 	}
 
 	private static RacingCars createRacingCars() {
+		OutputView.printForAskingRacingCarInput();
+		final List<String> carNamesInput = InputView.getCarNamesInput();
+
 		try {
-			OutputView.printForAskingRacingCarInput();
-			return createRacingCarsByCarName(InputView.getCarNamesInput());
+			return createRacingCarsByCarName(carNamesInput);
 		} catch (RuntimeException e) {
 			OutputView.printErrorMessage(e);
 			return null;

@@ -30,6 +30,10 @@ public class TryCount {
 		return new TryCount(decreased);
 	}
 
+	public boolean finish() {
+		return this.equals(new TryCount(0));
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o)
