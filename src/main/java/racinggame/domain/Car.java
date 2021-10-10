@@ -29,11 +29,11 @@ public class Car {
     }
 
     public String getDistanceStr() {
-        String distanceStr = "";
+        StringBuilder distanceStr = new StringBuilder();
         for(int i=0; i<this.distance; i++) {
-            distanceStr += "-";
+            distanceStr.append("-");
         }
-        return distanceStr;
+        return distanceStr.toString();
     }
 
     @Override
