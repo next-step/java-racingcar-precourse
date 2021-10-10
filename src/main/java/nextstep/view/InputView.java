@@ -16,4 +16,8 @@ public class InputView {
 		return new ArrayList<>(Arrays.asList(ParseUtils.parseByComma(Console.readLine())));
 	}
 
+	public static int getTryCountInput() {
+		return ParseUtils.parseInt(Console.readLine());
+	}
+
 }
