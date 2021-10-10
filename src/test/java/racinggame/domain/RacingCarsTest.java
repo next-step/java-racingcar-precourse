@@ -70,4 +70,38 @@ class RacingCarsTest {
         assertThat(winners.get(0).getRacingCarName()).isEqualTo("pobi");
         assertThat(winners.get(1).getRacingCarName()).isEqualTo("crong");
     }
+
+    @ParameterizedTest(name = "우승자 자동차 이름을 출력한다(공동 우승)")
+    @ValueSource(strings = {"pobi,crong,honux"})
+    void 우승자_자동차_이름을_출력한다_공동_우승(String racingCarNameInput) {
+        RacingCars racingCars = new RacingCars(getRacingCarList(racingCarNameInput));
+        List<RacingCar> racingCarList = racingCars.getRacingCars();
+        /* 1회 */
+        racingCarList.get(0).move();
+        racingCarList.get(1).move();
+        racingCarList.get(2).stop();
+        /* 2회 */
+        racingCarList.get(0).move();
+        racingCarList.get(1).move();
+        racingCarList.get(2).stop();
+
+        assertThat(racingCars.toString()).isEqualTo("최종 우승자는 pobi,crong 입니다.");
+    }
+
+    @ParameterizedTest(name = "우승자 자동차 이름을 출력한다")
+    @ValueSource(strings = {"pobi,crong,honux"})
+    void 우승자_자동차_이름을_출력한다(String racingCarNameInput) {
+        RacingCars racingCars = new RacingCars(getRacingCarList(racingCarNameInput));
+        List<RacingCar> racingCarList = racingCars.getRacingCars();
+        /* 1회 */
+        racingCarList.get(0).move();
+        racingCarList.get(1).move();
+        racingCarList.get(2).stop();
+        /* 2회 */
+        racingCarList.get(0).move();
+        racingCarList.get(1).stop();
+        racingCarList.get(2).stop();
+
+        assertThat(racingCars.toString()).isEqualTo("최종 우승자는 pobi 입니다.");
+    }
 }

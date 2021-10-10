@@ -31,4 +31,21 @@ public class RacingCars {
         });
         return winners;
     }
+
+    public StringBuilder getWinnersRacingCarName() {
+        StringBuilder racingGameResult = new StringBuilder();
+        getWinners().forEach(racingCar -> {
+            racingGameResult.append(racingCar.getRacingCarName()).append(",");
+        });
+        return racingGameResult.replace(racingGameResult.length() - 1, racingGameResult.length(), " ");
+    }
+
+    @Override
+    public String toString() {
+        return new StringBuilder()
+                .append("최종 우승자는 ")
+                .append(getWinnersRacingCarName())
+                .append("입니다.")
+                .toString();
+    }
 }
