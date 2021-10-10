@@ -9,6 +9,5 @@ public class Application {
         System.out.println("[SYSTEM MESSAGE] RACING GAME START");
         RacingSevice racingSevice = new RacingSevice();
         racingSevice.startRacingGame();
-
     }
 }

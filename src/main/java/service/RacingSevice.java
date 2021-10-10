@@ -10,20 +10,20 @@ import java.util.List;
 
 public class RacingSevice {
 
+    private static final int MOVING_MNI_NO = 0;
+    private static final int MOVING_MAX_NO = 9;
+    private static final int MOVING_FORWARD = 4;
+    private static final int MOVING_STOP = 3;
+
     public void startRacingGame() {
 
         CarService carService = new CarService();
         List<Car> carsInfo =  carService.initCar();
 
-        for (Car car : carsInfo) {
-            System.out.println("#####################");
-            System.out.println("carNM ::" + car.getCarNm());
-            System.out.println("carMoveInfo ::" + car.getCarMvInfo());
-        }
-
         int inputNum = this.initRacing();
-        System.out.println("#####################");
-        System.out.println(inputNum);
+
+        carsInfo = this.mvCar(carsInfo,inputNum);
+        this.endRacing(carsInfo);
     }
 
     private int initRacing(){
@@ -65,7 +65,7 @@ public class RacingSevice {
     }
 
 
-    public List<Car> mvCar(List<Car> carsInfo, int forCount) throws Exception {
+    public List<Car> mvCar(List<Car> carsInfo, int forCount){
 
         String resultMvText = "";
         System.out.println("[SYSTEM] 실행결과");
@@ -86,11 +86,11 @@ public class RacingSevice {
     }
 
     public boolean isMove() {
-        int randomCount = Randoms.pickNumberInRange(0, 9);
-        if (randomCount > 9) {
+        int randomCount = Randoms.pickNumberInRange(MOVING_MNI_NO, MOVING_MAX_NO);
+        if (randomCount > MOVING_MAX_NO) {
             return false;
         }
-        return randomCount > 3 ? true : false;
+        return randomCount > MOVING_STOP ? true : false;
     }
 
 
@@ -111,7 +111,7 @@ public class RacingSevice {
             }
         }
 
-        System.out.println("최종우숭자는 " + resultCar + " 입니다.");
+        System.out.println("최종 우승자는 " + resultCar + " 입니다.");
 
     }
 

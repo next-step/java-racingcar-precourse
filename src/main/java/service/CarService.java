@@ -1,17 +1,14 @@
 package service;
 
 import DTO.Car;
-import constant.Constant;
 import custom.utils.ValidationUtils;
 import exception.RacingException;
 import nextstep.utils.Console;
 
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.List;
 
 public class CarService {
-
 
    public List<Car> initCar(){
 
