@@ -21,7 +21,7 @@ public class CycleInputTest extends NSTest {
 			CycleInput.init();
 			verify(CycleInput.GUIDE_MESSAGE);
 		});
-		assertThat(CycleInput.value()).isEqualTo(10);
+		assertThat(CycleInput.value().cycle()).isEqualTo(10);
 	}
 
 	@Test

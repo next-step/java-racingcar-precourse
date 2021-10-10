@@ -5,19 +5,19 @@ import java.util.NoSuchElementException;
 import nextstep.utils.Console;
 
 public class CycleInput {
-	private static int cycle;
+	private static Cycle cycle;
 	static final String GUIDE_MESSAGE = "시도할 회수는 몇회인가요?";
 	static final String ERROR_MESSAGE = "1 이상의 숫자를 입력해주세요.";
 
 	private CycleInput() {
-		cycle = getInput();
+		cycle = new Cycle(getInput());
 	}
 
 	public static CycleInput init() {
 		return new CycleInput();
 	}
 
-	public static int value() {
+	public static Cycle value() {
 		return cycle;
 	}
 
