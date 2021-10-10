@@ -20,7 +20,7 @@ public class RacingGameController {
         final Player player = new Player();
         final Cars cars = InputNameAndCreateRacingCar(player);
         final RaceNumber raceNumber = InputRaceNumber(player);
-        moveAndStop(raceNumber, cars);
+        Racing(raceNumber, cars);
         findWinner(cars);
     }
 
@@ -44,7 +44,7 @@ public class RacingGameController {
     }
 
 
-    public void moveAndStop(RaceNumber raceNumber, Cars cars) {
+    public void Racing(RaceNumber raceNumber, Cars cars) {
         printErrorMessage(MessageType.RACING_RESULT.getMessage());
         for (int i = Number.MIN_VALUE.getValue(); i < raceNumber.getValue(); i++) {
             cars.racing();
