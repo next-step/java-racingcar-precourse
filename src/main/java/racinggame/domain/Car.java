@@ -11,6 +11,8 @@ public class Car {
 
 	public static final String CAR_STRING_FORMAT = "%s : %s";
 	public static final String DISTANCE_STR = "-";
+	public static final int MIN_NAME_LENGTH = 0;
+	public static final int MAX_NAME_LENGTH = 5;
 
 	private String name;
 	private int distance;
@@ -20,7 +22,7 @@ public class Car {
 	}
 
 	public boolean validName(String name) {
-		return name != null && name.trim().length() != 0 && name.trim().length() <= 5;
+		return name != null && name.trim().length() != MIN_NAME_LENGTH && name.trim().length() <= MAX_NAME_LENGTH;
 	}
 
 	public String getName() {

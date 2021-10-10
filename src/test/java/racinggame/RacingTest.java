@@ -125,4 +125,16 @@ public class RacingTest {
 			.isEqualTo(winnerStr);
 	}
 
+	@Test
+	void 레이싱_결과출력() {
+		goCarListOrdering(racing.getCarList());
+
+		String result = racing.getRacingResultStr();
+
+		assertThat(result)
+			.isNotEmpty()
+			.contains(":")
+			.endsWith("\n");
+	}
+
 }

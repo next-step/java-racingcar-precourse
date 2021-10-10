@@ -1,5 +1,7 @@
 package racinggame.domain;
 
+import static racinggame.common.ErrorMessage.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +14,7 @@ public class Racing {
 	public static final int MIN_RANGE = 0;
 	public static final int MAX_RANGE = 9;
 	public static final String DELIMITER = ",";
+	public static final String NEW_LINE = "\n";
 	List<Car> carList;
 	List<String> winnerList;
 
@@ -49,7 +52,10 @@ public class Racing {
 		}
 	}
 
-	public void start() {
+	public void startRacing() {
+		if (carList.size() == 0) {
+			throw new IllegalStateException(ERROR_NO_CARS);
+		}
 		for (Car car : carList) {
 			int random = Randoms.pickNumberInRange(MIN_RANGE, MAX_RANGE);
 			race(car, random);
@@ -74,8 +80,16 @@ public class Racing {
 		int maxDistance = 0;
 		for (Car car : carList) {
 			int curDistance = car.getDistance();
-			maxDistance = Math.max(curDistance,maxDistance) ;
+			maxDistance = Math.max(curDistance, maxDistance);
 		}
 		return maxDistance;
+	}
+
+	public String getRacingResultStr() {
+		String result = "";
+		for (Car car : carList) {
+			result += car + NEW_LINE;
+		}
+		return result;
 	}
 }
