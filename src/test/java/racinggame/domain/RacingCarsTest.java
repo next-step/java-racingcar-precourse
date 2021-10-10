@@ -45,4 +45,29 @@ class RacingCarsTest {
 
         assertThat(racingCars.getMaxMovesCount()).isEqualTo(2);
     }
+
+    @ParameterizedTest(name = "우승자를 선별하여 반환한다(공동 우승 가능)")
+    @ValueSource(strings = {"pobi,crong,honux"})
+    void 우승자를_선별하여_반환한다(String racingCarNameInput) {
+        RacingCars racingCars = new RacingCars(getRacingCarList(racingCarNameInput));
+        List<RacingCar> racingCarList = racingCars.getRacingCars();
+        /* 1회 */
+        racingCarList.get(0).move();
+        racingCarList.get(1).stop();
+        racingCarList.get(2).stop();
+        /* 2회 */
+        racingCarList.get(0).move();
+        racingCarList.get(1).move();
+        racingCarList.get(2).stop();
+        /* 3회 */
+        racingCarList.get(0).stop();
+        racingCarList.get(1).move();
+        racingCarList.get(2).move();
+
+        List<RacingCar> winners = racingCars.getWinners();
+
+        assertThat(winners.size()).isEqualTo(2);
+        assertThat(winners.get(0).getRacingCarName()).isEqualTo("pobi");
+        assertThat(winners.get(1).getRacingCarName()).isEqualTo("crong");
+    }
 }
