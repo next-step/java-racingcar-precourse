@@ -18,7 +18,6 @@ public class Name {
 		if (value.length() > MAX_OF_LENGTH) {
 			throw new OverNameLengthException();
 		}
-
 	}
 
 	@Override
