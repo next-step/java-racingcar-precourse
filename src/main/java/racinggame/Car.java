@@ -13,6 +13,12 @@ public class Car {
         this.place= 0;
     }
 
+    public Car(String name, int place) {
+        if (name.length()>5) throw new IllegalArgumentException("[ERROR]");
+        this.name = name;
+        this.place= place;
+    }
+
     public void moveCar() {
         int randomNumber = Randoms.pickNumberInRange(0,9);
         if ( randomNumber >= 4)        place++;
