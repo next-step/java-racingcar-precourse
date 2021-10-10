@@ -1,8 +1,7 @@
 package domainTest;
 
-import domain.Cars;
-import domain.Racing;
-import org.junit.jupiter.api.BeforeEach;
+import racinggame.domain.Cars;
+import racinggame.domain.Racing;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;

@@ -1,7 +1,7 @@
 package domainTest;
 
-import domain.Car;
-import domain.exceptions.CarException;
+import racinggame.domain.Car;
+import racinggame.domain.exceptions.CarException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

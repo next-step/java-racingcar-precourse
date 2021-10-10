@@ -1,4 +1,4 @@
-package domain.exceptions;
+package racinggame.domain.exceptions;
 
 public class CarException extends IllegalArgumentException {
 

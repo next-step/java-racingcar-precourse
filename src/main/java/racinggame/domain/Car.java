@@ -1,6 +1,6 @@
-package domain;
+package racinggame.domain;
 
-import domain.exceptions.CarException;
+import racinggame.domain.exceptions.CarException;
 
 public class Car {
 

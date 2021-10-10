@@ -1,4 +1,4 @@
-package domain;
+package racinggame.domain;
 
 public class Name {
     private String name;
