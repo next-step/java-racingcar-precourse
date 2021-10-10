@@ -17,6 +17,6 @@ public class Application {
 
     private void gameStart() {
         gameController.start();
-        
+
     }
 }
