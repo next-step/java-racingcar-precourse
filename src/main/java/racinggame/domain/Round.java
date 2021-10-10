@@ -14,21 +14,13 @@ public class Round {
 		this.values = Collections.unmodifiableList(values);
 	}
 
-	public Round raceCars(ForwardMoveRule gameRule) {
-		List<Car> result = new ArrayList<>();
-		for (Car car : this.values) {
-			result.add(moveOrStopOfCar(gameRule, car));
+	public Round startRacingCars(ForwardMoveRule forwardMoveRule) {
+		List<Car> cars = new ArrayList<>();
+		for (Car car : values) {
+			cars.add(car.moveOrStop(forwardMoveRule));
 		}
 
-		return new Round(result);
-	}
-
-	private Car moveOrStopOfCar(ForwardMoveRule gameRule, Car car) {
-		if (gameRule.isMovable()) {
-			return car.move();
-		}
-
-		return car;
+		return new Round(cars);
 	}
 
 	@Override

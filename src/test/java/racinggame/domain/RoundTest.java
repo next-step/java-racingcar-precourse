@@ -27,19 +27,18 @@ class RoundTest {
 	}
 
 	@Test
-	@DisplayName("각 자동차들을 경주시킨다.")
-	void raceCars() {
+	@DisplayName("라운드에 해당되는 자동차들을 경주시킨다.")
+	void startRacingCars() {
 		// given
 		ForwardMoveRule alwaysForwardMoveRule = ForwardMoveRule.alwaysForwardMove();
 
 		// when
-		Round round = this.round.raceCars(alwaysForwardMoveRule);
+		Round raceIsOverRound = round.startRacingCars(alwaysForwardMoveRule);
 
 		// then
-		Car movedCarOfMine = new Car("gmoon").move();
-		Car movedCarOfGuest = new Car("guest").move();
-		assertThat(round)
+		Car movedCarOfMine = new Car("gmoon").moveOrStop(alwaysForwardMoveRule);
+		Car movedCarOfGuest = new Car("guest").moveOrStop(alwaysForwardMoveRule);
+		assertThat(raceIsOverRound)
 			.isEqualTo(new Round(Arrays.asList(movedCarOfMine, movedCarOfGuest)));
-
 	}
 }
