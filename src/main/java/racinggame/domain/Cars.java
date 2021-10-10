@@ -43,4 +43,7 @@ public class Cars{
         return Randoms.pickNumberInRange(0, 9);
     }
 
+    public int size() {
+        return cars.size();
+    }
 }
