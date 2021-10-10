@@ -13,8 +13,16 @@ import java.util.Map;
 public class GameService {
 
     private Car car;
+    private boolean countValidResult;
+    private boolean carNameValidResult;
+    private int totalCount;
+
     public GameService( Car car ) {
         this.car = car;
+        this.countValidResult = false;
+        this.carNameValidResult = false;
+        this.totalCount = 0;
+
     }
 
     public void initialize() {
@@ -24,60 +32,54 @@ public class GameService {
     }
 
     private void carGameCountSetting() {
-        int racingCount = 0;
-        try{
-            racingCount = validationCount();
-        }catch ( Exception e ){
-            carGameCountSetting();
+        while( !countValidResult ){
+            countValidResult = validationCount();
         }
-        car.setRacingCount( racingCount );
     }
 
-    private int validationCount() {
+    private boolean validationCount() {
         MsgTypes.RACING_SETTING_MSG.getMsg();
-        int totalCount = 0;
         try{
             totalCount = Integer.parseInt( Console.readLine() );
             validationCountLength(totalCount);
         }catch ( Exception e ){
             GameExceptions.throwsExceptionMsg( GameExceptions.EXCEPTION_TO_PLAY_COUNT );
-            validationCount();
+            return false;
         }
-        return totalCount;
+        return true;
     }
 
     private void validationCountLength(int totalCount) throws Exception {
         if( totalCount == 0 || totalCount > 65535 ){
-            GameExceptions.throwsException( GameExceptions.EXCEPTION_TO_PLAY_COUNT );
-            validationCount();
+           throw GameExceptions.throwsException( GameExceptions.EXCEPTION_TO_PLAY_COUNT );
         }
+        car.setRacingCount(totalCount);
     }
 
     private void carNameSetting(){
-        String carNames = validationName();
-        System.out.println( carNames );
-        car.setCarNames( carNames );
-    }
-
-    private String validationName() {
         MsgTypes.CAR_NAME_SETTING_MSG.getMsg();
-        String carNames = Console.readLine().replaceAll(" ", "");
-        try{
-            for ( String str : carNames.split(",") ) {
-                lengthCheckToName( str );
-            }    
-        }catch ( Exception e ){
-            validationName();
+        String carNames = Console.readLine();
+        while( !carNameValidResult ){
+            carNameValidResult = validationName( carNames );
         }
-        return carNames;
     }
 
-    private void lengthCheckToName(String str) throws Exception {
+    private boolean validationName( String carNames ) {
+
+        for ( String str : carNames.replaceAll(" ", "").split(",") ) {
+            return lengthCheckToName(str);
+        }
+        car.setCarNames( carNames );
+        return true;
+    }
+
+    private boolean lengthCheckToName(String str) {
 
         if( str.length() < 1 || str.length() > 5 ){
-            GameExceptions.throwsException( GameExceptions.EXCEPTION_TO_CAR_NAME );
+            GameExceptions.throwsExceptionMsg( GameExceptions.EXCEPTION_TO_CAR_NAME );
+            return false;
         }
-
+        return true;
     }
 
     public void racingStart() {

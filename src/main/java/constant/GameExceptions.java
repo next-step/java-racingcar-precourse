@@ -13,7 +13,7 @@ public enum GameExceptions {
 
     public static Exception throwsException(GameExceptions exceptions) throws Exception {
         System.out.println( exceptions.msg );
-        throw new Exception();
+        return new Exception();
     }
 
     public static void throwsExceptionMsg(GameExceptions exceptions) {
