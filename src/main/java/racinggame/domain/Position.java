@@ -26,10 +26,22 @@ public class Position {
 		return new Position(value);
 	}
 
+	public Position getMaxPosition(Position otherPosition) {
+		if (moreThane(otherPosition)) {
+			return this;
+		}
+		return otherPosition;
+	}
+
 	private void checkValidValue(int value) {
 		if (value < MIN) {
 			throw new InvalidPositionValueException(MIN);
 		}
+	}
+
+	private boolean moreThane(Position otherPosition) {
+		int returnValueOfLessThan = -1;
+		return Integer.compare(value, otherPosition.value) != returnValueOfLessThan;
 	}
 
 	@Override

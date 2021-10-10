@@ -63,4 +63,18 @@ class PositionTest {
 		assertThat(System.identityHashCode(zero))
 			.isNotEqualTo(System.identityHashCode(copiedZero));
 	}
+
+	@Test
+	@DisplayName("위치 값이 큰 Position을 반환한다.")
+	void getMaxPosition() {
+		// given
+		Position min = new Position();
+		Position max = new Position(Integer.MAX_VALUE);
+
+		// when
+		Position maxPosition = min.getMaxPosition(max);
+
+		// then
+		assertThat(maxPosition).isEqualTo(max);
+	}
 }
