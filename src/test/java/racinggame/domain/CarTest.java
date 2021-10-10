@@ -36,7 +36,7 @@ public class CarTest {
     @Test
     void 이동_조건을_만족했을_때_이동하는지_확인() {
         assertRandomTest(() -> {
-            car.tryRace();
+            car.tryMove();
             assertThat(car.getPosition()).isEqualTo(1);
         }, 4);
     }
@@ -44,7 +44,7 @@ public class CarTest {
     @Test
     void 이동_조건을_만족하지_못했을_때_이동하지_않았는지_확인() {
         assertRandomTest(() -> {
-            car.tryRace();
+            car.tryMove();
             assertThat(car.getPosition()).isEqualTo(0);
         }, 3);
     }
@@ -53,7 +53,7 @@ public class CarTest {
     void 현재_위치와_입력받은_위치가_일치하는지_확인() {
         // tryRace로 이동 성공하도록 한 뒤 비교
         assertRandomTest(() -> {
-            car.tryRace();
+            car.tryMove();
             assertThat(car.isMaxPosition(1)).isTrue();
         }, 4);
     }

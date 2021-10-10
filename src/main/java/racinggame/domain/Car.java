@@ -23,7 +23,7 @@ public class Car {
         return position.getPosition();
     }
 
-    public void tryRace() {
+    public void tryMove() {
         if (isMove(Randoms.pickNumberInRange(RANDOM_MIN_RANGE, RANDOM_MAX_RANGE))) {
             position.move();
         }

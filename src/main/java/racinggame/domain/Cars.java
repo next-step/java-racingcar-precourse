@@ -19,7 +19,7 @@ public class Cars {
 
     public void race() {
         for (Car car : cars) {
-            car.tryRace();
+            car.tryMove();
         }
     }
 
