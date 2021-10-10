@@ -26,4 +26,19 @@ public class ValidationUtilsTest {
 		assertThat(ValidationUtils.validTwoMore("car")).isFalse();
 		assertThat(ValidationUtils.validTwoMore("car, car2")).isTrue();
 	}
+
+	@Test
+	@DisplayName("이동 횟수가 숫자인지 검증")
+	void invalidNumber() {
+		assertThat(ValidationUtils.validNumber("1")).isTrue();
+		assertThat(ValidationUtils.validNumber("a")).isFalse();
+	}
+
+	@Test
+	@DisplayName("이동 횟수가 0보다 큰 숫자인지")
+	void invalidZeroMore() {
+		assertThat(ValidationUtils.validZeroMore("12")).isTrue();
+		assertThat(ValidationUtils.validZeroMore("0")).isFalse();
+
+	}
 }

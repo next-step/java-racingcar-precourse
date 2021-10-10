@@ -30,13 +30,27 @@ public class ValidationUtils {
 		return false;
 	}
 
-	private static String[] getStringArr(String inputCarName) {
-		return inputCarName.split(NAME_DELIMITER);
+	private static String[] getStringArr(String name) {
+		return name.split(NAME_DELIMITER);
 	}
 
 	private static HashSet<String> getStringHashSet(String[] strings) {
 		return new HashSet<>(Arrays.asList(strings));
 
+	}
+
+	public static boolean validNumber(String number) {
+		if (number.chars().allMatch(Character::isDigit)) {
+			return true;
+		}
+		return false;
+	}
+
+	public static boolean validZeroMore(String number) {
+		if (Integer.parseInt(number) > 0) {
+			return true;
+		}
+		return  false;
 	}
 }
 
