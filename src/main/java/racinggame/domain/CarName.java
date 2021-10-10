@@ -1,7 +1,7 @@
 package racinggame.domain;
 
 public class CarName {
-	private String carName;
+	private final String carName;
 
 	public CarName(String carName) {
 		validateCarName(carName);
