@@ -24,4 +24,8 @@ public class OutputView {
 	public void printExecutionResult() {
 		System.out.println(CommonConstants.NEWLINE + EXECUTION_RESULT);
 	}
+
+	public void printRacingCarsStatus(String racingCarsStatus) {
+		System.out.println(racingCarsStatus);
+	}
 }
