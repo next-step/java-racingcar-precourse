@@ -3,38 +3,31 @@ package racinggame.domain;
 import java.util.Objects;
 
 public class Car {
-    private String carName;
-    private int distance;
+    private final CarName carName;
+    private final Distance distance;
 
-    public Car(String carName) {
-        carNameValidation(carName);
+    public Car(final CarName carName) {
         this.carName = carName;
-        this.distance = 0;
-    }
-
-    public void carNameValidation(String carName) {
-        if(carName.length() > 5) {
-            throw new IllegalArgumentException();
-        }
+        this.distance = new Distance(0);
     }
 
     public void goAndStop(int randomNum) {
         if(randomNum >= 4) {
-            this.distance += 1;
+            distance.forwardDistance();
         }
     }
 
     public String getCarName() {
-        return carName;
+        return carName.getName();
     }
 
     public int getDistance() {
-        return distance;
+        return distance.getDistance();
     }
 
     public String getDistanceStr() {
         StringBuilder distanceStr = new StringBuilder();
-        for(int i=0; i<this.distance; i++) {
+        for(int i=0; i<this.distance.getDistance(); i++) {
             distanceStr.append("-");
         }
         return distanceStr.toString();

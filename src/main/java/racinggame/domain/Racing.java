@@ -11,7 +11,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Racing {
-    private static final Pattern ATTEMPT_COUNT_PATTERN = Pattern.compile("[+-]?\\d*(\\.\\d+)?");
 
     private final List<Car> cars;
 
@@ -50,8 +49,8 @@ public class Racing {
         return highScore;
     }
 
-    public void playRacing(Command command, int attemptCount) {
-        for(int i=0; i<attemptCount; i++) {
+    public void playRacing(Command command, AttemptCount attemptCount) {
+        for(int i=0; i<attemptCount.getAttemptCount(); i++) {
             oneTurn();
             printOneTurnResult(command);
         }
@@ -74,7 +73,7 @@ public class Racing {
         final String[] carsStrArr = carsStr.split(",");
         final List<Car> cars = new ArrayList<>();
         for(String carStr : carsStrArr) {
-            cars.add(new Car(carStr));
+            cars.add(new Car(new CarName(carStr)));
         }
         return new Racing(cars);
     }
@@ -90,11 +89,5 @@ public class Racing {
         duplicated(cars);
     }
 
-    public int attemptCountValidation(String attemptCountStr) {
-        final Matcher matcher = ATTEMPT_COUNT_PATTERN.matcher(attemptCountStr);
-        if(!matcher.matches()) {
-            throw new IllegalArgumentException();
-        }
-        return Integer.parseInt(attemptCountStr);
-    }
+
 }
