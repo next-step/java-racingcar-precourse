@@ -45,6 +45,10 @@ public class RacingCars {
 		return builder.toString();
 	}
 
+	public List<RacingCar> getRacingCars() {
+		return racingCars;
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o)

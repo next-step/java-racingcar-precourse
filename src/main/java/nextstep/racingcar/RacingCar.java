@@ -49,6 +49,10 @@ public class RacingCar {
 		return carName.toString();
 	}
 
+	public boolean hasSamePosition(Position position) {
+		return this.position.equals(position);
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o)
