@@ -5,6 +5,7 @@ import nextstep.utils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class Utils {
 
@@ -15,8 +16,15 @@ public class Utils {
         return Console.readLine();
     }
 
+    public static boolean getCharacterCheck(String str) {
+        if(Pattern.matches("^[0-9]*$", str)){
+            return true;
+        }
+        return false;
+    }
+
     public static int getStringToInt(String str) {
-        return Integer.valueOf(str);
+        return Integer.parseInt(str);
     }
 
     public static List<Integer> getRandomList(int size) {
