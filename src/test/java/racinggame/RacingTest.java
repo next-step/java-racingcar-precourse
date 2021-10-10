@@ -18,25 +18,41 @@ public class RacingTest {
 
 	Racing racing;
 
+	public static void goCarListOrdering(List<Car> carList) {
+		for (int i = 0; i < carList.size(); i++) {
+			goCar(carList.get(i), i / 2);
+		}
+	}
+
+	public static void goCar(Car car, int goCount) {
+		for (int i = 0; i < goCount; i++) {
+			car.go();
+		}
+	}
+
 	@BeforeEach
 	void setUp() {
 		racing = new Racing();
+		List<String> names = Arrays.asList("Lee", "Park", "Kim", "제이", "논", "진");
+		for (String name : names) {
+			racing.add(new Car(name));
+		}
 	}
 
 	@Test
 	void 레이싱_참가() {
-		List<String> names = Arrays.asList("Lee", "Park", "Kim", "제이", "논");
-		for (String name : names) {
-			racing.add(new Car(name));
-		}
+		int size = 7;
+
+		racing.add(new Car("wow"));
+
 		assertThat(racing.getCarList())
-			.hasSize(names.size());
+			.hasSize(size);
 	}
 
-	@ParameterizedTest
+	@ParameterizedTest(name = "전진여부_판단 {index}")
 	@ValueSource(ints = {1, 2, 3, 4, 5, 6, 7, 8, 9})
 	void 전진여부_판단(int value) {
-		boolean result = value > racing.GO_VALUE;
+		boolean result = value >= Racing.GO_VALUE;
 		assertThat(racing.isGo(value)).isEqualTo(result);
 	}
 
@@ -55,13 +71,10 @@ public class RacingTest {
 	@Test
 	void 자동차_레이스() {
 		List<Integer> list = Arrays.asList(1, 4, 5, 9, 3, 7);
-		int goCnt = 0;
-		String distance = "";
-		for (int i : list) {
-			goCnt += (racing.isGo(i)) ? 1 : 0;
-			distance += (racing.isGo(i)) ? "-" : "";
-		}
-		Car car = new Car("lee");
+		int goCnt = 4;
+		String distance = "----";
+		Car car = racing.getCarList().get(0);
+
 		for (int i : list) {
 			racing.race(car, i);
 		}
@@ -73,4 +86,43 @@ public class RacingTest {
 			.asString()
 			.containsSequence(distance);
 	}
+
+	@Test
+	void 제일_멀리간_거리_조회() {
+		goCarListOrdering(racing.getCarList());
+		int maxDistance = 2;
+
+		int result = racing.getMaxDistance();
+
+		assertThat(result)
+			.isEqualTo(maxDistance);
+	}
+
+	@Test
+	void 가장멀리간_자동차인경우_승리자_추가() {
+		List<Car> carList = racing.getCarList();
+		goCarListOrdering(racing.getCarList());
+		int maxDistance = 2;
+
+		Car car = carList.get(carList.size() - 1);
+		racing.addWinnerList(maxDistance, car);
+
+		assertThat(racing.getWinnerList())
+			.hasSize(1)
+			.containsExactly(car.getName());
+
+	}
+
+	@Test
+	void 자동차_승자() {
+		goCarListOrdering(racing.getCarList());
+		String winnerStr = "논,진";
+
+		String result = racing.getWinner();
+
+		assertThat(result)
+			.isNotEmpty()
+			.isEqualTo(winnerStr);
+	}
+
 }
