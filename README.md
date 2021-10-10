@@ -5,3 +5,10 @@
 
 ## 과제 제출 과정
 * [과제 제출 방법](https://github.com/next-step/nextstep-docs/tree/master/precourse)
+
+## 기능 목록
+- 자동차 이름은 5자 이상만 가능
+- 자동차 거리
+- 자동차 전진
+  - 0~9사이 랜덤을 통해 0~3이면 정지
+  - 0~9사이 랜덤을 통해 4~9이면 전진
