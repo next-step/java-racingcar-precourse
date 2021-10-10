@@ -1,0 +1,19 @@
+package nextstep.view;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import nextstep.utils.Console;
+import nextstep.utils.ParseUtils;
+
+public class InputView {
+
+	private InputView() {
+	}
+
+	public static List<String> getCarNamesInput() {
+		return new ArrayList<>(Arrays.asList(ParseUtils.parseByComma(Console.readLine())));
+	}
+
+}
