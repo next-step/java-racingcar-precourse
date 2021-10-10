@@ -23,21 +23,18 @@ public class CarList {
     public String getProcessResult() {
         StringBuilder result = new StringBuilder();
         list.forEach(car -> result.append(car.toString() + "\n"));
-        result.append("\n");
         return result.toString();
     }
 
     public String getWinners() {
-        StringBuilder result = new StringBuilder();
         int winnerProcess = getwinnerProcess();
-        String winners = findWinners(winnerProcess);
-        return result.toString();
+        return findWinners(winnerProcess);
     }
 
     private String findWinners(int winnerProcess) {
         StringBuilder result = new StringBuilder();
         for (Car car : list) {
-            result.append(findWinner(winnerProcess, car) + ",");
+            result.append(findWinner(winnerProcess, car));
         }
         result.deleteCharAt(result.lastIndexOf(","));
         return result.toString();
@@ -45,7 +42,7 @@ public class CarList {
 
     private String findWinner(int winnerProcess, Car car) {
         if (winnerProcess == car.getCarProgress().get()) {
-            return car.getCarName().get();
+            return car.getCarName().get() + ",";
         }
         return "";
     }
@@ -63,5 +60,14 @@ public class CarList {
             return a;
         }
         return b;
+    }
+
+    public void setCarList(String carList) throws Exception {
+        String car = carList.trim();
+        String[] carArray = car.split(",");
+        for (String carName : carArray) {
+            Car newCar = new Car(carName);
+            add(newCar);
+        }
     }
 }
