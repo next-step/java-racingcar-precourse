@@ -37,7 +37,7 @@ public class Cars {
     public int maxDistance() {
         int max = 0;
         for (Car car : cars) {
-            max = car.getMaxDistance(max);
+            max = car.getGreaterDistance(max);
         }
         return max;
     }

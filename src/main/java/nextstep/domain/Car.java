@@ -2,38 +2,34 @@ package nextstep.domain;
 
 public class Car {
 
-    private static final int DEFAULT_DISTANCE = 0;
     private static final int MIN_MOVABLE_VALUE = 4;
 
     private final CarName name;
-    private int distance;
+    private final Distance distance;
 
     public Car(String name) {
         this.name = new CarName(name);
-        this.distance = DEFAULT_DISTANCE;
+        this.distance = Distance.zero();
     }
 
     public MoveResult move(int number) {
         if (number >= MIN_MOVABLE_VALUE) {
-            this.distance++;
+            distance.increase();;
         }
-        return new MoveResult(name.getName(), this.distance);
+        return new MoveResult(name.getName(), distance.getDistance());
     }
 
     public String getName() {
         return name.getName();
     }
 
-    public int getMaxDistance(int distance) {
-        if (distance <= this.distance) {
-            return this.distance;
-        }
-        return distance;
+    public int getGreaterDistance(int distance) {
+        return this.distance.getGreaterDistance(distance);
     }
 
     public StringBuilder appendName(StringBuilder sb, int maxDistance) {
-        if (distance == maxDistance) {
-            return sb.append(name.getName()).append(",");
+        if (this.distance.isEqual(maxDistance)) {
+            return name.appendName(sb);
         }
         return sb;
     }

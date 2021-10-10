@@ -3,11 +3,13 @@
 ## 도메인
 - Car
   - `Car`는 `CarName`을 가진다
-  - `Car`는 `이동 거리`를 가진다
+  - `Car`는 `Distance`를 가진다
 - CarName
   - `Car`는 `이름`을 가진다
   - `이름`은 5자 이하만 가능하다
   - `이름`은 null 혹은 빈값이 아니다
+- Distance
+  - `Car`는 `이동 거리`를 가진다
 - Cars
   - `Cars`는 `자동차 리스트`를 가진다
 - Race
