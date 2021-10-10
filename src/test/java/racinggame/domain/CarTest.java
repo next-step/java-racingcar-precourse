@@ -6,6 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import racinggame.domain.boxing.CarName;
+import racinggame.domain.boxing.MoveStrategy;
 import racinggame.error.CarNameLengthException;
 import racinggame.error.EmptyCarException;
 import racinggame.error.ErrorMessage;
@@ -32,6 +33,6 @@ public class CarTest {
 	@Test
 	void carGenerateTest() {
 		CarName carName = new CarName("자동차");
-		assertThat(new Car(carName)).isNotNull();
+		assertThat(new Car(carName, (new MoveStrategy()))).isNotNull();
 	}
 }
