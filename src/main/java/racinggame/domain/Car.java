@@ -1,5 +1,7 @@
 package racinggame.domain;
 
+import java.util.List;
+
 import racinggame.domain.boxing.CarName;
 import racinggame.domain.boxing.Position;
 import racinggame.domain.strategy.Strategy;
