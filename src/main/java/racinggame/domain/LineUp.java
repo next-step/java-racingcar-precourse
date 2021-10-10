@@ -25,6 +25,7 @@ public class LineUp {
 	}
 
 	private void printRecord(Car car) {
-		System.out.println(car.getRecord());
+		Message message = new Message();
+		message.println(car.getRecord());
 	}
 }

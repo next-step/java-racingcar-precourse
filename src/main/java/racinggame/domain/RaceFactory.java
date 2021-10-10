@@ -8,6 +8,7 @@ import nextstep.utils.Console;
 public class RaceFactory {
 
 	private final InputValidator validator = new InputValidator();
+	private final Message message = new Message();
 
 	public Race buildRace() {
 		LineUp lineUp = buildLineUp();
@@ -36,7 +37,7 @@ public class RaceFactory {
 	private String receiveCarNames() {
 		String input;
 		do {
-			System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+			message.enterCarNam();
 			input = Console.readLine();
 		} while (isInValidCarNameInput(input));
 
@@ -48,7 +49,7 @@ public class RaceFactory {
 			validator.validCarName(input);
 			return false;
 		} catch (IllegalArgumentException exception) {
-			System.out.println(exception.getMessage());
+			message.printErrorCause(exception);
 			return true;
 		}
 	}
@@ -56,7 +57,7 @@ public class RaceFactory {
 	private Integer receiveTryNumber() {
 		String input;
 		do {
-			System.out.println("시도할 회수는 몇회인가요?");
+			message.enterEnterTryNumber();
 			input = Console.readLine();
 		} while (isInValidTryNumberInput(input));
 
@@ -68,7 +69,7 @@ public class RaceFactory {
 			validator.validTryNumber(input);
 			return false;
 		} catch (IllegalArgumentException exception) {
-			System.out.println(exception.getMessage());
+			message.printErrorCause(exception);
 			return true;
 		}
 	}

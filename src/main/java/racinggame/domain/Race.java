@@ -6,16 +6,18 @@ public class Race {
 
 	private final Integer tryNumber;
 
+	private final Message message = new Message();
+
 	public Race(LineUp lineUp, Integer tryNumber) {
 		this.lineUp = lineUp;
 		this.tryNumber = tryNumber;
 	}
 
 	public void drive() {
-		System.out.println("실행 결과");
+		message.startDrive();
 		for (int i = 0; i < tryNumber; i++) {
 			lineUp.drive();
-			System.out.println("\n");
+			message.lineBreak();
 		}
 
 		award(lineUp.getRecord());
@@ -23,6 +25,6 @@ public class Race {
 
 	private void award(Record record) {
 		String winners = record.awardTo();
-		System.out.println("최종 우승자는 "+ winners +" 입니다.");
+		message.printWinner(winners);
 	}
 }
