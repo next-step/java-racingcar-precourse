@@ -37,7 +37,6 @@ class CarTest {
     void 자동차_이동() {
         Car car = new Car("car");
         MoveResult result = car.move(4);
-        assertThat(result.getName()).isEqualTo("car");
-        assertThat(result.getDistance()).isEqualTo(1);
+        assertThat(result).isEqualTo(new MoveResult("car", 1));
     }
 }
