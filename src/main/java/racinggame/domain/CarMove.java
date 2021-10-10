@@ -17,7 +17,9 @@ public class CarMove {
 	}
 
 	public boolean isGo() {
-		return carMove >= MORE_THAN_GO;
+		boolean result = carMove >= MORE_THAN_GO;
+		move();
+		return result;
 	}
 
 	public void move() {
