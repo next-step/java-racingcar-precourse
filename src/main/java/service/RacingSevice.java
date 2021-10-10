@@ -9,6 +9,19 @@ import java.util.List;
 
 public class RacingSevice {
 
+    public void startRacingGame() {
+
+        CarService carService = new CarService();
+        List<Car> carsInfo =  carService.initCar();
+
+        for (Car car : carsInfo) {
+            System.out.println("#####################");
+            System.out.println("carNM ::" + car.getCarNm());
+            System.out.println("carMoveInfo ::" + car.getCarMvInfo());
+        }
+    }
+
+
     public void endRacing(List<Car> carsInfo) {
 
         int maxMv = 0;
@@ -90,10 +103,6 @@ public class RacingSevice {
         return count;
     }
 
-    public void startRacingGame() {
-        CarService carService = new CarService();
-        carService.inputCar();
-    }
 
 
 }
