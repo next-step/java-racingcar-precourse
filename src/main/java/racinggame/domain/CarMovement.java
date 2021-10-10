@@ -3,17 +3,13 @@ package racinggame.domain;
 import java.util.ArrayList;
 
 public class CarMovement {
-    private final ArrayList<MovementStatus> carMovement;
+    private final ArrayList<MovementStatus> carMovements;
 
     public CarMovement() {
-        carMovement = new ArrayList<>();
+        carMovements = new ArrayList<>();
     }
 
     public void addCarMovement(MovementStatus movementStatus) {
-        carMovement.add(movementStatus);
-    }
-
-    public MovementStatus getLastCarMovement() {
-        return carMovement.get(carMovement.size()-1);
+        carMovements.add(movementStatus);
     }
 }

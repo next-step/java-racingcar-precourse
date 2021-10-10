@@ -9,16 +9,21 @@ public class Movement {
 
     private final MovementStatus movementStatus;
 
-    public Movement(int value) {
-        movementStatus = move(value);
+    public Movement() {
+        movementStatus = move();
     }
 
     public MovementStatus getMovementStatus() {
         return movementStatus;
     }
 
-    public MovementStatus move(int value) {
-        if (value >= GO_MIN_VALUE) {
+    public MovementStatus move() {
+        int randomValue = generateRandomValue();
+        return randomValueMovementCheck(randomValue);
+    }
+
+    public MovementStatus randomValueMovementCheck(int randomValue) {
+        if (randomValue >= GO_MIN_VALUE) {
             return MovementStatus.GO;
         }
         return MovementStatus.STOP;
