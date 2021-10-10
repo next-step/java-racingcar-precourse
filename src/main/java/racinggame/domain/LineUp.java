@@ -1,19 +1,25 @@
 package racinggame.domain;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class LineUp {
-	private final List<Car> cars = new ArrayList<>();
+	private final List<Car> cars;
 
-	public LineUp(String carNames) {
-		String[] carNameArray = carNames.split(",");
-		for (String carName : carNameArray) {
-			addCar(carName);
+	public LineUp(List<Car> cars) {
+		this.cars = cars;
+	}
+
+	public void drive() {
+		for (Car car : cars) {
+			car.drive();
 		}
 	}
 
-	private void addCar(String carName) {
-		this.cars.add(new Car(carName));
+	public List<Car> getCars() {
+		System.out.println(cars);
+		ArrayList<Car> newCars = new ArrayList<>(this.cars);
+		System.out.println(newCars);
+
+		return new ArrayList<>(this.cars);
 	}
 }

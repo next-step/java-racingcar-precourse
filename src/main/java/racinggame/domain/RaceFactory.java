@@ -1,5 +1,8 @@
 package racinggame.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import nextstep.utils.Console;
 
 public class RaceFactory {
@@ -15,7 +18,19 @@ public class RaceFactory {
 
 	private LineUp buildLineUp() {
 		String carNames = receiveCarNames();
-		return new LineUp(carNames);
+		List<Car> cars = buildCarList(carNames);
+		return new LineUp(cars);
+	}
+
+	private List<Car> buildCarList(String input) {
+		List<Car> cars = new ArrayList<>();
+		String[] carNames = input.split(",");
+
+		for (String carName : carNames) {
+			cars.add(new Car(carName));
+		}
+
+		return cars;
 	}
 
 	private String receiveCarNames() {
