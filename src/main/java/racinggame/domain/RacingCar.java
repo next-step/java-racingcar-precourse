@@ -24,4 +24,15 @@ public class RacingCar {
     public void stop() {
         this.movesCount += 0;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+        result.append(racingCarName.getRacingCarName());
+        result.append(" : ");
+        for (int i = 0; i < this.movesCount; i++) {
+            result.append("-");
+        }
+        return result.toString();
+    }
 }

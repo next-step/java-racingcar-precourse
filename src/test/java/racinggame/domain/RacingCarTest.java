@@ -27,4 +27,26 @@ public class RacingCarTest {
         assertThat(racingCars.getRacingCars()).isInstanceOf(List.class);
         assertThat(racingCars.getRacingCars().size()).isEqualTo(sizeInput);
     }
+
+    @ParameterizedTest(name = "자동차 경주 결과를 출력한다")
+    @ValueSource(strings = {"pobi,crong,honux"})
+    void 자동차_경주_결과를_출력한다(String racingCarNameInput) {
+        RacingCars racingCars = new RacingCars(getRacingCarList(racingCarNameInput));
+
+        List<RacingCar> racingCarList = racingCars.getRacingCars();
+        /* 1회 */
+        racingCarList.get(0).move();
+        racingCarList.get(1).stop();
+        racingCarList.get(2).stop();
+        /* 2회 */
+        racingCarList.get(0).move();
+        racingCarList.get(1).move();
+        racingCarList.get(2).stop();
+
+        racingCarList.forEach(System.out::println);
+
+        assertThat(racingCarList.get(0).toString()).isEqualTo("pobi : --");
+        assertThat(racingCarList.get(1).toString()).isEqualTo("crong : -");
+        assertThat(racingCarList.get(2).toString()).isEqualTo("honux : ");
+    }
 }
