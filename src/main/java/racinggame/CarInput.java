@@ -1,28 +1,31 @@
 package racinggame;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.NoSuchElementException;
 
 import nextstep.utils.Console;
 
-public class CarNameInput {
-	private static List<String> carNames;
+public class CarInput {
+	private static List<Car> cars = new ArrayList<>();
 	static final String GUIDE_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
 	static final String ERROR_MESSAGE = "[ERROR] 자동차의 이름은 5자 이하입니다. 다시 입력해주세요.";
 	private final String DELIMITER = ",";
 	private final int INPUT_LIMIT = 5;
 
-	private CarNameInput() {
-		carNames = getInput();
+	private CarInput() {
+		cars.clear();
+		for (String carName : getInput())
+			cars.add(new Car(carName));
 	}
 
-	public static CarNameInput init() {
-		return new CarNameInput();
+	public static CarInput init() {
+		return new CarInput();
 	}
 
-	public static List<String> values() {
-		return carNames;
+	public static List<Car> values() {
+		return cars;
 	}
 
 	/**
