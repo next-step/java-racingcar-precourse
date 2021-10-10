@@ -1,3 +1,30 @@
+# 구현할 기능 목록
+1. 게임의 한 턴이 진행되면 전진 혹은 멈추는 자동차를 구현한다.
+2. 게임의 턴을 여러번 진행하는 기능을 구현한다.
+3. 게임의 모든 턴이 끝나고 최종 우승자를 선별하는 기능을 구현한다.
+4. 사용자에게 게임에 참가할 플레이어들의 이름을 입력받는 기능을 구현한다.
+5. 사용자에게 게임의 총 턴수를 입력받는 기능을 구현한다.
+6. 게임의 한 턴이 끝날 때마다 게임의 진행 상황을 Console 창에 표시하는 기능을 구현한다.
+7. 게임이 끝나고 최종 우승자들이 선별되면 Console 창에 표시하는 기능을 구현한다.
+8. 사용자가 플레이어들의 이름을 잘못 입력한 경우 에러 메시지를 표시하고 재입력 받는 기능을 구현한다.
+9. 사용자가 게임의 총 턴수를 잘못 입력한 경우 에러 메시지를 표시하고 재입력 받는 기능을 구현한다.
+
+# 소프트웨어 품질 체크 사항
+
+"소트웍스 앤솔러지"의 소프트웨어 품질 향상 9단계의 기준을 충족한다.
+(참고문서: https://developerfarm.wordpress.com/2012/01/26/object_calisthenics_1/)
+
+1. 한 메서드에 오직 한 단계의 들여쓰기만 한다. (참고문서: https://developerfarm.wordpress.com/2012/01/26/object_calisthenics_2/)
+2. else 예약어(keyword)를 쓰지 않는다. (참고문서: https://developerfarm.wordpress.com/2012/01/27/object_calisthenics_3/)
+3. 모든 원시값과 문자열을 포장(wrap)한다. (참고문서: https://developerfarm.wordpress.com/2012/01/27/object_calisthenics_4/)
+4. 한 줄에 점을 하나만 찍는다. (참고문서: https://developerfarm.wordpress.com/2012/01/30/object_calisthenics_5/)
+5. 줄여쓰지 않는다(축약 금지). (참고문서: https://developerfarm.wordpress.com/2012/01/30/object_calisthenics_6/)
+6. 모든 엔티티(entity)를 작게 유지한다. (참고문서: https://developerfarm.wordpress.com/2012/01/31/object_calisthenics_7/)
+7. 2개 이상의 인스턴스 변수를 가진 클래스를 쓰지 않는다. (참고문서: https://developerfarm.wordpress.com/2012/01/31/object_calisthenics_8/)
+8. 제일 클래스(first-class) 콜렉션을 쓴다. (참고문서: https://developerfarm.wordpress.com/2012/02/01/object_calisthenics_/)
+9. 게터(getter)/세터(setter)/프로퍼티(property)를 쓰지 않는다. (참고문서: https://developerfarm.wordpress.com/2012/02/01/object_calisthenics_10/)
+
+
 # 기능 요구사항
 * 주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다.
 * 각 자동차에 이름을 부여할 수 있다. 전진하는 자동차를 출력할 때 자동차 이름을 같이 출력한다.
