@@ -2,20 +2,20 @@ package racinggame.model;
 
 public class Car {
     private String name;
-    private int location;
+    private CarLocation location;
 
-    public Car(String name, int location){
+    public Car(String name, int integerLocation){
         this.name = name;
-        this.location = location;
+        this.location = new CarLocation(integerLocation);
     }
 
-    public int forward() {
-        this.location++;
+    public CarLocation forward() {
+        this.location.increase();
 
         return this.location;
     }
 
-    public int getLocation() {
+    public CarLocation getLocation() {
         return this.location;
     }
 }

@@ -32,7 +32,7 @@ public class CarMoverTest {
                     .thenReturn(generatedRandomValue);
 
             Assertions.assertThat(this.carMover.moveRandomizly(car)).isEqualTo(RANDOM_MOVE_RESULT.FORWARD);
-            Assertions.assertThat(car.getLocation()).isEqualTo(prevCarLocation + 1);
+            Assertions.assertThat(car.getLocation()).isEqualTo(new CarLocation(prevCarLocation + 1));
         }
     }
 
@@ -48,7 +48,7 @@ public class CarMoverTest {
                     .thenReturn(generatedRandomValue);
 
             Assertions.assertThat(this.carMover.moveRandomizly(car)).isEqualTo(RANDOM_MOVE_RESULT.STAY);
-            Assertions.assertThat(car.getLocation()).isEqualTo(prevCarLocation);
+            Assertions.assertThat(car.getLocation()).isEqualTo(new CarLocation(prevCarLocation));
         }
     }
 }
