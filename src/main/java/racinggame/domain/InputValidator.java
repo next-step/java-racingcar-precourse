@@ -8,6 +8,12 @@ public class InputValidator {
 		checkEmptyCarName(input);
 	}
 
+	public void validTryNumber(String input) {
+		checkEmptyInput(input, "[ERROR] 빈 문자열 입력, 다시 입력해주세요");
+		checkDigitOnly(input);
+		checkGreaterThenOne(input);
+	}
+
 	private void checkEmptyInput(String input, String errorMessage) {
 		if (input.isEmpty()) {
 			throw new IllegalArgumentException(errorMessage);
@@ -31,4 +37,18 @@ public class InputValidator {
 		}
 	}
 
+	private void checkDigitOnly(String input) {
+		try {
+			Integer.parseInt(input);
+		} catch (NumberFormatException exception) {
+			throw new IllegalArgumentException("[ERROR] 문자 입력, 다시 입력해주세요: ");
+		}
+	}
+
+	private void checkGreaterThenOne(String input) {
+		int number = Integer.parseInt(input);
+		if (number < 1) {
+			throw new IllegalArgumentException("[ERROR] 1보다 작은 수 입력, 다시 입력해주세요: ");
+		}
+	}
 }
