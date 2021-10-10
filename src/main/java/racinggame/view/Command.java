@@ -24,7 +24,7 @@ public class Command {
     }
 
     public void printCar(Car car) {
-        System.out.println(car.getCarName()+": "+car.getDistanceStr());
+        System.out.println(car.getCarName()+" : "+car.getDistanceStr());
     }
 
     public void println() {

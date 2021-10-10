@@ -13,9 +13,10 @@ public class Application {
     public static boolean game(Command command) {
         boolean isGameNormal;
         try {
-            Racing racing = Racing.createRacing(command.askCarNames(), command.askAttemptCount());
+            Racing racing = Racing.createRacing(command.askCarNames()/*, command.askAttemptCount()*/);
+            int attemptCount = racing.attemptCountValidation(command.askAttemptCount());
             command.printResultMessage();
-            racing.playRacing(command);
+            racing.playRacing(command, attemptCount);
             command.printWinner(String.join(",", racing.getWinnerStr()));
             isGameNormal = false;
         } catch (IllegalArgumentException e) {

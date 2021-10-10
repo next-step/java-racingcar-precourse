@@ -14,13 +14,10 @@ public class Racing {
     private static final Pattern ATTEMPT_COUNT_PATTERN = Pattern.compile("[+-]?\\d*(\\.\\d+)?");
 
     private final List<Car> cars;
-    private final int attemptCount;
 
-    public Racing(List<Car> cars, String attemptCountStr) {
+    public Racing(List<Car> cars) {
         carsValidation(cars);
-        attemptCountValidation(attemptCountStr);
         this.cars = cars;
-        this.attemptCount = Integer.parseInt(attemptCountStr);
     }
 
     public List<String> getWinnerStr() {
@@ -53,8 +50,8 @@ public class Racing {
         return highScore;
     }
 
-    public void playRacing(Command command) {
-        for(int i=0; i<getAttemptCount(); i++) {
+    public void playRacing(Command command, int attemptCount) {
+        for(int i=0; i<attemptCount; i++) {
             oneTurn();
             printOneTurnResult(command);
         }
@@ -73,13 +70,13 @@ public class Racing {
         command.println();
     }
 
-    public static Racing createRacing(final String carsStr, final String attemptCountStr) {
+    public static Racing createRacing(final String carsStr) {
         final String[] carsStrArr = carsStr.split(",");
         final List<Car> cars = new ArrayList<>();
         for(String carStr : carsStrArr) {
             cars.add(new Car(carStr));
         }
-        return new Racing(cars, attemptCountStr);
+        return new Racing(cars);
     }
 
     private void duplicated(List<Car> cars) {
@@ -93,14 +90,11 @@ public class Racing {
         duplicated(cars);
     }
 
-    private void attemptCountValidation(String attemptCountStr) {
+    public int attemptCountValidation(String attemptCountStr) {
         final Matcher matcher = ATTEMPT_COUNT_PATTERN.matcher(attemptCountStr);
         if(!matcher.matches()) {
             throw new IllegalArgumentException();
         }
-    }
-
-    private int getAttemptCount() {
-        return attemptCount;
+        return Integer.parseInt(attemptCountStr);
     }
 }
