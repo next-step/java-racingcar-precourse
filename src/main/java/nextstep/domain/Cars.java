@@ -8,9 +8,9 @@ public class Cars {
     private static final String DEFAULT_SPLIT = ",";
 
     private final List<Car> cars;
-    private final RandomNumber random;
+    private final Random random;
 
-    public Cars(String names, RandomNumber random) {
+    public Cars(String names, Random random) {
         this.cars = mapCars(names);
         this.random = random;
     }

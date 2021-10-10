@@ -22,4 +22,8 @@ public class RaceResult {
     public int hashCode() {
         return Objects.hash(names);
     }
+
+    public String getNames() {
+        return this.names;
+    }
 }

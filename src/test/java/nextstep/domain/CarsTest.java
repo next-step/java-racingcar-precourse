@@ -1,15 +1,11 @@
 package nextstep.domain;
 
-import nextstep.utils.Randoms;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.MockedStatic;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.Mockito.mockStatic;
 
 class CarsTest {
 
@@ -17,41 +13,29 @@ class CarsTest {
 
     @BeforeEach
     void setUp() {
-        cars = new Cars("pobi,crong,honux", new RandomNumber());
+        cars = new Cars("pobi,crong,honux", new FakeRandom());
     }
 
     @Test
     void 자동차_이동() {
-        try (final MockedStatic<Randoms> mockRandoms = mockStatic(Randoms.class)) {
-            mockRandoms.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
-                    .thenReturn(4, 3, 4);
             List<MoveResult> results = cars.move();
             assertThat(results).contains(
                     new MoveResult("pobi", 1),
                     new MoveResult("crong", 0),
                     new MoveResult("honux", 1));
-        }
     }
 
     @Test
     void 최대_이동거리() {
-        try (final MockedStatic<Randoms> mockRandoms = mockStatic(Randoms.class)) {
-            mockRandoms.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
-                    .thenReturn(4, 3, 4);
-            cars.move();
-            int max = cars.maxDistance();
-            assertThat(max).isEqualTo(1);
-        }
+        cars.move();
+        int max = cars.maxDistance();
+        assertThat(max).isEqualTo(1);
     }
 
     @Test
     void 우승자_이름들() {
-        try (final MockedStatic<Randoms> mockRandoms = mockStatic(Randoms.class)) {
-            mockRandoms.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
-                    .thenReturn(4, 3, 4);
-            cars.move();
-            String winners = cars.getWinners();
-            assertThat(winners).isEqualTo("pobi,honux");
-        }
+        cars.move();
+        String winners = cars.getWinners();
+        assertThat(winners).isEqualTo("pobi,honux");
     }
 }
