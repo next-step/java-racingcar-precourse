@@ -2,11 +2,25 @@ package service;
 
 import DTO.Car;
 import custom.utils.ValidationUtils;
+import nextstep.utils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CarService {
+
+   public String inputCar(){
+       System.out.println("경주할 자동차의 이름을 입력하세요.(이름은 쉼표(,)기준으로 구분");
+       String inputTxt = Console.readLine();
+       inputTxt = ValidationUtils.rmAllSpace(inputTxt);
+       if("".equals(inputTxt)){
+           System.out.println("[ERROR] 입력값이 옳바르지 않습니다. 다시입력해주세요");
+           this.inputCar();
+           return "";
+
+       }
+       return inputTxt;
+   }
 
    public List<Car> createCar(String inputText) throws Exception {
 

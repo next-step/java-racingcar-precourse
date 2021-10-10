@@ -17,6 +17,14 @@ public class ApplicationTest extends NSTest {
     }
 
     @Test
+    void 입력값_확인처리() {
+        assertSimpleTest(() -> {
+            runNoLineFound("  ");
+            verify(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
     void 전진_정지() {
         assertRandomTest(() -> {
             run("pobi,woni", "1");

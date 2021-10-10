@@ -1,10 +1,14 @@
 package racinggame;
 
 import custom.utils.ValidationUtils;
+import service.RacingSevice;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO 자동차 경주 게임 구현
+
+        System.out.println("[SYSTEM MESSAGE] RACING GAME START");
+        RacingSevice racingSevice = new RacingSevice();
+        racingSevice.startRacingGame();
 
     }
 }
