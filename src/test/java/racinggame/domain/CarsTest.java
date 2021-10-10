@@ -19,22 +19,14 @@ class CarsTest {
 	@Test
 	void 자동차_이름_중복_시_IllegalArgumentException() {
 		assertThrows(IllegalArgumentException.class, () -> {
-			Cars cars = new Cars();
-			Car firstOne = new Car(new CarName("one"));
-			cars.addCar(firstOne);
-			Car secondOne = new Car(new CarName("one"));
-			cars.addCar(secondOne);
+			addCarWithSameName();
 		});
 	}
 
 	@Test
 	void 자동차_이름_중복_시_SAME_CAR_NAME을_메시지로_반환하는지() {
 		try {
-			Cars cars = new Cars();
-			Car firstOne = new Car(new CarName("one"));
-			cars.addCar(firstOne);
-			Car secondOne = new Car(new CarName("one"));
-			cars.addCar(secondOne);
+			addCarWithSameName();
 		} catch (IllegalArgumentException e) {
 			assertEquals(ErrorMessage.SAME_CAR_NAME, ErrorMessage.valueOf(e.getMessage()));
 		}
@@ -48,11 +40,23 @@ class CarsTest {
 
 	@Test
 	void 자동차_그룹에_차를_n대_추가하면_자동차의_대수는_n() {
-		Cars cars = new Cars();
 		int n = Randoms.pickNumberInRange(0, 100);
+		assertEquals(n, addRandomNumberOfCars(n).getQuantity());
+	}
+
+	private void addCarWithSameName() {
+		Cars cars = new Cars();
+		Car firstOne = new Car(new CarName("one"));
+		cars.addCar(firstOne);
+		Car secondOne = new Car(new CarName("one"));
+		cars.addCar(secondOne);
+	}
+
+	private Cars addRandomNumberOfCars(int n) {
+		Cars cars = new Cars();
 		for (int i = 0; i < n; i++) {
 			cars.addCar(new Car(new CarName("자동차" + i)));
 		}
-		assertEquals(n, cars.getQuantity());
+		return cars;
 	}
 }
