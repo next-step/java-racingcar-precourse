@@ -7,6 +7,8 @@ import java.util.regex.Pattern;
 
 public class RacingGameUtils {
 
+    private static final String ERROR_MESSAGE = "[ERROR]";
+
     /**
      *
      * @param str
@@ -15,7 +17,7 @@ public class RacingGameUtils {
     public static boolean isNumeric(String str) {
         boolean result = Pattern.matches("^[0-9]*$", str);
         if (!result){
-            System.out.println("[ERROR]");
+            System.out.println(ERROR_MESSAGE);
             return false;
         }
         return true;
@@ -48,7 +50,7 @@ public class RacingGameUtils {
         boolean result = Pattern.matches("^[a-zA-Z0-9,-]*$", carsInput);
 
         if (!result){
-            System.out.println("[ERROR]");
+            System.out.println(ERROR_MESSAGE);
             return false;
         }
 
@@ -58,7 +60,7 @@ public class RacingGameUtils {
         result = isValidCarNameLength(carList);
 
         if (!result){
-            System.out.println("[ERROR]");
+            System.out.println(ERROR_MESSAGE);
             return false;
         }
 

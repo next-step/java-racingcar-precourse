@@ -6,19 +6,19 @@ public class Car {
 
     private String name;
 
-    private int currentStep;
+    private StepCount step;
 
     public Car(String name){
         this.name = name;
-        this.currentStep = 0;
+        this.step = new StepCount();
     }
 
     public String  getName(){
         return name;
     }
 
-    public int getCurrentStep(){
-        return currentStep;
+    public StepCount getStep(){
+        return step;
     }
 
     /**
@@ -27,13 +27,13 @@ public class Car {
     public void moveStep(){
         if (Randoms.pickNumberInRange(0,9) >= 4){
 //            System.out.println("this.currentStep += 1");
-            this.currentStep += 1;
+            this.step.addStep();
         }
     }
 
     public void printCurrentStep(){
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < currentStep; i++){
+        for (int i = 0; i < step.getValue(); i++){
             sb.append("-");
         }
         System.out.println(name + " : " + sb);

@@ -7,28 +7,28 @@ public class RacingGame {
 
     private final CarList carList;
     private final CarList winners;
-    private final int count;          // 회차,
-    private int maxStep;              // 현재 선두의 Step
+    private final RoundCount round;   // 회차,
+    private StepCount headStep;       // 현재 선두의 Step
 
 
     // Ex, pobi,crong,honux
-    public RacingGame(String cars, int count){
+    public RacingGame(String cars, int round){
         this.carList = new CarList(cars);
         this.winners = new CarList();
-        this.count = count;
-        this.maxStep = 0;
+        this.round = new RoundCount(round);
+        this.headStep = new StepCount();
     }
 
-    public int getMaxStep(){
+    public StepCount getHeadStep(){
         for (Car car : carList.getCarList()){
-            this.maxStep = Math.max(this.maxStep, car.getCurrentStep());
+            this.headStep.setValue(Math.max(this.headStep.getValue(), car.getStep().getValue()));
         }
-        return this.maxStep;
+        return this.headStep;
     }
 
     private void checkWinner(Car car){
-        this.maxStep = this.getMaxStep();
-        if (car.getCurrentStep() == this.maxStep){
+        this.headStep = this.getHeadStep();
+        if (this.headStep.equals(car.getStep())){
             this.winners.addCar(car);
         }
     }
@@ -54,7 +54,7 @@ public class RacingGame {
     }
 
     public void play(){
-        for (int i = 0;i < count; i++){
+        for (int i = 0; i < round.getValue(); i++){
             this.move();
         }
         this.endGame();
