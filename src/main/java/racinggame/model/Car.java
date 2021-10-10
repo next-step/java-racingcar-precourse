@@ -14,4 +14,8 @@ public class Car {
 
         return this.location;
     }
+
+    public int getLocation() {
+        return this.location;
+    }
 }
