@@ -28,13 +28,13 @@ public class CarName {
 
     public static void validateNullOrEmptyName(String name) {
         if ("".equals(name) || name == null) {
-            throw new NoSuchElementException(ErrorCode.NAME_NOT_BLANK.getMessage());
+            throw new IllegalStateException(ErrorCode.NAME_NOT_BLANK.getMessage());
         }
     }
 
     public static void validateExceededName(String name) {
         if (name.length() > 5) {
-            throw new NoSuchElementException(ErrorCode.NAME_EXCEEDED.getMessage());
+            throw new IllegalStateException(ErrorCode.NAME_EXCEEDED.getMessage());
         }
     }
 }

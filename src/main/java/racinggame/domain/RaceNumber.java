@@ -24,7 +24,7 @@ public class RaceNumber {
 
     public void validateNumber(String value) {
         if (!isNumber.matcher(value).matches()) {
-            throw new IllegalArgumentException(ErrorCode.IS_NOT_NUMBER.getMessage());
+            throw new IllegalStateException(ErrorCode.IS_NOT_NUMBER.getMessage());
         }
     }
 

@@ -32,9 +32,10 @@ public class RaceService {
         player.inputCarsName(InputCarsName.of(Console.readLine()));
     }
 
-    public void inputRaceNumber(Player player) {
+    public RaceNumber inputRaceNumber(Player player) {
         System.out.println(MessageType.INPUT_RACE_NUMBER.getMessage());
         player.inputRaceNumber(RaceNumber.of(Console.readLine()));
+        return player.getRaceNumber();
     }
 
     public String retrieveWinnerWithMaxValue(List<Car> carsList, int max) {

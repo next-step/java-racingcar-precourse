@@ -7,7 +7,6 @@ import racinggame.service.RaceService;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.NoSuchElementException;
 
 public class RacingGameController {
 
@@ -27,24 +26,21 @@ public class RacingGameController {
 
     private RaceNumber InputRaceNumber(Player player) {
         try {
-            raceService.inputRaceNumber(player);
-        } catch (IllegalArgumentException e) {
+            return raceService.inputRaceNumber(player);
+        } catch (IllegalStateException e) {
             printErrorMessage(e.getMessage());
             return InputRaceNumber(player);
         }
-        return player.getRaceNumber();
     }
 
     private Cars InputNameAndCreateRacingCar(Player player) {
-        Cars cars = null;
         try {
             raceService.inputCarsName(player);
-            cars = createRacingCar(player.getInputCarsName());
-        } catch (NoSuchElementException e) {
+            return createRacingCar(player.getInputCarsName());
+        } catch (IllegalStateException e) {
             printErrorMessage(e.getMessage());
-            InputNameAndCreateRacingCar(player);
+            return InputNameAndCreateRacingCar(player);
         }
-        return cars;
     }
 
 
