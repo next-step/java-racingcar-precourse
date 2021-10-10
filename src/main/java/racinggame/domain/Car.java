@@ -18,6 +18,24 @@ public class Car {
         }
     }
 
+    public void goAndStop(int randomNum) {
+        if(randomNum >= 4) {
+            this.distance += 1;
+        }
+    }
+
+    public String getCarName() {
+        return carName;
+    }
+
+    public String getDistanceStr() {
+        String distanceStr = "";
+        for(int i=0; i<this.distance; i++) {
+            distanceStr += "-";
+        }
+        return distanceStr;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

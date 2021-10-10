@@ -1,5 +1,8 @@
 package racinggame.domain;
 
+import nextstep.utils.Randoms;
+import racinggame.view.Command;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -18,6 +21,19 @@ public class Racing {
         attemptCountValidation(attemptCountStr);
         this.cars = cars;
         this.attemptCount = Integer.parseInt(attemptCountStr);
+    }
+
+    public void oneTurn() {
+        for(Car car : this.cars) {
+            car.goAndStop(Randoms.pickNumberInRange(0, 9));
+        }
+    }
+
+    public void printOneTurnResult(Command command) {
+        for(Car car : this.cars) {
+            command.printCar(car);
+        }
+        command.println();
     }
 
     public static Racing createRacing(final String carsStr, final String attemptCountStr) {
@@ -47,4 +63,7 @@ public class Racing {
         }
     }
 
+    public int getAttemptCount() {
+        return attemptCount;
+    }
 }

@@ -1,6 +1,7 @@
 package racinggame.view;
 
 import nextstep.utils.Console;
+import racinggame.domain.Car;
 
 public class Command {
 
@@ -14,11 +15,19 @@ public class Command {
         return Console.readLine();
     }
 
-    public void printHeaderMessage() {
+    public void printResultMessage() {
         System.out.println("실행 결과");
     }
 
     public void printError() {
         System.out.println("[ERROR]");
+    }
+
+    public void printCar(Car car) {
+        System.out.println(car.getCarName()+": "+car.getDistanceStr());
+    }
+
+    public void println() {
+        System.out.println();
     }
 }
