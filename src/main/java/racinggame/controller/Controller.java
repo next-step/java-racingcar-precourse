@@ -18,11 +18,16 @@ public class Controller {
 		RacingGame racingGame = new RacingGame(cars, tryCount);
 
 		OutputView.printResult();
+
+		racingByTryCount(racingGame);
+
+		OutputView.printWinnerCars(racingGame.findWinnerCars());
+	}
+
+	private void racingByTryCount(RacingGame racingGame) {
 		while (racingGame.isNotFinish()) {
 			OutputView.printResultByRound(racingGame.racing());
 		}
-
-		OutputView.printWinnerCars(racingGame.findWinnerCars());
 	}
 
 	private String inputRaceTryCount() {

@@ -70,6 +70,6 @@
 - [x] , 구분자 테스트코드 리팩토링 진행
 - [x] validaiton 공통부분 추출 리팩토링 진행
 - [x] null, empty 예외 관련 동시 처리 리팩토링 진행
-- [] controller method 분리 및 검증 진행
+- [x] controller method 분리 및 검증 진행
 - [] 전체적인 코드에 대한 코딩 컨벤션 확인 및 수정 진행
 
