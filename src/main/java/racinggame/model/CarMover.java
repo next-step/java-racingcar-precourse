@@ -2,11 +2,12 @@ package racinggame.model;
 
 import nextstep.utils.Randoms;
 import racinggame.enums.RANDOM_MOVE_RESULT;
+import racinggame.environments.GlobalVariables;
 
 public class CarMover {
     public RANDOM_MOVE_RESULT moveRandomizly(Car car) {
         RANDOM_MOVE_RESULT genRandomMove =
-                Randoms.pickNumberInRange(0, 9) <= 3 ?
+                Randoms.pickNumberInRange(GlobalVariables.MIN_RAMDOM_VALUE, GlobalVariables.MAX_RANDOM_VALUE) <= GlobalVariables.MAX_STAY_VALUE ?
                         RANDOM_MOVE_RESULT.STAY : RANDOM_MOVE_RESULT.FORWARD;
 
         if (genRandomMove == RANDOM_MOVE_RESULT.FORWARD) {
