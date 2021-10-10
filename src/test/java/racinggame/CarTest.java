@@ -14,7 +14,15 @@ public class CarTest {
 
 	@BeforeEach
 	void setUp() {
-		car = new Car();
+		car = new Car("test");
+	}
+
+	@Test
+	void 생성자_이름입력() {
+		String name = "test";
+		Car car = new Car(name);
+		assertThat(car.getName()).isEqualTo(name);
+		assertThat(car.getDistance()).isEqualTo(0);
 	}
 
 	@Test
@@ -53,13 +61,6 @@ public class CarTest {
 			.hasMessage(ErrorMessage.ERROR_CAR_INPUT_NAME);
 	}
 
-	@Test
-	void 생성자_이름입력() {
-		String name = "test";
-		Car car = new Car(name);
-		assertThat(car.getName()).isEqualTo(name);
-		assertThat(car.getDistance()).isEqualTo(0);
-	}
 
 	@Test
 	void 생성자_이름입력_에러() {
@@ -85,11 +86,12 @@ public class CarTest {
 
 	@Test
 	void 문자열_변환() {
-		car = new Car("test");
+		String name = "test";
+		car = new Car(name);
 		car.go();
 		car.go();
 		car.go();
-		assertThat(car.toString()).contains("test:---");
+		assertThat(car.toString()).contains(name+":---");
 	}
 
 }

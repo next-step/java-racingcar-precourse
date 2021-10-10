@@ -15,10 +15,6 @@ public class Car {
 		setName(name);
 	}
 
-	public Car() {
-
-	}
-
 	public void setName(String name) {
 		if (!validName(name)) {
 			throw new IllegalArgumentException(ErrorMessage.ERROR_CAR_INPUT_NAME);
