@@ -14,6 +14,10 @@ public class Name {
 		this.value = value;
 	}
 
+	public String getValue() {
+		return value;
+	}
+
 	private void checkValueLength(String value) {
 		if (value.length() > MAX_OF_LENGTH) {
 			throw new OverNameLengthException();
@@ -33,5 +37,12 @@ public class Name {
 	@Override
 	public int hashCode() {
 		return Objects.hash(value);
+	}
+
+	@Override
+	public String toString() {
+		return "Name{" +
+			"value='" + value + '\'' +
+			'}';
 	}
 }

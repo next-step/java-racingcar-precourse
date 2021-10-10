@@ -29,6 +29,14 @@ public class Car {
 		return new Car(name, position.obtainNewCopied());
 	}
 
+	public Name getName() {
+		return name;
+	}
+
+	public Position getPosition() {
+		return position;
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) {
