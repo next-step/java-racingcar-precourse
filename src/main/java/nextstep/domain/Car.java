@@ -38,15 +38,17 @@ public class Car {
         return this.name;
     }
 
-    public int getDistance() {
+    public int getMaxDistance(int distance) {
+        if (distance <= this.distance) {
+            return this.distance;
+        }
         return distance;
     }
 
-    public boolean isEqual(int distance) {
-        return this.distance == distance;
-    }
-
-    public boolean isGreaterThanEqual(int distance) {
-        return this.distance >= distance;
+    public StringBuilder appendName(StringBuilder sb, int maxDistance) {
+        if (distance ==maxDistance) {
+            return sb.append(name).append(",");
+        }
+        return sb;
     }
 }

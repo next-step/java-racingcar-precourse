@@ -34,7 +34,21 @@ public class Cars {
         return results;
     }
 
-    public List<Car> getCars() {
-        return this.cars;
+    public int maxDistance() {
+        int max = 0;
+        for (Car car : cars) {
+            max = car.getMaxDistance(max);
+        }
+        return max;
+    }
+
+    public String getWinners() {
+        int maxDistance = maxDistance();
+        StringBuilder sb = new StringBuilder();
+        for (Car car : cars) {
+            sb = car.appendName(sb, maxDistance);
+        }
+        sb.deleteCharAt(sb.length() - 1);
+        return sb.toString();
     }
 }
