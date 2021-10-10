@@ -45,6 +45,10 @@ public class RacingCar {
 		return new Position(Math.max(position.getPosition(), input.getPosition()));
 	}
 
+	public String getName() {
+		return carName.toString();
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o)
