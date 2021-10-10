@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import nextstep.constants.CommonConstants;
+
 public class RacingCars {
 
 	private final List<RacingCar> racingCars;
@@ -30,6 +32,17 @@ public class RacingCars {
 		}
 
 		return new RacingCars(movedCars);
+	}
+
+	@Override
+	public String toString() {
+		final StringBuilder builder = new StringBuilder();
+
+		for (RacingCar racingCar : racingCars) {
+			builder.append(racingCar.toString()).append(CommonConstants.NEWLINE);
+		}
+
+		return builder.toString();
 	}
 
 	@Override

@@ -66,7 +66,7 @@ public class RacingCarTest {
 
 	@DisplayName("자동차의 이름과 위치를 출력한다.")
 	@Test
-	void print() {
+	void toString_test() {
 		// given
 		final RacingCar racingCar = new RacingCar("hello", 5, RandomMovingStrategy.getInstance());
 

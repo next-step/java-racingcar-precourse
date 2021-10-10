@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import nextstep.constants.CommonConstants;
 import nextstep.generator.SpecificNumberGenerator;
 import nextstep.move.SpecificMovingStrategy;
 
@@ -59,6 +60,19 @@ public class RacingCarsTest {
 				new SpecificMovingStrategy(new SpecificNumberGenerator(honuxGenerate))),
 			new RacingCar("crong", crongPosition + 1,
 				new SpecificMovingStrategy(new SpecificNumberGenerator(crongGenerate))))));
+	}
+
+	@DisplayName("자동차들의 위치 및 이름을 반환한다.")
+	@Test
+	void toString_test() {
+		// given
+		final RacingCars racingCars = new RacingCars(Arrays.asList(pobi, honux, crong));
+
+		// when then
+		assertEquals(racingCars.toString(),
+			"pobi : -" + CommonConstants.NEWLINE
+				+ "honux : --" + CommonConstants.NEWLINE
+				+ "crong : ---" + CommonConstants.NEWLINE);
 	}
 
 }

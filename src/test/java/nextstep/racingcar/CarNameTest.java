@@ -37,7 +37,7 @@ class CarNameTest {
 
 	@DisplayName("자동차의 이름을 출력한다.")
 	@Test
-	void print() {
+	void toString_test() {
 		// given
 		final String name = "hello";
 		final CarName carName = new CarName(name);
