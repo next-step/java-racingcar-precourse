@@ -45,9 +45,18 @@ public class RacingGameUtils {
 
     public static void isValidOnlyNumber(String readLine) {
         for (char ch : readLine.toCharArray()) {
-            if (!Character.isDigit(ch)) {
-                throw new IllegalArgumentException(ERROR_MESSAGE);
-            }
+            isDigit(ch);
         }
+    }
+
+    private static void isDigit(char ch) {
+        if (!Character.isDigit(ch)) {
+            throw new IllegalArgumentException(ERROR_MESSAGE);
+        }
+    }
+
+    public static void isValidTryCount(String readLine) {
+        isValidOnlyNumber(readLine);
+        isValidTryCountGreaterThanZero(Integer.parseInt(readLine));
     }
 }

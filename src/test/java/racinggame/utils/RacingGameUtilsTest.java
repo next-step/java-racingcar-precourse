@@ -4,6 +4,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static racinggame.utils.RacingGameUtils.*;
@@ -75,8 +76,8 @@ public class RacingGameUtilsTest {
                 .withMessage(ERROR_MESSAGE);
     }
 
-    @ParameterizedTest(name = "[{0}] 입력값은 숫자만 유효하다")
-    @ValueSource(strings = {"a", "B", "%", "한글"})
+    @ParameterizedTest(name = "[{0}] 경주의 시도할 횟수 입력값은 숫자만 유효하다")
+    @ValueSource(strings = {"a", "B", "%", "한글", "10.5"})
     void 입력값은_숫자만_유효하다(String readLine) {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> {
@@ -85,4 +86,9 @@ public class RacingGameUtilsTest {
                 .withMessage(ERROR_MESSAGE);
     }
 
+    @ParameterizedTest(name = "[{0}] 경주의 시도할 횟수 입력값은 0보다 큰 숫자만 유효하다")
+    @ValueSource(strings = {"1", "5", "10", "100"})
+    void 입력값은_0_보다_큰_숫자만_유효하다(String readLine) {
+        assertThatCode(() -> isValidTryCount(readLine)).doesNotThrowAnyException();
+    }
 }
