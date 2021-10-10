@@ -52,10 +52,9 @@ public class RaceServiceTest {
         cars.getCars().get(0).move();
         cars.getCars().get(0).move();
         //when
-        List<String> winners = raceService.getWinner(cars);
+        final String winner = raceService.getWinner(cars);
         //then
-        assertThat(winners.size()).isEqualTo(1);
-        assertThat(winners.get(0)).isEqualTo("1번차");
+        assertThat(winner).isEqualTo("1번차");
     }
 
 }

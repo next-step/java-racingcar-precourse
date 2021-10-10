@@ -2,6 +2,8 @@ package racinggame.domain;
 
 import racinggame.message.ErrorCode;
 
+import java.util.NoSuchElementException;
+
 public class CarName {
 
     private final String name;
@@ -26,13 +28,13 @@ public class CarName {
 
     public static void validateNullOrEmptyName(String name) {
         if ("".equals(name) || name == null) {
-            throw new IllegalArgumentException(ErrorCode.NAME_NOT_BLANK.getMessage());
+            throw new NoSuchElementException(ErrorCode.NAME_NOT_BLANK.getMessage());
         }
     }
 
     public static void validateExceededName(String name) {
         if (name.length() > 5) {
-            throw new IllegalArgumentException(ErrorCode.NAME_EXCEEDED.getMessage());
+            throw new NoSuchElementException(ErrorCode.NAME_EXCEEDED.getMessage());
         }
     }
 }

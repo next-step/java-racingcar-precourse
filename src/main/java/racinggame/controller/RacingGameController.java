@@ -20,24 +20,21 @@ public class RacingGameController {
     }
 
     public void gameStart() {
-        final Player player = setUp();
-        final Cars cars = createRacingCar(player);
-        moveAndStop(player, cars);
-        AnswerCheck(cars);
-    }
-
-    public Player setUp() {
         final Player player = new Player();
         raceService.inputCarsName(player);
+        final Cars cars = createRacingCar(player);
         raceService.inputRaceNumber(player);
-        return player;
+        moveAndStop(player, cars);
+        findWinner(cars);
     }
 
+
     public void moveAndStop(Player player, Cars cars) {
-        System.out.println(MessageType.RACING_RESULT);
-        for (int i = Number.MIN_VALUE.getValue(); i <= player.getRaceNumber().getValue(); i++) {
+        System.out.println(MessageType.RACING_RESULT.getMessage());
+        for (int i = Number.MIN_VALUE.getValue(); i < player.getRaceNumber().getValue(); i++) {
             cars.racing();
             cars.printResult();
+            System.out.println();
         }
 
     }
@@ -51,7 +48,9 @@ public class RacingGameController {
         return Cars.of(carList);
     }
 
-    public void AnswerCheck(Cars cars) {
+    public void findWinner(Cars cars) {
+        final String winner = raceService.getWinner(cars);
+        raceService.printWinner(winner);
 
     }
 }

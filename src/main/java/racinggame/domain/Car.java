@@ -1,6 +1,5 @@
 package racinggame.domain;
 
-import com.sun.xml.internal.ws.util.StringUtils;
 import nextstep.utils.Randoms;
 import racinggame.message.Number;
 
@@ -39,7 +38,7 @@ public class Car {
 
     public void printResult() {
         final String result = makeRacingChart(carPosition.getValue());
-        System.out.println(carName.getName() + ":" + result);
+        System.out.println(carName.getName() + " : " + result);
     }
 
     private String makeRacingChart(int value) {

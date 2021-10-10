@@ -15,4 +15,5 @@ public class InputCarsName {
     public static InputCarsName of(String name) {
         return new InputCarsName(name);
     }
+
 }

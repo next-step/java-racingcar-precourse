@@ -21,30 +21,30 @@ public class RaceService {
         return Cars.of(carList);
     }
 
-    public List<String> getWinner(Cars cars) {
+    public String getWinner(Cars cars) {
         final int max = getMaxPosition(cars.getCars());
         return retrieveWinnerWithMaxValue(cars.getCars(), max);
     }
 
 
     public void inputCarsName(Player player) {
-        System.out.println(MessageType.INPUT_CAR_NAME);
+        System.out.println(MessageType.INPUT_CAR_NAME.getMessage());
         player.inputCarsName(InputCarsName.of(Console.readLine()));
     }
 
     public void inputRaceNumber(Player player) {
-        System.out.println(MessageType.INPUT_RACE_NUMBER);
+        System.out.println(MessageType.INPUT_RACE_NUMBER.getMessage());
         player.inputRaceNumber(RaceNumber.of(Console.readLine()));
     }
 
-    private List<String> retrieveWinnerWithMaxValue(List<Car> carsList, int max) {
+    public String retrieveWinnerWithMaxValue(List<Car> carsList, int max) {
         List<String> winners = new ArrayList<>();
         for (Car car : carsList) {
             if (car.getCarPosition().getValue() == max) {
                 winners.add(car.getCarName().getName());
             }
         }
-        return winners;
+        return winners.toString();
     }
 
     private int getMaxPosition(List<Car> carsList) {
@@ -58,4 +58,9 @@ public class RaceService {
     }
 
 
+    public void printWinner(String winner) {
+        final String winners = winner.substring(1, winner.length() - 1);
+        System.out.println(MessageType.RACING_WINNER_START.getMessage() + winners + MessageType.RACING_WINNER_END.getMessage());
+
+    }
 }
