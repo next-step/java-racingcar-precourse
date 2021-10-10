@@ -1,7 +1,10 @@
 package nextstep.move;
 
 public enum MoveStatus {
-
 	MOVE,
-	STOP
+	STOP;
+
+	public static boolean isMove(MoveStatus move) {
+		return MoveStatus.MOVE == move;
+	}
 }

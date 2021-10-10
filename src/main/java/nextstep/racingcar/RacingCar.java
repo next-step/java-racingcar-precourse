@@ -30,7 +30,7 @@ public class RacingCar {
 	}
 
 	public RacingCar move() {
-		if (movingStrategy.move() == MoveStatus.MOVE) {
+		if (MoveStatus.isMove(movingStrategy.move())) {
 			return new RacingCar(carName, position.move(), movingStrategy);
 		}
 
