@@ -32,6 +32,30 @@ public class ApplicationTest extends NSTest {
         });
     }
 
+    @Test
+    void 다중라운드() {
+        assertRandomTest(() -> {
+            run("pobi,woni", "5");
+            verify("pobi : ----", "woni : --", "최종 우승자는 pobi 입니다.");
+        }, MOVING_FORWARD, STOP
+                , STOP, STOP
+                , MOVING_FORWARD, MOVING_FORWARD
+                , MOVING_FORWARD, MOVING_FORWARD
+                , MOVING_FORWARD, STOP);
+    }
+
+    @Test
+    void 다중우승자() {
+        assertRandomTest(() -> {
+                    run("pobi,woni,seok", "5");
+                    verify("pobi : ----", "woni : --", "seok : --","최종 우승자는 pobi,woni 입니다.");
+                }, MOVING_FORWARD, MOVING_FORWARD, STOP
+                , MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD
+                , MOVING_FORWARD, MOVING_FORWARD, STOP
+                , MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD
+                , MOVING_FORWARD, MOVING_FORWARD, STOP);
+    }
+
     @AfterEach
     void tearDown() {
         outputStandard();
