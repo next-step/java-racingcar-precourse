@@ -5,8 +5,8 @@ import static org.assertj.core.api.AssertionsForClassTypes.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import racinggame.domain.boxing.CarName;
-import racinggame.domain.boxing.MoveStrategy;
+import racinggame.domain.boxing.CarName;import racinggame.domain.strategy.MoveTestStayStrategy;
+import racinggame.domain.strategy.Strategy;
 import racinggame.error.CarNameLengthException;
 import racinggame.error.EmptyCarException;
 import racinggame.error.ErrorMessage;
@@ -33,6 +33,25 @@ public class CarTest {
 	@Test
 	void carGenerateTest() {
 		CarName carName = new CarName("자동차");
-		assertThat(new Car(carName, (new MoveStrategy()))).isNotNull();
+		assertThat(new Car(carName, (new Strategy() {
+			@Override
+			public boolean isMovable() {
+				return true;
+			}
+		}))).isNotNull();
 	}
+
+	@DisplayName("자동차 이동 Test - 전진")
+	@Test
+	void carMoveTestMove() {
+		CarName carName = new CarName("자동차");
+		Car car = new Car(carName, new MoveTestStayStrategy());
+		int prePosition = car.getPosition();
+		car.move();
+		int postPosition = car.getPosition();
+
+		assertThat( ())
+
+	}
+
 }
