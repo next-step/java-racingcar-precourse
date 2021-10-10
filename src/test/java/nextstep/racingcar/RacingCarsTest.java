@@ -8,16 +8,18 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import nextstep.move.RandomMovingStrategy;
+
 public class RacingCarsTest {
 
 	private RacingCars racingCars;
 
 	@BeforeEach
 	void setUp() {
-		final RacingCar pobi = new RacingCar("pobi", 1);
-		final RacingCar honux = new RacingCar("honux", 2);
-		final RacingCar crong = new RacingCar("crong", 3);
-		final RacingCar sjlee = new RacingCar("sjlee", 3);
+		final RacingCar pobi = new RacingCar("pobi", 1, RandomMovingStrategy.getInstance());
+		final RacingCar honux = new RacingCar("honux", 2, RandomMovingStrategy.getInstance());
+		final RacingCar crong = new RacingCar("crong", 3, RandomMovingStrategy.getInstance());
+		final RacingCar sjlee = new RacingCar("sjlee", 3, RandomMovingStrategy.getInstance());
 
 		racingCars = new RacingCars(Arrays.asList(pobi, honux, crong, sjlee));
 	}

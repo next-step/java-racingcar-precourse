@@ -2,32 +2,38 @@ package nextstep.racingcar;
 
 import java.util.Objects;
 
+import nextstep.move.MoveStatus;
+import nextstep.move.MovingStrategy;
+
 public class RacingCar {
 
-	private static final int MIN_REQUIREMENT_FOR_MOVEMENT = 4;
 	private static final String DELIMITER = " : ";
 
 	private final CarName carName;
 	private final Position position;
+	private final MovingStrategy movingStrategy;
 
-	public RacingCar(String name) {
-		this(name, 0);
+	public RacingCar(String name, MovingStrategy movingStrategy) {
+		this(name, 0, movingStrategy);
 	}
 
-	public RacingCar(String name, int position) {
+	public RacingCar(String name, int position, MovingStrategy movingStrategy) {
 		this.carName = new CarName(name);
 		this.position = new Position(position);
+		this.movingStrategy = movingStrategy;
 	}
 
-	public RacingCar(CarName carName, Position position) {
+	public RacingCar(CarName carName, Position position, MovingStrategy movingStrategy) {
 		this.carName = carName;
 		this.position = position;
+		this.movingStrategy = movingStrategy;
 	}
 
-	public RacingCar move(int input) {
-		if (input >= MIN_REQUIREMENT_FOR_MOVEMENT) {
-			return new RacingCar(carName, position.move());
+	public RacingCar move() {
+		if (movingStrategy.move() == MoveStatus.MOVE) {
+			return new RacingCar(carName, position.move(), movingStrategy);
 		}
+
 		return this;
 	}
 

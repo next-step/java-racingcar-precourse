@@ -12,6 +12,9 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import nextstep.exception.InvalidCarNameException;
 import nextstep.exception.InvalidPositionException;
+import nextstep.generator.SpecificNumberGenerator;
+import nextstep.move.RandomMovingStrategy;
+import nextstep.move.SpecificMovingStrategy;
 
 public class RacingCarTest {
 
@@ -21,7 +24,7 @@ public class RacingCarTest {
 		// given:none
 
 		// when then
-		assertDoesNotThrow(() -> new RacingCar("hello", 0));
+		assertDoesNotThrow(() -> new RacingCar("hello", 0, RandomMovingStrategy.getInstance()));
 	}
 
 	@DisplayName("자동차를 생성한다. (자동차 이름이 오류인 경우)")
@@ -31,7 +34,7 @@ public class RacingCarTest {
 		// given: none
 
 		// when then
-		assertThatThrownBy(() -> new RacingCar(name))
+		assertThatThrownBy(() -> new RacingCar(name, RandomMovingStrategy.getInstance()))
 			.isInstanceOf(InvalidCarNameException.class)
 			.hasMessageContaining(InvalidCarNameException.INVALID_CAR_NAME);
 	}
@@ -42,7 +45,7 @@ public class RacingCarTest {
 		// given: none
 
 		// when then
-		assertThatThrownBy(() -> new RacingCar("hello", -1))
+		assertThatThrownBy(() -> new RacingCar("hello", -1, RandomMovingStrategy.getInstance()))
 			.isInstanceOf(InvalidPositionException.class)
 			.hasMessageContaining(InvalidPositionException.INVALID_POSITION);
 	}
@@ -53,17 +56,19 @@ public class RacingCarTest {
 	void move(int input, int expected) {
 		// given
 		final String carName = "hello";
-		final RacingCar racingCar = new RacingCar(carName);
+		final SpecificMovingStrategy movingStrategy = new SpecificMovingStrategy(new SpecificNumberGenerator(input));
+
+		final RacingCar racingCar = new RacingCar(carName, movingStrategy);
 
 		// when then
-		assertEquals(new RacingCar(carName, expected), racingCar.move(input));
+		assertEquals(new RacingCar(carName, expected, movingStrategy), racingCar.move());
 	}
 
 	@DisplayName("자동차의 이름과 위치를 출력한다.")
 	@Test
 	void print() {
 		// given
-		final RacingCar racingCar = new RacingCar("hello", 5);
+		final RacingCar racingCar = new RacingCar("hello", 5, RandomMovingStrategy.getInstance());
 
 		// when then
 		assertEquals("hello : -----", racingCar.toString());
@@ -73,7 +78,7 @@ public class RacingCarTest {
 	@Test
 	void getGreaterPosition() {
 		// given
-		final RacingCar racingCar = new RacingCar("hello", 15);
+		final RacingCar racingCar = new RacingCar("hello", 15, RandomMovingStrategy.getInstance());
 
 		// when then
 		assertEquals(new Position(15), racingCar.getGreaterPosition(new Position(10)));
