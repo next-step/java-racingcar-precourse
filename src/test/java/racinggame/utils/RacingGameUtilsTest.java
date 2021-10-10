@@ -3,6 +3,7 @@ package racinggame.utils;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import racinggame.domain.RacingCar;
 
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
@@ -90,5 +91,25 @@ public class RacingGameUtilsTest {
     @ValueSource(strings = {"1", "5", "10", "100"})
     void 입력값은_0_보다_큰_숫자만_유효하다(String readLine) {
         assertThatCode(() -> isValidTryCount(readLine)).doesNotThrowAnyException();
+    }
+
+    @ParameterizedTest(name = "랜덤값이 [{0}] 이상이면 자동가 전진한다")
+    @ValueSource(ints = {CHECK_NUMBER_VALUE})
+    void 자동차가_전진한다(int pickNumber) {
+        RacingCar racingCar = new RacingCar("pobi");
+        if (isMoved(pickNumber)) {
+            racingCar.move();
+            assertThat(racingCar.getMovesCount()).isEqualTo(1);
+        }
+    }
+
+    @ParameterizedTest(name = "랜덤값이 [{0}] 이하면 자동가 멈춘다")
+    @ValueSource(ints = {CHECK_NUMBER_VALUE - 1})
+    void 자동차가_멈춘다(int pickNumber) {
+        RacingCar racingCar = new RacingCar("pobi");
+        if (!isMoved(pickNumber)) {
+            racingCar.stop();
+            assertThat(racingCar.getMovesCount()).isEqualTo(0);
+        }
     }
 }
