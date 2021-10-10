@@ -1,9 +1,12 @@
 package racinggame.model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 import nextstep.utils.Randoms;
 
@@ -39,32 +42,15 @@ public class Cars {
 		return cars;
 	}
 
-	private void checkDuplication(String[] carsName) {
-		if (isSameName(carsName)) {
+	private void checkDuplication(String[] carNames) {
+		if (isContainsSameName(carNames)) {
 			throw new IllegalArgumentException(CHECK_DUPLICATION_ERROR_MESSAGE);
 		}
 	}
 
-	private boolean isSameName(String[] carsName) {
-		boolean isExist = false;
-		for (int index = ZERO_POINT; index < carsName.length; index++) {
-			isExist = isSameName(isExist, index, carsName);
-		}
-		return isExist;
-	}
-
-	private boolean isSameName(boolean isExist, int index, String[] carsName) {
-		for (int subIndex = ZERO_POINT; subIndex < index; subIndex++) {
-			isExist = compareName(isExist, carsName[index], carsName[subIndex]);
-		}
-		return isExist;
-	}
-
-	private boolean compareName(boolean isExist, String name, String subName) {
-		if (new Car(name).equals(new Car(subName))) {
-			isExist = true;
-		}
-		return isExist;
+	private boolean isContainsSameName(String[] carNames) {
+		Set<String> checkNames = new HashSet<>(Arrays.asList(carNames));
+		return carNames.length != checkNames.size();
 	}
 
 	public List<Car> racing() {
