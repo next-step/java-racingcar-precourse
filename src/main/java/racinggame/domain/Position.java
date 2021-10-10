@@ -3,7 +3,8 @@ package racinggame.domain;
 public class Position {
 
 	private static final int START_POSITION_VALUE = 0;
-	private final int position;
+
+	private int position;
 
 	private Position(int position) {
 		this.position = position;
@@ -15,5 +16,9 @@ public class Position {
 
 	public int getPosition() {
 		return this.position;
+	}
+
+	public void move() {
+		position++;
 	}
 }

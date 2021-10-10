@@ -13,4 +13,5 @@ public class PositionTest {
 		Position position = Position.init();
 		assertThat(position.getPosition()).isEqualTo(0);
 	}
+
 }
