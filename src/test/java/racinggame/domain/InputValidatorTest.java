@@ -20,7 +20,7 @@ class InputValidatorTest {
 		@DisplayName("자동차 이름이 입력되면")
 		class ContextCarNameInput {
 
-			@ParameterizedTest
+			@ParameterizedTest(name = "[{index}] input: {0}")
 			@ValueSource(strings = {"car1", "car1, car2", "car1, car2, car3"})
 			@DisplayName("exception 발생시키지 않는다")
 			void it_valid_input(String input) {
@@ -47,7 +47,7 @@ class InputValidatorTest {
 		@DisplayName("전달받은 자동차 이름 중 빈 문자열이 있으면")
 		class ContextEmptyCarName {
 
-			@ParameterizedTest
+			@ParameterizedTest(name = "[{index}] input: {0}")
 			@ValueSource(strings = {"car1,,car2", ",car1,car2", "car1,car2,", "car,,", ",car,", ",,car", ",,"})
 			@DisplayName("IllegalArgumentException 발생시킨다")
 			void it_throw_exception(String input) {
@@ -66,7 +66,7 @@ class InputValidatorTest {
 		@DisplayName("1이상의 숫자가 입력되면")
 		class ContextGreaterThenOne {
 
-			@ParameterizedTest
+			@ParameterizedTest(name = "[{index}] input: {0}")
 			@ValueSource(strings = {"1", "2" , "10", "20"})
 			@DisplayName("exception 발생시키지 않는다")
 			void it_valid_input(String input) {
@@ -93,7 +93,7 @@ class InputValidatorTest {
 		@DisplayName("문자가 입력된 경우")
 		class ContextCharacterInput {
 
-			@ParameterizedTest
+			@ParameterizedTest(name = "[{index}] input: {0}")
 			@ValueSource(strings = {"abc", "1bc", "a1c", "ab1"})
 			@DisplayName("IllegalArgumentException 발생시킨다")
 			void it_throw_exception(String input) {
@@ -107,7 +107,7 @@ class InputValidatorTest {
 		@DisplayName("1보다 작은 숫자가 입력된 경우")
 		class ContextLessThenOne {
 
-			@ParameterizedTest
+			@ParameterizedTest(name = "[{index}] input: {0}")
 			@ValueSource(strings = {"0", "-1", "-2"})
 			@DisplayName("IllegalArgumentException 발생시킨다")
 			void it_throw_exception(String input) {

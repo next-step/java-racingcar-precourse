@@ -42,7 +42,7 @@ public class InputValidator {
 	}
 
 	private void lengthShouldLessThen(Integer validLength, String input, String errorMessage) {
-		if (input.length() > validLength) {
+		if (input.length() > validLength || input.length() < 1) {
 			throw new IllegalArgumentException(errorMessage);
 		}
 	}
