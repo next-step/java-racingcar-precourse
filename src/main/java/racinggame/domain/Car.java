@@ -2,6 +2,8 @@ package racinggame.domain;
 
 import java.util.Objects;
 
+import racinggame.functional.ForwardMoveRule;
+
 public class Car {
 	private final Name name;
 	private final Position position;
@@ -15,8 +17,16 @@ public class Car {
 		this.position = position;
 	}
 
-	public Car move() {
-		return new Car(name, position.move());
+	public Car moveOrStop(ForwardMoveRule forwardMoveRule) {
+		if (forwardMoveRule.isMovable()) {
+			return new Car(name, position.move());
+		}
+
+		return obtainNewCopied();
+	}
+
+	private Car obtainNewCopied() {
+		return new Car(name, position.obtainNewCopied());
 	}
 
 	@Override
