@@ -32,6 +32,18 @@ class RaceRoundTest {
     }
 
     @Test
+    public void 레이스_라운드_생성2() throws Exception{
+        RaceGame raceGame = new RaceGame(carNames);
+        List<RaceCar> run = raceGame.run();
+        RaceRound raceRound = new RaceRound(run);
+
+        assertThat(run.size()).isEqualTo(4);
+        assertThat(raceRound.getRaceCars())
+                .extracting("name")
+                .contains("1번","2번","3번","4번");
+    }
+
+    @Test
     public void 레이스_종료_생성() throws Exception{
         RaceGame raceGame = new RaceGame(carNames);
         List<RaceRound> raceRounds = new ArrayList<>();
