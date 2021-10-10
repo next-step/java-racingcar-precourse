@@ -7,7 +7,7 @@ public class Race {
     private final Cars cars;
 
     public Race(String names) {
-        this.cars = new Cars(names);
+        this.cars = new Cars(names, new RandomNumber());
     }
 
     public List<MoveResult> move() {

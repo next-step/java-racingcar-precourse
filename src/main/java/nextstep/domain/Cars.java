@@ -1,20 +1,18 @@
 package nextstep.domain;
 
-import nextstep.utils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
 
     private static final String DEFAULT_SPLIT = ",";
-    private static final int MIN_RANDOM_NUMBER = 0;
-    private static final int MAX_RANDOM_NUMBER = 9;
 
-    List<Car> cars;
+    private final List<Car> cars;
+    private final RandomNumber random;
 
-    public Cars(String names) {
+    public Cars(String names, RandomNumber random) {
         this.cars = mapCars(names);
+        this.random = random;
     }
 
     private static List<Car> mapCars(String names) {
@@ -28,8 +26,8 @@ public class Cars {
     public List<MoveResult> move() {
         List<MoveResult> results = new ArrayList<>();
         for (Car car : cars) {
-            int random = Randoms.pickNumberInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
-            results.add(car.move(random));
+            int number = random.generate();
+            results.add(car.move(number));
         }
         return results;
     }

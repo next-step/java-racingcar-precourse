@@ -17,7 +17,7 @@ class CarsTest {
 
     @BeforeEach
     void setUp() {
-        cars = new Cars("pobi,crong,honux");
+        cars = new Cars("pobi,crong,honux", new RandomNumber());
     }
 
     @Test

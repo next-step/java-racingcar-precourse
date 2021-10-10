@@ -12,6 +12,8 @@
   - `Car`는 `이동 거리`를 가진다
 - Cars
   - `Cars`는 `자동차 리스트`를 가진다
+- RandomNumber
+  - `RandomNumber`는 0에서 9범위의 랜덤한 숫자를 생성한다
 - Race
   - `Race`는 `자동차 리스트`를 가진다
 - MoveResult
