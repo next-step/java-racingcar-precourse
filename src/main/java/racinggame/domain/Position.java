@@ -22,6 +22,10 @@ public class Position {
 		return new Position(value + 1);
 	}
 
+	public Position obtainNewCopied() {
+		return new Position(value);
+	}
+
 	private void checkValidValue(int value) {
 		if (value < MIN) {
 			throw new InvalidPositionValueException(MIN);

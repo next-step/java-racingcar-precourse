@@ -47,4 +47,20 @@ class PositionTest {
 		assertThat(position)
 			.isEqualTo(new Position(1));
 	}
+
+	@Test
+	@DisplayName("deep copy 테스트")
+	void obtainNewCopied() {
+		// given
+		Position zero = new Position();
+
+		// when
+		Position copiedZero = zero.obtainNewCopied();
+
+		// then
+		assertThat(zero)
+			.isEqualTo(copiedZero);
+		assertThat(System.identityHashCode(zero))
+			.isNotEqualTo(System.identityHashCode(copiedZero));
+	}
 }
