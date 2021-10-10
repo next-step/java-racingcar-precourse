@@ -10,4 +10,10 @@ public class Race {
 		this.lineUp = lineUp;
 		this.tryNumber = tryNumber;
 	}
+
+	public void drive() {
+		for (int i = 0; i < tryNumber; i++) {
+			lineUp.drive();
+		}
+	}
 }
