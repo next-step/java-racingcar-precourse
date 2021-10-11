@@ -11,15 +11,20 @@ import java.util.List;
 
 public class GameUtil {
 
+    private static final int MAX_NUM = 9;
+    private static final int MIN_NUM = 0;
+
+    private static final int GAIN_POINT_NUM = 4;
+
     public static void playGame(final List<Player> players) {
         for (Player player : players) {
-            player.addScore(getMovement(Randoms.pickNumberInRange(0,9)));
+            player.addScore(getMovement(Randoms.pickNumberInRange(MIN_NUM, MAX_NUM)));
             player.printResult();
         }
     }
 
-    public static Integer getMovement(final Integer num) {
-        if (num >= 4) {
+    private static int getMovement(final int num) {
+        if (num >= GAIN_POINT_NUM) {
             return 1;
         }
         return 0;
@@ -39,7 +44,7 @@ public class GameUtil {
         System.out.println(sb);
     }
 
-    public static List<Player> getWinners(final List<Player> players) {
+    private static List<Player> getWinners(final List<Player> players) {
         List<Player> winners = new ArrayList<>();
 
         Player winner = Collections.max(players, new PlayerComp());
@@ -51,12 +56,17 @@ public class GameUtil {
         return winners;
     }
 
-    public static void addWinner(final List<Player> winners,
+    private static void addWinner(final List<Player> winners,
                                  final Player player,
-                                 final Integer winnerScore) {
-        if (player.getScore().equals(winnerScore)) {
+                                 final int winnerScore) {
+        if (isSameScore(player.getScore(), winnerScore)) {
             winners.add(player);
         }
+    }
+
+    private static boolean isSameScore(final int targetScore,
+                                final int sourceScore) {
+        return targetScore == sourceScore;
     }
 
 }

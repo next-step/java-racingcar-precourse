@@ -6,23 +6,21 @@ import java.util.List;
 public class Player {
 
     private final String name;
-    private Integer score;
+    private int score = 0;
 
-    public Player(final String name,
-                  final Integer score) {
+    public Player(final String name) {
         this.name = name;
-        this.score = score;
     }
 
     public String getName() {
         return this.name;
     }
 
-    public Integer getScore() {
+    public int getScore() {
         return this.score;
     }
 
-    public void addScore(final Integer movement) {
+    public void addScore(final int movement) {
         this.score += movement;
     }
 
@@ -52,7 +50,7 @@ public class Player {
 
         List<Player> players = new ArrayList<>();
         for (String name : playerArray) {
-            players.add(new Player(name, 0));
+            players.add(new Player(name));
         }
 
         return players;
