@@ -1,7 +1,7 @@
 package racinggame.controller;
 
-import racinggame.model.CarEntry;
-import racinggame.model.TryCount;
+import racinggame.model.GameResult;
+import racinggame.service.RacingGameService;
 import racinggame.utils.ValidationUtil;
 import racinggame.view.ConsoleView;
 
@@ -11,40 +11,22 @@ import java.util.List;
 public class RacingGameController {
 	public static final String CAR_NAME_INPUT_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
 	public static final String CAR_NAME_LENGTH_ERROR_MESSAGE = "자동차 이름은 5이하로 입력하세요.";
-	public static final String RESULT_MESSAGE = "실행 결과";
-	public static final String COUNT_INPUT_MESSAGE = "시도할 회수는 몇회인가요?";
 	public static final String SEPARATOR = ",";
-	private CarEntry carEntry;
+	public static final String COUNT_INPUT_MESSAGE = "시도할 회수는 몇회인가요?";
+	public static final String RESULT_MESSAGE = "실행 결과";
 	private final ConsoleView consoleView;
-	private TryCount tryCount;
+	private final RacingGameService racingGameService;
 
 	public RacingGameController(ConsoleView consoleView) {
 		this.consoleView = consoleView;
+		this.racingGameService = new RacingGameService();
 	}
 
 	public void startGame() {
-		initCarList(getCarNameArray());
-		initTryCount(getTryCount());
-		runRace();
-	}
-
-	private void runRace() {
-		while (!tryCount.isZeroCount()) {
-			carEntry.race();
-			printResult(carEntry.getResult());
-			tryCount.decreaseCount();
-		}
-	}
-
-	private void printResult(List<String> result) {
-		consoleView.println(RESULT_MESSAGE);
-		for (String s : result) {
-			consoleView.println(s);
-		}
-	}
-
-	private void initTryCount(int tryCountValue) {
-		tryCount = new TryCount(tryCountValue);
+		racingGameService.initCarList(toList(getCarNameArray()));
+		racingGameService.initTryCount(getTryCount());
+		GameResult gameResult = racingGameService.runRace();
+		printResult(gameResult);
 	}
 
 	private int getTryCount() {
@@ -58,10 +40,6 @@ public class RacingGameController {
 			}
 		}
 		return tryCountValue;
-	}
-
-	private void initCarList(String[] carNameArray) {
-		carEntry = new CarEntry(toList(carNameArray));
 	}
 
 	private String[] getCarNameArray() {
@@ -88,5 +66,13 @@ public class RacingGameController {
 	private String getCarsName() {
 		consoleView.println(CAR_NAME_INPUT_MESSAGE);
 		return consoleView.readLine();
+	}
+
+	private void printResult(GameResult gameResult) {
+		consoleView.println(RESULT_MESSAGE);
+		List<String> resultList = gameResult.getResultList();
+		for (String s : resultList) {
+			consoleView.println(s);
+		}
 	}
 }
