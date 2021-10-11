@@ -10,4 +10,8 @@ public class CarPosition {
     public void next() {
         this.position++;
     }
+
+    public int getPosition() {
+        return position;
+    }
 }

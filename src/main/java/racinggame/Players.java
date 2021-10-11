@@ -3,7 +3,9 @@ package racinggame;
 import utils.RaceUtils;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Players {
     private static final int RANDOM_MIN = 1;
@@ -31,5 +33,13 @@ public class Players {
 
     protected static boolean determineGoOrNot(int num) {
         return num >= 4;
+    }
+
+    public Map<String, Integer> getPlayerNamePositionMap() {
+        Map<String, Integer> namePositionMap = new HashMap<>();
+        for (Car car : this.cars) {
+            namePositionMap.put(car.getCarName(), car.getCarPosition());
+        }
+        return namePositionMap;
     }
 }

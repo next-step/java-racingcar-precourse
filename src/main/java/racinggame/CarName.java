@@ -1,9 +1,13 @@
 package racinggame;
 
 public class CarName {
-    String name;
+    private String name;
 
     public CarName(String name) {
         this.name = name;
+    }
+
+    public String getName() {
+        return name;
     }
 }

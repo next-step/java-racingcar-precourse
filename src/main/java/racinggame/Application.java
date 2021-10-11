@@ -8,6 +8,7 @@ public class Application {
 
         while(!race.isFinished()){
             race.iterate();
+            RaceUI.printCurrentRaceStatus(race.getPlayerNamePositionMap());
         }
     }
 }

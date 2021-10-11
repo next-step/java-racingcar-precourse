@@ -3,6 +3,8 @@ package racinggame;
 import nextstep.utils.Console;
 import utils.RaceUtils;
 
+import java.util.Map;
+
 public class RaceUI {
 
     public static final int MIN_CAR_NAME_LENGTH = 5;
@@ -84,5 +86,17 @@ public class RaceUI {
 
     private static void printAskingIterationCountMessage() {
         System.out.println(RaceMessages.ASK_ITERATION_COUNT.message());
+    }
+
+    public static void printCurrentRaceStatus(Map<String, Integer> namePositionMap) {
+        for (String key: namePositionMap.keySet()) {
+            StringBuffer sb = new StringBuffer();
+            sb.append(key + " : ");
+            for (int i = 0; i < namePositionMap.get(key); i++) {
+                sb.append("-");
+            }
+            System.out.println(sb);
+        }
+        System.out.println();
     }
 }

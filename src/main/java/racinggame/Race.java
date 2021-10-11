@@ -1,5 +1,7 @@
 package racinggame;
 
+import java.util.Map;
+
 public class Race {
     private Players players;
     private IterationCount iterationCount;
@@ -23,5 +25,9 @@ public class Race {
     public void iterate() {
         this.players.moveCarsByConditions();
         this.iterationCount.decrease();
+    }
+
+    public Map<String, Integer> getPlayerNamePositionMap() {
+        return players.getPlayerNamePositionMap();
     }
 }
