@@ -1,6 +1,8 @@
 package racinggame.utils;
 
 public class InputParser {
+    private static final String PLAYER_NAME_INPUT_DELIMITER = ",";
+
     private InputValidator inputValidator;
 
     public InputParser() {
@@ -9,7 +11,7 @@ public class InputParser {
 
     public String[] splitPlayerNames(String playerNamesInput) {
         try {
-            String[] playerNames = playerNamesInput.split(",", 0);
+            String[] playerNames = playerNamesInput.split(PLAYER_NAME_INPUT_DELIMITER, 0);
 
             this.inputValidator.validatePlayerNames(playerNames);
 

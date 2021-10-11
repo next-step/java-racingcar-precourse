@@ -3,6 +3,8 @@ package racinggame.model;
 import java.util.ArrayList;
 
 public class Cars extends ArrayList<Car> {
+    private static final String NEWLINE = "\n";
+
     public Cars findFurthestCars() {
         CarLocation furthestLocation = this.findFurthestLocation();
 
@@ -45,7 +47,7 @@ public class Cars extends ArrayList<Car> {
         StringBuilder builder = new StringBuilder();
 
         for (Car car : this) {
-            builder.append(car.toString() + "\n");
+            builder.append(car.toString() + NEWLINE);
         }
 
         return builder.toString();
