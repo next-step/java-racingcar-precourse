@@ -12,8 +12,10 @@ public class RacingGameController {
 	public static final String CAR_NAME_INPUT_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
 	public static final String CAR_NAME_LENGTH_ERROR_MESSAGE = "자동차 이름은 5이하로 입력하세요.";
 	public static final String RESULT_MESSAGE = "실행 결과";
+	public static final String COUNT_INPUT_MESSAGE = "시도할 회수는 몇회인가요?";
+	public static final String SEPARATOR = ",";
 	private CarEntry carEntry;
-	private ConsoleView consoleView;
+	private final ConsoleView consoleView;
 	private TryCount tryCount;
 
 	public RacingGameController(ConsoleView consoleView) {
@@ -48,7 +50,7 @@ public class RacingGameController {
 	private int getTryCount() {
 		int tryCountValue;
 		while (true) {
-			consoleView.println("시도할 회수는 몇회인가요?");
+			consoleView.println(COUNT_INPUT_MESSAGE);
 			String tryCountString = consoleView.readLine();
 			if (ValidationUtil.validOnlyNumber(tryCountString)) {
 				tryCountValue = Integer.parseInt(tryCountString);
@@ -76,7 +78,7 @@ public class RacingGameController {
 	}
 
 	private String[] toArray(String string) {
-		return string.split(",");
+		return string.split(SEPARATOR);
 	}
 
 	private List<String> toList(String[] stringArray) {
