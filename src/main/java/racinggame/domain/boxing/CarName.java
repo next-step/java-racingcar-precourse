@@ -4,8 +4,10 @@ import java.util.Objects;
 
 import racinggame.common.ConstValue;
 
+import racinggame.error.CarNameLengthException;
 import racinggame.error.EmptyCarException;
 import racinggame.error.ErrorMessage;
+import racinggame.error.InvalidCarNameInput;
 
 public class CarName {
 	private final String carName;
@@ -23,8 +25,9 @@ public class CarName {
 	}
 
 	private void validateCarName(String carName) {
-		if(carName.length() > ConstValue.MAX_NAME_SIZE)
-			System.out.println(ErrorMessage.INVALID_CAR_NAME_INPUT);
+		if(carName.length() > ConstValue.MAX_NAME_SIZE) {
+			throw new InvalidCarNameInput();
+		}
 	}
 
 }

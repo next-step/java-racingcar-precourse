@@ -8,10 +8,8 @@ public class RacingGameController {
 
 	public void startRacing() {
 
-		while(true) {
-			Cars cars = PlayerInputView.inputCarName();
-			Round round = PlayerInputView.inputGameCount();
+		Cars cars = PlayerInputView.inputCarName();
+		Round round = PlayerInputView.inputGameCount();
 
-		}
 	}
 }

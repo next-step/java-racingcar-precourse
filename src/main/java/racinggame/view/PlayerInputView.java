@@ -19,6 +19,7 @@ public class PlayerInputView {
 				return Cars.createCars(inputCarName);
 			} catch(InvalidCarNameInput e) {
 				System.out.println(e.getMessage());
+				return inputCarName();
 			}
 		}
 	}
