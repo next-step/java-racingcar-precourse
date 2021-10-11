@@ -27,4 +27,14 @@ public class RacingCar {
 
 		return RacingStatus.GO;
 	}
+
+	public void moveCar(int racingNumber) {
+		if(getRacingResult(racingNumber).isGo()) {
+			position += 1;
+		}
+	}
+
+	public int getPosition() {
+		return position;
+	}
 }

@@ -25,4 +25,14 @@ public class RacingCarTest {
 		assertThat(racingCar.getRacingResult(4)).isEqualTo(RacingStatus.GO);
 		assertThat(racingCar.getRacingResult(9)).isEqualTo(RacingStatus.GO);
 	}
+
+	@Test
+	void 전진_Test() {
+		RacingCar racingCar = new RacingCar("pobi");
+		racingCar.moveCar(5);
+		racingCar.moveCar(4);
+		racingCar.moveCar(3);
+		racingCar.moveCar(8);
+		assertThat(racingCar.getPosition()).isEqualTo(3);
+	}
 }
