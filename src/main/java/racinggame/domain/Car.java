@@ -1,12 +1,14 @@
 package racinggame.domain;
 
 public class Car {
+    private final CarName carName;
     private final CarMovement carMovement;
     private int carGoCount;
 
-    public Car() {
-        carMovement = new CarMovement();
-        carGoCount = 0;
+    public Car(String carName) {
+        this.carName = new CarName(carName);
+        this.carMovement = new CarMovement();
+        this.carGoCount = 0;
     }
 
     public void move() {
