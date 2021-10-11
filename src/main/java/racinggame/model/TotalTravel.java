@@ -5,8 +5,14 @@ import java.util.Collections;
 public class TotalTravel {
 	private int totalTravel;
 
-	public void moveForward() {
-		totalTravel++;
+	/**
+	 * 자동차의 play 결과에 따라 이동
+	 * @param result CarPlayResult 객체 - Car 클래스의 play 메소드로 획득
+	 */
+	public void move(CarPlayResult result) {
+		if (result.isForward()) {
+			totalTravel++;
+		}
 	}
 	
 	public int get() {

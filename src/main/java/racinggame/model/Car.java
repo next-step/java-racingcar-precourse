@@ -31,9 +31,7 @@ public class Car {
 	 */
 	public void roll() {
 		CarPlayResult result = play(Randoms.pickNumberInRange(0, 9));
-		if (result.isForward()) {
-			totalTravel.moveForward();
-		}
+		totalTravel.move(result);
 	}
 
 	int getTotalTravel() {
