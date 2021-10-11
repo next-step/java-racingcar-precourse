@@ -8,7 +8,7 @@ import java.util.List;
 
 public class GameConsole {
     private final String INPUT_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
-    private final String ERROR_MESSAGE = "[ERROR] 자동차 이름은 5자리 이하 문자만 입력 가능합니다.";
+    private final String ERROR_MESSAGE = "[ERROR] 자동차 이름은 5자리 이하 문자만 입력 가능합니다.(공백 입력 불가)";
     private final int CAR_NAME_MAX_LENGTH = 5;
     private final String CAR_NAME_DELIMITER = ",";
 
