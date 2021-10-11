@@ -32,6 +32,11 @@
     * 이동 횟수
         * 이동 횟수는 숫자인지
 
+* 시도 횟수 매지너를 등록한다.
+
+    * 필요 정보
+        * 현재 시도 횟수
+        * 게임 종료 시도 횟수
 
 * 차를 등록한다. (+차 목록)
     
@@ -50,17 +55,21 @@
 
 * 레이스를 진행한다.
   
+    * 시도 횟수 매니저에 횟수를 더해준다.
+    
     * 차들의 각각 차 마다 랜덤 숫자를 구한다
         * 들어온 입력이 숫자인지 
         * 랜덤 숫자는 1-9 사이인지
 
 
 * 레이스 결과를 구한다. (한 번 진행될 때 마다)
-  
-  * 필요 정보
-    * 차 이름, 차 횟수 출력
-    * 레이스가 끝났는 지 횟수 확인
-    * 끝났다면 끝남 메시지 추가
+
+    * 시도 횟수가 마지막 인지 확인
+    
+    * 필요 정보
+        * 차 이름, 차 횟수 출력
+        * 레이스가 끝났는 지 횟수 확인
+        * 끝났다면 끝남 메시지 추가
     
 ### TODO WITH TDD
 
@@ -119,3 +128,37 @@ car3 name : c, moveCount : 0
 a random : 4 -> moveCount : 1 stop  
 b random : 5 -> moveCount : 1 stop
 c random : 0 -> moveCount : 0 stop
+
+---
+gameCount: 3  
+3번 진행
+
+process isFinished : true
+
+---
+gameCount: 3  
+1번 진행
+
+process isFinished : false
+
+---
+gameCount: 1  
+1번 진행  
+
+cars a, b, c  
+a : 1  
+b : 1  
+c : 0  
+
+우승자 : a, b
+
+---
+gameCount: 3  
+3번 진행  
+
+cars a, b, c  
+a : 3  
+b : 3  
+c : 0  
+
+우승자 : a, b
