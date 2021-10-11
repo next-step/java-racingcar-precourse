@@ -11,8 +11,8 @@ public class WinnerTravel {
 		}
 	}
 
-	public boolean isWinner(Car car) {
-		return car.getTotalTravel() == winnerTravel;
+	public boolean isNotWinner(Car car) {
+		return car.getTotalTravel() != winnerTravel;
 	}
 
 }

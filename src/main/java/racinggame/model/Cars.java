@@ -39,7 +39,6 @@ public class Cars {
 		}
 		return sbStatus.toString();
 	}
-	
 
 	/**
 	 * 우승자 이름들 반환.
@@ -61,7 +60,7 @@ public class Cars {
 	private List<Car> chooseWinners() {
 		WinnerTravel winnerTravel = new WinnerTravel(cars);
 		List<Car> winners = new ArrayList<>(cars);
-		winners.removeIf(car -> winnerTravel.isWinner(car));
+		winners.removeIf(winnerTravel::isNotWinner);
 		return winners;
 	}
 }
