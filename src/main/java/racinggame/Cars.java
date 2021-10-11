@@ -34,4 +34,13 @@ public class Cars {
 			car.race();
 		}
 	}
+
+	public ProgressBars getProgressBars() {
+		List<ProgressBar> progressBars = new ArrayList<>();
+		for (Car car : cars) {
+			progressBars.add(car.getProgressBar());
+		}
+
+		return new ProgressBars(progressBars);
+	}
 }
