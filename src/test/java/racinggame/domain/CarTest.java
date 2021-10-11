@@ -19,7 +19,7 @@ public class CarTest {
 		car = Car.of(name);
 	}
 
-	@DisplayName("자동차 생성")
+	@DisplayName("자동차 생성 및 초기위치 확인")
 	@Test
 	void create() {
 		assertThat(car.getName().getValue()).isEqualTo("abcde");
