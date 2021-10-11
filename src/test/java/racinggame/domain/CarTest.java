@@ -1,56 +1,90 @@
 package racinggame.domain;
 
-import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
+import racinggame.enums.ErrorMessageEnum;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.mockito.Mockito.*;
+
+import org.mockito.MockedStatic;
 
 public class CarTest {
+    private static MockedStatic<MoveJudge> moveJudgeMockedStatic;
 
-    @Test
-    @DisplayName("Car 생성 테스트")
-    public void generate_car_test() {
-        //given
-        String carName = "giraffelim";
-
-        //when
-        Car car = new Car(carName);
-
-        //then
-        assertThat(car.getName()).isEqualTo(carName);
-        assertThat(car.getDistance()).isEqualTo(0);
+    @BeforeAll
+    static void setUp() {
+        moveJudgeMockedStatic = mockStatic(MoveJudge.class);
     }
 
-    @ParameterizedTest
-    @CsvSource(value = {"3,0", "4,1"})
-    @DisplayName("Car 이동 테스트")
-    public void move_car_test(int randomNumber, int expectedCarDistance) {
-        //given
-        String carName = "giraffelim";
-
-        //when
-        Car car = new Car(carName);
-        car.changeDistance(randomNumber);
-
-        //then
-        assertThat(car.getDistance()).isEqualTo(expectedCarDistance);
+    @AfterAll
+    static void tearDown() {
+        moveJudgeMockedStatic.close();
     }
 
     @Test
-    @DisplayName("현재 Car의 거리 하이픈(-)변환 테스트")
-    public void convert_distance_to_hyphen_test() {
-        //given
-        String carName = "giraffelim";
-
-        //when
+    void CAR_생성() {
+        Name carName = new Name("sun");
         Car car = new Car(carName);
-        car.changeDistance(6);
-        car.changeDistance(3);
-        car.changeDistance(7);
 
-        //then
-        assertThat(car.convertDistanceToHyphen()).isEqualTo("--");
+        assertThat(car.getName()).isEqualTo(carName.getName());
+        assertThat(car.getPosition().getValue()).isEqualTo(0);
     }
+
+    @Test
+    void CAR_생성_실패_이름_5자_초과() {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            new Car(new Name("invalidName"));
+        }).withMessage(ErrorMessageEnum.INPUT_CAR_NAME_SIZE_ERROR.getMessage());
+    }
+
+    @Test
+    void CAR_생성_실패_이름_공백() {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            new Car(new Name(""));
+        }).withMessage(ErrorMessageEnum.INPUT_CAR_NAME_SIZE_ERROR.getMessage());
+    }
+
+    @Test
+    void CAR_생성_실패_이름_NULL() {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            new Car(new Name(null));
+        }).withMessage(ErrorMessageEnum.INPUT_CAR_NAME_SIZE_ERROR.getMessage());
+    }
+
+    @Test
+    void CAR_전진() {
+        Car car = new Car(new Name("sun"));
+
+        when(MoveJudge.judge()).thenReturn(MoveStatus.MOVE);
+        car.changePosition();
+
+        assertThat(car.getPosition().getValue()).isEqualTo(1);
+    }
+
+    @Test
+    void CAR_정지() {
+        Car car = new Car(new Name("sun"));
+
+        when(MoveJudge.judge()).thenReturn(MoveStatus.STOP);
+        car.changePosition();
+
+        assertThat(car.getPosition().getValue()).isEqualTo(0);
+    }
+
+    @Test
+    void CAR_동일_위치() {
+        Car car = new Car(new Name("sun"));
+        Position expectedPosition = new Position(3);
+
+        when(MoveJudge.judge()).thenReturn(MoveStatus.MOVE);
+        car.changePosition();
+        car.changePosition();
+        car.changePosition();
+
+        assertThat(car.isSamePosition(expectedPosition)).isTrue();
+    }
+
 }
