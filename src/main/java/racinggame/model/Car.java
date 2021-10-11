@@ -31,7 +31,7 @@ public class Car {
     }
 
     public static CarStatus judgeMoving(int num) {
-        if(num >= MIN_GO_NUM && num <= MAX_GO_NUM) {
+        if (num >= MIN_GO_NUM && num <= MAX_GO_NUM) {
             return CarStatus.GO;
         }
         return CarStatus.STOP;
@@ -39,8 +39,8 @@ public class Car {
 
 
     public int move(CarStatus carStatus) {
-        if(carStatus == CarStatus.GO){
-            position.setPosition(getPosition()+GO_DISTANCE);
+        if (carStatus == CarStatus.GO) {
+            position.setPosition(getPosition() + GO_DISTANCE);
         }
         return position.getPosition();
     }

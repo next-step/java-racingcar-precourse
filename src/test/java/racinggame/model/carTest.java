@@ -19,7 +19,7 @@ public class carTest {
     @DisplayName("자동차_전진")
     void 전진() {
         Car car = new Car("Test");
-        assertThat(car.getPosition()+1).isEqualTo(car.move(CarStatus.GO));
+        assertThat(car.getPosition() + 1).isEqualTo(car.move(CarStatus.GO));
     }
 
     @Test
