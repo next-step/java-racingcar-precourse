@@ -44,6 +44,14 @@ class CarsTest {
 		assertEquals(n, addRandomNumberOfCars(n).getQuantity());
 	}
 
+	@Test
+	void 인덱스로_자동차_조회_시_기존_자동차_객체와_같은_객체가_반환되는지() {
+		Cars cars = new Cars();
+		Car car = new Car(new CarName("one"));
+		cars.addCar(car);
+		assertEquals(cars.getCarByIndex(0), car);
+	}
+
 	private void addCarWithSameName() {
 		Cars cars = new Cars();
 		Car firstOne = new Car(new CarName("one"));

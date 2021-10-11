@@ -36,4 +36,8 @@ public class Cars {
 	public int getQuantity() {
 		return cars.size();
 	}
+
+	public Car getCarByIndex(int index) {
+		return cars.get(index);
+	}
 }
