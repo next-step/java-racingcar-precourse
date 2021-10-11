@@ -11,7 +11,7 @@ public class RacingBarTest {
 
 	@BeforeEach
 	void setup() {
-		bar = new RacingBar();
+		bar = new RacingBar(0);
 	}
 
 	@Test
