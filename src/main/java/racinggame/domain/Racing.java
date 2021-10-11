@@ -2,42 +2,33 @@ package racinggame.domain;
 
 import static racinggame.common.ErrorMessage.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import nextstep.utils.Randoms;
 import racinggame.common.ErrorMessage;
 
 public class Racing {
 
-	public static final int GO_VALUE = 4;
-	public static final int MIN_RANGE = 0;
-	public static final int MAX_RANGE = 9;
-	public static final String DELIMITER = ",";
-	public static final String NEW_LINE = "\n";
-	List<Car> carList;
-	List<String> winnerList;
+	Cars cars;
+	RacingResults racingResults;
+	Winners winners;
 
 	public Racing() {
-		carList = new ArrayList<>();
-		winnerList = new ArrayList<>();
+		cars = new Cars();
+		winners = new Winners();
 	}
 
-	public void add(Car car) {
-		carList.add(car);
+	public void join(Car car) {
+		cars.addCar(car);
 	}
 
-	public List<Car> getCarList() {
-		return carList;
+	public Cars getCars() {
+		return cars;
 	}
 
-	public List<String> getWinnerList() {
-		return winnerList;
+	public Winners getWinner() {
+		return winners;
 	}
 
-	public boolean isGo(int value) {
-		checkValue(value);
-		return value >= GO_VALUE;
+	public RacingResults getRacingResults() {
+		return racingResults;
 	}
 
 	private void checkValue(int value) {
@@ -46,50 +37,24 @@ public class Racing {
 		}
 	}
 
-	public void race(Car car, int value) {
-		if (isGo(value)) {
-			car.go();
-		}
-	}
-
 	public void startRacing() {
-		if (carList.size() == 0) {
+		if (cars.size() == 0) {
 			throw new IllegalStateException(ERROR_NO_CARS);
 		}
-		for (Car car : carList) {
-			int random = Randoms.pickNumberInRange(MIN_RANGE, MAX_RANGE);
-			race(car, random);
-		}
+		cars.racing();
+		racingResults.addResult(cars.getCurStatus());
 	}
 
-	public String getWinner() {
-		int maxDistance = getMaxDistance();
-		for (Car car : carList) {
-			addWinnerList(maxDistance, car);
+	public void audit() {
+		for (Car car : cars.getCarList()) {
+			addWinnerList(cars.maxDistance(), car);
 		}
-		return String.join(DELIMITER, winnerList);
 	}
 
 	public void addWinnerList(int max, Car car) {
 		if (car.getDistance() == max) {
-			winnerList.add(car.getName());
+			winners.addWinner(car);
 		}
 	}
 
-	public int getMaxDistance() {
-		int maxDistance = 0;
-		for (Car car : carList) {
-			int curDistance = car.getDistance();
-			maxDistance = Math.max(curDistance, maxDistance);
-		}
-		return maxDistance;
-	}
-
-	public String getRacingResultStr() {
-		String result = "";
-		for (Car car : carList) {
-			result += car + NEW_LINE;
-		}
-		return result;
-	}
 }

@@ -1,5 +1,7 @@
 package racinggame.domain;
 
+import static racinggame.common.CommonConstants.*;
+
 import racinggame.common.ErrorMessage;
 
 /**
@@ -9,11 +11,6 @@ import racinggame.common.ErrorMessage;
  */
 public class Car {
 
-	public static final String CAR_STRING_FORMAT = "%s : %s";
-	public static final String DISTANCE_STR = "-";
-	public static final int MIN_NAME_LENGTH = 0;
-	public static final int MAX_NAME_LENGTH = 5;
-
 	private String name;
 	private int distance;
 
@@ -22,7 +19,7 @@ public class Car {
 	}
 
 	public boolean validName(String name) {
-		return name != null && name.trim().length() != MIN_NAME_LENGTH && name.trim().length() <= MAX_NAME_LENGTH;
+		return name != null && name.trim().length() != NAME_MIN_LENGTH && name.trim().length() <= NAME_MAX_LENGTH;
 	}
 
 	public String getName() {
@@ -42,6 +39,12 @@ public class Car {
 
 	public void go() {
 		distance++;
+	}
+
+	public void race(int randomValue) {
+		if (randomValue >= GO_VALUE) {
+			go();
+		}
 	}
 
 	@Override

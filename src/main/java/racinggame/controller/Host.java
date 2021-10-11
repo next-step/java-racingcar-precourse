@@ -1,13 +1,12 @@
 package racinggame.controller;
 
-import java.util.ArrayList;
-import java.util.List;
+import static racinggame.common.CommonConstants.*;
 
 import racinggame.domain.Car;
 import racinggame.domain.Racing;
 
+//TODO 벨리데이션 host로 추가
 public class Host {
-	public static final String NEW_LINE = "\n";
 
 	Racing racing;
 	int tryCount;
@@ -21,27 +20,28 @@ public class Host {
 	}
 
 	public void setRacingCars(String input) {
-		String[] carNames = input.trim().split(",");
+		String[] carNames = input.trim().split(DELIMITER);
 		for (String name : carNames) {
-			racing.add(new Car(name));
+			racing.join(new Car(name));
 		}
 	}
 
-	public void setTryCount(int tryCount) {
-		this.tryCount = tryCount;
+	public void setTryCount(String input) {
+		this.tryCount = Integer.valueOf(input);
 	}
 
-	public String start() {
-		List<String> result = new ArrayList<>();
+	public void start() {
 		for (int i = 0; i < tryCount; i++) {
 			racing.startRacing();
-			result.add(racing.getRacingResultStr());
 		}
-		return String.join(NEW_LINE, result);
+	}
+
+	public String getRacingResult() {
+		return racing.getRacingResults().toString();
 	}
 
 	public String getWinner() {
-		return racing.getWinner();
+		return racing.getWinner().toString();
 	}
 
 }

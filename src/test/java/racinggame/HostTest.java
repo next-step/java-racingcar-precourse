@@ -2,10 +2,13 @@ package racinggame;
 
 import static org.assertj.core.api.Assertions.*;
 
+import java.util.List;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import racinggame.controller.Host;
+import racinggame.domain.Car;
 import racinggame.domain.Racing;
 
 public class HostTest {
@@ -22,8 +25,9 @@ public class HostTest {
 
 		host.setRacingCars(input);
 		Racing racing = host.getRacing();
+		List<Car> carList = racing.getCars().getCarList();
 
-		assertThat(racing.getCarList())
+		assertThat(carList)
 			.hasSize(3)
 			.asString()
 			.contains("pobi")

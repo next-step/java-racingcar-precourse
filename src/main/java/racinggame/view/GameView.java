@@ -7,34 +7,31 @@ import racinggame.controller.Host;
 
 public class GameView {
 
-	public boolean inputName(Host host) {
+	public void inputName(Host host) {
 		System.out.println(MESSAGE_NAME_INPUT);
 		String input = Console.readLine();
 		try {
 			host.setRacingCars(input);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
-			return false;
+			inputName(host);
 		}
-		return true;
 	}
 
-	public boolean inputTryCount(Host host) {
+	public void inputTryCount(Host host) {
 		System.out.println(MESSAGE_TRY_INPUT);
 		String input = Console.readLine();
 		try {
-			host.setTryCount(Integer.valueOf(input));
+			host.setTryCount(input);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
-			return false;
+			inputTryCount(host);
 		}
-		return true;
 	}
 
 	public void outRacingResult(Host host) {
 		System.out.println(MESSAGE_TRY_RESULT);
-		String result = host.start();
-		System.out.println(result);
+		System.out.println(host.getRacingResult());
 	}
 
 	public void outWinner(Host host) {
@@ -43,14 +40,9 @@ public class GameView {
 
 	public void run() {
 		Host host = new Host();
-		boolean complete = false;
-		while (!complete) {
-			complete = inputName(host);
-		}
-		complete = false;
-		while (!complete) {
-			complete = inputTryCount(host);
-		}
+		inputName(host);
+		inputTryCount(host);
+		host.start();
 		outRacingResult(host);
 		outWinner(host);
 	}
