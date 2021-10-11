@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 
 import racinggame.message.ErrorMessage;
+import racinggame.message.PlayMessage;
 
 public class Cars {
 	private final List<Car> cars;
@@ -56,11 +57,15 @@ public class Cars {
 		}
 	}
 
-	public List<Integer> getWinnerIndexes() {
+	public String getWinnerNames() {
 		List<Integer> winnerIndexes = new ArrayList<>();
 		int maxCarPosition = getMaxCarPosition();
 		getIndexesFilteredByCarPosition(maxCarPosition, 0, winnerIndexes);
-		return winnerIndexes;
+		String winnerNames = "";
+		for (int i = 0; i < winnerIndexes.size(); i++) {
+			winnerNames += cars.get(winnerIndexes.get(i)).getName() + PlayMessage.CAR_NAME_SEPARATOR.getValue();
+		}
+		return winnerNames.substring(0, winnerNames.length() - 1);
 	}
 
 	private int getMaxCarPosition() {

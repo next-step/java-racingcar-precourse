@@ -7,9 +7,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 
@@ -74,26 +71,23 @@ class CarsTest {
 		}
 	}
 
-	@ParameterizedTest
-	@ValueSource(ints = {0, 99, 50})
-	void 우승한_자동차는_1대_인덱스는_n(int n) {
+	@Test
+	void 우승한_자동차는_1대_이름은_우승자() {
 		List<Car> carList = createCarList(100);
-		carList.set(n, createWinnerCar("우승자"));
+		carList.add(createWinnerCar("우승자"));
 		Cars cars = new Cars(carList);
-		assertEquals(1, cars.getWinnerIndexes().size());
-		assertEquals(n, cars.getWinnerIndexes().get(0));
+		assertEquals(1, cars.getWinnerNames().split(",").length);
+		assertEquals("우승자", cars.getWinnerNames());
 	}
 
-	@ParameterizedTest
-	@CsvSource(value = {"0,1", "98,99", "0,99", "50,70"}, delimiter = ',')
-	void 우승한_자동차는_2대_인덱스는_a_b(int a, int b) {
+	@Test
+	void 우승한_자동차는_2대_이름은_a_b() {
 		List<Car> carList = createCarList(100);
-		carList.set(a, createWinnerCar("a"));
-		carList.set(b, createWinnerCar("b"));
+		carList.add(createWinnerCar("a"));
+		carList.add(createWinnerCar("b"));
 		Cars cars = new Cars(carList);
-		assertEquals(2, cars.getWinnerIndexes().size());
-		assertEquals(a, cars.getWinnerIndexes().get(0));
-		assertEquals(b, cars.getWinnerIndexes().get(1));
+		assertEquals(2, cars.getWinnerNames().split(",").length);
+		assertEquals("a,b", cars.getWinnerNames());
 	}
 
 	private List<Car> createCarListWithDuplicateCarNames() {
