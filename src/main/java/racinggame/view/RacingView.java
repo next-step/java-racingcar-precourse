@@ -3,8 +3,7 @@ package racinggame.view;
 import nextstep.utils.Console;
 
 import static racinggame.common.Constant.*;
-import static racinggame.common.ValidationUtils.validCarNames;
-import static racinggame.common.ValidationUtils.validTryNo;
+import static racinggame.common.ValidationUtils.*;
 
 public class RacingView {
 
@@ -33,7 +32,12 @@ public class RacingView {
     }
 
     public void printPlayResult() {
+        System.out.println();
         System.out.println(PLAY_RESULT);
+    }
+
+    public void printCarName(String name) {
+        System.out.print(name + " : ");
     }
 
     public void printGoStatus(int score) {
@@ -41,5 +45,10 @@ public class RacingView {
             System.out.print(GO_STATUS);
         }
         System.out.println();
+    }
+
+    public void printWinner(String winner) {
+        System.out.println();
+        System.out.printf(FINAL_WINNER, winner);
     }
 }
