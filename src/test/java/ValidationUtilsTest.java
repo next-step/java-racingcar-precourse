@@ -1,8 +1,9 @@
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racinggame.ValidationUtils;
+import racinggame.common.ValidationUtils;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class ValidationUtilsTest {
 
@@ -21,6 +22,7 @@ public class ValidationUtilsTest {
         assertThat(ValidationUtils.validTryNo("test")).isFalse();
         assertThat(ValidationUtils.validTryNo("!")).isFalse();
         assertThat(ValidationUtils.validTryNo("")).isFalse();
+        assertThat(ValidationUtils.validTryNo("-1")).isFalse();
     }
 
     @Test
@@ -30,5 +32,13 @@ public class ValidationUtilsTest {
         assertThat(ValidationUtils.validRandomValue(9)).isTrue();
         assertThat(ValidationUtils.validRandomValue(1)).isTrue();
         assertThat(ValidationUtils.validRandomValue(10)).isFalse();
+    }
+
+    @Test
+    @DisplayName("자동차_2대_이상_검증")
+    void 자동차_2대_이상_검증() throws Exception {
+        assertThat(ValidationUtils.validCarNames("")).isFalse();
+        assertThat(ValidationUtils.validCarNames("lia")).isFalse();
+        assertThat(ValidationUtils.validCarNames("lia,tony")).isTrue();
     }
 }

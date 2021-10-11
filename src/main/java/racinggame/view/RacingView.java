@@ -2,26 +2,34 @@ package racinggame.view;
 
 import nextstep.utils.Console;
 
+import static racinggame.common.Constant.*;
+import static racinggame.common.ValidationUtils.validCarNames;
+import static racinggame.common.ValidationUtils.validTryNo;
+
 public class RacingView {
-    private final String INPUT_CARS_NAME = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
-    private final String INPUT_TRY_NUMBER = "시도할 회수는 몇회인가요?";
-    private final String PLAY_RESULT = "실행결과";
-    private final String GO_STATUS = "-";
 
     public void printInputCarsName() {
         System.out.println(INPUT_CARS_NAME);
     }
 
     public String inputCarsName() {
-        return Console.readLine();
+        String carsName = Console.readLine();
+        if(!validCarNames(carsName)) {
+            throw new IllegalArgumentException(ERROR_PREFIX + ERR_CAR_MIN_NUM);
+        }
+        return carsName;
     }
 
     public void printInputTryNumber() {
         System.out.println(INPUT_TRY_NUMBER);
     }
 
-    public String inputTryNumber() {
-        return Console.readLine();
+    public int inputTryNumber() {
+        String tryNo = Console.readLine();
+        if(!validTryNo(tryNo)) {
+            throw new IllegalArgumentException(ERROR_PREFIX + ERR_TRY_NO);
+        }
+        return Integer.parseInt(tryNo);
     }
 
     public void printPlayResult() {
