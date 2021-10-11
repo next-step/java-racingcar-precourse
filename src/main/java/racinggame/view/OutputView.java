@@ -14,6 +14,8 @@ public class OutputView {
 		for(int i=0; i<round.getRoundCount(); i++) {
 			printProcess(cars);
 		}
+
+		printWinner(cars);
 	}
 
 	private void printProcess(Cars cars) {
@@ -22,5 +24,15 @@ public class OutputView {
 			System.out.println(car.getMoveDistanceWithName());
 		}
 		System.out.println("\n");
+	}
+
+	private void printWinner(Cars cars) {
+		cars.setWinner();
+
+		System.out.println(
+			ConstValue.OUTPUT_WINNER_MENT_START
+			+ cars.getWinnerCars()
+			+ ConstValue.OUTPUT_WINNER_MENT_END
+		);
 	}
 }

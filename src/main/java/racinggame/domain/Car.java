@@ -12,11 +12,25 @@ public class Car {
 	public final CarName carName;
 	public Position position;
 	public Strategy moveStrategy;
+	public boolean isWinner;
 
 	public Car(CarName carName, Strategy moveStrategy) {
 		this.carName = carName;
 		this.moveStrategy = moveStrategy;
 		position = new Position(0);
+		isWinner = false;
+	}
+
+	public void setWinner() {
+		this.isWinner = true;
+	}
+
+	public boolean getWinner() {
+		return isWinner;
+	}
+
+	public CarName getCarName() {
+		return carName;
 	}
 
 	public void move() {
