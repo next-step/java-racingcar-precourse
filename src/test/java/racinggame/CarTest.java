@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 public class CarTest {
 
 	@Test
-	void race(){
+	void 랜덤수에_대한_자동차_전진(){
 		Car car = new Car("chang");
 		car.race(5);
 		assertThat(car.getPosition()).isEqualTo(1);
