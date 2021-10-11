@@ -10,6 +10,14 @@ public class Car {
 		this.carName = new CarName(carName);
 	}
 
+	public CarName carName() {
+		return carName;
+	}
+
+	public Distance distance() {
+		return distance;
+	}
+
 	public void distance(int random) {
 		if (Objects.isNull(this.distance)) {
 			this.distance = new Distance();

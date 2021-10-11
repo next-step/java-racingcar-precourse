@@ -6,6 +6,10 @@ public class Distance {
 	Distance() {
 	}
 
+	public int value() {
+		return distance.length();
+	}
+
 	public void distance(int random) {
 		if (random >= 4) {
 			distance += "-";

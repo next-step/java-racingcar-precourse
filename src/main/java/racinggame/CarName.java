@@ -7,6 +7,10 @@ public class CarName {
 		this.carName = carName;
 	}
 
+	public String value() {
+		return carName;
+	}
+
 	@Override
 	public String toString() {
 		return carName;
