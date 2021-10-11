@@ -21,8 +21,11 @@ public class RacingGameController {
 	private void gameStart() {
 		Cars cars = initCars();
 		MaxMoveTurn maxMoveTurn = initMaxMoveTurn();
-		System.out.println("생성결과 \n"+maxMoveTurn.get());
-		
+		view.printlnRacingGameProgress();
+		for (int i = 0; i < maxMoveTurn.get(); i++) {
+			cars.roll();
+			view.showRacingGameStatus(cars.getStatus());
+		}
 	}
 
 	/**

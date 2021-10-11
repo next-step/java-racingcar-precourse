@@ -29,7 +29,7 @@ public class Cars {
 
 	/**
 	 * 자동차들 상태 종합
-	 * @return 자동차들 상태 종합 문자열
+	 * @return 자동차들 상태 래핑 클래스
 	 */
 	public RacingGameStatus getStatus() {
 		return new RacingGameStatus(cars);

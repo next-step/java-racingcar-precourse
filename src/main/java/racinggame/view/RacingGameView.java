@@ -1,5 +1,7 @@
 package racinggame.view;
 
+import racinggame.model.RacingGameStatus;
+
 public class RacingGameView {
 	
 	public void printlnInputCarNames() {
@@ -12,5 +14,13 @@ public class RacingGameView {
 	
 	public void printlnInputMaxMoveTurn() {
 		System.out.println("시도할 회수는 몇회인가요?");
+	}
+	
+	public void printlnRacingGameProgress() {
+		System.out.println("\n실행 결과");
+	}
+	
+	public void showRacingGameStatus(RacingGameStatus status) {
+		System.out.println(status);
 	}
 }
