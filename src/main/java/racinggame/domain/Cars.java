@@ -56,7 +56,7 @@ public class Cars {
     }
 
     private Position findMaxPosition(Position maxPosition, Position carPosition) {
-        if (maxPosition.equals(carPosition)) {
+        if (maxPosition.getValue() < carPosition.getValue()) {
             return carPosition;
         }
         return maxPosition;
