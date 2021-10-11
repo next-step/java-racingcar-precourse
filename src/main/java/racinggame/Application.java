@@ -5,5 +5,8 @@ public class Application {
         String[] carNames = RaceUI.takeCarNameInputProcess();
         int iterationCount = RaceUI.takeIterationCountProcess();
         Race race = Race.of(carNames, iterationCount);
+
+        while(!race.isFinished()){
+        }
     }
 }

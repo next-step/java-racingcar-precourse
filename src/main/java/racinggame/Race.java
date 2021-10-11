@@ -15,4 +15,9 @@ public class Race {
                 new IterationCount(iterationCountInput)
                 );
     }
+
+    public boolean isFinished() {
+        return this.iterationCount.isZero();
+    }
+
 }
