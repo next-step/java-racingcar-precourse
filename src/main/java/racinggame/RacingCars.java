@@ -3,6 +3,7 @@ package racinggame;
 import nextstep.utils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class RacingCars {
@@ -10,6 +11,7 @@ public class RacingCars {
     private static final String SEPARATOR = ",";
     private static final int RACE_START_NUMBER = 0;
     private static final int RACE_END_NUMBER = 9;
+    private static final String ADVANCE_STR = "-";
 
     private List<Car> racingCars;
     private List<Car> winningCars = new ArrayList<>();
@@ -43,6 +45,13 @@ public class RacingCars {
             addWinningCar(maxAdvance, car);
         }
         return getCarNameByWinningCar();
+    }
+
+    public void printProgress() {
+        for (Car car : racingCars) {
+            System.out.println(car.getName() + ": "
+                    + String.join("", Collections.nCopies(car.getAdvance(), ADVANCE_STR)));
+        }
     }
 
     private void addWinningCar(int maxAdvance, Car car) {
