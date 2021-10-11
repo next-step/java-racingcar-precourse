@@ -16,11 +16,11 @@ public class ApplicationTest extends NSTest {
         setUp();
     }
 
-    @Test
+   @Test
     void 전진_정지() {
         assertRandomTest(() -> {
             run("pobi,woni", "1");
-            verify("pobi : -", "woni : ","최종 우승자는 pobi 입니다.");
+            verify("pobi : -", "woni : ", "최종 우승자는 pobi 입니다.");
         }, MOVING_FORWARD, STOP);
     }
 

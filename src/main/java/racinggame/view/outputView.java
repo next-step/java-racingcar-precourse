@@ -26,7 +26,7 @@ public class OutputView {
 	}
 	
 	public static void print_car(Car car) {
-		System.out.print(car.getCar_num()+":");
+		System.out.print(car.getCar_num()+" : ");
 		for(int i=0;i<car.get_distance();i++) {
 			System.out.print("-");
 		}

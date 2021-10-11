@@ -9,7 +9,6 @@ public class Application {
     	Racing_game game=InputView.Input_CarName();
     	game.setTrycnt(Integer.parseInt(InputView.Input_game_chance()));
     	
-    	//Output Logic ±¸Çö
     	OutputView.print_winner(game);
     }
 }

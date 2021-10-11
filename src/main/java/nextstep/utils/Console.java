@@ -17,7 +17,7 @@ public class Console {
      */
     private static Scanner scanner = getScanner();
 
-    private Console() {    	
+    private Console() {
     }
 
     /**
