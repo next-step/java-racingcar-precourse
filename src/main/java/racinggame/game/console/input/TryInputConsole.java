@@ -1,4 +1,4 @@
-package racinggame.console.input;
+package racinggame.game.console.input;
 
 import nextstep.utils.Console;
 
@@ -9,7 +9,7 @@ public class TryInputConsole extends BaseInputConsole<Integer> {
     }
 
     private boolean isNumber(String value) {
-        if(isBlank(value)) {
+        if(super.isBlank(value)) {
             return false;
         }
         try {

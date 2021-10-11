@@ -1,4 +1,4 @@
-package racinggame.console.input;
+package racinggame.game.console.input;
 
 import nextstep.utils.Console;
 

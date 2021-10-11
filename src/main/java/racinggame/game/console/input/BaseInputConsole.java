@@ -1,4 +1,4 @@
-package racinggame.console.input;
+package racinggame.game.console.input;
 
 public abstract class BaseInputConsole<T>{
     private final String inputMessage;
@@ -14,7 +14,7 @@ public abstract class BaseInputConsole<T>{
     protected abstract boolean isValidPolicy(String inputValue);
 
     protected void printInputMessage() {
-        System.out.print(inputMessage);
+        System.out.println(inputMessage);
     }
 
     protected void printErrorMessageIfNotValid(boolean isValid) {
