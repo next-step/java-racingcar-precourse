@@ -11,29 +11,20 @@ class CarTest {
     @DisplayName("전달 받은 이름으로 자동차 이름을 가져올 수 있는지 테스트")
     @Test
     void getName_success() {
-        assertThat(new Car("test").getName()).isEqualTo("test");
+        assertThat(new Car(new Name("test")).getName()).isEqualTo(new Name("test"));
     }
 
     @DisplayName("자동차 이름 5글자 이하일 때 성공 테스트")
     @ParameterizedTest
     @ValueSource(strings = {"1", "12", "123", "1234", "12345"})
     void constructCar_successWhenNameLengthIs5OrLess(String name) {
-        new Car(name);
-    }
-
-    @DisplayName("자동차 이름 5글자 이상 또는 null이나 비어있을 때 에러 던지는지 테스트")
-    @ParameterizedTest
-    @ValueSource(strings = {"", "123456"})
-    void constructCar_throwsErrorWhenNameIsNullOrEmptyOrHigherThan5(String name) {
-        assertThatExceptionOfType(IllegalArgumentException.class)
-            .isThrownBy(() -> new Car(name))
-            .withMessageContaining("5글자 이상 또는 비어있는 이름으로 자동차를 생성할 수 없습니다.");
+        new Car(new Name(name));
     }
 
     @DisplayName("자동차 동작상태에 따라 전진 또는 멈추는지 테스트")
     @Test
     void moveForwardOrStop_success() {
-        Car car = new Car("test");
+        Car car = new Car(new Name("test"));
         car.moveForwardOrStop(MoveStatus.STOP);
         assertThat(car.getStep()).isEqualTo(new Step(0));
         car.moveForwardOrStop(MoveStatus.FORWARD);

@@ -13,7 +13,7 @@ public class Cars {
         carList = new ArrayList<>();
         String[] names = carsStr.split(CAR_NAME_SEPARATOR);
         for (String name : names) {
-            carList.add(new Car(name));
+            carList.add(new Car(new Name(name)));
         }
     }
 
@@ -28,14 +28,14 @@ public class Cars {
     public Winners findWinners() {
         Step maxStep = Collections.max(carList, Comparator.comparing(Car::getStep)).getStep();
 
-        List<String> winners = new ArrayList<>();
+        List<Name> winners = new ArrayList<>();
         for (Car car : carList) {
             addIfMaxStep(winners, maxStep, car);
         }
         return new Winners(winners);
     }
 
-    private void addIfMaxStep(List<String> winners, Step maxStep, Car car) {
+    private void addIfMaxStep(List<Name> winners, Step maxStep, Car car) {
         if (car.getStep().equals(maxStep)) {
             winners.add(car.getName());
         }

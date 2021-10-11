@@ -10,7 +10,10 @@ class WinnersTest {
 
     @Test
     void testEquals() {
-        assertThat(new Winners(Arrays.asList("1", "2")).equals(new Winners(Arrays.asList("1", "2")))).isEqualTo(true);
-        assertThat(new Winners(Arrays.asList("1", "2")).equals(new Winners(Arrays.asList("1")))).isEqualTo(false);
+        assertThat(new Winners(Arrays.asList(new Name("1"), new Name("2")))
+            .equals(new Winners(Arrays.asList(new Name("1"), new Name("2"))))).isEqualTo(true);
+
+        assertThat(new Winners(Arrays.asList(new Name("1"), new Name("2")))
+            .equals(new Winners(Arrays.asList(new Name("1"))))).isEqualTo(false);
     }
 }

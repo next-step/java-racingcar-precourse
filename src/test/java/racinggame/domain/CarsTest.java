@@ -27,7 +27,7 @@ public class CarsTest {
         cars.moveForwardOrStop(1, MoveStatus.FORWARD);
         cars.moveForwardOrStop(2, MoveStatus.STOP);
 
-        Winners winners = new Winners(Arrays.asList("1", "2"));
+        Winners winners = new Winners(Arrays.asList(new Name("1"), new Name("2")));
         assertThat(cars.findWinners()).isEqualTo(winners);
     }
 }

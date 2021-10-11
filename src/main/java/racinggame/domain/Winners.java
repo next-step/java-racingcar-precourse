@@ -4,9 +4,9 @@ import java.util.List;
 import java.util.Objects;
 
 public class Winners {
-    private List<String> winners;
+    private List<Name> winners;
 
-    public Winners(List<String> winners) {
+    public Winners(List<Name> winners) {
         this.winners = winners;
     }
 
