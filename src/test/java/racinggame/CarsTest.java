@@ -28,7 +28,7 @@ public class CarsTest {
                     .thenReturn(4);
             cars.play();
 
-            assertTrue(cars.getCars().get(0).isMovableForward());
+            assertTrue(cars.getCars().get(0).isMovableForwardStatus());
             assertThat(cars.getCars().get(0).getMoveCount()).isEqualTo(1);
         }
     }
@@ -41,7 +41,7 @@ public class CarsTest {
                     .thenReturn(0);
             cars.play();
 
-            assertFalse(cars.getCars().get(0).isMovableForward());
+            assertFalse(cars.getCars().get(0).isMovableForwardStatus());
             assertThat(cars.getCars().get(0).getMoveCount()).isEqualTo(0);
         }
     }

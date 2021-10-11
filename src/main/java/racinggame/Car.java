@@ -29,11 +29,11 @@ public class Car {
         moveStatus = MoveStatus.STOP;
     }
 
-    private boolean isMovable(int number) {
+    private boolean isMovableNumber(int number) {
         return number >= MOVABLE_MINIMUM_NUMBER;
     }
 
-    public boolean isMovableForward() {
+    public boolean isMovableForwardStatus() {
         return moveStatus.isMoveForward();
     }
 }
