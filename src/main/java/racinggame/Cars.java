@@ -1,6 +1,7 @@
 package racinggame;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -8,8 +9,8 @@ import java.util.Set;
 public class Cars {
 	private final List<Car> cars = new ArrayList<>();
 
-	public Cars(List<String> carNames) {
-		validateDuplicatedNames(carNames);
+	public Cars(String... carNames) {
+		validateDuplicatedNames(Arrays.asList(carNames));
 
 		for (String carName : carNames) {
 			cars.add(new Car(carName));
