@@ -19,4 +19,15 @@ public class CarsTest {
 			.isInstanceOf(IllegalArgumentException.class)
 			.hasMessageContaining("중복된 이름은 사용할 수 없습니다");
 	}
+
+	@Test
+	void 우승자동차를_부른다() {
+		Cars cars = new Cars("carA", "carB", "carC");
+		cars.race();
+		cars.race();
+
+		CarNames winnerCars = cars.getWinnerNames();
+
+		System.out.println(winnerCars);
+	}
 }

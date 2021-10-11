@@ -21,6 +21,10 @@ public class RacingBar {
 		return state;
 	}
 
+	public boolean isBiggerThan(RacingBar racingBar) {
+		return this.state > racingBar.state;
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o)

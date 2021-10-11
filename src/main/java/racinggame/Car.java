@@ -19,4 +19,16 @@ public class Car {
 	public ProgressBar getProgressBar() {
 		return new ProgressBar(name, racingBar);
 	}
+
+	public CarName getCarName() {
+		return name;
+	}
+
+	public int subtractRacingState(Car car) {
+		return this.racingBar.getState()-car.racingBar.getState();
+	}
+
+	public boolean hasSameStateAs(Car car) {
+		return racingBar.equals(car.racingBar);
+	}
 }
