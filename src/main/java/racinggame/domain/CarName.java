@@ -6,6 +6,8 @@ import java.util.Objects;
 
 public class CarName {
     public static final int MAX_LENGTH = 5;
+    public static final int MIN_LENGTH = 1;
+
     private String name;
 
     public CarName(String name) {
@@ -16,6 +18,10 @@ public class CarName {
     private static void validate(String name) {
         if (name.length() > MAX_LENGTH) {
             throw new IllegalArgumentException(ErrorMessage.ERROR.getMessage() + ErrorMessage.OUT_OF_NAME_LENGTH_ERROR.getMessage());
+        }
+
+        if (name.length() < MIN_LENGTH) {
+            throw new IllegalArgumentException(ErrorMessage.ERROR.getMessage() + ErrorMessage.NOT_BLANK_NAME.getMessage());
         }
     }
 
