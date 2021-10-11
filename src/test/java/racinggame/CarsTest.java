@@ -32,6 +32,23 @@ public class CarsTest {
 	}
 
 	@ParameterizedTest
+	@MethodSource("자동차컬렉션_컴마를_포함한_문자열로_생성_테스트_파라미터")
+	void 자동차컬렉션_컴마를_포함한_문자열로_생성(String namesWithComma, List<String> expectedNames) {
+		Cars cars = new Cars(namesWithComma);
+
+		for (int i = 0; i < cars.getCars().size(); ++i) {
+			assertThat(cars.getCars().get(i).getName()).isEqualTo(expectedNames.get(i));
+		}
+	}
+
+	static Stream<Arguments> 자동차컬렉션_컴마를_포함한_문자열로_생성_테스트_파라미터() {
+		return Stream.of(
+			Arguments.of("p,crong,honuxx", Arrays.asList("p", "crong", "honuxx")),
+			Arguments.of("honux,pobi,super", Arrays.asList("honux", "pobi", "super"))
+		);
+	}
+
+	@ParameterizedTest
 	@CsvSource(value = {"p,crong,honuxx,false", "p,crong,honux,true"})
 	void 자동차컬렉션_내부의_자동차_이름은_5자_이하(String name1, String name2, String name3, boolean expected) {
 		Cars cars = new Cars(Arrays.asList(name1, name2, name3));

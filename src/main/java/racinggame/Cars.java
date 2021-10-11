@@ -1,16 +1,25 @@
 package racinggame;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 public class Cars {
-	private final ArrayList<Car> cars;
+	private final ArrayList<Car> cars = new ArrayList<>();
 
 	public Cars(List<String> names) {
-		this.cars = new ArrayList<>();
-		for (String carName : names) {
-			this.cars.add(new Car(carName, 0));
+		mapCars(names);
+	}
+
+	public Cars(String namesWithComma) {
+		List<String> names = Arrays.asList(namesWithComma.split(","));
+		mapCars(names);
+	}
+
+	private void mapCars(List<String> names) {
+		for (String name : names) {
+			this.cars.add(new Car(name, 0));
 		}
 	}
 
