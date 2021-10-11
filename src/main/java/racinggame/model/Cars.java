@@ -63,11 +63,15 @@ public class Cars {
 	public List<Car> findWinnerCars() {
 		List<Car> list = new ArrayList<>();
 		for (Car car : cars) {
-			if (car.isMaxDistance(maxDistance())) {
-				list.add(car);
-			}
+			addWinnerCar(list, car);
 		}
 		return list;
+	}
+
+	private void addWinnerCar(List<Car> list, Car car) {
+		if (car.isMaxDistance(maxDistance())) {
+			list.add(car);
+		}
 	}
 
 	public int maxDistance() {
