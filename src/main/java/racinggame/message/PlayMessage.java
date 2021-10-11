@@ -7,7 +7,7 @@ public enum PlayMessage {
 	PLAY_RESULT_START("실행 결과"),
 	DISTANCE_VISUALIZATION_UNIT("-"),
 	WINNER_PREFIX("최종 우승자는 "),
-	WINNER_SUFFIX("입니다.");
+	WINNER_SUFFIX(" 입니다.");
 
 	private final String value;
 

@@ -38,6 +38,6 @@ public class RacinggameView {
 	}
 
 	public void showWinnerMessage(String winnerNames) {
-		System.out.println(PlayMessage.WINNER_PREFIX + winnerNames + PlayMessage.WINNER_SUFFIX);
+		System.out.println(PlayMessage.WINNER_PREFIX.getValue() + winnerNames + PlayMessage.WINNER_SUFFIX.getValue());
 	}
 }
