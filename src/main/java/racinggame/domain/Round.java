@@ -10,7 +10,6 @@ public class Round {
 
     public Round(int count) {
         if (count == 0) {
-            System.out.println(ErrorCode.ROUND_COUNT_ZERO.getMessage());
             throw new IllegalArgumentException(ErrorCode.ROUND_COUNT_ZERO.getMessage());
         }
         this.count = count;

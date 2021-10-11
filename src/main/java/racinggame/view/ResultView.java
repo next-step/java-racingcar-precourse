@@ -11,6 +11,7 @@ public class ResultView {
     public static final String DISTANCE_MARK = "-";
     public static final String FRONT_WINNER_TEXT = "최종 우승자는 ";
     public static final String BACK_WINNER_TEXT = " 입니다.";
+    public static final String RESULT_INFO_TEXT = "실행 결과";
     private final Cars users;
 
     public ResultView(Cars users) {
@@ -18,7 +19,7 @@ public class ResultView {
     }
 
     public void printResult() {
-        for(Car user : users.getUsers()) {
+        for (Car user : users.getUsers()) {
             printPositionEachUser(user);
         }
         System.out.println();
@@ -26,13 +27,18 @@ public class ResultView {
 
     private void printPositionEachUser(Car user) {
         StringBuilder distance = new StringBuilder();
-        for(int i=0;i<user.getPosition();i++){
+        for (int i = 0; i < user.getPosition(); i++) {
             distance.append(DISTANCE_MARK);
         }
-        System.out.println(user.getName()+" : "+distance.toString());
+        System.out.println(user.getName() + " : " + distance.toString());
     }
 
     public void printWinner(String winnerNames) {
-        System.out.println(FRONT_WINNER_TEXT +winnerNames+ BACK_WINNER_TEXT);
+        System.out.println(FRONT_WINNER_TEXT + winnerNames + BACK_WINNER_TEXT);
+    }
+
+    public void printResultInfoText() {
+        System.out.println();
+        System.out.println(RESULT_INFO_TEXT);
     }
 }

@@ -37,7 +37,7 @@ public class CarTest {
     }
 
     private void assertCarNameLengthOneToFive(String name) {
-        assertEquals("[ERROR] 자동차 이름은 1~5자로 입력해 주세요.", assertThrows(NoSuchElementException.class, () -> new Car(name)).getMessage());
+        assertEquals("[ERROR] 자동차 이름은 1~5자로 입력해 주세요.", assertThrows(IllegalArgumentException.class, () -> new Car(name)).getMessage());
     }
 
     @Test

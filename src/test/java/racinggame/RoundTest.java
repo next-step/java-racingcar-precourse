@@ -17,7 +17,7 @@ public class RoundTest {
 
     @Test
     void 라운드_객체_생성() {
-        assertEquals("시도할 횟수는 0보다 커야 합니다.", assertThrows(IllegalArgumentException.class, () -> new Round()).getMessage());
+        assertEquals("[ERROR] 시도할 횟수는 0보다 커야 합니다.", assertThrows(IllegalArgumentException.class, () -> new Round()).getMessage());
     }
 
     @Test

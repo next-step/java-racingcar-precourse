@@ -16,14 +16,12 @@ public class Car {
     private int position;
 
     public Car() {
-        System.out.println(ErrorCode.BLANK_NAME.getMessage());
         throw new IllegalArgumentException(ErrorCode.BLANK_NAME.getMessage());
     }
 
     public Car(String name) {
         if (isInvalidName(name)) {
-            System.out.println(ErrorCode.NAME_LENGTH_1TO5.getMessage());
-            throw new NoSuchElementException(ErrorCode.NAME_LENGTH_1TO5.getMessage());
+            throw new IllegalArgumentException(ErrorCode.NAME_LENGTH_1TO5.getMessage());
         }
         this.name = name;
         this.position = START_POSITION;
