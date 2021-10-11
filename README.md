@@ -35,3 +35,28 @@
 ### 1) 게임이 끝난 후 List 내 점수가 가장 높은 Player를 찾아낸다
 * Comparator 구현해 max 메서드 사용
 ### 2) 해당 Player와 점수가 같은 Player들을 다시 List에 담고 결과를 출력한다
+
+# 원시값 포장을 기초로 한 재설계 (2021/10/11)
+## 기존 : Player, PlayerComp, GameUtil, ValidationUtil
+## 변경 후 : Player, PlayerComp, PlayerName, PlayerNames, PlayerScore, Attempt, PlayGame, LastResult
+
+# 재설계 상세
+## Player
+* 기존 Player가 갖고 있던 name과 관련 메서드를 PlayerName, PlayerNames 객체로 관리
+* 기존 ValidationUtil에서 갖고 있던 Player의 name에 대한 유효성 검사를 PlayerName 객체로 관리
+    * 사용자가 입력한 경주할 자동차 이름들을 PlayerNames의 생성자로 받아 PlayerName의 컬렉션을 생성한다
+    * 이 과정에서 PlayerName의 생성자를 사용하며 해당 생성자 안에서 유효성 검사를 진행한다
+* 기존 Player가 갖고 있던 score와 관련 메서드들을 PlayerScore 객체로 관리
+* 기존 GameUtil에서 갖고 있던 score에 대한 관리를 PlayerScore 객체로 관리
+    * score에 대한 접근, score의 증가 및 증가에 대한 조건 검사를 PlayerScore에서 관리
+    
+## Attempt
+* 기존 ValidationUtil에서 갖고 있던 시도 횟수에 대한 유효성 검사를 Attempt 객체에서 관리
+
+## Game
+* 기존 GameUtil에서 갖고 있던 게임 진행 및 결과 출력에 대한 메서드를 Game, LastResult 객체로 관리
+    * Player의 컬렉션을 Game 생성자에 주입
+    * 게임 진행에 대한 반복문을 Game 객체에서 관리하고, 각각에 대한 결과 출력은 Player의 메서드 사용
+    * Player의 컬렉션을 LastResult 생성자에 주입
+    * 결과 출력에 대한 로직은 기존과 비슷하지만, 기능을 나눔으로써 보다 직관적인 이해 가능
+
