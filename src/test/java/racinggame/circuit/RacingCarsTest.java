@@ -51,7 +51,7 @@ class RacingCarsTest {
 
 	@DisplayName("결과를 출력한다.")
 	@Test
-	void lap1_print (){
+	void lap1_print() {
 		try (final MockedStatic<Randoms> mockRandoms = mockStatic(Randoms.class)) {
 			//given
 			mockRandoms.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))

@@ -5,9 +5,9 @@ import racinggame.racingcar.Racing;
 public interface Rule {
 	void validateNames(String names);
 
-	int diceMax ();
+	int diceMax();
 
-	int diceMin ();
+	int diceMin();
 
-	Racing drive (int diceValue);
+	Racing drive(int diceValue);
 }

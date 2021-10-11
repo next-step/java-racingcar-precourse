@@ -33,7 +33,7 @@ public final class RacingGame {
 		FinalRecord finalRecord = circuit.start(racingCars, lap);
 
 		outputDevice.print("실행결과");
-		outputDevice.print(finalRecord.write());
+		outputDevice.print(finalRecord.announce());
 	}
 
 	private RacingCars makeRacingCars() {

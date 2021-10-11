@@ -54,7 +54,7 @@ public final class RacingRule implements Rule {
 
 	@Override
 	public Racing drive(int diceValue) {
-		if(diceValue >= DICE_MIN && diceValue <= JUDGE_VALUE){
+		if (diceValue >= DICE_MIN && diceValue <= JUDGE_VALUE) {
 			return Racing.STOP;
 		}
 		return Racing.FORWARD;

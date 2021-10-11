@@ -24,7 +24,7 @@ public class LapRecord {
 			.toString();
 	}
 
-	public int getScore (){
+	public int getScore() {
 		return this.score;
 	}
 
