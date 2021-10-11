@@ -2,7 +2,7 @@ package racinggame;
 
 import nextstep.utils.Randoms;
 
-public class RacingCar {
+public class RacingCar implements Comparable<RacingCar> {
 
 	private final String name;
 	private Position position;
@@ -27,6 +27,14 @@ public class RacingCar {
 		return this.position;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public Position getPosition() {
+		return position;
+	}
+
 	@Override
 	public String toString() {
 		return String.format("%s : %s", this.name, generateDashes());
@@ -38,5 +46,10 @@ public class RacingCar {
 			sb.append("-");
 		}
 		return sb.toString();
+	}
+
+	@Override
+	public int compareTo(RacingCar o) {
+		return this.position.compareTo(o.getPosition());
 	}
 }

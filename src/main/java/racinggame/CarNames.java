@@ -19,6 +19,10 @@ public class CarNames {
 		return nameList;
 	}
 
+	public int size() {
+		return this.nameList.size();
+	}
+
 	private void validate(String name) {
 		if (name.length() > NAME_LENGTH) {
 			throw new IllegalArgumentException("[ERROR] 이름이 5글자를 초과합니다.");
