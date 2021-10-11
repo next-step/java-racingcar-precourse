@@ -137,4 +137,13 @@ public class RacingTest {
 			.endsWith("\n");
 	}
 
+	@Test
+	void 레이싱_진행오류() {
+		Racing racing = new Racing();
+
+		assertThatThrownBy(() -> racing.startRacing())
+			.isInstanceOf(IllegalStateException.class)
+			.hasMessage(ERROR_NO_CARS);
+	}
+
 }
