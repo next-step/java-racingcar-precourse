@@ -9,6 +9,8 @@ public class NameTest {
 	void valueTest() {
 		assertThatThrownBy(() -> Name.of("Sonata"))
 				.isInstanceOf(IllegalArgumentException.class);
+		assertThatThrownBy(() -> Name.of(""))
+				.isInstanceOf(IllegalArgumentException.class);
 		assertThat(Name.of("Tico"))
 				.isEqualTo(Name.of("Tico"));
 		assertThat(Name.of("Tico"))
