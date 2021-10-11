@@ -15,6 +15,10 @@ public class Car {
         return this.location;
     }
 
+    public String getPlayerName(){
+        return this.playerName;
+    }
+
     public CarLocation getLocation() {
         return this.location;
     }

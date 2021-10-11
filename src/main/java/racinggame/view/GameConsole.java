@@ -41,8 +41,35 @@ public class GameConsole {
         this.gameTurnCnt = Integer.parseInt(input);
     }
 
-    public void playGame(){
-        // TODO: 추후 사용자에게 입력받은 게임 턴수를 turnCnt로 전달해야 함
+    public void playGame() {
         Cars winnerCars = this.racingGame.play(this.playerCars, this.gameTurnCnt);
+
+        String winnerMsg = buildWinnerMsg(winnerCars);
+
+        System.out.println(winnerMsg);
+    }
+
+    private String buildWinnerMsg(Cars winnerCars) {
+        StringBuilder builder = new StringBuilder();
+
+        builder.append("최종 우승자는 ");
+        for (int i = 0; i < winnerCars.size(); i++) {
+            Boolean isLastWinner = i == winnerCars.size() - 1;
+
+            builder.append(buildWinnerMsgInternal(winnerCars.get(i), isLastWinner));
+        }
+        builder.append(" 입니다.");
+
+        return builder.toString();
+    }
+
+    private String buildWinnerMsgInternal(Car winnerCar, boolean isLastWinner) {
+        String winnerMsg = winnerCar.getPlayerName();
+
+        if (!isLastWinner) {
+            winnerMsg += ",";
+        }
+
+        return winnerMsg;
     }
 }
