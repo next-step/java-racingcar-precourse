@@ -42,9 +42,8 @@ public class RacingGameController {
 	 */
 	private Cars makeCars() {
 		Cars cars = null;
-		String carNames = inputCarNames();
 		try {
-			cars = new Cars(carNames);
+			cars = new Cars(inputCarNames());
 		} catch(IllegalArgumentException ie) {
 			view.printlnErrorInputCarNames(ie);
 		}

@@ -39,6 +39,7 @@ public class Cars {
 		}
 		return sbStatus.toString();
 	}
+	
 
 	/**
 	 * 우승자 이름들 반환.
@@ -58,21 +59,9 @@ public class Cars {
 	 * @return
 	 */
 	private List<Car> chooseWinners() {
-		int winnerTravel = getWinnerTravel();
+		WinnerTravel winnerTravel = new WinnerTravel(cars);
 		List<Car> winners = new ArrayList<>(cars);
-		winners.removeIf(car -> car.getTotalTravel() < winnerTravel);
+		winners.removeIf(car -> winnerTravel.isWinner(car));
 		return winners;
-	}
-
-	/**
-	 * 우승자 이동거리 반환
-	 * @return 우승자 이동거리
-	 */
-	private int getWinnerTravel() {
-		int winnerTravel = 0;
-		for (Car car : cars) {
-			winnerTravel = Math.max(winnerTravel, car.getTotalTravel());
-		}
-		return winnerTravel;
 	}
 }
