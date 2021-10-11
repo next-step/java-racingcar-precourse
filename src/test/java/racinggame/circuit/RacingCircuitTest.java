@@ -50,8 +50,8 @@ class RacingCircuitTest {
 
 			FinalRecord finalRecord = racingCircuit.start(racingCars, new Lap("2"));
 
-			System.out.println(finalRecord.announce());
-			assertThat(finalRecord.announce()).contains("abc1 : --", "abc2 : ");
+			System.out.println(finalRecord.readFinalRecord());
+			assertThat(finalRecord.readFinalRecord()).contains("abc1 : --", "abc2 : ");
 		}
 	}
 
@@ -64,7 +64,7 @@ class RacingCircuitTest {
 
 			FinalRecord finalRecord = racingCircuit.start(racingCars, new Lap("2"));
 
-			assertThat(finalRecord.announce()).contains("abc1", "abc2");
+			assertThat(finalRecord.readFinalRecord()).contains("abc1", "abc2");
 		}
 	}
 

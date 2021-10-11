@@ -11,16 +11,7 @@ public final class FinalRecord {
 		allRecords.add(lapRecords);
 	}
 
-	public String announce() {
-		return new StringBuilder()
-			.append(record())
-			.append("최종 우승자는 ")
-			.append(winner())
-			.append(" 입니다.")
-			.toString();
-	}
-
-	private String record() {
+	public String readFinalRecord() {
 		StringBuilder finalRecordBuilder = new StringBuilder();
 
 		for (LapRecords record : allRecords) {
@@ -30,18 +21,7 @@ public final class FinalRecord {
 		return finalRecordBuilder.toString();
 	}
 
-	private String winner() {
-		LapRecords finalLapRecords = finalLapRecords();
-		List<String> names = finalLapRecords.lapWinners();
-
-		if (names.size() == 0) {
-			return "";
-		}
-
-		return makeNamesJoiningDelimiter(names, ",");
-	}
-
-	private LapRecords finalLapRecords() {
+	public LapRecords finalLapRecords() {
 		return allRecords.get(lastIndex());
 	}
 
@@ -51,17 +31,6 @@ public final class FinalRecord {
 			return size - 1;
 		}
 		return size;
-	}
-
-	private String makeNamesJoiningDelimiter(List<String> names, String delimiter) {
-		StringBuilder stringBuilder = new StringBuilder();
-
-		for (int index = 0; index < names.size() - 1; ++index) {
-			stringBuilder.append(names.get(index)).append(delimiter);
-		}
-		stringBuilder.append(names.get(names.size() - 1));
-
-		return stringBuilder.toString();
 	}
 
 	@Override

@@ -24,37 +24,8 @@ public final class LapRecords {
 		return lapRecordBuilder.toString();
 	}
 
-	public List<String> lapWinners() {
-		int farthest = farthest();
-		List<LapRecord> winners = new ArrayList<>();
-
-		for (LapRecord record : lapRecords) {
-			if (record.getScore() == farthest) {
-				winners.add(record);
-			}
-		}
-
-		return new ArrayList<>(namesOf(winners));
-	}
-
-	private int farthest() {
-		int score = 0;
-
-		for (LapRecord lapRecord : lapRecords) {
-			score = Math.max(score, lapRecord.getScore());
-		}
-
-		return score;
-	}
-
-	private List<String> namesOf(List<LapRecord> winnersRecord) {
-		List<String> winnerNames = new ArrayList<>();
-
-		for (LapRecord record : winnersRecord) {
-			winnerNames.add(record.getName());
-		}
-
-		return winnerNames;
+	public List<LapRecord> getLapRecords () {
+		return new ArrayList<>(lapRecords);
 	}
 
 	@Override

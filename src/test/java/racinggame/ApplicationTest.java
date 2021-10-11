@@ -1,11 +1,11 @@
 package racinggame;
 
-import nextstep.test.NSTest;
-
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import nextstep.test.NSTest;
 
 public class ApplicationTest extends NSTest {
 	private static final int MOVING_FORWARD = 4;
@@ -24,6 +24,14 @@ public class ApplicationTest extends NSTest {
 			run("pobi,woni", "1");
 			verify("pobi : -", "woni : ", "최종 우승자는 pobi 입니다.");
 		}, MOVING_FORWARD, STOP);
+	}
+
+	@Test
+	void 우승자_2명_이상() {
+		assertRandomTest(() -> {
+			run("pobi,woni", "1");
+			verify("pobi : -", "woni : -", "최종 우승자는 pobi,woni 입니다.");
+		}, MOVING_FORWARD, MOVING_FORWARD);
 	}
 
 	@DisplayName("자동차 이름이 5자를 초과하면 [ERROR]가 발생한다.")

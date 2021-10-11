@@ -42,7 +42,7 @@ class MockRacingCircuitTest {
 	@Test
 	void printResult() {
 		FinalRecord finalRecord = mockRacingCircuit.start(racingCars, lap);
-		assertThat(finalRecord.announce()).contains(
+		assertThat(finalRecord.readFinalRecord()).contains(
 			"abc1 : -",
 			"abc2 : ",
 			"abc1 : --",
@@ -54,7 +54,7 @@ class MockRacingCircuitTest {
 	@Test
 	void printWinner() {
 		FinalRecord finalRecord = mockRacingCircuit.start(racingCars, lap);
-		assertThat(finalRecord.announce()).contains("abc1");
+		assertThat(finalRecord.readFinalRecord()).contains("abc1");
 	}
 
 	static class RacingCircuitConfig {

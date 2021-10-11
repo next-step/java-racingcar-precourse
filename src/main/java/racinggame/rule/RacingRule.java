@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import racinggame.circuit.FinalRecord;
 import racinggame.exception.InvalidNameException;
 import racinggame.racingcar.Racing;
 import racinggame.ui.Rule;
@@ -58,5 +59,10 @@ public final class RacingRule implements Rule {
 			return Racing.STOP;
 		}
 		return Racing.FORWARD;
+	}
+
+	@Override
+	public String judgeWinners(FinalRecord finalRecord) {
+		return new WinnerDecisionRule(finalRecord).judgeWinners();
 	}
 }

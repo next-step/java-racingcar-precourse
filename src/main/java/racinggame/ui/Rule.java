@@ -1,5 +1,6 @@
 package racinggame.ui;
 
+import racinggame.circuit.FinalRecord;
 import racinggame.racingcar.Racing;
 
 public interface Rule {
@@ -10,4 +11,6 @@ public interface Rule {
 	int diceMin();
 
 	Racing drive(int diceValue);
+
+	String judgeWinners (FinalRecord finalRecord);
 }

@@ -33,8 +33,19 @@ public final class RacingGame {
 
 		FinalRecord finalRecord = circuit.start(racingCars, lap);
 
-		outputDevice.print("실행결과");
-		outputDevice.print(finalRecord.announce());
+		outputDevice.print(result(finalRecord));
+	}
+
+	private String result (FinalRecord finalRecord){
+		StringBuilder resultBuilder = new StringBuilder();
+
+		resultBuilder.append("실행결과\n")
+			.append(finalRecord.readFinalRecord())
+			.append("최종 우승자는 ")
+			.append(rule.judgeWinners(finalRecord))
+			.append(" 입니다.");
+
+		return resultBuilder.toString();
 	}
 
 	private RacingCars makeRacingCars() {
