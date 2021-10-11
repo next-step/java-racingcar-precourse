@@ -11,7 +11,7 @@ public class GameTurn {
         this.carMover = new CarMover();
     }
 
-    public static ArrayList<RANDOM_MOVE_RESULT> run(ArrayList<Car> cars) {
+    public static ArrayList<RANDOM_MOVE_RESULT> run(Cars cars) {
         ArrayList<RANDOM_MOVE_RESULT> result = new ArrayList<>();
 
         for (Car car : cars) {

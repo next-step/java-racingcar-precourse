@@ -5,14 +5,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.util.ArrayList;
-
 public class GameTurnsTest {
-    private ArrayList<Car> cars;
+    private Cars cars;
 
     @BeforeEach
     void setup(){
-        this.cars = new ArrayList<>();
+        this.cars = new Cars();
 
         this.cars.add(new Car("car1", 0));
         this.cars.add(new Car("car2", 0));
