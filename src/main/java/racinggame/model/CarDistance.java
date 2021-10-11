@@ -1,5 +1,7 @@
 package racinggame.model;
 
+import nextstep.utils.Randoms;
+
 /**
  * @auhor Kim JeongJin <kingroma92@gmail.com>
  * @version 1.0
@@ -8,6 +10,18 @@ package racinggame.model;
 public class CarDistance {
 	private String carDistance = "";
 
+	public void moveOrStop() {
+		int num = Randoms.pickNumberInRange(0, 9);
+
+		if (num >= 4) {
+			addCarDistance();
+		}
+	}
+	
+	private void addCarDistance() {
+		this.carDistance += "-";
+	}
+	
 	public String getCarDistance() {
 		return carDistance;
 	}

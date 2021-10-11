@@ -39,4 +39,13 @@ public class Cars {
 
 		cars.add(car);
 	}
+	
+	/**
+	 * 자동차 이동 / 정지 
+	 * */
+	public void moveOrStop() {
+		for (Car car : cars) {
+			car.moveOrStop();
+		}
+	}
 }

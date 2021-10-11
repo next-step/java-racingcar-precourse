@@ -10,6 +10,10 @@ public class Car {
 
 	public CarDistance carDistance = new CarDistance();
 
+	public void moveOrStop() {
+		carDistance.moveOrStop();
+	}
+	
 	public CarName getCarName() {
 		return carName;
 	}
