@@ -7,7 +7,13 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
+import org.mockito.MockedStatic;
+import org.mockito.Mockito;
 
+import nextstep.utils.Randoms;
 import racinggame.message.ErrorMessage;
 
 class CarsTest {
@@ -68,17 +74,27 @@ class CarsTest {
 		}
 	}
 
-	// @Test
-	// void 우승한_자동차의_위치는_모든_자동차의_위치_중_최댓값() {
-	// 	Cars cars = addAndMoveCars(100);
-	// 	ArrayList<Integer> carPositions = getCarPositions(cars);
-	// 	carPositions.sort(Comparator.reverseOrder());
-	// 	int maxPosition = carPositions.get(0);
-	// 	ArrayList<Integer> winnerIndexes = cars.getWinnerIndexes();
-	// 	for (int i = 0; i < winnerIndexes.size(); i++) {
-	// 		assertEquals(maxPosition, cars.getCarStatusByIndex(winnerIndexes.get(i)).getCarPosition());
-	// 	}
-	// }
+	@ParameterizedTest
+	@ValueSource(ints = {0, 99, 50})
+	void 우승한_자동차는_1대_인덱스는_n(int n) {
+		List<Car> carList = createCarList(100);
+		carList.set(n, createWinnerCar("우승자"));
+		Cars cars = new Cars(carList);
+		assertEquals(1, cars.getWinnerIndexes().size());
+		assertEquals(n, cars.getWinnerIndexes().get(0));
+	}
+
+	@ParameterizedTest
+	@CsvSource(value = {"0,1", "98,99", "0,99", "50,70"}, delimiter = ',')
+	void 우승한_자동차는_2대_인덱스는_a_b(int a, int b) {
+		List<Car> carList = createCarList(100);
+		carList.set(a, createWinnerCar("a"));
+		carList.set(b, createWinnerCar("b"));
+		Cars cars = new Cars(carList);
+		assertEquals(2, cars.getWinnerIndexes().size());
+		assertEquals(a, cars.getWinnerIndexes().get(0));
+		assertEquals(b, cars.getWinnerIndexes().get(1));
+	}
 
 	private List<Car> createCarListWithDuplicateCarNames() {
 		return Arrays.asList(new Car(new CarName("a")), new Car(new CarName("a")));
@@ -106,5 +122,14 @@ class CarsTest {
 			zeroCount = cars.getCarStatusByIndex(i).getCarPosition() == 0 ? zeroCount + 1 : zeroCount;
 		}
 		return zeroCount == cars.getCarsCount();
+	}
+
+	private Car createWinnerCar(String carName) {
+		try (MockedStatic<Randoms> mockRandoms = Mockito.mockStatic(Randoms.class)) {
+			mockRandoms.when(() -> Randoms.pickNumberInRange(Mockito.anyInt(), Mockito.anyInt())).thenReturn(9);
+			Car winner = new Car(new CarName(carName));
+			winner.goForward();
+			return winner;
+		}
 	}
 }

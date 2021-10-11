@@ -1,5 +1,6 @@
 package racinggame.domain;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
@@ -55,20 +56,28 @@ public class Cars {
 		}
 	}
 
-	// public ArrayList<Integer> getWinnerIndexes() {
-	// 	ArrayList<Integer> winnerIndexes = new ArrayList<>();
-	// 	int maxCarPosition = getMaxCarPosition();
-	// 	for (int i = 0; i < cars.size(); i++) {
-	//
-	// 	}
-	// 	return null;
-	// }
-	//
-	// private int getMaxCarPosition() {
-	// 	int maxCarPosition = 0;
-	// 	for (int i = 0; i < cars.size(); i++) {
-	// 		maxCarPosition = maxCarPosition < cars.get(i).getPosition() ? cars.get(i).getPosition() : maxCarPosition;
-	// 	}
-	// 	return maxCarPosition;
-	// }
+	public List<Integer> getWinnerIndexes() {
+		List<Integer> winnerIndexes = new ArrayList<>();
+		int maxCarPosition = getMaxCarPosition();
+		getIndexesFilteredByCarPosition(maxCarPosition, 0, winnerIndexes);
+		return winnerIndexes;
+	}
+
+	private int getMaxCarPosition() {
+		int maxCarPosition = 0;
+		for (int i = 0; i < cars.size(); i++) {
+			maxCarPosition = maxCarPosition < cars.get(i).getPosition() ? cars.get(i).getPosition() : maxCarPosition;
+		}
+		return maxCarPosition;
+	}
+
+	private void getIndexesFilteredByCarPosition(int carPosition, int index, List<Integer> indexes) {
+		if (index == cars.size()) {
+			return;
+		}
+		if (cars.get(index).getPosition() == carPosition) {
+			indexes.add(index);
+		}
+		getIndexesFilteredByCarPosition(carPosition, index + 1, indexes);
+	}
 }
