@@ -10,7 +10,7 @@ public class Constant {
     //Random Range
     public static final int MAX_NUM = 9;
     public static final int MIN_NUM = 0;
-
+    public static final int STANDARD = 4;
     //Name
     public static final int MAX_NAME_LEN = 5;
     public static final int MIN_CAR_NUM = 2;
@@ -18,7 +18,10 @@ public class Constant {
 
     //ERROR
     public static final String ERROR_PREFIX = "[ERROR] ";
-    public static final String ERR_CAR_MIN_NUM = "자동차는 최소 2대 이상이어야 합니다.";
+    public static final String ERR_CAR_MIN_NUM = "자동차는 최소 " + MIN_CAR_NUM +"대 이상이어야 합니다.";
     public static final String ERR_TRY_NO = "시도 횟수는 0이상의 양수여야 합니다.";
+    public static final String ERR_CAR_NAME_LEN= "자동차의 이름은 " + MAX_NAME_LEN + "자 이하여야 합니다.";
 
+    //Result
+    public static final String FINAL_WINNER = "최종 우승자는 %s 입니다.";
 }
