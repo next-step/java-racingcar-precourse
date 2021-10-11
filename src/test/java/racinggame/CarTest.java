@@ -20,19 +20,19 @@ public class CarTest {
     @DisplayName("이름 길이 검증")
     void 이름이_5자_이하인가() {
         int carNameSize = car.getName().length();
-        assertThat(carNameSize <= 5).isEqualTo(true);
+        assertThat(carNameSize <= 5).isTrue();
         Car car2 = new Car("abcdefg");
         int carNameSize2 = car2.getName().length();
-        assertThat(carNameSize2 <= 5).isEqualTo(false);
+        assertThat(carNameSize2 <= 5).isFalse();
     }
 
     @Test
     @DisplayName("이동값 길이 검증")
     void 이동값이_0_9사이의_수_인가() {
-        assertThat(car.isValidNumber(-1)).isEqualTo(false);
-        assertThat(car.isValidNumber(10)).isEqualTo(false);
-        assertThat(car.isValidNumber(0)).isEqualTo(true);
-        assertThat(car.isValidNumber(9)).isEqualTo(true);
+        assertThat(car.isValidNumber(-1)).isFalse();
+        assertThat(car.isValidNumber(10)).isFalse();
+        assertThat(car.isValidNumber(0)).isTrue();
+        assertThat(car.isValidNumber(9)).isTrue();
     }
 
     @Test
