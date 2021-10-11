@@ -1,7 +1,5 @@
 package racinggame.model;
 
-import java.util.Collections;
-
 import nextstep.utils.Randoms;
 
 public class Car {
@@ -47,6 +45,6 @@ public class Car {
 	 * @return 자동차 현재 상태 문자열
 	 */
 	public String getStatus() {
-		return carName + " : " + String.join("", Collections.nCopies(totalTravel.get(), "-"));
+		return carName + " : " + totalTravel.getProgress();
 	}
 }
