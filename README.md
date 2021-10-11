@@ -41,7 +41,7 @@
   - `Car`가 drive 했을때 마지막 지점을 기억한다
   - 특정 지점에 위치한 `Car`를 list로 반환한다
 
-- `CarRacingGame`
+- [x] `CarRacingGame`
   <pre><code>경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)
     pobi,crong,honux
     시도할 회수는 몇회인가요?
@@ -70,7 +70,12 @@
     
     최종 우승자는 pobi,honux 입니다.
     </code></pre>
-
+  - 레이싱 게임 기본 동작
+    - 사용자 입력을 받고 예외시 [ERROR] 메시지 출력후 다시 입력을 받는다.
+    - 입력 받은 정보로 `Cars` 생성
+    - 입력 받은 정보로  `RacingRoundTotal` 생성(시도 횟수)
+    - `RacingRoundTotal` 만큼 반복해서 drive
+    - `Winner`를 출력한다.
 - [x] `Winner`.
   - Cars에서 우승자 List를 추출한다..
   - 우승자를 출력한다.
