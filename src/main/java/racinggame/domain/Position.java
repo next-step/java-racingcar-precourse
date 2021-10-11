@@ -1,6 +1,6 @@
 package racinggame.domain;
 
-public class Position {
+public class Position implements Comparable<Position> {
 
 	private static final int START_POSITION_VALUE = 0;
 
@@ -21,4 +21,10 @@ public class Position {
 	public void move() {
 		value++;
 	}
+
+	@Override
+	public int compareTo(Position o) {
+		return Integer.compare(this.value, o.getValue());
+	}
+
 }

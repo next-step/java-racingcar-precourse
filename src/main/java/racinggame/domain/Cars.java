@@ -1,6 +1,9 @@
 package racinggame.domain;
 
+import static java.util.Comparator.*;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Cars {
@@ -14,7 +17,7 @@ public class Cars {
 	public static Cars of(String names) {
 		List<Car> cars = new ArrayList<>();
 		String[] arrayOfNames = names.split(",");
-		for(String name : arrayOfNames) {
+		for (String name : arrayOfNames) {
 			cars.add(Car.of(Name.of(name)));
 		}
 
@@ -25,4 +28,7 @@ public class Cars {
 		return this.cars;
 	}
 
+	public int getMaxPosition() {
+		return Collections.max(cars, comparing(Car::getPosition)).getPosition().getValue();
+	}
 }
