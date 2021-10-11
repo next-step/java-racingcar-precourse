@@ -18,18 +18,18 @@ public class RacingBarTest {
 	void 랜덤숫자가_3이하이면_추가하지_않는다() {
 		int randomNo = 3;
 		bar.addBy(randomNo);
-		int currentBar = bar.getCurrentBar();
+		int state = bar.getState();
 
-		assertThat(currentBar).isEqualTo(0);
+		assertThat(state).isEqualTo(0);
 	}
 
 	@Test
 	void 랜덤숫자가_4이상이면_추가한다() {
 		int randomNo = 4;
 		bar.addBy(randomNo);
-		int currentBar = bar.getCurrentBar();
+		int state = bar.getState();
 
-		assertThat(currentBar).isEqualTo(1);
+		assertThat(state).isEqualTo(1);
 	}
 
 	@Test
@@ -38,9 +38,9 @@ public class RacingBarTest {
 		bar.addBy(randomNo);
 		randomNo = 5;
 		bar.addBy(randomNo);
-		int currentBar = bar.getCurrentBar();
+		int state = bar.getState();
 
-		assertThat(currentBar).isEqualTo(2);
+		assertThat(state).isEqualTo(2);
 	}
 
 }

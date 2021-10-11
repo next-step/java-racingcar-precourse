@@ -3,10 +3,10 @@ package racinggame;
 import java.util.Objects;
 
 public class RacingBar {
-	private int bar;
+	private int state;
 
-	public RacingBar(int bar) {
-		this.bar = bar;
+	public RacingBar(int state) {
+		this.state = state;
 	}
 
 	public void addBy(int randomNo) {
@@ -14,11 +14,11 @@ public class RacingBar {
 			return;
 		}
 
-		bar++;
+		state++;
 	}
 
-	public int getCurrentBar() {
-		return bar;
+	public int getState() {
+		return state;
 	}
 
 	@Override
@@ -28,11 +28,11 @@ public class RacingBar {
 		if (o == null || getClass() != o.getClass())
 			return false;
 		RacingBar racingBar = (RacingBar)o;
-		return bar == racingBar.bar;
+		return state == racingBar.state;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(bar);
+		return Objects.hash(state);
 	}
 }
