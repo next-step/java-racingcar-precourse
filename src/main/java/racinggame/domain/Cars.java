@@ -40,4 +40,10 @@ public class Cars {
 	public Car getCarByIndex(int index) {
 		return cars.get(index);
 	}
+
+	public void moveCars() {
+		for (int i = 0; i < cars.size(); i++) {
+			cars.get(i).goForward();
+		}
+	}
 }
