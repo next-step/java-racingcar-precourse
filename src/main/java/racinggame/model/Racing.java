@@ -2,6 +2,8 @@ package racinggame.model;
 
 import nextstep.utils.Randoms;
 
+import static racinggame.common.Constant.*;
+
 public class Racing {
     private static Cars cars;
     private static int tryNum;
@@ -23,11 +25,11 @@ public class Racing {
     }
 
     public static int getRandom() {
-        return Randoms.pickNumberInRange(1,9);
+        return Randoms.pickNumberInRange(MIN_NUM, MAX_NUM);
     }
 
     public static MoveStatus goOrStop(int val) {
-        if(val > 4) {
+        if(val >= STANDARD) {
             return MoveStatus.GO;
         }
         return MoveStatus.STOP;
@@ -63,7 +65,7 @@ public class Racing {
             }
         }
 
-        return winner.substring(0, winner.length()-1);
+        return winner.substring(0, winner.length() - 1);
     }
 
 }
