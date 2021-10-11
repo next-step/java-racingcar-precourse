@@ -4,15 +4,18 @@ import nextstep.utils.Console;
 import racinggame.model.Car;
 import racinggame.model.Cars;
 import racinggame.model.RacingGame;
+import racinggame.utils.InputParser;
 
 public class GameConsole {
     private RacingGame racingGame;
+    private InputParser inputParser;
 
     private Cars playerCars;
     private int gameTurnCnt;
 
     public GameConsole() {
         this.racingGame = new RacingGame();
+        this.inputParser = new InputParser();
 
         this.playerCars = new Cars();
         this.gameTurnCnt = 0;
@@ -24,14 +27,36 @@ public class GameConsole {
     }
 
     private void readPlayerNames() {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String input = Console.readLine();
-
-        String[] playerNames = input.split(",", 0);
+        String[] playerNames = readValidPlayerNames();
 
         for (String playerName : playerNames) {
             this.playerCars.add(new Car(playerName, 0));
         }
+    }
+
+    private String[] readValidPlayerNames() {
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+
+        String[] playerNames = null;
+        while (playerNames == null) {
+            String input = Console.readLine();
+
+            playerNames = getParsedPlayerNames(input);
+        }
+
+        return playerNames;
+    }
+
+    private String[] getParsedPlayerNames(String input) {
+        try {
+            String[] playerNames = this.inputParser.splitPlayerNames(input);
+
+            return playerNames;
+        } catch (IllegalArgumentException e) {
+            System.out.println("[ERROR] 자동차의 이름은 1글자 이상 5글자 이하여야 합니다. 이름을 다시 입력해주세요..");
+        }
+
+        return null;
     }
 
     private void readGameTurnCount() {
