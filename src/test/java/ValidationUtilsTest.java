@@ -1,5 +1,3 @@
-package racinggame.common;
-
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racinggame.common.ValidationUtils;
@@ -38,7 +36,7 @@ public class ValidationUtilsTest {
 
     @Test
     @DisplayName("자동차_2대_이상_검증")
-    void 자동차_2대_이상_검증() throws java.lang.Exception {
+    void 자동차_2대_이상_검증() throws Exception {
         assertThat(ValidationUtils.validCarNames("")).isFalse();
         assertThat(ValidationUtils.validCarNames("lia")).isFalse();
         assertThat(ValidationUtils.validCarNames("lia,tony")).isTrue();
