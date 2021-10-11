@@ -6,17 +6,17 @@ import java.util.List;
 
 public class LastResult {
 
-    private final List<PlayerTmp> playerTmps;
+    private final List<Player> Players;
 
-    public LastResult(final List<PlayerTmp> playerTmps) {
-        this.playerTmps = playerTmps;
+    public LastResult(final List<Player> Players) {
+        this.Players = Players;
     }
 
     public void printLastResult() {
         StringBuilder sb = new StringBuilder();
         sb.append("최종 우승자는 ");
-        for(PlayerTmp playerTmp : getWinners(this.playerTmps)) {
-            sb.append(playerTmp.getPlayerName().getName());
+        for(Player Player : getWinners(this.Players)) {
+            sb.append(Player.getPlayerName().getName());
             sb.append(",");
         }
         sb.setLength(sb.length() - 1);
@@ -25,18 +25,18 @@ public class LastResult {
         System.out.println(sb);
     }
 
-    private List<PlayerTmp> getWinners(final List<PlayerTmp> playerTmps) {
-        List<PlayerTmp> winners = new ArrayList<>();
-        PlayerTmp winner = Collections.max(playerTmps, new PlayerTmpComp());
-        for (PlayerTmp playerTmp : playerTmps) {
-            addWinnerIfSameScore(winners, playerTmp, winner);
+    private List<Player> getWinners(final List<Player> Players) {
+        List<Player> winners = new ArrayList<>();
+        Player winner = Collections.max(Players, new PlayerComp());
+        for (Player Player : Players) {
+            addWinnerIfSameScore(winners, Player, winner);
         }
         return winners;
     }
 
-    private void addWinnerIfSameScore(final List<PlayerTmp> winners,
-                                      final PlayerTmp player,
-                                      final PlayerTmp winner) {
+    private void addWinnerIfSameScore(final List<Player> winners,
+                                      final Player player,
+                                      final Player winner) {
         if (isSameScore(player.getPlayerScore().getScore(), winner.getPlayerScore().getScore())) {
             winners.add(player);
         }

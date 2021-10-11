@@ -9,16 +9,16 @@ public class Game {
     private static final int MAX_NUM = 9;
     private static final int MIN_NUM = 0;
 
-    private final List<PlayerTmp> playerTmps;
+    private final List<Player> Players;
 
-    public Game(final List<PlayerTmp> playerTmps) {
-        this.playerTmps = playerTmps;
+    public Game(final List<Player> Players) {
+        this.Players = Players;
     }
 
     public void play() {
-        for (PlayerTmp playerTmp : this.playerTmps) {
-            playerTmp.getPlayerScore().addScore(Randoms.pickNumberInRange(MIN_NUM, MAX_NUM));
-            playerTmp.printResult();
+        for (Player Player : this.Players) {
+            Player.getPlayerScore().addScore(Randoms.pickNumberInRange(MIN_NUM, MAX_NUM));
+            Player.printResult();
         }
     }
 
