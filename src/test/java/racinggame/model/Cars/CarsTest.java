@@ -1,5 +1,6 @@
 package racinggame.model.Cars;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
@@ -16,14 +17,14 @@ class CarsTest {
       String report = cars.print();
       assertThat(report).isEqualTo(
           "test1 : \n" +
-              "test2 : \n" +
-              "test3 : "
+          "test2 : \n" +
+          "test3 : "
       );
     }
   }
-  @ParameterizedTest
+  @ParameterizedTest(name = "Cars_생성_오류: | {0}")
   @NullAndEmptySource
-  void Cars_생성_오류(String val) {
+  void CarsCreateTest(String val) {
     {
       assertThatThrownBy(()->{
         Cars cars = new Cars(val);

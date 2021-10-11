@@ -10,7 +10,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 class CarTest {
-  @ParameterizedTest
+  @ParameterizedTest(name="자동차_이름_입력_생성_성공 | {0}")
   @ValueSource(strings = {"12345", "abcde"})
   @EmptySource
   void 자동차_이름_입력_생성_성공(String carName) {
@@ -21,7 +21,7 @@ class CarTest {
     assertThat(name.toString()).isEqualTo(carName);
   }
 
-  @ParameterizedTest
+  @ParameterizedTest(name="자동차_이름_생성_실패 | {0}")
   @ValueSource(strings = {"123456"})
   @NullSource
   void 자동차_이름_생성_실패(String carName) {
@@ -32,7 +32,7 @@ class CarTest {
         .hasMessageContaining("이름은 5글자 이하");
   }
 
-  @ParameterizedTest
+  @ParameterizedTest(name="자동차_이동후_출력  | {0} | {1}")
   @CsvSource({
       "0,        'test : '",
       "1,        'test : -'",
