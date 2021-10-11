@@ -4,10 +4,10 @@ import java.util.Arrays;
 import java.util.HashSet;
 
 public class ValidationUtils {
-
 	public static final int MIN_SIZE = 2;
 	public static final int MAX_LENGTH = 5;
 	public static final String NAME_DELIMITER = ",";
+	public static final int zero = 0;
 
 	public static boolean validName(String inputCarName) {
 		if (getStringArr(inputCarName).length == getStringHashSet(getStringArr(inputCarName)).size()) {
@@ -47,7 +47,7 @@ public class ValidationUtils {
 	}
 
 	public static boolean validZeroMore(String number) {
-		if (Integer.parseInt(number) > 0) {
+		if (Integer.parseInt(number) > zero) {
 			return true;
 		}
 		return  false;

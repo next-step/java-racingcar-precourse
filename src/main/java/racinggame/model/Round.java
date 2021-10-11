@@ -1,6 +1,7 @@
 package racinggame.model;
 
 public class Round {
+	public static final int FINAL_ROUND = 0;
 	private int round;
 
 	public Round(int round) {
@@ -16,6 +17,6 @@ public class Round {
 	}
 
 	public boolean isFinalRound() {
-		return round == 0;
+		return round == FINAL_ROUND;
 	}
 }

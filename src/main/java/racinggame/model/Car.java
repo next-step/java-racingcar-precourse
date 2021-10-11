@@ -3,13 +3,14 @@ package racinggame.model;
 import racinggame.strategy.MoveStrategy;
 
 public class Car {
+	public static final int DEFAULT_DISTANCE = 0;
 	String name;
 	int distance;
 	MoveStrategy moveStrategy;
 
 	public Car(String name, MoveStrategy moveStrategy) {
 		this.name = name;
-		this.distance = 0;
+		this.distance = DEFAULT_DISTANCE;
 		this.moveStrategy = moveStrategy;
 	}
 

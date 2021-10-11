@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
+	public static final int DEFAULT_DISTANCE = 0;
 	List<Car> cars;
 
 	public Cars(List<String> carNames, MoveStrategy moveStrategy) {
@@ -43,7 +44,7 @@ public class Cars {
 	}
 
 	private int getMaxDistance() {
-		int maxDistance = 0;
+		int maxDistance = DEFAULT_DISTANCE;
 		for (Car car : cars) {
 			maxDistance = Math.max(car.getDistance(), maxDistance);
 		}

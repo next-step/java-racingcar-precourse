@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.StringJoiner;
 
 public class OutputView {
+	public static final String CONVERT_DISTANCE = "-";
+	public static final String NAME_DELIMITER = ",";
 	private static final String PRINT_RESULT = "실행 결과";
 	private static final String PRINT_CARS = "%s : %s";
 	private static final String PRINT_WINNERS = "최종 우승자는 %s 입니다.";
@@ -25,13 +27,13 @@ public class OutputView {
 	private String convertDistance(int distance) {
 		StringBuilder stringBuilder = new StringBuilder();
 		for (int i = 0; i < distance; i++) {
-			stringBuilder.append("-");
+			stringBuilder.append(CONVERT_DISTANCE);
 		}
 		return stringBuilder.toString();
 	}
 
 	public void printWinners(List<Car> cars) {
-		StringJoiner winnersName = new StringJoiner(",");
+		StringJoiner winnersName = new StringJoiner(NAME_DELIMITER);
 		for (Car car : cars) {
 			winnersName.add(car.getName());
 		}
