@@ -6,4 +6,5 @@ public interface ErrorMessage {
 	String INVALID_CAR_POSITION = "적절하지 않은 자동차 위치값 입니다";
 
 	String INVALID_CAR_NAME_INPUT = "[ERROR] 적절하지 않은 자동차 이름입니다. 다시 입력해주세요";
+	String INVALID_GAME_ROUND_INPUT = "[ERROR] 적절하지 않은 게임 실행 회수 입니다. 다시 입력해주세요";
 }

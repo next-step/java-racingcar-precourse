@@ -24,10 +24,7 @@ public class CarName {
 
 	private void validateCarName(String carName) {
 		if(carName.length() > ConstValue.MAX_NAME_SIZE)
-			//throw new CarNameLengthException();
 			System.out.println(ErrorMessage.INVALID_CAR_NAME_INPUT);
-			//throw new IllegalArgumentException(ErrorMessage.INVALID_CAR_NAME_INPUT);
-
 	}
 
 }
