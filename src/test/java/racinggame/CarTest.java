@@ -61,7 +61,6 @@ public class CarTest {
 			.hasMessage(ErrorMessage.ERROR_CAR_INPUT_NAME);
 	}
 
-
 	@Test
 	void 생성자_이름입력_에러() {
 		String name = "테스트  입니다";
@@ -79,19 +78,13 @@ public class CarTest {
 	}
 
 	@Test
-	void 정지() {
-		car.stop();
-		assertThat(car.getDistance()).isEqualTo(0);
-	}
-
-	@Test
 	void 문자열_변환() {
 		String name = "test";
 		car = new Car(name);
 		car.go();
 		car.go();
 		car.go();
-		assertThat(car.toString()).contains(name+":---");
+		assertThat(car.toString()).contains(name + " : ---");
 	}
 
 }

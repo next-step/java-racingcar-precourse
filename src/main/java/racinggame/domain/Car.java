@@ -44,9 +44,6 @@ public class Car {
 		distance++;
 	}
 
-	public void stop() {
-	}
-
 	@Override
 	public String toString() {
 		StringBuilder disStr = new StringBuilder();
