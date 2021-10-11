@@ -54,7 +54,7 @@ public class RaceUI {
             validateIterationCountInput(countInput);
         } catch (RaceException e) {
             printInvalidInputMessage(e.getMessage());
-            takeCarNameInputProcess();
+            takeIterationCountProcess();
         }
         return Integer.parseInt(countInput);
     }

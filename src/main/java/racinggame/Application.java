@@ -4,7 +4,6 @@ public class Application {
     public static void main(String[] args) {
         String[] carNames = RaceUI.takeCarNameInputProcess();
         int iterationCount = RaceUI.takeIterationCountProcess();
-        Players players = Players.createPlayersByCarNames(carNames);
-
+        Race race = Race.of(carNames, iterationCount);
     }
 }
