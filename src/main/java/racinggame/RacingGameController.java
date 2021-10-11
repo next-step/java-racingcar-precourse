@@ -17,6 +17,18 @@ public class RacingGameController {
 	public void play() {
 		inputUserName();
 		inputTryNumber();
+
+		race();
+
+		racingGameView.outputWinner(cars);
+	}
+
+	private void race() {
+		racingGameView.outputRacingResultTitle();
+		for (int i = 0; i < tryNumber.getNumber(); ++i) {
+			cars.move();
+			racingGameView.outputRacingResultBody(cars);
+		}
 	}
 
 	private void inputUserName() {
