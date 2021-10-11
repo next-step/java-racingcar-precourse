@@ -4,9 +4,9 @@ import java.util.Objects;
 
 public class LapRecord {
 	private final Name name;
-	private final int score;
+	private final Location score;
 
-	public LapRecord(Name name, int score) {
+	public LapRecord(Name name, Location score) {
 		this.name = name;
 		this.score = score;
 	}
@@ -25,13 +25,13 @@ public class LapRecord {
 	}
 
 	public int getScore() {
-		return this.score;
+		return this.score.valueOf();
 	}
 
 	private String drawDash() {
 		StringBuilder dashBuilder = new StringBuilder();
 
-		for (int i = 0; i < score; ++i) {
+		for (int i = 0; i < score.valueOf(); ++i) {
 			dashBuilder.append("-");
 		}
 
@@ -45,7 +45,7 @@ public class LapRecord {
 		if (o == null || getClass() != o.getClass())
 			return false;
 		LapRecord lapRecord = (LapRecord)o;
-		return score == lapRecord.score && name.equals(lapRecord.name);
+		return name.equals(lapRecord.name) && score.equals(lapRecord.score);
 	}
 
 	@Override

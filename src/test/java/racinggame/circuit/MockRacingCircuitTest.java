@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import racinggame.racingcar.Dice;
 import racinggame.racingcar.LapRecord;
+import racinggame.racingcar.Location;
 import racinggame.racingcar.Name;
 import racinggame.racingcar.RacingCar;
 import racinggame.rule.RacingRule;
@@ -73,12 +74,12 @@ class MockRacingCircuitTest {
 
 		private static FinalRecord expectedRecord() {
 			LapRecords lap1Records = new LapRecords();
-			lap1Records.add(new LapRecord(new Name("abc1"), 1));
-			lap1Records.add(new LapRecord(new Name("abc2"), 0));
+			lap1Records.add(new LapRecord(new Name("abc1"), new Location(1)));
+			lap1Records.add(new LapRecord(new Name("abc2"), new Location(0)));
 
 			LapRecords lap2Records = new LapRecords();
-			lap2Records.add(new LapRecord(new Name("abc1"), 2));
-			lap2Records.add(new LapRecord(new Name("abc2"), 0));
+			lap2Records.add(new LapRecord(new Name("abc1"), new Location(2)));
+			lap2Records.add(new LapRecord(new Name("abc2"), new Location(0)));
 
 			FinalRecord expectedRecord = new FinalRecord();
 			expectedRecord.add(lap1Records);
