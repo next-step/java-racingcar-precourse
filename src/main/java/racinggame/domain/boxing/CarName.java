@@ -4,9 +4,6 @@ import java.util.Objects;
 
 import racinggame.common.ConstValue;
 
-import racinggame.error.CarNameLengthException;
-import racinggame.error.EmptyCarException;
-import racinggame.error.ErrorMessage;
 import racinggame.error.InvalidCarNameInput;
 
 public class CarName {
@@ -20,7 +17,7 @@ public class CarName {
 
 	private void validateEmptyCar(String carName) {
 		if(Objects.isNull(carName) || carName.isEmpty())
-			throw new EmptyCarException();
+			throw new InvalidCarNameInput();
 
 	}
 

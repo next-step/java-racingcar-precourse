@@ -9,9 +9,8 @@ import racinggame.domain.boxing.CarName;
 import racinggame.domain.strategy.MoveTestMoveStrategy;
 import racinggame.domain.strategy.MoveTestStayStrategy;
 import racinggame.domain.strategy.Strategy;
-import racinggame.error.CarNameLengthException;
-import racinggame.error.EmptyCarException;
 import racinggame.error.ErrorMessage;
+import racinggame.error.InvalidCarNameInput;
 
 public class CarTest {
 
@@ -19,16 +18,16 @@ public class CarTest {
 	@Test
 	void carNameLengthTest() {
 		assertThatThrownBy(() -> new CarName("123456"))
-			.isInstanceOf(CarNameLengthException.class)
-			.hasMessageContaining(ErrorMessage.CARNAME_IS_TOO_LONG);
+			.isInstanceOf(InvalidCarNameInput.class)
+			.hasMessageContaining(ErrorMessage.INVALID_CAR_NAME_INPUT);
 	}
 
 	@DisplayName("자동차 이름 Test - Empty")
 	@Test
 	void carNameInvalidTest() {
 		assertThatThrownBy(() -> new CarName(""))
-			.isInstanceOf(EmptyCarException.class)
-			.hasMessageContaining(ErrorMessage.CARNAME_IS_EMPTY);
+			.isInstanceOf(InvalidCarNameInput.class)
+			.hasMessageContaining(ErrorMessage.INVALID_CAR_NAME_INPUT);
 	}
 
 	@DisplayName("자동차 생성 Test")
