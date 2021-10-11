@@ -12,6 +12,12 @@ public class RacingCircuit implements Circuit {
 
 	@Override
 	public FinalRecord start(RacingCars racingCars, Lap laps) {
-		return null;
+		FinalRecord finalRecord = new FinalRecord();
+
+		for (int lap = 0; lap < laps.getLaps(); ++lap) {
+			finalRecord.add(racingCars.run());
+		}
+
+		return finalRecord;
 	}
 }

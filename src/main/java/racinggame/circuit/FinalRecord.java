@@ -11,7 +11,16 @@ public final class FinalRecord {
 		allRecords.add(lapRecords);
 	}
 
-	public String write() {
+	public String announce() {
+		return new StringBuilder()
+			.append(record())
+			.append("최종 우승자는 ")
+			.append(winner())
+			.append(" 입니다.")
+			.toString();
+	}
+
+	private String record() {
 		StringBuilder finalRecordBuilder = new StringBuilder();
 
 		for (LapRecords record : allRecords) {
@@ -21,7 +30,7 @@ public final class FinalRecord {
 		return finalRecordBuilder.toString();
 	}
 
-	public String winner() {
+	private String winner() {
 		LapRecords finalLapRecords = finalLapRecords();
 		List<String> names = finalLapRecords.lapWinners();
 
