@@ -28,4 +28,10 @@ public class Cars {
 			throw new IllegalArgumentException("중복된 이름은 사용할 수 없습니다");
 		}
 	}
+
+	public void race() {
+		for (Car car : cars) {
+			car.race();
+		}
+	}
 }
