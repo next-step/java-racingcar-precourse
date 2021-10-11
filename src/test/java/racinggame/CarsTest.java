@@ -56,4 +56,23 @@ public class CarsTest {
 			Arguments.of(3, Arrays.asList(0, 0, 0))
 		);
 	}
+
+	@ParameterizedTest
+	@MethodSource("자동차컬렉션_우승자_테스트_파라미터")
+	void 자동차컬렉션_우승자_테스트(List<String> names, String winners, Integer randomResult1, Integer... randomResults2) {
+		Cars cars = new Cars(names);
+
+		when(Randoms.pickNumberInRange(anyInt(), anyInt())).thenReturn(randomResult1, randomResults2);
+
+		cars.move();
+		assertThat(cars.getWinners()).isEqualTo(winners);
+	}
+
+	static Stream<Arguments> 자동차컬렉션_우승자_테스트_파라미터() {
+		return Stream.of(
+			Arguments.of(Arrays.asList("pobi", "crong", "honux"), "pobi", 4, new Integer[] {3, 3}),
+			Arguments.of(Arrays.asList("pobi", "crong", "honux"), "pobi,crong", 4, new Integer[] {4, 3}),
+			Arguments.of(Arrays.asList("pobi", "crong", "honux"), "pobi,crong,honux", 4, new Integer[] {4, 4})
+		);
+	}
 }
