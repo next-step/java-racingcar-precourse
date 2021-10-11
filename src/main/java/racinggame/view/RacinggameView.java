@@ -15,11 +15,11 @@ public class RacinggameView {
 	}
 
 	public void showErrorMessage(String errorName) {
-		System.out.println(ErrorMessage.ERROR_MESSAGE_PREFIX + ErrorMessage.valueOf(errorName).getValue());
+		System.out.println(ErrorMessage.ERROR_MESSAGE_PREFIX.getValue() + ErrorMessage.valueOf(errorName).getValue());
 	}
 
 	public void showPlayResultStartMessage() {
-		System.out.println(PlayMessage.PLAY_RESULT_START);
+		System.out.println(PlayMessage.PLAY_RESULT_START.getValue());
 	}
 
 	public void showPlayResultMessage(Cars cars) {
