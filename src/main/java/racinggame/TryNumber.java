@@ -1,10 +1,25 @@
 package racinggame;
 
+import java.util.Optional;
+
 public class TryNumber {
 	private final int number;
 
-	public TryNumber(int number) {
+	private TryNumber(int number) {
 		this.number = number;
+	}
+
+	public static TryNumber of(int number) {
+		return new TryNumber(number);
+	}
+
+	public static Optional<TryNumber> of(String numberStr) {
+		try {
+			TryNumber newInstance = new TryNumber(Integer.parseInt(numberStr));
+			return Optional.of(newInstance);
+		} catch (NumberFormatException e) {
+			return Optional.empty();
+		}
 	}
 
 	public int getNumber() {
