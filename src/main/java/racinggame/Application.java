@@ -24,7 +24,7 @@ public class Application {
             String[] playerArray = inputPlayers.replaceAll(" ", "").split(",");
             isValidateInput = ValidationUtil.isValidateNameArray(playerArray);
 
-            players = Player.of(playerArray);
+            players = Player.getPlayersOrNull(isValidateInput, playerArray);
 
         } while (!isValidateInput);
 

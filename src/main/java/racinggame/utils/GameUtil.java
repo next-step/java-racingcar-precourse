@@ -13,7 +13,7 @@ public class GameUtil {
 
     public static void playGame(final List<Player> players) {
         for (Player player : players) {
-            player.addScore(GameUtil.getMovement(Randoms.pickNumberInRange(0,9)));
+            player.addScore(getMovement(Randoms.pickNumberInRange(0,9)));
             player.printResult();
         }
     }
