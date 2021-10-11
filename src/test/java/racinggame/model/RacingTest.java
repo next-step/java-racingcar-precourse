@@ -17,7 +17,8 @@ public class RacingTest {
         cars.add(new Car("test2", 3));
         cars.add(new Car("test3", 4));
 
-        assertThat(Racing.getWinner(cars)).isEqualTo("test3");
+        Cars car = new Cars(cars);
+        assertThat(Racing.getWinner(car)).isEqualTo("test3");
     }
 
     @Test
@@ -28,8 +29,20 @@ public class RacingTest {
         cars.add(new Car("test2", 3));
         cars.add(new Car("test3", 3));
 
-        assertThat(Racing.getWinner(cars)).isEqualTo("test2,test3");
+        Cars car = new Cars(cars);
+        assertThat(Racing.getWinner(car)).isEqualTo("test2,test3");
     }
 
+    @Test
+    @DisplayName("자동차이름_쉼표구분_검증")
+    void 자동차이름_쉼표구분_검증() {
+        ArrayList<Car> carList = new ArrayList<Car>();
+        carList.add(new Car("lia",0));
+        carList.add(new Car("tony",0));
+        carList.add(new Car("test",0));
 
+        Cars car = new Cars(carList);
+        assertThat(Cars.makeCarsByInputName("lia, tony, test")).hasSize(3);
+        //assertEquals(Cars.makeCarsByInputName("lia, tony, test"), carList);
+    }
 }

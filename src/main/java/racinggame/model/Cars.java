@@ -15,8 +15,16 @@ public class Cars {
         this.cars = cars;
     }
 
+    public static ArrayList<Car> getCars() {
+        return cars;
+    }
+
+    public static void setCars(ArrayList<Car> cars) {
+        Cars.cars = cars;
+    }
+
     public static ArrayList<Car> makeCarsByInputName(String inputNames) {
-        cars = new ArrayList<Car>();
+        ArrayList<Car> cars = new ArrayList<Car>();
         String[] carNames = inputNames.split(NAME_REGEX);
         for(String name : carNames) {
             if(!validName(name)) {
