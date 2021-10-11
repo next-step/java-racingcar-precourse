@@ -1,6 +1,7 @@
 package racinggame.view;
 
 import racinggame.domain.CarStatus;
+import racinggame.domain.Cars;
 import racinggame.message.ErrorMessage;
 import racinggame.message.PlayMessage;
 
@@ -21,8 +22,11 @@ public class RacinggameView {
 		System.out.println(PlayMessage.PLAY_RESULT_START);
 	}
 
-	public void showPlayResultMessage(CarStatus carStatus) {
-		System.out.println(carStatus.getCarName() + " : " + createVisualizedDistance(carStatus.getCarPosition()));
+	public void showPlayResultMessage(Cars cars) {
+		for (int i = 0; i < cars.getCarsCount(); i++) {
+			CarStatus carStatus = cars.getCarStatusByIndex(i);
+			System.out.println(carStatus.getCarName() + " : " + createVisualizedDistance(carStatus.getCarPosition()));
+		}
 	}
 
 	private String createVisualizedDistance(int carPosition) {
