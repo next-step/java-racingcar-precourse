@@ -37,15 +37,10 @@ public class Cars {
 
 	/**
 	 * 우승자 이름들 반환.
-	 * @return
+	 * @return WinnerNames 객체
 	 */
-	public String getWinnerNames() {
-		StringBuffer sbWinnerNames = new StringBuffer();
-		for (Car car : chooseWinners()) {
-			sbWinnerNames.append(",");
-			sbWinnerNames.append(car.getName());
-		}
-		return sbWinnerNames.toString().replaceFirst(",", "");
+	public WinnerNames getWinnerNames() {
+		return new WinnerNames(chooseWinners());
 	}
 
 	/**

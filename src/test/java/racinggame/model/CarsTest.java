@@ -45,7 +45,7 @@ public class CarsTest {
 			Cars cars = new Cars("bus,texi");
 			cars.roll();
 			cars.roll();
-			assertThat(cars.getWinnerNames()).isEqualTo("texi");
+			assertThat(cars.getWinnerNames().toString()).isEqualTo("texi");
 		}
 	}
 	
@@ -59,7 +59,7 @@ public class CarsTest {
 			Cars cars = new Cars("bus,texi,suv");
 			cars.roll();
 			cars.roll();
-			assertThat(cars.getWinnerNames()).isEqualTo("bus,texi");
+			assertThat(cars.getWinnerNames().toString()).isEqualTo("bus,texi");
 		}
 	}
 }
