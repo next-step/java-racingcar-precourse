@@ -37,8 +37,8 @@ public class Cars {
 		return cars.size();
 	}
 
-	public Car getCarByIndex(int index) {
-		return cars.get(index);
+	public CarStatus getCarStatusByIndex(int index) {
+		return new CarStatus(cars.get(index));
 	}
 
 	public void moveCars() {

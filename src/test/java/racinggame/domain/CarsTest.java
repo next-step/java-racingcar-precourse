@@ -47,11 +47,12 @@ class CarsTest {
 	}
 
 	@Test
-	void 인덱스로_자동차_조회_시_기존_자동차_객체와_같은_객체가_반환되는지() {
+	void 인덱스로_자동차_상태_조회_시_기존_자동차_객체와_같은_상태가_반환되는지() {
 		Cars cars = new Cars();
 		Car car = new Car(new CarName("one"));
+		CarStatus originalStatus = new CarStatus(car);
 		cars.addCar(car);
-		assertEquals(cars.getCarByIndex(0), car);
+		assertEquals(originalStatus, cars.getCarStatusByIndex(0));
 	}
 
 	@Test
@@ -86,7 +87,7 @@ class CarsTest {
 	private ArrayList<Integer> getCarPositions(Cars cars) {
 		ArrayList<Integer> carPositions = new ArrayList<>();
 		for (int i = 0; i < cars.getQuantity(); i++) {
-			carPositions.add(cars.getCarByIndex(i).getPosition());
+			carPositions.add(cars.getCarStatusByIndex(i).getCarPosition());
 		}
 		return carPositions;
 	}
