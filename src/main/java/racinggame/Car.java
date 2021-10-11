@@ -10,6 +10,8 @@ public class Car {
 
   private final String carName;
 
+  private int countForward = 0;
+
   public Car(String carName) {
     this.carName = carName;
   }
@@ -18,6 +20,11 @@ public class Car {
     if (num <= 3) {
       return CarMoveStatus.STOP;
     }
+    this.countForward ++;
     return CarMoveStatus.FORWARD;
+  }
+
+  public int getCountForward() {
+    return countForward;
   }
 }
