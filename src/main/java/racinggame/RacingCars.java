@@ -8,11 +8,11 @@ public class RacingCars {
 
 	private List<RacingCar> racingCars = new ArrayList<>();
 
-	public RacingCars(String ...racingCarNames) {
+	public RacingCars(String... racingCarNames) {
 		mapRacingCars(racingCarNames);
 	}
 
-	void mapRacingCars(String ...racingCarNames) {
+	void mapRacingCars(String... racingCarNames) {
 		for(String carName : racingCarNames) {
 			racingCars.add(new RacingCar(carName));
 		}
