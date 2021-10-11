@@ -2,14 +2,15 @@ package racinggame;
 
 public class RaceManager {
     private static RaceManager raceManager;
-    private int currentCount;
-    private final int gameEndCount;
+    private RaceManagerCurrentCount raceManagerCurrentCount;
+    private RaceManagerGameEndCount raceManagerGameEndCount;
 
-    private RaceManager(int gameEndCount) {
-        this.gameEndCount = gameEndCount;
+    private RaceManager(String gameEndCount) {
+        this.raceManagerCurrentCount = new RaceManagerCurrentCount(0);
+        this.raceManagerGameEndCount = new RaceManagerGameEndCount(gameEndCount);
     }
 
-    public static RaceManager createInstance(int gameEndCount) {
+    public static RaceManager createInstance(String gameEndCount) {
         if (raceManager == null) {
             raceManager = new RaceManager(gameEndCount);
         }
@@ -32,10 +33,10 @@ public class RaceManager {
     }
 
     public void process() {
-        currentCount++;
+        raceManagerCurrentCount.increaseCount();
     }
 
     public boolean isGameEnd() {
-        return currentCount == gameEndCount;
+        return raceManagerCurrentCount.getCurrentCount() == raceManagerGameEndCount.getGameEndCount();
     }
 }

@@ -3,16 +3,17 @@ package racinggame;
 public class Car {
     private static final int MOVABLE_MINIMUM_NUMBER = 4;
 
-    private final String name;
+    private final CarName carName;
     private MoveStatus moveStatus;
-    private int moveCount;
+    private CarMoveCount carMoveCount;
 
-    public Car(String name) {
-        this.name = name;
+    public Car(String carName) {
+        this.carName = new CarName(carName);
+        this.carMoveCount = new CarMoveCount(0);
     }
 
     public String getName() {
-        return name;
+        return carName.getName();
     }
 
     public MoveStatus getMoveStatus() {
@@ -20,13 +21,13 @@ public class Car {
     }
 
     public int getMoveCount() {
-        return moveCount;
+        return carMoveCount.getMoveCount();
     }
 
     public void decideMove(int randomNumber) {
         if (isMovableNumber(randomNumber)) {
             moveStatus = MoveStatus.MOVE_FORWARD;
-            moveCount++;
+            carMoveCount.increaseMoveCount();
             return;
         }
 
@@ -42,12 +43,12 @@ public class Car {
     }
 
     public boolean isMaximumMoveCount(int maximumCount) {
-        return moveCount == maximumCount;
+        return getMoveCount() == maximumCount;
     }
 
     @Override
     public String toString() {
-        return Message.printCarSpecification(name, moveCount);
+        return Message.printCarSpecification(getName(), getMoveCount());
     }
 
 }
