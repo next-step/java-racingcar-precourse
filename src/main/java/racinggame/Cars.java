@@ -10,11 +10,11 @@ public class Cars {
     private static final int END_NUM_IN_RANGE = 9;
 
     private final List<Car> cars;
-    private final List<String> winners;
+    private final List<String> winnersName;
 
     public Cars(List<String> carsStr) {
         this.cars = generateCars(carsStr);
-        this.winners = new ArrayList<>();
+        this.winnersName = new ArrayList<>();
     }
 
     private List<Car> generateCars(List<String> carsStr) {
@@ -43,12 +43,12 @@ public class Cars {
             findMaximumCar(car);
         }
 
-        return winners;
+        return winnersName;
     }
 
     private void findMaximumCar(Car car) {
         if (car.isMaximumMoveCount(getMaximumMoveCount())) {
-            winners.add(car.getName());
+            winnersName.add(car.getName());
         }
     }
 
