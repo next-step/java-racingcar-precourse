@@ -14,18 +14,6 @@ public class Cars implements Iterable<Car> {
 		}
 	}
 
-	public List<Car> getCars() {
-		return cars;
-	}
-
-	public Car get(int index) {
-		return cars.get(index);
-	}
-
-	public int size() {
-		return cars.size();
-	}
-
 	public void move() {
 		for (Car car : cars) {
 			car.move();
