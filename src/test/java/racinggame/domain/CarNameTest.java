@@ -36,11 +36,11 @@ class CarNameTest {
 	@ValueSource(strings = {"여섯자자동차"})
 	@EmptySource
 	@NullSource
-	void 잘못된_자동차_이름인_경우_INVALID_CAR_NAME을_메시지로_반환하는지(String carName) {
+	void 잘못된_자동차_이름인_경우_EMPTY_CAR_NAME을_메시지로_반환하는지(String carName) {
 		try {
 			new CarName(carName);
 		} catch (IllegalArgumentException | NullPointerException e) {
-			assertEquals(ErrorMessage.INVALID_CAR_NAME, ErrorMessage.valueOf(e.getMessage()));
+			assertEquals(ErrorMessage.INVALID_CAR_NAME_INPUT, ErrorMessage.valueOf(e.getMessage()));
 		}
 	}
 }
