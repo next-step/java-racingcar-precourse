@@ -1,6 +1,7 @@
 package racinggame;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Cars {
@@ -54,11 +55,6 @@ public class Cars {
 	}
 
 	private int getFarthestDistance() {
-		int max = 0;
-		List<Integer> distances = getDistances();
-		for (Integer distance : distances) {
-			max = Math.max(max, distance);
-		}
-		return max;
+		return Collections.max(getDistances());
 	}
 }
