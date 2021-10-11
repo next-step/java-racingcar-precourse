@@ -1,9 +1,7 @@
 package racinggame.model;
 
-import java.util.Objects;
-
 public class CarLocation {
-    int location;
+    private int location;
 
     public CarLocation(int location){
         this.location = location;
@@ -15,6 +13,14 @@ public class CarLocation {
 
     public int get(){
         return this.location;
+    }
+
+    public CarLocation getGreaterCompareWith(CarLocation other){
+        return this.isGreaterThan(other) ? this : other;
+    }
+
+    public Boolean isGreaterThan(CarLocation other){
+        return this.location > other.get();
     }
 
     @Override
