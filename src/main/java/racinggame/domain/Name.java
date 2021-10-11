@@ -11,7 +11,7 @@ public class Name {
 	}
 
 	private static boolean isValidLength(String value) {
-		return value.length() <= MAX_NAME_LENGTH;
+		return value.length() <= MAX_NAME_LENGTH || value.trim().length() == 0 || value.isEmpty();
 	}
 
 	public static Name of(String value) {
