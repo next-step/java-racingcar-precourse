@@ -23,6 +23,10 @@ public class Cars {
 		return isValid;
 	}
 
+	public List<Car> getCars() {
+		return cars;
+	}
+
 	public List<Integer> getDistances() {
 		ArrayList<Integer> distances = new ArrayList<>();
 		for (Car car : cars) {

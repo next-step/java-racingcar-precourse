@@ -41,19 +41,37 @@ public class CarsTest {
 
 	@ParameterizedTest
 	@MethodSource("자동차컬렉션_전진_파라미터")
-	void 자동차컬렉션_전진(int pickNumber, List<Integer> expected) {
-		Cars cars = new Cars(Arrays.asList("p", "crong", "honux"));
+	void 자동차컬렉션_전진(int pickNumber, List<Car> expected) {
+		Cars cars = new Cars(
+			Arrays.asList(expected.get(0).getName(), expected.get(1).getName(), expected.get(2).getName())
+		);
 
 		when(Randoms.pickNumberInRange(anyInt(), anyInt())).thenReturn(pickNumber);
 
 		cars.move();
-		assertThat(cars.getDistances()).isEqualTo(expected);
+		for (int i = 0; i < cars.getCars().size(); ++i) {
+			assertThat(cars.getCars().get(i).getName()).isEqualTo(expected.get(i).getName());
+			assertThat(cars.getCars().get(i).getDistance()).isEqualTo(expected.get(i).getDistance());
+		}
 	}
 
 	static Stream<Arguments> 자동차컬렉션_전진_파라미터() {
+		List<String> names = Arrays.asList("p", "crong", "honux");
 		return Stream.of(
-			Arguments.of(4, Arrays.asList(1, 1, 1)),
-			Arguments.of(3, Arrays.asList(0, 0, 0))
+			Arguments.of(4,
+				Arrays.asList(
+					new Car(names.get(0), 1),
+					new Car(names.get(1), 1),
+					new Car(names.get(2), 1)
+				)
+			),
+			Arguments.of(3,
+				Arrays.asList(
+					new Car(names.get(0), 0),
+					new Car(names.get(1), 0),
+					new Car(names.get(2), 0)
+				)
+			)
 		);
 	}
 
