@@ -1,5 +1,7 @@
 package nextstep.domain;
 
+import nextstep.dto.MoveResult;
+import nextstep.dto.RaceResult;
 import nextstep.utils.Randoms;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

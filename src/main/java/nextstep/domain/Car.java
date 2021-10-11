@@ -1,5 +1,7 @@
 package nextstep.domain;
 
+import nextstep.dto.MoveResult;
+
 public class Car {
 
     private static final int MIN_MOVABLE_VALUE = 4;

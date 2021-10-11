@@ -1,6 +1,6 @@
 package nextstep.controller;
 
-import nextstep.domain.MoveResult;
+import nextstep.dto.MoveResult;
 import nextstep.domain.Race;
 import nextstep.view.RaceView;
 

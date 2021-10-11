@@ -1,5 +1,8 @@
 package nextstep.domain;
 
+import nextstep.dto.MoveResult;
+import nextstep.dto.RaceResult;
+
 import java.util.List;
 
 public class Race {

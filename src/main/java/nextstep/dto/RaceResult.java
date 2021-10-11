@@ -1,4 +1,4 @@
-package nextstep.domain;
+package nextstep.dto;
 
 import java.util.Objects;
 

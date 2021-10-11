@@ -1,5 +1,7 @@
 package nextstep.domain;
 
+import nextstep.dto.MoveResult;
+
 import java.util.ArrayList;
 import java.util.List;
 

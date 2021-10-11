@@ -1,7 +1,7 @@
 package nextstep.view;
 
-import nextstep.domain.MoveResult;
-import nextstep.domain.RaceResult;
+import nextstep.dto.MoveResult;
+import nextstep.dto.RaceResult;
 import nextstep.utils.Console;
 
 import java.io.PrintStream;
