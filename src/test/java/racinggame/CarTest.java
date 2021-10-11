@@ -19,11 +19,12 @@ public class CarTest {
     @Test
     @DisplayName("이름 길이 검증")
     void 이름이_5자_이하인가() {
-        int carNameSize = car.getName().length();
-        assertThat(carNameSize <= 5).isTrue();
-        Car car2 = new Car("abcdefg");
-        int carNameSize2 = car2.getName().length();
-        assertThat(carNameSize2 <= 5).isFalse();
+
+        assertThatThrownBy(() -> {
+            Car car = new Car("abcdefg");
+        })
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR] 이름은 5자 이하만 가능합니다.");
     }
 
     @Test
