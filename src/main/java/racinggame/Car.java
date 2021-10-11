@@ -22,4 +22,8 @@ public class Car {
 			throw new IllegalArgumentException("자동차의 이름은 5자 이하여야 합니다");
 		}
 	}
+
+	public ProgressBar getProgressBar() {
+		return new ProgressBar(name, racingBar);
+	}
 }
