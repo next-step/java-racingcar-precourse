@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
 
 import nextstep.utils.Randoms;
+import racinggame.racingcar.Dice;
 import racinggame.racingcar.RacingCar;
 import racinggame.rule.RacingRule;
 import racinggame.ui.Rule;
@@ -30,10 +31,12 @@ class RacingCircuitTest {
 		racingCircuit = RacingCircuitConfig.racingCircuit();
 		rule = RacingCircuitConfig.rule();
 
+		Dice dice = new Dice(rule.diceMin(), rule.diceMax());
+
 		racingCars = new RacingCars(
 			Arrays.asList(
-				new RacingCar(rule, "abc1"),
-				new RacingCar(rule, "abc2")
+				new RacingCar("abc1", dice, rule),
+				new RacingCar("abc1", dice, rule)
 			)
 		);
 	}

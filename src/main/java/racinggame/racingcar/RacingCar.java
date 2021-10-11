@@ -11,9 +11,9 @@ public final class RacingCar {
 	private final Name name;
 	private int location = 0;
 
-	public RacingCar(Rule rule, String name) {
+	public RacingCar(String name, Dice dice, Rule rule) {
 		this.rule = rule;
-		this.dice = new Dice(rule.diceMin(), rule.diceMax());
+		this.dice = dice;
 		this.name = new Name(name);
 	}
 

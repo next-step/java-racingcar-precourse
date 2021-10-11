@@ -63,7 +63,8 @@ class RacingCarTest {
 
 	static class RacingCarConfig {
 		static RacingCar racingCar() {
-			return new RacingCar(rule(), "abc");
+			Dice dice = new Dice(rule().diceMin(), rule().diceMax());
+			return new RacingCar("abc", dice, rule());
 		}
 
 		static Rule rule() {

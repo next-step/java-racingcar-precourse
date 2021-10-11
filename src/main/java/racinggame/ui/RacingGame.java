@@ -6,6 +6,7 @@ import java.util.List;
 
 import racinggame.circuit.FinalRecord;
 import racinggame.circuit.Lap;
+import racinggame.racingcar.Dice;
 import racinggame.racingcar.RacingCar;
 import racinggame.circuit.RacingCars;
 import racinggame.exception.InvalidNameException;
@@ -39,8 +40,10 @@ public final class RacingGame {
 	private RacingCars makeRacingCars() {
 		List<RacingCar> racingCars = new ArrayList<>();
 
+		Dice dice = new Dice(rule.diceMin(), rule.diceMax());
+
 		inputRacingCarNames()
-			.forEach(name -> racingCars.add(new RacingCar(rule, name)));
+			.forEach(name -> racingCars.add(new RacingCar(name, dice, rule)));
 
 		return new RacingCars(racingCars);
 	}

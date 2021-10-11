@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
 
 import nextstep.utils.Randoms;
+import racinggame.racingcar.Dice;
 import racinggame.racingcar.LapRecord;
 import racinggame.racingcar.Name;
 import racinggame.racingcar.RacingCar;
@@ -77,9 +78,11 @@ class RacingCarsTest {
 		}
 
 		static List<RacingCar> racingCar() {
+			Dice dice = new Dice(rule().diceMin(), rule().diceMax());
+
 			return Arrays.asList(
-				new RacingCar(rule(), "abc1"),
-				new RacingCar(rule(), "abc2")
+				new RacingCar("abc1", dice, rule()),
+				new RacingCar("abc2", dice, rule())
 			);
 		}
 
