@@ -11,11 +11,11 @@ public class GameTurn {
         this.carMover = new CarMover();
     }
 
-    public ArrayList<RANDOM_MOVE_RESULT> run(ArrayList<Car> cars) {
+    public static ArrayList<RANDOM_MOVE_RESULT> run(ArrayList<Car> cars) {
         ArrayList<RANDOM_MOVE_RESULT> result = new ArrayList<>();
 
         for (Car car : cars) {
-            result.add(this.carMover.moveRandomizly(car));
+            result.add(CarMover.moveRandomizly(car));
         }
 
         return result;
