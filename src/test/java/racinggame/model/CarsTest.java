@@ -34,4 +34,32 @@ public class CarsTest {
 			assertThat(cars.getStatus()).isEqualTo("bus : --\ntexi : --\n");
 		}
 	}
+	
+	@Test
+	void 자동차들중_우승자를_결정() {
+		try (final MockedStatic<Randoms> mockRandoms = mockStatic(Randoms.class)) {
+			mockRandoms
+					.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
+					.thenReturn(MOVING_FORWARD, MOVING_FORWARD, STOP, MOVING_FORWARD);
+			
+			Cars cars = new Cars("bus,texi");
+			cars.roll();
+			cars.roll();
+			assertThat(cars.getWinnerNames()).isEqualTo("texi");
+		}
+	}
+	
+	@Test
+	void 우승자가_여러명일_경우() {
+		try (final MockedStatic<Randoms> mockRandoms = mockStatic(Randoms.class)) {
+			mockRandoms
+					.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
+					.thenReturn(MOVING_FORWARD, MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD, STOP);
+			
+			Cars cars = new Cars("bus,texi,suv");
+			cars.roll();
+			cars.roll();
+			assertThat(cars.getWinnerNames()).isEqualTo("bus,texi");
+		}
+	}
 }

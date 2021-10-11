@@ -39,4 +39,40 @@ public class Cars {
 		}
 		return sbStatus.toString();
 	}
+
+	/**
+	 * 우승자 이름들 반환.
+	 * @return
+	 */
+	public String getWinnerNames() {
+		StringBuffer sbWinnerNames = new StringBuffer();
+		for (Car car : chooseWinners()) {
+			sbWinnerNames.append(",");
+			sbWinnerNames.append(car.getName());
+		}
+		return sbWinnerNames.toString().replaceFirst(",", "");
+	}
+
+	/**
+	 * 우승자들 선정
+	 * @return
+	 */
+	private List<Car> chooseWinners() {
+		int winnerTravel = getWinnerTravel();
+		List<Car> winners = new ArrayList<>(cars);
+		winners.removeIf(car -> car.getTotalTravel() < winnerTravel);
+		return winners;
+	}
+
+	/**
+	 * 우승자 이동거리 반환
+	 * @return 우승자 이동거리
+	 */
+	private int getWinnerTravel() {
+		int winnerTravel = 0;
+		for (Car car : cars) {
+			winnerTravel = Math.max(winnerTravel, car.getTotalTravel());
+		}
+		return winnerTravel;
+	}
 }
