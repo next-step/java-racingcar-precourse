@@ -25,7 +25,6 @@ public class ValidationUtils {
         if(Integer.parseInt(tryNo) < 0) {
             return false;
         }
-
         return true;
     }
 
