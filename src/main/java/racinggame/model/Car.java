@@ -1,4 +1,4 @@
-package model;
+package racinggame.model;
 
 import nextstep.utils.Randoms;
 
@@ -32,5 +32,4 @@ public class Car {
 			distance += 1;
 		}
 	}
-
 }
