@@ -19,7 +19,6 @@ public class GameConsole {
     private static final String RACE_RESULT_TITLE = "실행 결과";
     private static final String WHITE_SPACE_STRING = " ";
 
-
     private final CarNameInputConsole carNameInputConsole;
     private final TryInputConsole tryInputConsole;
 
@@ -31,6 +30,8 @@ public class GameConsole {
         tryInputConsole = new TryInputConsole(TRY_INPUT_MESSAGE, TRY_ERROR_MESSAGE);
     }
 
+
+
     public List<String> getCarNames() {
         return carNameInputConsole.getInputValue();
     }
@@ -38,6 +39,8 @@ public class GameConsole {
     public int getTryCount() {
         return tryInputConsole.getInputValue();
     }
+
+
 
     public void printRaceResultTitle() {
         System.out.println(WHITE_SPACE_STRING);
@@ -52,11 +55,26 @@ public class GameConsole {
         System.out.println(WHITE_SPACE_STRING);
     }
 
+    public void printRaceWinners(List<String> carNames) {
+        String winnerMessage = makeCarRaceWinnerMessage(carNames);
+        System.out.println(winnerMessage);
+    }
+
     private String makeCarRaceResultMessage(String carName, int forwardMovementCount) {
         StringBuilder stringBuilder = new StringBuilder(carName + ":");
         for (int i = 0; i < forwardMovementCount; i++) {
             stringBuilder.append("-");
         }
+        return stringBuilder.toString();
+    }
+
+    private String makeCarRaceWinnerMessage(List<String> carNames) {
+        StringBuilder stringBuilder = new StringBuilder("최종 우승자는 ");
+        for (String carName : carNames) {
+            stringBuilder.append(carName).append(",");
+        }
+        stringBuilder.deleteCharAt(stringBuilder.length() -1);
+        stringBuilder.append(" 입니다.");
         return stringBuilder.toString();
     }
 

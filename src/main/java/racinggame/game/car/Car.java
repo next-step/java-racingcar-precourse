@@ -2,7 +2,8 @@ package racinggame.game.car;
 
 import nextstep.utils.Randoms;
 
-public class Car {
+public class Car implements Comparable<Car> {
+
     private static final int START_INCLUSIVE = 0;
     private static final int END_INCLUSIVE = 9;
 
@@ -15,6 +16,7 @@ public class Car {
     public Car(String name) {
         this.name = name;
     }
+
 
     public void runRace() {
         if(moveForward()) {
@@ -33,5 +35,16 @@ public class Car {
 
     public int getForwardMovementCount() {
         return forwardMovementCount;
+    }
+
+    @Override
+    public int compareTo(Car car) {
+        if(this.forwardMovementCount > car.forwardMovementCount) {
+            return 1;
+        }
+        else if(this.forwardMovementCount == car.forwardMovementCount) {
+            return 0;
+        }
+        return -1;
     }
 }

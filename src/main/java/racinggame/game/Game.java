@@ -5,14 +5,17 @@ import racinggame.game.car.Car;
 import racinggame.game.console.GameConsole;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Game {
     private final GameConsole gameConsole = new GameConsole();
     private List<Car> cars = new ArrayList<>();
 
-    public void play() {
+    private List<String> winnerCarNames = null;
+    private int winnerForwardMovementCount = 0;
 
+    public void play() {
         List<String> carNames = gameConsole.getCarNames();
         setCars(carNames);
 
@@ -23,7 +26,8 @@ public class Game {
             runRace();
             gameConsole.printRaceResult(cars);
         }
-
+        setWinnerCarNames();
+        gameConsole.printRaceWinners(getWinnerCarNames());
     }
 
 
@@ -39,5 +43,26 @@ public class Game {
         for (Car car : cars) {
             car.runRace();
         }
+    }
+
+
+    private void setWinnerCarNames() {
+        this.winnerCarNames = new ArrayList<>();
+        this.winnerForwardMovementCount = Collections.max(cars).getForwardMovementCount();
+        Collections.reverse(cars);
+
+        for (Car car : cars) {
+            addNamesIfIsWinner(car);
+        }
+    }
+
+    private void addNamesIfIsWinner(Car car) {
+        if(car.getForwardMovementCount() == this.winnerForwardMovementCount) {
+            this.winnerCarNames.add(car.getName());
+        }
+    }
+
+    private List<String> getWinnerCarNames() {
+        return winnerCarNames;
     }
 }
