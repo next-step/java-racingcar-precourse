@@ -1,6 +1,6 @@
 package racinggame.domain;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import racinggame.message.ErrorMessage;
@@ -8,32 +8,40 @@ import racinggame.message.ErrorMessage;
 public class Cars {
 	private final List<Car> cars;
 
-	public Cars() {
-		cars = new ArrayList<>();
+	public Cars(List<Car> cars) {
+		validateCars(cars);
+		this.cars = cars;
 	}
 
-	public void addCar(Car car) {
-		validateCar(car);
-		cars.add(car);
-	}
-
-	private void validateCar(Car car) {
-		if (car == null) {
+	private void validateCars(List<Car> cars) {
+		if (cars == null) {
 			throw new NullPointerException();
 		}
 
+		if (cars.contains(null)) {
+			throw new NullPointerException();
+		}
+
+		checkDuplicateCarNames(cars);
+	}
+
+	private void checkDuplicateCarNames(List<Car> cars) {
+		HashSet<String> carNameSet = new HashSet<>();
 		for (int i = 0; i < cars.size(); i++) {
-			checkSameCarName(car.getName(), cars.get(i));
+			carNameSet.add(cars.get(i).getName());
+		}
+		if (cars.size() != carNameSet.size()) {
+			throw new IllegalArgumentException(ErrorMessage.DUPLICATE_CAR_NAMES.name());
 		}
 	}
 
-	private void checkSameCarName(String carName, Car car) {
+	private void checkDuplicateCarNames(String carName, Car car) {
 		if (car.getName().equals(carName)) {
-			throw new IllegalArgumentException(ErrorMessage.SAME_CAR_NAME.name());
+			throw new IllegalArgumentException(ErrorMessage.DUPLICATE_CAR_NAMES.name());
 		}
 	}
 
-	public int getQuantity() {
+	public int getCarsCount() {
 		return cars.size();
 	}
 
@@ -46,4 +54,21 @@ public class Cars {
 			cars.get(i).goForward();
 		}
 	}
+
+	// public ArrayList<Integer> getWinnerIndexes() {
+	// 	ArrayList<Integer> winnerIndexes = new ArrayList<>();
+	// 	int maxCarPosition = getMaxCarPosition();
+	// 	for (int i = 0; i < cars.size(); i++) {
+	//
+	// 	}
+	// 	return null;
+	// }
+	//
+	// private int getMaxCarPosition() {
+	// 	int maxCarPosition = 0;
+	// 	for (int i = 0; i < cars.size(); i++) {
+	// 		maxCarPosition = maxCarPosition < cars.get(i).getPosition() ? cars.get(i).getPosition() : maxCarPosition;
+	// 	}
+	// 	return maxCarPosition;
+	// }
 }
