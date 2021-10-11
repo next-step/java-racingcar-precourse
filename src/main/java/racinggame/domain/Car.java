@@ -1,27 +1,30 @@
 package racinggame.domain;
 
 public class Car {
-    private CarName name;
-    private CarDistance distance;
+    private Name name;
+    private Position position;
 
-    public Car(String name) {
-        this.name = new CarName(name);
-        this.distance = new CarDistance();
+    public Car(Name name) {
+        this.name = name;
+        this.position = new Position();
     }
 
-    public void changeDistance(int randomNumber) {
-        this.distance.change(randomNumber);
+    public void changePosition() {
+        MoveStatus status = MoveJudge.judge();
+        if (status.equals(MoveStatus.MOVE)) {
+            this.position.forward();
+        }
     }
 
-    public String convertDistanceToHyphen() {
-        return this.distance.convertToHyphen();
+    public boolean isSamePosition(Position maxPosition) {
+        return this.position.equals(maxPosition);
     }
 
     public String getName() {
-        return name.getCarName();
+        return name.getName();
     }
 
-    public int getDistance() {
-        return distance.getCarDistance();
+    public Position getPosition() {
+        return position;
     }
 }
