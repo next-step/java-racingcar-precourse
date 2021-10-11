@@ -52,7 +52,7 @@ public class RacingGameTest {
     public void end() throws Exception {
         CarService carService = new CarService();
         RacingSevice racingSevice = new RacingSevice();
-        List<Car> carsInfo = carService.createCar("car2,car2,car3,car4,car5");
+        List<Car> carsInfo = carService.createCar("car1,car2,car3,car4,car5");
         carsInfo = racingSevice.mvCar(carsInfo,5);
         racingSevice.endRacing(carsInfo);
     }

@@ -69,25 +69,32 @@ public class RacingSevice {
 
     public List<Car> mvCar(List<Car> carsInfo, int forCount){
 
-        String resultMvText = "";
         System.out.println("[SYSTEM] 실행결과");
+
         for (int i = 0; i < forCount; i++) {
             for (Car car : carsInfo) {
                 if (this.isMove()) {
                     car.setCarMvInfo(car.getCarMvInfo() + 1);
                 }
-                resultMvText = "";
-                for (int j = 0; j < car.getCarMvInfo(); j++) {
-                    resultMvText += '-';
-                }
-                System.out.println(car.getCarNm() + " : " + resultMvText);
             }
-            System.out.println("========================");
+            this.printGame(carsInfo);
         }
         return carsInfo;
     }
 
-    public boolean isMove() {
+    private void printGame(List<Car> carsInfo){
+        String resultMvText;
+        for (Car car : carsInfo) {
+            resultMvText = "";
+            for (int i = 0; i < car.getCarMvInfo(); i++) {
+                resultMvText += '-';
+            }
+            System.out.println(car.getCarNm() + " : " + resultMvText);
+        }
+        System.out.println("");
+    }
+
+    private boolean isMove() {
         int randomCount = Randoms.pickNumberInRange(MOVING_MIN_NO, MOVING_MAX_NO);
         if (randomCount > MOVING_MAX_NO) {
             return false;
