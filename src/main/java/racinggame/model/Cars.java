@@ -4,7 +4,6 @@ import racinggame.strategy.MoveStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Cars {
 	List<Car> cars;
@@ -25,15 +24,23 @@ public class Cars {
 		cars.forEach(Car::move);
 	}
 
-
 	public List<Car> getCars() {
 		return cars;
 	}
 
 	public List<Car> getWinningCars() {
-		return cars.stream().filter(car -> car.getDistance() == getMaxDistance()).collect(Collectors.toList());
+		ArrayList<Car> winningCars = new ArrayList<>();
+		for (Car car : cars) {
+			addWinningCar(winningCars, car, getMaxDistance());
+		}
+		return winningCars;
 	}
 
+	private void addWinningCar(ArrayList<Car> winningCars, Car car, int maxDistance) {
+		if (car.getDistance() == maxDistance) {
+			winningCars.add(car);
+		}
+	}
 
 	private int getMaxDistance() {
 		int maxDistance = 0;
