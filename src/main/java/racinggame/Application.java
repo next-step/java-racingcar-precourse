@@ -1,7 +1,11 @@
 package racinggame;
 
+import nextstep.controller.RaceController;
+import nextstep.view.RaceView;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO 자동차 경주 게임 구현
+        RaceController race = new RaceController(new RaceView());
+        race.start();
     }
 }
