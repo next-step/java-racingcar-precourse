@@ -1,10 +1,13 @@
-package racinggame;
+package racinggame.domain;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import racinggame.utils.Message;
+
 public class Cars {
-    List<String> cars;
+    public List<String> cars;
+    public static Validation validation = new Validation();
 
     public Cars(String carNames) {
         cars = mapCar(carNames);
@@ -12,11 +15,11 @@ public class Cars {
 
     private static List<String> mapCar(String carName) {
         List<String> resVal = new ArrayList<>();
-        carName = carName.replaceAll(" ", "");
         String[] cars = carName.split(",");
         for (int i = 0; i < cars.length; i++) {
             resVal.add(cars[i]);
         }
         return resVal;
     }
+
 }

@@ -1,16 +1,14 @@
-package racinggame;
-
-import nextstep.utils.Randoms;
+package racinggame.domain;
 
 public class Car {
-    private final String carNames;
+    private final String carName;
     private int randomNum;
     private int moveCnt;
 
     private RandomNumber randomNumber;
 
-    public Car(String carNames) {
-        this.carNames = carNames;
+    public Car(String carName) {
+        this.carName = carName;
         this.moveCnt = 0;
     }
 
@@ -27,7 +25,10 @@ public class Car {
     }
 
     public int getMoveCnt() {
-        System.out.println("웁직임은 " + this.moveCnt + "입니다.");
         return this.moveCnt;
+    }
+
+    public String getCarName() {
+        return this.carName;
     }
 }
