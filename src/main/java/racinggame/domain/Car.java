@@ -2,13 +2,17 @@ package racinggame.domain;
 
 public class Car {
     private final CarName carName;
-    private final CarMovement carMovement;
-    private int carGoCount;
+    private final CarMovement carMovements;
+    private int goCount;
 
     public Car(String carName) {
         this.carName = new CarName(carName);
-        this.carMovement = new CarMovement();
-        this.carGoCount = 0;
+        this.carMovements = new CarMovement();
+        this.goCount = 0;
+    }
+
+    public int getGoCount() {
+        return goCount;
     }
 
     public void move() {
@@ -18,11 +22,11 @@ public class Car {
     }
 
     private void addCarMovement(Movement movement) {
-        carMovement.addCarMovement(movement.getMovementStatus());
+        carMovements.addCarMovement(movement.getMovementStatus());
     }
 
     private void addGoCount(Movement movement) {
-        carGoCount += checkGoCount(movement.getMovementStatus());
+        goCount += checkGoCount(movement.getMovementStatus());
     }
 
     private int checkGoCount(MovementStatus movementStatus) {
@@ -32,3 +36,4 @@ public class Car {
         return 1;
     }
 }
+
