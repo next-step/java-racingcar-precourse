@@ -7,6 +7,7 @@ public class Application {
         Race race = Race.of(carNames, iterationCount);
 
         while(!race.isFinished()){
+            race.iterate();
         }
     }
 }

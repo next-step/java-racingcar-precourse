@@ -6,4 +6,8 @@ public class CarPosition {
     public CarPosition() {
         this.position = 0;
     }
+
+    public void next() {
+        this.position++;
+    }
 }

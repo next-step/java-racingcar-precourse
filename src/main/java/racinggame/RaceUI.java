@@ -83,6 +83,6 @@ public class RaceUI {
     }
 
     private static void printAskingIterationCountMessage() {
-        System.out.println(RaceMessages.ASK_CAR_NAMES.message());
+        System.out.println(RaceMessages.ASK_ITERATION_COUNT.message());
     }
 }

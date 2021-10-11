@@ -10,4 +10,8 @@ public class IterationCount {
     public boolean isZero() {
         return this.count == 0;
     }
+
+    public void decrease() {
+        this.count--;
+    }
 }

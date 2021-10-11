@@ -20,4 +20,8 @@ public class Race {
         return this.iterationCount.isZero();
     }
 
+    public void iterate() {
+        this.players.moveCarsByConditions();
+        this.iterationCount.decrease();
+    }
 }
