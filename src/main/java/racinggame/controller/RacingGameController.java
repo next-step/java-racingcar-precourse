@@ -2,6 +2,7 @@ package racinggame.controller;
 
 import nextstep.utils.Console;
 import racinggame.model.Cars;
+import racinggame.model.MaxMoveTurn;
 import racinggame.view.RacingGameView;
 
 public class RacingGameController {
@@ -19,9 +20,48 @@ public class RacingGameController {
 	 */
 	private void gameStart() {
 		Cars cars = initCars();
-		System.out.println("생성결과 \n"+cars.getStatus());
+		MaxMoveTurn maxMoveTurn = initMaxMoveTurn();
+		System.out.println("생성결과 \n"+maxMoveTurn.get());
 		
 	}
+
+	/**
+	 * 자동차들 생성 초기작업
+	 * @return 생성 완료된 자동차들
+	 */
+	private MaxMoveTurn initMaxMoveTurn() {
+		MaxMoveTurn maxMoveTurn = null;
+		do {
+			maxMoveTurn = makeMaxMoveTurn();
+		} while(maxMoveTurn == null);
+		
+		return maxMoveTurn;
+	}
+
+	/**
+	 * 사용자로부터 자동차 이름을 입력받아서 자동차들 생성
+	 * @return 생성된 자동차들(오류날경우 null)
+	 */
+	private MaxMoveTurn makeMaxMoveTurn() {
+		MaxMoveTurn maxMoveTurn = null;
+		try {
+			maxMoveTurn = new MaxMoveTurn(inputMaxMoveTurn());
+		} catch(NumberFormatException nfe) {
+			view.printlnErrorMessage(nfe);
+		}
+		return maxMoveTurn;
+	}
+	
+	/**
+	 * 자동차 이름 입력
+	 * @return 입력한 값
+	 */
+	private String inputMaxMoveTurn() {
+		view.printlnInputMaxMoveTurn();
+		return Console.readLine();
+	}
+	
+	
 
 	/**
 	 * 자동차들 생성 초기작업
@@ -45,7 +85,7 @@ public class RacingGameController {
 		try {
 			cars = new Cars(inputCarNames());
 		} catch(IllegalArgumentException ie) {
-			view.printlnErrorInputCarNames(ie);
+			view.printlnErrorMessage(ie);
 		}
 		return cars;
 	}
