@@ -1,5 +1,7 @@
 package racinggame;
 
+import java.util.NoSuchElementException;
+
 import nextstep.utils.Console;
 import racinggame.model.Cars;
 
@@ -13,7 +15,7 @@ public class Game {
 	
 	private int playCount = 0;
 	
-	public void init() {
+	public void init() throws NoSuchElementException, IllegalArgumentException, Exception {
 //		System.out.println("경주할 자동차의 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
 		addCars(Console.readLine());
 		
@@ -21,6 +23,11 @@ public class Game {
 		setPlayCount(Console.readLine());
 	}
 	
+	/**
+	 * 자동차 이름 입력 
+	 * 
+	 * @param line 자동차 이름 입력
+	 * */
 	private void addCars(String line) throws IllegalArgumentException {
 		if (line == null || line.isEmpty()) {
 			throw new IllegalArgumentException("[ERROR]");
@@ -29,6 +36,11 @@ public class Game {
 		this.cars.addCars(line.split(","));
 	}
 
+	/**
+	 * 랜덤 플레이 카운트 입력
+	 * 
+	 * @param line 플레이 카운트 입력
+	 * */
 	private void setPlayCount(String line) {
 		if (line == null || line.isEmpty()) {
 			throw new IllegalArgumentException("[ERROR]");

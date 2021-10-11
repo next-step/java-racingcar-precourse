@@ -19,6 +19,10 @@ public class Cars {
 		this.cars = cars;
 	}
 
+	/**
+	 * 자동차 이름 입력
+	 * @param carNames 자동차 이름 어레이
+	 * */
 	public void addCars(String[] carNames) throws IllegalArgumentException {
 		if (carNames == null || carNames.length == 0) {
 			throw new IllegalArgumentException("[ERROR]");
