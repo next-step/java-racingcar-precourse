@@ -37,12 +37,6 @@ public class Cars {
 		}
 	}
 
-	private void checkDuplicateCarNames(String carName, Car car) {
-		if (car.getName().equals(carName)) {
-			throw new IllegalArgumentException(ErrorMessage.DUPLICATE_CAR_NAMES.name());
-		}
-	}
-
 	public int getCarsCount() {
 		return cars.size();
 	}

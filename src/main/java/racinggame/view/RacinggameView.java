@@ -6,6 +6,10 @@ import racinggame.message.ErrorMessage;
 import racinggame.message.PlayMessage;
 
 public class RacinggameView {
+	public RacinggameView() {
+		
+	}
+
 	public void showRequestCarNameInputMessage() {
 		System.out.println(PlayMessage.REQUEST_CAR_NAME_INPUT.getValue());
 	}

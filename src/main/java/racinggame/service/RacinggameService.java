@@ -10,6 +10,10 @@ import racinggame.message.ErrorMessage;
 import racinggame.message.PlayMessage;
 
 public class RacinggameService {
+	public RacinggameService() {
+		
+	}
+
 	public Cars createCars(String carNameInput) {
 		validateCarNameInput(carNameInput);
 		String[] carNames = carNameInput.split(PlayMessage.CAR_NAME_SEPARATOR.getValue());
