@@ -13,15 +13,16 @@ public class Cars {
     private final List<Car> users;
 
     public <T> Cars(List<Car> users) {
+        if (users.isEmpty()) {
+            throw new IllegalArgumentException(ErrorCode.NEED_MORE_USERS.getMessage());
+        }
         if (this.hasDupUser(users)) {
-            System.out.println(ErrorCode.DUPLICATION_NAME.getMessage());
             throw new IllegalArgumentException(ErrorCode.DUPLICATION_NAME.getMessage());
         }
         this.users = users;
     }
 
     public Cars() {
-        System.out.println(ErrorCode.NEED_MORE_USERS.getMessage());
         throw new IllegalArgumentException(ErrorCode.NEED_MORE_USERS.getMessage());
     }
 

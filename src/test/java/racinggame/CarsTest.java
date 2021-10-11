@@ -7,6 +7,7 @@ import racinggame.domain.Cars;
 import racinggame.domain.ErrorCode;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -28,6 +29,7 @@ public class CarsTest {
     @Test
     void 레이싱게임_참가_자동차_없을때() {
         assertEquals("[ERROR] 레이싱 게임 참가 자동차는 1대이상 이어야 합니다.", assertThrows(IllegalArgumentException.class, () -> new Cars()).getMessage());
+        assertEquals("[ERROR] 레이싱 게임 참가 자동차는 1대이상 이어야 합니다.", assertThrows(IllegalArgumentException.class, () -> new Cars(Collections.emptyList())).getMessage());
     }
 
     @Test
