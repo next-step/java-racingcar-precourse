@@ -1,6 +1,6 @@
 package racinggame.controller;
 
-import racinggame.model.CarList;
+import racinggame.model.CarEntry;
 import racinggame.model.TryCount;
 import racinggame.utils.ValidationUtil;
 import racinggame.view.ConsoleView;
@@ -11,7 +11,8 @@ import java.util.List;
 public class RacingGameController {
 	public static final String CAR_NAME_INPUT_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
 	public static final String CAR_NAME_LENGTH_ERROR_MESSAGE = "자동차 이름은 5이하로 입력하세요.";
-	private CarList carList;
+	public static final String RESULT_MESSAGE = "실행 결과";
+	private CarEntry carEntry;
 	private ConsoleView consoleView;
 	private TryCount tryCount;
 
@@ -22,6 +23,22 @@ public class RacingGameController {
 	public void startGame() {
 		initCarList(getCarNameArray());
 		initTryCount(getTryCount());
+		runRace();
+	}
+
+	private void runRace() {
+		while (!tryCount.isZeroCount()) {
+			carEntry.race();
+			printResult(carEntry.getResult());
+			tryCount.decreaseCount();
+		}
+	}
+
+	private void printResult(List<String> result) {
+		consoleView.println(RESULT_MESSAGE);
+		for (String s : result) {
+			consoleView.println(s);
+		}
 	}
 
 	private void initTryCount(int tryCountValue) {
@@ -42,7 +59,7 @@ public class RacingGameController {
 	}
 
 	private void initCarList(String[] carNameArray) {
-		carList = new CarList(toList(carNameArray));
+		carEntry = new CarEntry(toList(carNameArray));
 	}
 
 	private String[] getCarNameArray() {
