@@ -24,17 +24,17 @@ public class CarsTest {
 
   @Test
   void racingForward() {
-    List<CarMoveStatus> racingCars = cars.racing(Arrays.asList(4, 4, 4));
-    for(CarMoveStatus carMoveStatus : racingCars) {
-      assertThat(carMoveStatus).isEqualTo(CarMoveStatus.FORWARD);
+    List<Car> racingCars = cars.racing(Arrays.asList(4, 5, 6));
+    for(Car car : racingCars) {
+      assertThat(car.getCountForward()).isEqualTo(1);
     }
   }
 
   @Test
   void racingStop() {
-    List<CarMoveStatus> racingCars = cars.racing(Arrays.asList(0, 0, 0));
-    for(CarMoveStatus carMoveStatus : racingCars) {
-      assertThat(carMoveStatus).isEqualTo(CarMoveStatus.STOP);
+    List<Car> racingCars = cars.racing(Arrays.asList(0, 1, 2));
+    for(Car car : racingCars) {
+      assertThat(car.getCountForward()).isEqualTo(0);
     }
   }
 

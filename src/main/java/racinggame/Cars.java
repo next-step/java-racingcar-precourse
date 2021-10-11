@@ -2,6 +2,7 @@ package racinggame;
 
 import java.util.ArrayList;
 import java.util.List;
+import nextstep.utils.Randoms;
 
 /**
  * @author : naming
@@ -17,11 +18,17 @@ public class Cars {
     this.cars = cars;
   }
 
-  public List<CarMoveStatus> racing(List<Integer> moveNumList) {
-    List<CarMoveStatus> carMoveStatuses = new ArrayList<>();
-    for (int i = 0; i < moveNumList.size(); i++) {
-      carMoveStatuses.add(cars.get(i).racing(moveNumList.get(i)));
+  public List<Car> racing(List<Integer> moveNum) {
+    for (int i = 0; i < moveNum.size(); i++) {
+      cars.get(i).racing(moveNum.get(i));
     }
-    return carMoveStatuses;
+    return cars;
+  }
+
+  public RacingResult racingTime(int racingTime) {
+    for(int i=0; i<racingTime; i++) {
+      cars.get(i).racing(Randoms.pickNumberInRange(0, 9));
+    }
+    return new RacingResult(cars);
   }
 }
