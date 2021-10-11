@@ -21,6 +21,11 @@ public class RacingGameController {
 	private void gameStart() {
 		Cars cars = initCars();
 		MaxMoveTurn maxMoveTurn = initMaxMoveTurn();
+		playRacingGame(cars, maxMoveTurn);
+		view.printlnRacingGameResult(cars.getWinnerNames());
+	}
+
+	private void playRacingGame(Cars cars, MaxMoveTurn maxMoveTurn) {
 		view.printlnRacingGameProgress();
 		for (int i = 0; i < maxMoveTurn.get(); i++) {
 			cars.roll();

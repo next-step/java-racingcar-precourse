@@ -1,6 +1,7 @@
 package racinggame.view;
 
 import racinggame.model.RacingGameStatus;
+import racinggame.model.WinnerNames;
 
 public class RacingGameView {
 	
@@ -20,7 +21,19 @@ public class RacingGameView {
 		System.out.println("\n실행 결과");
 	}
 	
+	/**
+	 * 레이싱 게임 진행과정 출력
+	 * @param status RacingGameStatus 객체 - Cars 객체의 getStatus() 메소드로 획득.
+	 */
 	public void showRacingGameStatus(RacingGameStatus status) {
 		System.out.println(status);
+	}
+	
+	/**
+	 * 레이싱 게임 진행결과 출력
+	 * @param winnerNames WinnerNames 객체 - Cars 객체의 getWinnerNames() 메소드로 획득.
+	 */
+	public void printlnRacingGameResult(WinnerNames winnerNames) {
+		System.out.printf("최종 우승자는 %s 입니다.\n", winnerNames);
 	}
 }
