@@ -1,4 +1,4 @@
-package racinggame;
+package racinggame.model;
 
 public class CarName {
 	private static final int NAME_LENGTH_MAX = 5;

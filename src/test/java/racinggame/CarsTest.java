@@ -17,6 +17,8 @@ import org.junit.jupiter.params.provider.MethodSource;
 import org.mockito.MockedStatic;
 
 import nextstep.utils.Randoms;
+import racinggame.model.Car;
+import racinggame.model.Cars;
 
 public class CarsTest {
 	private MockedStatic<Randoms> randoms;

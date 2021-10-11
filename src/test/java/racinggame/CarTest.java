@@ -10,6 +10,8 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.mockito.MockedStatic;
 
 import nextstep.utils.Randoms;
+import racinggame.model.Car;
+import racinggame.model.CarDistance;
 
 public class CarTest {
 	private MockedStatic<Randoms> randoms;

@@ -5,6 +5,8 @@ import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import racinggame.model.CarName;
+
 public class CarNameTest {
 
 	@ParameterizedTest

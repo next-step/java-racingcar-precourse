@@ -1,4 +1,7 @@
-package racinggame;
+package racinggame.view;
+
+import racinggame.model.Car;
+import racinggame.model.Cars;
 
 public class RacingGameView {
 

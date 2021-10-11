@@ -1,4 +1,4 @@
-package racinggame;
+package racinggame.model;
 
 public class CarDistance {
 	private int distance;
@@ -11,7 +11,7 @@ public class CarDistance {
 		this.distance++;
 	}
 
-	int getDistance() {
+	public int getDistance() {
 		return this.distance;
 	}
 }

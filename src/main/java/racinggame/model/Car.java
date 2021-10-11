@@ -1,4 +1,4 @@
-package racinggame;
+package racinggame.model;
 
 import nextstep.utils.Randoms;
 

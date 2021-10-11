@@ -2,6 +2,11 @@ package racinggame;
 
 import java.util.Optional;
 
+import racinggame.model.Cars;
+import racinggame.model.TryNumber;
+import racinggame.view.RacingGameView;
+import racinggame.view.UserView;
+
 public class RacingGameController {
 	private final UserView userView;
 	private final RacingGameView racingGameView;
