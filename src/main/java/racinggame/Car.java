@@ -20,7 +20,7 @@ public class Car {
     }
 
     public void decideMove(int randomNumber) {
-        if (isMovable(randomNumber)) {
+        if (isMovableNumber(randomNumber)) {
             moveStatus = MoveStatus.MOVE_FORWARD;
             moveCount++;
             return;
