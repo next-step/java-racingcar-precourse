@@ -9,8 +9,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.MockedStatic;
 import racinggame.enums.RANDOM_MOVE_RESULT;
 
-import java.util.ArrayList;
-
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mockStatic;
 
