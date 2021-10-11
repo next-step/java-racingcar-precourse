@@ -16,6 +16,7 @@ public class RacingGameController {
 	public static final String RESULT_MESSAGE = "실행 결과";
 	public static final String WINNER_MESSAGE_PREFIX = "최종 우승자는 ";
 	public static final String WINNER_MESSAGE_SUFFIX = " 입니다.";
+	public static final int DEFAULT_TRY_COUNT_VALUE = 0;
 	private final ConsoleView consoleView;
 	private final RacingGameService racingGameService;
 
@@ -37,29 +38,39 @@ public class RacingGameController {
 	}
 
 	private int getTryCount() {
-		int tryCountValue;
-		while (true) {
+		int tryCountValue = DEFAULT_TRY_COUNT_VALUE;
+		boolean isOnlyNumber;
+		do {
 			consoleView.println(COUNT_INPUT_MESSAGE);
 			String tryCountString = consoleView.readLine();
-			if (ValidationUtil.validOnlyNumber(tryCountString)) {
-				tryCountValue = Integer.parseInt(tryCountString);
-				break;
-			}
+			isOnlyNumber = ValidationUtil.validOnlyNumber(tryCountString);
+			tryCountValue = setTryCountValue(tryCountValue, isOnlyNumber, tryCountString);
+		} while (!isOnlyNumber);
+		return tryCountValue;
+	}
+
+	private int setTryCountValue(int tryCountValue, boolean isOnlyNumber, String tryCountString) {
+		if (isOnlyNumber) {
+			tryCountValue = Integer.parseInt(tryCountString);
 		}
 		return tryCountValue;
 	}
 
 	private String[] getCarNameArray() {
 		String[] carNameArray;
-		while (true) {
+		boolean isCarNameBelow5;
+		do {
 			carNameArray = toArray(getCarsName());
-			boolean isCarNameBelow5 = ValidationUtil.validCarNameLength(carNameArray);
-			if (isCarNameBelow5) {
-				break;
-			}
+			isCarNameBelow5 = ValidationUtil.validCarNameLength(carNameArray);
+			printCarNameLengthError(isCarNameBelow5);
+		} while (!isCarNameBelow5);
+		return carNameArray;
+	}
+
+	private void printCarNameLengthError(boolean isCarNameBelow5) {
+		if (!isCarNameBelow5) {
 			consoleView.printError(CAR_NAME_LENGTH_ERROR_MESSAGE);
 		}
-		return carNameArray;
 	}
 
 	private String[] toArray(String string) {

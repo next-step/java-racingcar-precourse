@@ -5,13 +5,19 @@ public class ValidationUtil {
 	}
 
 	public static boolean validCarNameLength(String[] carsName) {
+		boolean valid = true;
 		for (String carName : carsName) {
 			int carNameLength = carName.length();
-			if (carName.isEmpty() || isNameLength5More(carNameLength)) {
-				return false;
-			}
+			valid = setValid(valid, carName, carNameLength);
 		}
-		return true;
+		return valid;
+	}
+
+	private static boolean setValid(boolean valid, String carName, int carNameLength) {
+		if (carName.isEmpty() || isNameLength5More(carNameLength)) {
+			valid = false;
+		}
+		return valid;
 	}
 
 	private static boolean isNameLength5More(int carNameLength) {
