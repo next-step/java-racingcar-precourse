@@ -3,10 +3,10 @@ package racinggame;
 import java.util.Objects;
 
 public class ProgressBar {
-	private final String carName;
+	private final CarName carName;
 	private final RacingBar racingBar;
 
-	public ProgressBar(String carName, RacingBar racingBar) {
+	public ProgressBar(CarName carName, RacingBar racingBar) {
 		this.carName = carName;
 		this.racingBar = racingBar;
 	}
