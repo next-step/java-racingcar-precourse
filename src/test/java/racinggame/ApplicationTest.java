@@ -32,6 +32,38 @@ public class ApplicationTest extends NSTest {
         });
     }
 
+    @Test
+    void 시도_횟수에_대한_예외_처리() {
+        assertSimpleTest(() -> {
+            runNoLineFound("pobi,woni", "0");
+            verify(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 이름_빈_값에_대한_예외_처리() {
+        assertSimpleTest(() -> {
+            runNoLineFound("   ");
+            verify(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 시도_횟수_빈_값에_대한_예외_처리() {
+        assertSimpleTest(() -> {
+            runNoLineFound("pobi,woni", "   ");
+            verify(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 공동_우승() {
+        assertRandomTest(() -> {
+            run("pobi,woni,tom", "1");
+            verify("pobi : -", "woni : ", "tom : -", "최종 우승자는 pobi,tom 입니다.");
+        }, MOVING_FORWARD, STOP, MOVING_FORWARD);
+    }
+
     @AfterEach
     void tearDown() {
         outputStandard();

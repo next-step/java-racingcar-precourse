@@ -11,7 +11,7 @@ import java.util.List;
 public class Application {
 
     public static void main(String[] args) {
-        // TODO 자동차 경주 게임 구현
+
         List<Player> players;
         Integer playCount;
         boolean isValidateInput;
@@ -26,11 +26,11 @@ public class Application {
 
             players = Player.of(playerArray);
 
-        } while(!isValidateInput);
+        } while (!isValidateInput);
 
         do {
 
-            System.out.println("시도할 회수는 몇회인가요?");
+            System.out.println("시도할 회수는 몇 회인가요?");
             String inputCount = Console.readLine();
 
             inputCount = inputCount.replaceAll(" ", "");
@@ -38,7 +38,7 @@ public class Application {
 
             playCount = ValidationUtil.getValidateCount(inputCount);
 
-        } while(!isValidateInput);
+        } while (!isValidateInput);
 
         System.out.println("\n실행 결과");
 
