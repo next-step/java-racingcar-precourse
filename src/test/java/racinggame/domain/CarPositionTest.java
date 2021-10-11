@@ -10,7 +10,7 @@ class CarPositionTest {
 
 	@Test
 	@DisplayName("위치 이동 Test")
-	public void movePositionTest() {
+	void movePositionTest() {
 		CarPosition carPosition = new CarPosition();
 		carPosition.movePosition();
 		assertEquals(carPosition.getCarPosition(), "-");

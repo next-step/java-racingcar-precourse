@@ -12,7 +12,7 @@ class CarMoveTest {
 
 	@Test
 	@DisplayName("자동차 이동 Test")
-	public void checkMoveTest() {
+	void checkMoveTest() {
 		CarMove carMove = new CarMove();
 		int randomMove = Randoms.pickNumberInRange(0, 9);
 		assertThat(randomMove >= 4).isEqualTo(true);
