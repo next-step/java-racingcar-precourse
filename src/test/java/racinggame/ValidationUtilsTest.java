@@ -23,4 +23,10 @@ public class ValidationUtilsTest {
     assertThat(ValidationUtils.carNameLessThan5words("benz")).isTrue();
   }
 
+  @Test
+  void isNum() {
+    assertThat(ValidationUtils.isNum("1")).isTrue();
+    assertThat(ValidationUtils.isNum("test")).isFalse();
+  }
+
 }

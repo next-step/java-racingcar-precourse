@@ -11,13 +11,15 @@ public class ValidationUtils {
   private static final int MAX_LENGTH = 5;
 
   public static boolean carNameLessThan5words(String carName) {
-    return lessThan5words(carName);
+    return carName.length() <= MAX_LENGTH;
   }
 
-  private static boolean lessThan5words(String carName) {
-    if(carName.length() > MAX_LENGTH) {
-      return false;
+  public static boolean isNum(String num) {
+    try{
+      Integer.parseInt(num);
+      return true;
+    } catch (NumberFormatException e) {
+     return false;
     }
-    return true;
   }
 }
