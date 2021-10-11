@@ -32,6 +32,14 @@ public class ApplicationTest extends NSTest {
         });
     }
 
+    @Test
+    void 라운드_음수_예외처리() {
+        assertSimpleTest(() -> {
+            runNoLineFound("pobi,woni", "-1");
+            verify(ERROR_MESSAGE);
+        });
+    }
+
     @AfterEach
     void tearDown() {
         outputStandard();
