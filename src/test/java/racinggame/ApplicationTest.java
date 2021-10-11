@@ -27,7 +27,7 @@ public class ApplicationTest extends NSTest {
     @Test
     void 입력값_확인처리_2() {
         assertSimpleTest(() -> {
-            run("pobi,woni", "2");
+            run("sd,pobi,woni", "2");
             verify("");
         });
     }

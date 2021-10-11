@@ -56,5 +56,6 @@ public class RacingGameTest {
         carsInfo = racingSevice.mvCar(carsInfo,5);
         racingSevice.endRacing(carsInfo);
     }
+
 }
 

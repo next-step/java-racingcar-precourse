@@ -8,6 +8,10 @@ public class Car {
     public Car() {
         this.carMvInfo = 0;
     }
+    public Car(String carNm) {
+        this.carNm = carNm;
+        this.carMvInfo = 0;
+    }
 
     public String getCarNm() {
         return carNm;

@@ -10,7 +10,7 @@ import java.util.List;
 
 public class RacingSevice {
 
-    private static final int MOVING_MNI_NO = 0;
+    private static final int MOVING_MIN_NO = 0;
     private static final int MOVING_MAX_NO = 9;
     private static final int MOVING_FORWARD = 4;
     private static final int MOVING_STOP = 3;
@@ -29,12 +29,13 @@ public class RacingSevice {
     private int initRacing(){
 
         int count;
+
         try{
             count = this.inputCount();
         }catch (RacingException e){
             System.out.println(e.getMessage());
             return this.initRacing();
-        }catch (ClassCastException e){
+        }catch (NumberFormatException e){
             System.out.println(e.getMessage());
             return this.initRacing();
         }
@@ -42,7 +43,8 @@ public class RacingSevice {
        return count;
     };
 
-    private int inputCount() throws RacingException, ClassCastException{
+    private int inputCount() throws RacingException, NumberFormatException{
+
         System.out.println("시도할 횟수는 몇회인가요?");
         String inputTxt = Console.readLine();
         inputTxt = ValidationUtils.rmAllSpace(inputTxt);
@@ -53,11 +55,11 @@ public class RacingSevice {
         int count = 0;
         try {
             count = Integer.parseInt(inputTxt);
-        } catch (ClassCastException e) {
-            throw new ClassCastException("[ERROR] 입력값이 올바르지 않습니다.");
+        } catch (NumberFormatException e) {
+            throw new NumberFormatException("[ERROR] 입력값이 올바르지 않습니다.");
         }
 
-        if (count < 0 || count == 0) {
+        if (count <= 0) {
             throw new RacingException(" 입력값이 올바르지 않습니다.(1이상 입력해주세요)");
         }
 
@@ -86,7 +88,7 @@ public class RacingSevice {
     }
 
     public boolean isMove() {
-        int randomCount = Randoms.pickNumberInRange(MOVING_MNI_NO, MOVING_MAX_NO);
+        int randomCount = Randoms.pickNumberInRange(MOVING_MIN_NO, MOVING_MAX_NO);
         if (randomCount > MOVING_MAX_NO) {
             return false;
         }
