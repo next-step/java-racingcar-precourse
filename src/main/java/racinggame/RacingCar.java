@@ -6,9 +6,10 @@ public class RacingCar {
 	private final int MIN_GO_NUMBER = 4;
 
 	private String name;
+	private int position = 0;
 
 	public RacingCar(String recingCarName) {
-		this.name = recingCarName;
+		name = recingCarName;
 	}
 
 	public boolean checkCarNameLength() {
@@ -17,7 +18,7 @@ public class RacingCar {
 	}
 
 	int getNameLength() {
-		return this.name.length();
+		return name.length();
 	}
 
 	public RacingStatus getRacingResult(int racingNumber) {
