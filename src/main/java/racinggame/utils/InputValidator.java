@@ -16,4 +16,10 @@ public class InputValidator {
             throw new IllegalArgumentException();
         }
     }
+
+    public void validateGameTurnCnt(int gameTurnCnt) {
+        if (gameTurnCnt <= 0) {
+            throw new IllegalArgumentException();
+        }
+    }
 }

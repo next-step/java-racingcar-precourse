@@ -25,4 +25,19 @@ public class InputParserTest {
         Assertions.assertThatIllegalArgumentException()
                 .isThrownBy(() -> new InputParser().splitPlayerNames(playerNamesInput));
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"1", "2" , "3"})
+    void 사용자가_유효한_게임_횟수를_입력한_경우_IllegalArgumentException이_발생하지_않는다(String turnCntInput){
+        Assertions.assertThatNoException()
+                .isThrownBy(() -> new InputParser().parseGameTurnCnt(turnCntInput));
+    }
+
+
+    @ParameterizedTest
+    @ValueSource(strings = {"-1", "!", "@" , "#", "abc"})
+    void 사용자가_유효하지_않은_게임_횟수를_입력한_경우_IllegalArgumentException이_발생한다(String turnCntInput){
+        Assertions.assertThatIllegalArgumentException()
+                .isThrownBy(() -> new InputParser().parseGameTurnCnt(turnCntInput));
+    }
 }

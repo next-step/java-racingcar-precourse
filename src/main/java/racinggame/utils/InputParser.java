@@ -3,7 +3,7 @@ package racinggame.utils;
 public class InputParser {
     private InputValidator inputValidator;
 
-    public InputParser(){
+    public InputParser() {
         this.inputValidator = new InputValidator();
     }
 
@@ -14,6 +14,18 @@ public class InputParser {
             this.inputValidator.validatePlayerNames(playerNames);
 
             return playerNames;
+        } catch (Exception e) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public int parseGameTurnCnt(String turnCntInput) {
+        try {
+            int gameTurnCnt = Integer.parseInt(turnCntInput);
+
+            this.inputValidator.validateGameTurnCnt(gameTurnCnt);
+
+            return gameTurnCnt;
         } catch (Exception e) {
             throw new IllegalArgumentException();
         }

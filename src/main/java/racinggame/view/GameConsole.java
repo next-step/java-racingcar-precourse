@@ -60,10 +60,30 @@ public class GameConsole {
     }
 
     private void readGameTurnCount() {
-        System.out.println("시도할 횟수는 몇회인가요?");
-        String input = Console.readLine();
+        this.gameTurnCnt = readValidGameTurnCount();
+    }
 
-        this.gameTurnCnt = Integer.parseInt(input);
+    private int readValidGameTurnCount(){
+        System.out.println("시도할 횟수는 몇회인가요?");
+
+        int turnCnt = -1;
+        while (turnCnt <= 0) {
+            String input = Console.readLine();
+
+            turnCnt = getParsedGameTurnCount(input);
+        }
+
+        return turnCnt;
+    }
+
+    private int getParsedGameTurnCount(String gameTurnCntInput){
+        try{
+            return this.inputParser.parseGameTurnCnt(gameTurnCntInput);
+        } catch (IllegalArgumentException e){
+            System.out.println("[ERROR] 게임 횟수는 양의 정수여야 합니다. 다시 입력하세요...");
+        }
+
+        return -1;
     }
 
     public void playGame() {
