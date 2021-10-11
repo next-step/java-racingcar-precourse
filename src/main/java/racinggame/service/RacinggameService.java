@@ -11,7 +11,7 @@ import racinggame.message.PlayMessage;
 
 public class RacinggameService {
 	public RacinggameService() {
-		
+
 	}
 
 	public Cars createCars(String carNameInput) {
@@ -32,11 +32,13 @@ public class RacinggameService {
 
 	public void validateMoveCountInput(String moveCountInput) {
 		try {
-			if (Integer.parseInt(moveCountInput) < 1) {
-				throw new IllegalArgumentException(ErrorMessage.INVALID_MOVE_COUNT_INPUT.name());
-			}
+			Integer.parseInt(moveCountInput);
 		} catch (NumberFormatException e) {
 			throw new NumberFormatException(ErrorMessage.INVALID_MOVE_COUNT_INPUT.name());
+		}
+		
+		if (Integer.parseInt(moveCountInput) < 1) {
+			throw new IllegalArgumentException(ErrorMessage.INVALID_MOVE_COUNT_INPUT.name());
 		}
 	}
 }
