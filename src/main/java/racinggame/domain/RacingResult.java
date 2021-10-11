@@ -1,8 +1,6 @@
 package racinggame.domain;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.StringJoiner;
 
 public class RacingResult {
     private static final String COLON = " : ";
