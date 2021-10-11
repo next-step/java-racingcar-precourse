@@ -2,6 +2,9 @@ package racinggame.domain;
 
 import racinggame.dto.ResultDto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Game {
 	private final Cars cars;
 	private final Histories histories;
@@ -13,6 +16,14 @@ public class Game {
 
 	public static Game ready(Cars cars) {
 		return new Game(cars);
+	}
+
+	public static Game ready(String[] names) {
+		List<Car> cars = new ArrayList<>();
+		for (String name : names) {
+			cars.add(new Car(Name.of(name)));
+		}
+		return ready(new Cars(cars));
 	}
 
 	public ResultDto start(Count count) {
