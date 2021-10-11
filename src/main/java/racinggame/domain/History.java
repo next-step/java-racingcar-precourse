@@ -14,7 +14,7 @@ public class History {
 	public static History of(Game game) {
 		Map<Name, Distance> history = new LinkedHashMap<>();
 		for (Car car : game.getCars()) {
-			history.put(car.getName(), car.getDistance());
+			history.put(car.getName(), Distance.of(car.getDistance().getLength()));
 		}
 		return new History(history);
 	}
