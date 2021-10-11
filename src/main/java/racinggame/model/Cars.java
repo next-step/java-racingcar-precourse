@@ -25,9 +25,9 @@ public class Cars {
 	}
 
 	public Cars(String name) {
-		String[] carsName = toSplit(name);
-		checkDuplication(carsName);
-		cars = toList(carsName);
+		String[] carNames = toSplit(name);
+		checkDuplication(carNames);
+		cars = toList(carNames);
 	}
 
 	private String[] toSplit(String carNames) {
@@ -43,12 +43,12 @@ public class Cars {
 	}
 
 	private void checkDuplication(String[] carNames) {
-		if (isContainsSameName(carNames)) {
+		if (isDuplicationByName(carNames)) {
 			throw new IllegalArgumentException(CHECK_DUPLICATION_ERROR_MESSAGE);
 		}
 	}
 
-	private boolean isContainsSameName(String[] carNames) {
+	private boolean isDuplicationByName(String[] carNames) {
 		Set<String> checkNames = new HashSet<>(Arrays.asList(carNames));
 		return carNames.length != checkNames.size();
 	}

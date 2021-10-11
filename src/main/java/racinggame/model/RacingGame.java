@@ -18,11 +18,11 @@ public class RacingGame {
 	}
 
 	public List<Car> racing() {
-		addRaceTryNumber();
+		addRacingRound();
 		return cars.racing();
 	}
 
-	private void addRaceTryNumber() {
+	private void addRacingRound() {
 		tryCount.tryRacing();
 	}
 

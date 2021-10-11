@@ -19,12 +19,12 @@ public class Controller {
 
 		OutputView.printResult();
 
-		racingByTryCount(racingGame);
+		racingByRound(racingGame);
 
 		OutputView.printWinnerCars(racingGame.findWinnerCars());
 	}
 
-	private void racingByTryCount(RacingGame racingGame) {
+	private void racingByRound(RacingGame racingGame) {
 		while (racingGame.isNotFinish()) {
 			OutputView.printResultByRound(racingGame.racing());
 		}
