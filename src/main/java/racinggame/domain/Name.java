@@ -3,6 +3,7 @@ package racinggame.domain;
 import java.util.Objects;
 
 public class Name {
+	private static final int MIN_NAME_LENGTH = 1;
 	private static final int MAX_NAME_LENGTH = 5;
 	private final String value;
 
@@ -16,8 +17,8 @@ public class Name {
 	}
 
 	private void checkLengthOver() {
-		if (value.length() > MAX_NAME_LENGTH) {
-			throw new IllegalArgumentException("이름은 "+MAX_NAME_LENGTH+"자 이하만 가능합니다.");
+		if (value.length() < MIN_NAME_LENGTH || value.length() > MAX_NAME_LENGTH) {
+			throw new IllegalArgumentException("이름은 " + MIN_NAME_LENGTH + "자 이상, " + MAX_NAME_LENGTH + "자 이하만 가능합니다.");
 		}
 	}
 
