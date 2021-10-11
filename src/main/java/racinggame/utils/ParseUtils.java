@@ -1,16 +1,17 @@
 package racinggame.utils;
 
-import racinggame.consts.Const;
 import racinggame.enums.ErrorMessageEnum;
 
 public class ParseUtils {
+
+    private static final String USER_INPUT_CLASSIFICATION = ",";
 
     private ParseUtils() {
 
     }
 
     public static String[] parseByClassification(String input) {
-        return input.split(Const.USER_INPUT_CLASSIFICATION);
+        return input.split(USER_INPUT_CLASSIFICATION);
     }
 
     public static int parseStringToInt(String input) {
