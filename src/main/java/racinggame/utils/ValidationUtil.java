@@ -17,4 +17,8 @@ public class ValidationUtil {
 	private static boolean isNameLength5More(int carNameLength) {
 		return carNameLength >= 6;
 	}
+
+	public static boolean validOnlyNumber(String s) {
+		return s.matches("\\d+");
+	}
 }

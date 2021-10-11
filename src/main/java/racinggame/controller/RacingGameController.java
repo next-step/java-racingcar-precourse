@@ -1,6 +1,7 @@
 package racinggame.controller;
 
 import racinggame.model.CarList;
+import racinggame.model.TryCount;
 import racinggame.utils.ValidationUtil;
 import racinggame.view.ConsoleView;
 
@@ -12,6 +13,7 @@ public class RacingGameController {
 	public static final String CAR_NAME_LENGTH_ERROR_MESSAGE = "자동차 이름은 5이하로 입력하세요.";
 	private CarList carList;
 	private ConsoleView consoleView;
+	private TryCount tryCount;
 
 	public RacingGameController(ConsoleView consoleView) {
 		this.consoleView = consoleView;
@@ -19,6 +21,24 @@ public class RacingGameController {
 
 	public void startGame() {
 		initCarList(getCarNameArray());
+		initTryCount(getTryCount());
+	}
+
+	private void initTryCount(int tryCountValue) {
+		tryCount = new TryCount(tryCountValue);
+	}
+
+	private int getTryCount() {
+		int tryCountValue;
+		while (true) {
+			consoleView.println("시도할 회수는 몇회인가요?");
+			String tryCountString = consoleView.readLine();
+			if (ValidationUtil.validOnlyNumber(tryCountString)) {
+				tryCountValue = Integer.parseInt(tryCountString);
+				break;
+			}
+		}
+		return tryCountValue;
 	}
 
 	private void initCarList(String[] carNameArray) {
