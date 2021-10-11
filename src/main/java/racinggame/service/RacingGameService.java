@@ -28,4 +28,8 @@ public class RacingGameService {
 	public void initCarList(List<String> carNameList) {
 		carEntry = new CarEntry(carNameList);
 	}
+
+	public String getWinner(){
+		return carEntry.getWinner();
+	}
 }

@@ -33,4 +33,27 @@ class CarEntryTest {
 			assertThat(result).isEqualTo(Arrays.asList("car1 : -", "car2 : "));
 		}
 	}
+
+	@Test
+	void 승자_검증() {
+		try (final MockedStatic<Randoms> mockRandoms = mockStatic(Randoms.class)) {
+			mockRandoms.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
+				.thenReturn(6, 1);
+			CarEntry carEntry = new CarEntry(Arrays.asList("car1", "car2"));
+			carEntry.race();
+			assertThat(carEntry.getWinner()).isEqualTo("car1");
+		}
+	}
+
+	@Test
+	void 다중_승자_검증() {
+		try (final MockedStatic<Randoms> mockRandoms = mockStatic(Randoms.class)) {
+			mockRandoms.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
+				.thenReturn(6, 5);
+			CarEntry carEntry = new CarEntry(Arrays.asList("car1", "car2"));
+			carEntry.race();
+			assertThat(carEntry.getWinner()).isEqualTo("car1,car2");
+		}
+	}
+
 }

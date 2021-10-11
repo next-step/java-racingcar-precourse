@@ -14,6 +14,8 @@ public class RacingGameController {
 	public static final String SEPARATOR = ",";
 	public static final String COUNT_INPUT_MESSAGE = "시도할 회수는 몇회인가요?";
 	public static final String RESULT_MESSAGE = "실행 결과";
+	public static final String WINNER_MESSAGE_PREFIX = "최종 우승자는 ";
+	public static final String WINNER_MESSAGE_SUFFIX = " 입니다.";
 	private final ConsoleView consoleView;
 	private final RacingGameService racingGameService;
 
@@ -27,6 +29,11 @@ public class RacingGameController {
 		racingGameService.initTryCount(getTryCount());
 		GameResult gameResult = racingGameService.runRace();
 		printResult(gameResult);
+		printWinner(racingGameService.getWinner());
+	}
+
+	private void printWinner(String winner) {
+		consoleView.println(WINNER_MESSAGE_PREFIX + winner + WINNER_MESSAGE_SUFFIX);
 	}
 
 	private int getTryCount() {
