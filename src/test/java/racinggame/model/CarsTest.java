@@ -27,11 +27,11 @@ public class CarsTest {
 					.thenReturn(MOVING_FORWARD, MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD, STOP);
 			Cars cars = new Cars("bus,texi");
 			cars.roll();
-			assertThat(cars.getStatus()).isEqualTo("bus : -\ntexi : -\n");
+			assertThat(cars.getStatus().toString()).isEqualTo("bus : -\ntexi : -\n");
 			cars.roll();
-			assertThat(cars.getStatus()).isEqualTo("bus : -\ntexi : --\n");
+			assertThat(cars.getStatus().toString()).isEqualTo("bus : -\ntexi : --\n");
 			cars.roll();
-			assertThat(cars.getStatus()).isEqualTo("bus : --\ntexi : --\n");
+			assertThat(cars.getStatus().toString()).isEqualTo("bus : --\ntexi : --\n");
 		}
 	}
 	

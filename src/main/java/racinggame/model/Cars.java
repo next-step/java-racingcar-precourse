@@ -31,13 +31,8 @@ public class Cars {
 	 * 자동차들 상태 종합
 	 * @return 자동차들 상태 종합 문자열
 	 */
-	public String getStatus() {
-		StringBuffer sbStatus = new StringBuffer();
-		for (Car car : cars) {
-			sbStatus.append(car.getStatus());
-			sbStatus.append("\n");
-		}
-		return sbStatus.toString();
+	public RacingGameStatus getStatus() {
+		return new RacingGameStatus(cars);
 	}
 
 	/**
