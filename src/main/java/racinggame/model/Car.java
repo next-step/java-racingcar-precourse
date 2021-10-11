@@ -14,6 +14,10 @@ public class Car {
 		carDistance.moveOrStop();
 	}
 	
+	public void printPosition() {
+		System.out.println(this.carName.getCarName() + " : " + this.carDistance.getCarDistance());
+	}
+	
 	public CarName getCarName() {
 		return carName;
 	}
@@ -34,4 +38,7 @@ public class Car {
 		this.carDistance = carDistance;
 	}
 
+	public int getCarDistanceLength() {
+		return this.carDistance.getCarDistance().length();
+	}
 }

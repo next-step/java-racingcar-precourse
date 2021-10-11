@@ -56,12 +56,12 @@ public class Game {
 	public void play() {
 		for (int i = 0; i < playCount; i++) {
 			cars.moveOrStop();
-			// cars.printPosition();
+			cars.printPosition();
 			System.out.println();
 		}
 	}
 	
 	public void finish() {
-		
+		cars.printWinner();
 	}
 }
