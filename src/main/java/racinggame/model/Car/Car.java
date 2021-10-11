@@ -18,8 +18,8 @@ public class Car {
   public void move() {
       position.move();
   }
-
-  public String reportRacing() {
+  @Override
+  public String toString() {
     return String.format("%s : %s", name, position);
   }
 }

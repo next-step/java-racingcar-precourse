@@ -43,6 +43,6 @@ class CarTest {
     for (int i = 0; i < moveCounts; i++) {
       car.move();
     }
-    assertThat(car.reportRacing()).isEqualTo(String.format("%s", result));
+    assertThat(car.toString()).isEqualTo(String.format("%s", result));
   }
 }
