@@ -6,6 +6,7 @@ import java.util.List;
 
 import racinggame.domain.boxing.CarName;
 import racinggame.domain.boxing.Position;
+import racinggame.domain.strategy.MoveStrategy;
 import racinggame.domain.strategy.MoveTestStayStrategy;
 import racinggame.domain.strategy.Strategy;
 
@@ -27,7 +28,7 @@ public class Cars {
 		List<Car> cars = new ArrayList<>();
 
 		for(CarName carName : carNames) {
-			Car car = new Car(carName, new MoveTestStayStrategy());
+			Car car = new Car(carName, new MoveStrategy());
 			cars.add(car);
 		}
 
