@@ -7,7 +7,9 @@ public class RacingGameController {
 
 	public void startRacing() {
 
-		Cars cars = PlayerInputView.inputCarName();
+		while(true) {
+			Cars cars = PlayerInputView.inputCarName();
 
+		}
 	}
 }
