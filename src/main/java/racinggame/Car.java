@@ -3,12 +3,16 @@ package racinggame;
 public class Car {
     private static final int MOVABLE_MINIMUM_NUMBER = 4;
 
-    private String name;
+    private final String name;
     private MoveStatus moveStatus;
     private int moveCount;
 
     public Car(String name) {
         this.name = name;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public MoveStatus getMoveStatus() {
@@ -36,4 +40,14 @@ public class Car {
     public boolean isMovableForwardStatus() {
         return moveStatus.isMoveForward();
     }
+
+    public boolean isMaximumMoveCount(int maximumCount) {
+        return moveCount == maximumCount;
+    }
+
+    @Override
+    public String toString() {
+        return Message.printCarSpecification(name, moveCount);
+    }
+
 }

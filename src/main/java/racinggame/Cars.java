@@ -10,9 +10,11 @@ public class Cars {
     private static final int END_NUM_IN_RANGE = 9;
 
     private final List<Car> cars;
+    private final List<String> winners;
 
     public Cars(List<String> carsStr) {
         this.cars = generateCars(carsStr);
+        this.winners = new ArrayList<>();
     }
 
     private List<Car> generateCars(List<String> carsStr) {
@@ -28,9 +30,39 @@ public class Cars {
         return cars;
     }
 
-    public void play() {
+    public RaceResult play() {
         for (Car car: cars) {
             car.decideMove(Randoms.pickNumberInRange(START_NUM_IN_RANGE, END_NUM_IN_RANGE));
         }
+
+        return new RaceResult(this);
+    }
+
+    public List<String> getWinnersName() {
+        for (Car car: cars) {
+            findMaximumCar(car);
+        }
+
+        return winners;
+    }
+
+    private void findMaximumCar(Car car) {
+        if (car.isMaximumMoveCount(getMaximumMoveCount())) {
+            winners.add(car.getName());
+        }
+    }
+
+    private int getMaximumMoveCount() {
+        int maxMoveCount = 0;
+        for (Car car: cars) {
+            maxMoveCount = Math.max(maxMoveCount, car.getMoveCount());
+        }
+
+        return maxMoveCount;
+    }
+
+    @Override
+    public String toString() {
+        return Message.printCarsSpecification(cars);
     }
 }
