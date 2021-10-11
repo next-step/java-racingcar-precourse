@@ -35,8 +35,8 @@ class CarTest {
     void moveForwardOrStop_success() {
         Car car = new Car("test");
         car.moveForwardOrStop(MoveStatus.STOP);
-        assertThat(car.getStep()).isEqualTo(0);
+        assertThat(car.getStep()).isEqualTo(new Step(0));
         car.moveForwardOrStop(MoveStatus.FORWARD);
-        assertThat(car.getStep()).isEqualTo(1);
+        assertThat(car.getStep()).isEqualTo(new Step(1));
     }
 }

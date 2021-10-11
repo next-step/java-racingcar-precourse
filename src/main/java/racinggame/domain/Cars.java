@@ -1,6 +1,8 @@
 package racinggame.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Cars {
@@ -24,7 +26,7 @@ public class Cars {
     }
 
     public Winners findWinners() {
-        int maxStep = findMaxStep();
+        Step maxStep = Collections.max(carList, Comparator.comparing(Car::getStep)).getStep();
 
         List<String> winners = new ArrayList<>();
         for (Car car : carList) {
@@ -33,17 +35,8 @@ public class Cars {
         return new Winners(winners);
     }
 
-    private int findMaxStep() {
-        int maxStep = 0;
-        for (Car car : carList) {
-            maxStep = Math.max(maxStep, car.getStep());
-        }
-
-        return maxStep;
-    }
-
-    private void addIfMaxStep(List<String> winners, int maxStep, Car car) {
-        if (car.getStep() == maxStep) {
+    private void addIfMaxStep(List<String> winners, Step maxStep, Car car) {
+        if (car.getStep().equals(maxStep)) {
             winners.add(car.getName());
         }
     }
