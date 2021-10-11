@@ -61,7 +61,7 @@ public class GameConsole {
     }
 
     private String makeCarRaceResultMessage(String carName, int forwardMovementCount) {
-        StringBuilder stringBuilder = new StringBuilder(carName + ":");
+        StringBuilder stringBuilder = new StringBuilder(carName + " : ");
         for (int i = 0; i < forwardMovementCount; i++) {
             stringBuilder.append("-");
         }
