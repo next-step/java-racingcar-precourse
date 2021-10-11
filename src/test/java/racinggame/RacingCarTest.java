@@ -16,4 +16,13 @@ public class RacingCarTest {
 		recingcar = new RacingCar("");
 		assertThat(recingcar.checkCarNameLength()).isFalse();
 	}
+
+	@Test
+	void 전진_멈춤_Test() {
+		RacingCar racingCar = new RacingCar("pobi");
+		assertThat(racingCar.getRacingResult(0)).isEqualTo(RacingStatus.STOP);
+		assertThat(racingCar.getRacingResult(3)).isEqualTo(RacingStatus.STOP);
+		assertThat(racingCar.getRacingResult(4)).isEqualTo(RacingStatus.GO);
+		assertThat(racingCar.getRacingResult(9)).isEqualTo(RacingStatus.GO);
+	}
 }

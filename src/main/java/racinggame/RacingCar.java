@@ -3,6 +3,7 @@ package racinggame;
 public class RacingCar {
 	private final int MIN_NAME_LENGTH = 0;
 	private final int MAX_NAME_LENGTH = 5;
+	private final int MIN_GO_NUMBER = 4;
 
 	private String name;
 
@@ -17,5 +18,13 @@ public class RacingCar {
 
 	int getNameLength() {
 		return this.name.length();
+	}
+
+	public RacingStatus getRacingResult(int racingNumber) {
+		if(racingNumber < MIN_GO_NUMBER) {
+			return RacingStatus.STOP;
+		}
+
+		return RacingStatus.GO;
 	}
 }
