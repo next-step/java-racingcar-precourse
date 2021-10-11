@@ -1,11 +1,11 @@
 package racinggame.model;
 
 public class Car {
-    private String name;
+    private String playerName;
     private CarLocation location;
 
-    public Car(String name, int integerLocation){
-        this.name = name;
+    public Car(String playerName, int integerLocation) {
+        this.playerName = playerName;
         this.location = new CarLocation(integerLocation);
     }
 
@@ -17,5 +17,17 @@ public class Car {
 
     public CarLocation getLocation() {
         return this.location;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+
+        builder.append(this.playerName + ":");
+        for (int i = 0; i < this.location.get(); i++) {
+            builder.append("-");
+        }
+
+        return builder.toString();
     }
 }

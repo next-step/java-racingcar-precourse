@@ -39,4 +39,15 @@ public class Cars extends ArrayList<Car> {
         this.add(car);
         return true;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+
+        for (Car car : this) {
+            builder.append(car.toString() + "\n");
+        }
+
+        return builder.toString();
+    }
 }

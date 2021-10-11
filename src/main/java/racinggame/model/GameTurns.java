@@ -6,6 +6,8 @@ public class GameTurns {
 
         for (int i = 0; i < turnCnt; i++) {
             result.add(GameTurn.run(cars));
+
+            System.out.println(cars.toString());
         }
 
         return result;
