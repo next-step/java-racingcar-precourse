@@ -45,10 +45,10 @@ class CarPositionTest {
 	}
 
 	@Test
-	void 자동차_전진_시_4_이상의_수가_들어오면_그_수_만큼_전진() {
+	void 자동차_전진_시_4_이상의_수가_들어오면_1_만큼_전진() {
 		int initialPosition = 0;
 		CarPosition carPosition = new CarPosition(initialPosition);
 		carPosition.increase(4);
-		assertEquals(initialPosition + 4, carPosition.getCarPosition());
+		assertEquals(1, carPosition.getCarPosition() - initialPosition);
 	}
 }

@@ -58,7 +58,7 @@ class CarsTest {
 	}
 
 	@Test
-	void 모든_자동차_이동_시_이동거리는_0부터_9_사이() {
+	void 모든_자동차_이동_시_이동거리는_1_이하() {
 		Cars cars = new Cars(createCarList(100));
 		ArrayList<Integer> beforePositions = null;
 		while (checkCarPositionsAllZero(cars)) {
@@ -66,8 +66,7 @@ class CarsTest {
 			cars.moveCars();
 		}
 		for (int i = 0; i < cars.getCarsCount(); i++) {
-			int difference = getCarPositions(cars).get(i) - beforePositions.get(i);
-			assertTrue(difference >= 0 && difference <= 9);
+			assertTrue(getCarPositions(cars).get(i) - beforePositions.get(i) <= 1);
 		}
 	}
 
@@ -120,7 +119,7 @@ class CarsTest {
 
 	private Car createWinnerCar(String carName) {
 		try (MockedStatic<Randoms> mockRandoms = Mockito.mockStatic(Randoms.class)) {
-			mockRandoms.when(() -> Randoms.pickNumberInRange(Mockito.anyInt(), Mockito.anyInt())).thenReturn(9);
+			mockRandoms.when(() -> Randoms.pickNumberInRange(Mockito.anyInt(), Mockito.anyInt())).thenReturn(4);
 			Car winner = new Car(new CarName(carName));
 			winner.goForward();
 			return winner;

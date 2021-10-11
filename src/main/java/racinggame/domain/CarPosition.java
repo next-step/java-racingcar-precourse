@@ -3,6 +3,8 @@ package racinggame.domain;
 import racinggame.message.ErrorMessage;
 
 public class CarPosition {
+	private static int INCREASE_UNIT = 1;
+
 	private int carPosition;
 
 	public CarPosition(int carPosition) {
@@ -13,10 +15,10 @@ public class CarPosition {
 		return this.carPosition;
 	}
 
-	public void increase(int distance) {
-		validateDistance(distance);
-		if (distance > 3) {
-			this.carPosition += distance;
+	public void increase(int random) {
+		validateDistance(random);
+		if (random > 3) {
+			this.carPosition += INCREASE_UNIT;
 		}
 	}
 
