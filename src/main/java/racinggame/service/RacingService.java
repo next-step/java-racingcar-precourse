@@ -1,19 +1,21 @@
 package racinggame.service;
 
+import racinggame.model.RacingCars;
 import racinggame.view.OutputView;
 
 public class RacingService {
-    private final OutputView outputView;
+    private final RacingCars racingCars;
 
-    public RacingService(OutputView outputView) {
-        this.outputView = outputView;
+    public RacingService(RacingCars racingCars) {
+        this.racingCars = racingCars;
     }
 
-    public RacingService() {
-        this.outputView = new OutputView();
-    }
-
-    public void raceStart() {
-
+    public void playRounds(int round) {
+        OutputView outputView = new OutputView();
+        outputView.displayExecutionResult();
+        for (int i = 0; i < round; i++) {
+            outputView.displayResults(racingCars.proceedRace());
+        }
+        outputView.displayResults(racingCars.getWinner());
     }
 }

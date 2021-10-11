@@ -12,8 +12,12 @@ public class Round {
         this.round = Integer.parseInt(round);
     }
 
+    public int getRound() {
+        return round;
+    }
+
     private boolean validateRound(String round) {
         return round.matches("^[0-9]{1}$");
     }
-    
+
 }

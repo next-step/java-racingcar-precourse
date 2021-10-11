@@ -3,6 +3,7 @@ package racinggame.controller;
 import racinggame.exception.ValidationException;
 import racinggame.model.RacingCars;
 import racinggame.model.Round;
+import racinggame.service.RacingService;
 import racinggame.view.InputView;
 import racinggame.view.OutputView;
 
@@ -16,29 +17,30 @@ public class RaceController {
     }
 
     public void run() {
-        inputCarName();
-        inputRacingRound();
-
+        RacingService racingService = new RacingService(inputCarName());
+        racingService.playRounds(inputRacingRound().getRound());
     }
 
-    private void inputCarName() {
-        RacingCars racingCars;
+    private RacingCars inputCarName() {
+        RacingCars racingCars = null;
         try {
             racingCars = new RacingCars(inputView.inputCarName());
         } catch (ValidationException ve) {
             outputView.displayError(ve.getMessage());
             inputCarName();
         }
+        return racingCars;
     }
 
-    private void inputRacingRound() {
-        Round round;
+    private Round inputRacingRound() {
+        Round round = null;
         try {
             round = new Round(inputView.inputRacingRound());
         } catch (ValidationException ve) {
             outputView.displayError(ve.getMessage());
             inputRacingRound();
         }
+        return round;
     }
 
 }
