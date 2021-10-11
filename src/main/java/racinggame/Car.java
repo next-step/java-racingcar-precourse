@@ -17,11 +17,15 @@ public class Car {
         return this.name;
     }
 
+    public int getAdvance() {
+        return this.advance;
+    }
+
     public int racing(int number) {
         if (!isValidNumber(number)) {
             throw new IllegalArgumentException("[ERROR] 이동할 숫자는 0부터 9의 값이어야 합니다.");
         }
-        if(number >= ADVANCE_START_NUMBER) {
+        if (number >= ADVANCE_START_NUMBER) {
             advance++;
         }
         return advance;
