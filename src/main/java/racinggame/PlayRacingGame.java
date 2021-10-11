@@ -13,7 +13,7 @@ class PlayRacingGame {
     void startGame() {
 
         String carName = inputView.insertCarNames();
-        processException(carName);
+        carsInit(carName);
 
         int tryCount = inputView.insertTryCount();
 
@@ -21,7 +21,7 @@ class PlayRacingGame {
 
     }
 
-    private void processException(String carName) {
+    private void carsInit(String carName) {
 
         try {
             cars = Cars.of(carName, new RandomMove());
