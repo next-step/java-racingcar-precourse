@@ -26,4 +26,14 @@ public class RacinggameService {
 			throw new IllegalArgumentException(ErrorMessage.INVALID_CAR_NAME_INPUT.name());
 		}
 	}
+
+	public void validateMoveCountInput(String moveCountInput) {
+		try {
+			if (Integer.parseInt(moveCountInput) < 1) {
+				throw new IllegalArgumentException(ErrorMessage.INVALID_MOVE_COUNT_INPUT.name());
+			}
+		} catch (NumberFormatException e) {
+			throw new NumberFormatException(ErrorMessage.INVALID_MOVE_COUNT_INPUT.name());
+		}
+	}
 }
