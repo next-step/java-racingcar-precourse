@@ -27,4 +27,20 @@ public class CarTest {
         car.decideMove(examRandomPoint);
         assertThat(car.getMoveCount()).isEqualTo(0);
     }
+
+    @Test
+    void 차_이름_5자_이상_테스트() {
+        assertThatThrownBy(()-> {
+            car = new Car("abcasdlkfj");
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("5자 이상");
+    }
+
+    @Test
+    void 차_이름_null_테스트() {
+        assertThatThrownBy(()-> {
+            car = new Car(null);
+        }).isInstanceOf(NullPointerException.class)
+                .hasMessageContaining("이름을 입력");
+    }
 }

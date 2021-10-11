@@ -28,7 +28,7 @@ public class RaceResultTest {
 
     @Test
     void 게임_끝() {
-        RaceManager raceManager = RaceManager.createInstance(3);
+        RaceManager raceManager = RaceManager.createInstance("3");
 
         for (int i=0; i<3; i++) {
             raceManager.process();
@@ -40,7 +40,7 @@ public class RaceResultTest {
 
     @Test
     void 게임_진행_중() {
-        RaceManager raceManager = RaceManager.createInstance(3);
+        RaceManager raceManager = RaceManager.createInstance("3");
         raceManager.process();
         RaceResult raceResult = cars.play();
 
@@ -53,7 +53,7 @@ public class RaceResultTest {
             mockRandoms
                     .when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
                     .thenReturn(4, 4, 0);
-            RaceManager raceManager = RaceManager.createInstance(1);
+            RaceManager raceManager = RaceManager.createInstance("1");
             raceManager.process();
             RaceResult raceResult = cars.play();
             String expectResult = "a,b";
@@ -68,7 +68,7 @@ public class RaceResultTest {
             mockRandoms
                     .when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
                     .thenReturn(4, 4, 0, 4, 9, 1, 5, 6, 2);
-            RaceManager raceManager = RaceManager.createInstance(3);
+            RaceManager raceManager = RaceManager.createInstance("3");
             RaceResult raceResult = null;
             for (int i=0; i<3; i++) {
                 raceManager.process();
