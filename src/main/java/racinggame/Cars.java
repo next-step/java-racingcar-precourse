@@ -1,16 +1,15 @@
 package racinggame;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Cars {
 	private final ArrayList<Car> cars;
 
-	public Cars(List<String> asList) {
+	public Cars(List<String> names) {
 		this.cars = new ArrayList<>();
-		for (String carName : asList) {
-			this.cars.add(new Car(new CarName(carName), new CarDistance(0)));
+		for (String carName : names) {
+			this.cars.add(new Car(carName, 0));
 		}
 	}
 

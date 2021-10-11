@@ -10,9 +10,9 @@ public class Car {
 	private final CarName carName;
 	private final CarDistance carDistance;
 
-	public Car(CarName carName, CarDistance carDistance) {
-		this.carName = carName;
-		this.carDistance = carDistance;
+	public Car(String carName, int carDistance) {
+		this.carName = new CarName(carName);
+		this.carDistance = new CarDistance(carDistance);
 	}
 
 	public boolean isValid() {
@@ -29,5 +29,9 @@ public class Car {
 
 	public int getDistance() {
 		return carDistance.getDistance();
+	}
+
+	public String getName() {
+		return carName.getName();
 	}
 }

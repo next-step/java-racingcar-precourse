@@ -29,16 +29,23 @@ public class CarTest {
 	@ParameterizedTest
 	@CsvSource(value = {"p,true", "crong,true", "honuxx,false"})
 	void 유효한_자동차인지_확인(String name, boolean isValid) {
-		CarName carName = new CarName(name);
-		Car car = new Car(carName, carDistance);
+		Car car = new Car(name, 0);
 
 		assertThat(car.isValid()).isEqualTo(isValid);
 	}
 
 	@ParameterizedTest
+	@CsvSource(value = {"p", "crong", "honuxx"})
+	void 자동차_이름_확인(String name) {
+		Car car = new Car(name, 0);
+
+		assertThat(car.getName()).isEqualTo(name);
+	}
+
+	@ParameterizedTest
 	@CsvSource(value = {"0,0", "3,0", "4,1", "9,1"})
 	void 자동차_전진(int pickNumber, int expectedDistance) {
-		Car car = new Car(new CarName("poby"), carDistance);
+		Car car = new Car("pobi", 0);
 
 		when(Randoms.pickNumberInRange(anyInt(), anyInt())).thenReturn(pickNumber);
 		car.move();
