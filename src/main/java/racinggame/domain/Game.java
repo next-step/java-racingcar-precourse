@@ -15,11 +15,12 @@ public class Game {
 		return new Game(cars);
 	}
 
-	public void start(Count count) {
+	public ResultDto start(Count count) {
 		for (int i = 0; i < count.getValue(); i++) {
 			cars.move();
 			histories.log(this);
 		}
+		return ResultDto.of(this);
 	}
 
 	public Cars getCars() {

@@ -3,6 +3,7 @@ package racinggame.domain;
 import nextstep.utils.Randoms;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
+import racinggame.dto.ResultDto;
 
 import java.util.Arrays;
 
@@ -21,23 +22,15 @@ public class GameTest {
 					.thenReturn(STOP, STOP, MOVING_FORWARD,
 							STOP, MOVING_FORWARD, MOVING_FORWARD,
 							MOVING_FORWARD, MOVING_FORWARD, STOP,
-							MOVING_FORWARD, MOVING_FORWARD, STOP,
+							MOVING_FORWARD, STOP, STOP,
 							MOVING_FORWARD, MOVING_FORWARD, STOP);
 			Car pobi = new Car(Name.of("pobi"));
 			Car crong = new Car(Name.of("crong"));
 			Car honux = new Car(Name.of("honux"));
 			Cars cars = new Cars(Arrays.asList(pobi, crong, honux));
-			Game.ready(cars)
-					.start(Count.of(5));
-
-			assertThat(pobi.getDistance())
-					.isEqualTo(Distance.of(3));
-
-			assertThat(crong.getDistance())
-					.isEqualTo(Distance.of(4));
-
-			assertThat(honux.getDistance())
-					.isEqualTo(Distance.of(2));
+			ResultDto resultDto = Game.ready(cars).start(Count.of(5));
+			assertThat(resultDto.getMessage())
+					.contains("pobi,crong");
 		}
 	}
 }
