@@ -1,7 +1,5 @@
 package racinggame.model.Car;
 
-import java.util.function.Predicate;
-
 public class Car {
   private final CarName name;
   private final CarPosition position;
@@ -16,8 +14,13 @@ public class Car {
   }
 
   public void move() {
-      position.move();
+    position.move();
   }
+
+  public CarPosition getPosition() {
+    return position;
+  }
+
   @Override
   public String toString() {
     return String.format("%s : %s", name, position);

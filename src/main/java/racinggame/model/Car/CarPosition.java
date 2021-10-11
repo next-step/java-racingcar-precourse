@@ -6,8 +6,19 @@ public class CarPosition {
   public static final String MOVE_WORD = "-";
   private int value = 0;
 
+  public CarPosition() {
+  }
+
+  public CarPosition(int value) {
+    this.value = value;
+  }
+
   public void move() {
     value++;
+  }
+
+  public int getValue() {
+    return value;
   }
 
   @Override

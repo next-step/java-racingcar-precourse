@@ -1,6 +1,7 @@
 package racinggame.model.Cars;
 
 import racinggame.model.Car.Car;
+import racinggame.model.Car.CarPosition;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,13 +12,16 @@ public class Cars {
   public static final String INPUT_ERROR_MSG = "자동차 이름을 입력하세요";
   private final List<Car> cars = new ArrayList<>();
 
+
+  private CarPosition lastPosition = new CarPosition();
+
   public Cars(String input) {
     inputValidate(input);
     buildCars(input);
   }
 
   private void inputValidate(String input) {
-    if(input == null || input.isEmpty()){
+    if (input == null || input.isEmpty()) {
       throw new IllegalArgumentException(INPUT_ERROR_MSG);
     }
   }
@@ -38,11 +42,30 @@ public class Cars {
   }
 
   public void drive(Predicate<Car> moveStrategy) {
-    for (int i = 0; i < cars.size(); i++) {
-      Car car = cars.get(i);
-      if(moveStrategy.test(car)){
+    for (Car car : cars) {
+      if (moveStrategy.test(car)) {
         car.move();
+        lastMoveUpdate(car.getPosition());
       }
     }
   }
+
+  private void lastMoveUpdate(CarPosition position) {
+    lastPosition = lastPosition.getValue() > position.getValue() ? lastPosition : position;
+  }
+
+  public CarPosition getLastPosition() {
+    return lastPosition;
+  }
+
+  public List<Car> getCarsOnPosition(CarPosition pos) {
+    List<Car> carsOnPosition = new ArrayList<>();
+    for (Car car : cars) {
+      if (car.getPosition().equals(pos)) {
+        carsOnPosition.add(car);
+      }
+    }
+    return carsOnPosition;
+  }
+
 }
