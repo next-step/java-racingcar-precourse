@@ -42,11 +42,18 @@ public class RacingCarTest {
 	void 전진_정지_여러번_테스트() {
 		RacingCar car = new RacingCar("pobi");
 		Position position;
-		mockRandoms.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
-			.thenReturn(4, 3, 0, 9);
 
 		position = car.moves(4);
 
 		assertThat(position.getX()).isEqualTo(2);
+	}
+
+	@Test
+	void 자동차_출력_테스트() {
+		RacingCar car = new RacingCar("pobi");
+
+		car.moves(4);
+
+		assertThat(car.toString()).isEqualTo("pobi : --");
 	}
 }

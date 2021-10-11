@@ -26,4 +26,17 @@ public class RacingCar {
 		}
 		return this.position;
 	}
+
+	@Override
+	public String toString() {
+		return String.format("%s : %s", this.name, generateDashes());
+	}
+
+	private String generateDashes() {
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < position.getX(); i++) {
+			sb.append("-");
+		}
+		return sb.toString();
+	}
 }
