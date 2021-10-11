@@ -12,4 +12,8 @@ public class CarName {
 	public boolean isValid() {
 		return this.name.length() <= NAME_LENGTH_MAX;
 	}
+
+	public String getName() {
+		return name;
+	}
 }

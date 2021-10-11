@@ -14,4 +14,12 @@ public class CarNameTest {
 
 		assertThat(carName.isValid()).isEqualTo(isValid);
 	}
+
+	@ParameterizedTest
+	@CsvSource(value = {"p", "crong", "honuxx"})
+	void 자동차이름_생성_테스트(String name) {
+		CarName carName = new CarName(name);
+
+		assertThat(carName.getName()).isEqualTo(name);
+	}
 }
