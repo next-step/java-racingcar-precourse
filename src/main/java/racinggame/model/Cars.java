@@ -18,12 +18,19 @@ public class Cars {
 		return cars;
 	}
 
+	/**
+	 * 자동차들 진행
+	 */
 	public void roll() {
 		for (Car car : cars) {
 			car.roll();
 		}
 	}
 
+	/**
+	 * 자동차들 상태 종합
+	 * @return 자동차들 상태 종합 문자열
+	 */
 	public String getStatus() {
 		StringBuffer sbStatus = new StringBuffer();
 		for (Car car : cars) {

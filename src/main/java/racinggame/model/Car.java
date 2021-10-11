@@ -19,10 +19,18 @@ public class Car {
 		return carName.toString();
 	}
 
+	/**
+	 * 자동차 전진 체크
+	 * @param value 랜덤 값 1 ~ 9
+	 * @return 체크 결과 전진 혹은 멈춤.
+	 */
 	CarPlayResult play(int value) {
 		return value < MIN_VALUE_FORWARD ? CarPlayResult.STOP : CarPlayResult.FORWARD;
 	}
 
+	/**
+	 * 자동차 진행
+	 */
 	public void roll() {
 		CarPlayResult result = play(Randoms.pickNumberInRange(0, 9));
 		if (result.isForward()) {
@@ -34,6 +42,10 @@ public class Car {
 		return totalTravel.get();
 	}
 
+	/**
+	 * 자동차 현재 상태 반환
+	 * @return 자동차 현재 상태 문자열
+	 */
 	public String getStatus() {
 		return carName + " : " + String.join("", Collections.nCopies(totalTravel.get(), "-"));
 	}
