@@ -24,7 +24,7 @@ public class Convert {
         return this.convertedPlayers;
     }
 
-    public Attempt getAonvertedAttempt() {
+    public Attempt getConvertedAttempt() {
         return this.convertedAttempt;
     }
 
@@ -33,7 +33,7 @@ public class Convert {
     }
 
     /**
-     * 생성자로 주입받은 input 문자열을 PlayerName 컬렉션으로 변환
+     * 생성자로 주입받은 input 문자열을 Player 컬렉션으로 변환
      * 변환에 성공할 경우 converted 값도 true로 바꿔준다
      * 변환에 실패할 경우 converted 값도 false로 바꿔준다
      */

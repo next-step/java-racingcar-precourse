@@ -34,7 +34,7 @@ public class Application {
 
             Convert convert = new Convert(inputAttempt);
             convert.checkConvertInputCount();
-            attempt = convert.getAonvertedAttempt();
+            attempt = convert.getConvertedAttempt();
             isValidateInput = convert.isConverted();
         } while (!isValidateInput);
 
