@@ -1,5 +1,8 @@
 package racinggame.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import nextstep.utils.Console;
 import racinggame.domain.Car;
 import racinggame.domain.Cars;
@@ -18,6 +21,7 @@ public class GameController {
 		Cars cars = makeCars();
 		int tryCount = getTryCount();
 		makeMove(cars, tryCount);
+		printWinners(cars);
 	}
 
 	private Cars makeCars() {
@@ -73,6 +77,23 @@ public class GameController {
 			view.print(car.getName(), car.getPosition());
 		}
 		System.out.println();
+	}
+
+	private void printWinners(Cars cars) {
+		List<String> winners = new ArrayList<>();
+
+		for (Car car : cars.getCars()) {
+			winners = makeWinners(cars, car, winners);
+		}
+		view.print(Message.OUTPUT_WINNER, winners);
+	}
+
+	private List<String> makeWinners(Cars cars, Car car, List<String> winners) {
+		if (cars.getMaxPosition() == car.getPosition().getValue()) {
+			winners.add(car.getName().getValue());
+		}
+
+		return winners;
 	}
 
 }

@@ -28,7 +28,7 @@ public class Car {
 		return position;
 	}
 
-	public int makeRandomNumber() {
+	public static int makeRandomNumber() {
 		return Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
 	}
 
@@ -37,4 +37,5 @@ public class Car {
 			position.move();
 		}
 	}
+
 }
