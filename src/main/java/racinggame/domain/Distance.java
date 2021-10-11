@@ -36,4 +36,8 @@ public class Distance {
 	public int hashCode() {
 		return Objects.hash(length);
 	}
+
+	public boolean farther(Distance distance) {
+		return this.length > distance.getLength();
+	}
 }
