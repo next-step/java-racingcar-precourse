@@ -7,7 +7,7 @@ public class WinnerNames {
 	private final List<String> names = new ArrayList<>();
 
 	public void addName(String name) {
-		if("".equals(name)){
+		if ("".equals(name)) {
 			return;
 		}
 		names.add(name);
@@ -16,17 +16,17 @@ public class WinnerNames {
 	public String getNamesWithDelimiter(String delimiter) {
 		Integer lastIndex = lastIndexOf();
 
-		if(lastIndex == null) {
+		if (lastIndex == null) {
 			return "";
 		}
 
 		return nameBuilder(lastIndex, delimiter);
 	}
 
-	private String nameBuilder (int lastIndex, String delimiter){
+	private String nameBuilder(int lastIndex, String delimiter) {
 		StringBuilder nameBuilder = new StringBuilder();
 
-		for(int index=0; index<lastIndex; ++index){
+		for (int index = 0; index < lastIndex; ++index) {
 			nameBuilder.append(names.get(index)).append(delimiter);
 		}
 		nameBuilder.append(names.get(lastIndex));

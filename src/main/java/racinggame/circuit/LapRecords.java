@@ -24,7 +24,7 @@ public final class LapRecords {
 		return lapRecordBuilder.toString();
 	}
 
-	public List<LapRecord> getLapRecords () {
+	public List<LapRecord> getLapRecords() {
 		return new ArrayList<>(lapRecords);
 	}
 

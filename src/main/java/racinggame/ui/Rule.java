@@ -12,5 +12,5 @@ public interface Rule {
 
 	Racing drive(int diceValue);
 
-	String judgeWinners (FinalRecord finalRecord);
+	String judgeWinners(FinalRecord finalRecord);
 }

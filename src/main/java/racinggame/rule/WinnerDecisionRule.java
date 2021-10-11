@@ -19,7 +19,7 @@ public class WinnerDecisionRule {
 		LapRecords finalLap = finalRecord.finalLapRecords();
 		int bestScore = bestScore(finalLap);
 
-		for(LapRecord record : finalLap.getLapRecords()){
+		for (LapRecord record : finalLap.getLapRecords()) {
 			winnerNames.addName(getWinnerName(record, bestScore));
 		}
 
@@ -36,8 +36,8 @@ public class WinnerDecisionRule {
 		return score;
 	}
 
-	private String getWinnerName (LapRecord lapRecord, int bestScore){
-		if(lapRecord.getScore() == bestScore){
+	private String getWinnerName(LapRecord lapRecord, int bestScore) {
+		if (lapRecord.getScore() == bestScore) {
 			return lapRecord.getName();
 		}
 		return EMPTY;

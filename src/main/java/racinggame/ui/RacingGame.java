@@ -36,7 +36,7 @@ public final class RacingGame {
 		outputDevice.print(result(finalRecord));
 	}
 
-	private String result (FinalRecord finalRecord){
+	private String result(FinalRecord finalRecord) {
 		StringBuilder resultBuilder = new StringBuilder();
 
 		resultBuilder.append("실행결과\n")
