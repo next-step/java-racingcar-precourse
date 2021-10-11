@@ -95,8 +95,8 @@ public class RaceUI {
 
     public static void printCurrentRaceStatus(Map<String, Integer> namePositionMap) {
         for (String key: namePositionMap.keySet()) {
-            StringBuffer sb = new StringBuffer();
-            sb.append(key + KEY_POSITION_DELIMETER);
+            StringBuilder sb = new StringBuilder();
+            sb.append(key).append(KEY_POSITION_DELIMETER);
             for (int i = 0; i < namePositionMap.get(key); i++) {
                 sb.append(POSITION_PRESENTING_CHARACTER);
             }
