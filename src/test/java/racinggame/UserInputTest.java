@@ -23,7 +23,7 @@ public class UserInputTest {
 		String userInputFirst = "a";
 		String userInputSecond = "5";
 
-		assertThatExceptionOfType(NumberFormatException.class).isThrownBy(() -> new RacingCount(userInputFirst));
+		assertThatIllegalArgumentException().isThrownBy(() -> new RacingCount(userInputFirst));
 
 		assertThat(new RacingCount(userInputSecond).getCount()).isEqualTo(5);
 	}

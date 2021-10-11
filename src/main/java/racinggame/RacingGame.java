@@ -35,8 +35,8 @@ public class RacingGame {
 
 		try {
 			return new RacingCount(userInput);
-		} catch (NumberFormatException e) {
-			System.out.println("[ERROR] 숫자를 입력 해주세요.");
+		} catch (IllegalArgumentException e) {
+			System.out.println(e.getMessage());
 			return null;
 		}
 	}
