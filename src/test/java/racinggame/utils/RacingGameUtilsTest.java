@@ -5,8 +5,9 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import racinggame.domain.RacingCar;
 
-import static org.assertj.core.api.Assertions.assertThatCode;
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import java.util.NoSuchElementException;
+
+import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static racinggame.utils.RacingGameUtils.*;
 
@@ -36,7 +37,7 @@ public class RacingGameUtilsTest {
     @ValueSource(strings = {"javaji,javamaster"})
     void 쉼표_기준으로_구분한_자동차_이름의_길이가_5자_초과_IllegalArgumentException_발생한다(String racingCarNameInput) {
         for (String racingCarName : racingCarNameSplit(racingCarNameInput)) {
-            assertThatIllegalArgumentException()
+            assertThatExceptionOfType(NoSuchElementException.class)
                     .isThrownBy(() -> {
                         isValidRacingCarNameLengthLimit(racingCarName);
                     });
@@ -60,7 +61,7 @@ public class RacingGameUtilsTest {
     @ParameterizedTest(name = "자동차 이름 [{0}] 길이가 5자 초과면 메세지를 출력한다")
     @ValueSource(strings = {"javaji,javamaster"})
     void 자동차_이름의_길이가_5자_초과_메세지를_출력한다(String racingCarName) {
-        assertThatIllegalArgumentException()
+        assertThatExceptionOfType(NoSuchElementException.class)
                 .isThrownBy(() -> {
                     isValidRacingCarNameLengthLimit(racingCarName);
                 })

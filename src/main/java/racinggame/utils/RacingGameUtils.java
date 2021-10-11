@@ -4,6 +4,7 @@ import racinggame.domain.RacingCar;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class RacingGameUtils {
     public static final String SPLIT_REGEX = ",";
@@ -19,7 +20,8 @@ public class RacingGameUtils {
 
     public static void isValidRacingCarNameLengthLimit(String racingCarName) {
         if (racingCarName.length() <= RACING_CAR_NAME_LENGTH_MIN || racingCarName.length() > RACING_CAR_NAME_LENGTH_LIMIT) {
-            throw new IllegalArgumentException(ERROR_MESSAGE);
+            System.out.println(ERROR_MESSAGE);
+            throw new NoSuchElementException(ERROR_MESSAGE);
         }
     }
 
@@ -56,9 +58,11 @@ public class RacingGameUtils {
         }
     }
 
-    public static void isValidTryCount(String readLine) {
+    public static int isValidTryCount(String readLine) {
         isValidOnlyNumber(readLine);
-        isValidTryCountGreaterThanZero(Integer.parseInt(readLine));
+        int tryCount = Integer.parseInt(readLine);
+        isValidTryCountGreaterThanZero(tryCount);
+        return tryCount;
     }
 
     public static boolean isMoved(int pickNumber) {
