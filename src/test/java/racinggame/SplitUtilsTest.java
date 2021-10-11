@@ -16,6 +16,9 @@ public class SplitUtilsTest {
   void splitCarName(){
     String[] carNames = SplitUtils.split("benz,kia,volvo");
     assertThat(carNames.length).isEqualTo(3);
+    assertThat(carNames[0]).isEqualTo("benz");
+    assertThat(carNames[1]).isEqualTo("kia");
+    assertThat(carNames[2]).isEqualTo("volvo");
   }
 
 }
