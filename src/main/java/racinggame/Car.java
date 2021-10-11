@@ -23,4 +23,19 @@ public class Car {
 	public int getPosition() {
 		return this.position;
 	}
+
+	public void printCarResults() {
+		System.out.println(getStringCarResult());
+	}
+
+	public String getStringCarResult() {
+		StringBuilder printCar = new StringBuilder();
+		printCar.append(this.name.getName()).append(" : ");
+		int count = this.position;
+		while(count > 0){
+			printCar.append("-");
+			count--;
+		}
+		return printCar.toString();
+	}
 }

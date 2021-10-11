@@ -17,4 +17,15 @@ public class CarTest {
 		assertThat(car.getPosition()).isEqualTo(2);
 	}
 
+	@Test
+	void 자동차_현재_위치_출력(){
+		Car car = new Car("chang");
+		car.race(5);
+		car.race(3);
+		car.race(7);
+
+		assertThat(car.getStringCarResult()).isEqualTo("chang : --");
+
+	}
+
 }
