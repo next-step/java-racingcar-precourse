@@ -1,5 +1,6 @@
 package racinggame;
 
+import java.util.List;
 import java.util.Map;
 
 public class Race {
@@ -29,5 +30,9 @@ public class Race {
 
     public Map<String, Integer> getPlayerNamePositionMap() {
         return players.getPlayerNamePositionMap();
+    }
+
+    public List<Car> getWinners() {
+        return players.getTopPlayers();
     }
 }

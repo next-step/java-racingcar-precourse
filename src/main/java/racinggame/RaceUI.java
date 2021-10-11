@@ -3,11 +3,16 @@ package racinggame;
 import nextstep.utils.Console;
 import utils.RaceUtils;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class RaceUI {
 
-    public static final int MIN_CAR_NAME_LENGTH = 5;
+    public static final int MAX_CAR_NAME_LENGTH = 5;
+    public static final String KEY_POSITION_DELIMETER = " : " ;
+    public static final String COMMA = "," ;
+    public static final String POSITION_PRESENTING_CHARACTER = "-" ;
 
     private RaceUI() {
     }
@@ -40,7 +45,7 @@ public class RaceUI {
     }
 
     private static void checkLength(String carName) throws RaceException {
-        if (carName.length() < MIN_CAR_NAME_LENGTH) {
+        if (carName.length() > MAX_CAR_NAME_LENGTH) {
             throw new RaceException(RaceErrorCode.INVALID_CAR_NAME_LENGTH);
         }
     }
@@ -91,12 +96,27 @@ public class RaceUI {
     public static void printCurrentRaceStatus(Map<String, Integer> namePositionMap) {
         for (String key: namePositionMap.keySet()) {
             StringBuffer sb = new StringBuffer();
-            sb.append(key + " : ");
+            sb.append(key + KEY_POSITION_DELIMETER);
             for (int i = 0; i < namePositionMap.get(key); i++) {
-                sb.append("-");
+                sb.append(POSITION_PRESENTING_CHARACTER);
             }
             System.out.println(sb);
         }
         System.out.println();
+    }
+
+    public static void printWinnerNames(List<Car> winners) {
+        String joinedName = getCommaJoinedWinnerName(winners);
+        System.out.println(
+                RaceMessages.PRINT_WINNER_PREFIX.message() + joinedName + RaceMessages.PRINT_WINNER_POSTFIX.message()
+        );
+    }
+
+    private static String getCommaJoinedWinnerName(List<Car> winners) {
+        List<String> nameList = new ArrayList<>();
+        for (Car winner : winners) {
+            nameList.add(winner.getCarName());
+        }
+        return String.join(COMMA, nameList);
     }
 }

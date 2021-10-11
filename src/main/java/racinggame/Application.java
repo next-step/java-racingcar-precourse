@@ -10,5 +10,6 @@ public class Application {
             race.iterate();
             RaceUI.printCurrentRaceStatus(race.getPlayerNamePositionMap());
         }
+        RaceUI.printWinnerNames(race.getWinners());
     }
 }
