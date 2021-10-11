@@ -25,7 +25,7 @@
     - 숫자로 입력한다.
     - 잘못된 값이면 `[ERROR]`를 노출하고 재입력한다.
     
-- `Car`
+- [x] `Car`
     - fields : `name`(`CarName`) 과 `position`(`CarPosition`)을 가진다. 
     - field :`name`
       - 제약 : 길이가 0 ~ 5
