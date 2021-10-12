@@ -14,12 +14,13 @@ public class Application {
 
     private static final Integer INITIAL_RUN_NUMBER = 0;
     private static final Boolean INITIAL_VICTORY_VALUE = false;
-    private static final String INITIAL_CAR_NAME = "";
+    private static final Integer ADD_RUN_NUMBER = 1;
     private static ArrayList<Car> carArrayList;
     private static InputView inputView;
     private static OutputView outputView;
     private static View view;
     private static RacingGameController racingGameController;
+    private static int gameCount;
 
     public static void main(String[] args) {
         // TODO 자동차 경주 게임 구현
@@ -43,7 +44,32 @@ public class Application {
                 continue;
             }
 
+            // 이동횟수 동안 자동차 전진 및 출력
+            racingGameController.getView().getOutputView().printOutputRacingResultTitle();
+            racingGame();
+
+
         }
+    }
+
+    /**
+     * 기능3 : 전진 횟수만큼 전진하는 자동차 만들기
+     */
+    private static void racingGame() {
+        int carsSize = racingGameController.getCarArrayList().size();
+
+        for (int i = 0; i < gameCount; i++) {
+            for(int j = 0; j < carsSize; j++) {
+                makeScore(j);
+            }
+            racingGameController.updateRacingResult();
+        }
+    }
+
+    private static void makeScore(int index) {
+        if(Validation.checkRunCar())
+            racingGameController.getCarArrayList().get(index).setScore(
+                    new Score(racingGameController.getCarArrayList().get(index).getScore().getRunNumber()+ADD_RUN_NUMBER,false));
     }
 
     /**
@@ -51,7 +77,10 @@ public class Application {
      */
     private static Boolean inputRunNumber() {
        String inputRunNumber = racingGameController.readInputRunNumber();
-       return Validation.validateRunNumber(inputRunNumber);
+       if(!Validation.validateRunNumber(inputRunNumber))
+           return false;
+        gameCount = Integer.parseInt(inputRunNumber);
+        return true;
     }
 
     /**
@@ -66,15 +95,15 @@ public class Application {
     }
 
     private static Boolean validateCarNames(String[] carNames) {
-        Score score = new Score(INITIAL_RUN_NUMBER, INITIAL_VICTORY_VALUE);
-        Car car = new Car(INITIAL_CAR_NAME, score);
 
         for (int i = 0; i < carNames.length; i++) {
             if(!Validation.validateCarNameLength(carNames[i])) {
                 racingGameController.getCarArrayList().clear();
                 return false;
             }
-            car.setName(carNames[i]);
+
+            Score score = new Score(INITIAL_RUN_NUMBER, INITIAL_VICTORY_VALUE);
+            Car car = new Car(carNames[i], score);
             racingGameController.getCarArrayList().add(car);
         }
         return true;

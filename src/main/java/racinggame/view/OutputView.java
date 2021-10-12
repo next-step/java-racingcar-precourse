@@ -11,6 +11,11 @@ public class OutputView {
         System.out.println(carName + " : " + runNumber);
     }
 
+    public void printOutputLine() {
+
+        System.out.println("");
+    }
+
     public void printOutputRacingWinnerPrefix() {
         System.out.print("최종 우승자는 ");
     }
