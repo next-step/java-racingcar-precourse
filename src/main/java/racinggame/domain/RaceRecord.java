@@ -16,4 +16,16 @@ public class RaceRecord {
     public String reportMessage() {
         return carName.getName() + " : " + distance.report() + "\n";
     }
+
+    public String getCarName() {
+        return carName.getName();
+    }
+
+    public int getDistance() {
+        return distance.getDistance();
+    }
+
+    public MovingStatus getStatus() {
+        return status;
+    }
 }
