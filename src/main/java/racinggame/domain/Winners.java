@@ -1,10 +1,11 @@
 package racinggame.domain;
 
+import static racinggame.common.CommonConstants.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Winners {
-	public static final String DELIMITER = ",";
 	List<Car> carList;
 
 	public Winners() {
