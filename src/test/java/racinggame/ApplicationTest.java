@@ -33,6 +33,30 @@ public class ApplicationTest extends NSTest {
         });
     }
 
+    @Test
+    void 잘못된_숫자_횟수에_대한_예외_처리() {
+        assertSimpleTest(() -> {
+            runNoLineFound("pobi,java", "0");
+            verify(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 잘못된_횟수_입력에_대한_예외_처리() {
+        assertSimpleTest(() -> {
+            runNoLineFound("pobi,java", "test");
+            verify(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 여러명_우승() {
+        assertRandomTest(() -> {
+            run("pobi,woni,java", "1");
+            verify("pobi : -", "woni : -", "java : ", "최종 우승자는 pobi,woni 입니다.");
+        }, MOVING_FORWARD, MOVING_FORWARD, STOP);
+    }
+
     @AfterEach
     void tearDown() {
         outputStandard();
