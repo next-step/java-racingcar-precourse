@@ -28,14 +28,6 @@ public class CarSetTest  extends NSTest {
         assertThat(carSet.getCars().get(0).getName()).isEqualTo("latte");
     }
 
-    @Test
-    void 자동차_중복() {
-        CarSet carSet = CarSet.getCarSetInstance();
-        carSet.addCar("latte");
-
-        assertThat(carSet.addCar("latte")).isEqualTo(false);
-    }
-
     @Override
     protected void runMain() {
         Application.main(new String[]{});

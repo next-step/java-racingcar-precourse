@@ -11,35 +11,21 @@ import java.util.Set;
 public class CarSet {
     private static final CarSet carSet = new CarSet();
     private ArrayList<Car> cars;
-    private Set<String> setForDuplicateCheck;
 
     private CarSet() {
         this.cars = new ArrayList<>();
-        this.setForDuplicateCheck = new HashSet<>();
     }
 
     public static CarSet getCarSetInstance() {
         return carSet;
     }
 
-    public boolean addCar(String name) {
-        try {
-            isDuplicate(name);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            return false;
-        }
-        setForDuplicateCheck.add(name);
+    public void addCar(String name) {
         cars.add(new Car(name));
-        return true;
     }
 
-    private void isDuplicate(String name) throws IllegalInputException {
-        if (setForDuplicateCheck.contains(name)) {
-            cars.clear();
-            setForDuplicateCheck.clear();
-            throw new IllegalInputException("[ERROR] " + name + "이 중복됩니다.");
-        }
+    public void clearCarList() {
+        cars.clear();
     }
 
     public ArrayList<Car> getCars() {

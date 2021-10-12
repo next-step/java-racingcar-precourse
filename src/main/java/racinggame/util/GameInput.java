@@ -5,11 +5,13 @@ import racinggame.exception.IllegalInputException;
 import racinggame.model.CarSet;
 
 import java.util.ArrayList;
+import java.util.Set;
 import java.util.StringTokenizer;
 
 public class GameInput {
     private static final GameInput gameInput = new GameInput();
     private CarSet carSet = CarSet.getCarSetInstance();
+    private Set<String> setForDuplicateCheck;
 
     private GameInput() {}
 
@@ -41,26 +43,32 @@ public class GameInput {
 
     private boolean checkCarNameOneByOne(String carName) {
         try {
-            isOkLength(carName);
-            isNotNull(carName);
+            checkTotal(carName);
         }  catch (Exception e) {
+            clearLists();
             System.out.println(e.getMessage());
             return false;
         }
-
-        return carSet.addCar(carName);
+        carSet.addCar(carName);
+        return true;
     }
 
-    public boolean checkPlayCount(String input) {
+    public boolean checkPlayCount(String playCnt) {
         try {
-            isOnlyNum(input);
-            isOkScope(Integer.parseInt(input));
+            isOnlyNum(playCnt);
+            isOkScope(Integer.parseInt(playCnt));
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return false;
         }
 
         return true;
+    }
+
+    private void checkTotal(String carName) throws IllegalInputException{
+        isOkLength(carName);
+        isNotNull(carName);
+        isDuplicate(carName);
     }
 
     // 자동차 이름 길이 제한 검사
@@ -77,6 +85,13 @@ public class GameInput {
         }
     }
 
+    // 자동차 이름 중복검사
+    private void isDuplicate(String carName) throws IllegalInputException {
+        if (setForDuplicateCheck.contains(carName)) {
+            setForDuplicateCheck.clear();
+            throw new IllegalInputException("[ERROR] " + carName + "이 중복됩니다.");
+        }
+    }
     // 숫자만 있는지 검사
     private void isOnlyNum(String input) throws IllegalInputException {
         if (!input.matches("[0-9]+")) {
@@ -89,5 +104,11 @@ public class GameInput {
         if (input > Constant.PLAY_COUNT_LIMIT) {
             throw new IllegalInputException(String.format("[ERROR] 최대 %d회까지 플레이할 수 있습니다.", Constant.PLAY_COUNT_LIMIT));
         }
+    }
+
+    // 에러 발견 시 자동차 리스트 초기화
+    private void clearLists() {
+        carSet.clearCarList();
+        setForDuplicateCheck.clear();
     }
 }
