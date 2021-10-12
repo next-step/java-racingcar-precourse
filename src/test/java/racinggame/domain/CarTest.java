@@ -10,8 +10,15 @@ class CarTest {
 
 	@Test
 	@DisplayName("현재 자동차 위치 반환 Test")
-	void currentCars() {
+	void currentCarsTest() {
 		Car car = new Car("벤틀리");
 		assertEquals(car.currentCars(), "벤틀리 : ");
+	}
+
+	@Test
+	@DisplayName("현재 자동차 위치 정수 반환 Test")
+	void currentCarsToIntTest() {
+		Car car = new Car("벤틀리");
+		assertEquals(car.currentCarsToInt(), 0);
 	}
 }

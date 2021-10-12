@@ -1,10 +1,11 @@
 package racinggame.domain;
 
 public class Car {
+	private static final String COLON = " : ";
+
 	private CarName carName;
 	private CarMove carMove;
 	private CarPosition carPosition;
-	private static final String COLON = " : ";
 
 	public Car(String carName) {
 		this.carName = new CarName(carName);
@@ -21,5 +22,9 @@ public class Car {
 
 	public String currentCars() {
 		return this.carName.getCarName() + COLON + carPosition.getCarPosition();
+	}
+
+	public int currentCarsToInt(){
+		return this.carPosition.getCarPositionLength();
 	}
 }

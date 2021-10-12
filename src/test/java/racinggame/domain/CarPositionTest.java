@@ -15,4 +15,11 @@ class CarPositionTest {
 		carPosition.movePosition();
 		assertEquals(carPosition.getCarPosition(), "-");
 	}
+
+	@Test
+	@DisplayName("현재 자동차 위치 정수 반환 Test")
+	void getCarPositionLengthTest() {
+		CarPosition carPosition = new CarPosition();
+		assertEquals(carPosition.getCarPositionLength(), 0);
+	}
 }

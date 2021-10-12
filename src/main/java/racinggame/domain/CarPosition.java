@@ -16,4 +16,8 @@ public class CarPosition {
 	public String getCarPosition() {
 		return position.toString();
 	}
+
+	public int getCarPositionLength(){
+		return position.length();
+	}
 }
