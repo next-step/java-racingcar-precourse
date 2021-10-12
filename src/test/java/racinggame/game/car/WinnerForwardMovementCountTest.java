@@ -1,5 +1,6 @@
 package racinggame.game.car;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racinggame.BaseTest;
 
@@ -10,6 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class WinnerForwardMovementCountTest extends BaseTest<Car> {
 
+    @DisplayName("우승자 전진 횟수 비교 테스트")
     @Test
     void test() {
         int size = 3;

@@ -1,5 +1,6 @@
 package racinggame.game.car;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -9,6 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarsTest {
 
+    @DisplayName("cars 이름 비교 테스트")
     @Test
     void testGetCarList() {
         int size = 3;
@@ -20,8 +22,6 @@ class CarsTest {
             assertThat(carNames.get(i).equals(cars.getCarList().get(i).getName())).isTrue();
         }
     }
-
-
 
     private List<String> createCarNames(int size) {
         List<String> carNames = new ArrayList<>();
