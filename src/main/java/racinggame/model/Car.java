@@ -24,4 +24,5 @@ public class Car {
     public void setScore(Score score) {
         this.score = score;
     }
+
 }

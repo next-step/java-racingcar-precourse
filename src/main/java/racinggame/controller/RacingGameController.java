@@ -5,6 +5,8 @@ import racinggame.view.View;
 
 import java.util.ArrayList;
 
+import static nextstep.utils.Console.readLine;
+
 public class RacingGameController {
 
     private static final String RUN_TEXT = "-";
@@ -31,5 +33,10 @@ public class RacingGameController {
 
     public void setView(View view) {
         this.view = view;
+    }
+
+    public String readInputCarNames() {
+        this.view.getInputView().printInputCarName();
+        return readLine();
     }
 }

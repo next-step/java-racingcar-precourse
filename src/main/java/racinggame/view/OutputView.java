@@ -18,4 +18,8 @@ public class OutputView {
     public void printOutputRacingWinnerSuffix() {
         System.out.println(" 입니다.");
     }
+
+    public void printOutputErrorMessage() {
+        System.out.println("[ERROR] 잘못된 입력값입니다");
+    }
 }
