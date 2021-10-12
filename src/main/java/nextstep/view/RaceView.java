@@ -18,9 +18,9 @@ public class RaceView {
         return Console.readLine();
     }
 
-    public Integer getRound() {
+    public String getRound() {
         System.out.println(TRIAL_ROUND_INPUT_MESSAGE);
-        return Integer.parseInt(Console.readLine());
+        return Console.readLine();
     }
 
     public void displayResult() {
