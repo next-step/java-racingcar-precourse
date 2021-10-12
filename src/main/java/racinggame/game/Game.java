@@ -1,11 +1,11 @@
 package racinggame.game;
 
 
+import racinggame.game.console.GameConsole;
 import racinggame.game.model.car.CarNames;
 import racinggame.game.model.car.Cars;
 import racinggame.game.model.car.WinnerCarNames;
 import racinggame.game.model.car.WinnerForwardMovementCount;
-import racinggame.game.console.GameConsole;
 
 public class Game {
     private final GameConsole gameConsole = new GameConsole();

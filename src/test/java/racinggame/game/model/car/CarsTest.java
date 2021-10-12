@@ -2,8 +2,6 @@ package racinggame.game.model.car;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racinggame.game.model.car.CarName;
-import racinggame.game.model.car.Cars;
 
 import java.util.ArrayList;
 import java.util.List;

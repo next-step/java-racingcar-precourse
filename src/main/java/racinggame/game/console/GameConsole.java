@@ -1,10 +1,10 @@
 package racinggame.game.console;
 
+import racinggame.game.console.input.CarNameInputConsole;
+import racinggame.game.console.input.TryInputConsole;
 import racinggame.game.model.car.Car;
 import racinggame.game.model.car.CarName;
 import racinggame.game.model.car.CarNames;
-import racinggame.game.console.input.CarNameInputConsole;
-import racinggame.game.console.input.TryInputConsole;
 import racinggame.game.model.message.RaceResultMessage;
 import racinggame.game.model.message.RaceWinnerMessage;
 
