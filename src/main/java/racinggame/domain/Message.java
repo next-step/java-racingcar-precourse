@@ -3,6 +3,7 @@ package racinggame.domain;
 import java.util.Objects;
 
 public class Message {
+    public static final Message COMMA = new Message(",");
     private String content;
 
     public Message(String content) {

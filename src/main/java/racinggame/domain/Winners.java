@@ -26,4 +26,22 @@ public class Winners {
     public int hashCode() {
         return Objects.hash(winners);
     }
+
+    public Message makeWinnersMessage() {
+        MessageBuilder messageBuilder = new MessageBuilder(new Message("최종 우승자는 "));
+        for (int idx = 0; idx < winners.size(); idx++) {
+            messageBuilder.append(messageWithCommaIfNotLastElement(idx, winners.get(idx)));
+        }
+
+        return messageBuilder.append(new Message(" 입니다.")).toMessage();
+    }
+
+    private Message messageWithCommaIfNotLastElement(int idx, Name name) {
+        if (idx == winners.size() - 1) {
+            return name.makeNameMessage();
+        }
+
+        return new MessageBuilder().append(name.makeNameMessage()).append(Message.COMMA).toMessage();
+    }
+
 }
