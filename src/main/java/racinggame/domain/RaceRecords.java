@@ -19,4 +19,8 @@ public class RaceRecords {
         }
         System.out.println(message);
     }
+
+    public List<RaceRecord> getRaceRecords() {
+        return raceRecords;
+    }
 }
