@@ -4,6 +4,7 @@ import racinggame.domain.AttemptNumber;
 import racinggame.domain.Cars;
 import racinggame.domain.Message;
 import racinggame.domain.Player;
+import racinggame.exception.RacingGameException;
 
 public class Game {
     private static final Message ASK_NAMES_MESSAGE = new Message("경주할 자동차 이름을 입력하세요. (이름은 쉼표(,) 기준으로 구분)");
@@ -16,12 +17,16 @@ public class Game {
     }
 
     public void start() {
-        ASK_NAMES_MESSAGE.print();
-        Cars cars = new Cars(player.inputNames());
-        ASK_ATTEMPT_NUMBER_MESSAGE.print();
-        AttemptNumber attemptNumber = player.inputAttemptNumber();
-        race(cars, attemptNumber);
-        cars.findWinners().makeWinnersMessage().print();
+        try {
+            ASK_NAMES_MESSAGE.print();
+            Cars cars = new Cars(player.inputNames());
+            ASK_ATTEMPT_NUMBER_MESSAGE.print();
+            AttemptNumber attemptNumber = player.inputAttemptNumber();
+            race(cars, attemptNumber);
+            cars.findWinners().makeWinnersMessage().print();
+        } catch (RacingGameException e) {
+            new Message(e.getMessage()).printError();
+        }
     }
 
     private void race(Cars cars, AttemptNumber attemptNumber) {
