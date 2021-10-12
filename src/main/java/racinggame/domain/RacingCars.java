@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingCars {
-	private static final String rest = ", ";
+	private static final String REST = ",";
 	private List<Car> racingCars;
 
 	public RacingCars() {
@@ -22,8 +22,8 @@ public class RacingCars {
 	public String convertToString() {
 		StringBuilder racingCarToString = new StringBuilder();
 		for (Car car : racingCars) {
-			racingCarToString.append(car.getCarName()).append(rest);
+			racingCarToString.append(car.getCarName()).append(REST);
 		}
-		return racingCarToString.substring(0, racingCarToString.length() - 2);
+		return racingCarToString.substring(0, racingCarToString.length() - 1);
 	}
 }

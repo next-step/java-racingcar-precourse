@@ -36,7 +36,6 @@ class GameRuleTest {
 		racingCars.addCar(lam);
 		racingCars.addCar(truck);
 		GameRule gameRule = new GameRule(racingCars, moveCount);
-		assertEquals("람보르기니, 트럭 입니다.", gameRule.getGameResult());
-
+		assertEquals("최종 우승자는 람보르기니,트럭 입니다.", gameRule.getGameResult());
 	}
 }

@@ -15,7 +15,7 @@ public class GameResult {
 	}
 
 	public String getGameResult(){
-		return winningCars.convertToString() + WIN_TAIL.getMessage();
+		return WIN_HEAD.getMessage() + winningCars.convertToString() + WIN_TAIL.getMessage();
 	}
 
 	private void processWiningCar() {

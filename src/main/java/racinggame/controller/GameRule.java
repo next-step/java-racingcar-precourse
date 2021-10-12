@@ -31,5 +31,6 @@ public class GameRule {
 			car.moveCar();
 			System.out.println(car.currentCars());
 		}
+		System.out.println();
 	}
 }

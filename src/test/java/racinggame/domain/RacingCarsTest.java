@@ -19,7 +19,7 @@ class RacingCarsTest {
 	}
 
 	@Test
-	@DisplayName("자동차 추가 Test")
+	@DisplayName("String 변환 테스트 Test")
 	void convertToStringTest() {
 		RacingCars racingCars = new RacingCars();
 		Car jaguar = new Car("재규어");
@@ -28,6 +28,6 @@ class RacingCarsTest {
 		racingCars.addCar(jaguar);
 		racingCars.addCar(ferrari);
 		racingCars.addCar(kia);
-		assertEquals("재규어, 페라리, 기아", racingCars.convertToString());
+		assertEquals("재규어,페라리,기아", racingCars.convertToString());
 	}
 }
