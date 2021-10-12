@@ -10,7 +10,7 @@ public class ValidationUtils {
 
   private static final int MAX_LENGTH = 5;
 
-  public static boolean carNameLessThan5words(String carName) {
+  public static boolean isCarNameLessThan5words(String carName) {
     return carName.length() <= MAX_LENGTH;
   }
 

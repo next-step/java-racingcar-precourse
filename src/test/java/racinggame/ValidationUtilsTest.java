@@ -16,11 +16,11 @@ public class ValidationUtilsTest {
   @Test
   @DisplayName("자동차_이름_5자리_이하")
   void carNameLessThan5word() {
-    assertThat(ValidationUtils.carNameLessThan5words("toyota")).isFalse();
-    assertThat(ValidationUtils.carNameLessThan5words("hyundai")).isFalse();
-    assertThat(ValidationUtils.carNameLessThan5words("kia")).isTrue();
-    assertThat(ValidationUtils.carNameLessThan5words("volvo")).isTrue();
-    assertThat(ValidationUtils.carNameLessThan5words("benz")).isTrue();
+    assertThat(ValidationUtils.isCarNameLessThan5words("toyota")).isFalse();
+    assertThat(ValidationUtils.isCarNameLessThan5words("hyundai")).isFalse();
+    assertThat(ValidationUtils.isCarNameLessThan5words("kia")).isTrue();
+    assertThat(ValidationUtils.isCarNameLessThan5words("volvo")).isTrue();
+    assertThat(ValidationUtils.isCarNameLessThan5words("benz")).isTrue();
   }
 
   @Test
