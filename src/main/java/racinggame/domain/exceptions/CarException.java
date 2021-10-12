@@ -1,6 +1,8 @@
 package racinggame.domain.exceptions;
 
-public class CarException extends IllegalArgumentException {
+import java.util.NoSuchElementException;
+
+public class CarException extends NoSuchElementException {
 
     public CarException(String errorMsg){
         super(errorMsg);
