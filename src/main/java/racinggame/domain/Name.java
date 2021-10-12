@@ -2,7 +2,9 @@ package racinggame.domain;
 
 import java.util.Objects;
 
+import racinggame.exception.BlankNameException;
 import racinggame.exception.OverNameLengthException;
+import racinggame.utils.StringUtils;
 
 public class Name {
 	private static final int MAX_OF_LENGTH = 5;
@@ -10,8 +12,15 @@ public class Name {
 	private final String value;
 
 	public Name(String value) {
+		checkValueIsNotBlank(value);
 		checkValueLength(value);
 		this.value = value;
+	}
+
+	private void checkValueIsNotBlank(String value) {
+		if (StringUtils.isBlank(value)) {
+			throw new BlankNameException();
+		}
 	}
 
 	public String getValue() {
