@@ -2,6 +2,8 @@ package racinggame.racingcar;
 
 import java.util.Objects;
 
+import racinggame.common.Name;
+
 public class LapRecord {
 	private static final String DELIMITER = "-";
 

@@ -11,6 +11,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.MockedStatic;
 
 import nextstep.utils.Randoms;
+import racinggame.common.Name;
 import racinggame.rule.RacingRule;
 import racinggame.rule.WinnerDecisionRule;
 import racinggame.rule.winnerrules.FarAwayWinRule;

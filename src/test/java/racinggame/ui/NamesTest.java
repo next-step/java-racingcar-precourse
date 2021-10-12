@@ -6,7 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import racinggame.exception.InvalidNameException;
-import racinggame.racingcar.Name;
+import racinggame.common.Name;
 
 class NamesTest {
 	@DisplayName("이미 입력한 이름을 추가하면 예외 발생한다.")

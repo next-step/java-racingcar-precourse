@@ -1,13 +1,12 @@
 package racinggame.ui;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import racinggame.circuit.FinalRecord;
 import racinggame.circuit.Lap;
 import racinggame.racingcar.Dice;
-import racinggame.racingcar.Name;
+import racinggame.common.Name;
 import racinggame.racingcar.RacingCar;
 import racinggame.circuit.RacingCars;
 import racinggame.exception.InvalidNameException;

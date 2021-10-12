@@ -10,7 +10,7 @@ import racinggame.circuit.FinalRecord;
 import racinggame.circuit.LapRecords;
 import racinggame.racingcar.LapRecord;
 import racinggame.racingcar.Location;
-import racinggame.racingcar.Name;
+import racinggame.common.Name;
 import racinggame.rule.WinnerDecisionRule;
 import racinggame.rule.WinnerNames;
 

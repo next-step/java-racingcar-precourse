@@ -1,5 +1,6 @@
 package racinggame.racingcar;
 
+import racinggame.common.Name;
 import racinggame.ui.Rule;
 
 public final class RacingCar {

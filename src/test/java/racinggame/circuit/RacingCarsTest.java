@@ -15,7 +15,7 @@ import nextstep.utils.Randoms;
 import racinggame.racingcar.Dice;
 import racinggame.racingcar.LapRecord;
 import racinggame.racingcar.Location;
-import racinggame.racingcar.Name;
+import racinggame.common.Name;
 import racinggame.racingcar.RacingCar;
 import racinggame.rule.RacingRule;
 import racinggame.rule.WinnerDecisionRule;

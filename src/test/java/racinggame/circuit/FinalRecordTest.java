@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import racinggame.racingcar.LapRecord;
 import racinggame.racingcar.Location;
-import racinggame.racingcar.Name;
+import racinggame.common.Name;
 
 class FinalRecordTest {
 
