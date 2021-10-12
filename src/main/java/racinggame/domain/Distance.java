@@ -1,4 +1,4 @@
-package racinggame;
+package racinggame.domain;
 
 public class Distance {
 	private String distance = "";

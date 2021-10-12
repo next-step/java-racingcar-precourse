@@ -1,4 +1,4 @@
-package racinggame;
+package racinggame.domain;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -7,8 +7,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import nextstep.test.NSTest;
+import racinggame.view.CycleInput;
 
-public class CycleInputTest extends NSTest {
+public class CycleTest extends NSTest {
 	@BeforeEach
 	void beforeEach() {
 		setUp();

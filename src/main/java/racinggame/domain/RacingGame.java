@@ -1,4 +1,4 @@
-package racinggame;
+package racinggame.domain;
 
 import nextstep.utils.Randoms;
 
@@ -20,7 +20,7 @@ public class RacingGame {
 	 * @Description : 게임 시작
 	 *
 	 **/
-	void start() {
+	public void start() {
 		System.out.println(executionResultMessage);
 
 		for (int i = 0; i < cycle.value(); i++) {

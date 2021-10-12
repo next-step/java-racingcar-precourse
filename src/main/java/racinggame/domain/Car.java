@@ -1,4 +1,4 @@
-package racinggame;
+package racinggame.domain;
 
 import java.util.Objects;
 
@@ -33,7 +33,7 @@ public class Car {
 	 * @Description :사용자의 입력값 중 다섯 글자 이상의 자동차 이름이 포함되었는 지를 검증하는 메소드
 	 *
 	 **/
-	static boolean isOverThanFiveLetters(String input) {
+	public static boolean isOverThanFiveLetters(String input) {
 		if (input.length() > INPUT_LIMIT) {
 			System.out.println(ERROR_MESSAGE);
 			return true;

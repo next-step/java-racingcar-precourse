@@ -1,13 +1,14 @@
-package racinggame;
+package racinggame.view;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.NoSuchElementException;
 
 import nextstep.utils.Console;
+import racinggame.domain.Car;
 
 public class CarInput {
-	static final String GUIDE_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
+	public static final String GUIDE_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
 	private static final String DELIMITER = ",";
 
 	private CarInput() {
