@@ -1,6 +1,5 @@
 package racinggame.view;
 
-import nextstep.utils.Console;
 import racinggame.environments.GlobalVariables;
 import racinggame.model.Car;
 import racinggame.model.Cars;
@@ -20,12 +19,18 @@ public class GameConsole {
     private RacingGame racingGame;
     private InputParser inputParser;
 
+    private InputView inputView;
+    private OutputView outputView;
+
     private Cars playerCars;
     private int gameTurnCnt;
 
     public GameConsole() {
         this.racingGame = new RacingGame();
         this.inputParser = new InputParser();
+
+        this.inputView = new InputView();
+        this.outputView = new OutputView();
 
         this.playerCars = new Cars();
         this.gameTurnCnt = 0;
@@ -45,11 +50,11 @@ public class GameConsole {
     }
 
     private String[] readValidPlayerNames() {
-        System.out.println(ASK_PLAYER_NAME_MSG);
+        this.outputView.write(ASK_PLAYER_NAME_MSG);
 
         String[] playerNames = null;
         while (playerNames == null) {
-            String input = Console.readLine();
+            String input = this.inputView.read();
 
             playerNames = getParsedPlayerNames(input);
         }
@@ -63,7 +68,7 @@ public class GameConsole {
 
             return playerNames;
         } catch (IllegalArgumentException e) {
-            System.out.println(ERROR_INPUT_PLAYER_NAME_MSG);
+            this.outputView.write(ERROR_INPUT_PLAYER_NAME_MSG);
         }
 
         return null;
@@ -74,11 +79,11 @@ public class GameConsole {
     }
 
     private int readValidGameTurnCount(){
-        System.out.println(ASK_GAME_TURN_COUNT_MSG);
+        this.outputView.write(ASK_GAME_TURN_COUNT_MSG);
 
         int turnCnt = ILLEGAL_GAME_TURN_COUNT;
         while (turnCnt < GlobalVariables.MIN_GAME_TURN_COUNT) {
-            String input = Console.readLine();
+            String input = this.inputView.read();
 
             turnCnt = getParsedGameTurnCount(input);
         }
@@ -90,7 +95,7 @@ public class GameConsole {
         try{
             return this.inputParser.parseGameTurnCnt(gameTurnCntInput);
         } catch (IllegalArgumentException e){
-            System.out.println(ERROR_INPUT_GAME_TURN_COUNT_MSG);
+            this.outputView.write(ERROR_INPUT_GAME_TURN_COUNT_MSG);
         }
 
         return ILLEGAL_GAME_TURN_COUNT;
@@ -101,7 +106,7 @@ public class GameConsole {
 
         String winnerMsg = buildWinnerMsg(winnerCars);
 
-        System.out.println(winnerMsg);
+        this.outputView.write(winnerMsg);
     }
 
     private String buildWinnerMsg(Cars winnerCars) {
