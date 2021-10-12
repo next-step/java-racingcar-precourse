@@ -21,4 +21,11 @@ class CarTest {
 		Car car = new Car("벤틀리");
 		assertEquals(car.currentCarsToInt(), 0);
 	}
+
+	@Test
+	@DisplayName("자동차 이름 반환 Test")
+	void getCarNameTest() {
+		Car car = new Car("벤츠");
+		assertEquals(car.getCarName(), "벤츠");
+	}
 }

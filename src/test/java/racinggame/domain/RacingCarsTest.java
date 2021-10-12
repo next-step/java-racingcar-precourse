@@ -13,8 +13,21 @@ class RacingCarsTest {
 	void addCarTest() {
 		RacingCars racingCars = new RacingCars();
 		assertEquals(0, racingCars.getRacingCars().size());
-		Car car = new Car("재규어");
-		racingCars.addCar(car);
+		Car jaguar = new Car("재규어");
+		racingCars.addCar(jaguar);
 		assertEquals(1, racingCars.getRacingCars().size());
+	}
+
+	@Test
+	@DisplayName("자동차 추가 Test")
+	void convertToStringTest() {
+		RacingCars racingCars = new RacingCars();
+		Car jaguar = new Car("재규어");
+		Car ferrari = new Car("페라리");
+		Car kia = new Car("기아");
+		racingCars.addCar(jaguar);
+		racingCars.addCar(ferrari);
+		racingCars.addCar(kia);
+		assertEquals("재규어, 페라리, 기아", racingCars.convertToString());
 	}
 }
