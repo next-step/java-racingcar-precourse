@@ -5,10 +5,11 @@ import java.util.List;
 public class Message {
     private static final String NAME_DELIMITER = " : ";
     private static final String MOVE_INDICATOR = "-";
-
     private static final String WINNER_NAME_DELIMITER = ",";
     private static final String WINNER_TEXT_FORWARD = "최종 우승자는 ";
     private static final String WINNER_TEXT_BACKWARD = " 입니다.";
+    private static final String INTRO_INPUT_CAR_NAME = "경주할 자동차 이름을 입력하세요. (이름은 쉼표(,) 기준으로 구분)";
+    private static final String INTRO_INPUT_GAME_COUNT = "시도할 횟수는 몇 회 인가요?";
 
     private Message() {
     }
@@ -54,4 +55,11 @@ public class Message {
         return sb.toString();
     }
 
+    public static void printIntroCarsNameInput() {
+        System.out.println(INTRO_INPUT_CAR_NAME);
+    }
+
+    public static void printIntroGameCount() {
+        System.out.println(INTRO_INPUT_GAME_COUNT);
+    }
 }

@@ -10,6 +10,10 @@ public class RaceManager {
         this.raceManagerGameEndCount = new RaceManagerGameEndCount(gameEndCount);
     }
 
+    public int getGameEndCount() {
+        return raceManagerGameEndCount.getGameEndCount();
+    }
+
     public static RaceManager createInstance(String gameEndCount) {
         if (raceManager == null) {
             raceManager = new RaceManager(gameEndCount);

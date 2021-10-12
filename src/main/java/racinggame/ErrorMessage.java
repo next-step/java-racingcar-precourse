@@ -18,14 +18,32 @@ public class ErrorMessage {
     }
 
     public static String printNotCorrectNameLengthMessage(String name) {
-        return String.format(ERROR_TITLE + NOT_CORRECT_NAME_LENGTH_MESSAGE + " : %s", name);
+        String message = String.format(ERROR_TITLE + NOT_CORRECT_NAME_LENGTH_MESSAGE + " : %s", name);
+        System.out.println(message);
+        return message;
     }
 
     public static String printNotPositiveMoveCountMessage(int moveCount) {
-        return String.format(ERROR_TITLE + NOT_POSITIVE_MOVE_COUNT_MESSAGE);
+        String message = ERROR_TITLE + NOT_POSITIVE_MOVE_COUNT_MESSAGE;
+        System.out.println(message);
+        return message;
+    }
+
+    public static String printNotNullEndGamePointMessage() {
+        String message = ERROR_TITLE + NOT_NULL_GAME_END_POINT_MESSAGE;
+        System.out.println(message);
+        return message;
     }
 
     public static String printNotNumberGameEndPointMessage(String gameEndCount) {
-        return String.format(ERROR_TITLE + NOT_NUMBER_GAME_END_POINT + " : %s", gameEndCount);
+        String message = String.format(ERROR_TITLE + NOT_NUMBER_GAME_END_POINT_MESSAGE + " : %s", gameEndCount);
+        System.out.println(message);
+        return message;
+    }
+
+    public static String printNoSuchElementMessage() {
+        String message = ERROR_TITLE + NO_SUCH_ELEMENT_MESSAGE;
+        System.out.println(message);
+        return message;
     }
 }
