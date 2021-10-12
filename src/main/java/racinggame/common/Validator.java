@@ -27,7 +27,7 @@ public class Validator {
 	}
 
 	public static void validCarName(String input) {
-		if(input == null || input.trim().length() < NAME_MIN_LENGTH || input.trim().length() > NAME_MAX_LENGTH) {
+		if (input == null || input.trim().length() < NAME_MIN_LENGTH || input.trim().length() > NAME_MAX_LENGTH) {
 			throw new IllegalArgumentException(ErrorMessage.ERROR_CAR_INPUT_NAME);
 		}
 	}

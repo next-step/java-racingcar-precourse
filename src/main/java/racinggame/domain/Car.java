@@ -17,7 +17,6 @@ public class Car {
 	public Car(String name) {
 		setName(name);
 	}
-	
 	public String getName() {
 		return name;
 	}

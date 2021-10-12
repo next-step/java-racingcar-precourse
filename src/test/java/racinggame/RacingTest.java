@@ -39,9 +39,7 @@ public class RacingTest {
 	void setUp() {
 		racing = new Racing();
 		List<String> names = Arrays.asList("Lee", "Park", "Kim", "제이", "논", "진");
-		for (String name : names) {
-			racing.join(new Car(name));
-		}
+		racing.joinList(names);
 	}
 
 	@Test
@@ -50,6 +48,17 @@ public class RacingTest {
 		Car car = new Car("wow");
 
 		racing.join(car);
+
+		assertThat(racing.getCars().getCarList())
+			.hasSize(size);
+	}
+
+	@Test
+	void 레이싱_참가_목록() {
+		int size = 8;
+		List<String> names = Arrays.asList("wow","와우");
+
+		racing.joinList(names);
 
 		assertThat(racing.getCars().getCarList())
 			.hasSize(size);
