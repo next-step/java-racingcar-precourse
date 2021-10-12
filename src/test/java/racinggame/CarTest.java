@@ -1,0 +1,28 @@
+package racinggame;
+
+import java.util.Arrays;
+import java.util.List;
+
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import racinggame.strategy.DefaultMovingStrategy;
+import racinggame.strategy.MovingStrategy;
+import racinggame.strategy.NoMovingStrategy;
+
+public class CarTest {
+	@ParameterizedTest(name = "{2}")
+	@MethodSource("parameters")
+	void given_strategy_then_decide_move_or_not(MovingStrategy strategy, int expectedPosition, String message) {
+		Car car = new Car("Jay");
+		int position = car.move(strategy);
+		Assertions.assertThat(position).isEqualTo(expectedPosition);
+	}
+
+	static List<Arguments> parameters() {
+		return Arrays.asList(Arguments.of(new NoMovingStrategy(), 0, "자동차가 멈춘다"),
+			Arguments.of(new DefaultMovingStrategy(), 1, "자동차가 전진한다"));
+	}
+}
