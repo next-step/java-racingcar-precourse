@@ -17,4 +17,8 @@ public class Car {
 		}
 		return position.currentPosition();
 	}
+
+	public CarDto toDto() {
+		return new CarDto(name, position.currentPosition());
+	}
 }
