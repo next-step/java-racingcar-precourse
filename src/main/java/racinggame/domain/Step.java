@@ -6,6 +6,7 @@ import racinggame.utils.Message;
 
 public class Step implements Comparable<Step> {
     private static final String STEP_DASH = "-";
+
     private int num;
 
     public Step(int num) {

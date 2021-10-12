@@ -5,6 +5,7 @@ import java.util.Objects;
 public class Message {
     public static final Message COMMA = new Message(",");
     private static final String ERROR = "[ERROR] ";
+
     private String content;
 
     public Message(String content) {

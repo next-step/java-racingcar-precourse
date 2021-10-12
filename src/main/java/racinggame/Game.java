@@ -1,11 +1,11 @@
 package racinggame;
 
 import racinggame.domain.AttemptNumber;
-import racinggame.domain.RacingCars;
-import racinggame.utils.Message;
 import racinggame.domain.Player;
+import racinggame.domain.RacingCars;
 import racinggame.domain.Winners;
 import racinggame.exception.RacingGameException;
+import racinggame.utils.Message;
 
 public class Game {
     private static final Message ASK_NAMES_MESSAGE = new Message("경주할 자동차 이름을 입력하세요. (이름은 쉼표(,) 기준으로 구분)");

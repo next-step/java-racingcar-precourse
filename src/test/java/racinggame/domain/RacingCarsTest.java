@@ -29,10 +29,9 @@ public class RacingCarsTest {
             mockMoveStatus.when(MoveStatus::createRandom)
                 .thenReturn(MoveStatus.FORWARD, MoveStatus.FORWARD, MoveStatus.STOP);
             RacingCars racingCars = new RacingCars("1,2,3");
-
             racingCars.moveForwardOrStop();
-
-            assertThat(racingCars.findWinners()).isEqualTo(new Winners(Arrays.asList(new CarName("1"), new CarName("2"))));
+            assertThat(racingCars.findWinners())
+                .isEqualTo(new Winners(Arrays.asList(new CarName("1"), new CarName("2"))));
         }
     }
 

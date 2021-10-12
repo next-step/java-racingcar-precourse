@@ -2,6 +2,7 @@ package racinggame.utils;
 
 public class MessageBuilder {
     private static final String NEW_LINE = "\n";
+
     private StringBuilder builder;
 
     public MessageBuilder() {

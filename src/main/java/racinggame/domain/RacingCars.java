@@ -10,11 +10,13 @@ import racinggame.utils.MessageBuilder;
 
 public class RacingCars {
     private static final String CAR_NAME_SEPARATOR = ",";
+
     private final List<RacingCar> racingCarList;
 
     public RacingCars(String carsStr) {
         racingCarList = new ArrayList<>();
         String[] carNames = carsStr.split(CAR_NAME_SEPARATOR);
+
         for (String carName : carNames) {
             racingCarList.add(new RacingCar(new CarName(carName)));
         }
@@ -41,6 +43,7 @@ public class RacingCars {
         for (RacingCar racingCar : racingCarList) {
             addIfMaxStep(winners, maxStep, racingCar);
         }
+
         return new Winners(winners);
     }
 

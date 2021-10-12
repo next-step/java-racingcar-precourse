@@ -10,6 +10,7 @@ public class AttemptNumber {
         if (number < 1) {
             throw new RacingGameException(RacingGameErrorCode.INVALID_ATTEMPT_NUMBER);
         }
+
         this.number = number;
     }
 
