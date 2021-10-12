@@ -2,6 +2,7 @@ package racinggame;
 
 public class Car {
 
+    private static final int MAX_LENGTH = 5;
     private static final int RACE_START_NUMBER = 0;
     private static final int RACE_END_NUMBER = 9;
     private static final int ADVANCE_START_NUMBER = 4;
@@ -10,8 +11,8 @@ public class Car {
     private int advance;
 
     public Car(String name) {
-        if (name.length() > 5) {
-            throw new IllegalArgumentException("[ERROR] 이름은 5자 이하만 가능합니다.");
+        if (name.length() > MAX_LENGTH) {
+            throw new IllegalArgumentException("[ERROR] 이름은 " + MAX_LENGTH + "자 이하만 가능합니다.");
         }
         this.name = name;
     }
@@ -21,12 +22,12 @@ public class Car {
     }
 
     public int getAdvance() {
-        return this.advance;
+        return advance;
     }
 
     public int racing(int number) {
         if (!isValidNumber(number)) {
-            throw new IllegalArgumentException("[ERROR] 이동할 숫자는 0부터 9의 값이어야 합니다.");
+            throw new IllegalArgumentException("[ERROR] 이동할 숫자는 " + RACE_START_NUMBER + "부터 " + RACE_END_NUMBER + "의 값이어야 합니다.");
         }
         if (number >= ADVANCE_START_NUMBER) {
             advance++;

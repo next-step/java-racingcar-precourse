@@ -18,6 +18,9 @@ public class RacingCars {
 
     public RacingCars(String racingCarNames) {
         String[] racingCars = racingCarNames.split(SEPARATOR);
+        if (racingCars.length < 2) {
+            throw new IllegalArgumentException("[ERROR] 2이상의 자동차 이름을 입력하세요.");
+        }
         List<Car> carList = new ArrayList<>();
         for (String racingCarName : racingCars) {
             Car car = new Car(racingCarName);
@@ -49,7 +52,7 @@ public class RacingCars {
 
     public void printProgress() {
         for (Car car : racingCars) {
-            System.out.println(car.getName() + ": "
+            System.out.println(car.getName() + " : "
                     + String.join("", Collections.nCopies(car.getAdvance(), ADVANCE_STR)));
         }
     }
