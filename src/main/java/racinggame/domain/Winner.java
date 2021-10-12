@@ -33,7 +33,7 @@ public class Winner {
 	}
 
 	private Position getWinnerPosition(Map<Position, List<Car>> cars) {
-		Position positionOfWinner = new Position();
+		Position positionOfWinner = Position.createMinPosition();
 		for (Position position : cars.keySet()) {
 			positionOfWinner = position.getMaxPosition(positionOfWinner);
 		}

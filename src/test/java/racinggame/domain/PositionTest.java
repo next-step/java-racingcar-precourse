@@ -38,7 +38,7 @@ class PositionTest {
 	@DisplayName("증가된 Position 값을 반환한다.")
 	void move() {
 		// given
-		Position position = new Position();
+		Position position = Position.createMinPosition();
 
 		// when
 		position = position.move();
@@ -52,7 +52,7 @@ class PositionTest {
 	@DisplayName("deep copy 테스트")
 	void obtainNewCopied() {
 		// given
-		Position zero = new Position();
+		Position zero = Position.createMinPosition();
 
 		// when
 		Position copiedZero = zero.obtainNewCopied();
@@ -68,7 +68,7 @@ class PositionTest {
 	@DisplayName("위치 값이 큰 Position을 반환한다.")
 	void getMaxPosition() {
 		// given
-		Position min = new Position();
+		Position min = Position.createMinPosition();
 		Position max = new Position(Integer.MAX_VALUE);
 
 		// when

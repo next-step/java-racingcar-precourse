@@ -9,13 +9,13 @@ public class Position {
 
 	private final int value;
 
-	public Position() {
-		this(MIN);
-	}
-
 	public Position(int value) {
 		checkValidValue(value);
 		this.value = value;
+	}
+
+	public static Position createMinPosition() {
+		return new Position(MIN);
 	}
 
 	public Position move() {

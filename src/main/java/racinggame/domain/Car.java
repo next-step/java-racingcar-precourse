@@ -9,7 +9,7 @@ public class Car {
 	private final Position position;
 
 	public Car(String valueOfName) {
-		this(new Name(valueOfName), new Position());
+		this(new Name(valueOfName), Position.createMinPosition());
 	}
 
 	public Car(Name name, Position position) {

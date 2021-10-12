@@ -15,7 +15,7 @@ class CarTest {
 		Name name = new Name("gmoon");
 
 		// when
-		Car car = new Car(name, new Position());
+		Car car = new Car(name, Position.createMinPosition());
 
 		// then
 		assertThat(car).isNotNull()
