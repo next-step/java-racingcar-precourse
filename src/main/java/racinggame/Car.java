@@ -8,12 +8,14 @@ public class Car {
     private String carName = "";
     private String goSize = "";
 
-    public String goStopCheck(int goStopNum) {
+    public Car(String carName){
+        this.carName = carName;
+    }
+
+    public void goStopCheck(int goStopNum) {
         if(goStopNum >= GO_STOP_NUM){
-            setGoSize("-");
-            return "-";
+            addGoSize();
         }
-        return "";
     }
 
     public boolean validNumCheck(int no){
@@ -41,8 +43,12 @@ public class Car {
 
     public void addGoSize(){
         String go_size = this.getGoSize();
-        go_size+="=";
+        go_size += "-";
         setGoSize(go_size);
+    }
+
+    public String getCarNumGoSize(){
+        return getCarName()+" : "+getGoSize();
     }
 
 }

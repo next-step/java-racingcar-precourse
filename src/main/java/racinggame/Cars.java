@@ -3,9 +3,9 @@ package racinggame;
 import java.util.List;
 
 public class Cars {
-    private List<Car> cars;
+    private final List<Car> cars;
 
-    public Cars(List<Car> cats) {
+    public Cars(List<Car> cars) {
         this.cars = cars;
     }
 

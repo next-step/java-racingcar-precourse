@@ -11,6 +11,7 @@ public class CarView {
     }
 
     public void resultMsg(){
+        System.out.println("");
         System.out.println("실행결과");
     }
 
