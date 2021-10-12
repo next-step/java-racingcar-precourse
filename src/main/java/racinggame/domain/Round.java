@@ -20,4 +20,12 @@ public class Round {
     private boolean isEnd() {
         return roundCount == currentRound;
     }
+
+    public int getRoundCount() {
+        return roundCount;
+    }
+
+    public int getCurrentRound() {
+        return currentRound;
+    }
 }
