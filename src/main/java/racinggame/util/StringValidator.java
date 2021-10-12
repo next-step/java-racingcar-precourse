@@ -7,14 +7,14 @@ import racinggame.exception.RacinggameException;
 public class StringValidator {
 
     public static void validateStringLength(String inputString) {
-        if (inputString.length() > CarConfig.CarNameSize.getCarConfig()) {
-            throw new RacinggameException(ErrorMessage.INVALID_CAR_NAME_LENGTH.getErrorMessage());
+        if (inputString.length() > CarConfig.CarNameSize.getValue()) {
+            throw new RacinggameException(ErrorMessage.INVALID_CAR_NAME_LENGTH.getValue());
         }
     }
 
     public static void validateStringNull(String inputString) {
         if (inputString == null) {
-            throw new RacinggameException(ErrorMessage.INVALID_CAR_NAME_NULL.getErrorMessage());
+            throw new RacinggameException(ErrorMessage.INVALID_CAR_NAME_NULL.getValue());
         }
     }
 }

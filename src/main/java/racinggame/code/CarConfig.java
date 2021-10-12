@@ -9,7 +9,7 @@ public enum CarConfig {
         this.carConfig = carConfig;
     }
 
-    public int getCarConfig() {
+    public int getValue() {
         return this.carConfig;
     }
 }
