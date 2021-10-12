@@ -25,7 +25,9 @@ public final class RacingCar {
 
 	private void move(int diceValue) {
 		Racing next = rule.drive(diceValue);
-		location.forward(next.movable());
+		if(next == Racing.FORWARD){
+			location.forward();
+		}
 	}
 
 	public LapRecord record() {

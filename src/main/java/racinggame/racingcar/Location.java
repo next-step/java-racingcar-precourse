@@ -1,5 +1,7 @@
 package racinggame.racingcar;
 
+import static racinggame.racingcar.Racing.*;
+
 import java.util.Objects;
 
 public class Location {
@@ -9,8 +11,8 @@ public class Location {
 		this.location = location;
 	}
 
-	public void forward(int move) {
-		location += move;
+	public void forward() {
+		location += FORWARD.movable();
 	}
 
 	public int valueOf (){
