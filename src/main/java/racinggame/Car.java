@@ -9,10 +9,11 @@ public class Car {
         this.name = name;
     }
 
-    public void move(int gasPoint) {
+    public Record move(int gasPoint) {
         if (canMove(gasPoint)) {
             moveForward();
         }
+        return new Record(name, position);
     }
 
     private void moveForward() {

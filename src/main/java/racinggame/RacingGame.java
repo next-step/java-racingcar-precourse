@@ -13,19 +13,21 @@ public class RacingGame {
         this.cars = cars;
     }
 
-    public GameResult run(int runCount) {
+    public GameResult run(int lapCount) {
         GameResult gameResult = new GameResult();
-
-        for (int i = 0; i < runCount; i++) {
-            moveAllCars();
+        for (int i = 0; i < lapCount; i++) {
+            gameResult.add(moveAllCars());
         }
         return gameResult;
     }
 
-    private void moveAllCars() {
+    private LapResult moveAllCars() {
+        LapResult lapResult = new LapResult();
         for (Car car : cars) {
-            car.move(generateGasPoint());
+            int gasPoint = generateGasPoint();
+            lapResult.add(car.move(gasPoint));
         }
+        return lapResult;
     }
 
     private int generateGasPoint() {
