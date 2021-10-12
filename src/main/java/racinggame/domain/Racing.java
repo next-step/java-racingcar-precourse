@@ -9,6 +9,7 @@ public class Racing {
 	Cars cars;
 	RacingResults racingResults;
 	Winners winners;
+	int tryCount;
 
 	public Racing() {
 		cars = new Cars();
@@ -18,6 +19,10 @@ public class Racing {
 
 	public Cars getCars() {
 		return cars;
+	}
+
+	public void setTryCount(int tryCount) {
+		this.tryCount = tryCount;
 	}
 
 	public Winners getWinner() {
@@ -56,11 +61,11 @@ public class Racing {
 		}
 	}
 
-	public void startRacing(int tryCnt) {
+	public void startRacing() {
 		if (cars.size() == 0) {
 			throw new IllegalStateException(ERROR_NO_CARS);
 		}
-		for (int i = 0; i < tryCnt; i++) {
+		for (int i = 0; i < tryCount; i++) {
 			run();
 		}
 		audit();

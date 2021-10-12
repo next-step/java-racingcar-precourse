@@ -3,6 +3,7 @@ package racinggame.common;
 import static racinggame.common.CommonConstants.*;
 import static racinggame.common.ErrorMessage.*;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.regex.Pattern;
@@ -10,7 +11,7 @@ import java.util.regex.Pattern;
 public class Validator {
 
 	private static final String TRY_INPUT_PATTERN = "^[1-9]([0-9])*$";
-	private static final String INPUT_CAR_NAME_PATTERN = "^[가-힣|a-z|A-Z|0-9]{1,4}(?:,[가-힣|a-z|A-Z|0-9]{1,4})*$";
+	private static final String INPUT_CAR_NAME_PATTERN = "^[가-힣a-zA-Z0-9]{1,5}(?:,[가-힣a-zA-Z0-9]{1,5})*$";
 
 	public static void validInputCarNames(String input) {
 		validCarNamesPattern(input);
@@ -26,9 +27,7 @@ public class Validator {
 	public static void validCarNamesDuplicate(String input) {
 		String[] carNames = input.split(DELIMITER);
 		Set<String> set = new HashSet<>();
-		for (String name : carNames) {
-			set.add(name);
-		}
+		Collections.addAll(set, carNames);
 		if (set.size() != carNames.length) {
 			throw new IllegalStateException(ERROR_DUP_CAR_NAMES);
 		}

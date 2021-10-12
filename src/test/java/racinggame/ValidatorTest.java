@@ -12,7 +12,7 @@ import racinggame.common.Validator;
 public class ValidatorTest {
 
 	@ParameterizedTest(name = "자동차 이름 입력 유효성 검사 {0}")
-	@ValueSource(strings = {"a", "^", "0222", "01"})
+	@ValueSource(strings = {"  ", ",하하", "정주나요안정주나요,박명수", "^***,박"})
 	void 이름_입력_유효성검사(String input) {
 		assertThatThrownBy(() -> Validator.validCarNamesPattern(input))
 			.isInstanceOf(IllegalArgumentException.class)
@@ -23,7 +23,7 @@ public class ValidatorTest {
 	void 이름_중복_검사() {
 		String input = "LEE,LEE,LEEE";
 		assertThatThrownBy(() -> Validator.validCarNamesDuplicate(input))
-			.isInstanceOf(IllegalArgumentException.class)
+			.isInstanceOf(IllegalStateException.class)
 			.hasMessage(ERROR_DUP_CAR_NAMES);
 	}
 

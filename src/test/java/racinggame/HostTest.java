@@ -56,13 +56,13 @@ public class HostTest {
 
 		assertThatThrownBy(() -> host.setRacingCars(commaStart))
 			.isInstanceOf(IllegalArgumentException.class)
-			.hasMessage(ERROR_CAR_INPUT_NAME);
+			.hasMessage(ERROR_INPUT_CAR_NAMES);
 
 		String commaEnd = "123,";
 
 		assertThatThrownBy(() -> host.setRacingCars(commaEnd))
 			.isInstanceOf(IllegalArgumentException.class)
-			.hasMessage(ERROR_CAR_INPUT_NAME);
+			.hasMessage(ERROR_INPUT_CAR_NAMES);
 
 	}
 
@@ -73,7 +73,7 @@ public class HostTest {
 
 		int tryCount = Integer.parseInt(input);
 
-		assertThat(host).extracting("tryCount").isEqualTo(tryCount);
+		assertThat(host.getRacing()).extracting("tryCount").isEqualTo(tryCount);
 	}
 
 	@ParameterizedTest(name = "시도횟수_입력_유효성 {0}")

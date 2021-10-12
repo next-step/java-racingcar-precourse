@@ -11,7 +11,6 @@ import racinggame.domain.Racing;
 public class Host {
 
 	Racing racing;
-	int tryCount;
 
 	public Host() {
 		racing = new Racing();
@@ -30,11 +29,11 @@ public class Host {
 
 	public void setTryCount(String input) {
 		Validator.validTryCount(input);
-		this.tryCount = Integer.parseInt(input);
+		racing.setTryCount(Integer.parseInt(input));
 	}
 
 	public void start() {
-		racing.startRacing(tryCount);
+		racing.startRacing();
 	}
 
 	public String getRacingResult() {

@@ -22,8 +22,8 @@ import racinggame.domain.Winners;
 
 public class RacingTest {
 
-	Racing racing;
 	private static MockedStatic<Randoms> mockRandoms;
+	Racing racing;
 
 	@BeforeAll
 	static void beforeAll() {
@@ -56,7 +56,7 @@ public class RacingTest {
 	@Test
 	void 레이싱_참가_목록() {
 		int size = 8;
-		List<String> names = Arrays.asList("wow","와우");
+		List<String> names = Arrays.asList("wow", "와우");
 
 		racing.joinList(names);
 
@@ -123,9 +123,9 @@ public class RacingTest {
 	void 전체_레이싱() {
 		mockRandoms.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
 			.thenReturn(1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 1, 2, 3, 7, 8, 9);
-		int tryResult = 3;
 
-		racing.startRacing(tryResult);
+		racing.setTryCount(3);
+		racing.startRacing();
 
 		Winners result = racing.getWinner();
 		assertThat(result.toString())
@@ -140,9 +140,9 @@ public class RacingTest {
 
 		mockRandoms.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
 			.thenReturn(1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 1, 2, 3, 7, 8, 9);
-		int tryResult = 3;
+		racing.setTryCount(3);
 
-		assertThatThrownBy(() -> racing.startRacing(tryResult))
+		assertThatThrownBy(() -> racing.startRacing())
 			.isInstanceOf(IllegalStateException.class)
 			.hasMessage(ERROR_NO_CARS);
 	}
