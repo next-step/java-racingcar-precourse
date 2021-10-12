@@ -1,9 +1,9 @@
 package nextstep.test;
 
-import nextstep.utils.Randoms;
-import org.assertj.core.util.Strings;
-import org.junit.jupiter.api.function.Executable;
-import org.mockito.MockedStatic;
+import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.*;
+import static org.mockito.Mockito.*;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -13,11 +13,11 @@ import java.time.Duration;
 import java.util.Arrays;
 import java.util.NoSuchElementException;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
-import static org.junit.jupiter.api.Assertions.assertTimeoutPreemptively;
-import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.Mockito.mockStatic;
+import org.assertj.core.util.Strings;
+import org.junit.jupiter.api.function.Executable;
+import org.mockito.MockedStatic;
+
+import nextstep.utils.Randoms;
 
 public abstract class NSTest {
     private static final Duration TEST_TIMEOUT = Duration.ofSeconds(1L);
