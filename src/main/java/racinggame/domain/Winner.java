@@ -1,44 +1,27 @@
 package racinggame.domain;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collections;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
 public class Winner {
-    public SortedMap<Integer, String> winner;
+    public SortedMap<String, Integer> winner;
 
     public Winner(Result result) {
         winner = mapWinner(result);
 
     }
 
-    public SortedMap<Integer, String> mapWinner(Result result) {
-        SortedMap<Integer, String> retMap = new TreeMap<>();
+    public SortedMap<String, Integer> mapWinner(Result result) {
+        SortedMap<String, Integer> resultMap = new TreeMap<>();
+        Collections.sort(result.result);
+        int winnerCnt = result.result.get(result.result.size() - 1).getMoveCnt();
+
         for (int i = 0; i < result.result.size(); i++) {
-            retMap.put(result.result.get(i).getMoveCnt(), result.result.get(i).getCarName());
+            if (winnerCnt == result.result.get(i).getMoveCnt()) {
+                resultMap.put(result.result.get(i).getCarName(), result.result.get(i).getMoveCnt());
+            }
         }
-
-        return filterWinner(retMap);
-    }
-
-    private SortedMap<Integer, String> filterWinner(SortedMap retMap) {
-        int winnerCnt = Integer.parseInt(retMap.lastKey().toString());
-        List<Integer> remove = new ArrayList<>();
-        for (Object key : retMap.keySet()) {
-            remove = findRemoveElements(remove, winnerCnt, Integer.parseInt(key.toString()));
-        }
-
-        for(int i = 0; i < remove.size(); i++) {
-            retMap.remove(remove.get(i));
-        }
-        return retMap;
-    }
-
-    private List<Integer> findRemoveElements(List remove, int winnerCnt, int key) {
-        if (key != winnerCnt) {
-            remove.add(key);
-        }
-        return remove;
+        return resultMap;
     }
 }
