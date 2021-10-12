@@ -32,6 +32,14 @@ public class ApplicationTest extends NSTest {
         });
     }
 
+    @Test
+    void 이름_공백_처리() {
+        assertSimpleTest(() -> {
+            runNoLineFound("latte, ");
+            verify(ERROR_MESSAGE);
+        });
+    }
+
     @AfterEach
     void tearDown() {
         outputStandard();

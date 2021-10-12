@@ -5,13 +5,14 @@ import racinggame.exception.IllegalInputException;
 import racinggame.model.CarSet;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.StringTokenizer;
 
 public class GameInput {
     private static final GameInput gameInput = new GameInput();
     private CarSet carSet = CarSet.getCarSetInstance();
-    private Set<String> setForDuplicateCheck;
+    private Set<String> setForDuplicateCheck = new HashSet<>();
 
     private GameInput() {}
 
@@ -23,7 +24,7 @@ public class GameInput {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         StringTokenizer stringTokenizer = new StringTokenizer(Console.readLine(), ",");
         while (stringTokenizer.hasMoreTokens()) {
-            carNameArray.add(stringTokenizer.nextToken());
+            carNameArray.add(stringTokenizer.nextToken().trim());
         }
 
         return carNameArray;
@@ -36,19 +37,21 @@ public class GameInput {
 
     public boolean checkCarName(ArrayList<String> input) {
         int idx ;
+        if (input.size() == 0) {
+            System.out.println("[ERROR] 입력된 자동차가 없습니다.");
+            return false;
+        }
         for (idx = 0; idx < input.size() && checkCarNameOneByOne(input.get(idx)); idx++);
 
         return idx == input.size();
     }
 
     private boolean checkCarNameOneByOne(String carName) {
-        try {
-            checkTotal(carName);
-        }  catch (Exception e) {
+        if (!checkTotal(carName)) {
             clearLists();
-            System.out.println(e.getMessage());
             return false;
         }
+
         carSet.addCar(carName);
         return true;
     }
@@ -65,10 +68,17 @@ public class GameInput {
         return true;
     }
 
-    private void checkTotal(String carName) throws IllegalInputException{
-        isOkLength(carName);
-        isNotNull(carName);
-        isDuplicate(carName);
+    private boolean checkTotal(String carName){
+        try {
+            isOkLength(carName);
+            isNotNull(carName);
+            isDuplicate(carName);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+
+        return true;
     }
 
     // 자동차 이름 길이 제한 검사
@@ -80,7 +90,7 @@ public class GameInput {
 
     // 자동차 이름이 공백인지 검사
     private void isNotNull(String carName) throws IllegalInputException {
-        if (carName.trim().length() == 0) {
+        if (carName.trim().isEmpty()) {
             throw new IllegalInputException("[ERROR] 자동차 이름은 공백이 될 수 없습니다.");
         }
     }
