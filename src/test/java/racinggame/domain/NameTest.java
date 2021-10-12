@@ -13,7 +13,7 @@ public class NameTest {
     @ValueSource(strings = {"", "123456"})
     void constructName_throwsErrorWhenNameIsNullOrEmptyOrHigherThan5(String name) {
         assertThatExceptionOfType(IllegalArgumentException.class)
-            .isThrownBy(() -> new Car(new Name(name)))
+            .isThrownBy(() -> new Name(name))
             .withMessageContaining("5글자 이상 또는 비어있는 이름으로 자동차를 생성할 수 없습니다.");
     }
 
