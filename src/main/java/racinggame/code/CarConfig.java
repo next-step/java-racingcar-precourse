@@ -1,7 +1,8 @@
 package racinggame.code;
 
 public enum CarConfig {
-    CarNameSize(5);
+    CarNameSize(5),
+    ForwardCondition(3);
 
     private final int carConfig;
 
