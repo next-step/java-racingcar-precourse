@@ -4,12 +4,12 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class CarTest {
-	private Car car;
+public class RacingCarTest {
+	private RacingCar car;
 
 	@BeforeEach
 	void 테스트_자동차_생성() {
-		car = Car.createCar("car");
+		car = RacingCar.createCar("car");
 	}
 
 	@Test

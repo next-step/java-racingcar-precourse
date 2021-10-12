@@ -1,17 +1,17 @@
 package racinggame;
 
-public class Car {
+public class RacingCar {
 	private static final int MOVING_FORWARD_BOUNDARY_MIN_VALUE = 4;
 	private final Name carName;
 	private final Distance distance;
 
-	private Car(String carName) {
+	private RacingCar(String carName) {
 		this.carName = new Name(carName);
 		this.distance = new Distance();
 	}
 
-	public static Car createCar(String carName) {
-		Car car = new Car(carName);
+	public static RacingCar createCar(String carName) {
+		RacingCar car = new RacingCar(carName);
 		return car;
 	}
 
