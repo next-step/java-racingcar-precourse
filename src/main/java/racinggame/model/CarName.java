@@ -7,9 +7,7 @@ public class CarName {
     private String name;
 
     public CarName(String name) {
-        if (name.length() > NAME_MAX_LENGTH) {
-            throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
-        }
+        validateLength(name);
         this.name = name;
     }
 
@@ -17,7 +15,9 @@ public class CarName {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    private void validateLength(String name){
+        if (name.length() > NAME_MAX_LENGTH) {
+            throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
+        }
     }
 }

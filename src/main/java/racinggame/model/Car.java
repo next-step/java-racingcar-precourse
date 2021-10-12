@@ -18,16 +18,8 @@ public class Car {
         return name.getName();
     }
 
-    public void setName(String name) {
-        this.name.setName(name);
-    }
-
     public int getPosition() {
         return position.getPosition();
-    }
-
-    public void setPosition(int position) {
-        this.position.setPosition(position);
     }
 
     public static CarStatus judgeMoving(int num) {
