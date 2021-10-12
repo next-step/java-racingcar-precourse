@@ -1,4 +1,4 @@
-package racinggame.model.Cars;
+package racinggame.model;
 
 import racinggame.model.Car.Car;
 import racinggame.model.Car.CarPosition;
