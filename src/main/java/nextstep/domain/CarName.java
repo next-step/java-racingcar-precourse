@@ -5,6 +5,8 @@ import java.util.Objects;
 
 public class CarName {
 
+    private static final String INVALID_CAR_NAME_MESSAGE = "[ERROR] 자동차 이름은 5글자 이하만 가능합니다.";
+    private static final String EMPTY_CAR_NAME_MESSAGE = "[ERROR] 자동차 이름은 빈값이 될 수 없습니다.";
     private static final String DEFAULT_SPLITTER = ",";
     private static final int MAX_LENGTH = 5;
 
@@ -21,10 +23,12 @@ public class CarName {
 
     private void checkName(String name) {
         if (Objects.isNull(name) || name.isEmpty()) {
-            throw new NoSuchElementException("[ERROR] 자동차 이름은 빈값이 될 수 없습니다.");
+            System.out.println(EMPTY_CAR_NAME_MESSAGE);
+            throw new NoSuchElementException(EMPTY_CAR_NAME_MESSAGE);
         }
         if (name.length() > MAX_LENGTH) {
-            throw new NoSuchElementException("[ERROR] 자동차 이름은 5글자 이하만 가능합니다.");
+            System.out.println(INVALID_CAR_NAME_MESSAGE);
+            throw new NoSuchElementException(INVALID_CAR_NAME_MESSAGE);
         }
     }
 
