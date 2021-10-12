@@ -13,12 +13,18 @@ class CarsTest extends BaseTest<Cars> {
     @Test
     void testGetCarList() {
         int size = 3;
-        Cars cars = new Cars(getDefaultCarNames(size));
+        List<String> carNames = createCarNames(size);
+        Cars cars = new Cars(carNames);
         assertThat(cars.getCarList().size() == size).isTrue();
+
+        for (int i = 0; i < size; i++) {
+            assertThat(carNames.get(i).equals(cars.getCarList().get(i).getName())).isTrue();
+        }
     }
 
 
-    private List<String> getDefaultCarNames(int size) {
+
+    private List<String> createCarNames(int size) {
         List<String> carNames = new ArrayList<>();
         for (int i = 0; i < size; i++) {
             carNames.add("car-0" + i);
