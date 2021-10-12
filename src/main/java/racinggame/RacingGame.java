@@ -8,12 +8,14 @@ import nextstep.utils.Randoms;
 
 public class RacingGame {
 	private final Cars cars;
+	private final Cycle cycle;
 	private final String executionResultMessage = "실행 결과";
 	private final int randomMin = 0;
 	private final int randomMax = 9;
 
-	public RacingGame(Cars cars) {
+	public RacingGame(Cars cars, Cycle cycle) {
 		this.cars = cars;
+		this.cycle = cycle;
 	}
 
 	/**
@@ -23,11 +25,9 @@ public class RacingGame {
 	 *
 	 **/
 	void start() {
-		CycleInput.init();
-
 		System.out.println(executionResultMessage);
 
-		for (int i = 0; i < CycleInput.value().cycle(); i++) {
+		for (int i = 0; i < cycle.value(); i++) {
 			race();
 		}
 

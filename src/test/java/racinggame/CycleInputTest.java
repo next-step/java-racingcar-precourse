@@ -18,17 +18,17 @@ public class CycleInputTest extends NSTest {
 	void 정상_숫자_입력() {
 		assertSimpleTest(() -> {
 			run("10");
-			CycleInput.init();
+			Cycle cycle = Cycle.init(CycleInput.getInput());
+			assertThat(cycle.value()).isEqualTo(10);
 			verify(CycleInput.GUIDE_MESSAGE);
 		});
-		assertThat(CycleInput.value().cycle()).isEqualTo(10);
 	}
 
 	@Test
 	void 문자_입력() {
 		assertSimpleTest(() -> {
 			run("number", "100");
-			CycleInput.init();
+			Cycle.init(CycleInput.getInput());
 			verify(CycleInput.GUIDE_MESSAGE, CycleInput.ERROR_MESSAGE);
 		});
 	}
@@ -37,7 +37,7 @@ public class CycleInputTest extends NSTest {
 	void _1_이하인_숫자_입력() {
 		assertSimpleTest(() -> {
 			run("0", "1000");
-			CycleInput.init();
+			Cycle.init(CycleInput.getInput());
 			verify(CycleInput.GUIDE_MESSAGE, CycleInput.ERROR_MESSAGE);
 		});
 	}
