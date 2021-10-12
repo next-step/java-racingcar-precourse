@@ -4,7 +4,7 @@ public class CarName {
 
     public static final int NAME_MAX_LENGTH = 5;
 
-    private String name;
+    private final String name;
 
     public CarName(String name) {
         validateLength(name);

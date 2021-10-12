@@ -1,7 +1,17 @@
 package racinggame;
 
+import racinggame.view.RacingCarView;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO 자동차 경주 게임 구현
+        RacingCarView racingCarView = new RacingCarView();
+        while (true) {
+            try {
+                racingCarView.play();
+                return;
+            } catch (IllegalArgumentException e) {
+                System.out.println("[ERROR]" + e.getMessage());
+            }
+        }
     }
 }

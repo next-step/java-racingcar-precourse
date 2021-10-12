@@ -7,7 +7,7 @@ public class Car {
     public static final int GO_DISTANCE = 1;
 
     private final CarName name;
-    private CarPosition position;
+    private final CarPosition position;
 
     public Car(String name) {
         this.name = new CarName(name);
