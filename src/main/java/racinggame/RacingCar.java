@@ -38,4 +38,18 @@ public class RacingCar {
 	public int getPosition() {
 		return position;
 	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String convertPositionToString() {
+		String moveString = "";
+
+		for(int i = 0; i < position; i++) {
+			moveString += "-";
+		}
+
+		return moveString;
+	}
 }

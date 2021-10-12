@@ -21,4 +21,8 @@ public class RacingCars {
 	public Boolean validationRacingCarNumber() {
 		return racingCars.size() <= MAX_RACING_CAR_NUMBER;
 	}
+
+	public List<RacingCar> getRacingCars() {
+		return racingCars;
+	}
 }
