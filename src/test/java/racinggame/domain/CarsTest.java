@@ -3,7 +3,6 @@ package racinggame.domain;
 import static org.assertj.core.api.Assertions.*;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import org.junit.jupiter.api.DisplayName;
@@ -61,18 +60,5 @@ class CarsTest {
 		// then
 		assertThat(carNames)
 			.containsExactly(new Name(gmoon), new Name(guest));
-	}
-
-	@Test
-	@DisplayName("자동차를 추가할 수 있다.")
-	void add() {
-		// given
-		Cars emptyCars = Cars.createEmptyCars();
-
-		// when
-		Cars cars = emptyCars.add(new Car("gmoon"));
-
-		// then
-		assertThat(cars).isEqualTo(new Cars(Collections.singletonList(new Car("gmoon"))));
 	}
 }

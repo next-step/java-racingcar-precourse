@@ -1,7 +1,5 @@
 package racinggame.domain;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 import racinggame.functional.ForwardMoveRule;
@@ -11,23 +9,9 @@ public class Round {
 	private final Cars cars;
 	private final RaceCount raceCount;
 
-	private Round(Cars cars, int count) {
-		this(cars, new RaceCount(count));
-	}
-
-	private Round(Cars cars, RaceCount raceCount) {
+	public Round(Cars cars, RaceCount raceCount) {
 		this.cars = cars;
 		this.raceCount = raceCount;
-	}
-
-	public static Round createNew(String carNames, int count) {
-		List<Car> carList = new ArrayList<>();
-		String[] names = carNames.split(",");
-		for (String name : names) {
-			carList.add(new Car(name));
-		}
-
-		return new Round(new Cars(carList), count);
 	}
 
 	public Round startRacingCars() {

@@ -18,10 +18,6 @@ public class Cars {
 		this.values = Collections.unmodifiableList(values);
 	}
 
-	public static Cars createEmptyCars() {
-		return new Cars(Collections.emptyList());
-	}
-
 	public Cars startRace(ForwardMoveRule forwardMoveRule) {
 		List<Car> cars = new ArrayList<>();
 		for (Car car : values) {
@@ -37,12 +33,6 @@ public class Cars {
 			names.add(car.getName());
 		}
 		return names;
-	}
-
-	public Cars add(Car car) {
-		List<Car> copiedValues = new ArrayList<>(values);
-		copiedValues.add(car);
-		return new Cars(copiedValues);
 	}
 
 	private void checkDuplicatedCarName(List<Car> values) {
