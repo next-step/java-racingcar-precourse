@@ -17,7 +17,7 @@ class LocationTest {
 		location = new Location(initLocation);
 
 		//when
-		Location nextLocation = location.forward();
+		Location nextLocation = location.forward(FORWARD);
 
 		//then
 		assertThat(nextLocation.valueOf()).isEqualTo(initLocation + FORWARD.movable());

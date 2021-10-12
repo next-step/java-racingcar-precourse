@@ -2,41 +2,34 @@ package racinggame.circuit;
 
 import static org.assertj.core.api.Assertions.*;
 
-import java.util.Arrays;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import racinggame.common.RacingCarName;
-import racinggame.racingcar.Dice;
+import racinggame.dice.Dice;
+import racinggame.dice.TenSidedDice;
 import racinggame.racingcar.LapRecord;
 import racinggame.racingcar.Location;
 import racinggame.racingcar.RacingCar;
+import racinggame.racinggame.Rule;
 import racinggame.rule.RacingRule;
 import racinggame.rule.WinnerDecisionRule;
 import racinggame.rule.winnerrules.FarAwayWinRule;
-import racinggame.racinggame.Rule;
 
 class MockRacingCircuitTest {
 	private RacingCircuit mockRacingCircuit;
 	private RacingCars racingCars;
-	private Rule rule;
 	private Lap lap;
 
 	@BeforeEach
 	void beforeEach() {
 		mockRacingCircuit = RacingCircuitConfig.mockRacingCircuit();
-		rule = RacingCircuitConfig.rule();
 
-		Dice dice = new Dice(rule.diceMin(), rule.diceMax());
+		racingCars = new RacingCars();
 
-		racingCars = new RacingCars(
-			Arrays.asList(
-				new RacingCar(new RacingCarName("abc1"), dice, rule),
-				new RacingCar(new RacingCarName("abc2"), dice, rule)
-			)
-		);
+		racingCars.add(new RacingCar(new RacingCarName("abc1")));
+		racingCars.add(new RacingCar(new RacingCarName("abc2")));
 
 		lap = new Lap("2");
 	}
@@ -60,14 +53,18 @@ class MockRacingCircuitTest {
 		assertThat(finalRecord.readFinalRecord()).contains("abc1");
 	}
 
-	static class RacingCircuitConfig {
+	private static class RacingCircuitConfig {
 		static RacingCircuit mockRacingCircuit() {
-			return new RacingCircuit() {
+			return new RacingCircuit(dice(), rule()) {
 				@Override
 				public FinalRecord start(RacingCars racingCars, Lap laps) {
 					return expectedRecord();
 				}
 			};
+		}
+
+		static Dice dice () {
+			return new TenSidedDice();
 		}
 
 		static Rule rule() {

@@ -5,11 +5,9 @@ import racinggame.racingcar.Movement;
 import racinggame.rule.WinnerNames;
 
 public interface Rule {
-	int diceMax();
 
-	int diceMin();
-
-	Movement drive(int diceValue);
+	Movement judgeMovement(int diceValue);
 
 	WinnerNames judgeWinners(FinalRecord finalRecord);
+
 }

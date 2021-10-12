@@ -12,10 +12,6 @@ import org.mockito.MockedStatic;
 
 import nextstep.utils.Randoms;
 import racinggame.common.RacingCarName;
-import racinggame.rule.RacingRule;
-import racinggame.rule.WinnerDecisionRule;
-import racinggame.rule.winnerrules.FarAwayWinRule;
-import racinggame.racinggame.Rule;
 
 class RacingCarTest {
 	private RacingCar racingCar;
@@ -36,7 +32,7 @@ class RacingCarTest {
 			LapRecord pastLapRecord = new LapRecord(new RacingCarName("abc"), new Location(0));
 
 			//when
-			LapRecord currentLapRecord = racingCar.pushPedal();
+			LapRecord currentLapRecord = racingCar.pushPedal(Movement.FORWARD);
 
 			//then
 			assertThat(currentLapRecord.getScore()).isEqualTo(pastLapRecord.getScore() + 1);
@@ -55,7 +51,7 @@ class RacingCarTest {
 			LapRecord pastLapRecord = new LapRecord(new RacingCarName("abc"), new Location(0));
 
 			//when
-			LapRecord currentLabRecord = racingCar.pushPedal();
+			LapRecord currentLabRecord = racingCar.pushPedal(Movement.STOP);
 
 			//then
 			assertThat(currentLabRecord.getScore()).isEqualTo(pastLapRecord.getScore());
@@ -64,16 +60,7 @@ class RacingCarTest {
 
 	static class RacingCarConfig {
 		static RacingCar racingCar() {
-			Dice dice = new Dice(rule().diceMin(), rule().diceMax());
-			return new RacingCar(new RacingCarName("abc"), dice, rule());
-		}
-
-		static Rule rule() {
-			return new RacingRule(winner());
-		}
-
-		static WinnerDecisionRule winner() {
-			return new FarAwayWinRule();
+			return new RacingCar(new RacingCarName("abc"));
 		}
 	}
 }

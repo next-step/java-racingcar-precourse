@@ -4,40 +4,22 @@ import racinggame.common.RacingCarName;
 import racinggame.racinggame.Rule;
 
 public final class RacingCar {
-	private final Rule rule;
-	private final Dice dice;
 	private final RacingCarName racingCarName;
 
 	private Location location = new Location(0);
 
-	public RacingCar(RacingCarName racingCarName, Dice dice, Rule rule) {
-		this.rule = rule;
-		this.dice = dice;
+	public RacingCar(RacingCarName racingCarName) {
 		this.racingCarName = racingCarName;
 	}
 
 	/**
-	 * 주사위를 던져 움직임을 결정한다.
+	 * 주사위의 결과에 따라 움직임을 결정한다.
 	 *
 	 * @return {@link LapRecord}
 	 */
-	public LapRecord pushPedal() {
-		Location location = move(rollDice());
+	public LapRecord pushPedal(Movement movement) {
+		this.location = location.forward(movement);
 
 		return new LapRecord(racingCarName, location);
-	}
-
-	private int rollDice() {
-		return dice.roll();
-	}
-
-	private Location move(int diceValue) {
-		Movement next = rule.drive(diceValue);
-
-		if (next == Movement.FORWARD) {
-			this.location = location.forward();
-		}
-
-		return new Location(location.valueOf());
 	}
 }

@@ -12,7 +12,8 @@ import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
 
 import nextstep.utils.Randoms;
-import racinggame.racingcar.Dice;
+import racinggame.dice.Dice;
+import racinggame.dice.TenSidedDice;
 import racinggame.racingcar.LapRecord;
 import racinggame.racingcar.Location;
 import racinggame.common.RacingCarName;
@@ -24,18 +25,22 @@ import racinggame.racinggame.Rule;
 
 class RacingCarsTest {
 	private static final int FORWARD = 4;
-	private static final int STOP = 4;
+	private static final int STOP = 3;
 
 	private RacingCars racingCars;
+	private Rule rule;
+	private Dice dice;
 
 	@BeforeEach
 	void beforeEach() {
 		racingCars = RacingCarsConfig.racingCars();
+		rule = RacingCarsConfig.rule();
+		dice = RacingCarsConfig.dice();
 	}
 
-	@DisplayName("Record 를 확인한다.")
+	@DisplayName("이동 - Record 를 확인한다.")
 	@Test
-	void lap1() {
+	void lap_forward() {
 		try (final MockedStatic<Randoms> mockRandoms = mockStatic(Randoms.class)) {
 			//given
 			mockRandoms.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
@@ -46,17 +51,16 @@ class RacingCarsTest {
 			expected.add(new LapRecord(new RacingCarName("abc2"), new Location(1)));
 
 			//when
-			LapRecords lapRecords = racingCars.run();
+			LapRecords lapRecords = racingCars.run(dice, rule);
 
 			//then
-			System.out.println(lapRecords.read());
 			Assertions.assertThat(lapRecords).isEqualTo(expected);
 		}
 	}
 
-	@DisplayName("결과를 출력한다.")
+	@DisplayName("이동 - 결과를 출력한다.")
 	@Test
-	void lap1_print() {
+	void lap1_forward_print() {
 		try (final MockedStatic<Randoms> mockRandoms = mockStatic(Randoms.class)) {
 			//given
 			mockRandoms.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
@@ -69,24 +73,68 @@ class RacingCarsTest {
 				.toString();
 
 			//when
-			LapRecords lapRecords = racingCars.run();
+			LapRecords lapRecords = racingCars.run(dice, rule);
 
 			//then
 			Assertions.assertThat(lapRecords.read()).isEqualTo(expected);
 		}
 	}
 
-	static class RacingCarsConfig {
+	@DisplayName("정지 - Record 를 확인한다.")
+	@Test
+	void lapStop() {
+		try (final MockedStatic<Randoms> mockRandoms = mockStatic(Randoms.class)) {
+			//given
+			mockRandoms.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
+				.thenReturn(STOP);
+
+			LapRecords expected = new LapRecords();
+			expected.add(new LapRecord(new RacingCarName("abc1"), new Location(0)));
+			expected.add(new LapRecord(new RacingCarName("abc2"), new Location(0)));
+
+			//when
+			LapRecords lapRecords = racingCars.run(dice, rule);
+
+			//then
+			Assertions.assertThat(lapRecords).isEqualTo(expected);
+		}
+	}
+
+	@DisplayName("정지 - 결과를 출력한다.")
+	@Test
+	void lapStopPrint() {
+		try (final MockedStatic<Randoms> mockRandoms = mockStatic(Randoms.class)) {
+			//given
+			mockRandoms.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
+				.thenReturn(STOP);
+
+			String expected = new StringBuilder()
+				.append("abc1 : \n")
+				.append("abc2 : \n")
+				.append("\n")
+				.toString();
+
+			//when
+			LapRecords lapRecords = racingCars.run(dice, rule);
+
+			//then
+			Assertions.assertThat(lapRecords.read()).isEqualTo(expected);
+		}
+	}
+
+	private static class RacingCarsConfig {
 		static RacingCars racingCars() {
-			return new RacingCars(racingCar());
+			RacingCars racingCars = new RacingCars();
+
+			racingCar().forEach(car -> racingCars.add(car));
+
+			return racingCars;
 		}
 
 		static List<RacingCar> racingCar() {
-			Dice dice = new Dice(rule().diceMin(), rule().diceMax());
-
 			return Arrays.asList(
-				new RacingCar(new RacingCarName("abc1"), dice, rule()),
-				new RacingCar(new RacingCarName("abc2"), dice, rule())
+				new RacingCar(new RacingCarName("abc1")),
+				new RacingCar(new RacingCarName("abc2"))
 			);
 		}
 
@@ -96,6 +144,10 @@ class RacingCarsTest {
 
 		static WinnerDecisionRule winner() {
 			return new FarAwayWinRule();
+		}
+
+		static Dice dice (){
+			return new TenSidedDice();
 		}
 	}
 }

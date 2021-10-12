@@ -1,8 +1,17 @@
 package racinggame.circuit;
 
+import racinggame.dice.Dice;
 import racinggame.racinggame.Circuit;
+import racinggame.racinggame.Rule;
 
 public class RacingCircuit implements Circuit {
+	private final Dice dice;
+	private final Rule rule;
+
+	public RacingCircuit (Dice dice, Rule rule){
+		this.dice = dice;
+		this.rule = rule;
+	}
 
 	/**
 	 * {@link RacingCars} : 경기에 참가하는 레이싱카들
@@ -20,7 +29,7 @@ public class RacingCircuit implements Circuit {
 		FinalRecord finalRecord = new FinalRecord();
 
 		for (int lap = 0; lap < laps.getLaps(); ++lap) {
-			finalRecord.add(racingCars.run());
+			finalRecord.add(racingCars.run(dice, rule));
 		}
 
 		return finalRecord;

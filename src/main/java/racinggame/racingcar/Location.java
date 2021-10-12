@@ -1,7 +1,5 @@
 package racinggame.racingcar;
 
-import static racinggame.racingcar.Movement.*;
-
 import java.util.Objects;
 
 public class Location {
@@ -16,8 +14,8 @@ public class Location {
 	 *
 	 * @return {@link Location}
 	 */
-	public Location forward() {
-		return new Location(location + FORWARD.movable());
+	public Location forward(Movement movement) {
+		return new Location(location + movement.movable());
 	}
 
 	public int valueOf() {

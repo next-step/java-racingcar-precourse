@@ -6,7 +6,6 @@ import racinggame.racinggame.Rule;
 
 public final class RacingRule implements Rule {
 	private static final int DICE_MIN = 0;
-	private static final int DICE_MAX = 9;
 	private static final int JUDGE_VALUE = 3;
 
 	private final WinnerDecisionRule winnerDecisionRule;
@@ -16,17 +15,7 @@ public final class RacingRule implements Rule {
 	}
 
 	@Override
-	public int diceMax() {
-		return this.DICE_MAX;
-	}
-
-	@Override
-	public int diceMin() {
-		return this.DICE_MIN;
-	}
-
-	@Override
-	public Movement drive(int diceValue) {
+	public Movement judgeMovement(int diceValue) {
 		if (diceValue >= DICE_MIN && diceValue <= JUDGE_VALUE) {
 			return Movement.STOP;
 		}

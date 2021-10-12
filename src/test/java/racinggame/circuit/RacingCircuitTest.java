@@ -14,7 +14,8 @@ import org.mockito.MockedStatic;
 
 import nextstep.utils.Randoms;
 import racinggame.common.RacingCarName;
-import racinggame.racingcar.Dice;
+import racinggame.dice.Dice;
+import racinggame.dice.TenSidedDice;
 import racinggame.racingcar.RacingCar;
 import racinggame.rule.RacingRule;
 import racinggame.rule.WinnerDecisionRule;
@@ -27,21 +28,16 @@ class RacingCircuitTest {
 
 	private RacingCircuit racingCircuit;
 	private RacingCars racingCars;
-	private Rule rule;
+	private Dice dice;
 
 	@BeforeEach
 	void beforeEach() {
 		racingCircuit = RacingCircuitConfig.racingCircuit();
-		rule = RacingCircuitConfig.rule();
+		dice = RacingCircuitConfig.dice();
 
-		Dice dice = new Dice(rule.diceMin(), rule.diceMax());
-
-		racingCars = new RacingCars(
-			Arrays.asList(
-				new RacingCar(new RacingCarName("abc1"), dice, rule),
-				new RacingCar(new RacingCarName("abc2"), dice, rule)
-			)
-		);
+		racingCars = new RacingCars();
+		racingCars.add(new RacingCar(new RacingCarName("abc1")));
+		racingCars.add(new RacingCar(new RacingCarName("abc2")));
 	}
 
 	@DisplayName("결과 출력")
@@ -71,20 +67,9 @@ class RacingCircuitTest {
 		}
 	}
 
-	private Integer[] diceValues(String diceNumbers) {
-		List<String> diceStrings = Arrays.asList(diceNumbers.split(","));
-
-		List<Integer> diceValues = new ArrayList<>();
-		for (String diceString : diceStrings) {
-			diceValues.add(Integer.parseInt(diceString));
-		}
-
-		return diceValues.toArray(new Integer[diceValues.size()]);
-	}
-
 	static class RacingCircuitConfig {
 		static RacingCircuit racingCircuit() {
-			return new RacingCircuit();
+			return new RacingCircuit(dice(), rule());
 		}
 
 		static Rule rule() {
@@ -93,6 +78,10 @@ class RacingCircuitTest {
 
 		static WinnerDecisionRule winner() {
 			return new FarAwayWinRule();
+		}
+
+		public static Dice dice() {
+			return new TenSidedDice();
 		}
 	}
 
