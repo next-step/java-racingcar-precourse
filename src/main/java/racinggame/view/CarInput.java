@@ -14,12 +14,6 @@ public class CarInput {
 	private CarInput() {
 	}
 
-	/**
-	 * @author : yh22953905
-	 * @Date : 2021/10/10 3:48 오후
-	 * @Description : 자동차 이름에 대한 사용자의 입력을 받음
-	 *
-	 **/
 	public static List<String> getInput() throws NoSuchElementException, IllegalStateException {
 		System.out.println(GUIDE_MESSAGE);
 		List<String> inputs = Arrays.asList(Console.readLine().split(DELIMITER));

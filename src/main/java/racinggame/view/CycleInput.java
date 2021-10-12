@@ -12,12 +12,6 @@ public class CycleInput {
 	private CycleInput() {
 	}
 
-	/**
-	 * @author : yh22953905
-	 * @Date : 2021/10/11 12:04 오전
-	 * @Description : 몇 번 이동할지 사용자의 입력을 받음
-	 *
-	 **/
 	public static int getInput() throws NoSuchElementException, IllegalStateException {
 		System.out.println(GUIDE_MESSAGE);
 		String readLine = Console.readLine();

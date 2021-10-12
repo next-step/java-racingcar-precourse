@@ -15,12 +15,6 @@ public class RacingGame {
 		this.cycle = cycle;
 	}
 
-	/**
-	 * @author : yh22953905
-	 * @Date : 2021/10/11 12:55 오전
-	 * @Description : 게임 시작
-	 *
-	 **/
 	public void start() {
 		System.out.println(executionResultMessage);
 
@@ -31,12 +25,6 @@ public class RacingGame {
 		printWinners(Winners.init(cars));
 	}
 
-	/**
-	 * @author : yh22953905
-	 * @Date : 2021/10/11 12:56 오전
-	 * @Description : 경기 시작
-	 *
-	 **/
 	private void race() {
 		for (Car car : cars.value()) {
 			car.distance(Randoms.pickNumberInRange(randomMin, randomMax));
@@ -45,12 +33,6 @@ public class RacingGame {
 		System.out.println();
 	}
 
-	/**
-	 * @author : yh22953905
-	 * @Date : 2021/10/12 1:19 오전
-	 * @Description : 최종 우승자들을 출력
-	 *
-	 **/
 	private void printWinners(Winners winners) {
 		StringBuilder winnersName = new StringBuilder();
 

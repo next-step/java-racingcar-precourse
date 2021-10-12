@@ -20,22 +20,10 @@ public class Winners {
 		return winners;
 	}
 
-	/**
-	 * @author : yh22953905
-	 * @Date : 2021/10/12 1:18 오전
-	 * @Description : 자동차들을 distance 순으로 정렬
-	 *
-	 **/
 	private void sortCarsByDistance(Cars cars) {
 		cars.value().sort(Comparator.comparingInt((Car car) -> car.distance().value()).reversed());
 	}
 
-	/**
-	 * @author : yh22953905
-	 * @Date : 2021/10/12 1:18 오전
-	 * @Description : 정렬된 자동차들을 토대로 최종 우승자들을 선별
-	 *
-	 **/
 	private void pickWinners(Cars cars) {
 		int winnerDistance = 0;
 
