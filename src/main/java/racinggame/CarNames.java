@@ -6,10 +6,8 @@ import java.util.List;
 public class CarNames {
 	private final List<CarName> names = new ArrayList<>();
 
-	public CarNames(List<Car> cars) {
-		for (Car car : cars) {
-			names.add(car.getCarName());
-		}
+	public CarNames(List<CarName> carNames) {
+		names.addAll(carNames);
 	}
 
 	@Override

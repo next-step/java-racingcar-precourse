@@ -46,7 +46,12 @@ public class Cars {
 	}
 
 	private CarNames mapToCarNames(List<Car> cars) {
-		return new CarNames(cars);
+		List<CarName> carNames = new ArrayList<>();
+		for (Car car : cars) {
+			carNames.add(car.getCarName());
+		}
+
+		return new CarNames(carNames);
 	}
 
 	private int getIndexOfCarsHasSameStateAsWinner(Car winner) {
