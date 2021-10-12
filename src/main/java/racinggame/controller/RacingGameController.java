@@ -11,6 +11,7 @@ public class RacingGameController {
 
     private static final String RUN_TEXT = "-";
     private static final String RUN_NUMBER_ZERO = "";
+    private static final String DIVISION_MARK = ",";
 
     private ArrayList<Car> carArrayList;
     private View view;
@@ -59,5 +60,50 @@ public class RacingGameController {
         }
 
         this.view.getOutputView().printOutputLine();
+    }
+
+
+    public String checkWinner() {
+
+        int carArrayListSize = this.getCarArrayList().size();
+        int maxRunNumber = 0;
+        StringBuilder winner = new StringBuilder();
+        for (int i = 0; i < carArrayListSize; i++) {
+
+            if (checkRunNumberZero(i))
+                continue;
+
+            if (checkRunNumberMaxNumber(maxRunNumber, winner, i))
+                continue;
+
+            maxRunNumber = checkRunNumberOverMaxNumber(maxRunNumber, winner, i);
+        }
+
+        return winner.toString();
+    }
+
+    private int checkRunNumberOverMaxNumber(int maxRunNumber, StringBuilder winner, int i) {
+        if(getCarArrayList().get(i).getScore().getRunNumber() > maxRunNumber) {
+            maxRunNumber = getCarArrayList().get(i).getScore().getRunNumber();
+            winner.setLength(0);
+            winner.append(getCarArrayList().get(i).getName());
+        }
+        return maxRunNumber;
+    }
+
+    private boolean checkRunNumberMaxNumber(int maxRunNumber, StringBuilder winner, int index) {
+        if (getCarArrayList().get(index).getScore().getRunNumber() == maxRunNumber) {
+            winner.append(DIVISION_MARK);
+            winner.append(getCarArrayList().get(index).getName());
+            return true;
+        }
+        return false;
+    }
+
+    private boolean checkRunNumberZero(int index) {
+        if (getCarArrayList().get(index).getScore().getRunNumber() == 0) {
+            return true;
+        }
+        return false;
     }
 }

@@ -48,8 +48,17 @@ public class Application {
             racingGameController.getView().getOutputView().printOutputRacingResultTitle();
             racingGame();
 
-
+            // 우승자 선정 및 출력
+            pickWinner();
+            break;
         }
+    }
+
+    /**
+     * 기능4 : 최종 자동차 전진값으로 우승자 판단하는 기능 만들기
+     */
+    private static void pickWinner() {
+        racingGameController.getView().getOutputView().printOutputRacingWinner(racingGameController.checkWinner());
     }
 
     /**
@@ -69,7 +78,7 @@ public class Application {
     private static void makeScore(int index) {
         if(Validation.checkRunCar())
             racingGameController.getCarArrayList().get(index).setScore(
-                    new Score(racingGameController.getCarArrayList().get(index).getScore().getRunNumber()+ADD_RUN_NUMBER,false));
+                    new Score(racingGameController.getCarArrayList().get(index).getScore().getRunNumber()+ADD_RUN_NUMBER));
     }
 
     /**
@@ -102,7 +111,7 @@ public class Application {
                 return false;
             }
 
-            Score score = new Score(INITIAL_RUN_NUMBER, INITIAL_VICTORY_VALUE);
+            Score score = new Score(INITIAL_RUN_NUMBER);
             Car car = new Car(carNames[i], score);
             racingGameController.getCarArrayList().add(car);
         }

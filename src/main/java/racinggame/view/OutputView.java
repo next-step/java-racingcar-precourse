@@ -12,16 +12,11 @@ public class OutputView {
     }
 
     public void printOutputLine() {
-
         System.out.println("");
     }
 
-    public void printOutputRacingWinnerPrefix() {
-        System.out.print("최종 우승자는 ");
-    }
-
-    public void printOutputRacingWinnerSuffix() {
-        System.out.println(" 입니다.");
+    public void printOutputRacingWinner(String winner) {
+        System.out.println("최종 우승자는 " + winner + " 입니다.");
     }
 
     public void printOutputErrorMessage() {
