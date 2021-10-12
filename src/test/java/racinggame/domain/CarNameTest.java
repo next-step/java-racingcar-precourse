@@ -13,8 +13,6 @@ class CarNameTest {
 	@Test
 	@DisplayName("자동차 이름 길이 유효성 체크 테스트")
 	void CarNameLengthTest() {
-		assertThrows(OutOfBoundCarNameLengthException.class, () -> {
-			CarName carName = new CarName("람보르기니페라리");
-		});
+		assertThrows(OutOfBoundCarNameLengthException.class, () -> new CarName("람보르기니페라리"));
 	}
 }

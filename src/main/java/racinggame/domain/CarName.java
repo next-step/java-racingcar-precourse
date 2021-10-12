@@ -11,15 +11,15 @@ public class CarName {
 
 	private String carName;
 
-	public CarName(String carName) {
-		if (!checkCarNameLength()) {
+	public CarName(String name) {
+		if (!checkCarNameLength(name)) {
 			throw new OutOfBoundCarNameLengthException(CAR_NAME_LENGTH_ERROR.getMessage());
 		}
-		this.carName = carName;
+		this.carName = name;
 	}
 
-	private boolean checkCarNameLength() {
-		int nameLength = carName.length();
+	private boolean checkCarNameLength(String name) {
+		int nameLength = name.length();
 		return nameLength <= MAX_LENGTH && nameLength >= MIN_LENGTH;
 	}
 
