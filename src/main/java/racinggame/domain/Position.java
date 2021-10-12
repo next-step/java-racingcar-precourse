@@ -22,10 +22,6 @@ public class Position {
 		return new Position(value + 1);
 	}
 
-	public Position obtainNewCopied() {
-		return new Position(value);
-	}
-
 	public Position getMaxPosition(Position otherPosition) {
 		if (moreThane(otherPosition)) {
 			return this;

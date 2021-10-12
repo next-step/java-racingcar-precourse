@@ -22,11 +22,7 @@ public class Car {
 			return new Car(name, position.move());
 		}
 
-		return obtainNewCopied();
-	}
-
-	private Car obtainNewCopied() {
-		return new Car(name, position.obtainNewCopied());
+		return this;
 	}
 
 	public Name getName() {
