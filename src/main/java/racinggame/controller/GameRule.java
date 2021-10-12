@@ -1,6 +1,7 @@
 package racinggame.controller;
 
 import racinggame.domain.Car;
+import racinggame.domain.GameResult;
 import racinggame.domain.MoveCount;
 import racinggame.domain.RacingCars;
 
@@ -12,6 +13,10 @@ public class GameRule {
 	public GameRule(RacingCars racingCars, MoveCount moveCount) {
 		this.racingCars = racingCars;
 		this.moveCount = moveCount;
+	}
+
+	public String getGameResult(){
+		return new GameResult(racingCars).getGameResult();
 	}
 
 	public void gameStart() {
