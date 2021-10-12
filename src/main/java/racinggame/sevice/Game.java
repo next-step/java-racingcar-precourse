@@ -42,10 +42,8 @@ public class Game {
     }
 
     private void gameRun(int count) {
-        for (int i = 0; i < count; i++) {
-            carSet.moveCars();
-            carSet.printOutput();
-        }
+        carSet.moveCars(count);
+        carSet.printOutput(count);
     }
 
     private void outputResult() {

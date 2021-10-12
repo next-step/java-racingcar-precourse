@@ -1,8 +1,12 @@
 package racinggame.model;
 
+import nextstep.utils.Randoms;
+import racinggame.util.Constant;
+
 public class Car {
     private String name;
     private long position;
+    private String[] dashes;
 
     // Constructor
     public Car(String name) {
@@ -19,8 +23,26 @@ public class Car {
         return position;
     }
 
-    // 앞으로 움직일 경우 위치 값 + 1
-    public void moveForward() {
-        position++;
+    public String[] getDashes() {
+        return dashes;
+    }
+
+    // 횟수 받아서 움직임 저장
+    public void moveForward(int count, int possibility) {
+        dashes = new String[count];
+        StringBuilder accumulatedDash = new StringBuilder("");
+        for (int i = 0; i < count; i++) {
+            move(accumulatedDash, i,
+                    Randoms.pickNumberInRange(Constant.LOWER_BOUND_OF_MOVE_POSSIBILITY, Constant.UPPER_BOUND_OF_MOVE_POSSIBILITY),
+                    possibility);
+            dashes[i] = accumulatedDash.toString();
+        }
+    }
+
+    private void move(StringBuilder accumulatedDash, int idx, int randVal, int possibility) {
+        if (randVal >= possibility) {
+            accumulatedDash.append("-");
+            position++;
+        }
     }
 }

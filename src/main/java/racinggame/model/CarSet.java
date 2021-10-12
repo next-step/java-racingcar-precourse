@@ -29,31 +29,25 @@ public class CarSet {
         return cars;
     }
 
-    public void moveCars() {
-        for (int i = 0; i < cars.size(); i++) {
-            moveCarOneByOne(i, Randoms.pickNumberInRange(Constant.LOWER_BOUND_OF_MOVE_POSSIBILITY, Constant.UPPER_BOUND_OF_MOVE_POSSIBILITY));
+    public void moveCars(int count) {
+        for (Car car : cars) {
+            car.moveForward(count, Constant.BORDER_OF_MOVE_POSSIBILITY);
         }
     }
 
-    private void moveCarOneByOne(int idx, int possibility) {
-        if (possibility >= Constant.BORDER_OF_MOVE_POSSIBILITY) cars.get(idx).moveForward();
+    public void printOutput(int count) {
+        for (int i = 0; i < count; i++) {
+            printCar(i);
+        }
     }
 
-    public void printOutput() {
-        CarSet carSet = CarSet.getCarSetInstance();
-        for (Car car : carSet.getCars()) {
-            printCar(car.getName(), car.getPosition());
-        }
-        System.out.println();
-    }
-
-    private void printCar(String carName, long carPos) {
-        StringBuilder moveDashes = new StringBuilder();
-        for (int i = 0; i < carPos; i++) {
-            moveDashes.append("-");
+    private void printCar(int turn) {
+        StringBuilder racing = new StringBuilder();
+        for (Car car : cars) {
+            racing.append(car.getName() + " : " + car.getDashes()[turn] + "\n");
         }
 
-        System.out.println(carName + " : " + moveDashes);
+        System.out.println(racing);
     }
 
     public String getWinner() {
