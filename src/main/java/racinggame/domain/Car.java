@@ -17,12 +17,13 @@ public class Car {
 	public Car(String name) {
 		setName(name);
 	}
+
 	public String getName() {
 		return name;
 	}
 
 	public void setName(String name) {
-		Validator.validCarName(name);
+		Validator.validCarNameLength(name);
 		this.name = name;
 	}
 

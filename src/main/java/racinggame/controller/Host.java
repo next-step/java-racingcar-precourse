@@ -22,7 +22,7 @@ public class Host {
 	}
 
 	public void setRacingCars(String input) {
-		Validator.validInputEmpty(input);
+		Validator.validInputCarNames(input);
 		String[] carNames = input.trim().split(DELIMITER);
 		List<String> carNameList = Arrays.asList(carNames);
 		racing.joinList(carNameList);
@@ -38,7 +38,7 @@ public class Host {
 	}
 
 	public String getRacingResult() {
-		return racing.getRacingResults().toString()+NEW_LINE;
+		return racing.getRacingResults().toString() + NEW_LINE;
 	}
 
 	public String getWinner() {

@@ -11,12 +11,20 @@ import racinggame.common.Validator;
 
 public class ValidatorTest {
 
-	@Test
-	void 이름_입력_유효성검사() {
-		String test = "";
-		assertThatThrownBy(() -> Validator.validInputEmpty(test))
+	@ParameterizedTest(name = "자동차 이름 입력 유효성 검사 {0}")
+	@ValueSource(strings = {"a", "^", "0222", "01"})
+	void 이름_입력_유효성검사(String input) {
+		assertThatThrownBy(() -> Validator.validCarNamesPattern(input))
 			.isInstanceOf(IllegalArgumentException.class)
-			.hasMessage(ERROR_INPUT_NAME);
+			.hasMessage(ERROR_INPUT_CAR_NAMES);
+	}
+
+	@Test
+	void 이름_중복_검사() {
+		String input = "LEE,LEE,LEEE";
+		assertThatThrownBy(() -> Validator.validCarNamesDuplicate(input))
+			.isInstanceOf(IllegalArgumentException.class)
+			.hasMessage(ERROR_DUP_CAR_NAMES);
 	}
 
 	@ParameterizedTest
