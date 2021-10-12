@@ -1,14 +1,13 @@
 package racinggame.game.car;
 
 import org.junit.jupiter.api.Test;
-import racinggame.BaseTest;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class CarsTest extends BaseTest<Cars> {
+class CarsTest {
 
     @Test
     void testGetCarList() {
