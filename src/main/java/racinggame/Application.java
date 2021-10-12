@@ -1,7 +1,16 @@
 package racinggame;
 
+import racinggame.domain.Cars;
+import racinggame.domain.Racing;
+import racinggame.ui.InputView;
+import racinggame.ui.ResultView;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO 자동차 경주 게임 구현
+        Cars cars = InputView.createCars();
+        int attemptCount = InputView.inputAttemptCount();
+        Racing playRacing = InputView.startRacing(cars,attemptCount);
+
+        ResultView.finish(playRacing);
     }
 }
