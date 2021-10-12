@@ -55,4 +55,26 @@ public class CarSet {
     private void moveCarOneByOne(int idx, int possibility) {
         if (possibility >= Constant.BORDER_OF_MOVE_POSSIBILITY) cars.get(idx).moveForward();
     }
+
+    public void printOutput() {
+        CarSet carSet = CarSet.getCarSetInstance();
+        for (Car car : carSet.getCars()) {
+            printCar(car.getName(), car.getPosition());
+        }
+        System.out.println();
+    }
+
+    private void printCar(String carName, long carPos) {
+        StringBuilder moveDashes = new StringBuilder();
+        for (int i = 0; i < carPos; i++) {
+            moveDashes.append("-");
+        }
+
+        System.out.println(carName + " : " + moveDashes);
+    }
+
+    public String getWinner() {
+        StringBuilder winners = new StringBuilder();
+        return winners.toString();
+    }
 }
