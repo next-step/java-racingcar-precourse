@@ -27,6 +27,6 @@ public final class RacingGameController {
 		}
 
 		List<Car> cars = round.getCars();
-		ResultView.printWinnerNames(new Winner(cars));
+		ResultView.printWinnerNames(Winner.createNew(cars));
 	}
 }

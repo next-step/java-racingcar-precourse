@@ -9,13 +9,13 @@ import racinggame.utils.CollectionUtils;
 public class Winner {
 	private final Cars value;
 
-	public Winner(List<Car> value) {
-		this(new Cars(value));
+	private Winner(Cars cars) {
+		Map<Position, List<Car>> carsPositionMqp = cars.toPositionMap();
+		this.value = getWinners(carsPositionMqp);
 	}
 
-	public Winner(Cars cars) {
-		Map<Position, List<Car>> roundRecord = cars.toPositionMap();
-		this.value = getWinners(roundRecord);
+	public static Winner createNew(List<Car> values) {
+		return new Winner(new Cars(values));
 	}
 
 	public String getNames() {
@@ -27,14 +27,14 @@ public class Winner {
 		return CollectionUtils.joining(result);
 	}
 
-	private Cars getWinners(Map<Position, List<Car>> roundRecord) {
-		Position winnerPosition = getWinnerPosition(roundRecord);
-		return new Cars(roundRecord.get(winnerPosition));
+	private Cars getWinners(Map<Position, List<Car>> carsPositionMqp) {
+		Position winnerPosition = getWinnerPosition(carsPositionMqp);
+		return new Cars(carsPositionMqp.get(winnerPosition));
 	}
 
-	private Position getWinnerPosition(Map<Position, List<Car>> cars) {
+	private Position getWinnerPosition(Map<Position, List<Car>> carsPositionMqp) {
 		Position positionOfWinner = Position.createMinPosition();
-		for (Position position : cars.keySet()) {
+		for (Position position : carsPositionMqp.keySet()) {
 			positionOfWinner = position.getMaxPosition(positionOfWinner);
 		}
 
