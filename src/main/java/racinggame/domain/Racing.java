@@ -42,7 +42,7 @@ public class Racing {
 			throw new IllegalStateException(ERROR_NO_CARS);
 		}
 		cars.racing();
-		racingResults.addResult(cars.getCurStatus());
+		racingResults.addResult(cars.currentStatusString());
 	}
 
 	public void audit() {

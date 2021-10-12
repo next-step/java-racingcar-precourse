@@ -4,6 +4,7 @@ import static racinggame.common.CommonConstants.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringJoiner;
 
 import nextstep.utils.Randoms;
 
@@ -15,18 +16,24 @@ public class Cars {
 		this.carList = new ArrayList<>();
 	}
 
+	public List<Car> getCarList() {
+		return carList;
+	}
+
 	public void addCar(Car car) {
 		if (car != null) {
 			carList.add(car);
 		}
 	}
 
-	public List<Car> getCarList() {
-		return carList;
-	}
-
 	public int size() {
 		return carList.size();
+	}
+
+	public void racing() {
+		for (Car car : carList) {
+			car.race(Randoms.pickNumberInRange(RANDOM_MIN_LENGTH, RANDOM_MAX_LENGTH));
+		}
 	}
 
 	public int maxDistance() {
@@ -37,17 +44,11 @@ public class Cars {
 		return maxDistance;
 	}
 
-	public void racing() {
+	public String currentStatusString() {
+		StringJoiner joiner = new StringJoiner(NEW_LINE);
 		for (Car car : carList) {
-			car.race(Randoms.pickNumberInRange(RANDOM_MIN_LENGTH, RANDOM_MAX_LENGTH));
+			joiner.add(car.toString());
 		}
-	}
-
-	public String getCurStatus() {
-		String result = "";
-		for (Car car : carList) {
-			result = result + (car + NEW_LINE);
-		}
-		return result;
+		return joiner.toString();
 	}
 }
