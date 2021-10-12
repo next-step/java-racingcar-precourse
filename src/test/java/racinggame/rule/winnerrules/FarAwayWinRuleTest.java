@@ -10,7 +10,7 @@ import racinggame.circuit.FinalRecord;
 import racinggame.circuit.LapRecords;
 import racinggame.racingcar.LapRecord;
 import racinggame.racingcar.Location;
-import racinggame.common.Name;
+import racinggame.common.RacingCarName;
 import racinggame.rule.WinnerDecisionRule;
 import racinggame.rule.WinnerNames;
 
@@ -53,8 +53,8 @@ class FarAwayWinRuleTest {
 		FinalRecord finalRecord = new FinalRecord();
 
 		LapRecords lapRecords = new LapRecords();
-		lapRecords.add(new LapRecord(new Name("abc1"), new Location(3)));
-		lapRecords.add(new LapRecord(new Name("abc2"), new Location(2)));
+		lapRecords.add(new LapRecord(new RacingCarName("abc1"), new Location(3)));
+		lapRecords.add(new LapRecord(new RacingCarName("abc2"), new Location(2)));
 
 		finalRecord.add(lapRecords);
 
@@ -65,8 +65,8 @@ class FarAwayWinRuleTest {
 		FinalRecord finalRecord = new FinalRecord();
 
 		LapRecords lapRecords = new LapRecords();
-		lapRecords.add(new LapRecord(new Name("abc1"), new Location(3)));
-		lapRecords.add(new LapRecord(new Name("abc2"), new Location(3)));
+		lapRecords.add(new LapRecord(new RacingCarName("abc1"), new Location(3)));
+		lapRecords.add(new LapRecord(new RacingCarName("abc2"), new Location(3)));
 
 		finalRecord.add(lapRecords);
 

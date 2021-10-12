@@ -6,7 +6,7 @@ import java.util.List;
 import racinggame.circuit.FinalRecord;
 import racinggame.circuit.Lap;
 import racinggame.racingcar.Dice;
-import racinggame.common.Name;
+import racinggame.common.RacingCarName;
 import racinggame.racingcar.RacingCar;
 import racinggame.circuit.RacingCars;
 import racinggame.exception.InvalidNameException;
@@ -89,7 +89,7 @@ public final class RacingGame {
 
 		String namesChunk = inputDevice.input();
 		for (String nameChunk : namesChunk.split(",")) {
-			names.add(new Name(nameChunk));
+			names.add(new RacingCarName(nameChunk));
 		}
 
 		return names;

@@ -15,7 +15,7 @@ import nextstep.utils.Randoms;
 import racinggame.racingcar.Dice;
 import racinggame.racingcar.LapRecord;
 import racinggame.racingcar.Location;
-import racinggame.common.Name;
+import racinggame.common.RacingCarName;
 import racinggame.racingcar.RacingCar;
 import racinggame.rule.RacingRule;
 import racinggame.rule.WinnerDecisionRule;
@@ -42,8 +42,8 @@ class RacingCarsTest {
 				.thenReturn(FORWARD);
 
 			LapRecords expected = new LapRecords();
-			expected.add(new LapRecord(new Name("abc1"), new Location(1)));
-			expected.add(new LapRecord(new Name("abc2"), new Location(1)));
+			expected.add(new LapRecord(new RacingCarName("abc1"), new Location(1)));
+			expected.add(new LapRecord(new RacingCarName("abc2"), new Location(1)));
 
 			//when
 			LapRecords lapRecords = racingCars.run();
@@ -85,8 +85,8 @@ class RacingCarsTest {
 			Dice dice = new Dice(rule().diceMin(), rule().diceMax());
 
 			return Arrays.asList(
-				new RacingCar(new Name("abc1"), dice, rule()),
-				new RacingCar(new Name("abc2"), dice, rule())
+				new RacingCar(new RacingCarName("abc1"), dice, rule()),
+				new RacingCar(new RacingCarName("abc2"), dice, rule())
 			);
 		}
 

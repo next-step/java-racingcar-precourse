@@ -4,19 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import racinggame.exception.InvalidNameException;
-import racinggame.common.Name;
+import racinggame.common.RacingCarName;
 
 public class Names {
-	private List<Name> names = new ArrayList<>();
+	private List<RacingCarName> racingCarNames = new ArrayList<>();
 
-	public void add(Name name) {
-		if (names.contains(name)) {
+	public void add(RacingCarName racingCarName) {
+		if (racingCarNames.contains(racingCarName)) {
 			throw new InvalidNameException("[ERROR] 중복된 이름을 사용할 수 없습니다.");
 		}
-		names.add(name);
+		racingCarNames.add(racingCarName);
 	}
 
-	public List<Name> getNames() {
-		return new ArrayList<>(names);
+	public List<RacingCarName> getNames() {
+		return new ArrayList<>(racingCarNames);
 	}
 }

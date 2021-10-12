@@ -11,7 +11,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.MockedStatic;
 
 import nextstep.utils.Randoms;
-import racinggame.common.Name;
+import racinggame.common.RacingCarName;
 import racinggame.rule.RacingRule;
 import racinggame.rule.WinnerDecisionRule;
 import racinggame.rule.winnerrules.FarAwayWinRule;
@@ -33,7 +33,7 @@ class RacingCarTest {
 			//given
 			mockRandoms.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
 				.thenReturn(diceValue);
-			LapRecord pastLapRecord = new LapRecord(new Name("abc"), new Location(0));
+			LapRecord pastLapRecord = new LapRecord(new RacingCarName("abc"), new Location(0));
 
 			//when
 			LapRecord currentLapRecord = racingCar.pushPedal();
@@ -52,7 +52,7 @@ class RacingCarTest {
 			mockRandoms.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
 				.thenReturn(diceValue);
 
-			LapRecord pastLapRecord = new LapRecord(new Name("abc"), new Location(0));
+			LapRecord pastLapRecord = new LapRecord(new RacingCarName("abc"), new Location(0));
 
 			//when
 			LapRecord currentLabRecord = racingCar.pushPedal();
@@ -65,7 +65,7 @@ class RacingCarTest {
 	static class RacingCarConfig {
 		static RacingCar racingCar() {
 			Dice dice = new Dice(rule().diceMin(), rule().diceMax());
-			return new RacingCar(new Name("abc"), dice, rule());
+			return new RacingCar(new RacingCarName("abc"), dice, rule());
 		}
 
 		static Rule rule() {

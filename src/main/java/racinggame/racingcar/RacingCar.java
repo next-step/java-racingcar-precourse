@@ -1,19 +1,19 @@
 package racinggame.racingcar;
 
-import racinggame.common.Name;
+import racinggame.common.RacingCarName;
 import racinggame.racinggame.Rule;
 
 public final class RacingCar {
 	private final Rule rule;
 	private final Dice dice;
-	private final Name name;
+	private final RacingCarName racingCarName;
 
 	private Location location = new Location(0);
 
-	public RacingCar(Name name, Dice dice, Rule rule) {
+	public RacingCar(RacingCarName racingCarName, Dice dice, Rule rule) {
 		this.rule = rule;
 		this.dice = dice;
-		this.name = name;
+		this.racingCarName = racingCarName;
 	}
 
 	/**
@@ -24,7 +24,7 @@ public final class RacingCar {
 	public LapRecord pushPedal() {
 		Location location = move(rollDice());
 
-		return new LapRecord(name, location);
+		return new LapRecord(racingCarName, location);
 	}
 
 	private int rollDice() {

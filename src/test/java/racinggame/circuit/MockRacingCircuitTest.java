@@ -8,7 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import racinggame.common.Name;
+import racinggame.common.RacingCarName;
 import racinggame.racingcar.Dice;
 import racinggame.racingcar.LapRecord;
 import racinggame.racingcar.Location;
@@ -33,8 +33,8 @@ class MockRacingCircuitTest {
 
 		racingCars = new RacingCars(
 			Arrays.asList(
-				new RacingCar(new Name("abc1"), dice, rule),
-				new RacingCar(new Name("abc2"), dice, rule)
+				new RacingCar(new RacingCarName("abc1"), dice, rule),
+				new RacingCar(new RacingCarName("abc2"), dice, rule)
 			)
 		);
 
@@ -80,12 +80,12 @@ class MockRacingCircuitTest {
 
 		private static FinalRecord expectedRecord() {
 			LapRecords lap1Records = new LapRecords();
-			lap1Records.add(new LapRecord(new Name("abc1"), new Location(1)));
-			lap1Records.add(new LapRecord(new Name("abc2"), new Location(0)));
+			lap1Records.add(new LapRecord(new RacingCarName("abc1"), new Location(1)));
+			lap1Records.add(new LapRecord(new RacingCarName("abc2"), new Location(0)));
 
 			LapRecords lap2Records = new LapRecords();
-			lap2Records.add(new LapRecord(new Name("abc1"), new Location(2)));
-			lap2Records.add(new LapRecord(new Name("abc2"), new Location(0)));
+			lap2Records.add(new LapRecord(new RacingCarName("abc1"), new Location(2)));
+			lap2Records.add(new LapRecord(new RacingCarName("abc2"), new Location(0)));
 
 			FinalRecord expectedRecord = new FinalRecord();
 			expectedRecord.add(lap1Records);

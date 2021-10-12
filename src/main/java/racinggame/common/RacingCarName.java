@@ -4,10 +4,10 @@ import java.util.Objects;
 
 import racinggame.exception.InvalidNameException;
 
-public class Name {
+public class RacingCarName {
 	private final String name;
 
-	public Name(String name) {
+	public RacingCarName(String name) {
 		validateName(name);
 		this.name = name;
 	}
@@ -29,8 +29,8 @@ public class Name {
 			return true;
 		if (o == null || getClass() != o.getClass())
 			return false;
-		Name name1 = (Name)o;
-		return name.equals(name1.name);
+		RacingCarName racingCarName1 = (RacingCarName)o;
+		return name.equals(racingCarName1.name);
 	}
 
 	@Override

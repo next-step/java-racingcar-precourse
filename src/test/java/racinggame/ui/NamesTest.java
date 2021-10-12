@@ -6,7 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import racinggame.exception.InvalidNameException;
-import racinggame.common.Name;
+import racinggame.common.RacingCarName;
 import racinggame.racinggame.Names;
 
 class NamesTest {
@@ -17,10 +17,10 @@ class NamesTest {
 		String name = "abc";
 
 		Names names = new Names();
-		names.add(new Name(name));
+		names.add(new RacingCarName(name));
 
 		//when then
-		assertThatThrownBy(() -> names.add(new Name(name)))
+		assertThatThrownBy(() -> names.add(new RacingCarName(name)))
 			.isInstanceOf(InvalidNameException.class)
 			.hasMessage("[ERROR] 중복된 이름을 사용할 수 없습니다.");
 	}

@@ -2,30 +2,30 @@ package racinggame.racingcar;
 
 import java.util.Objects;
 
-import racinggame.common.Name;
+import racinggame.common.RacingCarName;
 
 public class LapRecord {
 	private static final String DELIMITER = "-";
 
-	private final Name name;
+	private final RacingCarName racingCarName;
 	private final Location score;
 
 	/**
-	 * {@link Name} 	: 레이싱카의 이름
-	 * {@link Location} : 레이싱카의 현재 기록
+	 * {@link RacingCarName} 	: 레이싱카의 이름
+	 * {@link Location} 		: 레이싱카의 현재 기록
 	 *
 	 * 레이싱카의 기록을 기록한다.
 	 *
-	 * @param name
+	 * @param racingCarName
 	 * @param score
 	 */
-	public LapRecord(Name name, Location score) {
-		this.name = name;
+	public LapRecord(RacingCarName racingCarName, Location score) {
+		this.racingCarName = racingCarName;
 		this.score = score;
 	}
 
 	public String getName() {
-		return name.valueOf();
+		return racingCarName.valueOf();
 	}
 
 	/**
@@ -34,7 +34,7 @@ public class LapRecord {
 	 */
 	public String read() {
 		return new StringBuilder()
-			.append(name.valueOf())
+			.append(racingCarName.valueOf())
 			.append(" : ")
 			.append(drawDash())
 			.append("\n")
@@ -62,11 +62,11 @@ public class LapRecord {
 		if (o == null || getClass() != o.getClass())
 			return false;
 		LapRecord lapRecord = (LapRecord)o;
-		return name.equals(lapRecord.name) && score.equals(lapRecord.score);
+		return racingCarName.equals(lapRecord.racingCarName) && score.equals(lapRecord.score);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(name, score);
+		return Objects.hash(racingCarName, score);
 	}
 }

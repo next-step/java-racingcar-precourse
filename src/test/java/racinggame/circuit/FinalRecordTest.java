@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import racinggame.racingcar.LapRecord;
 import racinggame.racingcar.Location;
-import racinggame.common.Name;
+import racinggame.common.RacingCarName;
 
 class FinalRecordTest {
 
@@ -49,8 +49,8 @@ class FinalRecordTest {
 
 	private LapRecords lapRecord() {
 		LapRecords lapRecords = new LapRecords();
-		lapRecords.add(new LapRecord(new Name("abc1"), new Location(1)));
-		lapRecords.add(new LapRecord(new Name("abc2"), new Location(2)));
+		lapRecords.add(new LapRecord(new RacingCarName("abc1"), new Location(1)));
+		lapRecords.add(new LapRecord(new RacingCarName("abc2"), new Location(2)));
 
 		return lapRecords;
 	}
