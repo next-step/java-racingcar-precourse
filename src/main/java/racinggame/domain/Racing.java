@@ -2,8 +2,6 @@ package racinggame.domain;
 
 import static racinggame.common.ErrorMessage.*;
 
-import racinggame.common.ErrorMessage;
-
 public class Racing {
 
 	Cars cars;
@@ -13,10 +11,7 @@ public class Racing {
 	public Racing() {
 		cars = new Cars();
 		winners = new Winners();
-	}
-
-	public void join(Car car) {
-		cars.addCar(car);
+		racingResults = new RacingResults();
 	}
 
 	public Cars getCars() {
@@ -31,23 +26,19 @@ public class Racing {
 		return racingResults;
 	}
 
-	private void checkValue(int value) {
-		if (value < 0 || value > 9) {
-			throw new IllegalArgumentException(ErrorMessage.ERROR_GO_INPUT);
-		}
+	public void join(Car car) {
+		cars.addCar(car);
 	}
 
-	public void startRacing() {
-		if (cars.size() == 0) {
-			throw new IllegalStateException(ERROR_NO_CARS);
-		}
+	public void run() {
 		cars.racing();
 		racingResults.addResult(cars.currentStatusString());
 	}
 
 	public void audit() {
+		int maxDistance = cars.maxDistance();
 		for (Car car : cars.getCarList()) {
-			addWinnerList(cars.maxDistance(), car);
+			addWinnerList(maxDistance, car);
 		}
 	}
 
@@ -55,6 +46,16 @@ public class Racing {
 		if (car.getDistance() == max) {
 			winners.addWinner(car);
 		}
+	}
+
+	public void startRacing(int tryCnt) {
+		if (cars.size() == 0) {
+			throw new IllegalStateException(ERROR_NO_CARS);
+		}
+		for (int i = 0; i < tryCnt; i++) {
+			run();
+		}
+		audit();
 	}
 
 }

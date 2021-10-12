@@ -27,13 +27,11 @@ public class Host {
 	}
 
 	public void setTryCount(String input) {
-		this.tryCount = Integer.valueOf(input);
+		this.tryCount = Integer.parseInt(input);
 	}
 
 	public void start() {
-		for (int i = 0; i < tryCount; i++) {
-			racing.startRacing();
-		}
+		racing.startRacing(tryCount);
 	}
 
 	public String getRacingResult() {
