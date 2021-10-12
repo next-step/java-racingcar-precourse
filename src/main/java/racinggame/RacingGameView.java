@@ -3,6 +3,8 @@ package racinggame;
 import nextstep.utils.Console;
 import racinggame.utils.StringUtil;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.StringTokenizer;
 
 public class RacingGameView {
@@ -30,11 +32,28 @@ public class RacingGameView {
         try {
             checkHasText(input);
             checkCarsName(input);
+            checkDuplicateName(input);
         } catch (Exception e) {
             System.out.println("[ERROR] : " + e.getMessage());
             return false;
         }
         return true;
+    }
+
+    private void checkDuplicateName(String input) {
+        Set<String> nameSet = new HashSet<>();
+        StringTokenizer st = new StringTokenizer(input, ",");
+        while (st.hasMoreTokens()) {
+            String name = st.nextToken();
+            checkDuplicateKey(nameSet, name);
+            nameSet.add(name);
+        }
+    }
+
+    private void checkDuplicateKey(Set<String> set, String name) {
+        if (set.contains(name.trim())) {
+            throw new IllegalArgumentException("중복된 이름을 입력할 수 없습니다.");
+        }
     }
 
     private void checkCarsName(String input) {
