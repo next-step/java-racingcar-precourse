@@ -5,8 +5,8 @@ public class Car {
     private final CarMovement carMovements;
     private int goCount;
 
-    public Car(String carName) {
-        this.carName = new CarName(carName);
+    public Car(CarName carName) {
+        this.carName = carName;
         this.carMovements = new CarMovement();
         this.goCount = 0;
     }
