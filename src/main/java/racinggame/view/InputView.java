@@ -28,7 +28,7 @@ public final class InputView {
 			}
 			return new Cars(values);
 		} catch (IllegalArgumentException e) {
-			System.err.format(EXCEPTION_INVALID_INPUT_MESSAGE_FORMAT, e.getMessage());
+			System.out.format(EXCEPTION_INVALID_INPUT_MESSAGE_FORMAT, e.getMessage());
 			return getCars();
 		}
 	}
@@ -39,7 +39,7 @@ public final class InputView {
 			int value = Integer.parseInt(Console.readLine());
 			return new RaceCount(value);
 		} catch (IllegalArgumentException e) {
-			System.err.format(EXCEPTION_INVALID_INPUT_MESSAGE_FORMAT, e.getMessage());
+			System.out.format(EXCEPTION_INVALID_INPUT_MESSAGE_FORMAT, e.getMessage());
 			return getRaceCount();
 		}
 	}
