@@ -5,29 +5,30 @@ import java.util.List;
 
 public class Cars {
     private List<Car> cars = new ArrayList<>();
-    private List<String> winnerNames = new ArrayList<>();
+    private WinnerNames winnerNames;
 
     public Cars(List<Car> carList) {
         cars = carList;
+        winnerNames = new WinnerNames();
     }
 
     public List<Car> getCars() {
         return this.cars;
     }
 
-    public List<String> findWinners() {
+    public String findWinners() {
         int winnerPosition = getWinnerPosition();
 
         for (Car car : cars) {
             addWinner(car, winnerPosition);
         }
 
-        return winnerNames;
+        return winnerNames.getWinnerNames();
     }
 
     private void addWinner(Car car, int winnerPosition) {
         if (car.isWinner(winnerPosition)) {
-            winnerNames.add(car.getCarName());
+            winnerNames.addName(car.getCarName());
         }
     }
 

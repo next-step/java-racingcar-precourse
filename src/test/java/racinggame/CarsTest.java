@@ -36,10 +36,6 @@ public class CarsTest {
         crong.move(() -> true);
         crong.move(() -> true);
 
-        List<String> winners = cars.findWinners();
-
-        assertAll(
-                () -> assertThat(winners.get(0)).isEqualTo(pobi.getCarName()),
-                () -> assertThat(winners.get(1)).isEqualTo(crong.getCarName()));
+        assertThat(cars.findWinners()).isEqualTo(pobi.getCarName() + "," + crong.getCarName());
     }
 }
