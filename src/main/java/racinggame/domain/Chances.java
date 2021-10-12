@@ -1,6 +1,4 @@
-package racinggame.utils;
-
-import racinggame.domain.Validation;
+package racinggame.domain;
 
 public class Chances {
     public int chances;

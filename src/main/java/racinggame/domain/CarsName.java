@@ -1,7 +1,5 @@
-package racinggame.utils;
+package racinggame.domain;
 
-
-import racinggame.domain.Validation;
 
 public class CarsName {
     public String carsName;
@@ -12,11 +10,15 @@ public class CarsName {
         this.isValidValue = true;
         this.validation = new Validation();
         isValidName(carsName);
-        this.carsName = carsName;
+        this.carsName = trimCarsName(carsName);
+    }
+
+    private String trimCarsName(String carsName) {
+        return carsName.replaceAll(" ", "");
     }
 
     public void isValidName(String carsName) {
-        carsName = carsName.replace(" ", "");
+        carsName.replaceAll(" ", "");
         checkValid(validation.checkCarsNameNull(carsName), Message.INPUT_CARS_NULL_ERROR_MSG);
         String[] cars = carsName.split(",");
         checkValid(validation.checkCarsListNull(cars), Message.INPUT_CARS_NULL_ERROR_MSG);

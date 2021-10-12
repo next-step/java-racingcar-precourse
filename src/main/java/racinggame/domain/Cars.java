@@ -3,8 +3,6 @@ package racinggame.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-import racinggame.utils.Message;
-
 public class Cars {
     public List<String> cars;
     public static Validation validation = new Validation();

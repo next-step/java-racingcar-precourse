@@ -1,11 +1,11 @@
 package racinggame.view;
 
 import nextstep.utils.Console;
-import racinggame.utils.Message;
-import racinggame.utils.CarsName;
-import racinggame.utils.Chances;
-import racinggame.utils.Result;
-import racinggame.utils.Winner;
+import racinggame.domain.Message;
+import racinggame.domain.CarsName;
+import racinggame.domain.Chances;
+import racinggame.domain.Result;
+import racinggame.domain.Winner;
 
 public class User {
     public CarsName askCarsName() {
@@ -26,7 +26,7 @@ public class User {
         return chances;
     }
 
-    public void printResult(Result result) {
+    public void printRacingResult(Result result) {
         for (int i = 0; i < result.result.size(); i++) {
             System.out.print(result.result.get(i).getCarName());
             System.out.print(" : ");
@@ -48,5 +48,9 @@ public class User {
             System.out.print(winner.winner.get(key));
         }
         System.out.println(" 입니다.");
+    }
+
+    public void printRacingResultMsg() {
+        System.out.println(Message.OUTPUT_TITLE);
     }
 }
