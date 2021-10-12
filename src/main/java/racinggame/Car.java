@@ -16,7 +16,7 @@ public class Car {
     this.carName = carName;
   }
 
-  public CarMoveStatus racing(int num) {
+  public CarMoveStatus move(int num) {
     if (num <= 3) {
       return CarMoveStatus.STOP;
     }

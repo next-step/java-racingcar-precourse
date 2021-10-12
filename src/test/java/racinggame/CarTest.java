@@ -23,22 +23,22 @@ public class CarTest {
 
   @Test
   void carMoveForward() {
-    assertThat(car.racing(4)).isEqualTo(CarMoveStatus.FORWARD);
-    assertThat(car.racing(9)).isEqualTo(CarMoveStatus.FORWARD);
+    assertThat(car.move(4)).isEqualTo(CarMoveStatus.FORWARD);
+    assertThat(car.move(9)).isEqualTo(CarMoveStatus.FORWARD);
   }
 
   @Test
   void carMoveStop() {
-    assertThat(car.racing(0)).isEqualTo(CarMoveStatus.STOP);
-    assertThat(car.racing(3)).isEqualTo(CarMoveStatus.STOP);
+    assertThat(car.move(0)).isEqualTo(CarMoveStatus.STOP);
+    assertThat(car.move(3)).isEqualTo(CarMoveStatus.STOP);
   }
 
   @Test
   @DisplayName("자동차_전진횟수")
   void countCarForward() {
-    car.racing(4);
-    car.racing(5);
-    car.racing(6);
+    car.move(4);
+    car.move(5);
+    car.move(6);
     assertThat(car.getCountForward()).isEqualTo(3);
   }
 }

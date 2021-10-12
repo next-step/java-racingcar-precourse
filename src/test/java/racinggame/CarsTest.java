@@ -3,7 +3,7 @@ package racinggame;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Arrays;
-import java.util.List;
+import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -23,18 +23,35 @@ public class CarsTest {
   }
 
   @Test
-  void racingForward() {
-    List<Car> racingCars = cars.racing(Arrays.asList(4, 5, 6));
-    for(Car car : racingCars) {
-      assertThat(car.getCountForward()).isEqualTo(1);
+  void racingCar_1Forward() {
+    Map<Integer, Car> racingCars = cars.racing(Arrays.asList(4, 5, 6));
+    if(racingCars.values().iterator().hasNext()){
+      assertThat(racingCars.values().iterator().next().getCountForward()).isEqualTo(1);
+    }
+  }
+
+  @Test
+  void racingCar_1Forward_2Stop() {
+    Map<Integer, Car> racingCars = cars.racing(Arrays.asList(4, 0, 0));
+    assertThat(racingCars.get(0).getCountForward()).isEqualTo(1);
+    assertThat(racingCars.get(1).getCountForward()).isEqualTo(0);
+    assertThat(racingCars.get(2).getCountForward()).isEqualTo(0);
+  }
+
+  @Test
+  void racingCar_2Forward() {
+    cars.racing(Arrays.asList(7, 8, 9));
+    Map<Integer, Car> racingCars = cars.racing(Arrays.asList(4, 5, 6));
+    if(racingCars.values().iterator().hasNext()){
+      assertThat(racingCars.values().iterator().next().getCountForward()).isEqualTo(2);
     }
   }
 
   @Test
   void racingStop() {
-    List<Car> racingCars = cars.racing(Arrays.asList(0, 1, 2));
-    for(Car car : racingCars) {
-      assertThat(car.getCountForward()).isEqualTo(0);
+    Map<Integer, Car> racingCars = cars.racing(Arrays.asList(0, 1, 2));
+    if(racingCars.values().iterator().hasNext()){
+      assertThat(racingCars.values().iterator().next().getCountForward()).isEqualTo(0);
     }
   }
 

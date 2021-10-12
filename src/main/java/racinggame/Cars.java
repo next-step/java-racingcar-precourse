@@ -1,8 +1,8 @@
 package racinggame;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import nextstep.utils.Randoms;
+import java.util.Map;
 
 /**
  * @author : naming
@@ -12,23 +12,29 @@ import nextstep.utils.Randoms;
  */
 public class Cars {
 
-  private final List<Car> cars;
+  private final Map<Integer, Car> cars;
 
-  public Cars(List<Car> cars) {
-    this.cars = cars;
-  }
-
-  public List<Car> racing(List<Integer> moveNum) {
-    for (int i = 0; i < moveNum.size(); i++) {
-      cars.get(i).racing(moveNum.get(i));
-    }
+  public Map<Integer, Car> getCars() {
     return cars;
   }
 
-  public RacingResult racingTime(int racingTime) {
-    for(int i=0; i<racingTime; i++) {
-      cars.get(i).racing(Randoms.pickNumberInRange(0, 9));
+  public Cars(List<Car> cars) {
+    this.cars = mapCar(cars);
+  }
+
+  private static Map<Integer, Car> mapCar(List<Car> cars) {
+    Map<Integer, Car> mapCar = new HashMap<>();
+    for(int i=0; i<cars.size(); i++) {
+      mapCar.put(i, cars.get(i));
     }
+    return mapCar;
+  }
+
+  public RacingResult racing(List<Integer> moveNums) {
+    for (int i = 0; i < moveNums.size(); i++) {
+      cars.get(i).move(moveNums.get(i));
+    }
+
     return new RacingResult(cars);
   }
 }
