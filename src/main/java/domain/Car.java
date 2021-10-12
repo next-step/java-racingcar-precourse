@@ -1,8 +1,11 @@
 package domain;
 
+import nextstep.utils.Randoms;
+
 public class Car {
 	public static final int NAME_MAX_LEN = 5;
 	public static final String NAME_MAX_LEN_ERROR_MESSAGE = "[ERROR] 자동차 이름은 5자 이하만 가능합니다.";
+	public static final int MOVE_MIN_THRESHOLD = 4;
 
 	private String name;
 	private int distance;
@@ -20,5 +23,10 @@ public class Car {
 
 	public int getDistance() {
 		return this.distance;
+	}
+
+	public void move() {
+		int random = Randoms.pickNumberInRange(0, 9);
+		if (random >= MOVE_MIN_THRESHOLD) distance++;
 	}
 }
