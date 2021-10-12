@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -38,6 +39,19 @@ class CollectionUtilsTest {
 
 		// then
 		assertThat(actual).isEqualTo(expected);
+	}
+
+	@Test
+	@DisplayName("문자열을 리스트로 반환한다.")
+	void toList() {
+		// given
+		String str = "gmoon,guest";
+
+		// when
+		List<String> actual = CollectionUtils.toList(str);
+
+		// then
+		assertThat(actual).containsExactly("gmoon", "guest");
 	}
 
 	static Stream<Arguments> provideCollectionEmptyOrNull() {

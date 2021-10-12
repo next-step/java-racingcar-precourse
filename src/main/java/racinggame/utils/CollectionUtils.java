@@ -1,6 +1,8 @@
 package racinggame.utils;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public final class CollectionUtils {
@@ -28,5 +30,16 @@ public final class CollectionUtils {
 		}
 
 		return sb.delete(sb.lastIndexOf(delimiter), sb.length()).toString();
+	}
+
+	public static List<String> toList(String str) {
+		return toList(str, DEFAULT_DELIMITER);
+	}
+
+	public static List<String> toList(String str, String delimiter) {
+		String[] array = str.split(delimiter);
+		List<String> list = new ArrayList<>();
+		Collections.addAll(list, array);
+		return list;
 	}
 }
