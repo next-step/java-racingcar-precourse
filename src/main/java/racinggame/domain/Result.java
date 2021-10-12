@@ -3,9 +3,6 @@ package racinggame.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-import racinggame.domain.Car;
-
-
 public class Result {
     public List<Car> result;
 

@@ -29,25 +29,34 @@ public class User {
     public void printRacingResult(Result result) {
         for (int i = 0; i < result.result.size(); i++) {
             System.out.print(result.result.get(i).getCarName());
-            System.out.print(" : ");
+            System.out.print(Message.COLON);
             printDash(result.result.get(i).getMoveCnt());
-            System.out.println(" ");
         }
-        System.out.println(" ");
+        System.out.print(Message.NEXT_LINE);
     }
 
     public void printDash(int moveCnt) {
         for(int i = 0; i < moveCnt; i++) {
-            System.out.print("-");
+            System.out.print(Message.DASH);
         }
+        System.out.print(Message.NEXT_LINE);
     }
 
     public void printWinner(Winner winner) {
-        System.out.print("최종 우승자는 ");
-        for (int key : winner.winner.keySet()) {
-            System.out.print(winner.winner.get(key));
+        System.out.print(Message.PRINT_WINNER_FRONT);
+        int commaCnt = winner.winner.size() - 1;
+        for (String key : winner.winner.keySet()) {
+            System.out.print(key);
+            printComma(commaCnt);
+            commaCnt--;
         }
-        System.out.println(" 입니다.");
+        System.out.println(Message.PRINT_WINNER_BACK);
+    }
+
+    public void printComma(int commaCnt) {
+        if (commaCnt > 0) {
+            System.out.print(Message.COMMA);
+        }
     }
 
     public void printRacingResultMsg() {

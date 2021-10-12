@@ -9,4 +9,12 @@ public class Message {
     public static final String INPUT_CHANCES_ERROR_MSG = "[ERROR] 시도할 회수는 숫자여야합니다";
     public static final String INPUT_CHANCES_RANGE_ERROR_MSG = "[ERROR] 시도할 회수는 0이상의 숫자여야합니다";
     public static final String OUTPUT_TITLE = "\n실행결과";
+
+    public static final String NEXT_LINE = "\n";
+    public static final String COLON = " : ";
+    public static final String DASH = "-";
+    public static final String COMMA = ",";
+
+    public static final String PRINT_WINNER_FRONT = "최종 우승자는 ";
+    public static final String PRINT_WINNER_BACK = " 입니다.";
 }

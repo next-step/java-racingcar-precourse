@@ -1,6 +1,9 @@
 package racinggame.domain;
 
-public class Car {
+public class Car implements Comparable<Car> {
+    public static final int INITIAL_MOVE_CNT = 0;
+    public static final int MOVE_OK = 4;
+
     private final String carName;
     private int randomNum;
     private int moveCnt;
@@ -9,7 +12,7 @@ public class Car {
 
     public Car(String carName) {
         this.carName = carName;
-        this.moveCnt = 0;
+        this.moveCnt = INITIAL_MOVE_CNT;
     }
 
     public void play() {
@@ -21,7 +24,7 @@ public class Car {
     }
 
     private Boolean canMove(int randomNum) {
-        return randomNum >= 4;
+        return randomNum >= MOVE_OK;
     }
 
     public int getMoveCnt() {
@@ -30,5 +33,16 @@ public class Car {
 
     public String getCarName() {
         return this.carName;
+    }
+
+
+    @Override
+    public int compareTo(Car car) {
+        if (car.getMoveCnt() < moveCnt) {
+            return 1;
+        } else if (car.getMoveCnt() > moveCnt) {
+            return -1;
+        }
+        return 0;
     }
 }

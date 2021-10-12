@@ -13,7 +13,7 @@ public class Cars {
 
     private static List<String> mapCar(String carName) {
         List<String> resVal = new ArrayList<>();
-        String[] cars = carName.split(",");
+        String[] cars = carName.split(Message.COMMA);
         for (int i = 0; i < cars.length; i++) {
             resVal.add(cars[i]);
         }
