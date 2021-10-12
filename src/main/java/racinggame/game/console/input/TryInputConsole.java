@@ -8,28 +8,6 @@ public class TryInputConsole extends BaseInputConsole<Integer> {
         super(inputMessage, errorMessage);
     }
 
-    private boolean isNumber(String value) {
-        if(super.isBlank(value)) {
-            return false;
-        }
-        try {
-            Integer.parseInt(value);
-        } catch (NumberFormatException nfe) {
-            return false;
-        }
-        return true;
-    }
-
-    private boolean isOverZero(String value) {
-        int tryCount = 0;
-        try {
-            tryCount = Integer.parseInt(value);
-        } catch (NumberFormatException nfe) {
-            return false;
-        }
-        return tryCount > 0;
-    }
-
     @Override
     public Integer getInputValue() {
         String inputValue = null;
@@ -47,6 +25,19 @@ public class TryInputConsole extends BaseInputConsole<Integer> {
 
     @Override
     protected boolean isValidPolicy(String inputValue) {
-        return isNumber(inputValue) && isOverZero(inputValue);
+        return isOverZeroInteger(inputValue);
+    }
+
+    private boolean isOverZeroInteger(String value) {
+        if(super.isBlank(value)) {
+            return false;
+        }
+        int tryCount = 0;
+        try {
+            tryCount = Integer.parseInt(value);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return tryCount > 0;
     }
 }
