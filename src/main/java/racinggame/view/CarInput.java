@@ -17,9 +17,11 @@ public class CarInput {
 	public static List<String> getInput() throws NoSuchElementException, IllegalStateException {
 		System.out.println(GUIDE_MESSAGE);
 		List<String> inputs = Arrays.asList(Console.readLine().split(DELIMITER));
-		for (String input : inputs)
-			if (CarName.isOverThanFiveLetters(input))
+		for (String input : inputs) {
+			if (CarName.isOverThanFiveLetters(input)) {
 				return getInput();
+			}
+		}
 		return inputs;
 	}
 }

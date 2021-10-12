@@ -25,8 +25,6 @@ public class Cycle {
 
 	@Override
 	public String toString() {
-		return "Cycle{" +
-			"cycle=" + cycle +
-			'}';
+		return "Cycle{" + "cycle=" + cycle + '}';
 	}
 }
