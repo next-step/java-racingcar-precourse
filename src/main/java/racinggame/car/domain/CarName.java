@@ -6,7 +6,11 @@ public class CarName {
     String name;
 
     public CarName(String inputName) {
-        this.name = CarsUtil.CarName(inputName.trim());
+        try{
+            this.name = CarsUtil.CarName(inputName.trim());
+        }catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public String getName() {

@@ -8,10 +8,12 @@ import racinggame.race.domain.Position;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class CarsUtil {
     public static int CAR_MIN_LENGTH = 1;
     public static int CAR_MAX_LENGTH = 5;
+    private static String ERROR_MSG = "[ERROR]";
 
     public static String[] makeCarStringToAry(String carsNameStr) {
         return carsNameStr.split("\\s*,\\s*");
@@ -24,7 +26,7 @@ public class CarsUtil {
     public static String CarName(String inputName) {
         String inputTrimName = inputName.trim();
         if (!CarsUtil.validationCarName(inputTrimName)) {
-            throw new IllegalArgumentException(Error.ERROR_MSG_CARNAME.getMsg());
+            throw new IllegalArgumentException(ERROR_MSG);
         }
         return inputName;
     }

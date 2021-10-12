@@ -12,8 +12,8 @@ import java.util.List;
 public class DataInput {
 
     public static List<CarName> inputCarName() {
+        System.out.println(StartGuide.NAME_MSG.getMsg());
         try {
-            System.out.println(StartGuide.NAME_MSG.getMsg());
             String[] inputCarNames = CarsUtil.makeCarStringToAry(Console.readLine());
             List<CarName> rtnData = new ArrayList<>();
             for(String carName : inputCarNames) {
