@@ -11,6 +11,10 @@ public final class FinalRecord {
 		allRecords.add(lapRecords);
 	}
 
+	/**
+	 * 실행결과를 출력하기 위한 출력물을 만든다.
+	 * @return String
+	 */
 	public String readFinalRecord() {
 		StringBuilder finalRecordBuilder = new StringBuilder();
 
@@ -21,6 +25,11 @@ public final class FinalRecord {
 		return finalRecordBuilder.toString();
 	}
 
+	/**
+	 * 마지막 랩의 결과를 반환한다.
+	 * 최종 우승자를 판별하기 위해 사용한다.
+	 * @return {@link LapRecords}
+	 */
 	public LapRecords finalLapRecords() {
 		return allRecords.get(lastIndex());
 	}

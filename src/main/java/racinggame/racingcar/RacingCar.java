@@ -6,8 +6,8 @@ import racinggame.ui.Rule;
 public final class RacingCar {
 	private final Rule rule;
 	private final Dice dice;
-
 	private final Name name;
+
 	private Location location = new Location(0);
 
 	public RacingCar(Name name, Dice dice, Rule rule) {
@@ -16,6 +16,11 @@ public final class RacingCar {
 		this.name = name;
 	}
 
+	/**
+	 * 주사위를 던져 움직임을 결정한다.
+	 *
+	 * @return {@link LapRecord}
+	 */
 	public LapRecord pushPedal() {
 		Location location = move(rollDice());
 
@@ -28,9 +33,11 @@ public final class RacingCar {
 
 	private Location move(int diceValue) {
 		Racing next = rule.drive(diceValue);
+
 		if (next == Racing.FORWARD) {
 			this.location = location.forward();
 		}
+
 		return new Location(location.valueOf());
 	}
 }

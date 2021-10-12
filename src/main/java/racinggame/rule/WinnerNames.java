@@ -7,6 +7,10 @@ import java.util.Objects;
 public class WinnerNames {
 	private final List<String> names = new ArrayList<>();
 
+	/**
+	 * 우승자를 우승자 리스트에 추가한다.
+	 * @param name
+	 */
 	public void addName(String name) {
 		if ("".equals(name)) {
 			return;
@@ -14,6 +18,11 @@ public class WinnerNames {
 		names.add(name);
 	}
 
+	/**
+	 * 우승자를 delimiter 로 구별해 문자열로 반환한다.
+	 * @param delimiter
+	 * @return String
+	 */
 	public String getNamesWithDelimiter(String delimiter) {
 		Integer lastIndex = lastIndexOf();
 

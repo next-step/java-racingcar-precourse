@@ -10,6 +10,15 @@ public class LapRecord {
 	private final Name name;
 	private final Location score;
 
+	/**
+	 * {@link Name} 	: 레이싱카의 이름
+	 * {@link Location} : 레이싱카의 현재 기록
+	 *
+	 * 레이싱카의 기록을 기록한다.
+	 *
+	 * @param name
+	 * @param score
+	 */
 	public LapRecord(Name name, Location score) {
 		this.name = name;
 		this.score = score;
@@ -19,6 +28,10 @@ public class LapRecord {
 		return name.valueOf();
 	}
 
+	/**
+	 * 현재 기록을 DELIMITER 로 표현한다.
+	 * @return String
+	 */
 	public String read() {
 		return new StringBuilder()
 			.append(name.valueOf())

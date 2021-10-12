@@ -13,9 +13,6 @@ import racinggame.exception.InvalidNameException;
 import racinggame.rule.WinnerNames;
 
 public final class RacingGame {
-	private static final boolean VALID = true;
-	private static final boolean INVALID = false;
-
 	private final InputDevice inputDevice;
 	private final OutputDevice outputDevice;
 	private final Circuit circuit;
@@ -28,6 +25,10 @@ public final class RacingGame {
 		this.rule = rule;
 	}
 
+	/**
+	 * 레이싱 게임을 시작한다.
+	 * 게임 종료 후 결과를 발표한다.
+	 */
 	public void play() {
 		RacingCars racingCars = makeRacingCars();
 		Lap lap = inputLabs();

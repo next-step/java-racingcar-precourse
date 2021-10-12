@@ -11,6 +11,11 @@ public class Location {
 		this.location = location;
 	}
 
+	/**
+	 * 새로운 위치를 반환한다.
+	 *
+	 * @return {@link Location}
+	 */
 	public Location forward() {
 		return new Location(location + FORWARD.movable());
 	}

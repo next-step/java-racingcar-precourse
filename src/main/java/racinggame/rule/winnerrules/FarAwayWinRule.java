@@ -9,6 +9,14 @@ import racinggame.rule.WinnerNames;
 public class FarAwayWinRule implements WinnerDecisionRule {
 	private final String EMPTY = "";
 
+	/**
+	 * 최종결과의 마지막 랩 기록으로 우승자를 결정한다.
+	 * 가장 멀리 이동한 레이싱카가 우승한다.
+	 * 거장 멀리 이동한 레이싱카가 2대 이상인 경우 공동 우승으로 판정한다.
+	 *
+	 * @param finalRecord
+	 * @return {@link WinnerNames}
+	 */
 	@Override
 	public WinnerNames judgeWinner(FinalRecord finalRecord) {
 		WinnerNames winnerNames = new WinnerNames();
