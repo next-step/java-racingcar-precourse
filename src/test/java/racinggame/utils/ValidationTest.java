@@ -34,4 +34,32 @@ class ValidationTest {
         validated = Validation.validateCarNameLength("polli");
         assertThat(validated).isEqualTo(true);
     }
+
+    @Test
+    void 이동횟수가_숫자인지_검증() {
+        Boolean validated = Validation.isNumeric("123123123");
+        assertThat(validated).isEqualTo(true);
+        validated = Validation.isNumeric("문자입니다");
+        assertThat(validated).isEqualTo(false);
+    }
+
+    @Test
+    void 이동횟수가_1이상의_숫자인지_검증() {
+        Boolean validated = Validation.isOverZero("0");
+        assertThat(validated).isEqualTo(false);
+        validated = Validation.isNumeric("3");
+        assertThat(validated).isEqualTo(true);
+    }
+
+    @Test
+    void 이동횟수가_숫자이거나_1이상의_숫자인지_검증() {
+        Boolean validated = Validation.validateRunNumber("123123123");
+        assertThat(validated).isEqualTo(true);
+        validated = Validation.validateRunNumber("문자입니다");
+        assertThat(validated).isEqualTo(false);
+        validated = Validation.validateRunNumber("0");
+        assertThat(validated).isEqualTo(false);
+        validated = Validation.validateRunNumber("3");
+        assertThat(validated).isEqualTo(true);
+    }
 }

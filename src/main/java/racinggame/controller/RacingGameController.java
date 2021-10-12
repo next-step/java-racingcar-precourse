@@ -39,4 +39,9 @@ public class RacingGameController {
         this.view.getInputView().printInputCarName();
         return readLine();
     }
+
+    public String readInputRunNumber() {
+        this.view.getInputView().printInputRunNumber();
+        return readLine();
+    }
 }

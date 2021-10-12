@@ -36,7 +36,22 @@ public class Application {
                 continue;
             }
 
+            // 이동 횟수를 입력
+            validated = inputRunNumber();
+            if (!validated) {
+                racingGameController.getView().getOutputView().printOutputErrorMessage();
+                continue;
+            }
+
         }
+    }
+
+    /**
+     * 기능2 : 사용자가 이동횟수를 입력하는 기능구현
+     */
+    private static Boolean inputRunNumber() {
+       String inputRunNumber = racingGameController.readInputRunNumber();
+       return Validation.validateRunNumber(inputRunNumber);
     }
 
     /**
