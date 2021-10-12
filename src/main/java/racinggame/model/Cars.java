@@ -5,6 +5,12 @@ import java.util.ArrayList;
 public class Cars extends ArrayList<Car> {
     private static final String NEWLINE = "\n";
 
+    public void add(String[] playerNames) {
+        for (String playerName : playerNames) {
+            this.add(new Car(playerName, 0));
+        }
+    }
+
     public Cars findFurthestCars() {
         CarLocation furthestLocation = this.findFurthestLocation();
 

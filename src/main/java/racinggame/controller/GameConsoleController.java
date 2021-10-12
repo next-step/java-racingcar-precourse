@@ -44,9 +44,7 @@ public class GameConsoleController {
     private void readPlayerNames() {
         String[] playerNames = readValidPlayerNames();
 
-        for (String playerName : playerNames) {
-            this.playerCars.add(new Car(playerName, 0));
-        }
+        this.playerCars.add(playerNames);
     }
 
     private String[] readValidPlayerNames() {
