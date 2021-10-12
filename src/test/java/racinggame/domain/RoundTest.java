@@ -2,43 +2,35 @@ package racinggame.domain;
 
 import static org.assertj.core.api.Assertions.*;
 
-import java.util.Arrays;
-
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import racinggame.functional.ForwardMoveRule;
+import racinggame.exception.UnsatisfiedMinimumValueException;
 
 class RoundTest {
-	Round round;
-
-	@BeforeEach
-	void setUp() {
-		round = new Round(Arrays.asList(new Car("gmoon"), new Car("guest")));
-	}
-
 	@Test
-	@DisplayName("경주에 참여한 자동차들을 생성한다.")
-	void create() {
+	@DisplayName("라운드 생성시 게임 횟수는 최소 0 이상 이어야한다.")
+	void create_error() {
+		// given
+		int count = -1;
+
 		// then
-		assertThat(round)
-			.isEqualTo(new Round(Arrays.asList(new Car("gmoon"), new Car("guest"))));
+		assertThatThrownBy(() -> Round.createNew("gmoon,guest", count))
+			.isInstanceOf(UnsatisfiedMinimumValueException.class)
+			.hasMessage("The value must be at least greater than %d.", 0);
 	}
 
 	@Test
 	@DisplayName("라운드에 해당되는 자동차들을 경주시킨다.")
 	void startRacingCars() {
 		// given
-		ForwardMoveRule alwaysForwardMoveRule = ForwardMoveRule.alwaysForwardMove();
+		int count = 1;
+		Round round = Round.createNew("gmoon,guest", count);
 
 		// when
-		Round raceIsOverRound = round.startRacingCars(alwaysForwardMoveRule);
+		round = round.startRacingCars();
 
 		// then
-		Car movedCarOfMine = new Car("gmoon").moveOrStop(alwaysForwardMoveRule);
-		Car movedCarOfGuest = new Car("guest").moveOrStop(alwaysForwardMoveRule);
-		assertThat(raceIsOverRound)
-			.isEqualTo(new Round(Arrays.asList(movedCarOfMine, movedCarOfGuest)));
+		assertThat(round.isRemainingCount()).isFalse();
 	}
 }
