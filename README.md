@@ -17,23 +17,20 @@
 * 사용자가 잘못된 값을 입력할 경우 “[ERROR]”로 시작하는 에러 메시지를 출력 후 입력을 다시 받는다.
 
 ## 구현 기능 목록
-- 사용자 입력
-  - 자동차 이름 입력
-    - , 로 구분되는 자동차 이름들을 문자열로 받는다.
-    - 잘못된 이름이면 `[ERROR]`를 노출하고 재입력한다.
-  - 몇번 이동할건지 입력
-    - 숫자로 입력한다.
-    - 잘못된 값이면 `[ERROR]`를 노출하고 재입력한다.
-    
+- [x] `InputUtil`
+  - 예외가 없을때까지 사용자 입력을 받아 string으로 반환한다.
+    - `Car` 이름을 ',' 로 구분
+    - `RacingRoundTotal`을 숫자로 예외없이 변환
+
 - [x] `Car`
-    - fields : `name`(`CarName`) 과 `position`(`CarPosition`)을 가진다. 
-    - field :`name`
-      - 제약 : 길이가 0 ~ 5
-    - field :`position`
-      - 초기값 : 0
-    - method : `drive`
-      - 매턴 수행 결과에 따라 한칸 앞으로 이동
-    - 현재 포지션을 '-' 반복으로 리턴한다.
+  - fields : `name`(`CarName`) 과 `position`(`CarPosition`)을 가진다.
+  - field :`name`
+    - 제약 : 길이가 0 ~ 5
+  - field :`position`
+    - 초기값 : 0
+  - method : `drive`
+    - 매턴 수행 결과에 따라 한칸 앞으로 이동
+  - 현재 포지션을 '-' 반복으로 리턴한다.
 
 - [x] `Cars`
   - 문자열로 받은 자동차 이름을 ','로 구분해서 Car List를 가진다

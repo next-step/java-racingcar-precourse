@@ -1,17 +1,15 @@
 package racinggame;
 
-import nextstep.utils.Console;
 import nextstep.utils.Randoms;
 import racinggame.model.Car.Car;
-import racinggame.model.Cars.Cars;
+import racinggame.model.Cars;
+import racinggame.model.InputUtil;
 import racinggame.model.RacingRoundTotal;
 import racinggame.model.Winner;
 
-import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 public class CarRacingGame {
-  public static final String ERROR_MSG = "[ERROR] %s";
   public static final String INPUT_CARNAME_REQ_MSG = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
   public static final String INPUT_ROUND_REQ_MSG = "시도할 회수는 몇회인가요?";
   public static final int RANDOM_START = 0;
@@ -43,11 +41,11 @@ public class CarRacingGame {
 
   private void userInputProcess() {
     System.out.println(INPUT_CARNAME_REQ_MSG);
-    getRepeatInput((s) -> {
+    InputUtil.getRepeatInput((s) -> {
       cars = new Cars(s);
     });
     System.out.println(INPUT_ROUND_REQ_MSG);
-    getRepeatInput((s) -> {
+    InputUtil.getRepeatInput((s) -> {
       racingRoundTotal = new RacingRoundTotal(s);
     });
   }
@@ -63,18 +61,5 @@ public class CarRacingGame {
       cars.drive(drivingStrategy);
       System.out.println(cars.print());
     }
-  }
-
-  private void getRepeatInput(Consumer<String> throwableFunc) {
-    do {
-      try {
-        String s = Console.readLine();
-        throwableFunc.accept(s);
-        return;
-      }
-      catch (IllegalArgumentException e) {
-        System.out.println(String.format(ERROR_MSG, e.getMessage()));
-      }
-    } while (true);
   }
 }
