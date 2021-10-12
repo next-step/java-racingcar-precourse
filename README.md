@@ -7,7 +7,7 @@
 * [과제 제출 방법](https://github.com/next-step/nextstep-docs/tree/master/precourse)
 
 ## 기능 목록
-- [ ] 자동차 클래스 생성
+- [X] 자동차 클래스 생성
   - 이름과 거리를 변수로 갖는 클래스 생성
   - 자동차 이름 5자 이하인지 검증
 - [ ] 자동차 이동기능 구현
