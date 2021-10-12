@@ -20,6 +20,16 @@ public class TryInputConsole extends BaseInputConsole<Integer> {
         return true;
     }
 
+    private boolean isOverZero(String value) {
+        int tryCount = 0;
+        try {
+            tryCount = Integer.parseInt(value);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return tryCount > 0;
+    }
+
     @Override
     public Integer getInputValue() {
         String inputValue = null;
@@ -37,6 +47,6 @@ public class TryInputConsole extends BaseInputConsole<Integer> {
 
     @Override
     protected boolean isValidPolicy(String inputValue) {
-        return isNumber(inputValue);
+        return isNumber(inputValue) && isOverZero(inputValue);
     }
 }
