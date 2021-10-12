@@ -8,6 +8,7 @@ public class RacingGame {
 	private final String executionResultMessage = "실행 결과";
 	private final int randomMin = 0;
 	private final int randomMax = 9;
+	private final String winnersMessage = "최종 우승자는 %s 입니다.%n";
 
 	public RacingGame(Cars cars, Cycle cycle) {
 		this.cars = cars;
@@ -51,12 +52,12 @@ public class RacingGame {
 	 *
 	 **/
 	private void printWinners(Winners winners) {
-		String winnersName = "";
+		StringBuilder winnersName = new StringBuilder();
 
 		for (Car winner : winners.value()) {
-			winnersName += winner.carName().value() + ",";
+			winnersName.append(winner.carName().value()).append(",");
 		}
 
-		System.out.println(String.format("최종 우승자는 %s 입니다.", winnersName.substring(0, winnersName.lastIndexOf(","))));
+		System.out.printf(winnersMessage, winnersName.substring(0, winnersName.lastIndexOf(",")));
 	}
 }
