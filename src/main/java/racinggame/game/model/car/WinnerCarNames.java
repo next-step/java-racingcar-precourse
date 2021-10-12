@@ -1,11 +1,11 @@
-package racinggame.game.car;
+package racinggame.game.model.car;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class WinnerCarNames {
-    private final List<String> winnerCarNames;
+    private final List<CarName> winnerCarNames;
 
     public WinnerCarNames(List<Car> carList, int winnerForwardMovementCount) {
         this.winnerCarNames = new ArrayList<>();
@@ -16,13 +16,13 @@ public class WinnerCarNames {
         }
     }
 
-    public List<String> getWinnerCarNames() {
+    public List<CarName> getWinnerCarNames() {
         return winnerCarNames;
     }
 
     private void addNamesIfIsWinner(Car car, int winnerForwardMovementCount) {
         if(car.getForwardMovementCount() == winnerForwardMovementCount) {
-            this.winnerCarNames.add(car.getCarName().getCarName());
+            this.winnerCarNames.add(new CarName(car.getCarName().getCarName()));
         }
     }
 

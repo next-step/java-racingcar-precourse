@@ -1,9 +1,12 @@
 package racinggame.game.console;
 
-import racinggame.game.car.Car;
-import racinggame.game.car.CarNames;
+import racinggame.game.model.car.Car;
+import racinggame.game.model.car.CarName;
+import racinggame.game.model.car.CarNames;
 import racinggame.game.console.input.CarNameInputConsole;
 import racinggame.game.console.input.TryInputConsole;
+import racinggame.game.model.message.RaceResultMessage;
+import racinggame.game.model.message.RaceWinnerMessage;
 
 import java.util.List;
 
@@ -45,33 +48,16 @@ public class GameConsole {
 
     public void printRaceResult(List<Car> cars) {
         for (Car car : cars) {
-            String carRaceResultMessage = makeCarRaceResultMessage(car.getCarName().getCarName(), car.getForwardMovementCount());
-            System.out.println(carRaceResultMessage);
+            RaceResultMessage raceResultMessage
+                    = new RaceResultMessage(car.getCarName().getCarName(), car.getForwardMovementCount());
+            System.out.println(raceResultMessage.getMessage());
         }
         System.out.println(WHITE_SPACE_STRING);
     }
 
-    public void printRaceWinners(List<String> carNames) {
-        String winnerMessage = makeCarRaceWinnerMessage(carNames);
-        System.out.println(winnerMessage);
-    }
-
-    private String makeCarRaceResultMessage(String carName, int forwardMovementCount) {
-        StringBuilder stringBuilder = new StringBuilder(carName + " : ");
-        for (int i = 0; i < forwardMovementCount; i++) {
-            stringBuilder.append("-");
-        }
-        return stringBuilder.toString();
-    }
-
-    private String makeCarRaceWinnerMessage(List<String> carNames) {
-        StringBuilder stringBuilder = new StringBuilder("최종 우승자는 ");
-        for (String carName : carNames) {
-            stringBuilder.append(carName).append(",");
-        }
-        stringBuilder.deleteCharAt(stringBuilder.length() -1);
-        stringBuilder.append(" 입니다.");
-        return stringBuilder.toString();
+    public void printRaceWinners(List<CarName> carNames) {
+        RaceWinnerMessage raceWinnerMessage = new RaceWinnerMessage(carNames);
+        System.out.println(raceWinnerMessage.getMessage());
     }
 
 

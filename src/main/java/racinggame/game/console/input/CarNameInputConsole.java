@@ -1,7 +1,7 @@
 package racinggame.game.console.input;
 
 import nextstep.utils.Console;
-import racinggame.game.car.CarNames;
+import racinggame.game.model.car.CarNames;
 
 public class CarNameInputConsole extends BaseInputConsole<CarNames> {
 

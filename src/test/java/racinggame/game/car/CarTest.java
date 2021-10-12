@@ -3,6 +3,8 @@ package racinggame.game.car;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racinggame.BaseTest;
+import racinggame.game.model.car.Car;
+import racinggame.game.model.car.CarName;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

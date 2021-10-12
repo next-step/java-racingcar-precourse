@@ -1,7 +1,6 @@
-package racinggame.game.car;
+package racinggame.game.model.car;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class CarNames {
