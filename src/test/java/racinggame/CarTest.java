@@ -1,9 +1,13 @@
 package racinggame;
 
 import static org.assertj.core.api.AssertionsForClassTypes.*;
+import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.MockedStatic;
+
+import nextstep.utils.Randoms;
 
 public class CarTest {
 
@@ -35,5 +39,31 @@ public class CarTest {
 		Car car = new Car("pobi");
 		car.moveOrStop(3);
 		assertThat(car.getPosition()).isZero();
+	}
+
+	@Test
+	@DisplayName("플레이(랜덤생성 후 moveOrStop) 전진 하기")
+	void playMove() {
+		try (MockedStatic<Randoms> mockedStatic = mockStatic(Randoms.class)) {
+			mockedStatic.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
+						.thenReturn(4);
+
+			Car car = new Car("pobi");
+			car.play();
+			assertThat(car.getPosition()).isEqualTo(1);
+		}
+	}
+
+	@Test
+	@DisplayName("플레이(랜덤생성 후 moveOrStop) 멈추기 하기")
+	void playStop() {
+		try (MockedStatic<Randoms> mockedStatic = mockStatic(Randoms.class)) {
+			mockedStatic.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
+						.thenReturn(3);
+
+			Car car = new Car("pobi");
+			car.play();
+			assertThat(car.getPosition()).isZero();
+		}
 	}
 }

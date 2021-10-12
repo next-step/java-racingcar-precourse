@@ -1,5 +1,7 @@
 package racinggame;
 
+import nextstep.utils.Randoms;
+
 public class Car {
 	private final static int MAX_NAME_LENGTH = 5;
 
@@ -30,5 +32,10 @@ public class Car {
 
 	public int getPosition() {
 		return position.getPosition();
+	}
+
+	public void play() {
+		int randomNo = Randoms.pickNumberInRange(0, 9);
+		moveOrStop(randomNo);
 	}
 }
