@@ -46,5 +46,13 @@ public class CarSet {
         return cars;
     }
 
-    
+    public void moveCars() {
+        for (int i = 0; i < cars.size(); i++) {
+            moveCarOneByOne(i, Randoms.pickNumberInRange(Constant.LOWER_BOUND_OF_MOVE_POSSIBILITY, Constant.UPPER_BOUND_OF_MOVE_POSSIBILITY));
+        }
+    }
+
+    private void moveCarOneByOne(int idx, int possibility) {
+        if (possibility >= Constant.BORDER_OF_MOVE_POSSIBILITY) cars.get(idx).moveForward();
+    }
 }
