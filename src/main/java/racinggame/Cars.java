@@ -5,6 +5,7 @@ import nextstep.utils.Randoms;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import static racinggame.ErrorMessage.ERROR_MESSAGE;
 
@@ -22,7 +23,7 @@ public class Cars {
 
     private void checkLength(String carName) {
         if(carName.length() > 5)
-            throw new IllegalArgumentException(ERROR_MESSAGE);
+            throw new NoSuchElementException(ERROR_MESSAGE);
     }
 
     public List<Car> getCars() {

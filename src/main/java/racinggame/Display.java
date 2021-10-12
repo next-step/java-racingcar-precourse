@@ -36,6 +36,6 @@ public class Display {
             str += " " + name;
         }
         str = str.substring(1);
-        System.out.println("최종우승자는 " + str.replace(" ", ",") + " 입니다");
+        System.out.println("최종 우승자는 " + str.replace(" ", ",") + " 입니다.");
     }
 }
