@@ -1,4 +1,4 @@
-package racinggame;
+package racinggame.domain;
 
 public class Position {
     private static final int START_POSITION = 0;
@@ -10,5 +10,9 @@ public class Position {
 
     public int getValue() {
         return this.position;
+    }
+
+    public void addOne() {
+        this.position++;
     }
 }

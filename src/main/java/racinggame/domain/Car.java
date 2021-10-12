@@ -1,4 +1,6 @@
-package racinggame;
+package racinggame.domain;
+
+import racinggame.service.MovingStrategy;
 
 public class Car {
     private Position position;
@@ -16,4 +18,11 @@ public class Car {
     public String getCarName() {
         return carName.getValue();
     }
+
+    public void move(MovingStrategy movingStrategy) {
+        if(movingStrategy.isMoving()){
+            this.position.addOne();
+        }
+    }
+
 }
