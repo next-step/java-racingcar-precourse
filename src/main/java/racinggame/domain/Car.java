@@ -2,7 +2,7 @@ package racinggame.domain;
 
 import static racinggame.common.CommonConstants.*;
 
-import racinggame.common.ErrorMessage;
+import racinggame.common.Validator;
 
 /**
  * @author Lee JungHo
@@ -17,19 +17,13 @@ public class Car {
 	public Car(String name) {
 		setName(name);
 	}
-
-	public boolean validName(String name) {
-		return name != null && name.trim().length() != NAME_MIN_LENGTH && name.trim().length() <= NAME_MAX_LENGTH;
-	}
-
+	
 	public String getName() {
 		return name;
 	}
 
 	public void setName(String name) {
-		if (!validName(name)) {
-			throw new IllegalArgumentException(ErrorMessage.ERROR_CAR_INPUT_NAME);
-		}
+		Validator.validCarName(name);
 		this.name = name;
 	}
 

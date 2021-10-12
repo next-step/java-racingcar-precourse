@@ -37,26 +37,6 @@ public class CarTest {
 	}
 
 	@Test
-	void 자동차_이름_유효성확인_공백() {
-		String name = "";
-		assertThat(car.validName(name)).isFalse();
-		name = null;
-		assertThat(car.validName(name)).isFalse();
-		name = "       ";
-		assertThat(car.validName(name)).isFalse();
-	}
-
-	@Test
-	void 자동차_이름_유효성확인_5자이상() {
-		String name = "가나다라마바사";
-		assertThat(car.validName(name)).isFalse();
-		name = "^^@^^@";
-		assertThat(car.validName(name)).isFalse();
-		name = "a    f";
-		assertThat(car.validName(name)).isFalse();
-	}
-
-	@Test
 	void 자동차_이름_설정_에러() {
 		String name = "";
 		assertThatThrownBy(() -> car.setName(name))
