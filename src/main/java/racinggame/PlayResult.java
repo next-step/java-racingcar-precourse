@@ -21,4 +21,8 @@ public class PlayResult {
 	public String get(int index) {
 		return result.get(index);
 	}
+
+	public int size() {
+		return result.size();
+	}
 }

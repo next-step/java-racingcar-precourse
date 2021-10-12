@@ -14,13 +14,12 @@ public class GameController {
 	}
 
 	private void inputGameInfo() {
-		String nameStr = view.inputCarNameStr();
-		cars = Cars.createByNames(nameStr);
+		cars = view.inputCarName();
 		gameCount = view.inputGameCount();
 	}
 
 	private void playGame() {
-		view.printPlayResultMessage();
+		view.printPlayResultSubject();
 		for (int i = 0; i < gameCount.getCount(); i++) {
 			view.printPlayResult(cars.play());
 		}
