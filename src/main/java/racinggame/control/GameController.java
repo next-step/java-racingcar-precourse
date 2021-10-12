@@ -4,6 +4,8 @@ import nextstep.utils.Console;
 import racinggame.GamePrint;
 import racinggame.Service;
 
+import java.util.NoSuchElementException;
+
 public class GameController {
 
     ControllerMapper map;
@@ -23,8 +25,12 @@ public class GameController {
         map.put(GameStatus.EXIT, this::gameExit);
     }
 
+    public CurrentGameInfo getCurrentInfo() {
+        return currentInfo;
+    }
+
     private void gameExit() {
-        System.exit(0);
+        System.out.println("Exit Game");
     }
 
     private void gameInitProcess() {
@@ -74,6 +80,15 @@ public class GameController {
             map.get(currentInfo.getStatus()).run();
         } catch (Exception e) {
             out.PrintError(e.getMessage());
+            handleException(e);
+
+        }
+    }
+
+    private void handleException(Exception e) {
+        if (e.getMessage().contains("No line found")) {
+            currentInfo.setStatus(GameStatus.EXIT);
+            throw new NoSuchElementException();
         }
     }
 
