@@ -38,7 +38,7 @@ class RaceCountTest {
 	@DisplayName("남아 있는 경주 횟수가 있는지 판단한다.")
 	void isRemainingCount() {
 		// given
-		RaceCount zero = new RaceCount(1);
+		RaceCount zero = new RaceCount(0);
 
 		// when
 		boolean isRemainingCount = zero.isRemainingCount();
