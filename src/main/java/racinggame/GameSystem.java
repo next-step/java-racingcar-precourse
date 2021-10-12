@@ -2,36 +2,38 @@ package racinggame;
 
 import nextstep.utils.Console;
 
+import java.util.List;
+
 public class GameSystem {
-    int count;
     Cars cars;
     RacingGame racingGame;
 
     public void gamePlay() {
         Display.enterName();
         enterCarNames();
-        initRacingGame();
 
         Display.enterTryCount();
-        enterTryCount();
+        initRacingGame();
 
         Display.executeText();
         gameplay();
 
+        Display.winner(winners());
+    }
+
+    private List<String> winners() {
+        return racingGame.getWinners();
     }
 
     private void initRacingGame() {
-        racingGame = new RacingGame(cars);
+        int count = Integer.parseInt(Console.readLine());
+        racingGame = new RacingGame(cars, count);
     }
 
     private void gameplay() {
-        for (int i = 0; i < count; i++) {
+        for (int i = 0; i < racingGame.getCount(); i++) {
             Display.gameResult(racingGame.play());
         }
-    }
-
-    private void enterTryCount() {
-        count = Integer.parseInt(Console.readLine());
     }
 
     private void enterCarNames() {

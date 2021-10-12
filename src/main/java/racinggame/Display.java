@@ -1,5 +1,7 @@
 package racinggame;
 
+import java.util.List;
+
 public class Display {
     public static void enterName() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
@@ -26,5 +28,14 @@ public class Display {
             str += "-";
         }
         return str;
+    }
+
+    public static void winner(List<String> names) {
+        String str = "";
+        for (String name : names) {
+            str += " " + name;
+        }
+        str = str.substring(1);
+        System.out.println("최종우승자는 " + str.replace(" ", ",") + " 입니다");
     }
 }

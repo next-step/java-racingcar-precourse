@@ -4,7 +4,7 @@ import nextstep.utils.Randoms;
 
 import static racinggame.Status.*;
 
-public class Car {
+public class Car implements Comparable<Car> {
     private String name;
     private int position;
     private Status status;
@@ -38,5 +38,16 @@ public class Car {
 
     public int getPosition() {
         return position;
+    }
+
+    @Override
+    public int compareTo(Car c) {
+        if(this.position < c.getPosition())
+            return -1;
+
+        if(this.position == c.getPosition())
+            return 0;
+
+        return 1;
     }
 }
