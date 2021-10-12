@@ -2,11 +2,8 @@ package racinggame.service;
 
 import racinggame.domain.Car;
 import racinggame.domain.Cars;
-import racinggame.utils.Result;
-import racinggame.utils.Winner;
-
-import java.util.ArrayList;
-import java.util.List;
+import racinggame.domain.Result;
+import racinggame.domain.Winner;
 
 
 public class RacingGameService {
@@ -38,22 +35,7 @@ public class RacingGameService {
 
 
     public Winner findWinner(Result result) {
-        Winner winner = new Winner();
-        for (int i = 0; i < result.result.size(); i++) {
-            winner.winner.put(result.result.get(i).getMoveCnt(), result.result.get(i).getCarName());
-        }
-
-        int winnerCnt = winner.winner.lastKey();
-        List<Integer> remove = new ArrayList<>();
-        for (int key : winner.winner.keySet()) {
-            if (key != winnerCnt) {
-                remove.add(key);
-            }
-        }
-
-        for(int i = 0; i < remove.size(); i++) {
-            winner.winner.remove(remove.get(i));
-        }
+        Winner winner = new Winner(result);
         return winner;
     }
 }

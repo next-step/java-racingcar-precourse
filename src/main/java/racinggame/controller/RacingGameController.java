@@ -1,10 +1,9 @@
 package racinggame.controller;
 
+import racinggame.domain.CarsName;
+import racinggame.domain.Chances;
+import racinggame.domain.Result;
 import racinggame.service.RacingGameService;
-import racinggame.utils.CarsName;
-import racinggame.utils.Chances;
-import racinggame.utils.Result;
-import racinggame.utils.Winner;
 import racinggame.view.User;
 
 public class RacingGameController {
@@ -22,16 +21,15 @@ public class RacingGameController {
         racingGameService.makeCars(carsName.carsName);
         Result result = racingGameService.makeCar();
         racing(chances.chances, result);
+        user.printWinner(racingGameService.findWinner(result));
     }
 
     public void racing(int chances, Result result) {
-        System.out.println("\n실행결과");
+        user.printRacingResultMsg();
         while (chances != 0) {
             racingGameService.moveCar(result);
-            user.printResult(result);
+            user.printRacingResult(result);
             chances--;
         }
-        Winner wiiner = racingGameService.findWinner(result);
-        user.printWinner(wiiner);
     }
 }
