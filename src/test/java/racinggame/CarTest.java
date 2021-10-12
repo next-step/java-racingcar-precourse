@@ -33,7 +33,7 @@ public class CarTest {
         assertThatThrownBy(()-> {
             car = new Car("abcasdlkfj");
         }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("5자 이상");
+                .hasMessageContaining("5자를 초과");
     }
 
     @Test
