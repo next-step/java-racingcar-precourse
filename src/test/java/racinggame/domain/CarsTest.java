@@ -32,7 +32,7 @@ public class CarsTest extends NSTest {
 		assertSimpleTest(() -> {
 			run("pobi1234,woni", "pobi,woni");
 			Cars.init(CarInput.getInput());
-			verify(CarInput.GUIDE_MESSAGE, Cars.ERROR_MESSAGE);
+			verify(CarInput.GUIDE_MESSAGE, CarName.ERROR_MESSAGE);
 		});
 	}
 
