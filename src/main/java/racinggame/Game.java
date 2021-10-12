@@ -1,7 +1,7 @@
 package racinggame;
 
 import racinggame.domain.AttemptNumber;
-import racinggame.domain.Cars;
+import racinggame.domain.RacingCars;
 import racinggame.utils.Message;
 import racinggame.domain.Player;
 import racinggame.domain.Winners;
@@ -22,10 +22,10 @@ public class Game {
         winners.makeWinnersMessage().print();
     }
 
-    private Cars getValidCars() {
+    private RacingCars getValidCars() {
         try {
             ASK_NAMES_MESSAGE.print();
-            return new Cars(player.inputNames());
+            return new RacingCars(player.inputNames());
         } catch (RacingGameException e) {
             new Message(e.getMessage()).printError();
             return getValidCars();
@@ -42,14 +42,14 @@ public class Game {
         }
     }
 
-    private Winners race(Cars cars, AttemptNumber attemptNumber) {
+    private Winners race(RacingCars racingCars, AttemptNumber attemptNumber) {
         if (attemptNumber.isOver()) {
-            return cars.findWinners();
+            return racingCars.findWinners();
         }
 
         attemptNumber.decrement();
-        cars.moveForwardOrStop();
-        cars.makeResultMessage().print();
-        return race(cars, attemptNumber);
+        racingCars.moveForwardOrStop();
+        racingCars.makeResultMessage().print();
+        return race(racingCars, attemptNumber);
     }
 }

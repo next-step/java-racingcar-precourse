@@ -6,12 +6,12 @@ import racinggame.exception.RacingGameErrorCode;
 import racinggame.exception.RacingGameException;
 import racinggame.utils.Message;
 
-public class Name {
+public class CarName {
     private static final int MAX_NAME_LENGTH = 5;
 
     private String value;
 
-    public Name(String value) {
+    public CarName(String value) {
         if (value == null || value.isEmpty() || value.length() > MAX_NAME_LENGTH) {
             throw new RacingGameException(RacingGameErrorCode.INVALID_CAR_NAME);
         }
@@ -28,11 +28,11 @@ public class Name {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof Name)) {
+        if (!(o instanceof CarName)) {
             return false;
         }
-        Name name = (Name)o;
-        return Objects.equals(value, name.value);
+        CarName carName = (CarName)o;
+        return Objects.equals(value, carName.value);
     }
 
     @Override

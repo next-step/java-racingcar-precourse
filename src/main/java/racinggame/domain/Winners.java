@@ -7,9 +7,9 @@ import racinggame.utils.Message;
 import racinggame.utils.MessageBuilder;
 
 public class Winners {
-    private List<Name> winners;
+    private List<CarName> winners;
 
-    public Winners(List<Name> winners) {
+    public Winners(List<CarName> winners) {
         this.winners = winners;
     }
 
@@ -39,12 +39,12 @@ public class Winners {
         return messageBuilder.append(new Message(" 입니다.")).toMessage();
     }
 
-    private Message messageWithCommaIfNotLastElement(int idx, Name name) {
+    private Message messageWithCommaIfNotLastElement(int idx, CarName carName) {
         if (idx == winners.size() - 1) {
-            return name.makeNameMessage();
+            return carName.makeNameMessage();
         }
 
-        return new MessageBuilder().append(name.makeNameMessage()).append(Message.COMMA).toMessage();
+        return new MessageBuilder().append(carName.makeNameMessage()).append(Message.COMMA).toMessage();
     }
 
 }

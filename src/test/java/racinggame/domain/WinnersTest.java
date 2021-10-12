@@ -14,17 +14,17 @@ class WinnersTest {
     @DisplayName("승자 equals 제대로 동작하는지 테스트")
     @Test
     void equals_success() {
-        assertThat(new Winners(Arrays.asList(new Name("1"), new Name("2")))
-            .equals(new Winners(Arrays.asList(new Name("1"), new Name("2"))))).isEqualTo(true);
+        assertThat(new Winners(Arrays.asList(new CarName("1"), new CarName("2")))
+            .equals(new Winners(Arrays.asList(new CarName("1"), new CarName("2"))))).isEqualTo(true);
 
-        assertThat(new Winners(Arrays.asList(new Name("1"), new Name("2")))
-            .equals(new Winners(Arrays.asList(new Name("1"))))).isEqualTo(false);
+        assertThat(new Winners(Arrays.asList(new CarName("1"), new CarName("2")))
+            .equals(new Winners(Arrays.asList(new CarName("1"))))).isEqualTo(false);
     }
 
     @DisplayName("승자 메시지 제대로 생성되는지 테스트")
     @Test
     void makeWinnersMessage_success() {
-        assertThat(new Winners(Arrays.asList(new Name("pobi"), new Name("honux"))).makeWinnersMessage())
+        assertThat(new Winners(Arrays.asList(new CarName("pobi"), new CarName("honux"))).makeWinnersMessage())
             .isEqualTo(new Message("최종 우승자는 pobi,honux 입니다."));
     }
 }
