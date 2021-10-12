@@ -17,14 +17,14 @@ public class Name {
 		this.value = value;
 	}
 
+	public String getValue() {
+		return value;
+	}
+
 	private void checkValueIsNotBlank(String value) {
 		if (StringUtils.isBlank(value)) {
 			throw new BlankNameException();
 		}
-	}
-
-	public String getValue() {
-		return value;
 	}
 
 	private void checkValueLength(String value) {
