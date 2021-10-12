@@ -1,12 +1,9 @@
 package racinggame.model;
 
 import nextstep.utils.Randoms;
-import racinggame.exception.IllegalInputException;
 import racinggame.util.Constant;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
 
 public class CarSet {
     private static final CarSet carSet = new CarSet();
