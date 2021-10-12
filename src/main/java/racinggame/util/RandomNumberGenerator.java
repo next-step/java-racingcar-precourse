@@ -7,8 +7,8 @@ public class RandomNumberGenerator {
 
     public static int generate() {
         return Randoms.pickNumberInRange(
-                CarConfig.NumberRangeStart.getValue(),
-                CarConfig.NumberRangeEnd.getValue()
+                CarConfig.NUMBER_RANGE_START.getValue(),
+                CarConfig.NUMBER_RANGE_END.getValue()
         );
     }
 }

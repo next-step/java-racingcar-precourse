@@ -7,7 +7,7 @@ import racinggame.exception.RacinggameException;
 public class StringUtils {
 
     public static void validateStringLength(String inputString) {
-        if (inputString.length() > CarConfig.CarNameSize.getValue()) {
+        if (inputString.length() > CarConfig.CAR_NAME_SIZE.getValue()) {
             throw new RacinggameException(ErrorMessage.INVALID_CAR_NAME_LENGTH.getValue());
         }
     }

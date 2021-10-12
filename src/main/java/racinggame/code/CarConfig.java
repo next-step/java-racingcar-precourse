@@ -1,10 +1,10 @@
 package racinggame.code;
 
 public enum CarConfig {
-    CarNameSize(5),
-    ForwardCondition(3),
-    NumberRangeStart(0),
-    NumberRangeEnd(9);
+    CAR_NAME_SIZE(5),
+    FORWARD_CONDITION(3),
+    NUMBER_RANGE_START(0),
+    NUMBER_RANGE_END(9);
 
     private final int carConfig;
 

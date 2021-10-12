@@ -17,7 +17,7 @@ public class Car {
     }
 
     public boolean checkNumber(int randomNumber) {
-        return randomNumber > CarConfig.ForwardCondition.getValue();
+        return randomNumber > CarConfig.FORWARD_CONDITION.getValue();
     }
 
     public CarName getCarName() {
