@@ -14,7 +14,7 @@ public class RacingCars {
     private static final String ADVANCE_STR = "-";
 
     private List<Car> racingCars;
-    private List<Car> winningCars = new ArrayList<>();
+    private List<Car> winningCars;
 
     public RacingCars(String racingCarNames) {
         String[] racingCars = racingCarNames.split(SEPARATOR);
@@ -40,6 +40,7 @@ public class RacingCars {
     }
 
     public String getWinningCarName() {
+        winningCars = new ArrayList<>();
         int maxAdvance = 0;
         for (Car car : racingCars) {
             maxAdvance = getMaxAdvance(maxAdvance, car.getAdvance());
