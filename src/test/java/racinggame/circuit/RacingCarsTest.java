@@ -18,6 +18,8 @@ import racinggame.racingcar.Location;
 import racinggame.racingcar.Name;
 import racinggame.racingcar.RacingCar;
 import racinggame.rule.RacingRule;
+import racinggame.rule.WinnerDecisionRule;
+import racinggame.rule.winnerrules.FarAwayWinRule;
 import racinggame.ui.Rule;
 
 class RacingCarsTest {
@@ -89,7 +91,11 @@ class RacingCarsTest {
 		}
 
 		static Rule rule() {
-			return new RacingRule();
+			return new RacingRule(winner());
+		}
+
+		static WinnerDecisionRule winner() {
+			return new FarAwayWinRule();
 		}
 	}
 }

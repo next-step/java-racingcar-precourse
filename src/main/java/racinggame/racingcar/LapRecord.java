@@ -3,6 +3,7 @@ package racinggame.racingcar;
 import java.util.Objects;
 
 public class LapRecord {
+	private final String DELIMITER = "-";
 	private final Name name;
 	private final Location score;
 
@@ -32,7 +33,7 @@ public class LapRecord {
 		StringBuilder dashBuilder = new StringBuilder();
 
 		for (int i = 0; i < score.valueOf(); ++i) {
-			dashBuilder.append("-");
+			dashBuilder.append(DELIMITER);
 		}
 
 		return dashBuilder.toString();

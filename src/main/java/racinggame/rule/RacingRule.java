@@ -11,10 +11,16 @@ import racinggame.racingcar.Racing;
 import racinggame.ui.Rule;
 
 public final class RacingRule implements Rule {
-	private final String DELIMITER = ",";
-	private final int DICE_MIN = 0;
-	private final int DICE_MAX = 9;
-	private final int JUDGE_VALUE = 3;
+	private static final  String DELIMITER = ",";
+	private static final int DICE_MIN = 0;
+	private static final int DICE_MAX = 9;
+	private static final int JUDGE_VALUE = 3;
+
+	private final WinnerDecisionRule winnerDecisionRule;
+
+	public RacingRule(WinnerDecisionRule winnerDecisionRule) {
+		this.winnerDecisionRule = winnerDecisionRule;
+	}
 
 	@Override
 	public void validateNames(String nameChunk) throws InvalidNameException {
@@ -62,7 +68,7 @@ public final class RacingRule implements Rule {
 	}
 
 	@Override
-	public String judgeWinners(FinalRecord finalRecord) {
-		return new WinnerDecisionRule(finalRecord).judgeWinners();
+	public WinnerNames judgeWinners(FinalRecord finalRecord) {
+		return winnerDecisionRule.judgeWinner(finalRecord);
 	}
 }

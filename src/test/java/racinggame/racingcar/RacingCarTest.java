@@ -12,6 +12,8 @@ import org.mockito.MockedStatic;
 
 import nextstep.utils.Randoms;
 import racinggame.rule.RacingRule;
+import racinggame.rule.WinnerDecisionRule;
+import racinggame.rule.winnerrules.FarAwayWinRule;
 import racinggame.ui.Rule;
 
 class RacingCarTest {
@@ -68,7 +70,11 @@ class RacingCarTest {
 		}
 
 		static Rule rule() {
-			return new RacingRule();
+			return new RacingRule(winner());
+		}
+
+		static WinnerDecisionRule winner() {
+			return new FarAwayWinRule();
 		}
 	}
 }

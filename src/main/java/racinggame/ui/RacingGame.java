@@ -10,6 +10,7 @@ import racinggame.racingcar.Dice;
 import racinggame.racingcar.RacingCar;
 import racinggame.circuit.RacingCars;
 import racinggame.exception.InvalidNameException;
+import racinggame.rule.WinnerNames;
 
 public final class RacingGame {
 	private final boolean VALID = true;
@@ -37,15 +38,15 @@ public final class RacingGame {
 	}
 
 	private String result(FinalRecord finalRecord) {
-		StringBuilder resultBuilder = new StringBuilder();
+		WinnerNames winnerNames = rule.judgeWinners(finalRecord);
 
-		resultBuilder.append("실행결과\n")
+		return new StringBuilder()
+			.append("실행결과\n")
 			.append(finalRecord.readFinalRecord())
 			.append("최종 우승자는 ")
-			.append(rule.judgeWinners(finalRecord))
-			.append(" 입니다.");
-
-		return resultBuilder.toString();
+			.append(winnerNames.getNamesWithDelimiter(","))
+			.append(" 입니다.")
+			.toString();
 	}
 
 	private RacingCars makeRacingCars() {

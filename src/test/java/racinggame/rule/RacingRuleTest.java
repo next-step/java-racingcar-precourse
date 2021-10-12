@@ -8,6 +8,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import racinggame.exception.InvalidNameException;
+import racinggame.rule.winnerrules.FarAwayWinRule;
 import racinggame.ui.Rule;
 
 class RacingRuleTest {
@@ -16,7 +17,7 @@ class RacingRuleTest {
 
 	@BeforeEach
 	void beforeEach() {
-		rule = new RacingRule();
+		rule = RacingRuleConfig.rule();
 	}
 
 	@DisplayName("입력 성공")
@@ -43,5 +44,15 @@ class RacingRuleTest {
 		assertThatThrownBy(() -> rule.validateNames(name))
 			.isInstanceOf(InvalidNameException.class)
 			.hasMessage("[ERROR] 중복된 이름을 사용할 수 없습니다.");
+	}
+
+	static class RacingRuleConfig {
+		static Rule rule (){
+			return new RacingRule(winner());
+		}
+
+		static WinnerDecisionRule winner() {
+			return new FarAwayWinRule();
+		}
 	}
 }
