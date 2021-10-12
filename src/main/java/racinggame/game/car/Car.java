@@ -9,12 +9,12 @@ public class Car implements Comparable<Car> {
 
     private static final int FORWARD_MOVEMENT_POINT = 4;
 
-    private final String name;
+    private final CarName carName;
     private int forwardMovementCount;
 
 
-    public Car(String name) {
-        this.name = name;
+    public Car(CarName carName) {
+        this.carName = carName;
     }
 
 
@@ -29,8 +29,8 @@ public class Car implements Comparable<Car> {
         return number >= FORWARD_MOVEMENT_POINT;
     }
 
-    public String getName() {
-        return name;
+    public CarName getCarName() {
+        return carName;
     }
 
     public int getForwardMovementCount() {

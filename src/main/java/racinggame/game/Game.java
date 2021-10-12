@@ -1,19 +1,18 @@
 package racinggame.game;
 
 
+import racinggame.game.car.CarNames;
 import racinggame.game.car.Cars;
 import racinggame.game.car.WinnerCarNames;
 import racinggame.game.car.WinnerForwardMovementCount;
 import racinggame.game.console.GameConsole;
 
-import java.util.List;
-
 public class Game {
     private final GameConsole gameConsole = new GameConsole();
 
     public void play() {
-        List<String> carNames = gameConsole.getCarNames();
-        Cars cars = new Cars(carNames);
+        CarNames carNames = gameConsole.getCarNames();
+        Cars cars = new Cars(carNames.getCarNames());
 
         int tryCount = gameConsole.getTryCount();
 

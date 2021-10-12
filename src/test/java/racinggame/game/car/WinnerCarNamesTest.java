@@ -32,7 +32,7 @@ class WinnerCarNamesTest extends BaseTest<Car> {
     private List<Car> createCars(List<String> carNames, int forwardMovementCount) {
         List<Car> cars = new ArrayList<>();
         for (int i = 0; i < carNames.size(); i++) {
-            Car car = new Car(carNames.get(i));
+            Car car = new Car(new CarName(carNames.get(i)));
             setPrivateField(car, "forwardMovementCount", forwardMovementCount);
             cars.add(car);
         }
@@ -42,7 +42,7 @@ class WinnerCarNamesTest extends BaseTest<Car> {
     private List<Car> createCars(int size, int forwardMovementCount) {
         List<Car> cars = new ArrayList<>();
         for (int i = 0; i < size; i++) {
-            Car car = new Car("c" + i);
+            Car car = new Car((new CarName("c" + i)));
             setPrivateField(car, "forwardMovementCount", forwardMovementCount);
             cars.add(car);
         }

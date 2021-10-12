@@ -12,8 +12,8 @@ class CarTest extends BaseTest<Car> {
     @DisplayName("car 이름 비교 테스트")
     @Test
     void testGetName() {
-        Car car = new Car(carName);
-        assertThat(carName.equals(car.getName())).isTrue();
+        Car car = new Car(new CarName(carName));
+        assertThat(carName.equals(car.getCarName())).isTrue();
     }
 
     @DisplayName("car 전진 횟수 비교 테스트")
@@ -22,7 +22,7 @@ class CarTest extends BaseTest<Car> {
         int initForwardMovementCount = 0;
         int forwardMovementCount = 0;
 
-        Car car = new Car(carName);
+        Car car = new Car(new CarName(carName));
 
         assertThat(car.getForwardMovementCount() == initForwardMovementCount).isTrue();
 
@@ -41,7 +41,7 @@ class CarTest extends BaseTest<Car> {
 
 
     private Car createCar(String name, int forwardMovementCount) {
-        Car car = new Car(carName);
+        Car car = new Car(new CarName(carName));
         setPrivateField(car, "forwardMovementCount", forwardMovementCount);
         return car;
     }

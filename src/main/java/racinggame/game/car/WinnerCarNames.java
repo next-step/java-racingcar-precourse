@@ -22,7 +22,7 @@ public class WinnerCarNames {
 
     private void addNamesIfIsWinner(Car car, int winnerForwardMovementCount) {
         if(car.getForwardMovementCount() == winnerForwardMovementCount) {
-            this.winnerCarNames.add(car.getName());
+            this.winnerCarNames.add(car.getCarName().getCarName());
         }
     }
 
