@@ -2,6 +2,9 @@ package racinggame.domain;
 
 import java.util.Objects;
 
+import racinggame.exception.RacingGameErrorCode;
+import racinggame.exception.RacingGameException;
+
 public class Name {
     private static final int MAX_NAME_LENGTH = 5;
 
@@ -9,12 +12,11 @@ public class Name {
 
     public Name(String value) {
         if (value == null || value.isEmpty() || value.length() > MAX_NAME_LENGTH) {
-            throw new IllegalArgumentException("5글자 이상 또는 비어있는 이름으로 자동차를 생성할 수 없습니다.");
+            throw new RacingGameException(RacingGameErrorCode.INVALID_CAR_NAME);
         }
 
         this.value = value;
     }
-
 
     public Message makeNameMessage() {
         return new Message(value);
