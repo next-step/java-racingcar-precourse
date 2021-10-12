@@ -1,6 +1,7 @@
 package racinggame.domain;
 
 import racinggame.domain.exceptions.CarException;
+import racinggame.ui.ResultView;
 
 public class Car {
 
@@ -15,12 +16,14 @@ public class Car {
 
     private void validate(String carName) {
         if(carName.length() >5){
-            throw new CarException("[ERROR]");
+            throw new CarException("[ERROR] 다섯자 미만의 이름을 입력해 주세요");
         }
     }
 
     public void move(int randomNumber){
         moveCount.judgeMove(randomNumber);
+        ResultView.printPlayResult(name,moveCount);
+        ResultView.lineBreak();
     }
 
     public String getName(){
@@ -30,6 +33,5 @@ public class Car {
     public int getMoveCount(){
         return moveCount.getMoveCount();
     }
-
 
 }
