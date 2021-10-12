@@ -13,7 +13,7 @@ public class CarName {
     }
 
     private void validateNameLen(String name) {
-        if (name == null) {
+        if (name == null || name.length() == 0) {
             throw new NullPointerException(ErrorMessage.printNotNullNameMessage());
         }
 

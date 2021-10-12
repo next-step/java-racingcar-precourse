@@ -9,6 +9,10 @@ public class RaceManagerGameEndCount {
     }
 
     private void validateNumberGameEndCount(String gameEndCount) {
+        if (gameEndCount == null) {
+            throw new NullPointerException(ErrorMessage.printNotNullEndGamePointMessage());
+        }
+
         if (!isNumber(gameEndCount)) {
             throw new IllegalArgumentException(ErrorMessage.printNotNumberGameEndPointMessage(gameEndCount));
         }
