@@ -31,6 +31,7 @@ public class CarsTest {
         assertThat(cars.findWinners()).isEqualTo(winners);
     }
 
+    @DisplayName("자동차 레이싱 실행 결과 메시지 제대로 생성하는지 테스트")
     @Test
     void makeResultMessage_success() {
         Cars cars = new Cars("1,2,3");

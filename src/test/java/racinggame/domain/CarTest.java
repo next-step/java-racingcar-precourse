@@ -31,6 +31,7 @@ class CarTest {
         assertThat(car.getStep()).isEqualTo(new Step(1));
     }
 
+    @DisplayName("자동차 레이싱 상태 메시지 제대로 생성하는지 테스트")
     @Test
     void makeStatusMessage_success() {
         Car car = new Car(new Name("name"));
