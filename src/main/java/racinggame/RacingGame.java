@@ -7,9 +7,14 @@ import java.util.List;
 import nextstep.utils.Randoms;
 
 public class RacingGame {
+	private final Cars cars;
 	private final String executionResultMessage = "실행 결과";
 	private final int randomMin = 0;
 	private final int randomMax = 9;
+
+	public RacingGame(Cars cars) {
+		this.cars = cars;
+	}
 
 	/**
 	 * @author : yh22953905
@@ -18,7 +23,6 @@ public class RacingGame {
 	 *
 	 **/
 	void start() {
-		CarInput.init();
 		CycleInput.init();
 
 		System.out.println(executionResultMessage);
@@ -37,7 +41,7 @@ public class RacingGame {
 	 *
 	 **/
 	private void race() {
-		for (Car car : CarInput.values()) {
+		for (Car car : cars.value()) {
 			car.distance(Randoms.pickNumberInRange(randomMin, randomMax));
 			System.out.println(car);
 		}
@@ -63,7 +67,7 @@ public class RacingGame {
 	 *
 	 **/
 	private void sortCarsByDistance() {
-		CarInput.values().sort(Comparator.comparingInt((Car car) -> car.distance().value()).reversed());
+		cars.value().sort(Comparator.comparingInt((Car car) -> car.distance().value()).reversed());
 	}
 
 	/**
@@ -76,7 +80,7 @@ public class RacingGame {
 		List<Car> winners = new ArrayList<>();
 		int winnerDistance = 0;
 
-		for (Car car : CarInput.values()) {
+		for (Car car : cars.value()) {
 			if (winnerDistance > car.distance().value()) {
 				return winners;
 			}

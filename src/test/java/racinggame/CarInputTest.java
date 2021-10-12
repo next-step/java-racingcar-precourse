@@ -18,20 +18,20 @@ public class CarInputTest extends NSTest {
 	void 정상_자동차_입력() {
 		assertSimpleTest(() -> {
 			run("pobi,woni");
-			CarInput.init();
+			Cars cars = Cars.init(CarInput.getInput());
+			assertThat(cars.value().size()).isEqualTo(2);
+			assertThat(cars.value().get(0).toString()).contains("pobi");
+			assertThat(cars.value().get(1).toString()).contains("woni");
 			verify(CarInput.GUIDE_MESSAGE);
 		});
-		assertThat(CarInput.values().size()).isEqualTo(2);
-		assertThat(CarInput.values().get(0).toString()).contains("pobi");
-		assertThat(CarInput.values().get(1).toString()).contains("woni");
 	}
 
 	@Test
 	void 다섯_글자_이상의_자동차_입력() {
 		assertSimpleTest(() -> {
 			run("pobi1234,woni", "pobi,woni");
-			CarInput.init();
-			verify(CarInput.GUIDE_MESSAGE, CarInput.ERROR_MESSAGE);
+			Cars.init(CarInput.getInput());
+			verify(CarInput.GUIDE_MESSAGE, Cars.ERROR_MESSAGE);
 		});
 	}
 
