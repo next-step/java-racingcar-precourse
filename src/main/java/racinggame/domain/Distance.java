@@ -1,6 +1,7 @@
 package racinggame.domain;
 
 public class Distance {
+	static final int COMPARE_NUMBER = 4;
 	private String distance = "";
 
 	Distance() {
@@ -11,7 +12,7 @@ public class Distance {
 	}
 
 	public void distance(int random) {
-		if (random >= 4) {
+		if (random >= COMPARE_NUMBER) {
 			distance += "-";
 		}
 	}
