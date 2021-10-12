@@ -2,8 +2,10 @@ package racinggame.domain;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
@@ -33,6 +35,22 @@ public class Cars {
 			names.add(car.getName());
 		}
 		return names;
+	}
+
+	public Map<Position, List<Car>> toPositionMap() {
+		Map<Position, List<Car>> roundRecord = new HashMap<>();
+		for (Car car : values) {
+			Position position = car.getPosition();
+
+			List<Car> sameDistanceCars = roundRecord.getOrDefault(position, new ArrayList<>());
+			sameDistanceCars.add(car);
+			roundRecord.put(position, sameDistanceCars);
+		}
+		return roundRecord;
+	}
+
+	public List<Car> getValues() {
+		return values;
 	}
 
 	private void checkDuplicatedCarName(List<Car> values) {

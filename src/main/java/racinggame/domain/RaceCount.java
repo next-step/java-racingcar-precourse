@@ -20,7 +20,11 @@ public class RaceCount {
 	}
 
 	public boolean isRemainingCount() {
-		return value > MIN;
+		return value != MIN;
+	}
+
+	public int getValue() {
+		return value;
 	}
 
 	private void checkValidCountValue(int value) {

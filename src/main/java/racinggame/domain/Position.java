@@ -33,6 +33,10 @@ public class Position {
 		return otherPosition;
 	}
 
+	public int getValue() {
+		return value;
+	}
+
 	private void checkValidValue(int value) {
 		if (value < MIN) {
 			throw new InvalidPositionValueException(MIN);

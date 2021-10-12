@@ -1,5 +1,6 @@
 package racinggame.domain;
 
+import java.util.List;
 import java.util.Objects;
 
 import racinggame.functional.ForwardMoveRule;
@@ -21,6 +22,10 @@ public class Round {
 
 	public boolean isRemainingCount() {
 		return raceCount.isRemainingCount();
+	}
+
+	public List<Car> getCars() {
+		return cars.getValues();
 	}
 
 	@Override

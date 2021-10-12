@@ -1,51 +1,40 @@
 package racinggame.domain;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import racinggame.utils.CollectionUtils;
 
 public class Winner {
-	private final List<Car> values;
+	private final Cars value;
 
-	public Winner(List<Car> cars) {
-		Map<Position, List<Car>> roundRecord = getRoundRecord(cars);
-		List<Car> winners = getWinners(roundRecord);
-		this.values = Collections.unmodifiableList(winners);
+	public Winner(List<Car> value) {
+		this(new Cars(value));
+	}
+
+	public Winner(Cars cars) {
+		Map<Position, List<Car>> roundRecord = cars.toPositionMap();
+		this.value = getWinners(roundRecord);
 	}
 
 	public String getNames() {
-		List<String> names = new ArrayList<>(values.size());
-		for (Car winner : values) {
-			Name name = winner.getName();
-			names.add(name.getValue());
+		List<Name> names = value.getCarNames();
+		List<String> result = new ArrayList<>();
+		for (Name name : names) {
+			result.add(name.getValue());
 		}
-		return CollectionUtils.joining(names);
+		return CollectionUtils.joining(result);
 	}
 
-	private Map<Position, List<Car>> getRoundRecord(List<Car> cars) {
-		Map<Position, List<Car>> roundRecord = new HashMap<>();
-		for (Car car : cars) {
-			Position position = car.getPosition();
-
-			List<Car> sameDistanceCars = roundRecord.getOrDefault(position, new ArrayList<>());
-			sameDistanceCars.add(car);
-			roundRecord.put(position, sameDistanceCars);
-		}
-		return roundRecord;
-	}
-
-	private List<Car> getWinners(Map<Position, List<Car>> roundRecord) {
+	private Cars getWinners(Map<Position, List<Car>> roundRecord) {
 		Position winnerPosition = getWinnerPosition(roundRecord);
-		return roundRecord.get(winnerPosition);
+		return new Cars(roundRecord.get(winnerPosition));
 	}
 
-	private Position getWinnerPosition(Map<Position, List<Car>> roundRecord) {
+	private Position getWinnerPosition(Map<Position, List<Car>> cars) {
 		Position positionOfWinner = new Position();
-		for (Position position : roundRecord.keySet()) {
+		for (Position position : cars.keySet()) {
 			positionOfWinner = position.getMaxPosition(positionOfWinner);
 		}
 

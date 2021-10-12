@@ -18,9 +18,10 @@ class WinnerTest {
 		Car gmoon = new Car("gmoon").moveOrStop(alwaysForwardMove);
 		Car guest = new Car("guest").moveOrStop(alwaysForwardMove);
 		Car kim = new Car("kim");
+		Cars cars = new Cars(Arrays.asList(gmoon, guest, kim));
 
 		// when
-		Winner winner = new Winner(Arrays.asList(gmoon, guest, kim));
+		Winner winner = new Winner(cars);
 
 		// then
 		assertThat(winner.getNames())
