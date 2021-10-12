@@ -1,10 +1,15 @@
 package racinggame.model;
 
 import racinggame.code.CarConfig;
+import racinggame.util.RandomNumberGenerator;
 
 public class Car {
     private final CarName carName;
     private final CarPosition carPosition;
+
+    public void forward() {
+        judgeForward(RandomNumberGenerator.generate());
+    }
 
     public void judgeForward(int randomNumber) {
         if (checkNumber(randomNumber))
