@@ -3,11 +3,10 @@ package racinggame.model;
 public class Car {
 
     private String carName;
-    private int nowPosition;
+    private int nowPosition = 0;
 
-    public Car(String carName, int nowPosition) {
+    public Car(String carName) {
         this.carName = carName;
-        this.nowPosition = nowPosition;
     }
 
     public String confirmCarName() {
@@ -18,5 +17,13 @@ public class Car {
         return this.nowPosition;
     }
 
+    public void moveForward() {
+        System.out.println("[" + confirmCarName() + "] 차량 이동 합니다." );
+        this.nowPosition += 1;
+    }
 
+
+    public void stayHere() {
+        this.nowPosition += 0;
+    }
 }
