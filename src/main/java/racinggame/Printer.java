@@ -10,4 +10,8 @@ public class Printer {
 		System.out.println(ENTER_CAR_NAMES);
 		return Console.readLine().split(DELIMITER);
 	}
+
+	public static void printMessage(String message) {
+		System.out.println(message);
+	}
 }
