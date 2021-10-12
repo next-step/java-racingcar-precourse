@@ -13,8 +13,8 @@ import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
 
 import nextstep.utils.Randoms;
-import racinggame.racingcar.Dice;
 import racinggame.common.Name;
+import racinggame.racingcar.Dice;
 import racinggame.racingcar.RacingCar;
 import racinggame.rule.RacingRule;
 import racinggame.rule.WinnerDecisionRule;
@@ -84,7 +84,7 @@ class RacingCircuitTest {
 
 	static class RacingCircuitConfig {
 		static RacingCircuit racingCircuit() {
-			return new RacingCircuit(rule());
+			return new RacingCircuit();
 		}
 
 		static Rule rule() {

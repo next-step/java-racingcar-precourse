@@ -1,14 +1,8 @@
 package racinggame.circuit;
 
 import racinggame.ui.Circuit;
-import racinggame.ui.Rule;
 
 public class RacingCircuit implements Circuit {
-	private final Rule rule;
-
-	public RacingCircuit(Rule rule) {
-		this.rule = rule;
-	}
 
 	/**
 	 * {@link RacingCars} : 경기에 참가하는 레이싱카들
@@ -21,7 +15,6 @@ public class RacingCircuit implements Circuit {
 	 * @param laps
 	 * @return
 	 */
-
 	@Override
 	public FinalRecord start(RacingCars racingCars, Lap laps) {
 		FinalRecord finalRecord = new FinalRecord();

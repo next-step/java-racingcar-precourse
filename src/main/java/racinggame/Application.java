@@ -15,7 +15,7 @@ public class Application {
 		RacingGame racingGame = new RacingGame(
 			new ConsoleKeyboard(),
 			new ConsolePrinter(),
-			new RacingCircuit(rule),
+			new RacingCircuit(),
 			rule
 		);
 

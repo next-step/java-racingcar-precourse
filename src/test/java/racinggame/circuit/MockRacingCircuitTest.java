@@ -8,10 +8,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import racinggame.common.Name;
 import racinggame.racingcar.Dice;
 import racinggame.racingcar.LapRecord;
 import racinggame.racingcar.Location;
-import racinggame.common.Name;
 import racinggame.racingcar.RacingCar;
 import racinggame.rule.RacingRule;
 import racinggame.rule.WinnerDecisionRule;
@@ -62,7 +62,7 @@ class MockRacingCircuitTest {
 
 	static class RacingCircuitConfig {
 		static RacingCircuit mockRacingCircuit() {
-			return new RacingCircuit(rule()) {
+			return new RacingCircuit() {
 				@Override
 				public FinalRecord start(RacingCars racingCars, Lap laps) {
 					return expectedRecord();
