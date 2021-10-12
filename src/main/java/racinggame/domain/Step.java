@@ -2,6 +2,8 @@ package racinggame.domain;
 
 import java.util.Objects;
 
+import racinggame.utils.Message;
+
 public class Step implements Comparable<Step> {
     private static final String STEP_DASH = "-";
     private int num;

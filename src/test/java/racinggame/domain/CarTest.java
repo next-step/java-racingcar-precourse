@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import racinggame.utils.Message;
+
 class CarTest {
     @DisplayName("전달 받은 이름으로 자동차 이름을 가져올 수 있는지 테스트")
     @Test

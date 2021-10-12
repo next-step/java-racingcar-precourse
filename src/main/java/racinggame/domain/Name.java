@@ -4,6 +4,7 @@ import java.util.Objects;
 
 import racinggame.exception.RacingGameErrorCode;
 import racinggame.exception.RacingGameException;
+import racinggame.utils.Message;
 
 public class Name {
     private static final int MAX_NAME_LENGTH = 5;

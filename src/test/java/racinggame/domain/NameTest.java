@@ -9,6 +9,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import racinggame.exception.RacingGameErrorCode;
 import racinggame.exception.RacingGameException;
+import racinggame.utils.Message;
 
 public class NameTest {
     @DisplayName("이름이 5글자 초과 또는 null이나 비어있을 때 에러 던지는지 테스트")

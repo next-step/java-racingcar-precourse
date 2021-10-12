@@ -1,4 +1,4 @@
-package racinggame.domain;
+package racinggame.utils;
 
 public class MessageBuilder {
     private static final String NEW_LINE = "\n";

@@ -2,7 +2,7 @@ package racinggame;
 
 import racinggame.domain.AttemptNumber;
 import racinggame.domain.Cars;
-import racinggame.domain.Message;
+import racinggame.utils.Message;
 import racinggame.domain.Player;
 import racinggame.domain.Winners;
 import racinggame.exception.RacingGameException;

@@ -1,5 +1,8 @@
 package racinggame.domain;
 
+import racinggame.utils.Message;
+import racinggame.utils.MessageBuilder;
+
 public class Car {
     private static final int INIT_STEP_NUM = 0;
     private static final Message SPACE_COLON_MESSAGE = new Message(" : ");

@@ -7,6 +7,8 @@ import java.util.Arrays;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import racinggame.utils.Message;
+
 class WinnersTest {
 
     @DisplayName("승자 equals 제대로 동작하는지 테스트")

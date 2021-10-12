@@ -11,6 +11,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.MockedStatic;
 
+import racinggame.utils.Message;
+
 public class CarsTest {
 
     @DisplayName("자동차 여러 건 생성 기능 테스트")
