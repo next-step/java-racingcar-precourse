@@ -9,8 +9,8 @@ public class RaceResult {
         this.distance = new Distance(racingCar.getDistance());
     }
 
-    public CarName getName() {
-        return name;
+    public String getName() {
+        return name.getName();
     }
 
     public int getDistance() {
