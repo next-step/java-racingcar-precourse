@@ -1,15 +1,22 @@
 package racinggame.circuit;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import racinggame.racingcar.LapRecord;
 import racinggame.racingcar.RacingCar;
 
 public final class RacingCars {
-	private final List<RacingCar> racingCars;
+	private final List<RacingCar> racingCars = new ArrayList<>();
 
 	public RacingCars(List<RacingCar> racingCars) {
-		this.racingCars = racingCars;
+	}
+
+	public RacingCars (){
+	}
+
+	public void add (RacingCar racingCar){
+		this.racingCars.add(racingCar);
 	}
 
 	/**

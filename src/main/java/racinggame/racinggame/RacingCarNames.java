@@ -6,7 +6,7 @@ import java.util.List;
 import racinggame.exception.InvalidNameException;
 import racinggame.common.RacingCarName;
 
-public class Names {
+public class RacingCarNames {
 	private List<RacingCarName> racingCarNames = new ArrayList<>();
 
 	public void add(RacingCarName racingCarName) {
