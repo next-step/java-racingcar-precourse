@@ -20,6 +20,10 @@ public class RacingCar {
         }
     }
 
+    public Name getName() {
+        return name;
+    }
+
     public Position getPosition() {
         return position;
     }
