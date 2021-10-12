@@ -4,6 +4,7 @@ import racinggame.domain.AttemptNumber;
 import racinggame.domain.Cars;
 import racinggame.domain.Message;
 import racinggame.domain.Player;
+import racinggame.domain.Winners;
 import racinggame.exception.RacingGameException;
 
 public class Game {
@@ -17,25 +18,38 @@ public class Game {
     }
 
     public void start() {
+        Winners winners = race(getValidCars(), getValidAttemptNumber());
+        winners.makeWinnersMessage().print();
+    }
+
+    private Cars getValidCars() {
         try {
             ASK_NAMES_MESSAGE.print();
-            Cars cars = new Cars(player.inputNames());
-            ASK_ATTEMPT_NUMBER_MESSAGE.print();
-            AttemptNumber attemptNumber = player.inputAttemptNumber();
-            race(cars, attemptNumber);
-            cars.findWinners().makeWinnersMessage().print();
+            return new Cars(player.inputNames());
         } catch (RacingGameException e) {
             new Message(e.getMessage()).printError();
+            return getValidCars();
         }
     }
 
-    private void race(Cars cars, AttemptNumber attemptNumber) {
-        if (attemptNumber.isOver()) {
-            return;
+    private AttemptNumber getValidAttemptNumber() {
+        try {
+            ASK_ATTEMPT_NUMBER_MESSAGE.print();
+            return player.inputAttemptNumber();
+        } catch (RacingGameException e) {
+            new Message(e.getMessage()).printError();
+            return getValidAttemptNumber();
         }
+    }
+
+    private Winners race(Cars cars, AttemptNumber attemptNumber) {
+        if (attemptNumber.isOver()) {
+            return cars.findWinners();
+        }
+
         attemptNumber.decrement();
         cars.moveForwardOrStop();
         cars.makeResultMessage().print();
-        race(cars, attemptNumber);
+        return race(cars, attemptNumber);
     }
 }
