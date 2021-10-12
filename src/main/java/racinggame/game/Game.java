@@ -2,6 +2,8 @@ package racinggame.game;
 
 
 import racinggame.game.car.Cars;
+import racinggame.game.car.WinnerCarNames;
+import racinggame.game.car.WinnerForwardMovementCount;
 import racinggame.game.console.GameConsole;
 
 import java.util.List;
@@ -20,6 +22,9 @@ public class Game {
             cars.runRace();
             gameConsole.printRaceResult(cars.getCarList());
         }
-        gameConsole.printRaceWinners(cars.getWinnerCarNames());
+        WinnerForwardMovementCount winnerForwardMovementCount = new WinnerForwardMovementCount(cars.getCarList());
+        WinnerCarNames winnerCarNames
+                = new WinnerCarNames(cars.getCarList(), winnerForwardMovementCount.getWinnerForwardMovementCount());
+        gameConsole.printRaceWinners(winnerCarNames.getWinnerCarNames());
     }
 }
