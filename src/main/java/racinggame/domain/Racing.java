@@ -10,8 +10,9 @@ public class Racing {
         this.attemptCount = attemptCount;
     }
 
-    public void start() {
+    public Cars start() {
         cars.gameStart(attemptCount);
+        return cars;
     }
 
     public Cars carsResult() {
