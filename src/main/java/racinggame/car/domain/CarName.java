@@ -1,6 +1,5 @@
 package racinggame.car.domain;
 
-import racinggame.Enum.Error;
 import racinggame.car.utils.CarsUtil;
 
 public class CarName {

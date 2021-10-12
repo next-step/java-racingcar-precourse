@@ -1,6 +1,13 @@
 package racinggame.car.utils;
 
 import racinggame.Enum.Error;
+import racinggame.car.domain.Car;
+import racinggame.car.domain.CarName;
+import racinggame.car.domain.Cars;
+import racinggame.race.domain.Position;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CarsUtil {
     public static int CAR_MIN_LENGTH = 1;
@@ -22,4 +29,12 @@ public class CarsUtil {
         return inputName;
     }
 
+    public static List<Car> createCars(List<CarName> inputData) {
+        List<Car> cars = new ArrayList<>();
+        for (CarName carName : inputData) {
+            cars.add(new Car(carName, new Position()));
+        }
+
+        return cars;
+    }
 }
