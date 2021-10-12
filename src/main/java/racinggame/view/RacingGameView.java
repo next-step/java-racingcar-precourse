@@ -3,6 +3,8 @@ package racinggame.view;
 import nextstep.utils.Console;
 import racinggame.controller.RacingGameController;
 import racinggame.dto.InitRacingGameDto;
+import racinggame.dto.RacingGameResultDto;
+import racinggame.dto.constant.RacingGameStatusConstant;
 import racinggame.view.constant.MessageConstant;
 
 public class RacingGameView {
@@ -14,6 +16,7 @@ public class RacingGameView {
 
 	public void start() {
 		initRacingGame();
+		runRacingGames();
 	}
 	
 	private void initRacingGame() {
@@ -21,6 +24,19 @@ public class RacingGameView {
 		inputCarNames(initRacingGame);
 		inputRunNumber(initRacingGame);
 		racingGameController.InitRacingGame(initRacingGame);
+	}
+	
+	private void runRacingGames() {
+		while(true) {
+			RacingGameResultDto racingGameResult = runRacingGame();
+			if(racingGameResult.getCode().equals(RacingGameStatusConstant.FINISH)) {
+				break;
+			}
+		}
+	}
+	
+	private RacingGameResultDto runRacingGame() {
+		return racingGameController.runRacingGame();
 	}
 	
 	private void inputCarNames(InitRacingGameDto initRacingGame) {
