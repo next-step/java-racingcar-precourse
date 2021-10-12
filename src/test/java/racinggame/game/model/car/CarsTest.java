@@ -1,4 +1,4 @@
-package racinggame.game.car;
+package racinggame.game.model.car;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

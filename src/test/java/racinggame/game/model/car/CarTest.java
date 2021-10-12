@@ -1,4 +1,4 @@
-package racinggame.game.car;
+package racinggame.game.model.car;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -15,7 +15,7 @@ class CarTest extends BaseTest<Car> {
     @Test
     void testGetName() {
         Car car = new Car(new CarName(carName));
-        assertThat(carName.equals(car.getCarName())).isTrue();
+        assertThat(carName.equals(car.getCarName().getCarName())).isTrue();
     }
 
     @DisplayName("car 전진 횟수 비교 테스트")

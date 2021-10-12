@@ -8,7 +8,6 @@ import racinggame.BaseTest;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -40,44 +39,6 @@ class CarNameInputConsoleTest extends BaseTest<CarNameInputConsole> {
         assertThat(result == expectedResult).isTrue();
     }
 
-    @DisplayName("입력값에서 이름 추출")
-    @ParameterizedTest
-    @CsvSource({
-            "'ab,cd', 2",
-            "'ab,cd,ef,gh,ij', 5",
-            "'ab', 1",
-            "' ', 1",
-            "'abcdef', 1",
-            "'abcdef,ab', 2",
-    })
-    void testMakeCarNames(String inputValue, int expectedResultSize) throws InvocationTargetException, IllegalAccessException {
-        Method method = super.getPrivateMethod(carNameInputConsole, "makeCarNames", String.class);
-        List<String> result = (List<String>) method.invoke(carNameInputConsole, inputValue);
-        assertThat(result.size() == expectedResultSize).isTrue();
-    }
 
-    @DisplayName("입력값 공백인지 검증")
-    @ParameterizedTest
-    @CsvSource({
-            "'ab', false",
-            "' ', true",
-    })
-    void testIsWhiteSpace(String inputValue, boolean expectedResult) throws InvocationTargetException, IllegalAccessException {
-        Method method = super.getPrivateMethod(carNameInputConsole, "isWhiteSpace", String.class);
-        boolean result = (boolean) method.invoke(carNameInputConsole, inputValue);
-        assertThat(result == expectedResult).isTrue();
-    }
-
-    @DisplayName("입력값 6자 이상인지 검증")
-    @ParameterizedTest
-    @CsvSource({
-            "abcde, false",
-            "abcdef, true",
-    })
-    void testIsOverMaxLength(String inputValue, boolean expectedResult) throws InvocationTargetException, IllegalAccessException {
-        Method method = super.getPrivateMethod(carNameInputConsole, "isOverMaxLength", String.class);
-        boolean result = (boolean) method.invoke(carNameInputConsole, inputValue);
-        assertThat(result == expectedResult).isTrue();
-    }
 
 }
