@@ -40,4 +40,13 @@ public class Cars {
             winners.add(car.getName());
         }
     }
+
+    public Message makeResultMessage() {
+        MessageBuilder messageBuilder = new MessageBuilder();
+        for (Car car : carList) {
+            messageBuilder.append(car.makeStatusMessage()).appendNewLine();
+        }
+
+        return messageBuilder.toMessage();
+    }
 }

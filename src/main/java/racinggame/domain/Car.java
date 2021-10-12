@@ -2,6 +2,7 @@ package racinggame.domain;
 
 public class Car {
     private static final int INIT_STEP_NUM = 0;
+    private static final Message SPACE_COLON_MESSAGE = new Message(" : ");
 
     private final Name name;
     private Step step;
@@ -23,5 +24,12 @@ public class Car {
         if (moveStatus.isForward()) {
             step.forward();
         }
+    }
+
+    public Message makeStatusMessage() {
+        return new MessageBuilder(name.makeNameMessage())
+            .append(SPACE_COLON_MESSAGE)
+            .append(step.makeStepMessage())
+            .toMessage();
     }
 }

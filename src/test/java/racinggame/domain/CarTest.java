@@ -30,4 +30,13 @@ class CarTest {
         car.moveForwardOrStop(MoveStatus.FORWARD);
         assertThat(car.getStep()).isEqualTo(new Step(1));
     }
+
+    @Test
+    void makeStatusMessage_success() {
+        Car car = new Car(new Name("name"));
+        assertThat(car.makeStatusMessage()).isEqualTo(new Message("name : "));
+
+        car.moveForwardOrStop(MoveStatus.FORWARD);
+        assertThat(car.makeStatusMessage()).isEqualTo(new Message("name : -"));
+    }
 }

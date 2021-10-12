@@ -15,6 +15,11 @@ public class Name {
         this.value = value;
     }
 
+
+    public Message makeNameMessage() {
+        return new Message(value);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

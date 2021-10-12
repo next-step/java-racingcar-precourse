@@ -30,4 +30,16 @@ public class CarsTest {
         Winners winners = new Winners(Arrays.asList(new Name("1"), new Name("2")));
         assertThat(cars.findWinners()).isEqualTo(winners);
     }
+
+    @Test
+    void makeResultMessage_success() {
+        Cars cars = new Cars("1,2,3");
+
+        cars.moveForwardOrStop(0, MoveStatus.FORWARD);
+        cars.moveForwardOrStop(1, MoveStatus.FORWARD);
+        cars.moveForwardOrStop(2, MoveStatus.STOP);
+
+        assertThat(cars.makeResultMessage()).isEqualTo(new Message("1 : -\n2 : -\n3 : \n"));
+    }
+
 }
