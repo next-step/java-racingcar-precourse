@@ -12,6 +12,16 @@ public class Car {
         this.distance = new Distance(0);
     }
 
+    public void move(int interval) {
+        this.distance = this.distance.increase(interval);
+    }
+
+    public String getCarStatus() {
+        return this.carName.getName() +
+                " : " +
+                this.distance.getDistanceView();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
