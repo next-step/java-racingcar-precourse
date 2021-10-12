@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 
 public class Validator {
 
-	private static final String TRY_INPUT_PATTERN = "^[1-9]([0-9]+)$";
+	private static final String TRY_INPUT_PATTERN = "^[1-9]([0-9])*$";
 
 	public static void validInputEmpty(String input) {
 		if (input == null || input.isEmpty() || "".equals(input.trim())) {

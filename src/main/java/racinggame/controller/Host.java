@@ -2,10 +2,12 @@ package racinggame.controller;
 
 import static racinggame.common.CommonConstants.*;
 
-import racinggame.domain.Car;
+import java.util.Arrays;
+import java.util.List;
+
+import racinggame.common.Validator;
 import racinggame.domain.Racing;
 
-//TODO 벨리데이션 host로 추가
 public class Host {
 
 	Racing racing;
@@ -20,13 +22,14 @@ public class Host {
 	}
 
 	public void setRacingCars(String input) {
+		Validator.validInputEmpty(input);
 		String[] carNames = input.trim().split(DELIMITER);
-		for (String name : carNames) {
-			racing.join(new Car(name));
-		}
+		List<String> carNameList = Arrays.asList(carNames);
+		racing.joinList(carNameList);
 	}
 
 	public void setTryCount(String input) {
+		Validator.validTryCount(input);
 		this.tryCount = Integer.parseInt(input);
 	}
 

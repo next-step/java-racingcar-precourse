@@ -2,6 +2,8 @@ package racinggame.domain;
 
 import static racinggame.common.ErrorMessage.*;
 
+import java.util.List;
+
 public class Racing {
 
 	Cars cars;
@@ -28,6 +30,13 @@ public class Racing {
 
 	public void join(Car car) {
 		cars.addCar(car);
+	}
+
+	// TODO : 해당 메소드에 대한 테스트 케이스 추가 필요
+	public void joinList(List<String> nameList) {
+		for (String name : nameList) {
+			join(new Car(name));
+		}
 	}
 
 	public void run() {
