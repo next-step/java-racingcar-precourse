@@ -4,8 +4,8 @@ import static org.assertj.core.api.Assertions.*;
 import static org.mockito.Mockito.*;
 import static racinggame.common.CommonConstants.*;
 
-import java.util.Arrays;
-
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
@@ -17,6 +17,7 @@ import racinggame.domain.Cars;
 public class CarsTest {
 
 	Cars cars;
+	private static MockedStatic<Randoms> mockRandoms;
 
 	@BeforeEach
 	void setUp() {
@@ -27,9 +28,19 @@ public class CarsTest {
 		cars.addCar(car2);
 	}
 
+	@BeforeAll
+	static void beforeAll() {
+		mockRandoms = mockStatic(Randoms.class);
+	}
+
+	@AfterAll
+	static void afterAll() {
+		mockRandoms.close();
+	}
+
 	@Test
 	void 자동차들_추가() {
-		Car car = new Car("addCar");
+		Car car = new Car("aCar");
 
 		cars.addCar(car);
 
@@ -49,7 +60,6 @@ public class CarsTest {
 
 	@Test
 	void 레이싱() {
-		final MockedStatic<Randoms> mockRandoms = mockStatic(Randoms.class);
 		mockRandoms.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
 			.thenReturn(1,4);
 
@@ -65,7 +75,6 @@ public class CarsTest {
 
 	@Test
 	void 최대_이동거리() {
-		final MockedStatic<Randoms> mockRandoms = mockStatic(Randoms.class);
 		mockRandoms.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
 			.thenReturn(1,4,1,5,1,6);
 
@@ -81,7 +90,6 @@ public class CarsTest {
 
 	@Test
 	void 문자열_표시() {
-		final MockedStatic<Randoms> mockRandoms = mockStatic(Randoms.class);
 		mockRandoms.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
 			.thenReturn(1,4,1,5,1,6);
 
