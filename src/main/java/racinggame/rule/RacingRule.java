@@ -11,7 +11,7 @@ import racinggame.racingcar.Racing;
 import racinggame.ui.Rule;
 
 public final class RacingRule implements Rule {
-	private static final  String DELIMITER = ",";
+	private static final String DELIMITER = ",";
 	private static final int DICE_MIN = 0;
 	private static final int DICE_MAX = 9;
 	private static final int JUDGE_VALUE = 3;

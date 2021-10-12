@@ -1,7 +1,5 @@
 package racinggame.circuit;
 
-import java.util.Objects;
-
 import racinggame.exception.InvalidNumberException;
 
 public class Lap {

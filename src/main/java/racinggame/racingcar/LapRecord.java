@@ -3,7 +3,8 @@ package racinggame.racingcar;
 import java.util.Objects;
 
 public class LapRecord {
-	private final String DELIMITER = "-";
+	private static final String DELIMITER = "-";
+
 	private final Name name;
 	private final Location score;
 

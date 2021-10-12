@@ -13,8 +13,8 @@ import racinggame.exception.InvalidNameException;
 import racinggame.rule.WinnerNames;
 
 public final class RacingGame {
-	private final boolean VALID = true;
-	private final boolean INVALID = false;
+	private static final boolean VALID = true;
+	private static final boolean INVALID = false;
 
 	private final InputDevice inputDevice;
 	private final OutputDevice outputDevice;
