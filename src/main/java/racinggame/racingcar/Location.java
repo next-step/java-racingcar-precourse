@@ -15,7 +15,7 @@ public class Location {
 		return new Location(location + FORWARD.movable());
 	}
 
-	public int valueOf (){
+	public int valueOf() {
 		return location;
 	}
 

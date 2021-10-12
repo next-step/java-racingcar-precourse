@@ -7,6 +7,7 @@ import java.util.List;
 import racinggame.circuit.FinalRecord;
 import racinggame.circuit.Lap;
 import racinggame.racingcar.Dice;
+import racinggame.racingcar.Name;
 import racinggame.racingcar.RacingCar;
 import racinggame.circuit.RacingCars;
 import racinggame.exception.InvalidNameException;
@@ -54,30 +55,42 @@ public final class RacingGame {
 
 		Dice dice = new Dice(rule.diceMin(), rule.diceMax());
 
-		inputRacingCarNames()
+		inputCarNames().getNames()
 			.forEach(name -> racingCars.add(new RacingCar(name, dice, rule)));
 
 		return new RacingCars(racingCars);
 	}
 
-	private List<String> inputRacingCarNames() {
-		String nameChunk;
+	private Names inputCarNames() {
+		Names names;
 		do {
-			outputDevice.print("경주할 자동차 이름을 입력하세요");
-			nameChunk = inputDevice.input();
-		} while (checkNameByRule(nameChunk) == INVALID);
+			outputDevice.print("경주할 자동차 이름을 입력하세요.");
+			names = inputRacingCarNames();
+		} while (names == null);
 
-		return Arrays.asList(nameChunk.split(","));
+		return names;
 	}
 
-	private boolean checkNameByRule(String nameChunk) {
+	private Names inputRacingCarNames() {
+		Names names;
 		try {
-			rule.validateNames(nameChunk);
-		} catch (InvalidNameException error) {
-			outputDevice.print(error.getMessage());
-			return INVALID;
+			names = inputNames();
+			return names;
+		} catch (InvalidNameException e) {
+			outputDevice.print(e.getMessage());
+			return null;
 		}
-		return VALID;
+	}
+
+	private Names inputNames() {
+		Names names = new Names();
+
+		String namesChunk = inputDevice.input();
+		for (String nameChunk : namesChunk.split(",")) {
+			names.add(new Name(nameChunk));
+		}
+
+		return names;
 	}
 
 	private Lap inputLabs() {

@@ -5,8 +5,6 @@ import racinggame.racingcar.Racing;
 import racinggame.rule.WinnerNames;
 
 public interface Rule {
-	void validateNames(String names);
-
 	int diceMax();
 
 	int diceMin();

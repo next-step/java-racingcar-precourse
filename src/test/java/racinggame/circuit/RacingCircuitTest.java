@@ -14,6 +14,7 @@ import org.mockito.MockedStatic;
 
 import nextstep.utils.Randoms;
 import racinggame.racingcar.Dice;
+import racinggame.racingcar.Name;
 import racinggame.racingcar.RacingCar;
 import racinggame.rule.RacingRule;
 import racinggame.rule.WinnerDecisionRule;
@@ -37,8 +38,8 @@ class RacingCircuitTest {
 
 		racingCars = new RacingCars(
 			Arrays.asList(
-				new RacingCar("abc1", dice, rule),
-				new RacingCar("abc2", dice, rule)
+				new RacingCar(new Name("abc1"), dice, rule),
+				new RacingCar(new Name("abc2"), dice, rule)
 			)
 		);
 	}

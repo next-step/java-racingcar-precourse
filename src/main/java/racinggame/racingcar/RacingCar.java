@@ -9,10 +9,10 @@ public final class RacingCar {
 	private final Name name;
 	private Location location = new Location(0);
 
-	public RacingCar(String name, Dice dice, Rule rule) {
+	public RacingCar(Name name, Dice dice, Rule rule) {
 		this.rule = rule;
 		this.dice = dice;
-		this.name = new Name(name);
+		this.name = name;
 	}
 
 	public LapRecord pushPedal() {
@@ -27,7 +27,7 @@ public final class RacingCar {
 
 	private Location move(int diceValue) {
 		Racing next = rule.drive(diceValue);
-		if(next == Racing.FORWARD){
+		if (next == Racing.FORWARD) {
 			this.location = location.forward();
 		}
 		return new Location(location.valueOf());

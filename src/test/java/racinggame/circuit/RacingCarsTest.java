@@ -85,8 +85,8 @@ class RacingCarsTest {
 			Dice dice = new Dice(rule().diceMin(), rule().diceMax());
 
 			return Arrays.asList(
-				new RacingCar("abc1", dice, rule()),
-				new RacingCar("abc2", dice, rule())
+				new RacingCar(new Name("abc1"), dice, rule()),
+				new RacingCar(new Name("abc2"), dice, rule())
 			);
 		}
 
