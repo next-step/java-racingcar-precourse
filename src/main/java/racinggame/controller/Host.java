@@ -38,7 +38,7 @@ public class Host {
 	}
 
 	public String getRacingResult() {
-		return racing.getRacingResults().toString();
+		return racing.getRacingResults().toString()+NEW_LINE;
 	}
 
 	public String getWinner() {

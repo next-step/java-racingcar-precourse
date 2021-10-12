@@ -16,6 +16,6 @@ public class RacingResults {
 
 	@Override
 	public String toString() {
-		return String.join("\n", results);
+		return String.join("\n\n", results);
 	}
 }

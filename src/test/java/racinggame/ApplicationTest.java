@@ -33,6 +33,22 @@ public class ApplicationTest extends NSTest {
         });
     }
 
+    @Test
+    void 횟수에_대한_예외_처리() {
+        assertSimpleTest(() -> {
+            runNoLineFound("pobi,woni", "00");
+            verify(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 가상_레이싱() {
+        assertRandomTest(() -> {
+            run("pobi,woni", "4");
+            verify("pobi : -", "woni : ", "최종 우승자는 woni 입니다.");
+        }, 1, 4, 2, 5, 6, 7, 7, 8);
+    }
+
     @AfterEach
     void tearDown() {
         outputStandard();
@@ -40,6 +56,6 @@ public class ApplicationTest extends NSTest {
 
     @Override
     public void runMain() {
-        Application.main(new String[]{});
+        Application.main(new String[] {});
     }
 }
