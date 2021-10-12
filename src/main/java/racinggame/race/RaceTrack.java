@@ -19,4 +19,9 @@ public class RaceTrack {
             System.out.println(cars.toString());
         }
     }
+
+    public void result() {
+        cars.getMaxPositionValue();
+        System.out.println(String.format("최종 우승자는 %s 입니다", cars.toStringWinnerName()));
+    }
 }

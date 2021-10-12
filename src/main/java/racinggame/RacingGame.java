@@ -11,5 +11,6 @@ public class RacingGame {
 
         RaceTrack track = new RaceTrack(carList, roundNum);
         track.play();
+        track.result();
     }
 }
