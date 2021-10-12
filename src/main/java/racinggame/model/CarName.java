@@ -1,6 +1,6 @@
 package racinggame.model;
 
-import racinggame.util.StringValidator;
+import racinggame.util.StringUtils;
 
 public class CarName {
     private final String carName;
@@ -17,9 +17,9 @@ public class CarName {
         private String carName;
 
         public Builder name(String carName) {
-            StringValidator.validateStringNull(carName);
-            StringValidator.validateStringLength(carName);
-            
+            StringUtils.validateStringNull(carName);
+            StringUtils.validateStringLength(carName);
+
             this.carName = carName;
 
             return this;

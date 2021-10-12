@@ -4,7 +4,7 @@ import racinggame.code.CarConfig;
 import racinggame.code.ErrorMessage;
 import racinggame.exception.RacinggameException;
 
-public class StringValidator {
+public class StringUtils {
 
     public static void validateStringLength(String inputString) {
         if (inputString.length() > CarConfig.CarNameSize.getValue()) {
