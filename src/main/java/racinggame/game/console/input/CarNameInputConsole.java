@@ -48,6 +48,7 @@ public class CarNameInputConsole extends BaseInputConsole<List<String>> {
         int invalidNameCount = getInvalidNameCount(this.carNames);
         return invalidNameCount <= 0;
     }
+
     private void setCarNames(String inputValue) {
         this.carNames = new ArrayList<>();
         this.carNames.addAll(makeCarNames(inputValue));
@@ -90,7 +91,4 @@ public class CarNameInputConsole extends BaseInputConsole<List<String>> {
     private boolean isOverMaxLength(String carName) {
         return carName.length() > carNameMaxLength;
     }
-
-
-
 }
