@@ -60,7 +60,15 @@ public class CarSet {
     }
 
     public String getWinner() {
-        StringBuilder winners = new StringBuilder();
-        return winners.toString();
+        StringBuilder stringBuilder = new StringBuilder();
+        Winner winner = new Winner();
+        winner.getWinner();
+
+        for (String winnerName : winner.getWinnerList()) {
+            stringBuilder.append(winnerName);
+            stringBuilder.append(',');
+        }
+        stringBuilder.deleteCharAt(stringBuilder.lastIndexOf(","));
+        return stringBuilder.toString();
     }
 }

@@ -49,6 +49,6 @@ public class Game {
     }
 
     private void outputResult() {
-        String winners = carSet.getWinner();
+        System.out.println("최종 우승자는 " + carSet.getWinner() + " 입니다.");
     }
 }
