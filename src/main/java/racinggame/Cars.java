@@ -34,7 +34,6 @@ public class Cars {
     for (int i = 0; i < moveNums.size(); i++) {
       cars.get(i).move(moveNums.get(i));
     }
-
     return new RacingResult(cars);
   }
 }
