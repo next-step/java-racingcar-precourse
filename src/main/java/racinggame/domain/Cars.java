@@ -29,24 +29,36 @@ public class Cars {
 		return new Cars(list);
 	}
 
-	public List<Name> getCarNames() {
-		List<Name> names = new ArrayList<>(values.size());
-		for (Car car : values) {
-			names.add(car.getName());
+	public List<String> getCarNames() {
+		List<String> names = new ArrayList<>();
+		for (Name name : getNames()) {
+			names.add(name.getValue());
 		}
+
 		return names;
 	}
 
-	public Map<Position, List<Car>> toPositionMap() {
-		Map<Position, List<Car>> carsPositionMap = new HashMap<>();
+	public Map<Position, Cars> getSamePositionCarsGroup() {
+		Map<Position, Cars> positionGroups = new HashMap<>();
 		for (Car car : values) {
 			Position position = car.getPosition();
+			Cars sameDistanceCars = positionGroups.getOrDefault(position, new Cars(Collections.emptyList()));
 
-			List<Car> sameDistanceCars = carsPositionMap.getOrDefault(position, new ArrayList<>());
-			sameDistanceCars.add(car);
-			carsPositionMap.put(position, sameDistanceCars);
+			List<Car> mergedValues = new ArrayList<>(sameDistanceCars.values);
+			mergedValues.add(car);
+
+			positionGroups.put(position, new Cars(mergedValues));
 		}
-		return carsPositionMap;
+		return positionGroups;
+	}
+
+	public Position getMaxPosition() {
+		Position maxPosition = Position.createMinPosition();
+		for (Position position : getSamePositionCarsGroup().keySet()) {
+			maxPosition = position.getMaxPosition(maxPosition);
+		}
+
+		return maxPosition;
 	}
 
 	public List<Car> getValues() {
@@ -65,6 +77,14 @@ public class Cars {
 			carNames.add(car.getName());
 		}
 		return values.size() != carNames.size();
+	}
+
+	private List<Name> getNames() {
+		List<Name> names = new ArrayList<>(values.size());
+		for (Car car : values) {
+			names.add(car.getName());
+		}
+		return names;
 	}
 
 	@Override

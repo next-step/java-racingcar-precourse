@@ -1,6 +1,5 @@
 package racinggame.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -18,27 +17,13 @@ public class Winner {
 	}
 
 	public String getNames() {
-		List<Name> names = value.getCarNames();
-		List<String> result = new ArrayList<>();
-		for (Name name : names) {
-			result.add(name.getValue());
-		}
-		return CollectionUtils.joining(result);
+		return CollectionUtils.joining(value.getCarNames());
 	}
 
 	private Cars getWinners(Cars cars) {
-		Map<Position, List<Car>> carsPositionMap = cars.toPositionMap();
+		Map<Position, Cars> positionCarsGroup = cars.getSamePositionCarsGroup();
 
-		Position winnerPosition = getWinnerPosition(carsPositionMap);
-		return new Cars(carsPositionMap.get(winnerPosition));
-	}
-
-	private Position getWinnerPosition(Map<Position, List<Car>> carsPositionMap) {
-		Position winnerPosition = Position.createMinPosition();
-		for (Position position : carsPositionMap.keySet()) {
-			winnerPosition = position.getMaxPosition(winnerPosition);
-		}
-
-		return winnerPosition;
+		Position winnerPosition = cars.getMaxPosition();
+		return positionCarsGroup.get(winnerPosition);
 	}
 }
