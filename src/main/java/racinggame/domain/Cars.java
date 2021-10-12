@@ -21,12 +21,12 @@ public class Cars {
 	}
 
 	public Cars startRace(ForwardMoveRule forwardMoveRule) {
-		List<Car> cars = new ArrayList<>();
+		List<Car> list = new ArrayList<>();
 		for (Car car : values) {
-			cars.add(car.moveOrStop(forwardMoveRule));
+			list.add(car.moveOrStop(forwardMoveRule));
 		}
 
-		return new Cars(cars);
+		return new Cars(list);
 	}
 
 	public List<Name> getCarNames() {
@@ -38,15 +38,15 @@ public class Cars {
 	}
 
 	public Map<Position, List<Car>> toPositionMap() {
-		Map<Position, List<Car>> roundRecord = new HashMap<>();
+		Map<Position, List<Car>> carsPositionMap = new HashMap<>();
 		for (Car car : values) {
 			Position position = car.getPosition();
 
-			List<Car> sameDistanceCars = roundRecord.getOrDefault(position, new ArrayList<>());
+			List<Car> sameDistanceCars = carsPositionMap.getOrDefault(position, new ArrayList<>());
 			sameDistanceCars.add(car);
-			roundRecord.put(position, sameDistanceCars);
+			carsPositionMap.put(position, sameDistanceCars);
 		}
-		return roundRecord;
+		return carsPositionMap;
 	}
 
 	public List<Car> getValues() {
@@ -69,10 +69,12 @@ public class Cars {
 
 	@Override
 	public boolean equals(Object o) {
-		if (this == o)
+		if (this == o) {
 			return true;
-		if (o == null || getClass() != o.getClass())
+		}
+		if (o == null || getClass() != o.getClass()) {
 			return false;
+		}
 		Cars cars = (Cars)o;
 		return Objects.equals(values, cars.values);
 	}

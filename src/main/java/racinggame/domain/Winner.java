@@ -10,8 +10,7 @@ public class Winner {
 	private final Cars value;
 
 	private Winner(Cars cars) {
-		Map<Position, List<Car>> carsPositionMqp = cars.toPositionMap();
-		this.value = getWinners(carsPositionMqp);
+		this.value = getWinners(cars);
 	}
 
 	public static Winner createNew(List<Car> values) {
@@ -27,17 +26,19 @@ public class Winner {
 		return CollectionUtils.joining(result);
 	}
 
-	private Cars getWinners(Map<Position, List<Car>> carsPositionMqp) {
-		Position winnerPosition = getWinnerPosition(carsPositionMqp);
-		return new Cars(carsPositionMqp.get(winnerPosition));
+	private Cars getWinners(Cars cars) {
+		Map<Position, List<Car>> carsPositionMap = cars.toPositionMap();
+
+		Position winnerPosition = getWinnerPosition(carsPositionMap);
+		return new Cars(carsPositionMap.get(winnerPosition));
 	}
 
-	private Position getWinnerPosition(Map<Position, List<Car>> carsPositionMqp) {
-		Position positionOfWinner = Position.createMinPosition();
-		for (Position position : carsPositionMqp.keySet()) {
-			positionOfWinner = position.getMaxPosition(positionOfWinner);
+	private Position getWinnerPosition(Map<Position, List<Car>> carsPositionMap) {
+		Position winnerPosition = Position.createMinPosition();
+		for (Position position : carsPositionMap.keySet()) {
+			winnerPosition = position.getMaxPosition(winnerPosition);
 		}
 
-		return positionOfWinner;
+		return winnerPosition;
 	}
 }

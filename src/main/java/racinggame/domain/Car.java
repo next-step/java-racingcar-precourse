@@ -8,8 +8,8 @@ public class Car {
 	private final Name name;
 	private final Position position;
 
-	private Car(String valueOfName) {
-		this(new Name(valueOfName), Position.createMinPosition());
+	private Car(String nameString) {
+		this(new Name(nameString), Position.createMinPosition());
 	}
 
 	private Car(Name name, Position position) {
@@ -17,8 +17,8 @@ public class Car {
 		this.position = position;
 	}
 
-	public static Car createNew(String value) {
-		return new Car(value);
+	public static Car createNew(String nameString) {
+		return new Car(nameString);
 	}
 
 	public Car moveOrStop(ForwardMoveRule forwardMoveRule) {
