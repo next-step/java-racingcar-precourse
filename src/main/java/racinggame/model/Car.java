@@ -6,9 +6,8 @@ import java.util.Objects;
 
 public class Car implements Comparable<Car> {
     private final String carName;
-    private int distance;
+    private final Distance distance;
     private static final int MOVING_MIN_COUNT = 3;
-    private static final int DISTANCE = 1;
 
     private RandomNumber randomNumber;
 
@@ -17,7 +16,7 @@ public class Car implements Comparable<Car> {
             throw new ValidationException();
         }
         this.carName = carName;
-        this.distance = 0;
+        this.distance = new Distance();
         this.randomNumber = new RandomNumber();
     }
 
@@ -28,13 +27,13 @@ public class Car implements Comparable<Car> {
     public void moving() {
         randomNumber.playRound();
         if (randomNumber.getRandomNumber() > MOVING_MIN_COUNT) {
-            this.distance += DISTANCE;
+            this.distance.moveForward();
         }
     }
 
     public String displayDistance(Car car) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < car.getDistance(); i++) {
+        for (int i = 0; i < car.distance.getDistance(); i++) {
             sb.append("-");
         }
         return sb.toString();
@@ -44,13 +43,13 @@ public class Car implements Comparable<Car> {
         return carName;
     }
 
-    public int getDistance() {
+    public Distance getDistance() {
         return distance;
     }
 
     @Override
     public int compareTo(Car o) {
-        return this.distance - o.distance;
+        return this.distance.getDistance() - o.distance.getDistance();
     }
 
     @Override

@@ -42,7 +42,7 @@ public class RacingCars {
     public String getWinner() {
         List<String> winnerList = new ArrayList<>();
         for (Car car : racingCars) {
-            compareDistance(Collections.max(racingCars).getDistance(), car, winnerList);
+            compareDistance(Collections.max(racingCars).getDistance().getDistance(), car, winnerList);
         }
         StringBuilder sb = new StringBuilder();
         sb.append("최종 우승자는 ")
@@ -53,7 +53,7 @@ public class RacingCars {
     }
 
     private void compareDistance(int distance, Car car, List<String> winnerList) {
-        if (distance == car.getDistance()) {
+        if (distance == car.getDistance().getDistance()) {
             winnerList.add(car.getCarName());
         }
     }
