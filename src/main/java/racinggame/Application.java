@@ -1,12 +1,12 @@
 package racinggame;
 
-import racinggame.view.GameConsole;
+import racinggame.controller.GameConsoleController;
 
 public class Application {
     public static void main(String[] args) {
-        GameConsole gameConsole = new GameConsole();
+        GameConsoleController gameConsoleController = new GameConsoleController();
 
-        gameConsole.setup();
-        gameConsole.playGame();
+        gameConsoleController.setup();
+        gameConsoleController.playGame();
     }
 }
