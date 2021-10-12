@@ -1,4 +1,4 @@
-package racinggame.ui;
+package racinggame.racinggame;
 
 import racinggame.circuit.FinalRecord;
 import racinggame.racingcar.Racing;

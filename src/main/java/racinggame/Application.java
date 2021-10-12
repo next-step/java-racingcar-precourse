@@ -1,12 +1,12 @@
 package racinggame;
 
 import racinggame.circuit.RacingCircuit;
-import racinggame.device.input.ConsoleKeyboard;
-import racinggame.device.output.ConsolePrinter;
+import racinggame.racinggame.RacingGame;
+import racinggame.racinggame.Rule;
 import racinggame.rule.RacingRule;
 import racinggame.rule.winnerrules.FarAwayWinRule;
-import racinggame.ui.RacingGame;
-import racinggame.ui.Rule;
+import racinggame.ui.input.ConsoleKeyboard;
+import racinggame.ui.output.ConsolePrinter;
 
 public class Application {
 	public static void main(String[] args) {

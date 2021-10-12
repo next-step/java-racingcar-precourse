@@ -1,7 +1,7 @@
 package racinggame.racingcar;
 
 import racinggame.common.Name;
-import racinggame.ui.Rule;
+import racinggame.racinggame.Rule;
 
 public final class RacingCar {
 	private final Rule rule;

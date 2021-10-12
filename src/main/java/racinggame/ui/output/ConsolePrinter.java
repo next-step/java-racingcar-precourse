@@ -1,4 +1,4 @@
-package racinggame.device.output;
+package racinggame.ui.output;
 
 import racinggame.ui.OutputDevice;
 

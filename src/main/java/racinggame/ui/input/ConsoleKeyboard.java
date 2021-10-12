@@ -1,4 +1,4 @@
-package racinggame.device.input;
+package racinggame.ui.input;
 
 import nextstep.utils.Console;
 import racinggame.ui.InputDevice;

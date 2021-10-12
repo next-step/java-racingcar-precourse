@@ -1,4 +1,4 @@
-package racinggame.ui;
+package racinggame.racinggame;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +11,8 @@ import racinggame.racingcar.RacingCar;
 import racinggame.circuit.RacingCars;
 import racinggame.exception.InvalidNameException;
 import racinggame.rule.WinnerNames;
+import racinggame.ui.InputDevice;
+import racinggame.ui.OutputDevice;
 
 public final class RacingGame {
 	private final InputDevice inputDevice;

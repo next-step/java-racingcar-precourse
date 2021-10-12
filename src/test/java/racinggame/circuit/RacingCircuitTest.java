@@ -19,7 +19,7 @@ import racinggame.racingcar.RacingCar;
 import racinggame.rule.RacingRule;
 import racinggame.rule.WinnerDecisionRule;
 import racinggame.rule.winnerrules.FarAwayWinRule;
-import racinggame.ui.Rule;
+import racinggame.racinggame.Rule;
 
 class RacingCircuitTest {
 	private static final int FORWARD = 4;

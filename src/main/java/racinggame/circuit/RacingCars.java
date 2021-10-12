@@ -13,7 +13,7 @@ public final class RacingCars {
 	}
 
 	/**
-	 * 한 랩의 레이싱을 시작한다.
+	 * 랩 별로 레이싱을 시작한다.
 	 * 레이싱카마다 결과를 반환한다.
 	 *
 	 * @return {@link LapRecords}

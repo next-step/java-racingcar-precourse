@@ -1,4 +1,4 @@
-package racinggame.ui;
+package racinggame.racinggame;
 
 import java.util.ArrayList;
 import java.util.List;

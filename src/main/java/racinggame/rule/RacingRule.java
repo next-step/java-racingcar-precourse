@@ -2,7 +2,7 @@ package racinggame.rule;
 
 import racinggame.circuit.FinalRecord;
 import racinggame.racingcar.Racing;
-import racinggame.ui.Rule;
+import racinggame.racinggame.Rule;
 
 public final class RacingRule implements Rule {
 	private static final int DICE_MIN = 0;

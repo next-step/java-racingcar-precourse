@@ -1,6 +1,6 @@
 package racinggame.circuit;
 
-import racinggame.ui.Circuit;
+import racinggame.racinggame.Circuit;
 
 public class RacingCircuit implements Circuit {
 
