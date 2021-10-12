@@ -4,20 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import racinggame.exception.UnsatisfiedMinimumValueException;
 import racinggame.functional.ForwardMoveRule;
 import racinggame.functional.RandomForwardMoveRule;
 
 public class Round {
-	private static final int MIN_OF_ROUND_COUNT = 0;
-
 	private final Cars cars;
-	private final int count;
+	private final RaceCount raceCount;
 
 	private Round(Cars cars, int count) {
-		checkValidRaceCountValue(count);
+		this(cars, new RaceCount(count));
+	}
+
+	private Round(Cars cars, RaceCount raceCount) {
 		this.cars = cars;
-		this.count = count;
+		this.raceCount = raceCount;
 	}
 
 	public static Round createNew(String carNames, int count) {
@@ -32,17 +32,11 @@ public class Round {
 
 	public Round startRacingCars() {
 		ForwardMoveRule forwardMoveRule = new RandomForwardMoveRule();
-		return new Round(cars.startRace(forwardMoveRule), count - 1);
+		return new Round(cars.startRace(forwardMoveRule), raceCount.decrease());
 	}
 
 	public boolean isRemainingCount() {
-		return count > MIN_OF_ROUND_COUNT;
-	}
-
-	private void checkValidRaceCountValue(int count) {
-		if (count < MIN_OF_ROUND_COUNT) {
-			throw new UnsatisfiedMinimumValueException(MIN_OF_ROUND_COUNT);
-		}
+		return raceCount.isRemainingCount();
 	}
 
 	@Override
@@ -52,19 +46,19 @@ public class Round {
 		if (o == null || getClass() != o.getClass())
 			return false;
 		Round that = (Round)o;
-		return count == that.count && Objects.equals(cars, that.cars);
+		return raceCount == that.raceCount && Objects.equals(cars, that.cars);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(cars, count);
+		return Objects.hash(cars, raceCount);
 	}
 
 	@Override
 	public String toString() {
 		return "RacingGame{" +
 			"cars=" + cars +
-			", raceCount=" + count +
+			", raceCount=" + raceCount +
 			'}';
 	}
 }
