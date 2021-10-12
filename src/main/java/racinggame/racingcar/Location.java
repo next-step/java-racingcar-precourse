@@ -5,14 +5,14 @@ import static racinggame.racingcar.Racing.*;
 import java.util.Objects;
 
 public class Location {
-	private int location = 0;
+	private int location;
 
 	public Location(int location) {
 		this.location = location;
 	}
 
-	public void forward() {
-		location += FORWARD.movable();
+	public Location forward() {
+		return new Location(location + FORWARD.movable());
 	}
 
 	public int valueOf (){

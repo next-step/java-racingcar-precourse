@@ -15,22 +15,21 @@ public final class RacingCar {
 		this.name = new Name(name);
 	}
 
-	public void pushPedal() {
-		move(rollDice());
+	public LapRecord pushPedal() {
+		Location location = move(rollDice());
+
+		return new LapRecord(name, location);
 	}
 
 	private int rollDice() {
 		return dice.roll();
 	}
 
-	private void move(int diceValue) {
+	private Location move(int diceValue) {
 		Racing next = rule.drive(diceValue);
 		if(next == Racing.FORWARD){
-			location.forward();
+			this.location = location.forward();
 		}
-	}
-
-	public LapRecord record() {
-		return new LapRecord(name, location);
+		return new Location(location.valueOf());
 	}
 }

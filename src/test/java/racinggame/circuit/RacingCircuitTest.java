@@ -38,7 +38,7 @@ class RacingCircuitTest {
 		racingCars = new RacingCars(
 			Arrays.asList(
 				new RacingCar("abc1", dice, rule),
-				new RacingCar("abc1", dice, rule)
+				new RacingCar("abc2", dice, rule)
 			)
 		);
 	}

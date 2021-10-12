@@ -32,13 +32,12 @@ class RacingCarTest {
 			//given
 			mockRandoms.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
 				.thenReturn(diceValue);
-			LapRecord pastLapRecord = racingCar.record();
+			LapRecord pastLapRecord = new LapRecord(new Name("abc"), new Location(0));
 
 			//when
-			racingCar.pushPedal();
+			LapRecord currentLapRecord = racingCar.pushPedal();
 
 			//then
-			LapRecord currentLapRecord = racingCar.record();
 			assertThat(currentLapRecord.getScore()).isEqualTo(pastLapRecord.getScore() + 1);
 		}
 	}
@@ -52,13 +51,12 @@ class RacingCarTest {
 			mockRandoms.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
 				.thenReturn(diceValue);
 
-			LapRecord pastLapRecord = racingCar.record();
+			LapRecord pastLapRecord = new LapRecord(new Name("abc"), new Location(0));
 
 			//when
-			racingCar.pushPedal();
+			LapRecord currentLabRecord = racingCar.pushPedal();
 
 			//then
-			LapRecord currentLabRecord = racingCar.record();
 			assertThat(currentLabRecord.getScore()).isEqualTo(pastLapRecord.getScore());
 		}
 	}

@@ -2,6 +2,7 @@ package racinggame.circuit;
 
 import java.util.List;
 
+import racinggame.racingcar.LapRecord;
 import racinggame.racingcar.RacingCar;
 
 public final class RacingCars {
@@ -14,8 +15,8 @@ public final class RacingCars {
 	public LapRecords run() {
 		LapRecords lapRecords = new LapRecords();
 		racingCars.forEach(car -> {
-			car.pushPedal();
-			lapRecords.add(car.record());
+			LapRecord record = car.pushPedal();
+			lapRecords.add(record);
 		});
 
 		return lapRecords;
