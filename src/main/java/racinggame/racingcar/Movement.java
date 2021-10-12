@@ -1,20 +1,20 @@
 package racinggame.racingcar;
 
-public enum Racing {
+public enum Movement {
 	STOP(0), FORWARD(1);
 
-	private final int value;
+	private final int distance;
 
-	Racing(int value) {
-		this.value = value;
+	Movement(int distance) {
+		this.distance = distance;
 	}
 
 	/**
 	 * 상태별 이동 가능한 거리를 반환한다.
 	 *
-	 * @return
+	 * @return distance
 	 */
 	public int movable() {
-		return this.value;
+		return this.distance;
 	}
 }

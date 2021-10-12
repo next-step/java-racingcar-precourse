@@ -1,6 +1,6 @@
 package racinggame.racingcar;
 
-import static racinggame.racingcar.Racing.*;
+import static racinggame.racingcar.Movement.*;
 
 import java.util.Objects;
 

@@ -1,7 +1,7 @@
 package racinggame.racinggame;
 
 import racinggame.circuit.FinalRecord;
-import racinggame.racingcar.Racing;
+import racinggame.racingcar.Movement;
 import racinggame.rule.WinnerNames;
 
 public interface Rule {
@@ -9,7 +9,7 @@ public interface Rule {
 
 	int diceMin();
 
-	Racing drive(int diceValue);
+	Movement drive(int diceValue);
 
 	WinnerNames judgeWinners(FinalRecord finalRecord);
 }

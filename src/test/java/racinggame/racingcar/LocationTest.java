@@ -1,7 +1,7 @@
 package racinggame.racingcar;
 
 import static org.assertj.core.api.Assertions.*;
-import static racinggame.racingcar.Racing.*;
+import static racinggame.racingcar.Movement.*;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

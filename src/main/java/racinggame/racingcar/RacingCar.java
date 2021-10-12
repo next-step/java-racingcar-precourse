@@ -32,9 +32,9 @@ public final class RacingCar {
 	}
 
 	private Location move(int diceValue) {
-		Racing next = rule.drive(diceValue);
+		Movement next = rule.drive(diceValue);
 
-		if (next == Racing.FORWARD) {
+		if (next == Movement.FORWARD) {
 			this.location = location.forward();
 		}
 

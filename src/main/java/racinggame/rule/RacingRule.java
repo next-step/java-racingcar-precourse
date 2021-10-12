@@ -1,7 +1,7 @@
 package racinggame.rule;
 
 import racinggame.circuit.FinalRecord;
-import racinggame.racingcar.Racing;
+import racinggame.racingcar.Movement;
 import racinggame.racinggame.Rule;
 
 public final class RacingRule implements Rule {
@@ -26,11 +26,11 @@ public final class RacingRule implements Rule {
 	}
 
 	@Override
-	public Racing drive(int diceValue) {
+	public Movement drive(int diceValue) {
 		if (diceValue >= DICE_MIN && diceValue <= JUDGE_VALUE) {
-			return Racing.STOP;
+			return Movement.STOP;
 		}
-		return Racing.FORWARD;
+		return Movement.FORWARD;
 	}
 
 	@Override
