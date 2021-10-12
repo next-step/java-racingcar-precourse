@@ -13,10 +13,10 @@ public class RaceRecords {
         if (this.raceRecords == null) {
             return;
         }
-
+        StringBuilder message = new StringBuilder();
         for (RaceRecord raceRecord : raceRecords) {
-            raceRecord.report();
+            message.append(raceRecord.reportMessage());
         }
-        System.out.println();
+        System.out.println(message);
     }
 }
