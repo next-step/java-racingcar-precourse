@@ -1,12 +1,13 @@
 package racinggame.domain;
 
 import nextstep.utils.Randoms;
+import racinggame.ui.ResultView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Cars{
+public class Cars {
 
     private static final String DELIMITER = ",";
 
@@ -23,6 +24,7 @@ public class Cars{
         this.cars = cars;
     }
 
+
     private void move() {
         for (int index = 0; index < cars.size(); index++) {
             getCar(index).move(getRandomNumber());
@@ -32,6 +34,7 @@ public class Cars{
     public void gameStart(int attemptCount) {
         for (int count = 0; count < attemptCount; count++) {
             move();
+            ResultView.lineBreak();
         }
     }
 
