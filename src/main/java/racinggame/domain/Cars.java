@@ -2,10 +2,8 @@ package racinggame.domain;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
@@ -36,29 +34,6 @@ public class Cars {
 		}
 
 		return names;
-	}
-
-	public Map<Position, Cars> getSamePositionCarsGroup() {
-		Map<Position, Cars> positionGroups = new HashMap<>();
-		for (Car car : values) {
-			Position position = car.getPosition();
-			Cars sameDistanceCars = positionGroups.getOrDefault(position, new Cars(Collections.emptyList()));
-
-			List<Car> mergedValues = new ArrayList<>(sameDistanceCars.values);
-			mergedValues.add(car);
-
-			positionGroups.put(position, new Cars(mergedValues));
-		}
-		return positionGroups;
-	}
-
-	public Position getMaxPosition() {
-		Position maxPosition = Position.createMinPosition();
-		for (Position position : getSamePositionCarsGroup().keySet()) {
-			maxPosition = position.getMaxPosition(maxPosition);
-		}
-
-		return maxPosition;
 	}
 
 	public List<Car> getValues() {

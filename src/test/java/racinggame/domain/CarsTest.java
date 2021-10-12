@@ -1,12 +1,9 @@
 package racinggame.domain;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -63,43 +60,5 @@ class CarsTest {
 		// then
 		assertThat(carNames)
 			.containsExactly(gmoon, guest);
-	}
-
-	@Test
-	@DisplayName("거리끼리 그룹화하여 Map 타입을 반환한다.")
-	void getSamePositionCarsGroup() {
-		// given
-		Car gmoon = Car.createNew("gmoon").moveOrStop(ForwardMoveRule.alwaysForwardMove());
-		Car guest = Car.createNew("guest");
-		Cars cars = new Cars(Arrays.asList(gmoon, guest));
-
-		// when
-		Map<Position, Cars> positionCarsGroup = cars.getSamePositionCarsGroup();
-
-		// then
-		assertAll(
-			() -> assertThat(positionCarsGroup)
-				.containsEntry(Position.createMinPosition(), new Cars(Collections.singletonList(guest))),
-			() -> assertThat(positionCarsGroup)
-				.containsEntry(new Position(1), new Cars(Collections.singletonList(gmoon)))
-		);
-	}
-
-	@Test
-	@DisplayName("자동차들의 거리중 최대 거리를 반환한다.")
-	void getMaxPosition() {
-		// given
-		Car gmoon = Car.createNew("gmoon")
-			.moveOrStop(ForwardMoveRule.alwaysForwardMove())
-			.moveOrStop(ForwardMoveRule.alwaysForwardMove());
-		Car guest = Car.createNew("guest");
-
-		Cars cars = new Cars(Arrays.asList(gmoon, guest));
-
-		// when
-		Position maxPosition = cars.getMaxPosition();
-
-		// then
-		assertThat(maxPosition).isEqualTo(new Position(2));
 	}
 }

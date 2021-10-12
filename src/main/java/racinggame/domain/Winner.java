@@ -1,7 +1,6 @@
 package racinggame.domain;
 
 import java.util.List;
-import java.util.Map;
 
 import racinggame.utils.CollectionUtils;
 
@@ -21,9 +20,9 @@ public class Winner {
 	}
 
 	private Cars getWinners(Cars cars) {
-		Map<Position, Cars> positionCarsGroup = cars.getSamePositionCarsGroup();
+		PositionCarsGroup group = PositionCarsGroup.from(cars);
 
-		Position winnerPosition = cars.getMaxPosition();
-		return positionCarsGroup.get(winnerPosition);
+		Position winnerPosition = group.getMaxPosition();
+		return group.getCars(winnerPosition);
 	}
 }
