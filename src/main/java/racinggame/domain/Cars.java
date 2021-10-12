@@ -21,7 +21,13 @@ public class Cars {
         return carList.size();
     }
 
-    public void moveForwardOrStop(int idx, MoveStatus moveStatus) {
+    public void moveForwardOrStop() {
+        for (int idx = 0; idx < carList.size(); idx++) {
+            moveForwardOrStop(idx, MoveStatus.createRandom());
+        }
+    }
+
+    void moveForwardOrStop(int idx, MoveStatus moveStatus) {
         carList.get(idx).moveForwardOrStop(moveStatus);
     }
 
