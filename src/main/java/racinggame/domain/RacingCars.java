@@ -50,4 +50,8 @@ public class RacingCars {
     public RaceResults results() {
         return new RaceResults(racingCars);
     }
+
+    public List<RacingCar> getRacingCars() {
+        return racingCars;
+    }
 }
