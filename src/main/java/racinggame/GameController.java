@@ -11,6 +11,7 @@ public class GameController {
 
 	public void start() {
 		inputGameInfo();
+		playGame();
 	}
 
 	private void inputGameInfo() {
