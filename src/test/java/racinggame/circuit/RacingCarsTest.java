@@ -49,7 +49,7 @@ class RacingCarsTest {
 			LapRecords lapRecords = racingCars.run();
 
 			//then
-			System.out.println(lapRecords.write());
+			System.out.println(lapRecords.read());
 			Assertions.assertThat(lapRecords).isEqualTo(expected);
 		}
 	}
@@ -72,7 +72,7 @@ class RacingCarsTest {
 			LapRecords lapRecords = racingCars.run();
 
 			//then
-			Assertions.assertThat(lapRecords.write()).isEqualTo(expected);
+			Assertions.assertThat(lapRecords.read()).isEqualTo(expected);
 		}
 	}
 

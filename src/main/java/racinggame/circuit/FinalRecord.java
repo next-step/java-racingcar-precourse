@@ -15,7 +15,7 @@ public final class FinalRecord {
 		StringBuilder finalRecordBuilder = new StringBuilder();
 
 		for (LapRecords record : allRecords) {
-			finalRecordBuilder.append(record.write());
+			finalRecordBuilder.append(record.read());
 		}
 
 		return finalRecordBuilder.toString();

@@ -13,11 +13,11 @@ public final class LapRecords {
 		lapRecords.add(lapRecord);
 	}
 
-	public String write() {
+	public String read() {
 		StringBuilder lapRecordBuilder = new StringBuilder();
 
 		for (LapRecord record : lapRecords) {
-			lapRecordBuilder.append(record.write());
+			lapRecordBuilder.append(record.read());
 		}
 		lapRecordBuilder.append("\n");
 

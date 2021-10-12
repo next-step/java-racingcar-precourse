@@ -17,7 +17,7 @@ public class LapRecord {
 		return name.valueOf();
 	}
 
-	public String write() {
+	public String read() {
 		return new StringBuilder()
 			.append(name.valueOf())
 			.append(" : ")
