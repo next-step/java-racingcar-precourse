@@ -8,6 +8,7 @@ public class ErrorMessage {
     private static final String NOT_NULL_GAME_END_POINT_MESSAGE = " 차 이름을 입력 해 주세요.";
     private static final String NOT_NUMBER_GAME_END_POINT_MESSAGE = " 입력한 시도 횟수가 숫자가 아닙니다. ";
     private static final String NO_SUCH_ELEMENT_MESSAGE = " 입력 오류가 있습니다. ";
+    private static final String NOT_NULL_RACE_MANAGER_MESSAGE = " 설정 오류가 있습니다. raceManager";
 
     private ErrorMessage() {
 
@@ -43,6 +44,12 @@ public class ErrorMessage {
 
     public static String printNoSuchElementMessage() {
         String message = ERROR_TITLE + NO_SUCH_ELEMENT_MESSAGE;
+        System.out.println(message);
+        return message;
+    }
+
+    public static String printNotNullRaceManager() {
+        String message = ERROR_TITLE + NOT_NULL_RACE_MANAGER_MESSAGE;
         System.out.println(message);
         return message;
     }

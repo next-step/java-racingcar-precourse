@@ -1,5 +1,7 @@
 package racinggame;
 
+import java.util.NoSuchElementException;
+
 public class RaceManager {
     private static RaceManager raceManager;
     private RaceManagerCurrentCount raceManagerCurrentCount;
@@ -24,7 +26,7 @@ public class RaceManager {
 
     public static RaceManager getInstance() {
         if (raceManager == null) {
-            // exception 메시지
+            throw new NoSuchElementException(ErrorMessage.printNotNullRaceManager());
         }
 
         return raceManager;
