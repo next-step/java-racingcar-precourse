@@ -2,7 +2,12 @@ package racinggame;
 
 public class Car {
     private static final int MIN_GAS_POINT_FOR_MOVING_FORWARD = 4;
+    private final String name;
     private int position;
+
+    public Car(String name) {
+        this.name = name;
+    }
 
     public void move(int gasPoint) {
         if (canMove(gasPoint)) {
