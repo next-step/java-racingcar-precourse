@@ -29,4 +29,19 @@ public class RaceResults {
     public List<RaceResult> getRaceResults() {
         return raceResults;
     }
+
+    public Winners judgeWinners() {
+        List<Winner> winners = new ArrayList<>();
+        int leadDistance = calculateLeadDistance();
+        for (RaceResult raceResult : getRaceResults()) {
+            addWinner(winners, raceResult, leadDistance);
+        }
+        return new Winners(winners);
+    }
+
+    private void addWinner(List<Winner> winners, RaceResult raceResult, int leadDistance) {
+        if (raceResult.isLeadRacer(leadDistance)) {
+            winners.add(new Winner(raceResult.getName()));
+        }
+    }
 }
