@@ -16,7 +16,7 @@ class RoundTest {
 
 	@BeforeEach
 	void setUp() {
-		List<Car> list = Arrays.asList(new Car("gmoon"), new Car("guest"));
+		List<Car> list = Arrays.asList(Car.createNew("gmoon"), Car.createNew("guest"));
 		cars = new Cars(list);
 	}
 

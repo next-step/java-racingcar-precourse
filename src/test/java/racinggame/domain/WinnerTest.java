@@ -15,9 +15,9 @@ class WinnerTest {
 	void getNames() {
 		// given
 		ForwardMoveRule alwaysForwardMove = ForwardMoveRule.alwaysForwardMove();
-		Car gmoon = new Car("gmoon").moveOrStop(alwaysForwardMove);
-		Car guest = new Car("guest").moveOrStop(alwaysForwardMove);
-		Car kim = new Car("kim");
+		Car gmoon = Car.createNew("gmoon").moveOrStop(alwaysForwardMove);
+		Car guest = Car.createNew("guest").moveOrStop(alwaysForwardMove);
+		Car kim = Car.createNew("kim");
 		Cars cars = new Cars(Arrays.asList(gmoon, guest, kim));
 
 		// when

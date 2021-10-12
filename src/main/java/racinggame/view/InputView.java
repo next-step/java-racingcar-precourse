@@ -24,7 +24,7 @@ public final class InputView {
 			List<String> carNames = CollectionUtils.toList(Console.readLine(), DEFAULT_DELIMITER_OF_CAR_NAME);
 			List<Car> values = new ArrayList<>();
 			for (String name : carNames) {
-				values.add(new Car(name));
+				values.add(Car.createNew(name));
 			}
 			return new Cars(values);
 		} catch (IllegalArgumentException e) {

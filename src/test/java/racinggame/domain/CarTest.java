@@ -12,21 +12,21 @@ class CarTest {
 	@DisplayName("초기 자동차는 지정된 이름으로 생성된다. 위치는 0을 가진다.")
 	void create() {
 		// given
-		Name name = new Name("gmoon");
+		Car car = Car.createNew("gmoon");
 
 		// when
-		Car car = new Car(name, Position.createMinPosition());
+		Position position = car.getPosition();
 
 		// then
-		assertThat(car).isNotNull()
-			.isEqualTo(new Car("gmoon"));
+		assertThat(position)
+			.isEqualTo(Position.createMinPosition());
 	}
 
 	@Test
 	@DisplayName("자동차는 앞으로 전진할 수 있다.")
 	void move() {
 		// given
-		Car car = new Car("gmoon");
+		Car car = Car.createNew("gmoon");
 		ForwardMoveRule alwaysForwardMove = ForwardMoveRule.alwaysForwardMove();
 
 		// when
@@ -36,7 +36,7 @@ class CarTest {
 		car = car.moveOrStop(alwaysForwardMove);
 
 		// then
-		assertThat(car)
-			.isEqualTo(new Car(new Name("gmoon"), new Position(4)));
+		assertThat(car.getPosition())
+			.isEqualTo(new Position(4));
 	}
 }

@@ -23,7 +23,7 @@ class InputViewTest {
 				.thenReturn("이름 길이가 5를 초과한 경우", "123456", "gmoon");
 
 			assertThat(InputView.getCars())
-				.isEqualTo(new Cars(Collections.singletonList(new Car("gmoon"))));
+				.isEqualTo(new Cars(Collections.singletonList(Car.createNew("gmoon"))));
 		}
 	}
 

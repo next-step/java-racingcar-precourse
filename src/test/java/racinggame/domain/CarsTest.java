@@ -17,7 +17,7 @@ class CarsTest {
 	void create_error() {
 		// given
 		String name = "gmoon";
-		List<Car> duplicatedNameCars = Arrays.asList(new Car(name), new Car(name));
+		List<Car> duplicatedNameCars = Arrays.asList(Car.createNew(name), Car.createNew(name));
 
 		// when
 
@@ -32,8 +32,8 @@ class CarsTest {
 	void startRace() {
 		// given
 		ForwardMoveRule alwaysForwardMove = ForwardMoveRule.alwaysForwardMove();
-		Car gmoon = new Car("gmoon");
-		Car guest = new Car("guest");
+		Car gmoon = Car.createNew("gmoon");
+		Car guest = Car.createNew("guest");
 
 		// when
 		Cars actual = new Cars(Arrays.asList(gmoon, guest))
@@ -52,7 +52,7 @@ class CarsTest {
 		// given
 		String gmoon = "gmoon";
 		String guest = "guest";
-		Cars cars = new Cars(Arrays.asList(new Car(gmoon), new Car(guest)));
+		Cars cars = new Cars(Arrays.asList(Car.createNew(gmoon), Car.createNew(guest)));
 
 		// when
 		List<Name> carNames = cars.getCarNames();
