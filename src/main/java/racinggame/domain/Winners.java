@@ -5,7 +5,7 @@ import java.util.Comparator;
 import java.util.List;
 
 public class Winners {
-    List<Winner> winners;
+    private List<Winner> winners;
 
     public Winners(List<Winner> winners) {
         initWinners(winners);
@@ -25,12 +25,16 @@ public class Winners {
         System.out.println("최종 우승자는 " + winnersName + " 입니다.");
     }
 
-    private String getWinnersName() {
+    public String getWinnersName() {
         StringBuilder sb = new StringBuilder();
         for (Winner winner : winners) {
             sb.append(winner.getName())
                     .append(" ");
         }
         return sb.toString().trim().replaceAll(" ", ",");
+    }
+
+    public List<Winner> getWinners() {
+        return winners;
     }
 }
