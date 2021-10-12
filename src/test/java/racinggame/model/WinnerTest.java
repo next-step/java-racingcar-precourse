@@ -1,7 +1,6 @@
 package racinggame.model;
 
 import org.junit.jupiter.api.Test;
-import racinggame.model.Cars.Cars;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 

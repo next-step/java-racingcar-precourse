@@ -1,12 +1,12 @@
 package racinggame.model;
 
 import racinggame.model.Car.Car;
-import racinggame.model.Cars.Cars;
 
 import java.util.List;
 import java.util.StringJoiner;
 
 public class Winner {
+  public static final String WINNER_MSG = "최종 우승자는 %s 입니다.";
   List<Car> winners;
 
   public Winner(Cars cars) {
@@ -22,6 +22,6 @@ public class Winner {
     for (Car car : winners) {
       sj.add(car.getName().toString());
     }
-    return String.format("최종 우승자는 %s 입니다.", sj);
+    return String.format(WINNER_MSG, sj);
   }
 }
