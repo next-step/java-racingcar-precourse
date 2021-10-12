@@ -6,8 +6,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
 
-import java.util.Arrays;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mockStatic;
@@ -18,7 +16,7 @@ public class RaceResultTest {
 
     @BeforeEach
     void setup() {
-        cars = new Cars(Arrays.asList("a", "b", "c"));
+        cars = new Cars("a,b,c");
     }
 
     @AfterEach

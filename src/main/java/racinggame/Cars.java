@@ -8,16 +8,18 @@ import java.util.List;
 public class Cars {
     private static final int START_NUM_IN_RANGE = 0;
     private static final int END_NUM_IN_RANGE = 9;
+    private static final String CARS_NAME_DELIMITER = ",";
 
     private final List<Car> cars;
     private final List<String> winnersName;
 
-    public Cars(List<String> carsStr) {
-        this.cars = generateCars(carsStr);
+    public Cars(String carsName) {
+        this.cars = generateCars(carsName);
         this.winnersName = new ArrayList<>();
     }
 
-    private List<Car> generateCars(List<String> carsStr) {
+    private List<Car> generateCars(String carsName) {
+        String[] carsStr = carsName.split(CARS_NAME_DELIMITER);
         List<Car> cars = new ArrayList<>();
         for (String carStr: carsStr) {
             cars.add(new Car(carStr));

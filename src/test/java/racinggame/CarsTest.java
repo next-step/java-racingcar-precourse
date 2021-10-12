@@ -5,8 +5,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
 
-import java.util.Arrays;
-
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyInt;
@@ -17,7 +15,7 @@ public class CarsTest {
 
     @BeforeEach
     void setup() {
-        cars = new Cars(Arrays.asList("a", "b", "c"));
+        cars = new Cars("a,b,c");
     }
 
     @Test
@@ -86,5 +84,13 @@ public class CarsTest {
             assertThat(cars.getCars().get(1).getMoveCount()).isEqualTo(1);
             assertThat(cars.getCars().get(2).getMoveCount()).isEqualTo(0);
         }
+    }
+
+    @Test
+    void cars_이름_5자_이상_테스트2() {
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> {
+                    Cars cars = new Cars("dsaklfjdsalkjf,fdkldsajfldkasj");
+                }).withMessageContaining("5자를 초과");
     }
 }
