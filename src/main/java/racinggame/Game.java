@@ -10,7 +10,7 @@ import racinggame.utils.Message;
 public class Game {
     private static final Message ASK_NAMES_MESSAGE = new Message("경주할 자동차 이름을 입력하세요. (이름은 쉼표(,) 기준으로 구분)");
     private static final Message ASK_ATTEMPT_NUMBER_MESSAGE = new Message("시도할 회수는 몇회인가요?");
-
+    private static final Message RESULT_START_MESSAGE = new Message("\n실행결과");
     private final Player player;
 
     public Game(Player player) {
@@ -18,7 +18,10 @@ public class Game {
     }
 
     public void start() {
-        Winners winners = race(getValidCars(), getValidAttemptNumber());
+        RacingCars racingCars = getValidCars();
+        AttemptNumber attemptNumber = getValidAttemptNumber();
+        RESULT_START_MESSAGE.print();
+        Winners winners = race(racingCars, attemptNumber);
         winners.makeWinnersMessage().print();
     }
 
