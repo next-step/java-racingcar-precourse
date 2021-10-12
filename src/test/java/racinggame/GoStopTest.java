@@ -9,8 +9,7 @@ public class GoStopTest {
     @Test
     void 전진_정지() {
         Car car = new Car();
-        boolean go = car.goStopCheck(4);
-        assertThat(go).isTrue();
-
+        assertThat(car.goStopCheck(4)).isEqualTo("-");
+        assertThat(car.goStopCheck(3)).isEqualTo("");
     }
 }

@@ -1,12 +1,48 @@
 package racinggame;
 
 public class Car {
+    public static final int MIN_NO = 1;
+    public static final int MAX_NO = 9;
     public static final int GO_STOP_NUM = 4;
 
-    public boolean goStopCheck(int goStopNum) {
+    private String carName = "";
+    private String goSize = "";
+
+    public String goStopCheck(int goStopNum) {
         if(goStopNum >= GO_STOP_NUM){
-            return true;
+            setGoSize("-");
+            return "-";
         }
-        return false;
+        return "";
     }
+
+    public boolean validNumCheck(int no){
+        if(no < MIN_NO || no > MAX_NO ){
+            throw new IllegalArgumentException("[ERROR]");
+        }
+        return true;
+    }
+
+    public void setCarName(String carName){
+        this.carName = carName;
+    }
+
+    public String getCarName(){
+        return this.carName;
+    }
+
+    public void setGoSize(String goSize){
+        this.goSize = goSize;
+    }
+
+    public String getGoSize(){
+        return this.goSize;
+    }
+
+    public void addGoSize(){
+        String go_size = this.getGoSize();
+        go_size+="=";
+        setGoSize(go_size);
+    }
+
 }
