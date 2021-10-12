@@ -36,7 +36,7 @@ public class RacingGame {
 
     private void end() {
         RaceResults raceResults = racingCars.results();
-        Winners winners = new Winners(raceResults);
+        Winners winners = raceResults.judgeWinners();
         winners.report();
     }
 }
