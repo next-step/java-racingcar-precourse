@@ -72,4 +72,20 @@ public class CarsTest {
 			assertThat(cars.getWinners()).isEqualTo(Collections.singletonList(cars.get(2)));
 		}
 	}
+
+	@Test
+	@DisplayName("현재 결과 반환하기")
+	void getPlayResult() {
+		try (MockedStatic<Randoms> mockedStatic = mockStatic(Randoms.class)) {
+			mockedStatic.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
+				.thenReturn(6, 0, 6);
+
+			cars = Cars.createByNames("pobi,crong,honux");
+			PlayResult result = cars.play();
+
+			assertThat(result.get(0)).isEqualTo("pobi : -");
+			assertThat(result.get(1)).isEqualTo("crong : ");
+			assertThat(result.get(2)).isEqualTo("honux : -");
+		}
+	}
 }

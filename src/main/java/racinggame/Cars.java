@@ -2,6 +2,7 @@ package racinggame;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 public class Cars {
@@ -28,10 +29,13 @@ public class Cars {
 		return this.cars.isEmpty();
 	}
 
-	public void play() {
+	public PlayResult play() {
+		PlayResult playResult = new PlayResult();
 		for (Car car : cars) {
 			car.play();
+			playResult.addResult(car.getName(), car.getPosition());
 		}
+		return playResult;
 	}
 
 	public Car get(int index) {
