@@ -2,6 +2,7 @@ package racinggame.model;
 
 public class RacingCar{
     private String carName;
+    private int currentMove;
 
     public RacingCar() {
     }

@@ -24,4 +24,11 @@ public class RacingCarTest {
         assertThat(racingCar.getCarName()== testCarName);
     }
 
+    @DisplayName("차랜덤무브범위확인")
+    @Test
+    void checkMoveRange(){
+        racingCar.setCurrentMove();
+        int currentMove = racingCar.getCurrentMove();
+        assertThat(currentMove>=0 && currentMove <=9);
+    }
 }
