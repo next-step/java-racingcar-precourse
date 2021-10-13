@@ -5,14 +5,13 @@ public class Car {
 	private static final int MIN_DISTANCE_MOVE = 4;
 	private static final int MAX_DISTANCE_MOVE = 9;
 	private static final int INIT_CAR_DISTANCE = 0;
-	private static final int ADD_CAR_DISTANCE = 1;
 
 	private final CarName name;
-	private CarDistiance distance;
+	private Distance distance;
 
 	public Car(String name) {
 		this.name = new CarName(name);
-		this.distance = new CarDistiance(INIT_CAR_DISTANCE);
+		this.distance = new Distance(INIT_CAR_DISTANCE);
 	}
 
 	public String getName() {
@@ -21,7 +20,7 @@ public class Car {
 
 	public void move(int number) {
 		if (isMove(number)) {
-			this.distance = this.distance.move(ADD_CAR_DISTANCE);
+			this.distance = this.distance.move();
 		}
 	}
 
@@ -30,7 +29,7 @@ public class Car {
 	}
 
 	public int getDistance() {
-		return this.distance.getDistiance();
+		return this.distance.getDistance();
 	}
 
 }
