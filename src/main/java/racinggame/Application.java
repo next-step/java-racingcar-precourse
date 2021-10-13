@@ -1,11 +1,28 @@
 package racinggame;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Application {
     public static void main(String[] args) {
-
         String[] carNames = inputCarNames();
         int racingTime = inputRacingTime();
+        Cars cars = new Cars(makeRacingCars(carNames));
+        MoveNums moveNums = new MoveNums(cars);
 
+        CarRacing carRacing = new CarRacing(cars, moveNums, racingTime);
+        carRacing.start();
+        if(carRacing.isFinish()) {
+            OutputView.racingWinner(carRacing.winner());
+        }
+    }
+
+    private static List<Car> makeRacingCars(String[] carNames) {
+        List<Car> cars = new ArrayList<>();
+        for(String carName : carNames) {
+            cars.add(new Car(carName));
+        }
+        return cars;
     }
 
     private static int inputRacingTime() {

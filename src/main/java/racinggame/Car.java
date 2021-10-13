@@ -24,6 +24,10 @@ public class Car {
     return CarMoveStatus.FORWARD;
   }
 
+  public String getCarName() {
+    return carName;
+  }
+
   public int getCountForward() {
     return countForward;
   }
