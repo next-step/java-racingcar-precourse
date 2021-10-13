@@ -4,15 +4,25 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class RacingCars {
-    private List<RacingCar> racingCars;
+import static racinggame.utils.RacingGameUtils.racingCarNameSplit;
 
-    public RacingCars(List<RacingCar> racingCars) {
-        this.racingCars = racingCars;
+public class RacingCars {
+    private final List<RacingCar> racingCars;
+
+    public RacingCars(final String racingCarNameInput) {
+        this.racingCars = getRacingCarList(racingCarNameInput);
     }
 
     public List<RacingCar> getRacingCars() {
         return racingCars;
+    }
+
+    public List<RacingCar> getRacingCarList(final String racingCarNameInput) {
+        List<RacingCar> racingCarList = new ArrayList<>();
+        for (String racingCarName : racingCarNameSplit(racingCarNameInput)) {
+            racingCarList.add(new RacingCar(racingCarName));
+        }
+        return racingCarList;
     }
 
     public int getMaxMovesCount() {
@@ -23,29 +33,18 @@ public class RacingCars {
     }
 
     public List<RacingCar> getWinners() {
+        int maxMovesCount = getMaxMovesCount();
         List<RacingCar> winners = new ArrayList<>();
+
         racingCars.forEach(racingCar -> {
-            if (getMaxMovesCount() == racingCar.getMovesCount()) {
-                winners.add(racingCar);
-            }
+            isWinner(maxMovesCount, racingCar, winners);
         });
         return winners;
     }
 
-    public StringBuilder getWinnersRacingCarName() {
-        StringBuilder racingGameResult = new StringBuilder();
-        getWinners().forEach(racingCar -> {
-            racingGameResult.append(racingCar.getRacingCarName()).append(",");
-        });
-        return racingGameResult.replace(racingGameResult.length() - 1, racingGameResult.length(), " ");
-    }
-
-    @Override
-    public String toString() {
-        return new StringBuilder()
-                .append("최종 우승자는 ")
-                .append(getWinnersRacingCarName())
-                .append("입니다.")
-                .toString();
+    private void isWinner(int maxMovesCount, RacingCar racingCar, List<RacingCar> winners) {
+        if (maxMovesCount == racingCar.getMovesCount()) {
+            winners.add(racingCar);
+        }
     }
 }
