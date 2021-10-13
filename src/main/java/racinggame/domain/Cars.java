@@ -1,5 +1,7 @@
 package racinggame.domain;
 
+import racinggame.service.MovingStrategy;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,5 +40,11 @@ public class Cars {
             winnerPosition = Math.max(winnerPosition, car.getPosition());
         }
         return winnerPosition;
+    }
+
+    public void race(MovingStrategy movingStrategy) {
+        for (Car car : cars) {
+            car.move(movingStrategy);
+        }
     }
 }
