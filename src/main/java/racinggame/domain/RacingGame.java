@@ -1,64 +1,73 @@
 package racinggame.domain;
 
-import java.util.ArrayList;
-
 public class RacingGame {
     private final Cars cars;
-    private int raceNum;
-    private int maxGoCount;
-    private ArrayList<Car> winners;
+    private final RaceNum raceNum;
+    private AllRaceStates allRaceStates;
+    private MaxGoCount maxGoCount;
+    private Winners winners;
 
-    public RacingGame(ArrayList<String> carNames, int raceNum) {
+    public RacingGame(CarNames carNames, RaceNum raceNum) {
         this.cars = new Cars(carNames);
         this.raceNum = raceNum;
         setGameResult();
     }
 
-    public int getMaxGoCount() {
+    public MaxGoCount getMaxGoCount() {
         return maxGoCount;
     }
 
-    public ArrayList<Car> getWinners() {
+    public AllRaceStates getAllRaceStates() {
+        return allRaceStates;
+    }
+
+    public Winners getWinners() {
         return winners;
     }
 
-    private void setMaxGoCount() {
+    public RaceStates getRaceStates() {
+        RaceStates raceStates = new RaceStates();
         for (Car car : cars.getCars()) {
-            maxGoCount = Math.max(maxGoCount, car.getGoCount());
+            CarMovement currentCarMovement = new CarMovement(car.getCarMovements());
+            Car currentCar = new Car(car.getCarName(), currentCarMovement, car.getGoCount());
+            raceStates.add(currentCar);
+            setMaxGoCount(car.getGoCount());
+        }
+        return raceStates;
+    }
+
+    private void setMaxGoCount(GoCount goCount) {
+        if (maxGoCount.getMaxGoCount().compareTo(goCount) < 0) {
+            maxGoCount.setMaxGoCount(goCount);
         }
     }
 
     private void setAllRaceStates() {
-        for (int raceIdx = 0; raceIdx < raceNum; raceIdx++) {
+        for (int raceIdx = 0; raceIdx < raceNum.getRaceNum(); raceIdx++) {
             goRace();
         }
     }
 
-    public void setGameResult() {
+    private void setWinners() {
+        for (Car car : cars.getCars()) {
+            winners.addWinners(car, maxGoCount);
+        }
+    }
+
+    private void setGameResult() {
         initializeGame();
         setAllRaceStates();
-        setWinnerNames();
+        setWinners();
     }
 
     private void initializeGame() {
-        maxGoCount = 0;
-        winners = new ArrayList<>();
+        maxGoCount = new MaxGoCount();
+        allRaceStates = new AllRaceStates();
+        winners = new Winners();
     }
 
     private void goRace() {
         cars.moveCars();
-        setMaxGoCount();
-    }
-
-    private void setWinnerNames() {
-        for (Car car : cars.getCars()) {
-            addWinnerName(car);
-        }
-    }
-
-    private void addWinnerName(Car car) {
-        if (car.getGoCount() == maxGoCount) {
-            winners.add(car);
-        }
+        allRaceStates.add(getRaceStates());
     }
 }
