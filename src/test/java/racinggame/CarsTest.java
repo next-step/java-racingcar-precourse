@@ -13,13 +13,13 @@ import racinggame.model.Distance;
 public class CarsTest {
 
 	@Test
-	void 자동차_이름_분할(){
+	void 자동차_이름_분할() {
 		Cars cars = new Cars(Arrays.asList("chang,hyuk,park".split(",")));
 		assertThat(cars.getNumberOfCars()).isEqualTo(3);
 	}
 
 	@Test
-	void 자동차_최대_이동거리(){
+	void 자동차_최대_이동거리() {
 		Distance maximunDistinct = new Distance(3);
 
 		Car oneCar = new Car("chang");
