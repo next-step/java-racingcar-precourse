@@ -32,7 +32,7 @@ public class InputValidatorTest {
 	void 자동차이름빈문자열확인() {
 		String input = "car1,car2,car3,,car4";
 
-		assertThatThrownBy(() -> InputValidator.isEmptyCarName(input))
+		assertThatThrownBy(() -> InputValidator.isEmptyCarName(input.split(",")))
 			.isInstanceOf(IllegalArgumentException.class)
 			.hasMessageContaining("[ERROR]");
 	}
@@ -42,7 +42,17 @@ public class InputValidatorTest {
 	void 중복이릅확인() {
 		String input = "car1,car1,car3,car4";
 
-		assertThatThrownBy(() -> InputValidator.isNonDuplicate(input))
+		assertThatThrownBy(() -> InputValidator.isNonDuplicate(input.split(",")))
+			.isInstanceOf(IllegalArgumentException.class)
+			.hasMessageContaining("[ERROR]");
+	}
+
+	@Test
+	@DisplayName("IllegalArgumentException 발생시킨다")
+	void 참가자글자수확인() {
+		String input = "car1,car2221,car3,car4";
+
+		assertThatThrownBy(() -> InputValidator.isRightNameLength(input.split(",")))
 			.isInstanceOf(IllegalArgumentException.class)
 			.hasMessageContaining("[ERROR]");
 	}
