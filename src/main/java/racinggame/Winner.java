@@ -44,4 +44,13 @@ public class Winner {
         setWinners();
         return winners;
     }
+
+    public void printWinners() {
+        findWinners();
+        if (winners.size() == 0) {
+            System.out.println(Message.NO_WINNER.getMessage());
+            return;
+        }
+        System.out.println("최종 우승자는 " + String.join(",", winners) + " 입니다.");
+    }
 }
