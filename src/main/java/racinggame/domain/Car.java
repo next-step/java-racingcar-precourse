@@ -27,6 +27,11 @@ public class Car {
         return position;
     }
 
+    public void move(MovableStrategy movableStrategy) {
+        if (movableStrategy.movable())
+            this.position = this.position.move();
+    }
+
     public void move() {
         if (getRandomNo() >= MOVING_FORWARD)
             this.position = this.position.move();

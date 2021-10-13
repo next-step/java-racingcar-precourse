@@ -28,26 +28,16 @@ public class CarTest {
     @Test
     @DisplayName(value = "4 이상일 때 전진하는가")
     public void 전진하니() {
-        Car car = new Car(new Name("pobi")) {
-            @Override
-            protected int getRandomNo() {
-                return 4;
-            }
-        };
-        car.move();
+        Car car = new Car(new Name("pobi"));
+        car.move(() -> true);
         assertThat(car.getPosition()).isEqualTo(new Position(1));
     }
 
     @Test
     @DisplayName(value = "3 이하일 때 정지하는가")
     public void 정지하니() {
-        Car car = new Car(new Name("pobi")) {
-            @Override
-            protected int getRandomNo() {
-                return 3;
-            }
-        };
-        car.move();
+        Car car = new Car(new Name("pobi"));
+        car.move(() -> false);
         assertThat(car.getPosition()).isEqualTo(new Position(0));
     }
 }
