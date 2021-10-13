@@ -1,23 +1,23 @@
 package racinggame.domain;
 
+import java.util.ArrayList;
 import java.util.Collections;
-import java.util.SortedMap;
-import java.util.TreeMap;
+import java.util.List;
 
 public class Winner {
-    public SortedMap<String, Integer> winner;
+    public List<String> winner;
     private int winnerCnt;
 
     public Winner(RacingResult racingResult) {
         this.winnerCnt = findWinnerCnt(racingResult);
-        winner = mapWinner(racingResult);
+        winner = findWinner(racingResult);
     }
 
-    public SortedMap<String, Integer> mapWinner(RacingResult racingResult) {
-        SortedMap<String, Integer> resultMap = new TreeMap<>();
+    public List<String> findWinner(RacingResult racingResult) {
+        List<String> resultMap = new ArrayList<>();
         for (int i = 0; i < racingResult.result.size(); i++) {
             if (this.winnerCnt == racingResult.result.get(i).getMoveCnt()) {
-                resultMap.put(racingResult.result.get(i).getCarName(), racingResult.result.get(i).getMoveCnt());
+                resultMap.add(racingResult.result.get(i).getCarName());
             }
         }
         return resultMap;
