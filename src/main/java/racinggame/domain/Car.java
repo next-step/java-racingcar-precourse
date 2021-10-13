@@ -1,12 +1,12 @@
 package racinggame.domain;
 
 import nextstep.utils.Randoms;
+import racinggame.utils.ValidationUtils;
 
 public class Car {
     private static final int MIN_BOUND = 1;
     private static final int MAX_BOUND = 9;
     private static final int MOVING_FORWARD = 4;        // 4 이상 전진 / 3이하 정지
-    private static final int CAR_NAME_MAX_LENGTH = 5;   // 자동차 이름 가능 최대글자수
 
     private final String name;
     private int position = 0;
@@ -14,7 +14,7 @@ public class Car {
     public Car(String name) {
         if (name == null || name.trim().equals(""))
             throw new IllegalArgumentException("자동차 이름이 빈값일 수 없습니다.");
-        if (name.length() > CAR_NAME_MAX_LENGTH)
+        if (!ValidationUtils.validateCarNameLength(name))
             throw new IllegalArgumentException("자동차 이름은 5글자 이하만 가능합니다.");
 
         this.name = name;
