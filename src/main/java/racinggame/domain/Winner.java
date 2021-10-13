@@ -6,22 +6,25 @@ import java.util.TreeMap;
 
 public class Winner {
     public SortedMap<String, Integer> winner;
+    private int winnerCnt;
 
-    public Winner(Result result) {
-        winner = mapWinner(result);
-
+    public Winner(RacingResult racingResult) {
+        this.winnerCnt = findWinnerCnt(racingResult);
+        winner = mapWinner(racingResult);
     }
 
-    public SortedMap<String, Integer> mapWinner(Result result) {
+    public SortedMap<String, Integer> mapWinner(RacingResult racingResult) {
         SortedMap<String, Integer> resultMap = new TreeMap<>();
-        Collections.sort(result.result);
-        int winnerCnt = result.result.get(result.result.size() - 1).getMoveCnt();
-
-        for (int i = 0; i < result.result.size(); i++) {
-            if (winnerCnt == result.result.get(i).getMoveCnt()) {
-                resultMap.put(result.result.get(i).getCarName(), result.result.get(i).getMoveCnt());
+        for (int i = 0; i < racingResult.result.size(); i++) {
+            if (this.winnerCnt == racingResult.result.get(i).getMoveCnt()) {
+                resultMap.put(racingResult.result.get(i).getCarName(), racingResult.result.get(i).getMoveCnt());
             }
         }
         return resultMap;
+    }
+
+    public int findWinnerCnt (RacingResult racingResult) {
+        Collections.sort(racingResult.result);
+        return racingResult.result.get(racingResult.result.size() - 1).getMoveCnt();
     }
 }

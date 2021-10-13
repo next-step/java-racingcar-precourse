@@ -5,7 +5,6 @@ import java.util.List;
 
 public class Cars {
     public List<String> cars;
-    public static Validation validation = new Validation();
 
     public Cars(String carNames) {
         cars = mapCar(carNames);

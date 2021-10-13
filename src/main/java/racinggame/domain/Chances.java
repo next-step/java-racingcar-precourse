@@ -3,11 +3,12 @@ package racinggame.domain;
 public class Chances {
     public int chances;
     public Boolean isValidValue;
+
     public static Validation validation;
 
     public Chances(String chances) {
-        this.isValidValue = true;
         this.validation = new Validation();
+        this.isValidValue = true;
         if (isValidChance(chances)) {
             this.chances = Integer.parseInt(chances);
         }
@@ -20,7 +21,6 @@ public class Chances {
             this.isValidValue = false;
             System.out.println(Constant.INPUT_CHANCES_ERROR_MSG);
             return false;
-
         }
         checkValid(validation.checkChancesRange(Integer.parseInt(chances)), Constant.INPUT_CHANCES_RANGE_ERROR_MSG);
         return true;
