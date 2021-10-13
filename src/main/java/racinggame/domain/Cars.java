@@ -11,6 +11,12 @@ public class Cars {
         this.carList = carList;
     }
 
+    public void moveCars() {
+        for (Car car : carList) {
+            car.move(new RandomMoveStrategy());
+        }
+    }
+
 
     public List<Car> getWinner() {
         Position maxPosition = findMaxPosition();
@@ -33,6 +39,10 @@ public class Cars {
             maxPosition = car.getMaxPosition(maxPosition);
         }
         return maxPosition;
+    }
+
+    public List<Car> getValue() {
+        return carList;
     }
 
 }
