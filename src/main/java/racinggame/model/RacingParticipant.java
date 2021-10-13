@@ -1,4 +1,4 @@
-package racinggame.model.car;
+package racinggame.model;
 
 import java.util.List;
 
