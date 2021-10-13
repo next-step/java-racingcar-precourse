@@ -11,6 +11,10 @@ public class CarName {
 	}
 
 	private void validateLengthOf(String carName) {
+		if (carName.trim().isEmpty()) {
+			throw new IllegalArgumentException("자동차의 이름은 공백을 사용할 수 없습니다");
+		}
+
 		if (5 < carName.length()) {
 			throw new IllegalArgumentException("자동차의 이름은 5자 이하여야 합니다");
 		}

@@ -11,4 +11,11 @@ public class CarNameTest {
 			.isInstanceOf(IllegalArgumentException.class)
 			.hasMessageContaining("자동차의 이름은 5자 이하여야 합니다");
 	}
+
+	@Test
+	void 자동차이름이_공백이면_안된다()	 {
+		assertThatThrownBy(() -> new CarName(" "))
+			.isInstanceOf(IllegalArgumentException.class)
+			.hasMessageContaining("자동차의 이름은 공백을 사용할 수 없습니다");
+	}
 }
