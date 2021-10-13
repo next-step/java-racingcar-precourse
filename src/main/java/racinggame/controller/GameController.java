@@ -4,11 +4,13 @@ import static racinggame.view.ConsoleLog.*;
 
 import java.util.List;
 
+import racinggame.model.RacingGame;
+
 public class GameController {
 
 	public void play() {
-		getCarNames();
-		getTryNumber();
+		RacingGame racingGame = new RacingGame(getCarNames());
+		racingGame.start(getTryNumber());
 	}
 
 	private List<String> getCarNames() {
