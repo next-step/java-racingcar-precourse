@@ -6,34 +6,32 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
 import java.util.ArrayList;
+import racinggame.view.RacingCarInput;
 
 public class RacingCarInputTest {
-    private String carNames;
+    private String wrongCarNames;
+    private String exactCarNames;
+    private RacingCarInput racingCarInput;
 
+    @BeforeEach
     void setup(){
-        String wrongCarNames = "test1 test2 test3";
-        String exactCarNames = "test1,test2,test3";
+        wrongCarNames = "test1 test2 test3";
+        exactCarNames = "test1,test2,test3";
+        racingCarInput = new RacingCarInput();
     }
 
     @DisplayName("차이름입력테스트실패")
     @Test
     void splitCarFail(){
-        ArrayList<String> answer;
-        answer = new ArrayList<String>;
-        answer.add("test1");
-        answer.add("test2");
-        answer.add("test3");
-        assertThat(splitCarNames(wrongCarNames) != answer);
+        String[] answer = {"test1, test2, test3"};
+        assertThat(racingCarInput.splitCarNames(wrongCarNames) != answer);
     }
 
     @DisplayName("차이름입력테스트성공")
     @Test
     void splitCarSuccess(){
-        ArrayList<String> answer;
-        answer = new ArrayList<String>;
-        answer.add("test1");
-        answer.add("test2");
-        answer.add("test3");
-        assertThat(splitCarNames(exactCarNames) == answer);
+        String[] answer = {"test1, test2, test3"};
+        assertThat(racingCarInput.splitCarNames(exactCarNames) == answer);
     }
+
 }
