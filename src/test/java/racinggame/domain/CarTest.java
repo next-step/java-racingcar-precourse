@@ -9,6 +9,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import racinggame.exception.ErrorMessage;
 import racinggame.exception.InvalidInputException;
+import racinggame.strategy.FixedMovableStrategy;
 
 class CarTest {
 
@@ -57,9 +58,9 @@ class CarTest {
 	@ParameterizedTest
 	@CsvSource(value = {"4:1", "3:0", "9:1", "0:0"}, delimiter = ':')
 	void 자동차는_전진하거나_멈춘다(int value, int drivenDistance) {
-		Car car = new Car("pobi");
+		Car car = new Car("pobi", new FixedMovableStrategy(value));
 
-		car.move(value);
+		car.move();
 
 		assertThat(car.getDrivenDistance()).isEqualTo(drivenDistance);
 	}
