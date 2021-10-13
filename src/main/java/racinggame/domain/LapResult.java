@@ -1,4 +1,4 @@
-package racinggame;
+package racinggame.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +13,10 @@ public class LapResult {
     public List<Record> getBestRecords() {
         Record highestRecord = findHighestRecord();
         return findAllByRecord(highestRecord);
+    }
+
+    public List<Record> getRecords() {
+        return records;
     }
 
     private List<Record> findAllByRecord(Record highestRecord) {

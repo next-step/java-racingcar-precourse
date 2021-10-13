@@ -1,4 +1,4 @@
-package racinggame;
+package racinggame.domain;
 
 import nextstep.utils.Randoms;
 import org.junit.jupiter.api.Test;

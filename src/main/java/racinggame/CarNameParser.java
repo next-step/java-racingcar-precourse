@@ -30,6 +30,7 @@ public class CarNameParser {
     private static void addTrimmedValue(List<String> result, String value) {
         String trimmedValue = value.trim();
         if (!trimmedValue.isEmpty()) {
+            CarNameValidator.validate(trimmedValue);
             result.add(trimmedValue);
         }
     }

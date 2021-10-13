@@ -1,4 +1,4 @@
-package racinggame;
+package racinggame.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +14,10 @@ public class GameResult {
         LapResult lastLapResult = getLastLapResult();
         List<Record> bestRecords = lastLapResult.getBestRecords();
         return mapNames(bestRecords);
+    }
+
+    public List<LapResult> getLapResults() {
+        return lapResults;
     }
 
     private List<String> mapNames(List<Record> bestRecords) {

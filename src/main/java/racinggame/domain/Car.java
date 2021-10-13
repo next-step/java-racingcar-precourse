@@ -1,4 +1,4 @@
-package racinggame;
+package racinggame.domain;
 
 public class Car {
     private static final int MIN_GAS_POINT_FOR_MOVING_FORWARD = 4;

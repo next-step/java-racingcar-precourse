@@ -1,4 +1,4 @@
-package racinggame;
+package racinggame.domain;
 
 import java.util.Objects;
 
@@ -13,6 +13,10 @@ public class Record implements Comparable<Record> {
 
     public String getName() {
         return name;
+    }
+
+    public int getPosition() {
+        return position;
     }
 
     public boolean matchPosition(Record record) {
