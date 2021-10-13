@@ -6,7 +6,9 @@ public enum InGameText {
     EXECUTE_RESULT("실행 결과"),
     EMPTY_LINE("\n"),
     FIRST_PLACE_START("최종 우승자는 "),
-    FIRST_PLACE_END(" 입니다.");
+    FIRST_PLACE_END(" 입니다."),
+    COLON(" : "),
+    DASH("-");
 
     private final String inGameText;
 
