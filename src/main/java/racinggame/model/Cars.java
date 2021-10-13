@@ -11,7 +11,6 @@ public class Cars {
 
 	private static final int MIN_NUMBER = 0;
 	private static final int MAX_NUMBER = 9;
-	private static final String SPLIT_KEY_WORD = ",";
 	private final List<Car> racers;
 
 	public Cars(List<String> names) {
@@ -31,37 +30,8 @@ public class Cars {
 	}
 
 	public void race() {
-		inRace(getRaceCount());
-	}
-
-	private void inRace(int count) {
-		while (count-- > 0) {
-			racing();
-		}
-	}
-
-	private int getRaceCount() {
-		int count;
-		do {
-			count = stringToInt(Console.readLine());
-		} while (count == 0);
-		return count;
-	}
-
-	private int stringToInt(String inputNumber) {
-		int count;
-		try {
-			count = Integer.parseInt(inputNumber);
-		} catch (Exception e) {
-			throw new NumberFormatException("0 이상의 숫자를 입력해주시기 바랍니다.");
-		}
-		return count;
-	}
-
-	private void racing() {
 		for (Car car : this.racers) {
-			car.race(Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER));
+			car.move(Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER));
 		}
 	}
-
 }
