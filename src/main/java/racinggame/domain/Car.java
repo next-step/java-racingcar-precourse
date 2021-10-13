@@ -2,7 +2,7 @@ package racinggame.domain;
 
 import static racinggame.common.CommonConstants.*;
 
-import racinggame.common.Validator;
+import racinggame.common.ErrorMessage;
 
 /**
  * 자동차 클래스
@@ -25,7 +25,7 @@ public class Car {
 	}
 
 	public void setName(String name) {
-		Validator.validCarNameLength(name);
+		validCarNameLength(name);
 		this.name = name;
 	}
 
@@ -63,6 +63,17 @@ public class Car {
 			disStr.append(DISTANCE_STR);
 		}
 		return String.format(CAR_STRING_FORMAT, name, disStr);
+	}
+
+	/**
+	 * 자동차 이름은 1자 이상 5자 이하여야 함
+	 *
+	 * @throws IllegalArgumentException 잘못된 입력의 예외
+	 */
+	private void validCarNameLength(String input) {
+		if (input == null || input.trim().length() < NAME_MIN_LENGTH || input.trim().length() > NAME_MAX_LENGTH) {
+			throw new IllegalArgumentException(ErrorMessage.ERROR_CAR_INPUT_NAME);
+		}
 	}
 
 }

@@ -16,6 +16,7 @@ import org.mockito.MockedStatic;
 
 import nextstep.utils.Randoms;
 import racinggame.domain.Car;
+import racinggame.domain.CarNames;
 import racinggame.domain.Racing;
 import racinggame.domain.RacingResults;
 import racinggame.domain.TryCount;
@@ -39,8 +40,7 @@ public class RacingTest {
 	@BeforeEach
 	void setUp() {
 		racing = new Racing();
-		List<String> names = Arrays.asList("Lee", "Park", "Kim", "제이", "논", "진");
-		racing.joinList(names);
+		racing.joinList(new CarNames("Lee,Park,Kim,제이,논,진"));
 	}
 
 	@Test
@@ -58,8 +58,9 @@ public class RacingTest {
 	void 레이싱_참가_목록() {
 		int size = 8;
 		List<String> names = Arrays.asList("wow", "와우");
+		CarNames carNames = new CarNames("wow,와우");
 
-		racing.joinList(names);
+		racing.joinList(carNames);
 
 		assertThat(racing.getCars().getCarList())
 			.hasSize(size);

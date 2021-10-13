@@ -2,10 +2,7 @@ package racinggame.controller;
 
 import static racinggame.common.CommonConstants.*;
 
-import java.util.Arrays;
-import java.util.List;
-
-import racinggame.common.Validator;
+import racinggame.domain.CarNames;
 import racinggame.domain.Racing;
 import racinggame.domain.TryCount;
 
@@ -29,10 +26,8 @@ public class Host {
 	}
 
 	public void setRacingCars(String input) {
-		Validator.validInputCarNames(input);
-		String[] carNames = input.trim().split(DELIMITER);
-		List<String> carNameList = Arrays.asList(carNames);
-		racing.joinList(carNameList);
+		CarNames carNames = new CarNames(input);
+		racing.joinList(carNames);
 	}
 
 	public void setTryCount(String input) {

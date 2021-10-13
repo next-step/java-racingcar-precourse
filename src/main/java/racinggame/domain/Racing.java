@@ -2,8 +2,6 @@ package racinggame.domain;
 
 import static racinggame.common.ErrorMessage.*;
 
-import java.util.List;
-
 /**
  * 레이싱을 진행하고 우승자를 판단하는 역할을 하는 클래스
  *
@@ -47,10 +45,10 @@ public class Racing {
 	/**
 	 * 자동차 이름 목록을 통한 자동차 참가
 	 *
-	 * @param nameList 추가되는 자동차 이름 목록
+	 * @param carNames 추가되는 자동차 이름들 객체
 	 */
-	public void joinList(List<String> nameList) {
-		for (String name : nameList) {
+	public void joinList(CarNames carNames) {
+		for (String name : carNames.getCarNameList()) {
 			join(new Car(name));
 		}
 	}
