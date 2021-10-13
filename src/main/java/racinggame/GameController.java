@@ -43,5 +43,9 @@ public class GameController {
 		}
 		return false;
 	}
+
+	public void printRacingGameWinners() {
+		Printer.printRacingGameWinners(racingCars.getWinnerNames());
+	}
 }
 

@@ -16,5 +16,7 @@ public class Application {
 		}
 
 		gameController.startRacing();
+
+		gameController.printRacingGameWinners();
 	}
 }

@@ -9,18 +9,20 @@ public class Printer {
 	private static final String DELIMITER = ",";
 	private static final String ENTER_MOVE_COUNT = "시도할 횟수는 몇회인가요?";
 	private static final String RACING_RECORD_HEADER = "실행 결과";
-
-	public static String[] enterCarNames() {
-		System.out.println(ENTER_CAR_NAMES);
-		return Console.readLine().split(DELIMITER);
-	}
+	private static final String RACING_RESULT_HEADER = "최종 우승자는 ";
+	private static final String RACING_RESULT_FOOTER = " 입니다.";
 
 	public static void printMessage(String message) {
 		System.out.println(message);
 	}
 
+	public static String[] enterCarNames() {
+		Printer.printMessage(ENTER_CAR_NAMES);
+		return Console.readLine().split(DELIMITER);
+	}
+
 	public static String enterMoveCount() {
-		System.out.println(ENTER_MOVE_COUNT);
+		Printer.printMessage(ENTER_MOVE_COUNT);
 		return Console.readLine();
 	}
 
@@ -38,6 +40,15 @@ public class Printer {
 
 	private static void newLine() {
 		System.out.println();
+	}
+
+	public static void printRacingGameWinners(List<String> winnerNames) {
+		String winnerNameJoinValue = "";
+		for (String winnerName : winnerNames) {
+			winnerNameJoinValue += winnerName + ",";
+		}
+		winnerNameJoinValue = winnerNameJoinValue.substring(0, winnerNameJoinValue.length() - 1);
+		Printer.printMessage(RACING_RESULT_HEADER + winnerNameJoinValue + RACING_RESULT_FOOTER);
 	}
 }
 

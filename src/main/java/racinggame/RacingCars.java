@@ -1,6 +1,7 @@
 package racinggame;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import nextstep.utils.Randoms;
@@ -38,4 +39,18 @@ public class RacingCars {
 		return carName + " : " + distanceStringValue;
 	}
 
+	public List<String> getWinnerNames() {
+		Collections.sort(racingCars, (r1, r2) -> r2.getDistanceNumberValue() - r1.getDistanceNumberValue());
+		List<String> winnerNames = new ArrayList<>();
+		for (RacingCar racingCar : racingCars) {
+			ifWinnerAddList(winnerNames, racingCar);
+		}
+		return winnerNames;
+	}
+
+	private void ifWinnerAddList(List<String> winnerNames, RacingCar racingCar) {
+		if (racingCars.get(0).getDistanceNumberValue() == racingCar.getDistanceNumberValue()) {
+			winnerNames.add(racingCar.getName());
+		}
+	}
 }
