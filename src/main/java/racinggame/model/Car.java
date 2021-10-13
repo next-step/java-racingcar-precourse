@@ -19,7 +19,7 @@ public class Car {
 		return name.getName();
 	}
 
-	public void race(int number) {
+	public void move(int number) {
 		if (isMove(number)) {
 			this.position = this.position.move(ADD_CAR_POSITION);
 		}

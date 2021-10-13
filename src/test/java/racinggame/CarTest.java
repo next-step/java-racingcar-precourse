@@ -18,11 +18,11 @@ public class CarTest {
 
 	@Test
 	void 자동차_전진(){
-		car.race(5);
+		car.move(5);
 		assertThat(car.getPosition()).isEqualTo(1);
-		car.race(3);
+		car.move(3);
 		assertThat(car.getPosition()).isEqualTo(1);
-		car.race(7);
+		car.move(7);
 		assertThat(car.getPosition()).isEqualTo(2);
 	}
 
