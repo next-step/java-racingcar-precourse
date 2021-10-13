@@ -8,10 +8,24 @@ public class RacingGame {
     public Cars play(Cars cars, GameTurnCnt turnCnt) {
         System.out.println(GAME_RESULT_MSG_PREFIX);
 
-        GameTurns.run(cars, turnCnt);
+        this.runTurns(cars, turnCnt);
 
         Cars winnerCars = cars.findFurthestCars();
 
         return winnerCars;
+    }
+
+    private void runTurns(Cars cars, GameTurnCnt turnCnt) {
+        for (int i = 0; i < turnCnt.get(); i++) {
+            this.runOneTurn(cars);
+
+            System.out.println(cars.toString());
+        }
+    }
+
+    private void runOneTurn(Cars cars) {
+        for (Car car : cars) {
+            CarMover.moveRandomizly(car);
+        }
     }
 }
