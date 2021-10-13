@@ -11,4 +11,6 @@ public class GameConsole {
 	public void printLine(String message){
 		System.out.println(message);
 	}
+
+	public void makeInterval() { System.out.println(""); }
 }
