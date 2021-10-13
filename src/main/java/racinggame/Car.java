@@ -24,4 +24,11 @@ public class Car {
         return actStatus;
     }
 
+    public String getMoveStatus() {
+        StringBuilder moveStatus = new StringBuilder().append(name).append(" : ");
+        for (int i=0; i < position; i++) {
+            moveStatus.append(ActStatus.GO.getActExpress());
+        }
+        return moveStatus.toString();
+    }
 }

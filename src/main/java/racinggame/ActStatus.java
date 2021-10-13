@@ -15,6 +15,10 @@ public enum ActStatus {
         this.maxNum = maxNum;
     }
 
+    public String getActExpress() {
+        return actExpress;
+    }
+
     public static ActStatus findByActNumber(int number) {
         for (ActStatus actStatus :ActStatus.values()) {
             if (isWithinRange(actStatus, number)) {
