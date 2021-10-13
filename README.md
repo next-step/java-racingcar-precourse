@@ -1,43 +1,67 @@
 # 자동차 경주 게임
 
-[![Java Badge](https://img.shields.io/badge/Java-007396?style=flat-square&logo=Java&logoColor=white)](https://www.oracle.com/java/technologies/downloads/#java8)
-[![Junit5 Badge](https://img.shields.io/badge/Junit5-25A162?style=flat-square&logo=Junit5&logoColor=white)](https://junit.org/junit5/docs/current/user-guide/#overview)
-[![Github Badge](https://img.shields.io/badge/Github-181717?style=flat-square&logo=Github&logoColor=white)](https://github.com/seonghyeoklee/java-racingcar-precourse/tree/seonghyeoklee)
+* [![Java Badge](https://img.shields.io/badge/Java-007396?style=flat-square&logo=Java&logoColor=white)](https://www.oracle.com/java/technologies/downloads/#java8)
+  [![Junit5 Badge](https://img.shields.io/badge/Junit5-25A162?style=flat-square&logo=Junit5&logoColor=white)](https://junit.org/junit5/docs/current/user-guide/#overview)
+  [![Github Badge](https://img.shields.io/badge/Github-181717?style=flat-square&logo=Github&logoColor=white)](https://github.com/seonghyeoklee/java-racingcar-precourse/tree/seonghyeoklee)
 
 ---
 
-## ✅ Releases list
+## ✅ Releases List
 * [![Generic badge](https://img.shields.io/badge/version-1.0-green.svg)](https://github.com/seonghyeoklee/java-racingcar-precourse/releases/tag/v1.0)
-   * 자동차 게임 Application 프로덕션 코드 완료
-   
+  * 자동차 게임 Application 프로덕션 코드 완료
+
+
+* [![Generic badge](https://img.shields.io/badge/version-1.1-green.svg)](https://github.com/seonghyeoklee/java-racingcar-precourse/releases/tag/v1.1)
+  * `Add`
+    * 자동차 경주 게임의 메세지 enum 생성
+      * Console 출력 메세지 부분 리팩토링 
+    * 자동차 경주 게임의 에러 메세지 enum 생성
+      * 기본 에러 메세지를 분리하여 예외 상황에 맞는 에러 메세지 출력
+    * 원시값(시도 횟수[tryCount])을 포장하기 위한 TryCount 클래스 생성
+    * 우승자 리스트를 콜렉션 객체로 생성한다.
+  * `Update`
+    * 프로덕션 코드 리팩토링
+      * GameController 메소드 기능 별로 분리
+      * 상황에 따른 에러 처리 추가
+      * 자동차의 이동 로직 리팩토링
+    * 테스트 코드 리팩토링
+      * 메소드 리팩토링에 맞춰 테스트 코드 리팩토링(메소드 클래스 이동)
+  * `Fix`
+    * `split` 메소드 사용시 `limit` 값 추가 ( ",,," 값이 입력되었을 때, 공백이 반환되도록 수정 )
+      * 쉼표 기준으로 공백이 존재할 경우, 입력값이 생략되어 반환되는 문제를 수정
+  * `Issue`
+    * 최초 빌드 후 테스트 진행 시, `전진_정지()` 테스트의 타임아웃이 발생하는 경우가 발생 (execution timed out after 1000 ms)
+      * 이후 테스트는 이상없이 진행 완료
 --- 
 
 ## ✅ 기능 목록
 ### 입력 - Input
-  - [X] 개행문자 전까지의 사용자가 입력한 문자열을 반환한다.(Console 클래스)
+- [X] 개행문자 전까지의 사용자가 입력한 문자열을 반환한다.(Console 클래스)
 ### 출력 - Output
-  - [X] 실행된 결과를 자동차 이름과 같이 출력한다.
-  - [X] 자동차 게임이 완료되면 가장 많이 전진한(우승) 자동차의 이름을 출력한다.
-  - [X] 우승자가 한 명 이상일 경우, 쉼표(,)로 이름을 구분해 출력한다.
+- [X] 실행된 결과를 자동차 이름과 같이 출력한다.
+- [X] 자동차 게임이 완료되면 가장 많이 전진한(우승) 자동차의 이름을 출력한다.
+- [X] 우승자가 한 명 이상일 경우, 쉼표(,)로 이름을 구분해 출력한다.
 ### 유효성 - Validation
-  - [X] 쉼표(,) 기준으로 구분한 자동차 이름의 길이가 5자 이하인지 확인한다.
-  - [X] 시도할 횟수가 0보다 큰 숫자인지 검증한다.
-  - [X] 시도할 횟수가 숫자로 입력되었는지 검증한다.
+- [X] 쉼표(,) 기준으로 구분한 자동차 이름의 길이가 5자 이하인지 확인한다.
+- [X] 시도할 횟수가 0보다 큰 숫자인지 검증한다.
+- [X] 시도할 횟수가 숫자로 입력되었는지 검증한다.
 ### 생성자 - Constructor
 - [X] 입력받은 자동차 이름(carName), 전진 횟수(movesCount)가 0인 객체를 생성한다.
 - [X] 자동차 이름의 검증이 완료되면, 자동차 리스트를 생성하고 반환한다.
-- [X] 일급콜렉션 사용을 위한 클래스를 생성한다.
-- [X] 원시값과 문자열을 포장을 위한 클래스를 생성한다.
+- [X] 일급콜렉션(자동차 리스트[List<RacingCar>]) 사용을 위한 `RacingCars` 클래스를 생성한다.
+- [X] 원시값(자동차 이름[racingCarName])을 포장하기 위한 `RacingCarName` 클래스 생성한다.
+- [X] 원시값(시도 횟수[tryCount])을 포장하기 위한 `TryCount` 클래스 생성한다.
+- [X] 우승자 리스트를 콜렉션 객체로 생성한다.
 ### 기능 - Function
-  - [X] 입력받은 자동차 이름을 쉼표(,) 기준으로 구분한다.
-  - [X] 자동차 이름의 앞뒤 공백을 제거한다.
-  - [X] 0 부터 9 사이의 random 값을 구한다.
-  - [X] random 값이 4 이상일 경우 전진, 3 이하의 값이면 멈춘다.
-  - [X] 가장 큰 전진 횟수를 찾는다.
-  - [X] 우승자를 선별하여 반환한다.(가장 큰 전진 횟수만큼 이동한 자동차는 모두 우승자다)
+- [X] 입력받은 자동차 이름을 쉼표(,) 기준으로 구분한다.
+- [X] 자동차 이름의 앞뒤 공백을 제거한다.
+- [X] 0 부터 9 사이의 random 값을 구한다.
+- [X] random 값이 4 이상일 경우 전진, 3 이하의 값이면 멈춘다.
+- [X] 가장 큰 전진 횟수를 찾는다.
+- [X] 우승자를 선별하여 반환한다.(가장 큰 전진 횟수만큼 이동한 자동차는 모두 우승자다)
 ### 예외 - Exception
-  - [X] 자동차 이름의 길이가 0 이하, 5자 이상일 경우 `[ERROR]` 메세지를 출력한다.
-  - [X] 시도할 횟수가 숫자가 아니라면 `[ERROR]` 메세지를 출력한다.
+- [X] 자동차 이름의 길이가 0 이하, 5자 이상일 경우 `[ERROR]` 메세지를 출력한다.
+- [X] 시도할 횟수가 숫자가 아니라면 `[ERROR]` 메세지를 출력한다.
 
 ---
 
