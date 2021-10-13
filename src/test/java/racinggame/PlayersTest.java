@@ -2,6 +2,7 @@ package racinggame;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -9,12 +10,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class PlayersTest {
 
-    @DisplayName("")
-    @ParameterizedTest
-    @CsvSource(value = {"true, 1", "false, 0"})
+    @Test
     void create_players_test() {
         //given
-        final String carName = "sunki" ;
+        final String carName = "sunki";
         //when
         Car newCar = new Car(carName);
         //then

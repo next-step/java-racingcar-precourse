@@ -7,51 +7,48 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class RaceUI {
+class RaceUI {
 
-    public static final int MAX_CAR_NAME_LENGTH = 5;
-    public static final String KEY_POSITION_DELIMETER = " : " ;
-    public static final String COMMA = "," ;
-    public static final String POSITION_PRESENTING_CHARACTER = "-" ;
+    private static final int MAX_CAR_NAME_LENGTH = 5;
+    private static final String KEY_POSITION_DELIMETER = " : ";
+    private static final String COMMA = ",";
+    private static final String POSITION_PRESENTING_CHARACTER = "-";
 
     private RaceUI() {
     }
 
     public static String[] takeCarNameInputProcess() {
         printAskingCarNameMessage();
-        String[] carNames = takeCarNamesInput();
+        String[] carNames;
         try {
-            validateCarNameInput(carNames);
+            carNames = validateCarNameInput(takeUserInput());
         } catch (RaceException e) {
             printInvalidInputMessage(e.getMessage());
-            takeCarNameInputProcess();
+            carNames = takeCarNameInputProcess();
         }
+
         return carNames;
     }
 
-    private static String[] takeCarNamesInput() {
-        String input = Console.readLine();
-        return RaceUtils.splitStringByComma(input);
+    private static String takeUserInput() {
+        return Console.readLine();
     }
 
     private static void printInvalidInputMessage(String message) {
         System.out.println(message);
     }
 
-    public static void validateCarNameInput(String[] input) throws RaceException {
-        for (String carName : input) {
-            RaceUI.checkLength(carName);
-        }
+    public static String[] validateCarNameInput(String input) throws RaceException {
+        String[] carNames = RaceUtils.splitStringByComma(input);
+        for (String carName : carNames) RaceUI.checkLength(carName);
+
+        return carNames;
     }
 
     private static void checkLength(String carName) throws RaceException {
-        if (carName.length() == 0) {
-            throw new RaceException(RaceErrorCode.INVALID_CAR_NAME_LENGTH);
-        }
+        if (carName.length() == 0) throw new RaceException(RaceErrorCode.INVALID_CAR_NAME_LENGTH);
 
-        if (carName.length() > MAX_CAR_NAME_LENGTH) {
-            throw new RaceException(RaceErrorCode.INVALID_CAR_NAME_LENGTH);
-        }
+        if (carName.length() > MAX_CAR_NAME_LENGTH) throw new RaceException(RaceErrorCode.INVALID_CAR_NAME_LENGTH);
     }
 
     private static void printAskingCarNameMessage() {
@@ -60,25 +57,24 @@ public class RaceUI {
 
     public static int takeIterationCountProcess() {
         printAskingIterationCountMessage();
-        String countInput = takeIterationCountInput();
+        int countInput;
         try {
-            validateIterationCountInput(countInput);
+            countInput = validateIterationCountInput(takeUserInput());
         } catch (RaceException e) {
             printInvalidInputMessage(e.getMessage());
-            takeIterationCountProcess();
+            countInput = takeIterationCountProcess();
         }
+        return countInput;
+    }
+
+    public static int validateIterationCountInput(String countInput) {
+        checkNumberFormat(countInput);
+        checkInputRange(countInput);
         return Integer.parseInt(countInput);
     }
 
-    protected static void validateIterationCountInput(String countInput) {
-        checkNumberFormat(countInput);
-        checkInputRange(countInput);
-    }
-
     private static void checkInputRange(String countInput) {
-        if (Integer.parseInt(countInput) <= 0) {
-            throw new RaceException(RaceErrorCode.INVALID_FORMAT_ITERATION_COUNT);
-        }
+        if (Integer.parseInt(countInput) <= 0) throw new RaceException(RaceErrorCode.INVALID_FORMAT_ITERATION_COUNT);
     }
 
     private static void checkNumberFormat(String countInput) {
@@ -89,10 +85,6 @@ public class RaceUI {
         }
     }
 
-    private static String takeIterationCountInput() {
-        return Console.readLine();
-    }
-
     private static void printAskingIterationCountMessage() {
         System.out.println(RaceMessages.ASK_ITERATION_COUNT.message());
     }
@@ -101,9 +93,7 @@ public class RaceUI {
         for (String key : namePositionMap.keySet()) {
             StringBuilder sb = new StringBuilder();
             sb.append(key).append(KEY_POSITION_DELIMETER);
-            for (int i = 0; i < namePositionMap.get(key); i++) {
-                sb.append(POSITION_PRESENTING_CHARACTER);
-            }
+            for (int i = 0; i < namePositionMap.get(key); i++) sb.append(POSITION_PRESENTING_CHARACTER);
             System.out.println(sb);
         }
         System.out.println();
@@ -118,9 +108,7 @@ public class RaceUI {
 
     private static String getCommaJoinedWinnerName(List<Car> winners) {
         List<String> nameList = new ArrayList<>();
-        for (Car winner : winners) {
-            nameList.add(winner.getCarName());
-        }
+        for (Car winner : winners) nameList.add(winner.getCarName());
         return String.join(COMMA, nameList);
     }
 }

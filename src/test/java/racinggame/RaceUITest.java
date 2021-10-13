@@ -12,21 +12,17 @@ class RaceUITest {
     @ParameterizedTest
     @ValueSource(strings = {"sunki,pobii", "a1234,b123,c123", "g"})
     void validateCarNameInput_normal(String input) {
-        //given
-        String[] testCarNameInput = input.split(",");
         //when, then
-        RaceUI.validateCarNameInput(testCarNameInput);
+        RaceUI.validateCarNameInput(input);
     }
 
     @DisplayName("유저입력검증-유효하지 않은 carName이 포함되어 있는 경우")
     @ParameterizedTest
     @ValueSource(strings = {"", "kimsunki,pobi", "poby,kimsunki", "123456"})
     void validateCarNameInput_throwsException(String input) {
-        //given
-        String[] testCarNameInput = input.split(",");
         //when, then
         assertThatExceptionOfType(RaceException.class)
-                .isThrownBy(() -> RaceUI.validateCarNameInput(testCarNameInput))
+                .isThrownBy(() -> RaceUI.validateCarNameInput(input))
                 .withMessageContaining(RaceErrorCode.INVALID_CAR_NAME_LENGTH.message());
     }
 
