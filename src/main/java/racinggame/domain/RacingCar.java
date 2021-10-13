@@ -1,10 +1,13 @@
 package racinggame.domain;
 
+import static nextstep.utils.Randoms.pickNumberInRange;
+import static racinggame.domain.GameConfig.*;
+
 public class RacingCar {
-    private RacingCarName racingCarName;
+    private final RacingCarName racingCarName;
     private int movesCount;
 
-    public RacingCar(String racingCarName) {
+    public RacingCar(final String racingCarName) {
         this.racingCarName = new RacingCarName(racingCarName);
         this.movesCount = 0;
     }
@@ -17,7 +20,7 @@ public class RacingCar {
         return movesCount;
     }
 
-    public void move() {
+    public void movingForward() {
         this.movesCount += 1;
     }
 
@@ -25,14 +28,26 @@ public class RacingCar {
         this.movesCount += 0;
     }
 
+    public void isMovingForward() {
+        if (pickNumberInRange(START_INCLUSIVE.getValue(), END_INCLUSIVE.getValue()) >= MOVING_FORWARD.getValue()) {
+            movingForward();
+        }
+    }
+
+    public StringBuilder getHyphenCount() {
+        StringBuilder hyphen = new StringBuilder();
+        for (int i = 0; i < movesCount; i++) {
+            hyphen.append("-");
+        }
+        return hyphen;
+    }
+
     @Override
     public String toString() {
-        StringBuilder result = new StringBuilder();
-        result.append(racingCarName.getRacingCarName());
-        result.append(" : ");
-        for (int i = 0; i < this.movesCount; i++) {
-            result.append("-");
-        }
-        return result.toString();
+        return new StringBuilder()
+                .append(racingCarName.getRacingCarName())
+                .append(" : ")
+                .append(getHyphenCount())
+                .toString();
     }
 }
