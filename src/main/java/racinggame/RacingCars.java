@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 import nextstep.utils.Randoms;
+import racinggame.common.CommonCode;
 
 public class RacingCars {
 	private final List<RacingCar> racingCars = new ArrayList<>();
@@ -23,7 +24,7 @@ public class RacingCars {
 
 	public void race() {
 		for (RacingCar racingCar : racingCars) {
-			racingCar.moveForwardOrStop(Randoms.pickNumberInRange(0, 9));
+			racingCar.moveForwardOrStop(Randoms.pickNumberInRange(CommonCode.ZERO, CommonCode.NINE));
 		}
 	}
 
@@ -36,7 +37,7 @@ public class RacingCars {
 	}
 
 	private String getDistanceStringValue(String carName, String distanceStringValue) {
-		return carName + " : " + distanceStringValue;
+		return carName + CommonCode.COLON + distanceStringValue;
 	}
 
 	public List<String> getWinnerNames() {
@@ -49,7 +50,7 @@ public class RacingCars {
 	}
 
 	private void ifWinnerAddList(List<String> winnerNames, RacingCar racingCar) {
-		if (racingCars.get(0).getDistanceNumberValue() == racingCar.getDistanceNumberValue()) {
+		if (racingCars.get(CommonCode.ZERO).getDistanceNumberValue() == racingCar.getDistanceNumberValue()) {
 			winnerNames.add(racingCar.getName());
 		}
 	}

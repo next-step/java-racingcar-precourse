@@ -1,5 +1,8 @@
 package racinggame;
 
+import racinggame.common.CommonCode;
+import racinggame.common.CommonMessage;
+
 public class Name {
 	private final String name;
 
@@ -13,9 +16,16 @@ public class Name {
 	}
 
 	private void validateLength(String name) {
-		if (name.length() < 1 || name.length() > 5) {
-			throw new IllegalArgumentException("[ERROR] 이름은 1자 이상, 5자 이하로만 가능합니다.");
+		if (isWrongLength(name)) {
+			throw new IllegalArgumentException(CommonMessage.ERROR_MESSAGE_VALIDATE_NAME_LENGTH);
 		}
 	}
 
+	private boolean isWrongLength(String name) {
+		int length = name.length();
+		if (length < CommonCode.LENGTH_BOUNDARY_MIN_VALUE || length > CommonCode.LENGTH_BOUNDARY_MAX_VALUE) {
+			return true;
+		}
+		return false;
+	}
 }

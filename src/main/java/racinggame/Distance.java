@@ -1,12 +1,15 @@
 package racinggame;
 
+import racinggame.common.CommonCode;
+
 public class Distance {
+
 	private int numberValue;
 	private String stringValue;
 
 	public Distance() {
-		numberValue = 0;
-		stringValue = "";
+		numberValue = CommonCode.ZERO;
+		stringValue = CommonCode.BLANK;
 	}
 
 	public int numberValue() {
@@ -19,6 +22,6 @@ public class Distance {
 
 	public void increase() {
 		this.numberValue++;
-		this.stringValue += "-";
+		this.stringValue += CommonCode.BAR;
 	}
 }

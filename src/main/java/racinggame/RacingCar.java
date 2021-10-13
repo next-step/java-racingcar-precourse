@@ -1,7 +1,8 @@
 package racinggame;
 
+import racinggame.common.CommonCode;
+
 public class RacingCar {
-	private static final int MOVING_FORWARD_BOUNDARY_MIN_VALUE = 4;
 	private final Name carName;
 	private final Distance distance;
 
@@ -34,7 +35,7 @@ public class RacingCar {
 	}
 
 	private boolean isMoveForward(int actionNumber) {
-		if (actionNumber >= MOVING_FORWARD_BOUNDARY_MIN_VALUE) {
+		if (actionNumber >= CommonCode.MOVING_FORWARD_BOUNDARY_MIN_VALUE) {
 			return true;
 		}
 		return false;

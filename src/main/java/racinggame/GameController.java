@@ -1,5 +1,7 @@
 package racinggame;
 
+import racinggame.common.CommonCode;
+
 public class GameController {
 	private RacingCars racingCars;
 	private MoveCount moveCount;
@@ -38,7 +40,7 @@ public class GameController {
 	}
 
 	private boolean isRacingContinue(int moveCount) {
-		if (moveCount > 0) {
+		if (moveCount > CommonCode.ZERO) {
 			return true;
 		}
 		return false;
@@ -48,4 +50,3 @@ public class GameController {
 		Printer.printRacingGameWinners(racingCars.getWinnerNames());
 	}
 }
-

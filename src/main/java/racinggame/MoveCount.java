@@ -1,7 +1,9 @@
 package racinggame;
 
+import racinggame.common.CommonCode;
+import racinggame.common.CommonMessage;
+
 public class MoveCount {
-	private static final int MOVE_COUNT_BOUNDARY_MIN_VALUE = 1;
 	private int moveCount;
 
 	private MoveCount(int moveCount) {
@@ -18,18 +20,18 @@ public class MoveCount {
 		try {
 			Integer.parseInt(moveCountBeforeValidation);
 		} catch (NumberFormatException exception) {
-			throw new IllegalArgumentException("[ERROR] 이동횟수는 1이상의 숫자만 입력 가능합니다.");
+			throw new IllegalArgumentException(CommonMessage.ERROR_MESSAGE_VALIDATE_MOVE_COUNT);
 		}
 	}
 
 	private static void validateRange(String moveCountBeforeValidation) {
 		if (isWrongValue(Integer.parseInt(moveCountBeforeValidation))) {
-			throw new IllegalArgumentException("[ERROR] 이동횟수는 1이상의 숫자만 입력 가능합니다.");
+			throw new IllegalArgumentException(CommonMessage.ERROR_MESSAGE_VALIDATE_MOVE_COUNT);
 		}
 	}
 
 	private static boolean isWrongValue(int moveCountAfterValidationType) {
-		if (moveCountAfterValidationType < MOVE_COUNT_BOUNDARY_MIN_VALUE) {
+		if (moveCountAfterValidationType < CommonCode.MOVE_COUNT_BOUNDARY_MIN_VALUE) {
 			return true;
 		}
 		return false;
