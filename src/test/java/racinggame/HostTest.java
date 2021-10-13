@@ -2,7 +2,6 @@ package racinggame;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.mockito.Mockito.*;
-import static racinggame.common.ErrorMessage.*;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -12,8 +11,6 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.MockedStatic;
 
 import nextstep.utils.Console;
@@ -62,61 +59,6 @@ public class HostTest {
 			.contains("pobi")
 			.contains("crong")
 			.contains("honux");
-	}
-
-	@Test
-	void 입력_회수_초과() {
-		mockConsole.when(Console::readLine)
-			.thenReturn("!1", "!2", "!3", "!4", "!5", "!6", "!7", "!8", "!9"
-				, "!10", "!11", "!12", "!13", "!14", "!15", "!16", "!17", "!18", "!19", "!20");
-
-		host.setRacingCars();
-		String output = outContent.toString();
-		assertThat(output)
-			.contains(ERROR_PREFIX)
-			.contains(ERROR_TO_MANY_INPUT);
-
-	}
-
-	@ParameterizedTest(name = "자동차_이름_입력 {0}")
-	@ValueSource(strings = {"", "123456,안녕하세요", ",안녕,", "123,"})
-	void 레이싱_자동차_이름_입력_유효성(String input) {
-		mockConsole.when(Console::readLine)
-			.thenReturn(input);
-
-		host.setRacingCars();
-
-		String output = outContent.toString();
-		assertThat(output)
-			.contains(ERROR_PREFIX)
-			.endsWith(ERROR_INPUT_CAR_NAMES);
-
-	}
-
-	@ParameterizedTest(name = "시도횟수_입력 {0}")
-	@ValueSource(strings = {"1", "3", "4", "5"})
-	void 시도횟수_입력(String input) {
-		mockConsole.when(Console::readLine)
-			.thenReturn(input);
-
-		host.setTryCount();
-
-		assertThat(host.getRacing())
-			.extracting("tryCount")
-			.extracting("tryCount")
-			.isEqualTo(Integer.parseInt(input));
-	}
-
-	@ParameterizedTest(name = "시도횟수_입력_유효성 {0}")
-	@ValueSource(strings = {"011", "a", "", "%%"})
-	void 시도횟수_입력_유효성(String input) {
-		mockConsole.when(Console::readLine)
-			.thenReturn(input);
-
-		String output = outContent.toString();
-		assertThat(output)
-			.contains(ERROR_PREFIX)
-			.contains(ERROR_TRY_COUNT);
 	}
 
 }

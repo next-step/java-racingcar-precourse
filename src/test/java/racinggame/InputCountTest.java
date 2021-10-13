@@ -16,22 +16,13 @@ public class InputCountTest {
 		inputCount.plus();
 		int result = inputCount.getCount();
 
-		assertThat(result).isEqualTo(2);
+		assertThat(result).isEqualTo(1);
 	}
-
-	// @Test
-	// void 더하기_가능여부_확인() {
-	// 	InputCount inputCount = new InputCount();
-	// 	for (int i = 1; i < MAX_INPUT_COUNT; i++) {
-	// 		inputCount.plus();
-	// 		assertThat(inputCount.isPossible()).isTrue();
-	// 	}
-	// }
 
 	@Test
 	void 더하기_가능여부_예외() {
 		InputCount inputCount = new InputCount();
-		for (int i = 1; i < MAX_INPUT_COUNT; i++) {
+		for (int i = 0; i < MAX_INPUT_COUNT; i++) {
 			inputCount.plus();
 		}
 
