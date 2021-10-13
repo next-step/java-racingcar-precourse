@@ -12,7 +12,7 @@ public final class RacingCar {
 	}
 
 	/**
-	 * 주사위의 결과에 따라 움직임을 결정한다.
+	 * 새로운 위치로 이동한다.
 	 *
 	 * @return {@link LapRecord}
 	 */

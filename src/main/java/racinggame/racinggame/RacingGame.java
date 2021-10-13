@@ -13,7 +13,9 @@ public final class RacingGame {
 
 	/**
 	 * 레이싱 게임을 시작한다.
-	 * 게임 종료 후 결과를 발표한다.
+	 * 게임 종료 후 기록을 반환한다.
+	 *
+	 * @return {@link FinalRecord} 경기 진행 결과를 반환한다.
 	 */
 	public FinalRecord play(RacingCars racingCars, Lap lap) {
 		return circuit.start(racingCars, lap);

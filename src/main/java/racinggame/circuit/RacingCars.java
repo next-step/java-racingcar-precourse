@@ -16,7 +16,7 @@ public final class RacingCars {
 
 	/**
 	 * 랩 별로 레이싱을 시작한다.
-	 * 레이싱카마다 결과를 반환한다.
+	 * 주사위를 던지고, 주사위의 값을 판별해 레이싱카의 움직임을 결정한다.
 	 *
 	 * @return {@link LapRecords}
 	 */

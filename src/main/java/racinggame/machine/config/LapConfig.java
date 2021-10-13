@@ -1,7 +1,7 @@
 package racinggame.machine.config;
 
 import racinggame.circuit.Lap;
-import racinggame.exception.InvalidNameException;
+import racinggame.exception.InvalidNumberException;
 import racinggame.machine.InputDevice;
 import racinggame.machine.OutputDevice;
 
@@ -14,6 +14,13 @@ public final class LapConfig {
 		this.outputDevice = outputDevice;
 	}
 
+	/**
+	 * 서킷을 반복할 랩 수를 입력받는다.
+	 *
+	 * @return {@link Lap}
+	 * @throws {@link InvalidNumberException} 0 이하 음수를 입력하면 발생한다.
+	 * @throws {@link NumberFormatException} 문자를 입력하면 발생한다.
+	 */
 	protected Lap getLaps (){
 		Lap lap = null;
 
@@ -28,7 +35,7 @@ public final class LapConfig {
 	private Lap getLaps(String labString) {
 		try {
 			return new Lap(labString);
-		} catch (InvalidNameException | NumberFormatException error) {
+		} catch (InvalidNumberException | NumberFormatException error) {
 			outputDevice.print(error.getMessage());
 			return null;
 		}

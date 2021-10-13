@@ -5,6 +5,10 @@ import racinggame.exception.InvalidNumberException;
 public class Lap {
 	private final int laps;
 
+	/**
+	 * 값을 입력받아 int 로 변환한다.
+	 * @param consoleInput
+	 */
 	public Lap(String consoleInput) {
 		validateLaps(consoleInput);
 		validatePositiveNumber(consoleInput);

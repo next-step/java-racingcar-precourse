@@ -1,7 +1,5 @@
 package racinggame.machine;
 
-import static org.assertj.core.api.Assertions.*;
-
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -10,13 +8,12 @@ import org.junit.jupiter.api.Test;
 import nextstep.test.NSTest;
 import racinggame.circuit.RacingCircuit;
 import racinggame.circuit.dice.TenSidedDice;
-import racinggame.exception.InvalidNumberException;
-import racinggame.racinggame.RacingGame;
 import racinggame.circuit.racingrule.RacingMovementRule;
-import racinggame.machine.winnerrule.FarAwayWinRule;
 import racinggame.machine.config.RacingGameConfig;
 import racinggame.machine.input.ConsoleKeyboard;
 import racinggame.machine.output.ConsolePrinter;
+import racinggame.machine.winnerrule.FarAwayWinRule;
+import racinggame.racinggame.RacingGame;
 
 class RacingGameMachineTest extends NSTest {
 	private static final String ERROR_MESSAGE = "[ERROR]";
@@ -49,9 +46,8 @@ class RacingGameMachineTest extends NSTest {
 	@Test
 	void wrongLaps() {
 		assertSimpleTest(() -> {
-			assertThatThrownBy(() -> run("pobi,woni", "0"))
-				.isInstanceOf(InvalidNumberException.class)
-				.hasMessage("[ERROR] 1 이상 자연수를 입력하세요.");
+			runNoLineFound("pobi,woni", "0");
+			verify(ERROR_MESSAGE);
 		});
 	}
 

@@ -15,6 +15,12 @@ public final class RacingGameConfig {
 		this.outputDevice = outputDevice;
 	}
 
+	/**
+	 * 게임설정을 진행한다.
+	 * 레이싱카와 랩수를 설정한다.
+	 *
+	 * @return {@link Settings}
+	 */
 	public Settings configGame() {
 		return new Settings(configRacingCars(), configLap());
 	}

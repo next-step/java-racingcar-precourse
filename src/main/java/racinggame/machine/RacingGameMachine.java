@@ -19,6 +19,13 @@ public final class RacingGameMachine {
 		this.outputDevice = outputDevice;
 	}
 
+	/**
+	 *  게임을 시작한다.
+	 *  - 게임 설정을 한다. (레이싱카, 랩수 입력)
+	 *  - 게임을 진행한다.
+	 *  - 결과를 분석한다.
+	 *  - 결과를 출력한다.
+	 */
 	public void turnOn() {
 		Settings settings = config.configGame();
 		FinalRecord finalRecord = game.play(settings.getRacingCars(), settings.getLap());

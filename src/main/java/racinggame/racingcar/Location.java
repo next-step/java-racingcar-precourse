@@ -11,6 +11,7 @@ public class Location {
 
 	/**
 	 * 새로운 위치를 반환한다.
+	 * {@link Movement} 에 설정한 {@link Movement#movable()} 만큼 이동한다.
 	 *
 	 * @return {@link Location}
 	 */
