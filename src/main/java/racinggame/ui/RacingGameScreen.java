@@ -1,56 +1,44 @@
 package racinggame.ui;
 
 import racinggame.circuit.FinalRecord;
-import racinggame.circuit.RacingCircuit;
-import racinggame.dice.TenSidedDice;
-import racinggame.racinggame.Circuit;
 import racinggame.racinggame.RacingGame;
 import racinggame.racinggame.Rule;
-import racinggame.rule.RacingRule;
-import racinggame.rule.winnerrules.FarAwayWinRule;
+import racinggame.rule.WinnerNames;
 import racinggame.ui.config.RacingGameConfig;
-import racinggame.ui.input.ConsoleKeyboard;
-import racinggame.ui.output.ConsolePrinter;
 
 public final class RacingGameScreen {
-	private Settings settings;
-	private FinalRecord finalRecord;
+	private final RacingGameConfig config;
+	private final RacingGame game;
+	private final Rule rule;
+	private final OutputDevice outputDevice;
 
-	public void on() {
-		gameSetting();
-		play();
-		printResult();
+	public RacingGameScreen(RacingGameConfig config, RacingGame game, Rule rule, OutputDevice outputDevice) {
+		this.config = config;
+		this.game = game;
+		this.rule = rule;
+		this.outputDevice = outputDevice;
 	}
 
-	private void gameSetting() {
-		settings = new RacingGameConfig(
-			new ConsoleKeyboard(),
-			new ConsolePrinter())
-			.configGame();
+	public void turnOn() {
+		Settings settings = config.configGame();
+		FinalRecord finalRecord = game.play(settings.getRacingCars(), settings.getLap());
+		WinnerNames winnerNames = rule.judgeWinners(finalRecord);
+		printResult(finalRecord, winnerNames);
 	}
 
-	private void play (){
-		Circuit circuit = new RacingCircuit(
-			new TenSidedDice(),
-			new RacingRule(
-				new FarAwayWinRule()
-			)
-		);
-
-		RacingGame racingGame = new RacingGame(circuit);
-		finalRecord = racingGame.play(settings.getRacingCars(), settings.getLap());
-	}
-
-	private void printResult (){
-		Rule rule = new RacingRule(new FarAwayWinRule());
-		ConsolePrinter printer = new ConsolePrinter();
-
+	private void printResult (FinalRecord finalRecord, WinnerNames winnerNames){
 		String result = new StringBuilder()
 			.append("실행결과\n")
 			.append(finalRecord.readFinalRecord())
-			.append("최종 우승자는 ").append(rule.judgeWinners(finalRecord).getNamesWithDelimiter(",")).append(" 입니다.")
+			.append("최종 우승자는 ")
+			.append(winners(winnerNames, ","))
+			.append(" 입니다.")
 			.toString();
 
-		printer.print(result);
+		outputDevice.print(result);
+	}
+
+	private String winners (WinnerNames winnerNames, String delimiter){
+		return winnerNames.getNamesWithDelimiter(delimiter);
 	}
 }

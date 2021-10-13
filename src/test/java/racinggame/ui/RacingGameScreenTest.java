@@ -8,7 +8,16 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import nextstep.test.NSTest;
+import racinggame.circuit.RacingCircuit;
+import racinggame.dice.TenSidedDice;
 import racinggame.exception.InvalidNumberException;
+import racinggame.racinggame.RacingGame;
+import racinggame.racinggame.Rule;
+import racinggame.rule.RacingRule;
+import racinggame.rule.winnerrules.FarAwayWinRule;
+import racinggame.ui.config.RacingGameConfig;
+import racinggame.ui.input.ConsoleKeyboard;
+import racinggame.ui.output.ConsolePrinter;
 
 class RacingGameScreenTest extends NSTest {
 	private static final String ERROR_MESSAGE = "[ERROR]";
@@ -16,15 +25,15 @@ class RacingGameScreenTest extends NSTest {
 	private RacingGameScreen screen;
 
 	@BeforeEach
-	void beforeEach (){
+	void beforeEach() {
 		setUp();
 
-		screen = new RacingGameScreen();
+		screen = RacingGameScreenConfig.screen();
 	}
 
 	@DisplayName("자동차 이름, 랩 등록 성공")
 	@Test
-	void success (){
+	void success() {
 		assertSimpleTest(() -> run("pobi,woni", "1"));
 	}
 
@@ -39,7 +48,7 @@ class RacingGameScreenTest extends NSTest {
 
 	@DisplayName("랩 수를 0이하 음수를 등록하면 [ERROR]가 발생한다.")
 	@Test
-	void wrongLaps (){
+	void wrongLaps() {
 		assertSimpleTest(() -> {
 			assertThatThrownBy(() -> run("pobi,woni", "0"))
 				.isInstanceOf(InvalidNumberException.class)
@@ -49,11 +58,38 @@ class RacingGameScreenTest extends NSTest {
 
 	@Override
 	protected void runMain() {
-		screen.on();
+		screen.turnOn();
 	}
 
 	@AfterEach
 	void tearDown() {
 		outputStandard();
+	}
+
+	private static class RacingGameScreenConfig {
+		static RacingGameScreen screen() {
+			return new RacingGameScreen(config(), game(), rule(), outputDevice());
+		}
+
+		private static RacingGameConfig config() {
+			return new RacingGameConfig(new ConsoleKeyboard(), outputDevice());
+		}
+
+		private static RacingGame game() {
+			return new RacingGame(
+				new RacingCircuit(
+					new TenSidedDice(),
+					rule()
+				)
+			);
+		}
+
+		private static Rule rule() {
+			return new RacingRule(new FarAwayWinRule());
+		}
+
+		private static OutputDevice outputDevice() {
+			return new ConsolePrinter();
+		}
 	}
 }
