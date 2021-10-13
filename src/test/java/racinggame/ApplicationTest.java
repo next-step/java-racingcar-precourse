@@ -40,6 +40,14 @@ public class ApplicationTest extends NSTest {
 		});
 	}
 
+	@Test
+	void 실행결과_확인_테스트() {
+		assertRandomTest(() -> {
+			run("code,java", "2");
+			verify("code : ", "java : -", "code : -", "java : --");
+		}, STOP, MOVING_FORWARD);
+	}
+
 	@AfterEach
 	void tearDown() {
 		outputStandard();

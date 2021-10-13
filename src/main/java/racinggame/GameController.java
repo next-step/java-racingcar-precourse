@@ -27,5 +27,21 @@ public class GameController {
 		}
 		return false;
 	}
+
+	public void startRacing() {
+		Printer.printRacingRecordHeader();
+		while (isRacingContinue(moveCount.value())) {
+			racingCars.race();
+			Printer.printRacingRecord(racingCars.getDistanceStringValues());
+			moveCount.decrease();
+		}
+	}
+
+	private boolean isRacingContinue(int moveCount) {
+		if (moveCount > 0) {
+			return true;
+		}
+		return false;
+	}
 }
 

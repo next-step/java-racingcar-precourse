@@ -2,7 +2,7 @@ package racinggame;
 
 public class MoveCount {
 	private static final int MOVE_COUNT_BOUNDARY_MIN_VALUE = 1;
-	private final int moveCount;
+	private int moveCount;
 
 	private MoveCount(int moveCount) {
 		this.moveCount = moveCount;
@@ -37,5 +37,9 @@ public class MoveCount {
 
 	public int value() {
 		return this.moveCount;
+	}
+
+	public void decrease() {
+		this.moveCount--;
 	}
 }

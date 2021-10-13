@@ -14,5 +14,7 @@ public class Application {
 		while (again) {
 			again = gameController.printEnterMoveCount();
 		}
+
+		gameController.startRacing();
 	}
 }
