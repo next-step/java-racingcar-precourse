@@ -7,6 +7,11 @@ public class MessageServiceImpl implements MessageService {
     }
 
     @Override
+    public void count() {
+        System.out.println("시도할 회수는 몇회인가요?");
+    }
+
+    @Override
     public void error() {
         System.out.println("[ERROR]");
     }

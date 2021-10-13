@@ -19,11 +19,18 @@ public class Game {
         MessageController.getInstance().start();
 
         List<Car> cars = inputCarInfos();
+
+        int moveCount = inputCarMovingCount();
     }
 
     private List<Car> inputCarInfos() {
         String[] carNameList = checkCarName(input());
         return createCars(carNameList);
+    }
+
+    private int inputCarMovingCount() {
+        MessageController.getInstance().count();
+        return Integer.parseInt(input());
     }
 
     private String input() {
