@@ -1,0 +1,29 @@
+package racinggame.util;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import racinggame.model.RacingCar;
+import racinggame.model.RacingCarName;
+
+public class RacingCarUtil {
+	private RacingCarUtil() {
+	}
+
+	public static RacingCar createRacingCar(String name) {
+		RacingCar racingCar = new RacingCar(new RacingCarName(name));
+		if(!racingCar.isValid()) {
+			throw new IllegalArgumentException();
+		}
+		return racingCar;
+	}
+	
+	public static List<RacingCar> createRacingCars(String names) {
+		List<RacingCar> racingCars = new ArrayList<RacingCar>();
+		String[] splitedNames = names.split(",");
+		for(String name : splitedNames) {
+			racingCars.add(createRacingCar(name));
+		}
+		return racingCars;
+	}
+}
