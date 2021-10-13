@@ -5,7 +5,6 @@ import racinggame.domain.Cars;
 import racinggame.domain.RacingResult;
 import racinggame.domain.Winner;
 
-
 public class RacingGameService {
     private Cars cars;
     private RacingResult racingResult;

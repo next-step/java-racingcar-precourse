@@ -1,7 +1,6 @@
 package racinggame.domain;
 
 public class Validation {
-
     public static final int NAME_MAX_LEN = 5;
     public static final int NAME_MIN_LEN = 0;
 

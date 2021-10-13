@@ -1,9 +1,9 @@
 package racinggame.domain;
 
-
 public class CarsName {
     public static final String SPACE = " ";
     public static final String NO_SPACE = "";
+
     public String carsName;
     public Boolean isValidValue;
     
