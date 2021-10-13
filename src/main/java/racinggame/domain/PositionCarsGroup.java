@@ -19,10 +19,10 @@ public class PositionCarsGroup {
 			Position position = car.getPosition();
 			Cars sameDistanceCars = values.getOrDefault(position, new Cars(Collections.emptyList()));
 
-			List<Car> mergedValues = new ArrayList<>(sameDistanceCars.getValues());
-			mergedValues.add(car);
+			List<Car> mergedCars = new ArrayList<>(sameDistanceCars.getValues());
+			mergedCars.add(car);
 
-			values.put(position, new Cars(mergedValues));
+			values.put(position, new Cars(mergedCars));
 		}
 		return new PositionCarsGroup(values);
 	}
