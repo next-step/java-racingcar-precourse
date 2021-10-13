@@ -29,4 +29,8 @@ public class Car {
 		int random = Randoms.pickNumberInRange(0, 9);
 		if (random >= MOVE_MIN_THRESHOLD) distance++;
 	}
+
+	public int compareDistanceTo(Car anyWinner) {
+		return this.distance - anyWinner.distance;
+	}
 }
