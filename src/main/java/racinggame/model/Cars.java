@@ -1,10 +1,8 @@
 package racinggame.model;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-import nextstep.utils.Console;
 import nextstep.utils.Randoms;
 
 public class Cars {
@@ -34,17 +32,17 @@ public class Cars {
 	public void race() {
 		for (Car car : this.racers) {
 			car.move(Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER));
-			measureMaximumTrableDistance(car.getPosition());
+			measureMaximumTrableDistance(car.getDistance());
 		}
 	}
 
-	private void measureMaximumTrableDistance(int position) {
-		if(isMaxDistance(position)){
-			this.maximumTravelDistance = new MaximumTravelDistance(position);
+	private void measureMaximumTrableDistance(int distance) {
+		if(isMaxDistance(distance)){
+			this.maximumTravelDistance = new MaximumTravelDistance(distance);
 		}
 	}
 
-	private boolean isMaxDistance(int position) {
-		return this.maximumTravelDistance.getMaximumTravelDistance() < position;
+	private boolean isMaxDistance(int distance) {
+		return this.maximumTravelDistance.getMaximumTravelDistance() < distance;
 	}
 }

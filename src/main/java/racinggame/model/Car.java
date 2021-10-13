@@ -2,17 +2,17 @@ package racinggame.model;
 
 public class Car {
 
-	private static final int MIN_POSITION_MOVE = 4;
-	private static final int MAX_POSITION_MOVE = 9;
-	private static final int INIT_CAR_POSITION = 0;
-	private static final int ADD_CAR_POSITION = 1;
+	private static final int MIN_DISTANCE_MOVE = 4;
+	private static final int MAX_DISTANCE_MOVE = 9;
+	private static final int INIT_CAR_DISTANCE = 0;
+	private static final int ADD_CAR_DISTANCE = 1;
 
 	private final CarName name;
-	private CarPosition position;
+	private CarDistiance distance;
 
 	public Car(String name) {
 		this.name = new CarName(name);
-		this.position = new CarPosition(INIT_CAR_POSITION);
+		this.distance = new CarDistiance(INIT_CAR_DISTANCE);
 	}
 
 	public String getName() {
@@ -21,16 +21,16 @@ public class Car {
 
 	public void move(int number) {
 		if (isMove(number)) {
-			this.position = this.position.move(ADD_CAR_POSITION);
+			this.distance = this.distance.move(ADD_CAR_DISTANCE);
 		}
 	}
 
 	private boolean isMove(int number) {
-		return number >= MIN_POSITION_MOVE && number <= MAX_POSITION_MOVE;
+		return number >= MIN_DISTANCE_MOVE && number <= MAX_DISTANCE_MOVE;
 	}
 
-	public int getPosition() {
-		return this.position.getPosition();
+	public int getDistance() {
+		return this.distance.getDistiance();
 	}
 
 }

@@ -4,13 +4,13 @@ import static org.assertj.core.api.AssertionsForClassTypes.*;
 
 import org.junit.jupiter.api.Test;
 
-import racinggame.model.CarPosition;
+import racinggame.model.CarDistiance;
 
-public class CarPositionTest {
+public class CarDistianceTest {
 	@Test
 	void 위치값_불변성_확인(){
-		CarPosition position = new CarPosition(3);
+		CarDistiance distance = new CarDistiance(3);
 
-		assertThat(position.getPosition()).isEqualTo(3);
+		assertThat(distance.getDistiance()).isEqualTo(3);
 	}
 }
