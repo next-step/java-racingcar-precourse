@@ -13,7 +13,7 @@ public class NameTest {
 
     @Test
     @DisplayName("이름이 5자 이하 일 때 정상 생성")
-    public void generatorNmae() {
+    public void generatorName() {
         Car car = new Car("lee");
         assertThat(car.getName()).isEqualTo("lee");
     }
