@@ -10,11 +10,11 @@ public class Cars {
     private int numberOfAttempt;
 
     public Cars(List<String> carNames, int numberOfAttempt) {
-        this.cars = mapCar(carNames, numberOfAttempt);
+        this.cars = mapCar(carNames);
         this.numberOfAttempt = numberOfAttempt;
     }
 
-    private static List<Car> mapCar(List<String> carNames, int numberOfAttempt) {
+    private static List<Car> mapCar(List<String> carNames) {
         List<Car> cars = new ArrayList<>();
         for (String carName : carNames) {
             Car car = new Car(carName);
