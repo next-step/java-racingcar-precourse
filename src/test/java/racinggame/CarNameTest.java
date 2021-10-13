@@ -1,6 +1,7 @@
 package racinggame;
 
 import org.junit.jupiter.api.Test;
+import racinggame.domain.CarName;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
