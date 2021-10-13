@@ -4,6 +4,7 @@ import nextstep.utils.Console;
 import racinggame.domain.Car;
 import racinggame.utils.ValidationUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GameView {
@@ -62,7 +63,12 @@ public class GameView {
     }
 
     // 승자 출력
-    public void printWinners(String winners) {
-        System.out.println(String.format("최종 우승자는 %s 입니다.", winners));
+    public static void printWinners(List<Car> winners) {
+        List<String> winnersNames = new ArrayList<>();
+        for (Car winner : winners) {
+            winnersNames.add(winner.getName());
+        }
+        String result = String.join(",", winnersNames);
+        System.out.println(String.format("최종 우승자는 %s 입니다.", result));
     }
 }

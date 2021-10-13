@@ -1,7 +1,6 @@
 package racinggame.domain;
 
 import nextstep.utils.Randoms;
-import racinggame.utils.ValidationUtils;
 
 public class Car {
     private static final int MIN_BOUND = 1;
@@ -13,6 +12,11 @@ public class Car {
 
     public Car(final Name name) {
         this.name = name;
+    }
+
+    public Car(final Name name, Position position) {
+        this.name = name;
+        this.position = position;
     }
 
     public String getName() {
