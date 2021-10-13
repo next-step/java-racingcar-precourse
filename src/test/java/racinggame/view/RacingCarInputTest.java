@@ -34,4 +34,12 @@ public class RacingCarInputTest {
         assertThat(racingCarInput.splitCarNames(exactCarNames) == answer);
     }
 
+    @DisplayName("반복입력횟수설정테스트")
+    @Test
+    void inputRepeactCount(){
+        int repeatCount = 5;
+        racingCarInput.setRepeactCount(repeatCount);
+        assertThat(racingCarInput.getRepeactCount() == repeatCount);
+    }
+
 }
