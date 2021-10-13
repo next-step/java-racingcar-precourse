@@ -1,7 +1,10 @@
 package racinggame;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author : naming
@@ -23,7 +26,7 @@ public class CarRacing {
   }
 
   public void start() {
-    for(int i=0; i<racingTime; i++) {
+    for (int i = 0; i < racingTime; i++) {
       RacingResult result = cars.racing(moveNums.getCarMoveNums());
       OutputView.racing(result);
       countRacingTime++;
@@ -31,27 +34,38 @@ public class CarRacing {
   }
 
   public boolean isFinish() {
-    if(racingTime == countRacingTime) {
+    if (racingTime == countRacingTime) {
       return true;
     }
     return false;
   }
 
-  public List<Car> winner(){
+  public List<Car> winner() {
     List<Car> winner = new ArrayList<>();
-    int maxForwardCount = 0;
-    for(Car car : cars.getCars().values()) {
-      if(maxForwardCount <= car.getCountForward()) {
-        maxForwardCount = car.getCountForward();
-      }
+    int maxCountForwardNum = getMaxCountForward(getCountForwardValues());
+    for (Car car : cars.getCars().values()) {
+      maxCountForwardCars(winner, car, maxCountForwardNum);
     }
-
-    for(Car car : cars.getCars().values()) {
-      if(maxForwardCount == car.getCountForward()) {
-        winner.add(car);
-      }
-    }
-
     return winner;
+  }
+
+  private void maxCountForwardCars(List<Car> winner, Car car, int maxCountForwardNum) {
+    if (car.getCountForward() == maxCountForwardNum) {
+      winner.add(car);
+    }
+  }
+
+  private int getMaxCountForward(Set<Integer> countForwardValues) {
+    List<Integer> sortCountForward = new ArrayList<>(countForwardValues);
+    Collections.reverse(sortCountForward);
+    return sortCountForward.get(0);
+  }
+
+  private Set<Integer> getCountForwardValues() {
+    Set<Integer> countForwardValues = new HashSet<>();
+    for (Car car : cars.getCars().values()) {
+      countForwardValues.add(car.getCountForward());
+    }
+    return countForwardValues;
   }
 }
