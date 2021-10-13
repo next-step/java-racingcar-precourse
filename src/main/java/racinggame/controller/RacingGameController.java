@@ -1,9 +1,9 @@
 package racinggame.controller;
 
 import racinggame.model.RacingParticipant;
-import racinggame.controller.InputValidator;
-import racinggame.controller.RoundValidator;
-import racinggame.model.Car;
+import racinggame.model.car.Car;
+import racinggame.model.validator.InputValidator;
+import racinggame.model.validator.RoundValidator;
 import racinggame.view.GameConsole;
 
 import java.util.ArrayList;

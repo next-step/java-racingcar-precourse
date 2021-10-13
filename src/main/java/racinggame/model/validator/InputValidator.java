@@ -1,4 +1,4 @@
-package racinggame.controller;
+package racinggame.model.validator;
 
 import java.util.Set;
 import java.util.HashSet;

@@ -1,4 +1,4 @@
-package racinggame.controller;
+package racinggame.model.validator;
 
 public class RoundValidator {
 

@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Assertions;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racinggame.model.Car;
 import racinggame.model.RacingParticipant;
 
 import java.util.ArrayList;
