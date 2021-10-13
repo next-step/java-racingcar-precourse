@@ -5,19 +5,17 @@ import racinggame.view.ResultView;
 
 public class RacingMain {
 
-    private InputView inputView;
-    private ResultView resultView;
     private RacingGame racingGame;
+    private InputView inputView = new InputView();;
+    private ResultView resultView = new ResultView();;
 
     public void run() {
         // 레이싱 게임 생성
-        inputView = new InputView();
         racingGame = new RacingGame(
-                RacingGame.initCars(inputView.inputCars()),
-                inputView.inputTryNo()
+                RacingGame.initCars(inputView.getCars()),
+                inputView.getTryNo()
         );
 
-        resultView = new ResultView();
         // 레이싱 반복
         while(racingGame.racing()) {
             racingGame.race();

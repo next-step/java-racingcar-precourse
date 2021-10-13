@@ -7,7 +7,7 @@ public class InputView {
     private static final String ERROR_MESSAGE = "[ERROR]";
 
     // 자동차 이름 입력받기
-    public String inputCars() {
+    public String getCars() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
 
         String names = Console.readLine();
@@ -32,7 +32,7 @@ public class InputView {
     }
 
     // 시도횟수 입력받기
-    public int inputTryNo() {
+    public int getTryNo() {
         System.out.println("시도할 횟수는 몇회인가요?");
         String tryNo = Console.readLine();
         while(!validateTryNo(tryNo)) {
