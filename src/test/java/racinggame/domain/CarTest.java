@@ -44,4 +44,13 @@ class CarTest {
 			.isEqualTo("1234")
 		;
 	}
+
+	@Test
+	void 처음에는_이동한거리가_0이다(){
+		Car car = new Car("pobi");
+
+		int drivenDistance = car.getDrivenDistance();
+
+		assertThat(drivenDistance).isZero();
+	}
 }
