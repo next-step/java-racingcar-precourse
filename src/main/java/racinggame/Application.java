@@ -1,10 +1,10 @@
 package racinggame;
 
-import racinggame.view.GameView;
+import racinggame.controller.Host;
 
 public class Application {
 	public static void main(String[] args) {
-		GameView gameView = new GameView();
-		gameView.run();
+		Host host = new Host();
+		host.run();
 	}
 }

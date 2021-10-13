@@ -1,9 +1,9 @@
 package racinggame.view;
 
+import static racinggame.common.ErrorMessage.*;
 import static racinggame.common.ViewMessage.*;
 
 import nextstep.utils.Console;
-import racinggame.controller.Host;
 
 /**
  * 사용자의 입력과 출력메세지를 담당하는 클래스
@@ -17,62 +17,48 @@ public class GameView {
 	/**
 	 * 자동차 이름 입력
 	 *
-	 * @param host 레이스를 진행중인 개최팀
+	 * @return 입력받은 문자열
 	 */
-	public void inputName(Host host) {
+	public static String inputCarNames() {
 		System.out.println(MESSAGE_NAME_INPUT);
-		String input = Console.readLine();
-		try {
-			host.setRacingCars(input);
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-			inputName(host);
-		}
+		return Console.readLine();
 	}
 
 	/**
 	 * 시도 회수 입력
 	 *
-	 * @param host 레이스를 진행중인 개최팀
+	 * @return 입력받은 문자열
 	 */
-	public void inputTryCount(Host host) {
+	public static String inputTryCount() {
 		System.out.println(MESSAGE_TRY_INPUT);
-		String input = Console.readLine();
-		try {
-			host.setTryCount(input);
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-			inputTryCount(host);
-		}
+		return Console.readLine();
 	}
 
 	/**
 	 * 레이싱 결과 출력
 	 *
-	 * @param host 레이스를 진행중인 개최팀
+	 * @param results 레이싱 결과 문자열
 	 */
-	public void outRacingResult(Host host) {
+	public static void outRacingResult(String results) {
 		System.out.println(MESSAGE_TRY_RESULT);
-		System.out.println(host.start());
+		System.out.println(results);
 	}
 
 	/**
 	 * 우승자 출력
 	 *
-	 * @param host 레이스를 진행중인 개최팀
+	 * @param result 우승자 이름
 	 */
-	public void outWinner(Host host) {
-		System.out.printf(MESSAGE_WINNER_FORMAT, host.getWinner());
+	public static void outWinner(String result) {
+		System.out.printf(MESSAGE_WINNER_FORMAT, result);
 	}
 
 	/**
-	 * 프로그램 진행
+	 * 에러 출력
+	 *
+	 * @param message 에러 메시지
 	 */
-	public void run() {
-		Host host = new Host();
-		inputName(host);
-		inputTryCount(host);
-		outRacingResult(host);
-		outWinner(host);
+	public static void outError(String message) {
+		System.out.println(ERROR_PREFIX + message);
 	}
 }

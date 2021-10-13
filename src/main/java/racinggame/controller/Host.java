@@ -2,10 +2,14 @@ package racinggame.controller;
 
 import static racinggame.common.CommonConstants.*;
 
+import java.util.Optional;
+
 import racinggame.domain.CarNames;
+import racinggame.domain.InputCount;
 import racinggame.domain.Racing;
 import racinggame.domain.RacingResults;
 import racinggame.domain.TryCount;
+import racinggame.view.GameView;
 
 /**
  * 컨트롤러 역할을 하는 개최팀 클래스
@@ -28,37 +32,85 @@ public class Host {
 
 	/**
 	 * 입력받은 문자열로 자동차이름들 생성후 레이싱 객체에 전달
+	 */
+	public void setRacingCars() {
+		Optional<CarNames> carNames = Optional.empty();
+		InputCount inputCount = new InputCount();
+		while (!carNames.isPresent() && inputCount.isPossible()) {
+			String input = GameView.inputCarNames();
+			carNames = Optional.ofNullable(inputCarNames(input));
+			inputCount.plus();
+		}
+		carNames.ifPresent(cn -> racing.joinList(cn));
+	}
+
+	/**
+	 * 입력받은 문자열로 자동차이름들 생성후 반환
 	 *
 	 * @param input 입력받은 문자열
+	 * @return 자동차이름들 객체, 에러 발생시 널 반환
 	 */
-	public void setRacingCars(String input) {
-		CarNames carNames = new CarNames(input);
-		racing.joinList(carNames);
+	private CarNames inputCarNames(String input) {
+		try {
+			return new CarNames(input);
+		} catch (Exception e) {
+			GameView.outError(e.getMessage());
+			return null;
+		}
 	}
 
 	/**
 	 * 입력받은 문자열로 시도 회수 생성후 레이싱 객체에 전달
+	 */
+	public void setTryCount() {
+		Optional<TryCount> tryCount = Optional.empty();
+		InputCount inputCount = new InputCount();
+		while (!tryCount.isPresent() && inputCount.isPossible()) {
+			String input = GameView.inputTryCount();
+			tryCount = Optional.ofNullable(inputTryCount(input));
+			inputCount.plus();
+		}
+		tryCount.ifPresent(tc -> racing.setTryCount(tc));
+	}
+
+	/**
+	 * 입력받은 문자열로 시도회수 생성후 반환
 	 *
 	 * @param input 입력받은 문자열
+	 * @return 시도회수 객체, 에러 발생시 널 반환
 	 */
-	public void setTryCount(String input) {
-		TryCount tryCount = new TryCount(input);
-		racing.setTryCount(tryCount);
+	private TryCount inputTryCount(String input) {
+		try {
+			return new TryCount(input);
+		} catch (Exception e) {
+			GameView.outError(e.getMessage());
+			return null;
+		}
 	}
 
 	/**
 	 * 레이싱 시작 및 결과 반환
 	 */
-	public String start() {
+	public void start() {
 		RacingResults racingResults = racing.startRacing();
-		return racingResults + NEW_LINE;
+		GameView.outRacingResult(racingResults + NEW_LINE);
 	}
 
 	/**
 	 * 우승자 반환
 	 */
-	public String getWinner() {
-		return racing.getWinners().toString();
+	public void getWinner() {
+		GameView.outWinner(racing.getWinners().toString());
+	}
+
+	/**
+	 * 프로그램 진행
+	 */
+	public void run() {
+		setRacingCars();
+		setTryCount();
+		start();
+		getWinner();
 	}
 
 }
