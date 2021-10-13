@@ -19,7 +19,7 @@ public class RacingGameTest {
             mockRandoms.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
                     .thenReturn(9, 0, 0);
             List<Car> cars = Arrays.asList(new Car("pobi"), new Car("crong"), new Car("honux"));
-            GameResult result = new RacingGame(cars).run(1);
+            GameResult result = new RacingGame(cars).run(new LapCount(1));
 
             // when
             List<String> winners = result.getWinners();
@@ -36,7 +36,7 @@ public class RacingGameTest {
             mockRandoms.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
                     .thenReturn(0, 0, 0);
             List<Car> cars = Arrays.asList(new Car("pobi"), new Car("crong"), new Car("honux"));
-            GameResult result = new RacingGame(cars).run(1);
+            GameResult result = new RacingGame(cars).run(new LapCount(1));
 
             // when
             List<String> winners = result.getWinners();
@@ -58,7 +58,7 @@ public class RacingGameTest {
                     .thenReturn(9, 9, 9)
                     .thenReturn(9, 9, 9);
             List<Car> cars = Arrays.asList(new Car("pobi"), new Car("crong"), new Car("honux"));
-            GameResult result = new RacingGame(cars).run(5);
+            GameResult result = new RacingGame(cars).run(new LapCount(5));
 
             // when
             List<String> winners = result.getWinners();

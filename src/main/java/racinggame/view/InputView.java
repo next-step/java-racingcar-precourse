@@ -1,8 +1,8 @@
 package racinggame.view;
 
 import nextstep.utils.Console;
-import racinggame.LapCountValidator;
 import racinggame.domain.CarNames;
+import racinggame.domain.LapCount;
 
 public class InputView {
     public static CarNames getCarNames() {
@@ -16,12 +16,11 @@ public class InputView {
         }
     }
 
-    public static int getLapCount() {
+    public static LapCount getLapCount() {
         System.out.println("시도할 횟수는 몇회인가요?");
         String lapCount = Console.readLine();
         try {
-            LapCountValidator.validate(lapCount);
-            return Integer.parseInt(lapCount);
+            return new LapCount(lapCount);
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return getLapCount();

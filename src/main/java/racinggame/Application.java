@@ -9,7 +9,7 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         CarNames carNames = InputView.getCarNames();
-        int lapCount = InputView.getLapCount();
+        LapCount lapCount = InputView.getLapCount();
         List<Car> cars = CarFactory.from(carNames);
 
         GameResult gameResult = new RacingGame(cars).run(lapCount);

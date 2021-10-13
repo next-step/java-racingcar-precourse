@@ -13,9 +13,9 @@ public class RacingGame {
         this.cars = cars;
     }
 
-    public GameResult run(int lapCount) {
+    public GameResult run(LapCount lapCount) {
         GameResult gameResult = new GameResult();
-        for (int i = 0; i < lapCount; i++) {
+        for (int i = 0; i < lapCount.getValue(); i++) {
             gameResult.add(moveAllCars());
         }
         return gameResult;
