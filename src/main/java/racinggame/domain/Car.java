@@ -3,16 +3,30 @@ package racinggame.domain;
 public class Car {
     private final CarName carName;
     private final CarMovement carMovements;
-    private int goCount;
+    private GoCount goCount;
 
     public Car(CarName carName) {
         this.carName = carName;
         this.carMovements = new CarMovement();
-        this.goCount = 0;
+        this.goCount = new GoCount();
     }
 
-    public int getGoCount() {
+    public Car(CarName carName, CarMovement carMovement, GoCount goCount) {
+        this.carName = carName;
+        this.carMovements = carMovement;
+        this.goCount = goCount;
+    }
+
+    public GoCount getGoCount() {
         return goCount;
+    }
+
+    public CarName getCarName() {
+        return carName;
+    }
+
+    public CarMovement getCarMovements() {
+        return carMovements;
     }
 
     public void move() {
@@ -26,14 +40,13 @@ public class Car {
     }
 
     private void addGoCount(Movement movement) {
-        goCount += checkGoCount(movement.getMovementStatus());
+        goCount.setGoCount(goCount.getGoCount() + checkGoCount(movement.getMovementStatus()));
     }
 
     private int checkGoCount(MovementStatus movementStatus) {
         if (movementStatus == MovementStatus.GO) {
-            return 0;
+            return 1;
         }
-        return 1;
+        return 0;
     }
 }
-
