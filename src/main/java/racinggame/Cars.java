@@ -23,6 +23,15 @@ public class Cars {
 		}
 	}
 
+	public ProgressBars getProgressBars() {
+		List<ProgressBar> progresses = new ArrayList<>();
+		for (Car car : cars) {
+			progresses.add(car.getProgressBar());
+		}
+
+		return new ProgressBars(progresses);
+	}
+
 	public CarNames getWinnerNames() {
 		sort();
 
@@ -43,7 +52,7 @@ public class Cars {
 
 	private int getIndexOfCarsHasSameStateAsWinner(Car winner) {
 		int idx = 0;
-		while (winner.hasSameStateAs(cars.get(idx))) {
+		while (idx < cars.size() && winner.hasSameStateAs(cars.get(idx))) {
 			++idx;
 		}
 

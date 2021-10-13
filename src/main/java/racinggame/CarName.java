@@ -7,7 +7,7 @@ public class CarName {
 
 	public CarName(String name) {
 		validateLengthOf(name);
-		this.name = name;
+		this.name = name.trim();
 	}
 
 	private void validateLengthOf(String carName) {
