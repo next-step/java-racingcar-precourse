@@ -29,4 +29,14 @@ public class Cars {
             System.out.println(car.getMoveStatus());
         }
     }
+
+    public void play() {
+        Winner winner = new Winner(cars);
+        System.out.println(Message.PLAY_RESULT.getMessage());
+        for (int i = 0; i < numberOfAttempt; i++) {
+            this.printCarsMoveStatus();
+            System.out.println();
+        }
+        winner.printWinners();
+    }
 }
