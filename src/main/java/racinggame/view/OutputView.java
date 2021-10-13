@@ -12,16 +12,17 @@ public class OutputView {
 
 	private static final String START_BEFORE_MESSAGE = "실행 결과";
 
-	private static final String WINNER_MESSAGE = "최종 우승자는 %s 입니다%n";
+	private static final String WINNER_MESSAGE = "최종 우승자는 %s 입니다.%n";
 
 	public void showCurrentDrivenDistance(Cars cars){
 
 		for (Car car : cars.getCars()) {
 			String name = car.getCarName().getName();
 			int currentDrivenDistance = car.getDrivenDistance();
-			System.out.printf("%s : %s%n", name, viewProgress(currentDrivenDistance));
+			System.out.println(String.format("%s : %s", name, viewProgress(currentDrivenDistance)));
 		}
 
+		System.out.println();
 	}
 
 	private String viewProgress(final int currentDrivenDistance) {
@@ -41,7 +42,7 @@ public class OutputView {
 	}
 
 	public void showWinner(final List<Car> announceWinners) {
-		System.out.printf(WINNER_MESSAGE, joinWinners(announceWinners, ","));
+		System.out.println(String.format(WINNER_MESSAGE, joinWinners(announceWinners, ",")));
 	}
 
 	private String joinWinners(final List<Car> announceWinners, final String delimiter) {
