@@ -8,7 +8,7 @@ public class GameTurnCntReader {
     private IOController ioController;
     private InputParser inputParser;
 
-    public GameTurnCntReader(IOController ioController){
+    public GameTurnCntReader(IOController ioController) {
         this.ioController = ioController;
 
         this.inputParser = new InputParser();

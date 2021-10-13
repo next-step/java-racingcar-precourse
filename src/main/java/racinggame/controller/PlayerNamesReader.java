@@ -8,7 +8,7 @@ public class PlayerNamesReader {
     private IOController ioController;
     private InputParser inputParser;
 
-    public PlayerNamesReader(IOController ioController){
+    public PlayerNamesReader(IOController ioController) {
         this.ioController = ioController;
 
         this.inputParser = new InputParser();

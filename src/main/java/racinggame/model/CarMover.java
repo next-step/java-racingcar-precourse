@@ -1,6 +1,7 @@
 package racinggame.model;
 
 import nextstep.utils.Randoms;
+
 import racinggame.enums.RANDOM_MOVE_RESULT;
 import racinggame.environments.GlobalVariables;
 import racinggame.vo.Car;

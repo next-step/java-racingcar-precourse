@@ -1,17 +1,23 @@
 package racinggame.model;
 
-import nextstep.utils.Randoms;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.MockedStatic;
-import racinggame.controller.IOController;
-import racinggame.vo.*;
 
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mockStatic;
+
+import nextstep.utils.Randoms;
+
+import racinggame.controller.IOController;
+import racinggame.vo.Car;
+import racinggame.vo.Cars;
+import racinggame.vo.CarLocation;
+import racinggame.vo.GameTurnCnt;
+import racinggame.vo.PlayerName;
 
 public class RacingGameTest {
     private RacingGame racingGame;

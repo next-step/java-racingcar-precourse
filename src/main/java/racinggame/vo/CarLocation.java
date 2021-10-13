@@ -7,27 +7,27 @@ public class CarLocation {
 
     private int location;
 
-    public CarLocation(){
+    public CarLocation() {
         this.location = GlobalVariables.START_CAR_LOCATION;
     }
 
-    public CarLocation(int location){
+    public CarLocation(int location) {
         this.location = location;
     }
 
-    public CarLocation(CarLocation other){
+    public CarLocation(CarLocation other) {
         this.location = other.get();
     }
 
-    public void increase(){
+    public void increase() {
         this.location++;
     }
 
-    public int get(){
+    public int get() {
         return this.location;
     }
 
-    public Boolean isGreaterThan(CarLocation other){
+    public Boolean isGreaterThan(CarLocation other) {
         return this.location > other.get();
     }
 

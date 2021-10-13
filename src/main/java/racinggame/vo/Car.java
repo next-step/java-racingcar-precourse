@@ -17,7 +17,7 @@ public class Car {
         return this.location;
     }
 
-    public PlayerName getPlayerName(){
+    public PlayerName getPlayerName() {
         return this.playerName;
     }
 

@@ -49,7 +49,7 @@ public class IOController {
         return new GameTurnCntDTO(this.inputView.readLine());
     }
 
-    public void NotifyWinners(Cars winnerCars){
+    public void NotifyWinners(Cars winnerCars) {
         String winnerMsg = WinnerMessageBuilder.build(winnerCars);
 
         this.outputView.write(winnerMsg);

@@ -9,16 +9,16 @@ public class WinnerPicker {
     private Cars winnerCars;
     private CarLocation currentMaxLocation;
 
-    public WinnerPicker(){
+    public WinnerPicker() {
         this.winnerCars = new Cars();
         this.currentMaxLocation = new CarLocation();
     }
 
-    public void standBy(Cars cars){
+    public void standBy(Cars cars) {
         this.winnerCars.add(cars);
     }
 
-    public Cars getWinnerCars(){
+    public Cars getWinnerCars() {
         return this.winnerCars;
     }
 

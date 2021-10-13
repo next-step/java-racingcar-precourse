@@ -10,11 +10,10 @@ import racinggame.vo.PlayerName;
 import racinggame.vo.PlayerNames;
 
 public class GameController {
+    private IOController ioController;
     private RacingGame racingGame;
-
     private PlayerNamesReader playerNamesReader;
     private GameTurnCntReader gameTurnCntReader;
-    private IOController ioController;
 
     private Cars playerCars;
     private GameTurnCnt gameTurnCnt;
