@@ -11,27 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGameController {
-	public static final String CAR_NAME_INPUT_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
-	public static final String ROUND_INPUT_MESSAGE = "시도할 회수는 몇회인가요?";
-	public static final String EXECUTION_RESULT = "실행결과";
-
 	private RacingParticipant racingParticipant;
-	private GameConsole gameConsole;
 	private Round round;
 
-	public RacingGameController(){
-		this.gameConsole = new GameConsole();
 
-	}
-
-	public void startGame(){
-		askUserCarName();
-		askUserRound();
-		runGame();
-	}
-
-	private void askUserCarName(){
-		gameConsole.printLine(RacingGameController.CAR_NAME_INPUT_MESSAGE);
+	public void askUserCarName(GameConsole gameConsole){
 		boolean isFinish = false;
 		String userText;
 		do {
@@ -53,8 +37,7 @@ public class RacingGameController {
 	}
 
 
-	private void askUserRound(){
-		gameConsole.printLine(RacingGameController.ROUND_INPUT_MESSAGE);
+	public void askUserRound(GameConsole gameConsole){
 		boolean isFinish = false;
 		String round;
 		do{
@@ -64,12 +47,10 @@ public class RacingGameController {
 		this.round = new Round(Integer.parseInt(round));
 	}
 
-	private void runGame(){
-		System.out.println("");
-		gameConsole.printLine(RacingGameController.EXECUTION_RESULT);
+	public void runGame(GameConsole gameConsole){
 		for(int i = 0; i < this.round.getRound(); i++){
 			addTimeStep();
-			drawTimeStep();
+			drawTimeStep(gameConsole);
 		}
 		showResult();
 	}
@@ -79,44 +60,51 @@ public class RacingGameController {
 		cars.forEach(car -> car.move());
 	}
 
-	private void drawTimeStep(){
+	private void drawTimeStep(GameConsole gameConsole){
 		List<Car> cars = racingParticipant.getCars();
 		for(Car car : cars){
-			System.out.print(car.getName() + " : ");
-			for(int i = 0; i < car.getPosition(); i++){
-				System.out.print("-");
-			}
-			System.out.println("");
+			gameConsole.printLine(drawCarPosition(car));
 		}
-		System.out.println("");
+		gameConsole.makeInterval();
+	}
+
+	private String drawCarPosition(Car car){
+		String res = car.getName() + " : ";
+		for(int i = 0; i < car.getPosition(); i++){
+			res += "-";
+		}
+		return res;
 	}
 
 	private void showResult(){
 		int maxPosition = getMaxPosition();
 		String winner = getWinner(maxPosition);
-		System.out.println("최종 우승자는 " + winner + "입니다.");
+		System.out.println("최종 우승자는 " + winner + " 입니다.");
 	}
 
 	private int getMaxPosition(){
 		List<Car> cars = racingParticipant.getCars();
 		int max = -1;
 		for (Car car : cars){
-			if(max < car.getPosition()){
-				max = car.getPosition();
-			}
+			max = max < car.getPosition() ? car.getPosition() : max;
 		}
 		return max;
 	}
 
 	private String getWinner(int maxPosition){
-		String res = "";
+		List<String> res = new ArrayList<>();
+
 		List<Car> cars = racingParticipant.getCars();
 		for(Car car : cars) {
-			if (car.getPosition() == maxPosition) {
-				res += car.getName();
-				res += ",";
-			}
+			comparePosition(res, car, maxPosition);
 		}
-		return res;
+		String[] ans = res.toArray(new String[res.size()]);
+		return String.join(",", ans).replaceAll(" ", "");
+	}
+
+	private void comparePosition(List<String> target, Car car, int maxPosition){
+		if (car.getPosition() == maxPosition) {
+			target.add(car.getName());
+		}
 	}
 }
