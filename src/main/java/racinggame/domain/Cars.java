@@ -10,6 +10,8 @@ import java.util.List;
 public class Cars {
 
     private static final String DELIMITER = ",";
+    private static final int MAX_RANDOM_NUMBER = 9;
+    private static final int MIN_RANDOM_NUMBER = 0;
 
     private List<Car> cars;
 
@@ -23,7 +25,6 @@ public class Cars {
         }
         this.cars = cars;
     }
-
 
     private void move() {
         for (int index = 0; index < cars.size(); index++) {
@@ -43,7 +44,7 @@ public class Cars {
     }
 
     protected int getRandomNumber() {
-        return Randoms.pickNumberInRange(0, 9);
+        return Randoms.pickNumberInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
     }
 
     public int size() {
