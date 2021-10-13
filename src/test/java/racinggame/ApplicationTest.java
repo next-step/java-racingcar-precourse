@@ -5,6 +5,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.time.Duration;
+
 public class ApplicationTest extends NSTest {
     private static final int MOVING_FORWARD = 4;
     private static final int STOP = 3;
