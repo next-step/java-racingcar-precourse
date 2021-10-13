@@ -3,6 +3,8 @@ package racinggame;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.Collections;
 
@@ -68,5 +70,27 @@ public class WinnerTest {
     void two_winner() {
         Winner winner = new Winner(Arrays.asList(carA, carB, carC, carD, carE));
         assertThat(winner.findWinners()).isEqualTo(Arrays.asList("carD", "carE"));
+    }
+
+    @Test
+    void no_winner_msg() {
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+        PrintStream originalOut = System.out;
+        Winner winner = new Winner(Arrays.asList(carA, carB));
+        winner.printWinners();
+        assertThat(outContent.toString().trim()).isEqualTo(Message.NO_WINNER.getMessage());
+        System.setOut(originalOut);
+    }
+
+    @Test
+    void winner_msg() {
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+        PrintStream originalOut = System.out;
+        Winner winner = new Winner(Arrays.asList(carA, carB, carC, carD, carE));
+        winner.printWinners();
+        assertThat(outContent.toString().trim()).isEqualTo("최종 우승자는 carD,carE 입니다.");
+        System.setOut(originalOut);
     }
 }
