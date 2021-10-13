@@ -1,13 +1,17 @@
 package racinggame.model;
 
 import racinggame.controller.IOController;
+import racinggame.enums.RANDOM_MOVE_RESULT;
 import racinggame.vo.GameTurnCnt;
 
 public class RacingGame {
     private IOController ioController;
+    private WinnerPicker winnerPicker;
 
-    public RacingGame(IOController ioController){
+    public RacingGame(IOController ioController) {
         this.ioController = ioController;
+
+        this.winnerPicker = new WinnerPicker();
     }
 
     public Cars play(Cars cars, GameTurnCnt turnCnt) {
@@ -15,12 +19,12 @@ public class RacingGame {
 
         this.runTurns(cars, turnCnt);
 
-        Cars winnerCars = cars.findFurthestCars();
-
-        return winnerCars;
+        return this.winnerPicker.getWinnerCars();
     }
 
     private void runTurns(Cars cars, GameTurnCnt turnCnt) {
+        this.winnerPicker.standBy(cars);
+
         for (int i = 0; i < turnCnt.get(); i++) {
             this.runOneTurn(cars);
 
@@ -30,7 +34,9 @@ public class RacingGame {
 
     private void runOneTurn(Cars cars) {
         for (Car car : cars) {
-            CarMover.moveRandomizly(car);
+            RANDOM_MOVE_RESULT moveResult = CarMover.moveRandomizly(car);
+
+            this.winnerPicker.tryPick(car, moveResult);
         }
     }
 }

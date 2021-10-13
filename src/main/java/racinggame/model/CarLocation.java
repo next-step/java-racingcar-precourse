@@ -1,10 +1,20 @@
 package racinggame.model;
 
+import racinggame.environments.GlobalVariables;
+
 public class CarLocation {
     private int location;
 
+    public CarLocation(){
+        this.location = GlobalVariables.START_CAR_LOCATION;
+    }
+
     public CarLocation(int location){
         this.location = location;
+    }
+
+    public CarLocation(CarLocation other){
+        this.location = other.get();
     }
 
     public void increase(){

@@ -5,41 +5,18 @@ import java.util.ArrayList;
 public class Cars extends ArrayList<Car> {
     private static final String NEWLINE = "\n";
 
-    public Cars findFurthestCars() {
-        CarLocation furthestLocation = this.findFurthestLocation();
-
-        return this.findFurthestCarsInternal(furthestLocation);
-    }
-
-    private Cars findFurthestCarsInternal(CarLocation furthestLocation) {
-        Cars furthestCars = new Cars();
-
-        for (Car candidateCar : this) {
-            furthestCars.tryAddFurthestCar(candidateCar, furthestLocation);
+    public void add(Cars otherCars) {
+        for (Car otherCar : otherCars) {
+            this.add(otherCar);
         }
-
-        return furthestCars;
     }
 
-    public CarLocation findFurthestLocation() {
-        CarLocation furthestLocation = new CarLocation(-1);
-
-        for (int i = 0; i < this.size(); i++) {
-            CarLocation curCarLocation = this.get(i).getLocation();
-
-            furthestLocation = furthestLocation.getGreaterCompareWith(curCarLocation);
-        }
-
-        return furthestLocation;
-    }
-
-    public Boolean tryAddFurthestCar(Car car, CarLocation furthestLocation) {
-        if (furthestLocation.isGreaterThan(car.getLocation())) {
-            return false;
+    public void addOnlyOnce(Car car) {
+        if (this.contains(car)) {
+            return;
         }
 
         this.add(car);
-        return true;
     }
 
     @Override
