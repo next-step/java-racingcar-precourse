@@ -18,6 +18,7 @@ import nextstep.utils.Randoms;
 import racinggame.domain.Car;
 import racinggame.domain.Racing;
 import racinggame.domain.RacingResults;
+import racinggame.domain.TryCount;
 import racinggame.domain.Winners;
 
 public class RacingTest {
@@ -124,7 +125,7 @@ public class RacingTest {
 		mockRandoms.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
 			.thenReturn(1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 1, 2, 3, 7, 8, 9);
 
-		racing.setTryCount(3);
+		racing.setTryCount(new TryCount(3));
 		racing.startRacing();
 
 		Winners result = racing.getWinner();
@@ -140,7 +141,7 @@ public class RacingTest {
 
 		mockRandoms.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
 			.thenReturn(1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 1, 2, 3, 7, 8, 9);
-		racing.setTryCount(3);
+		racing.setTryCount(new TryCount(3));
 
 		assertThatThrownBy(() -> racing.startRacing())
 			.isInstanceOf(IllegalStateException.class)

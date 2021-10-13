@@ -71,9 +71,10 @@ public class HostTest {
 	void 시도횟수_입력(String input) {
 		host.setTryCount(input);
 
-		int tryCount = Integer.parseInt(input);
-
-		assertThat(host.getRacing()).extracting("tryCount").isEqualTo(tryCount);
+		assertThat(host.getRacing())
+			.extracting("tryCount")
+			.extracting("tryCount")
+			.isEqualTo(Integer.parseInt(input));
 	}
 
 	@ParameterizedTest(name = "시도횟수_입력_유효성 {0}")

@@ -7,6 +7,7 @@ import java.util.List;
 
 import racinggame.common.Validator;
 import racinggame.domain.Racing;
+import racinggame.domain.TryCount;
 
 /**
  * 컨트롤러 역할을 하는 개최팀 클래스
@@ -35,8 +36,8 @@ public class Host {
 	}
 
 	public void setTryCount(String input) {
-		Validator.validTryCount(input);
-		racing.setTryCount(Integer.parseInt(input));
+		TryCount tryCount = new TryCount(input);
+		racing.setTryCount(tryCount);
 	}
 
 	public void start() {

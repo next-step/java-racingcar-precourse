@@ -59,22 +59,6 @@ public class Validator {
 	}
 
 	/**
-	 * 시도 회수가 숫자인지 검사
-	 *
-	 * @throws IllegalArgumentException 잘못된 입력의 예외
-	 */
-	public static void validTryCount(String input) {
-		if (!Pattern.matches(TRY_INPUT_PATTERN, input)) {
-			throw new IllegalArgumentException(ERROR_TRY_COUNT);
-		}
-		try {
-			Integer.valueOf(input);
-		} catch (NumberFormatException e) {
-			throw new IllegalArgumentException(ErrorMessage.ERROR_TRY_COUNT);
-		}
-	}
-
-	/**
 	 * 자동차 이름은 1자 이상 5자 이하여야 함
 	 *
 	 * @throws IllegalArgumentException 잘못된 입력의 예외

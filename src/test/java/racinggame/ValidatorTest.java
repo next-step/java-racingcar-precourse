@@ -27,11 +27,4 @@ public class ValidatorTest {
 			.hasMessage(ERROR_DUP_CAR_NAMES);
 	}
 
-	@ParameterizedTest
-	@ValueSource(strings = {"a", "^", "0222", "01"})
-	void 횟수_입력_유효성검사(String input) {
-		assertThatThrownBy(() -> Validator.validTryCount(input))
-			.isInstanceOf(IllegalArgumentException.class)
-			.hasMessage(ERROR_TRY_COUNT);
-	}
 }
