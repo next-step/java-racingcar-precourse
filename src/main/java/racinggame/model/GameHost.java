@@ -6,11 +6,15 @@ import java.util.ArrayList;
 
 public class GameHost {
 
-    ArrayList<Car> recordingRaceList ;
+    ArrayList<Car> recordingRaceList;
 
     public GameHost(ArrayList<Car> carList, int roundCnt) {
         Racing.racingByRound(carList, roundCnt);
         this.recordingRaceList = Racing.recordingRaceList;
+
     }
 
+    public ArrayList<Car> getRecordingRaceList() {
+        return recordingRaceList;
+    }
 }
