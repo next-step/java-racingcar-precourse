@@ -52,7 +52,7 @@ public class Cars {
 	}
 
 	private void initWinnersAndAddWinner(List<Car> winners, Car winner) {
-		winners = new ArrayList<>();
+		winners.clear();
 		winners.add(winner);
 	}
 

@@ -67,4 +67,19 @@ public class CarsTest {
 			assertThat(winner.get(1).getName()).isEqualTo("crong");
 		}
 	}
+
+	@Test
+	void 우승한_자동차_2대인_경우2() {
+		try (final MockedStatic<Randoms> mockRandoms = mockStatic(Randoms.class)) {
+			mockRandoms.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
+					.thenReturn(
+							STOP, MOVING_FORWARD, MOVING_FORWARD,
+							STOP, MOVING_FORWARD, MOVING_FORWARD);
+			cars.move(2);
+			List<Car> winner = cars.getWinner();
+			assertThat(winner.size()).isEqualTo(2);
+			assertThat(winner.get(0).getName()).isEqualTo("crong");
+			assertThat(winner.get(1).getName()).isEqualTo("honux");
+		}
+	}
 }
