@@ -8,6 +8,14 @@ public class Car {
         this.position = 0;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
     public ActStatus move(int inputNumber) {
         ActStatus actStatus = ActStatus.findByActNumber(inputNumber);
         if (actStatus.doGo()) {
@@ -15,4 +23,5 @@ public class Car {
         }
         return actStatus;
     }
+
 }
