@@ -1,17 +1,15 @@
 package racinggame.view;
 
 import nextstep.utils.Console;
-import racinggame.CarNameParser;
 import racinggame.LapCountValidator;
-
-import java.util.List;
+import racinggame.domain.CarNames;
 
 public class InputView {
-    public static List<String> getCarNames() {
+    public static CarNames getCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String inputCarNames = Console.readLine();
+        String input = Console.readLine();
         try {
-            return CarNameParser.parse(inputCarNames);
+            return new CarNames(input);
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return getCarNames();

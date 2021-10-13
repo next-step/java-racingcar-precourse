@@ -1,11 +1,22 @@
-package racinggame;
+package racinggame.domain;
+
+import racinggame.CarNameValidator;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class CarNameParser {
+public class CarNames {
     private static final String SPLIT_DELIMITER = ",";
+    private final List<String> names;
+
+    public CarNames(String carNamesText) {
+        this.names = parse(carNamesText);
+    }
+
+    public List<String> getNames() {
+        return names;
+    }
 
     public static List<String> parse(String text) {
         List<String> carNames = split(text);

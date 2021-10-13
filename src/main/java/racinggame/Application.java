@@ -1,9 +1,6 @@
 package racinggame;
 
-import racinggame.domain.Car;
-import racinggame.domain.CarFactory;
-import racinggame.domain.GameResult;
-import racinggame.domain.RacingGame;
+import racinggame.domain.*;
 import racinggame.view.InputView;
 import racinggame.view.ResultView;
 
@@ -11,7 +8,7 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        List<String> carNames = InputView.getCarNames();
+        CarNames carNames = InputView.getCarNames();
         int lapCount = InputView.getLapCount();
         List<Car> cars = CarFactory.from(carNames);
 
