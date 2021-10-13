@@ -49,7 +49,7 @@ public class CarsTest {
 	void playCars() {
 		try (MockedStatic<Randoms> mockedStatic = mockStatic(Randoms.class)) {
 			mockedStatic.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
-				.thenReturn(3, 0, 6);
+						.thenReturn(3, 0, 6);
 
 			cars = Cars.createByNames("pobi,crong,honux");
 			cars.play();
@@ -64,7 +64,7 @@ public class CarsTest {
 	void getWinners() {
 		try (MockedStatic<Randoms> mockedStatic = mockStatic(Randoms.class)) {
 			mockedStatic.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
-				.thenReturn(3, 0, 6);
+						.thenReturn(3, 0, 6);
 
 			cars = Cars.createByNames("pobi,crong,honux");
 			cars.play();
@@ -78,7 +78,7 @@ public class CarsTest {
 	void getPlayResult() {
 		try (MockedStatic<Randoms> mockedStatic = mockStatic(Randoms.class)) {
 			mockedStatic.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
-				.thenReturn(6, 0, 6);
+						.thenReturn(6, 0, 6);
 
 			cars = Cars.createByNames("pobi,crong,honux");
 			PlayResult result = cars.play();
