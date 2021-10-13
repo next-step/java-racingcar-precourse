@@ -1,29 +1,27 @@
 package racinggame.domain;
 
-import racinggame.CarNameValidator;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class CarNames {
     private static final String SPLIT_DELIMITER = ",";
-    private final List<String> names;
+    private final List<CarName> names;
 
     public CarNames(String carNamesText) {
         this.names = parse(carNamesText);
     }
 
-    public List<String> getNames() {
+    public List<CarName> getNames() {
         return names;
     }
 
-    public static List<String> parse(String text) {
+    private static List<CarName> parse(String text) {
         List<String> carNames = split(text);
         if (carNames.isEmpty()) {
             throw new IllegalArgumentException("[ERROR] 최소 1개 이상의 자동차 이름이 필요합니다");
         }
-        return carNames;
+        return mapCarNames(carNames);
     }
 
     private static List<String> split(String text) {
@@ -41,8 +39,15 @@ public class CarNames {
     private static void addTrimmedValue(List<String> result, String value) {
         String trimmedValue = value.trim();
         if (!trimmedValue.isEmpty()) {
-            CarNameValidator.validate(trimmedValue);
             result.add(trimmedValue);
         }
+    }
+
+    private static List<CarName> mapCarNames(List<String> carNames) {
+        List<CarName> result = new ArrayList<>();
+        for (String name : carNames) {
+            result.add(new CarName(name));
+        }
+        return result;
     }
 }

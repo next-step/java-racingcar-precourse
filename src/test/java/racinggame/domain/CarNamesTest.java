@@ -19,7 +19,14 @@ public class CarNamesTest {
             "pobi,crong,honux,gaeul,"})
     void 자동차_이름을_반환한다(String input) {
         CarNames carNames = new CarNames(input);
-        assertThat(carNames.getNames()).isEqualTo(Arrays.asList("pobi", "crong", "honux", "gaeul"));
+        assertThat(carNames.getNames()).isEqualTo(
+                Arrays.asList(
+                        new CarName("pobi"),
+                        new CarName("crong"),
+                        new CarName("honux"),
+                        new CarName("gaeul")
+                )
+        );
     }
 
     @ParameterizedTest

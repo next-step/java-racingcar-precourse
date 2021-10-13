@@ -3,16 +3,16 @@ package racinggame.domain;
 import java.util.Objects;
 
 public class Record implements Comparable<Record> {
-    private final String name;
+    private final CarName name;
     private final int position;
 
-    public Record(String name, int position) {
+    public Record(CarName name, int position) {
         this.name = name;
         this.position = position;
     }
 
     public String getName() {
-        return name;
+        return name.getValue();
     }
 
     public int getPosition() {

@@ -2,10 +2,10 @@ package racinggame.domain;
 
 public class Car {
     private static final int MIN_GAS_POINT_FOR_MOVING_FORWARD = 4;
-    private final String name;
+    private final CarName name;
     private int position;
 
-    public Car(String name) {
+    public Car(CarName name) {
         this.name = name;
     }
 

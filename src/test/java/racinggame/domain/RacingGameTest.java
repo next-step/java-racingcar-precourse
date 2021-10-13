@@ -4,7 +4,6 @@ import nextstep.utils.Randoms;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
 
-import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -18,7 +17,7 @@ public class RacingGameTest {
             // given
             mockRandoms.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
                     .thenReturn(9, 0, 0);
-            Cars cars = new Cars(Arrays.asList(new Car("pobi"), new Car("crong"), new Car("honux")));
+            Cars cars = CarFactory.from(new CarNames("pobi,crong,honux"));
             GameResult result = new RacingGame(cars).run(new LapCount(1));
 
             // when
@@ -35,7 +34,7 @@ public class RacingGameTest {
             // given
             mockRandoms.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
                     .thenReturn(0, 0, 0);
-            Cars cars = new Cars(Arrays.asList(new Car("pobi"), new Car("crong"), new Car("honux")));
+            Cars cars = CarFactory.from(new CarNames("pobi,crong,honux"));
             GameResult result = new RacingGame(cars).run(new LapCount(1));
 
             // when
@@ -57,7 +56,7 @@ public class RacingGameTest {
                     .thenReturn(9, 9, 9)
                     .thenReturn(9, 9, 9)
                     .thenReturn(9, 9, 9);
-            Cars cars = new Cars(Arrays.asList(new Car("pobi"), new Car("crong"), new Car("honux")));
+            Cars cars = CarFactory.from(new CarNames("pobi,crong,honux"));
             GameResult result = new RacingGame(cars).run(new LapCount(5));
 
             // when
