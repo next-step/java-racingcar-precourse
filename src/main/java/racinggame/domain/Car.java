@@ -23,8 +23,12 @@ public class Car implements Comparable<Car> {
         }
     }
 
-    private Boolean canMove(int randomNum) {
+    public Boolean canMove(int randomNum) {
         return randomNum >= MOVE_OK;
+    }
+
+    public void setMoveCnt(int moveCnt) {
+        this.moveCnt = moveCnt;
     }
 
     public int getMoveCnt() {
@@ -34,7 +38,6 @@ public class Car implements Comparable<Car> {
     public String getCarName() {
         return this.carName;
     }
-
 
     @Override
     public int compareTo(Car car) {

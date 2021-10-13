@@ -49,8 +49,8 @@ public class User {
     public void printWinner(Winner winner) {
         System.out.print(Constant.PRINT_WINNER_FRONT);
         int commaCnt = winner.winner.size() - 1;
-        for (String key : winner.winner.keySet()) {
-            System.out.print(key);
+        for (String name : winner.winner) {
+            System.out.print(name);
             printComma(commaCnt);
             commaCnt--;
         }
