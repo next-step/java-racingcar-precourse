@@ -13,16 +13,9 @@ public class Car {
     }
 
     public void goStopCheck(int goStopNum) {
-        if(goStopNum >= GO_STOP_NUM){
+        if( goStopNum >= GO_STOP_NUM){
             addGoSize();
         }
-    }
-
-    public boolean validNumCheck(int no){
-        if(no < MIN_NO || no > MAX_NO ){
-            throw new IllegalArgumentException("[ERROR]");
-        }
-        return true;
     }
 
     public void setCarName(String carName){

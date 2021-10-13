@@ -4,16 +4,16 @@ import nextstep.utils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class CarController {
     public static final int MIN_NO = 1;
     public static final int MAX_NO = 9;
 
     List<Car> raceCars = new ArrayList<Car>();
-    Cars raceCar2 = new Cars(raceCars);
+    Cars cars = new Cars(raceCars);
 
     public int gameCount;
+    int maxSize = 0;
 
     public void createCar(String carName){
         String[] cars = carName.split(",");
@@ -30,8 +30,8 @@ public class CarController {
 
     public void carGoStopInput(){
         for(int j=0; j<raceCars.size(); j++){
-            raceCar2.findCar(j).goStopCheck(Randoms.pickNumberInRange(MIN_NO,MAX_NO));
-            System.out.println(raceCar2.findCar(j).getCarNumGoSize());
+            cars.findCar(j).goStopCheck(Randoms.pickNumberInRange(MIN_NO,MAX_NO));
+            System.out.println(cars.findCar(j).getCarNumGoSize());
         }
         System.out.println("");
     }
@@ -44,4 +44,38 @@ public class CarController {
         return this.gameCount;
     }
 
+    public String raceResult(){
+        return this.carsRank();
+    }
+
+    public String carsRank(){
+
+        StringBuilder resultMsg = new StringBuilder();
+        for(Car car: raceCars){
+            resultMsg.append(compareSize(maxSize,car));
+        }
+
+        return resultMsg.toString();
+    }
+
+    public String compareSize(int firstSize, Car compareCar){
+        if( firstSize == compareCar.getGoSize().length()){
+            return ","+compareCar.getCarName();
+        }
+        if( firstSize < compareCar.getGoSize().length() ){
+            maxSize = compareCar.getGoSize().length();
+            return compareCar.getCarName();
+        }
+        if( firstSize > compareCar.getGoSize().length() ){
+            return "";
+        }
+        return "";
+    }
+
+    public String validNumCheck(String size){
+        if( size.isEmpty() ){
+            return "[ERROR]";
+        }
+        return "";
+    }
 }
