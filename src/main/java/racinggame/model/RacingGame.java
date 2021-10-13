@@ -1,12 +1,17 @@
 package racinggame.model;
 
+import racinggame.controller.IOController;
 import racinggame.vo.GameTurnCnt;
 
 public class RacingGame {
-    private static final String GAME_RESULT_MSG_PREFIX = "실행 결과";
+    private IOController ioController;
+
+    public RacingGame(IOController ioController){
+        this.ioController = ioController;
+    }
 
     public Cars play(Cars cars, GameTurnCnt turnCnt) {
-        System.out.println(GAME_RESULT_MSG_PREFIX);
+        this.ioController.startShowingGameResult();
 
         this.runTurns(cars, turnCnt);
 
@@ -19,7 +24,7 @@ public class RacingGame {
         for (int i = 0; i < turnCnt.get(); i++) {
             this.runOneTurn(cars);
 
-            System.out.println(cars.toString());
+            this.ioController.writeContent(cars.toString());
         }
     }
 

@@ -15,6 +15,7 @@ public class IOController {
     private static final String ERROR_PLAYER_NAME_MSG = "[ERROR] 자동차의 이름은 1글자 이상 5글자 이하여야 합니다.";
     private static final String ERROR_GAME_TURN_CNT_MSG = "[ERROR] 게임 횟수는 양의 정수여야 합니다.";
     private static final String ERROR_GAME_NOT_SETUP_MSG = "게임이 정상적으로 준비되지 않았습니다. 관리자에게 문의바랍니다.";
+    private static final String GAME_RESULT_MSG_PREFIX = "실행 결과";
 
     private InputView inputView;
     private OutputView outputView;
@@ -64,5 +65,13 @@ public class IOController {
 
     public void NotifyGameNotSetup() {
         this.outputView.write(ERROR_GAME_NOT_SETUP_MSG);
+    }
+
+    public void startShowingGameResult() {
+        this.outputView.write(GAME_RESULT_MSG_PREFIX);
+    }
+
+    public void writeContent(String content) {
+        this.outputView.write(content);
     }
 }

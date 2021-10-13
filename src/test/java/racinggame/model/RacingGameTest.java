@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.MockedStatic;
+import racinggame.controller.IOController;
 import racinggame.vo.GameTurnCnt;
 import racinggame.vo.PlayerName;
 
@@ -14,10 +15,13 @@ import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mockStatic;
 
 public class RacingGameTest {
+    private RacingGame racingGame;
     private Cars playerCars;
 
     @BeforeEach
     void setup() {
+        this.racingGame = new RacingGame(new IOController());
+
         this.playerCars = new Cars();
 
         this.playerCars.add(new Car(new PlayerName("car1"), new CarLocation(0)));
@@ -27,7 +31,7 @@ public class RacingGameTest {
 
     @Test
     void 게임에_참여할_자동차_목록과_총_게임_턴수가_입력되면_게임의_적어도_한_명_이상의_우승자_목록을_생성한다() {
-        Assertions.assertThat(new RacingGame().play(this.playerCars, new GameTurnCnt(5)).size()).isGreaterThan(0);
+        Assertions.assertThat(this.racingGame.play(this.playerCars, new GameTurnCnt(5)).size()).isGreaterThan(0);
     }
 
     @ParameterizedTest
@@ -40,7 +44,7 @@ public class RacingGameTest {
                     .when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
                     .thenReturn(generatedRandomValue);
 
-            Assertions.assertThat(new RacingGame().play(this.playerCars, new GameTurnCnt(turnCnt)).size()).isEqualTo(this.playerCars.size());
+            Assertions.assertThat(this.racingGame.play(this.playerCars, new GameTurnCnt(turnCnt)).size()).isEqualTo(this.playerCars.size());
         }
     }
 
@@ -54,7 +58,7 @@ public class RacingGameTest {
                     .when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
                     .thenReturn(generatedRandomValue);
 
-            Cars winnerCars = new RacingGame().play(this.playerCars, new GameTurnCnt(turnCnt));
+            Cars winnerCars = this.racingGame.play(this.playerCars, new GameTurnCnt(turnCnt));
 
             for (Car winnerCar : winnerCars) {
                 Assertions.assertThat(winnerCar.getLocation()).isEqualTo(new CarLocation(0));
@@ -72,7 +76,7 @@ public class RacingGameTest {
                     .when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
                     .thenReturn(generatedRandomValue);
 
-            Assertions.assertThat(new RacingGame().play(this.playerCars, new GameTurnCnt(turnCnt)).size()).isEqualTo(this.playerCars.size());
+            Assertions.assertThat(this.racingGame.play(this.playerCars, new GameTurnCnt(turnCnt)).size()).isEqualTo(this.playerCars.size());
         }
     }
 
@@ -86,7 +90,7 @@ public class RacingGameTest {
                     .when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
                     .thenReturn(generatedRandomValue);
 
-            Cars winnerCars = new RacingGame().play(this.playerCars, new GameTurnCnt(turnCnt));
+            Cars winnerCars = this.racingGame.play(this.playerCars, new GameTurnCnt(turnCnt));
 
             for (Car winnerCar : winnerCars) {
                 Assertions.assertThat(winnerCar.getLocation()).isEqualTo(new CarLocation(turnCnt));
@@ -105,7 +109,7 @@ public class RacingGameTest {
                     .thenReturn(3)
                     .thenReturn(3);
 
-            Cars winnerCars = new RacingGame().play(this.playerCars, new GameTurnCnt(turnCnt));
+            Cars winnerCars = this.racingGame.play(this.playerCars, new GameTurnCnt(turnCnt));
 
             Assertions.assertThat(winnerCars.size()).isEqualTo(1);
             Assertions.assertThat(winnerCars).containsOnly(this.playerCars.get(0));
@@ -123,7 +127,7 @@ public class RacingGameTest {
                     .thenReturn(4)
                     .thenReturn(4);
 
-            Cars winnerCars = new RacingGame().play(this.playerCars, new GameTurnCnt(turnCnt));
+            Cars winnerCars = this.racingGame.play(this.playerCars, new GameTurnCnt(turnCnt));
 
             Assertions.assertThat(winnerCars.size()).isEqualTo(this.playerCars.size() - 1);
             Assertions.assertThat(winnerCars).doesNotContain(this.playerCars.get(0));

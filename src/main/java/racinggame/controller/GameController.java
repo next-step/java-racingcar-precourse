@@ -18,9 +18,8 @@ public class GameController {
     private boolean isSetup;
 
     public GameController() {
-        this.racingGame = new RacingGame();
-
         this.ioController = new IOController();
+        this.racingGame = new RacingGame(this.ioController);
         this.playerNamesReader = new PlayerNamesReader(this.ioController);
         this.gameTurnCntReader = new GameTurnCntReader(this.ioController);
 
