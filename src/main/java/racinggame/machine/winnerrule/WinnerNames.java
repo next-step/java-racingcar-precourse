@@ -1,4 +1,4 @@
-package racinggame.rule.winnerrules;
+package racinggame.machine.winnerrule;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,16 +1,14 @@
 package racinggame.circuit;
 
-import racinggame.dice.Dice;
 import racinggame.racinggame.Circuit;
-import racinggame.rule.racing.Rule;
 
 public class RacingCircuit implements Circuit {
 	private final Dice dice;
-	private final Rule rule;
+	private final MovementRule movementRule;
 
-	public RacingCircuit (Dice dice, Rule rule){
+	public RacingCircuit (Dice dice, MovementRule movementRule){
 		this.dice = dice;
-		this.rule = rule;
+		this.movementRule = movementRule;
 	}
 
 	/**
@@ -29,7 +27,7 @@ public class RacingCircuit implements Circuit {
 		FinalRecord finalRecord = new FinalRecord();
 
 		for (int lap = 0; lap < laps.getLaps(); ++lap) {
-			finalRecord.add(racingCars.run(dice, rule));
+			finalRecord.add(racingCars.run(dice, movementRule));
 		}
 
 		return finalRecord;

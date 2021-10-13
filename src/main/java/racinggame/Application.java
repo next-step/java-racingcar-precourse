@@ -1,20 +1,20 @@
 package racinggame;
 
 import racinggame.circuit.RacingCircuit;
-import racinggame.dice.TenSidedDice;
+import racinggame.circuit.dice.TenSidedDice;
 import racinggame.racinggame.RacingGame;
-import racinggame.rule.racing.RacingRule;
-import racinggame.rule.winnerrules.FarAwayWinRule;
-import racinggame.rule.winnerrules.WinnerDecisionRule;
-import racinggame.ui.OutputDevice;
-import racinggame.ui.RacingGameScreen;
-import racinggame.ui.config.RacingGameConfig;
-import racinggame.ui.input.ConsoleKeyboard;
-import racinggame.ui.output.ConsolePrinter;
+import racinggame.circuit.racingrule.RacingMovementRule;
+import racinggame.machine.winnerrule.FarAwayWinRule;
+import racinggame.machine.WinnerDecisionRule;
+import racinggame.machine.OutputDevice;
+import racinggame.machine.RacingGameMachine;
+import racinggame.machine.config.RacingGameConfig;
+import racinggame.machine.input.ConsoleKeyboard;
+import racinggame.machine.output.ConsolePrinter;
 
 public class Application {
 	public static void main(String[] args) {
-		new RacingGameScreen(config(), game(), winnerDecisionRule(), outputDevice())
+		new RacingGameMachine(config(), game(), winnerDecisionRule(), outputDevice())
 			.turnOn();
 	}
 
@@ -26,7 +26,7 @@ public class Application {
 		return new RacingGame(
 			new RacingCircuit(
 				new TenSidedDice(),
-				new RacingRule()
+				new RacingMovementRule()
 			)
 		);
 	}

@@ -1,4 +1,4 @@
-package racinggame.ui;
+package racinggame.machine;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -9,20 +9,19 @@ import org.junit.jupiter.api.Test;
 
 import nextstep.test.NSTest;
 import racinggame.circuit.RacingCircuit;
-import racinggame.dice.TenSidedDice;
+import racinggame.circuit.dice.TenSidedDice;
 import racinggame.exception.InvalidNumberException;
 import racinggame.racinggame.RacingGame;
-import racinggame.rule.racing.RacingRule;
-import racinggame.rule.winnerrules.FarAwayWinRule;
-import racinggame.rule.winnerrules.WinnerDecisionRule;
-import racinggame.ui.config.RacingGameConfig;
-import racinggame.ui.input.ConsoleKeyboard;
-import racinggame.ui.output.ConsolePrinter;
+import racinggame.circuit.racingrule.RacingMovementRule;
+import racinggame.machine.winnerrule.FarAwayWinRule;
+import racinggame.machine.config.RacingGameConfig;
+import racinggame.machine.input.ConsoleKeyboard;
+import racinggame.machine.output.ConsolePrinter;
 
-class RacingGameScreenTest extends NSTest {
+class RacingGameMachineTest extends NSTest {
 	private static final String ERROR_MESSAGE = "[ERROR]";
 
-	private RacingGameScreen screen;
+	private RacingGameMachine screen;
 
 	@BeforeEach
 	void beforeEach() {
@@ -67,8 +66,8 @@ class RacingGameScreenTest extends NSTest {
 	}
 
 	private static class RacingGameScreenConfig {
-		static RacingGameScreen screen() {
-			return new RacingGameScreen(config(), game(), winnerDecisionRule(), outputDevice());
+		static RacingGameMachine screen() {
+			return new RacingGameMachine(config(), game(), winnerDecisionRule(), outputDevice());
 		}
 
 		private static RacingGameConfig config() {
@@ -79,7 +78,7 @@ class RacingGameScreenTest extends NSTest {
 			return new RacingGame(
 				new RacingCircuit(
 					new TenSidedDice(),
-					new RacingRule()
+					new RacingMovementRule()
 				)
 			);
 		}

@@ -1,4 +1,4 @@
-package racinggame.rule.winnerrules;
+package racinggame.machine.winnerrules;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -11,8 +11,11 @@ import racinggame.circuit.LapRecords;
 import racinggame.racingcar.LapRecord;
 import racinggame.racingcar.Location;
 import racinggame.common.RacingCarName;
+import racinggame.machine.WinnerDecisionRule;
+import racinggame.machine.winnerrule.FarAwayWinRule;
+import racinggame.machine.winnerrule.WinnerNames;
 
-class FarAwayWinRuleTest {
+class FarAwayWinMovementRuleTest {
 	private WinnerDecisionRule rule;
 
 	@BeforeEach

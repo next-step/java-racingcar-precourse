@@ -1,4 +1,4 @@
-package racinggame.dice;
+package racinggame.circuit;
 
 import racinggame.racingcar.Movement;
 

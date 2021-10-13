@@ -1,12 +1,12 @@
-package racinggame.ui.config;
+package racinggame.machine.config;
 
 import racinggame.circuit.RacingCars;
 import racinggame.common.RacingCarName;
 import racinggame.exception.InvalidNameException;
 import racinggame.racingcar.RacingCar;
 import racinggame.racinggame.RacingCarNames;
-import racinggame.ui.InputDevice;
-import racinggame.ui.OutputDevice;
+import racinggame.machine.InputDevice;
+import racinggame.machine.OutputDevice;
 
 public final class RacingCarsConfig {
 	private final InputDevice inputDevice;

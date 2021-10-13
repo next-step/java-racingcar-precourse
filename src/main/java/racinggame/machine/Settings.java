@@ -1,4 +1,4 @@
-package racinggame.ui;
+package racinggame.machine;
 
 import racinggame.circuit.Lap;
 import racinggame.circuit.RacingCars;

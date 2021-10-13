@@ -1,7 +1,7 @@
-package racinggame.rule.racing;
+package racinggame.circuit;
 
 import racinggame.racingcar.Movement;
 
-public interface Rule {
+public interface MovementRule {
 	Movement judgeMovement(int diceValue);
 }

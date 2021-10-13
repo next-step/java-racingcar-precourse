@@ -1,19 +1,18 @@
-package racinggame.ui;
+package racinggame.machine;
 
 import racinggame.circuit.FinalRecord;
 import racinggame.racinggame.RacingGame;
-import racinggame.rule.winnerrules.WinnerDecisionRule;
-import racinggame.rule.winnerrules.WinnerNames;
-import racinggame.ui.config.RacingGameConfig;
+import racinggame.machine.winnerrule.WinnerNames;
+import racinggame.machine.config.RacingGameConfig;
 
-public final class RacingGameScreen {
+public final class RacingGameMachine {
 	private final RacingGameConfig config;
 	private final RacingGame game;
 	private final WinnerDecisionRule rule;
 	private final OutputDevice outputDevice;
 
-	public RacingGameScreen(RacingGameConfig config, RacingGame game,
-							WinnerDecisionRule rule, OutputDevice outputDevice) {
+	public RacingGameMachine(RacingGameConfig config, RacingGame game,
+		WinnerDecisionRule rule, OutputDevice outputDevice) {
 		this.config = config;
 		this.game = game;
 		this.rule = rule;

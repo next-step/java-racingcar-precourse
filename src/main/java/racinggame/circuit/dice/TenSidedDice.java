@@ -1,6 +1,7 @@
-package racinggame.dice;
+package racinggame.circuit.dice;
 
 import nextstep.utils.Randoms;
+import racinggame.circuit.Dice;
 
 public class TenSidedDice implements Dice {
 	private static final int MIN = 0;

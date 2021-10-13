@@ -7,13 +7,11 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import racinggame.common.RacingCarName;
-import racinggame.dice.Dice;
-import racinggame.dice.TenSidedDice;
+import racinggame.circuit.dice.TenSidedDice;
 import racinggame.racingcar.LapRecord;
 import racinggame.racingcar.Location;
 import racinggame.racingcar.RacingCar;
-import racinggame.rule.racing.RacingRule;
-import racinggame.rule.racing.Rule;
+import racinggame.circuit.racingrule.RacingMovementRule;
 
 class MockRacingCircuitTest {
 	private RacingCircuit mockRacingCircuit;
@@ -65,8 +63,8 @@ class MockRacingCircuitTest {
 			return new TenSidedDice();
 		}
 
-		static Rule rule() {
-			return new RacingRule();
+		static MovementRule rule() {
+			return new RacingMovementRule();
 		}
 
 		private static FinalRecord expectedRecord() {

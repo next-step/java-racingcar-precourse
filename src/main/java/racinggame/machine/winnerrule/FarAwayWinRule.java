@@ -1,8 +1,9 @@
-package racinggame.rule.winnerrules;
+package racinggame.machine.winnerrule;
 
 import racinggame.circuit.FinalRecord;
 import racinggame.circuit.LapRecords;
 import racinggame.racingcar.LapRecord;
+import racinggame.machine.WinnerDecisionRule;
 
 public class FarAwayWinRule implements WinnerDecisionRule {
 	private final String EMPTY = "";

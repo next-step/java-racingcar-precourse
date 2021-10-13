@@ -12,27 +12,25 @@ import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
 
 import nextstep.utils.Randoms;
-import racinggame.dice.Dice;
-import racinggame.dice.TenSidedDice;
+import racinggame.circuit.dice.TenSidedDice;
 import racinggame.racingcar.LapRecord;
 import racinggame.racingcar.Location;
 import racinggame.common.RacingCarName;
 import racinggame.racingcar.RacingCar;
-import racinggame.rule.racing.RacingRule;
-import racinggame.rule.racing.Rule;
+import racinggame.circuit.racingrule.RacingMovementRule;
 
 class RacingCarsTest {
 	private static final int FORWARD = 4;
 	private static final int STOP = 3;
 
 	private RacingCars racingCars;
-	private Rule rule;
+	private MovementRule movementRule;
 	private Dice dice;
 
 	@BeforeEach
 	void beforeEach() {
 		racingCars = RacingCarsConfig.racingCars();
-		rule = RacingCarsConfig.rule();
+		movementRule = RacingCarsConfig.rule();
 		dice = RacingCarsConfig.dice();
 	}
 
@@ -49,7 +47,7 @@ class RacingCarsTest {
 			expected.add(new LapRecord(new RacingCarName("abc2"), new Location(1)));
 
 			//when
-			LapRecords lapRecords = racingCars.run(dice, rule);
+			LapRecords lapRecords = racingCars.run(dice, movementRule);
 
 			//then
 			Assertions.assertThat(lapRecords).isEqualTo(expected);
@@ -71,7 +69,7 @@ class RacingCarsTest {
 				.toString();
 
 			//when
-			LapRecords lapRecords = racingCars.run(dice, rule);
+			LapRecords lapRecords = racingCars.run(dice, movementRule);
 
 			//then
 			Assertions.assertThat(lapRecords.read()).isEqualTo(expected);
@@ -91,7 +89,7 @@ class RacingCarsTest {
 			expected.add(new LapRecord(new RacingCarName("abc2"), new Location(0)));
 
 			//when
-			LapRecords lapRecords = racingCars.run(dice, rule);
+			LapRecords lapRecords = racingCars.run(dice, movementRule);
 
 			//then
 			Assertions.assertThat(lapRecords).isEqualTo(expected);
@@ -113,7 +111,7 @@ class RacingCarsTest {
 				.toString();
 
 			//when
-			LapRecords lapRecords = racingCars.run(dice, rule);
+			LapRecords lapRecords = racingCars.run(dice, movementRule);
 
 			//then
 			Assertions.assertThat(lapRecords.read()).isEqualTo(expected);
@@ -136,8 +134,8 @@ class RacingCarsTest {
 			);
 		}
 
-		static Rule rule() {
-			return new RacingRule();
+		static MovementRule rule() {
+			return new RacingMovementRule();
 		}
 
 		static Dice dice (){

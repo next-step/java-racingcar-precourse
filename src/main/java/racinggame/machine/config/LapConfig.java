@@ -1,9 +1,9 @@
-package racinggame.ui.config;
+package racinggame.machine.config;
 
 import racinggame.circuit.Lap;
 import racinggame.exception.InvalidNameException;
-import racinggame.ui.InputDevice;
-import racinggame.ui.OutputDevice;
+import racinggame.machine.InputDevice;
+import racinggame.machine.OutputDevice;
 
 public final class LapConfig {
 	private final InputDevice inputDevice;

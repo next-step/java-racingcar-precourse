@@ -3,11 +3,9 @@ package racinggame.circuit;
 import java.util.ArrayList;
 import java.util.List;
 
-import racinggame.dice.Dice;
 import racinggame.racingcar.LapRecord;
 import racinggame.racingcar.Movement;
 import racinggame.racingcar.RacingCar;
-import racinggame.rule.racing.Rule;
 
 public final class RacingCars {
 	private final List<RacingCar> racingCars = new ArrayList<>();
@@ -22,11 +20,11 @@ public final class RacingCars {
 	 *
 	 * @return {@link LapRecords}
 	 */
-	public LapRecords run(Dice dice, Rule rule) {
+	public LapRecords run(Dice dice, MovementRule movementRule) {
 		LapRecords lapRecords = new LapRecords();
 		racingCars.forEach(car -> {
 			int diceResult = dice.roll();
-			Movement movement = rule.judgeMovement(diceResult);
+			Movement movement = movementRule.judgeMovement(diceResult);
 			LapRecord record = car.pushPedal(movement);
 			lapRecords.add(record);
 		});

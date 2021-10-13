@@ -1,9 +1,9 @@
-package racinggame.rule.racing;
+package racinggame.circuit.racingrule;
 
 import racinggame.racingcar.Movement;
-import racinggame.rule.racing.Rule;
+import racinggame.circuit.MovementRule;
 
-public final class RacingRule implements Rule {
+public final class RacingMovementRule implements MovementRule {
 	private static final int DICE_MIN = 0;
 	private static final int JUDGE_VALUE = 3;
 

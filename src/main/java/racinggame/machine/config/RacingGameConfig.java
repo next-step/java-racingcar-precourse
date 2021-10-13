@@ -1,10 +1,10 @@
-package racinggame.ui.config;
+package racinggame.machine.config;
 
 import racinggame.circuit.Lap;
 import racinggame.circuit.RacingCars;
-import racinggame.ui.InputDevice;
-import racinggame.ui.OutputDevice;
-import racinggame.ui.Settings;
+import racinggame.machine.InputDevice;
+import racinggame.machine.OutputDevice;
+import racinggame.machine.Settings;
 
 public final class RacingGameConfig {
 	private final InputDevice inputDevice;

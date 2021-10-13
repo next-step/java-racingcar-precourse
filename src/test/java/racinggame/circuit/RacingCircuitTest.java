@@ -10,11 +10,9 @@ import org.mockito.MockedStatic;
 
 import nextstep.utils.Randoms;
 import racinggame.common.RacingCarName;
-import racinggame.dice.Dice;
-import racinggame.dice.TenSidedDice;
+import racinggame.circuit.dice.TenSidedDice;
 import racinggame.racingcar.RacingCar;
-import racinggame.rule.racing.RacingRule;
-import racinggame.rule.racing.Rule;
+import racinggame.circuit.racingrule.RacingMovementRule;
 
 class RacingCircuitTest {
 	private static final int FORWARD = 4;
@@ -66,8 +64,8 @@ class RacingCircuitTest {
 			return new RacingCircuit(dice(), rule());
 		}
 
-		static Rule rule() {
-			return new RacingRule();
+		static MovementRule rule() {
+			return new RacingMovementRule();
 		}
 
 		public static Dice dice() {

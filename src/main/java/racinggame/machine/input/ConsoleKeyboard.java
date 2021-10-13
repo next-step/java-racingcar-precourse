@@ -1,7 +1,7 @@
-package racinggame.ui.input;
+package racinggame.machine.input;
 
 import nextstep.utils.Console;
-import racinggame.ui.InputDevice;
+import racinggame.machine.InputDevice;
 
 public class ConsoleKeyboard implements InputDevice {
 	@Override

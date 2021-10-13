@@ -1,6 +1,6 @@
-package racinggame.ui.output;
+package racinggame.machine.output;
 
-import racinggame.ui.OutputDevice;
+import racinggame.machine.OutputDevice;
 
 public class ConsolePrinter implements OutputDevice {
 	@Override
