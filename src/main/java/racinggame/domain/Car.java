@@ -1,6 +1,5 @@
 package racinggame.domain;
 
-import racinggame.domain.exceptions.CarException;
 import racinggame.ui.ResultView;
 
 public class Car {
@@ -9,15 +8,8 @@ public class Car {
     private Name name;
 
     public Car(String carName){
-        validate(carName);
         name = new Name(carName);
         moveCount = new MoveCount();
-    }
-
-    private void validate(String carName) {
-        if(carName.length() >5){
-            throw new CarException("[ERROR] 다섯자 미만의 이름을 입력해 주세요");
-        }
     }
 
     public void move(int randomNumber){
