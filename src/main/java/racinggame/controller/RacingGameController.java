@@ -2,6 +2,7 @@ package racinggame.controller;
 
 import racinggame.model.RacingParticipant;
 import racinggame.model.car.Car;
+import racinggame.model.round.Round;
 import racinggame.model.validator.InputValidator;
 import racinggame.model.validator.RoundValidator;
 import racinggame.view.GameConsole;
@@ -16,7 +17,7 @@ public class RacingGameController {
 
 	private RacingParticipant racingParticipant;
 	private GameConsole gameConsole;
-	private int round;
+	private Round round;
 
 	public RacingGameController(){
 		this.gameConsole = new GameConsole();
@@ -60,13 +61,13 @@ public class RacingGameController {
 			round = gameConsole.readLine();
 			isFinish = RoundValidator.checkPipeline(round);
 		}while(!isFinish);
-		this.round = Integer.parseInt(round);
+		this.round = new Round(Integer.parseInt(round));
 	}
 
 	private void runGame(){
 		System.out.println("");
 		gameConsole.printLine(RacingGameController.EXECUTION_RESULT);
-		for(int i = 0; i < this.round; i++){
+		for(int i = 0; i < this.round.getRound(); i++){
 			addTimeStep();
 			drawTimeStep();
 		}
