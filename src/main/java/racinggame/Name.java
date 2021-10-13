@@ -14,7 +14,7 @@ public class Name {
 
 	private void validateLength(String name) {
 		if (name.length() < 1 || name.length() > 5) {
-			throw new IllegalArgumentException("[ERROR] 이름은 1~5자 사이로만 가능합니다.");
+			throw new IllegalArgumentException("[ERROR] 이름은 1자 이상, 5자 이하로만 가능합니다.");
 		}
 	}
 
