@@ -19,14 +19,14 @@ public class InputCountTest {
 		assertThat(result).isEqualTo(2);
 	}
 
-	@Test
-	void 더하기_가능여부_확인() {
-		InputCount inputCount = new InputCount();
-		for (int i = 1; i < MAX_INPUT_COUNT; i++) {
-			inputCount.plus();
-			assertThat(inputCount.isPossible()).isTrue();
-		}
-	}
+	// @Test
+	// void 더하기_가능여부_확인() {
+	// 	InputCount inputCount = new InputCount();
+	// 	for (int i = 1; i < MAX_INPUT_COUNT; i++) {
+	// 		inputCount.plus();
+	// 		assertThat(inputCount.isPossible()).isTrue();
+	// 	}
+	// }
 
 	@Test
 	void 더하기_가능여부_예외() {

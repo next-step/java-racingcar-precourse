@@ -14,7 +14,7 @@ public class InputCount {
 	public int count;
 
 	public InputCount() {
-		count = 1;
+		count = 0;
 	}
 
 	public int getCount() {
@@ -27,7 +27,7 @@ public class InputCount {
 	 * @throws IllegalStateException 최대 입력횟수 초과시 발생
 	 */
 	public void plus() {
-		if (count >= MAX_INPUT_COUNT) {
+		if (!isPossible()) {
 			throw new IllegalStateException(ERROR_TO_MANY_INPUT);
 		}
 		count++;
@@ -39,6 +39,6 @@ public class InputCount {
 	 * @return 추가 입력 가능 여부
 	 */
 	public boolean isPossible() {
-		return count + 1 < MAX_INPUT_COUNT;
+		return count + 1 <= MAX_INPUT_COUNT;
 	}
 }

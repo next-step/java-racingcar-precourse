@@ -1,6 +1,7 @@
 package racinggame.controller;
 
 import static racinggame.common.CommonConstants.*;
+import static racinggame.common.ErrorMessage.*;
 
 import java.util.Optional;
 
@@ -21,9 +22,11 @@ import racinggame.view.GameView;
 public class Host {
 
 	Racing racing;
+	InputCount inputCount;
 
 	public Host() {
 		racing = new Racing();
+		inputCount = new InputCount();
 	}
 
 	public Racing getRacing() {
@@ -35,7 +38,6 @@ public class Host {
 	 */
 	public void setRacingCars() {
 		Optional<CarNames> carNames = Optional.empty();
-		InputCount inputCount = new InputCount();
 		while (!carNames.isPresent() && inputCount.isPossible()) {
 			String input = GameView.inputCarNames();
 			carNames = Optional.ofNullable(inputCarNames(input));
@@ -64,7 +66,6 @@ public class Host {
 	 */
 	public void setTryCount() {
 		Optional<TryCount> tryCount = Optional.empty();
-		InputCount inputCount = new InputCount();
 		while (!tryCount.isPresent() && inputCount.isPossible()) {
 			String input = GameView.inputTryCount();
 			tryCount = Optional.ofNullable(inputTryCount(input));
@@ -89,11 +90,23 @@ public class Host {
 	}
 
 	/**
+	 * 입력횟수가 최대인 경우 레이싱 비진행
+	 */
+	private boolean isMaxInputCount() {
+		if (!inputCount.isPossible()) {
+			GameView.outError(ERROR_TO_MANY_INPUT);
+			return true;
+		}
+		return false;
+	}
+
+	/**
 	 * 레이싱 시작 및 결과 반환
 	 */
 	public void start() {
 		RacingResults racingResults = racing.startRacing();
 		GameView.outRacingResult(racingResults + NEW_LINE);
+		getWinner();
 	}
 
 	/**
@@ -109,8 +122,9 @@ public class Host {
 	public void run() {
 		setRacingCars();
 		setTryCount();
-		start();
-		getWinner();
+		if (!isMaxInputCount()) {
+			start();
+		}
 	}
 
 }

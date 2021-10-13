@@ -64,6 +64,20 @@ public class HostTest {
 			.contains("honux");
 	}
 
+	@Test
+	void 입력_회수_초과() {
+		mockConsole.when(Console::readLine)
+			.thenReturn("!1", "!2", "!3", "!4", "!5", "!6", "!7", "!8", "!9"
+				, "!10", "!11", "!12", "!13", "!14", "!15", "!16", "!17", "!18", "!19", "!20");
+
+		host.setRacingCars();
+		String output = outContent.toString();
+		assertThat(output)
+			.contains(ERROR_PREFIX)
+			.contains(ERROR_TO_MANY_INPUT);
+
+	}
+
 	@ParameterizedTest(name = "자동차_이름_입력 {0}")
 	@ValueSource(strings = {"", "123456,안녕하세요", ",안녕,", "123,"})
 	void 레이싱_자동차_이름_입력_유효성(String input) {
@@ -75,7 +89,7 @@ public class HostTest {
 		String output = outContent.toString();
 		assertThat(output)
 			.contains(ERROR_PREFIX)
-			.contains(ERROR_INPUT_CAR_NAMES);
+			.endsWith(ERROR_INPUT_CAR_NAMES);
 
 	}
 

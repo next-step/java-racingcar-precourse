@@ -14,5 +14,5 @@ public class ErrorMessage {
 	public static final String ERROR_INPUT_CAR_NAMES = "올바른 자동차 이름들을 입력해주세요";
 	public static final String ERROR_TRY_COUNT = "시도 회수는 숫자만 입력해주세요.";
 	public static final String ERROR_DUP_CAR_NAMES = "중복된 자동차 이름이 존재합니다.";
-	public static final String ERROR_TO_MANY_INPUT = "너무 많이 입력하셨습니다. 프로그램을 다시 시작해 주세요";
+	public static final String ERROR_TO_MANY_INPUT = "잘못된 값을 너무 많이 입력하셨습니다. 프로그램을 다시 시작해 주세요";
 }
