@@ -25,9 +25,9 @@ public class Lap {
 	}
 
 	private void validatePositiveNumber(String consoleInput) {
-		int lab = Integer.parseInt(consoleInput);
+		int lap = Integer.parseInt(consoleInput);
 
-		if (lab <= 0) {
+		if (lap <= 0) {
 			throw new InvalidNumberException("[ERROR] 1 이상 자연수를 입력하세요.");
 		}
 	}

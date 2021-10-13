@@ -20,7 +20,7 @@ public class RacingCarName {
 
 	private void validateName(String name) {
 		int length = name.length();
-		if (length <= 0 || length > 5) {
+		if (length <=0 || length > 5) {
 			throw new InvalidNameException("[ERROR] 이름을 1자 이상 5자 이하로 입력하세요");
 		}
 	}

@@ -20,27 +20,27 @@ public final class RacingCarsConfig {
 	protected RacingCars getRacingCars (){
 		RacingCars racingCars = new RacingCars();
 
-		inputCarNames().getNames()
+		carNames().getNames()
 			.forEach(name -> racingCars.add(new RacingCar(name)));
 
 		return racingCars;
 	}
 
-	private RacingCarNames inputCarNames() {
+	private RacingCarNames carNames() {
 		RacingCarNames racingCarNames = null;
 
 		while(racingCarNames == null){
 			outputDevice.print("경주할 자동차 이름을 입력하세요.");
-			racingCarNames = inputRacingCarNames();
+			racingCarNames = input();
 		}
 
 		return racingCarNames;
 	}
 
-	private RacingCarNames inputRacingCarNames() {
+	private RacingCarNames input() {
 		RacingCarNames racingCarNames;
 		try {
-			racingCarNames = inputNames();
+			racingCarNames = makeRacingCarNames();
 			return racingCarNames;
 		} catch (InvalidNameException e) {
 			outputDevice.print(e.getMessage());
@@ -48,14 +48,26 @@ public final class RacingCarsConfig {
 		}
 	}
 
-	private RacingCarNames inputNames() {
+	private RacingCarNames makeRacingCarNames() {
 		RacingCarNames racingCarNames = new RacingCarNames();
 
-		String namesChunk = inputDevice.input();
-		for (String nameChunk : namesChunk.split(",")) {
+		String[] namesChunk = splitInputNames();
+
+		for (String nameChunk : namesChunk) {
 			racingCarNames.add(new RacingCarName(nameChunk));
 		}
-
 		return racingCarNames;
+	}
+
+	private String[] splitInputNames (){
+		String[] namesChunk = inputDevice.input()
+			.replace(" ","")
+			.split(",");
+
+		if(namesChunk.length == 0){
+			throw new InvalidNameException("[ERROR] 이름을 1자 이상 5자 이하로 입력하세요");
+		}
+
+		return namesChunk;
 	}
 }
