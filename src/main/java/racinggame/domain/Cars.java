@@ -23,6 +23,10 @@ public class Cars {
 		this.cars = mapToCars(carNames, movableStrategy);
 	}
 
+	public Cars(final Car ...cars) {
+		this.cars = Arrays.asList(cars);
+	}
+
 	private void validateLength(List<String> carNames) {
 		if (carNames == null || carNames.isEmpty()){
 			throw new InvalidInputException(ErrorMessage.CAR_NAME_INVALID.getMessage());
@@ -44,6 +48,24 @@ public class Cars {
 	public void move() {
 		for (Car car : this.cars) {
 			car.move();
+		}
+	}
+
+	public List<Car> announceWinners(){
+		Collections.sort(this.cars);
+		int maxDrivenDistance = this.cars.get(0).getDrivenDistance();
+		List<Car> winners = new ArrayList<>();
+
+		for (Car car : this.cars) {
+			addIfSameMaxDrivenDistance(winners, car, maxDrivenDistance);
+		}
+
+		return Collections.unmodifiableList(winners);
+	}
+
+	private void addIfSameMaxDrivenDistance(final List<Car> winners, final Car car, final int maxDrivenDistance) {
+		if (car.isWinner(maxDrivenDistance)) {
+			winners.add(car);
 		}
 	}
 }

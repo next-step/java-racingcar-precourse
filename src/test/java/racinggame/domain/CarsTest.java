@@ -34,6 +34,21 @@ public class CarsTest {
 
 	}
 
+	@Test
+	void 가장_많이_이동한_자동차_선정(){
+		Car pobi = new Car("pobi", new FixedMovableStrategy(3));
+		Car con = new Car("con", new FixedMovableStrategy(4));
+		Car race = new Car("race", new FixedMovableStrategy(1));
+		Cars cars = new Cars(pobi, con, race);
+
+		cars.move();
+		List<Car> winners = cars.announceWinners();
+
+		assertThat(winners.size()).isEqualTo(1);
+		assertThat(winners)
+			.contains(con);
+	}
+
 	private List<String> parse(final String carNames) {
 		return new ArrayList<>(Arrays.asList(carNames.split(",")));
 	}
