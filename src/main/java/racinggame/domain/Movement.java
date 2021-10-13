@@ -17,7 +17,7 @@ public class Movement {
         return movementStatus;
     }
 
-    public MovementStatus move() {
+    private MovementStatus move() {
         int randomValue = generateRandomValue();
         return randomValueMovementCheck(randomValue);
     }
