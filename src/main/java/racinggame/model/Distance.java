@@ -8,6 +8,10 @@ public class Distance {
         this.distance = 0;
     }
 
+    public Distance(int distance) {
+        this.distance = distance;
+    }
+
     public int getDistance() {
         return distance;
     }

@@ -20,13 +20,17 @@ public class Car implements Comparable<Car> {
         this.randomNumber = new RandomNumber();
     }
 
+    public Car(String carName, int distance) {
+        this.carName = carName;
+        this.distance = new Distance(distance);
+    }
+
     private boolean validateName(String carName) {
         return carName.matches("^[\\w]{1,5}$");
     }
 
-    public void moving() {
-        randomNumber.playRound();
-        if (randomNumber.getRandomNumber() > MOVING_MIN_COUNT) {
+    public void moving(int randomNumber) {
+        if (randomNumber > MOVING_MIN_COUNT) {
             this.distance.moveForward();
         }
     }

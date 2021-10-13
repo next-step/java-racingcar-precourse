@@ -1,7 +1,5 @@
 package racinggame.model;
 
-import racinggame.exception.ValidationException;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -9,29 +7,14 @@ import java.util.List;
 public class RacingCars {
     private final List<Car> racingCars;
 
-    public RacingCars(List<String> racingCars) {
-        if (!validateInput(racingCars)) {
-            throw new ValidationException();
-        }
-        this.racingCars = createCar(racingCars);
-    }
-
-    private List<Car> createCar(List<String> racingCars) {
-        List<Car> carList = new ArrayList<>();
-        for (String name : racingCars) {
-            carList.add(new Car(name));
-        }
-        return carList;
-    }
-
-    private boolean validateInput(List<String> racingCars) {
-        return racingCars.size() > 0;
+    public RacingCars(List<Car> racingCars) {
+        this.racingCars = racingCars;
     }
 
     public String proceedRace() {
         StringBuilder sb = new StringBuilder();
         for (Car car : racingCars) {
-            car.moving();
+            car.moving(new RandomNumber().playRound());
             sb.append(car.getCarName() + " : ");
             sb.append(car.displayDistance(car));
             sb.append(System.lineSeparator());
