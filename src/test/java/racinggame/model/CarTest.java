@@ -2,10 +2,8 @@ package racinggame.model;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import racinggame.exception.ValidationException;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CarTest {
     @ParameterizedTest
@@ -24,14 +22,6 @@ public class CarTest {
         car.moving(2);
 
         assertThat(car.getDistance().getDistance()).isEqualTo(0);
-    }
-
-    @ParameterizedTest
-    @CsvSource({"123456", "joelel", "한글이름이다"})
-    void 자동차_이름_입력_오류_테스트(String name) throws ValidationException {
-        assertThrows(ValidationException.class, () -> {
-            new Car(name);
-        });
     }
 
 }

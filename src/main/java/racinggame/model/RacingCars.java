@@ -15,9 +15,9 @@ public class RacingCars {
         StringBuilder sb = new StringBuilder();
         for (Car car : racingCars) {
             car.moving(new RandomNumber().playRound());
-            sb.append(car.getCarName() + " : ");
-            sb.append(car.displayDistance(car));
-            sb.append(System.lineSeparator());
+            sb.append(car.getCarName() + " : ")
+                    .append(car.displayDistance(car))
+                    .append(System.lineSeparator());
         }
         return sb.toString();
     }

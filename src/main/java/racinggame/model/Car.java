@@ -12,9 +12,6 @@ public class Car implements Comparable<Car> {
     private RandomNumber randomNumber;
 
     public Car(String carName) {
-        if (!validateName(carName)) {
-            throw new ValidationException();
-        }
         this.carName = carName;
         this.distance = new Distance();
         this.randomNumber = new RandomNumber();
@@ -23,10 +20,6 @@ public class Car implements Comparable<Car> {
     public Car(String carName, int distance) {
         this.carName = carName;
         this.distance = new Distance(distance);
-    }
-
-    private boolean validateName(String carName) {
-        return carName.matches("^[\\w]{1,5}$");
     }
 
     public void moving(int randomNumber) {

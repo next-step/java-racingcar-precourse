@@ -31,7 +31,7 @@ public class RaceController {
     private RacingCars inputCarName() {
         RacingCars racingCars = null;
         try {
-            racingCars = new RacingCars(createCar(validation.validateCarName(inputView.inputCarName())));
+            racingCars = new RacingCars(createCarList(validation.validateList(inputView.inputCarName())));
         } catch (ValidationException ve) {
             outputView.displayError(ve.getMessage());
             inputCarName();
@@ -42,7 +42,7 @@ public class RaceController {
     private Round inputRacingRound() {
         Round round = null;
         try {
-            round = new Round(inputView.inputRacingRound());
+            round = new Round(validation.validateRound(inputView.inputRacingRound()));
         } catch (ValidationException ve) {
             outputView.displayError(ve.getMessage());
             inputRacingRound();
@@ -50,10 +50,10 @@ public class RaceController {
         return round;
     }
 
-    private List<Car> createCar(List<String> racingCars) {
+    private List<Car> createCarList(List<String> racingCars) {
         List<Car> carList = new ArrayList<>();
         for (String name : racingCars) {
-            carList.add(new Car(name));
+            carList.add(new Car(validation.validateName(name)));
         }
         return carList;
     }
