@@ -1,7 +1,5 @@
 package racinggame.domain;
 
-import java.util.List;
-
 import racinggame.common.ConstValue;
 import racinggame.domain.boxing.CarName;
 import racinggame.domain.boxing.Position;
@@ -34,7 +32,7 @@ public class Car {
 	}
 
 	public void move() {
-		if(moveStrategy.isMovable())
+		if (moveStrategy.isMovable())
 			position.movePosition();
 	}
 
@@ -46,8 +44,8 @@ public class Car {
 
 		String moveDistance = "";
 
-		for(int i=0; i<position.getPosition(); i++) {
-			moveDistance+= ConstValue.OUTPUT_PROCESS_MOVE;
+		for (int i = 0; i < position.getPosition(); i++) {
+			moveDistance += ConstValue.OUTPUT_PROCESS_MOVE;
 		}
 
 		return carName.getCarName() + ConstValue.OUTPUT_DELIMITER + moveDistance;

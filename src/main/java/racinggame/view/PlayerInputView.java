@@ -11,13 +11,13 @@ public class PlayerInputView {
 
 	public static Cars inputCarName() {
 
-		while(true) {
+		while (true) {
 			try {
 				System.out.println(ConstValue.INPUT_CAR_LIST);
 				String inputCarName = Console.readLine();
 
 				return Cars.createCars(inputCarName);
-			} catch(InvalidCarNameInput e) {
+			} catch (InvalidCarNameInput e) {
 				System.out.println(e.getMessage());
 				return inputCarName();
 			}
@@ -30,7 +30,7 @@ public class PlayerInputView {
 			String inputGameCount = Console.readLine();
 
 			return new Round(inputGameCount);
-		} catch(InvalidGameRoundInput e) {
+		} catch (InvalidGameRoundInput e) {
 			System.out.println(e.getMessage());
 			return inputGameCount();
 		}

@@ -1,6 +1,5 @@
 package racinggame.domain.boxing;
 
-import racinggame.error.ErrorMessage;
 import racinggame.error.InvalidGameRoundInput;
 
 public class Round {
@@ -12,17 +11,17 @@ public class Round {
 		this.roundCount = Integer.parseInt(roundCount);
 	}
 
-	public int getRoundCount() {
-		return roundCount;
-	}
-
 	private static void validateOnlyNumber(String roundCount) {
 
-		for(int i=0; i<roundCount.length(); i++) {
-			if(!Character.isDigit(roundCount.charAt(i))) {
+		for (int i = 0; i < roundCount.length(); i++) {
+			if (!Character.isDigit(roundCount.charAt(i))) {
 				throw new InvalidGameRoundInput();
 			}
 		}
 
+	}
+
+	public int getRoundCount() {
+		return roundCount;
 	}
 }

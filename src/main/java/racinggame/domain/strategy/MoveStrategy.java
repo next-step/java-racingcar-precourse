@@ -3,13 +3,13 @@ package racinggame.domain.strategy;
 import nextstep.utils.Randoms;
 import racinggame.common.ConstValue;
 
-public class MoveStrategy implements Strategy{
+public class MoveStrategy implements Strategy {
 
 	@Override
 	public boolean isMovable() {
 		int randomNumber = generateRandomNumber();
 
-		if(randomNumber >= ConstValue.MOVE_POSSIBLE_CONDITION) {
+		if (randomNumber >= ConstValue.MOVE_POSSIBLE_CONDITION) {
 			return true;
 		}
 		return false;

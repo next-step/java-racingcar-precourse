@@ -3,7 +3,6 @@ package racinggame.domain.boxing;
 import java.util.Objects;
 
 import racinggame.common.ConstValue;
-
 import racinggame.error.InvalidCarNameInput;
 
 public class CarName {
@@ -16,13 +15,13 @@ public class CarName {
 	}
 
 	private void validateEmptyCar(String carName) {
-		if(Objects.isNull(carName) || carName.isEmpty())
+		if (Objects.isNull(carName) || carName.isEmpty())
 			throw new InvalidCarNameInput();
 
 	}
 
 	private void validateCarName(String carName) {
-		if(carName.length() > ConstValue.MAX_NAME_SIZE) {
+		if (carName.length() > ConstValue.MAX_NAME_SIZE) {
 			throw new InvalidCarNameInput();
 		}
 	}

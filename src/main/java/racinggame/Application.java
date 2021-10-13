@@ -3,7 +3,7 @@ package racinggame;
 import racinggame.controller.RacingGameController;
 
 public class Application {
-    public static void main(String[] args) {
-        new RacingGameController().startRacing();
-    }
+	public static void main(String[] args) {
+		new RacingGameController().startRacing();
+	}
 }

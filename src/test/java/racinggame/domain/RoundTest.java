@@ -17,5 +17,5 @@ public class RoundTest {
 		assertThatThrownBy(() -> new Round("abc"))
 			.isInstanceOf(InvalidGameRoundInput.class)
 			.hasMessageContaining(ErrorMessage.INVALID_GAME_ROUND_INPUT);
-}
+	}
 }

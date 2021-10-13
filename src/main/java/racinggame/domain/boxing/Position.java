@@ -12,7 +12,7 @@ public class Position {
 	}
 
 	private void validatePosition(int position) {
-		if(position < 0) {
+		if (position < 0) {
 			throw new InvalidCarPosition();
 		}
 	}
@@ -24,6 +24,5 @@ public class Position {
 	public int getPosition() {
 		return this.postion;
 	}
-
 
 }
