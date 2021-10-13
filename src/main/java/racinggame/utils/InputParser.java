@@ -1,5 +1,10 @@
 package racinggame.utils;
 
+import racinggame.dto.GameTurnCntDTO;
+import racinggame.dto.PlayerNamesDTO;
+import racinggame.vo.GameTurnCnt;
+import racinggame.vo.PlayerNames;
+
 public class InputParser {
     private static final String PLAYER_NAME_INPUT_DELIMITER = ",";
 
@@ -9,11 +14,13 @@ public class InputParser {
         this.inputValidator = new InputValidator();
     }
 
-    public String[] splitPlayerNames(String playerNamesInput) {
+    public PlayerNames parse(PlayerNamesDTO playerNamesInput) {
         try {
-            String[] playerNames = playerNamesInput.split(PLAYER_NAME_INPUT_DELIMITER, 0);
+            String[] splitedInput = playerNamesInput.get().split(PLAYER_NAME_INPUT_DELIMITER, 0);
 
-            this.inputValidator.validatePlayerNames(playerNames);
+            this.inputValidator.validatePlayerNames(splitedInput);
+
+            PlayerNames playerNames = new PlayerNames(splitedInput);
 
             return playerNames;
         } catch (Exception e) {
@@ -21,13 +28,13 @@ public class InputParser {
         }
     }
 
-    public int parseGameTurnCnt(String turnCntInput) {
+    public GameTurnCnt parse(GameTurnCntDTO turnCntInput) {
         try {
-            int gameTurnCnt = Integer.parseInt(turnCntInput);
+            int gameTurnCnt = Integer.parseInt(turnCntInput.get());
 
             this.inputValidator.validateGameTurnCnt(gameTurnCnt);
 
-            return gameTurnCnt;
+            return new GameTurnCnt(gameTurnCnt);
         } catch (Exception e) {
             throw new IllegalArgumentException();
         }

@@ -1,13 +1,16 @@
 package racinggame.model;
 
+import racinggame.vo.PlayerName;
+import racinggame.vo.PlayerNames;
+
 import java.util.ArrayList;
 
 public class Cars extends ArrayList<Car> {
     private static final String NEWLINE = "\n";
 
-    public void add(String[] playerNames) {
-        for (String playerName : playerNames) {
-            this.add(new Car(playerName, 0));
+    public void add(PlayerNames playerNames) {
+        for (PlayerName playerName : playerNames) {
+            this.add(new Car(playerName, new CarLocation(0)));
         }
     }
 

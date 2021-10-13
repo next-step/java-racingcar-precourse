@@ -7,6 +7,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.MockedStatic;
 import racinggame.enums.RANDOM_MOVE_RESULT;
+import racinggame.vo.PlayerName;
 
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mockStatic;
@@ -24,7 +25,7 @@ public class CarMoverTest {
     void 랜덤값을_생성하여_4이상일_경우_Car_클래스가_이동한다(int generatedRandomValue) {
         int prevCarLocation = 0;
 
-        Car car = new Car("test", prevCarLocation);
+        Car car = new Car(new PlayerName("test"), new CarLocation(prevCarLocation));
 
         try (final MockedStatic<Randoms> mockRandoms = mockStatic(Randoms.class)) {
             mockRandoms
@@ -40,7 +41,7 @@ public class CarMoverTest {
     @ValueSource(ints = {0, 1, 2, 3})
     void 랜덤값을_생성하여_3이하일_경우_Car_클래스가_이동하지_않는다(int generatedRandomValue) {
         int prevCarLocation = 0;
-        Car car = new Car("test", prevCarLocation);
+        Car car = new Car(new PlayerName("test"),new CarLocation(prevCarLocation));
 
         try (final MockedStatic<Randoms> mockRandoms = mockStatic(Randoms.class)) {
             mockRandoms

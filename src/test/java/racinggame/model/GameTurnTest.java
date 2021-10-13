@@ -8,6 +8,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.MockedStatic;
 import racinggame.enums.RANDOM_MOVE_RESULT;
+import racinggame.vo.PlayerName;
 
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mockStatic;
@@ -19,9 +20,9 @@ public class GameTurnTest {
     void setup(){
         this.cars = new Cars();
 
-        this.cars.add(new Car("car1", 0));
-        this.cars.add(new Car("car2", 0));
-        this.cars.add(new Car("car3", 0));
+        this.cars.add(new Car(new PlayerName("car1"), new CarLocation(0)));
+        this.cars.add(new Car(new PlayerName("car2"), new CarLocation(0)));
+        this.cars.add(new Car(new PlayerName("car3"), new CarLocation(0)));
     }
 
     @Test

@@ -23,7 +23,7 @@ public class WinnerMessageBuilder {
     }
 
     private static String buildWinnerMsgInternal(Car winnerCar, boolean isLastWinner) {
-        String winnerMsg = winnerCar.getPlayerName();
+        String winnerMsg = winnerCar.getPlayerName().get();
 
         if (!isLastWinner) {
             winnerMsg += WINNER_MSG_DELIMITER;

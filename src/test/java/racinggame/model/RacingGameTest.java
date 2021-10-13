@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.MockedStatic;
+import racinggame.vo.GameTurnCnt;
+import racinggame.vo.PlayerName;
 
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mockStatic;
@@ -18,14 +20,14 @@ public class RacingGameTest {
     void setup() {
         this.playerCars = new Cars();
 
-        this.playerCars.add(new Car("car1", 0));
-        this.playerCars.add(new Car("car2", 0));
-        this.playerCars.add(new Car("car3", 0));
+        this.playerCars.add(new Car(new PlayerName("car1"), new CarLocation(0)));
+        this.playerCars.add(new Car(new PlayerName("car2"), new CarLocation(0)));
+        this.playerCars.add(new Car(new PlayerName("car3"), new CarLocation(0)));
     }
 
     @Test
     void 게임에_참여할_자동차_목록과_총_게임_턴수가_입력되면_게임의_적어도_한_명_이상의_우승자_목록을_생성한다() {
-        Assertions.assertThat(new RacingGame().play(this.playerCars, 5).size()).isGreaterThan(0);
+        Assertions.assertThat(new RacingGame().play(this.playerCars, new GameTurnCnt(5)).size()).isGreaterThan(0);
     }
 
     @ParameterizedTest
@@ -38,7 +40,7 @@ public class RacingGameTest {
                     .when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
                     .thenReturn(generatedRandomValue);
 
-            Assertions.assertThat(new RacingGame().play(this.playerCars, turnCnt).size()).isEqualTo(this.playerCars.size());
+            Assertions.assertThat(new RacingGame().play(this.playerCars, new GameTurnCnt(turnCnt)).size()).isEqualTo(this.playerCars.size());
         }
     }
 
@@ -52,7 +54,7 @@ public class RacingGameTest {
                     .when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
                     .thenReturn(generatedRandomValue);
 
-            Cars winnerCars = new RacingGame().play(this.playerCars, turnCnt);
+            Cars winnerCars = new RacingGame().play(this.playerCars, new GameTurnCnt(turnCnt));
 
             for (Car winnerCar : winnerCars) {
                 Assertions.assertThat(winnerCar.getLocation()).isEqualTo(new CarLocation(0));
@@ -70,7 +72,7 @@ public class RacingGameTest {
                     .when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
                     .thenReturn(generatedRandomValue);
 
-            Assertions.assertThat(new RacingGame().play(this.playerCars, turnCnt).size()).isEqualTo(this.playerCars.size());
+            Assertions.assertThat(new RacingGame().play(this.playerCars, new GameTurnCnt(turnCnt)).size()).isEqualTo(this.playerCars.size());
         }
     }
 
@@ -84,7 +86,7 @@ public class RacingGameTest {
                     .when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
                     .thenReturn(generatedRandomValue);
 
-            Cars winnerCars = new RacingGame().play(this.playerCars, turnCnt);
+            Cars winnerCars = new RacingGame().play(this.playerCars, new GameTurnCnt(turnCnt));
 
             for (Car winnerCar : winnerCars) {
                 Assertions.assertThat(winnerCar.getLocation()).isEqualTo(new CarLocation(turnCnt));
@@ -103,7 +105,7 @@ public class RacingGameTest {
                     .thenReturn(3)
                     .thenReturn(3);
 
-            Cars winnerCars = new RacingGame().play(this.playerCars, turnCnt);
+            Cars winnerCars = new RacingGame().play(this.playerCars, new GameTurnCnt(turnCnt));
 
             Assertions.assertThat(winnerCars.size()).isEqualTo(1);
             Assertions.assertThat(winnerCars).containsOnly(this.playerCars.get(0));
@@ -121,7 +123,7 @@ public class RacingGameTest {
                     .thenReturn(4)
                     .thenReturn(4);
 
-            Cars winnerCars = new RacingGame().play(this.playerCars, turnCnt);
+            Cars winnerCars = new RacingGame().play(this.playerCars, new GameTurnCnt(turnCnt));
 
             Assertions.assertThat(winnerCars.size()).isEqualTo(this.playerCars.size() - 1);
             Assertions.assertThat(winnerCars).doesNotContain(this.playerCars.get(0));
