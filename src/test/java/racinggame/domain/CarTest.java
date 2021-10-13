@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import racinggame.exception.ErrorMessage;
 import racinggame.exception.InvalidInputException;
 
 class CarTest {
@@ -27,7 +28,7 @@ class CarTest {
 			new CarName(name);
 		})
 		.isInstanceOf(InvalidInputException.class)
-		.hasMessage("자동차 이름은 5글자 이하만 가능합니다.")
+		.hasMessage(ErrorMessage.CAR_NAME_MAX_LENGTH.getMessage())
 		;
 	}
 
