@@ -1,5 +1,6 @@
 package racinggame;
 
+import racinggame.message.MessageController;
 import racinggame.model.Car;
 
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ public class Game {
     private final int MOVING_REFERENCE_VALUE = 4;
 
     public void play() {
+        MessageController.getInstance().start();
 
         List<Car> cars = inputCarInfos();
     }
@@ -53,6 +55,7 @@ public class Game {
         boolean isValidatedCarName = isValidatedCarName(carNameList);
 
         if (!isValidatedCarName) {
+            MessageController.getInstance().error();
             play();
         }
         return carNameList;

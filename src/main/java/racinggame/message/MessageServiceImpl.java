@@ -1,0 +1,13 @@
+package racinggame.message;
+
+public class MessageServiceImpl implements MessageService {
+    @Override
+    public void start() {
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+    }
+
+    @Override
+    public void error() {
+        System.out.println("[ERROR]");
+    }
+}
