@@ -1,10 +1,11 @@
-package racinggame.model.car;
+package racinggame.model;
 
 import org.junit.jupiter.api.Assertions;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racinggame.model.RacingParticipant;
+import racinggame.model.car.Car;
 
 import java.util.ArrayList;
 import java.util.List;
