@@ -46,4 +46,26 @@ public class CarTest {
         car.move(6);
         assertThat(car.getPosition()).isEqualTo(2);
     }
+
+    @Test
+    void move_status_0Go() {
+        car.move(1);
+        assertThat(car.getMoveStatus()).isEqualTo(msgPreFix + ActStatus.STOP.getActExpress());
+    }
+
+    @Test
+    void move_status_1Go() {
+        car.move(7);
+        assertThat(car.getMoveStatus()).isEqualTo(msgPreFix + ActStatus.GO.getActExpress());
+    }
+
+    @Test
+    void move_status_2Go_3Stop() {
+        car.move(1);
+        car.move(5);
+        car.move(2);
+        car.move(0);
+        car.move(6);
+        assertThat(car.getMoveStatus()).isEqualTo(msgPreFix + "--");
+    }
 }
