@@ -1,5 +1,8 @@
 package racinggame.util;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Pattern;
 
 import racinggame.code.CarConfig;
@@ -25,5 +28,17 @@ public class StringUtils {
         if (!isNumber.matcher(inputString).matches()) {
             throw new RacinggameException(ErrorMessage.INVALID_INPUT_ROUND.getValue());
         }
+    }
+
+    public static List<String> parseString(String inputString) {
+        return new ArrayList<>(Arrays.asList(inputString.split(",")));
+    }
+
+    public static String combinationString(List<String> inputStringList) {
+        if (inputStringList.size() > 1) {
+            return String.join(",", inputStringList);
+        }
+
+        return inputStringList.get(0);
     }
 }
