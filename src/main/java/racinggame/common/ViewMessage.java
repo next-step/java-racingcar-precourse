@@ -1,5 +1,12 @@
 package racinggame.common;
 
+/**
+ * 출력용 메세지 스태틱 클래스
+ *
+ * @author Lee JungHo <jparangdev@gmail.com>
+ * @version 1.0
+ * @since 1.0
+ */
 public class ViewMessage {
 	public static final String MESSAGE_NAME_INPUT = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
 	public static final String MESSAGE_TRY_INPUT = "시도할 회수는 몇회인가요?";

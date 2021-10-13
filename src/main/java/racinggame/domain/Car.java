@@ -5,7 +5,9 @@ import static racinggame.common.CommonConstants.*;
 import racinggame.common.Validator;
 
 /**
- * @author Lee JungHo
+ * 자동차 클래스
+ *
+ * @author Lee JungHo <jparangdev@gmail.com>
  * @version 1.0
  * @since 1.0
  */
@@ -31,16 +33,29 @@ public class Car {
 		return distance;
 	}
 
+	/**
+	 * 자동차의 전진
+	 */
 	public void go() {
 		distance++;
 	}
 
+	/**
+	 * 자동차의 전진 여부를 결정
+	 *
+	 * @param randomValue 랜덤으로 입력되는 0~9까지 정수값값
+	 */
 	public void race(int randomValue) {
 		if (randomValue >= GO_VALUE) {
 			go();
 		}
 	}
 
+	/**
+	 * 자동차의 현자 상태를 문자열로 반환
+	 *
+	 * @return 자동차의 이름과 이동한 거리를 - 문자로 표현
+	 */
 	@Override
 	public String toString() {
 		StringBuilder disStr = new StringBuilder();

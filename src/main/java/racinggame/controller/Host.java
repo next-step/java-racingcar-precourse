@@ -8,6 +8,13 @@ import java.util.List;
 import racinggame.common.Validator;
 import racinggame.domain.Racing;
 
+/**
+ * 컨트롤러 역할을 하는 개최팀 클래스
+ *
+ * @author Lee JungHo <jparangdev@gmail.com>
+ * @version 1.0
+ * @since 1.0
+ */
 public class Host {
 
 	Racing racing;
