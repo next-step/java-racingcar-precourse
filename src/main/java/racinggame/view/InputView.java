@@ -13,7 +13,7 @@ public class InputView {
             carNameList = userInput.split(",");
             validateCarNameList(carNameList);
         } catch (IllegalArgumentException e) {
-            System.out.println("ERROR");
+            System.out.println("[ERROR]");
             return enterCars();
         }
         return carNameList;
@@ -26,7 +26,7 @@ public class InputView {
             String userInput = Console.readLine();
             tryCount = Integer.parseInt(userInput);
         } catch (IllegalArgumentException e) {
-            System.out.println("ERROR");
+            System.out.println("[ERROR]");
             return enterTryCount();
         }
         return tryCount;
