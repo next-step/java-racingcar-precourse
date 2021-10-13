@@ -9,4 +9,3 @@ public class CommonMessage {
 	public static final String PRINT_MESSAGE_RACING_RESULT_HEADER = "최종 우승자는 ";
 	public static final String PRINT_MESSAGE_RACING_RESULT_FOOTER = " 입니다.";
 }
-

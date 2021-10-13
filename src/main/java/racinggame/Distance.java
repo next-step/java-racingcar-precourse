@@ -3,7 +3,6 @@ package racinggame;
 import racinggame.common.CommonCode;
 
 public class Distance {
-
 	private int numberValue;
 	private String stringValue;
 

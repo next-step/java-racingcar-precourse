@@ -36,5 +36,4 @@ public class Application {
 	private static void printResult() {
 		gameController.printRacingGameWinners();
 	}
-
 }

@@ -12,5 +12,3 @@ public class CommonCode {
 	public static final int LENGTH_BOUNDARY_MAX_VALUE = 5;
 	public static final int MOVING_FORWARD_BOUNDARY_MIN_VALUE = 4;
 }
-
-
