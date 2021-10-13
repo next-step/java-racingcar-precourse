@@ -26,6 +26,9 @@ public class GameView {
 		} catch (NumberFormatException e) {
 			printErrorMessage("[ERROR] 숫자를 입력해주세요.");
 			return inputGameCount();
+		} catch (IllegalArgumentException e) {
+			printErrorMessage(e.getMessage());
+			return inputGameCount();
 		}
 	}
 
