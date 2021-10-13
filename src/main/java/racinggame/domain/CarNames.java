@@ -19,6 +19,7 @@ public class CarNames {
     }
 
     private void setCarNames(String originCarNames) {
+        carNames = new ArrayList<>();
         String[] tmpCarNames = originCarNames.split(",");
         for (int namesIdx = 0; namesIdx < tmpCarNames.length; namesIdx++) {
             CarName carName = new CarName(tmpCarNames[namesIdx]);
@@ -50,7 +51,7 @@ public class CarNames {
     }
 
     private void isValidNumberOfName(List<String> originCarNames) {
-        if (originCarNames.size() <= 0) {
+        if (originCarNames.size() == 1 && originCarNames.get(0).equals("")) {
             throw new IllegalArgumentException(ErrorMessage.NUMBER_OF_CAR_NAMES_CAN_BE_POSITIVE);
         }
     }
