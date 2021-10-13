@@ -37,7 +37,7 @@ public class RacingGame {
 
     private void logExcuteResult() {
         for (Car car : participationCarList) {
-            System.out.print(car.getCarName() + ": ");
+            System.out.print(car.getCarName() + " : ");
             for (int i = 0; i < car.getLocation(); i++) {
                 System.out.print("-");
             }
@@ -54,8 +54,8 @@ public class RacingGame {
                 if (car.getLocation() == maxLocation) winners += "," + car.getCarName();
             }
         }
-
-        System.out.println("최종 우승자는 " + winners.replace(",", "") + " 입니다.");
+        winners = winners.replaceFirst(",", "");
+        System.out.println("최종 우승자는 " + winners + " 입니다.");
     }
 
     private void createCar(String[] carNames) {
@@ -78,22 +78,31 @@ public class RacingGame {
     public static boolean isAvailableCarNames(String strCarNames) {
         String[] carNames = strCarNames.split(",");
         for (String carName : carNames) {
-            if (!Car.isAvailableCarName(carName)) return false;
+            if (!Car.isAvailableCarName(carName)) {
+                System.out.println("[ERROR] 자동차 이름은 5자 이하만 가능합니다.");
+                return false;
+            }
         }
 
         return true;
     }
 
-    public void moveCarByNum(Car car, int number) {
+    public static void moveCarByNum(Car car, int number) {
         if (Car.canMoveCarByNum(number)) {
             car.moveCar();
         }
     }
 
-    private int getRandomNumber() {
+    public static int getRandomNumber() {
         return Randoms.pickNumberInRange(0, 9);
     }
 
 
+    public List<Car> getParticipationCarList() {
+        return participationCarList;
+    }
 
+    public List<String> getLastGameWinners() {
+        return lastGameWinners;
+    }
 }
