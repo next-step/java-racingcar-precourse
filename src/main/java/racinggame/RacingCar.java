@@ -15,8 +15,12 @@ public class RacingCar {
 		return car;
 	}
 
-	public int getDistance() {
-		return this.distance.value();
+	public int getDistanceNumberValue() {
+		return this.distance.numberValue();
+	}
+
+	public String getDistanceStringValue() {
+		return this.distance.stringValue();
 	}
 
 	public String getName() {

@@ -16,12 +16,19 @@ public class RacingCarTest {
 	void 행동번호에_따라_자동차_전진_테스트() {
 		car.moveForwardOrStop(7);
 		car.moveForwardOrStop(4);
-		Assertions.assertThat(car.getDistance()).isEqualTo(2);
+		Assertions.assertThat(car.getDistanceNumberValue()).isEqualTo(2);
+		Assertions.assertThat(car.getDistanceStringValue()).isEqualTo("--");
 	}
 
 	@Test
 	void 행동번호에_따라_자동차_정지_테스트() {
 		car.moveForwardOrStop(3);
-		Assertions.assertThat(car.getDistance()).isEqualTo(0);
+		Assertions.assertThat(car.getDistanceNumberValue()).isEqualTo(0);
+		Assertions.assertThat(car.getDistanceStringValue()).isEqualTo("");
+	}
+
+	@Test
+	void 자동차_이름_확인_테스트() {
+		Assertions.assertThat(car.getName()).isEqualTo("car");
 	}
 }

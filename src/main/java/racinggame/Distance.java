@@ -1,13 +1,24 @@
 package racinggame;
 
 public class Distance {
-	private int distance;
+	private int numberValue;
+	private String stringValue;
 
-	public int value() {
-		return this.distance;
+	public Distance() {
+		numberValue = 0;
+		stringValue = "";
+	}
+
+	public int numberValue() {
+		return this.numberValue;
+	}
+
+	public String stringValue() {
+		return this.stringValue;
 	}
 
 	public void increase() {
-		this.distance++;
+		this.numberValue++;
+		this.stringValue += "-";
 	}
 }
