@@ -35,7 +35,7 @@ public class CarTest {
             }
         };
         car.move();
-        assertThat(car.getPosition()).isEqualTo(1);
+        assertThat(car.getPosition()).isEqualTo(new Position(1));
     }
 
     @Test
@@ -48,6 +48,6 @@ public class CarTest {
             }
         };
         car.move();
-        assertThat(car.getPosition()).isEqualTo(0);
+        assertThat(car.getPosition()).isEqualTo(new Position(0));
     }
 }

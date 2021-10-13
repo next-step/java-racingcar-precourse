@@ -36,14 +36,15 @@ public class RacingMain {
     private int getMaxPosition(List<Car> cars) {
         int max = 0;
         for (Car car : cars)
-            max = Math.max(max, car.getPosition());
+            max = car.getPosition().getMaxPosition(max);
         return max;
     }
 
-    private String findWinnersNames(List<Car> cars, int maxPosition) {
+    private String findWinnersNames(List<Car> cars, int max) {
         List<String> winners = new ArrayList<>();
+        Position maxPosition = new Position(max);
         for (Car car : cars) {
-            if (car.getPosition() == maxPosition)
+            if (car.getPosition().equals(maxPosition))
                 winners.add(car.getName());
         }
         return String.join(",", winners);

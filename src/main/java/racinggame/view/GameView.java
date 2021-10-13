@@ -52,17 +52,10 @@ public class GameView {
         return true;
     }
 
-    private String changePositionToBar(int position) {
-        String result = "";
-        for(int i = 0; i < position; i++)
-            result += "-";
-        return result;
-    }
-
     // 자동차들 위치 출력
     public void printCars(List<Car> cars) {
         for (Car car : cars) {
-            String carStatus = String.format("%s : %s", car.getName(), changePositionToBar(car.getPosition()));
+            String carStatus = String.format("%s : %s", car.getName(), car.getPosition().getPositionToBar());
             System.out.println(carStatus);
         }
         System.out.println();

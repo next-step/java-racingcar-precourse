@@ -9,7 +9,7 @@ public class Car {
     private static final int MOVING_FORWARD = 4;        // 4 이상 전진 / 3이하 정지
 
     private final String name;
-    private int position = 0;
+    private Position position = new Position();
 
     public Car(String name) {
         if (name == null || name.trim().equals(""))
@@ -24,13 +24,13 @@ public class Car {
         return name;
     }
 
-    public int getPosition() {
+    public Position getPosition() {
         return position;
     }
 
     public void move() {
         if (getRandomNo() >= MOVING_FORWARD)
-            this.position++;
+            this.position = this.position.move();
     }
 
     protected int getRandomNo() {
