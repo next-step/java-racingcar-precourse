@@ -36,4 +36,8 @@ public enum ActStatus {
         }
         return actStatus.maxNum == -1 || actStatus.maxNum >= number;
     }
+
+    public boolean doGo() {
+        return this == GO;
+    }
 }
