@@ -14,10 +14,11 @@ import racinggame.common.ErrorMessage;
 public class Car {
 
 	private String name;
-	private int distance;
+	private Distance distance;
 
 	public Car(String name) {
 		setName(name);
+		distance = new Distance();
 	}
 
 	public String getName() {
@@ -30,14 +31,14 @@ public class Car {
 	}
 
 	public int getDistance() {
-		return distance;
+		return distance.getDistance();
 	}
 
 	/**
 	 * 자동차의 전진
 	 */
 	public void go() {
-		distance++;
+		distance.plus();
 	}
 
 	/**
@@ -58,11 +59,7 @@ public class Car {
 	 */
 	@Override
 	public String toString() {
-		StringBuilder disStr = new StringBuilder();
-		for (int i = 0; i < distance; i++) {
-			disStr.append(DISTANCE_STR);
-		}
-		return String.format(CAR_STRING_FORMAT, name, disStr);
+		return String.format(CAR_STRING_FORMAT, name, distance);
 	}
 
 	/**

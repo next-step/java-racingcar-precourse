@@ -54,7 +54,8 @@ public class Cars {
 	public int maxDistance() {
 		int maxDistance = 0;
 		for (Car car : carList) {
-			maxDistance = Math.max(car.getDistance(), maxDistance);
+			int distance = car.getDistance();
+			maxDistance = Math.max(distance, maxDistance);
 		}
 		return maxDistance;
 	}
