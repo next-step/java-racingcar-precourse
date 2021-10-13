@@ -12,9 +12,11 @@ public class Cars {
 	private static final int MIN_NUMBER = 0;
 	private static final int MAX_NUMBER = 9;
 	private final List<Car> racers;
+	private MaximumTravelDistance maximumTravelDistance;
 
 	public Cars(List<String> names) {
 		this.racers = initializeCarName(names);
+		this.maximumTravelDistance = new MaximumTravelDistance(0);
 	}
 
 	private List<Car> initializeCarName(List<String> names) {
@@ -32,6 +34,17 @@ public class Cars {
 	public void race() {
 		for (Car car : this.racers) {
 			car.move(Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER));
+			measureMaximumTrableDistance(car.getPosition());
 		}
+	}
+
+	private void measureMaximumTrableDistance(int position) {
+		if(isMaxDistance(position)){
+			this.maximumTravelDistance = new MaximumTravelDistance(position);
+		}
+	}
+
+	private boolean isMaxDistance(int position) {
+		return this.maximumTravelDistance.getMaximumTravelDistance() < position;
 	}
 }
