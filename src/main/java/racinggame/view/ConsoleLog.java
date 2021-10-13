@@ -3,6 +3,7 @@ package racinggame.view;
 import java.util.List;
 
 import nextstep.utils.Console;
+import racinggame.model.RaceResult;
 import racinggame.view.input.CarNameInput;
 import racinggame.view.input.TryNumberInput;
 
@@ -18,5 +19,9 @@ public class ConsoleLog {
 	public static int getInputTryNumber() {
 		System.out.println(TRY_COUNT_REQUEST_MESSAGE);
 		return new TryNumberInput(Console.readLine()).getTryNumber();
+	}
+
+	public static void printResult(final RaceResult result) {
+		System.out.println(result.getRaceResult());
 	}
 }

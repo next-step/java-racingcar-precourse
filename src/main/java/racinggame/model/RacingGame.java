@@ -10,10 +10,18 @@ public class RacingGame {
 		ready(names);
 	}
 
-	public void start(final int tryNumber) {
+	public RaceResult start(final int tryNumber) {
+		RaceResult raceResult = new RaceResult();
 		for (int i = 0; i < tryNumber; i++) {
-			participationCars.startRound();
+			RoundResult roundResult = participationCars.startRound();
+			raceResult.appendRoundResult(roundResult.getRoundResultStr());
 		}
+		raceResult.appendWinner(getWinner());
+		return raceResult;
+	}
+
+	private Winner getWinner() {
+		return participationCars.createWinner();
 	}
 
 	private void ready(final List<String> names) {

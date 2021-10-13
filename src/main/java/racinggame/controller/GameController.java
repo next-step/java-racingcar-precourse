@@ -10,7 +10,7 @@ public class GameController {
 
 	public void play() {
 		RacingGame racingGame = new RacingGame(getCarNames());
-		racingGame.start(getTryNumber());
+		printResult(racingGame.start(getTryNumber()));
 	}
 
 	private List<String> getCarNames() {
