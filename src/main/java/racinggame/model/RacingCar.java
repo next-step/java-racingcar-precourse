@@ -14,4 +14,3 @@ public class RacingCar{
         this.carName = inputCarName;
     }
 }
-

@@ -18,4 +18,12 @@ public class RacingCarInput {
         boolean isEmptyContain = carNames.contains(" ");
         return isEmptyContain;
     }
+
+    public int getRepeactCount(){
+        return this.repeactCount;
+    }
+
+    public void setRepeactCount(int inputRepeatCount){
+        this.repeactCount = inputRepeatCount;
+    }
 }
