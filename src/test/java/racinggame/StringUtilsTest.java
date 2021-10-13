@@ -5,6 +5,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import racinggame.utils.StringUtils;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -14,8 +16,8 @@ public class StringUtilsTest {
     @CsvSource(value = {"0, pobi", "1, crong", "2, honux"})
     void 자동차이름_쉼표구분(int index, String name) {
         String inputString = "pobi,crong,honux";
-        String[] nameArray = StringUtils.inputStringSeparator(inputString);
-        assertThat(nameArray[index]).isEqualTo(name);
+        List<String> nameList = StringUtils.inputStringSeparator(inputString);
+        assertThat(nameList.get(index)).isEqualTo(name);
     }
 
     @Test

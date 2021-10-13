@@ -1,16 +1,23 @@
 package racinggame.utils;
 
+import java.util.*;
+
 public class StringUtils {
     private static final String SEPERATOR = ",";
     private static final String EMPTY = "";
     private static final int MIN_NAME_LENGTH = 1;
     private static final int MAX_NAME_LENGTH = 5;
 
-    public static String[] inputStringSeparator(String inputString) {
+    public static List<String> inputStringSeparator(String inputString) {
         validateInputString(inputString);
         String[] nameArray = inputString.split(SEPERATOR);
-        validateNames(nameArray);
-        return nameArray;
+        Set<String> nameSet = new LinkedHashSet<>();
+        for (String name : nameArray) {
+            validateNameLength(name);
+            nameSet.add(name);
+        }
+        validateDupleName(nameSet, nameArray.length);
+        return new LinkedList<>(nameSet);
     }
 
     private static void validateInputString(String inputString) {
@@ -19,9 +26,9 @@ public class StringUtils {
         }
     }
 
-    private static void validateNames(String[] nameArray) {
-        for (String name : nameArray) {
-            validateNameLength(name);
+    private static void validateDupleName(Set<String> nameSet, int namesSize) {
+        if (nameSet.size() != namesSize) {
+            throw new IllegalArgumentException("[ERROR] 중복된 이름을 입력하면 안됩니다,");
         }
     }
 
