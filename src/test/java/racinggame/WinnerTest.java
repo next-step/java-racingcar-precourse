@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -49,5 +50,23 @@ public class WinnerTest {
     void max_position_2() {
         Winner winner = new Winner(Arrays.asList(carA, carB, carC, carD, carE));
         assertThat(winner.calMaxPosition()).isEqualTo(2);
+    }
+
+    @Test
+    void no_winner() {
+        Winner winner = new Winner(Arrays.asList(carA, carB));
+        assertThat(winner.findWinners()).isEmpty();
+    }
+
+    @Test
+    void one_winner() {
+        Winner winner = new Winner(Arrays.asList(carA, carB, carC));
+        assertThat(winner.findWinners()).isEqualTo(Collections.singletonList("carC"));
+    }
+
+    @Test
+    void two_winner() {
+        Winner winner = new Winner(Arrays.asList(carA, carB, carC, carD, carE));
+        assertThat(winner.findWinners()).isEqualTo(Arrays.asList("carD", "carE"));
     }
 }
