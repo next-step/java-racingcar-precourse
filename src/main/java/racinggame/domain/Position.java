@@ -6,6 +6,7 @@ import racinggame.exception.InvalidPositionValueException;
 
 public class Position {
 	private static final int MIN = 0;
+	private static final int INTEGER_COMPARE_RETURN_VALUE_OF_LESS_THAN = -1;
 
 	private final int value;
 
@@ -40,8 +41,7 @@ public class Position {
 	}
 
 	private boolean moreThane(Position otherPosition) {
-		int returnValueOfLessThan = -1;
-		return Integer.compare(value, otherPosition.value) != returnValueOfLessThan;
+		return Integer.compare(value, otherPosition.value) != INTEGER_COMPARE_RETURN_VALUE_OF_LESS_THAN;
 	}
 
 	@Override
