@@ -5,3 +5,9 @@
 
 ## 과제 제출 과정
 * [과제 제출 방법](https://github.com/next-step/nextstep-docs/tree/master/precourse)
+
+##기능목록
+* 자동차 관련 기능 및 테스트 구현
+* 라운드(횟수) 관련 기능 및 테스트 구현
+* 경주용 자동차 관련 기능 구현
+* 자동차 경주 대회 관련 기능 구현
