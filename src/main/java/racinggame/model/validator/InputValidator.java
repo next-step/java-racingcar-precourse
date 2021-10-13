@@ -9,9 +9,9 @@ public class InputValidator {
 	public static boolean validatePipeline(String input) {
 		try{
 			String[] inputs = input.split(",");
-			isEmptyInput(input);
-			isNumberOfCarNames(input);
+
 			isEmptyCarName(inputs);
+			isNumberOfCarNames(input);
 			isNonDuplicate(inputs);
 			isRightNameLength(inputs);
 
@@ -23,15 +23,15 @@ public class InputValidator {
 		return false;
 	}
 
-	public static void isEmptyInput(String input) {
-		if (input.isEmpty()) {
-			throw new IllegalArgumentException("[ERROR] : 이름에 빈 문자열이 포합되어 있습니다.");
-		}
-	}
-
 	public static void isEmptyCarName(String[] carNames) {
 		for (String carName : carNames) {
 			isEmptyInput(carName);
+		}
+	}
+
+	public static void isEmptyInput(String input) {
+		if (input.isEmpty()) {
+			throw new IllegalArgumentException("[ERROR] - 이름에 빈 문자열이 포합되어 있습니다.");
 		}
 	}
 
@@ -41,7 +41,7 @@ public class InputValidator {
 
 		String[] carNames = input.split(",");
 		if (carNames.length < numOfCarNames) {
-			throw new IllegalArgumentException("[ERROR] : 자동자 이름의 갯수가 이상합니다.");
+			throw new IllegalArgumentException("[ERROR] - ','는 구분자입니다. 다시 입력 해주세요.");
 		}
 	}
 
@@ -50,7 +50,7 @@ public class InputValidator {
 
 		for (String carName : cars) {
 			if (!carList.add(carName)) {
-				throw new IllegalArgumentException("[ERROR] : 중복되는 문자열이 있습니다.");
+				throw new IllegalArgumentException("[ERROR] - 중복되는 문자열이 있습니다.");
 			}
 		}
 	}

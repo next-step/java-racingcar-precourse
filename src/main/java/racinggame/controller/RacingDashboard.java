@@ -16,6 +16,9 @@ public class RacingDashboard {
 		this.gameManager = new RacingGameController();
 	}
 
+	/**
+	 * 게임 시작 메인 메서드
+	 */
 	public void startGame(){
 		this.gameConsole.printLine(RacingDashboard.CAR_NAME_INPUT_MESSAGE);
 		this.gameManager.askUserCarName(this.gameConsole);

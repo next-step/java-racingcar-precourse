@@ -26,7 +26,9 @@ public class Car {
 			this.position++;
 		}
 	}
-
+	/**
+	 * 범위의 값이 THRESHOLD 보다 이상이어야 이동
+	 */
 	private boolean isMoving(){
 		int randomNum = Randoms.pickNumberInRange(Car.RANGE_START, Car.RANGE_END);
 		return randomNum >= Car.THRESHOLD;
