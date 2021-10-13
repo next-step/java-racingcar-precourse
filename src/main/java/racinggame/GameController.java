@@ -2,6 +2,7 @@ package racinggame;
 
 public class GameController {
 	private RacingCars racingCars;
+	private MoveCount moveCount;
 
 	public String[] printEnterCarNames() {
 		return Printer.enterCarNames();
@@ -16,4 +17,15 @@ public class GameController {
 		}
 		return false;
 	}
+
+	public boolean printEnterMoveCount() {
+		try {
+			this.moveCount = MoveCount.get(Printer.enterMoveCount());
+		} catch (IllegalArgumentException exception) {
+			Printer.printMessage(exception.getMessage());
+			return true;
+		}
+		return false;
+	}
 }
+
