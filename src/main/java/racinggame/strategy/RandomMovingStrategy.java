@@ -3,12 +3,12 @@ package racinggame.strategy;
 import nextstep.utils.Randoms;
 
 public class RandomMovingStrategy implements MovingStrategy {
-	public static final int START_RANGE = 0;
-	public static final int END_RANGE = 9;
-	public static final int EXECUTION_BOUNDARY = 3;
+	private static final int START_RANGE = 0;
+	private static final int END_RANGE = 9;
+	private static final int EXECUTION_THRESHOLD = 3;
 
 	public boolean isMoveable() {
-		if(generateRandomNumber() > EXECUTION_BOUNDARY){
+		if(generateRandomNumber() > EXECUTION_THRESHOLD){
 			return true;
 		}
 		return false;

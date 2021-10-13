@@ -4,11 +4,11 @@ import java.util.Objects;
 
 import racinggame.strategy.MovingStrategy;
 
-public class Car {
+public class RacingCar {
 	private Name name;
 	private Position position;
 
-	public Car(final String name) {
+	public RacingCar(final String name) {
 		this.name = new Name(name);
 		this.position = new Position();
 	}
@@ -20,8 +20,8 @@ public class Car {
 		return position.getCurrentPosition();
 	}
 
-	public CarDto toDto() {
-		return new CarDto(name.getCarName(), position.getCurrentPosition());
+	public RacingCarDto toDto() {
+		return new RacingCarDto(name.getCarName(), position.getCurrentPosition());
 	}
 
 	@Override
@@ -30,8 +30,8 @@ public class Car {
 			return true;
 		if (o == null || getClass() != o.getClass())
 			return false;
-		Car car = (Car)o;
-		return name.equals(car.name);
+		RacingCar racingCar = (RacingCar)o;
+		return name.equals(racingCar.name);
 	}
 
 	@Override

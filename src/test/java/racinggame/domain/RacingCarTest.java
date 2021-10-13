@@ -1,9 +1,10 @@
 package racinggame.domain;
 
+import static org.assertj.core.api.Assertions.*;
+
 import java.util.Arrays;
 import java.util.List;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -13,14 +14,15 @@ import racinggame.strategy.DefaultMovingStrategy;
 import racinggame.strategy.MovingStrategy;
 import racinggame.strategy.NoMovingStrategy;
 
-public class CarTest {
+public class RacingCarTest {
 	@DisplayName("자동차를 움직임을 결정할 수 있다")
 	@ParameterizedTest(name = "{2}")
 	@MethodSource("parameters")
 	void given_strategy_then_decide_move_or_not(MovingStrategy strategy, int expectedPosition, String message) {
-		Car car = new Car("Jay");
-		int position = car.move(strategy);
-		Assertions.assertThat(position).isEqualTo(expectedPosition);
+		RacingCar racingCar = new RacingCar("Jay");
+		int position = racingCar.move(strategy);
+
+		assertThat(position).isEqualTo(expectedPosition);
 	}
 
 	static List<Arguments> parameters() {

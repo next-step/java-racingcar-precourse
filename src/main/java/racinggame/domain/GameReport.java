@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameReport {
-	public static final String COMBINE_DELIMITER = ",";
-	public static final int INITIAL_THRESHOLD = 0;
+	private static final String COMBINE_DELIMITER = ",";
+	private static final int INITIAL_THRESHOLD = 0;
 
-	private final List<CarDto> cars;
+	private final List<RacingCarDto> cars;
 
-	public GameReport(final List<CarDto> cars) {
+	public GameReport(final List<RacingCarDto> cars) {
 		this.cars = cars;
 	}
 
@@ -22,13 +22,13 @@ public class GameReport {
 	private String extractWinnersNames(int threshold) {
 		List<String> winnerNames = new ArrayList<>();
 
-		for (CarDto car : cars) {
+		for (RacingCarDto car : cars) {
 			winnerNames.addAll(findWinnerName(car, threshold));
 		}
 		return combineNames(winnerNames);
 	}
 
-	private List<String> findWinnerName(CarDto car, int threshold) {
+	private List<String> findWinnerName(RacingCarDto car, int threshold) {
 		List<String> winnerNames = new ArrayList<>();
 		String name = car.getName();
 		int position = car.getPosition();
@@ -50,7 +50,7 @@ public class GameReport {
 	private int findMaxThreshold() {
 		int threshold = INITIAL_THRESHOLD;
 
-		for (CarDto car : cars) {
+		for (RacingCarDto car : cars) {
 			threshold = findMaxThreshold(threshold, car.getPosition());
 		}
 		return threshold;

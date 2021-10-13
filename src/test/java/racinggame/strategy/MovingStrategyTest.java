@@ -1,8 +1,8 @@
 package racinggame.strategy;
 
+import static org.assertj.core.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.*;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
@@ -15,14 +15,16 @@ public class MovingStrategyTest {
 	@Test
 	void not_move_always(){
 		MovingStrategy strategy = new NoMovingStrategy();
-		Assertions.assertThat(strategy.isMoveable()).isFalse();
+
+		assertThat(strategy.isMoveable()).isFalse();
 	}
 
 	@DisplayName("항상 움직일 수 있다")
 	@Test
 	void move_always(){
 		MovingStrategy strategy = new DefaultMovingStrategy();
-		Assertions.assertThat(strategy.isMoveable()).isTrue();
+
+		assertThat(strategy.isMoveable()).isTrue();
 	}
 
 	@DisplayName("4가 주어지면 움직일 수 있다")
@@ -32,7 +34,8 @@ public class MovingStrategyTest {
 			mockRandoms.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
 				.thenReturn(4);
 			MovingStrategy strategy = new RandomMovingStrategy();
-			Assertions.assertThat(strategy.isMoveable()).isTrue();
+
+			assertThat(strategy.isMoveable()).isTrue();
 		}
 	}
 
@@ -43,7 +46,8 @@ public class MovingStrategyTest {
 			mockRandoms.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
 				.thenReturn(3);
 			MovingStrategy strategy = new RandomMovingStrategy();
-			Assertions.assertThat(strategy.isMoveable()).isFalse();
+
+			assertThat(strategy.isMoveable()).isFalse();
 		}
 	}
 }

@@ -1,8 +1,9 @@
 package nextstep.test.utils;
 
+import static org.assertj.core.api.Assertions.*;
+
 import java.io.ByteArrayInputStream;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -16,7 +17,7 @@ public class ConsoleTest {
 		ByteArrayInputStream inputStream = new ByteArrayInputStream(inputData.getBytes());
 		System.setIn(inputStream);
 
-		Assertions.assertThat(Console.readLine())
+		assertThat(Console.readLine())
 			.isEqualTo(inputData);
 	}
 }

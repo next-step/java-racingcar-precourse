@@ -23,7 +23,7 @@ public class RacingGameController {
 
 		RacingCarGame raceGame = new RacingCarGame(names);
 		while (round.hasNext()) {
-			raceGame.run(strategy);
+			raceGame.race(strategy);
 			ConsoleView.printPosition(raceGame.reportPosition());
 		}
 

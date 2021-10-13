@@ -3,15 +3,15 @@ package racinggame.utils;
 import java.util.ArrayList;
 import java.util.List;
 
-import racinggame.domain.Car;
-import racinggame.domain.Cars;
+import racinggame.domain.RacingCar;
+import racinggame.domain.RacingCars;
 
 public class RacingCarGenerator {
-	public static Cars generate(String[] names) {
-		List<Car> cars = new ArrayList<>();
+	public static RacingCars generate(String[] names) {
+		List<RacingCar> racingCars = new ArrayList<>();
 		for (String name : names) {
-			cars.add(new Car(name));
+			racingCars.add(new RacingCar(name));
 		}
-		return new Cars(cars);
+		return new RacingCars(racingCars);
 	}
 }

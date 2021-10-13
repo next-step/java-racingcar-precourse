@@ -1,21 +1,22 @@
 package racinggame.domain;
 
+import static org.assertj.core.api.Assertions.*;
+
 import java.util.Arrays;
 import java.util.List;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.ValueSource;
 
-public class RacingCarNamesTest {
+public class RacingRacingCarNamesTest {
 	@DisplayName("콤마(,) 기준으로 파싱 한다")
 	@ParameterizedTest
 	@ValueSource(strings = {"Red", "Blue"})
 	void given_string_then_parse(String name) {
 		RacingCarNames inputNames = new RacingCarNames("Red,Blue");
-		Assertions.assertThat(inputNames.parse()).contains(name);
+		assertThat(inputNames.parse()).contains(name);
 	}
 	static List<Arguments> parameters() {
 		return Arrays.asList(

@@ -2,11 +2,11 @@ package racinggame.domain;
 
 import java.util.Objects;
 
-public class CarDto {
+public class RacingCarDto {
 	private final String name;
 	private final int position;
 
-	public CarDto(final String name, final int position) {
+	public RacingCarDto(final String name, final int position) {
 		this.name = name;
 		this.position = position;
 	}
@@ -25,7 +25,7 @@ public class CarDto {
 			return true;
 		if (o == null || getClass() != o.getClass())
 			return false;
-		CarDto opponent = (CarDto)o;
+		RacingCarDto opponent = (RacingCarDto)o;
 		return position == opponent.position && name.equals(opponent.name);
 	}
 

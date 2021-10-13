@@ -6,21 +6,21 @@ import racinggame.strategy.MovingStrategy;
 import racinggame.utils.RacingCarGenerator;
 
 public class RacingCarGame {
-	private Cars cars;
+	private RacingCars racingCars;
 
 	public RacingCarGame(RacingCarNames names) {
-		cars = RacingCarGenerator.generate(names.parse());
+		racingCars = RacingCarGenerator.generate(names.parse());
 	}
 
-	public void run(MovingStrategy strategy) {
-		cars.race(strategy);
+	public void race(MovingStrategy strategy) {
+		racingCars.race(strategy);
 	}
 
 	public GameReport report() {
-		return new GameReport(cars.report());
+		return new GameReport(racingCars.report());
 	}
 
-	public List<CarDto> reportPosition() {
-		return cars.report();
+	public List<RacingCarDto> reportPosition() {
+		return racingCars.report();
 	}
 }

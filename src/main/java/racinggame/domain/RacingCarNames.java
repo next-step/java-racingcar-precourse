@@ -8,9 +8,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class RacingCarNames {
-	private static final Pattern FORMAT_PATTERN = Pattern.compile("^(?:[a-zA-Z0-9가-힣]{1,5},)*[a-zA-Z0-9가-힣]{1,5}$");
-	public static final String EMPTY = "";
-	public static final String SPLIT_DELIMITER = ",";
+	private static final Pattern INPUT_FORMAT_PATTERN = Pattern.compile("^(?:[a-zA-Z0-9가-힣]{1,5},)*[a-zA-Z0-9가-힣]{1,5}$");
+	private static final String EMPTY_STRING = "";
+	private static final String SPLIT_DELIMITER = ",";
 
 	private String inputString;
 
@@ -38,14 +38,14 @@ public class RacingCarNames {
 	}
 
 	private void validateFormat(String inputString) {
-		Matcher matcher = FORMAT_PATTERN.matcher(inputString);
+		Matcher matcher = INPUT_FORMAT_PATTERN.matcher(inputString);
 		if (!matcher.find()) {
 			throw new IllegalArgumentException("입력 값은 콤마(,)로 구분된 길이 5 이하의 글자 어야 합니다.");
 		}
 	}
 
 	private void validateBlank(String inputString) {
-		if (Objects.isNull(inputString) || inputString.equals(EMPTY)) {
+		if (Objects.isNull(inputString) || inputString.equals(EMPTY_STRING)) {
 			throw new IllegalArgumentException("입력 값이 존재 하지 않습니다.");
 		}
 	}
