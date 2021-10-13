@@ -18,6 +18,9 @@ public class Car {
 
     public ActStatus move(int inputNumber) {
         ActStatus actStatus = ActStatus.findByActNumber(inputNumber);
+        if(actStatus.isInValidNumber()) {
+            throw new IllegalArgumentException(Message.MOVE_RANGE.getMessage());
+        }
         if (actStatus.doGo()) {
             position++;
         }

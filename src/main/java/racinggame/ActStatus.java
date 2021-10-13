@@ -44,4 +44,8 @@ public enum ActStatus {
     public boolean doGo() {
         return this == GO;
     }
+
+    public boolean isInValidNumber() {
+        return this == Empty;
+    }
 }
