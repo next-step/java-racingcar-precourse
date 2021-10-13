@@ -16,7 +16,7 @@ public class RacingCar{
     public void setCarName(String inputCarName){
         this.carName = inputCarName;
     }
-    
+
     public void setCurrentMove(){
         this.currentMove = getRandomMove();
     }
@@ -29,4 +29,8 @@ public class RacingCar{
         int move = Randoms.pickNumberInRange(0,9);
         return move;
     }
+
+
+
+
 }

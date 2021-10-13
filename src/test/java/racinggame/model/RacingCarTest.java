@@ -31,4 +31,20 @@ public class RacingCarTest {
         int currentMove = racingCar.getCurrentMove();
         assertThat(currentMove>=0 && currentMove <=9);
     }
+
+    @DisplayName("차전진확인")
+    @Test
+    void checkCarMove(){
+        racingCar.setCurrentMove();
+        int previousTotalMove = racingCar.getTotalMove();
+        racingCar.moveForward();
+        assertThat(checkMoveForward(previousTotalMove, racingCar));
+    }
+
+    boolean checkMoveForward(int previousTotalMove, RacingCar racingCar){
+        if (racingCar.getCurrentMove()>=4){
+            return(racingCar.getTotalMove()== previousTotalMove+1);
+        }
+        return racingCar.getTotalMove()==previousTotalMove;
+    }
 }
