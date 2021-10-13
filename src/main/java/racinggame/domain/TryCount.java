@@ -20,6 +20,10 @@ public class TryCount {
 		this.tryCount = tryCount;
 	}
 
+	public TryCount() {
+		this.tryCount = 1;
+	}
+
 	public int getTryCount() {
 		return tryCount;
 	}

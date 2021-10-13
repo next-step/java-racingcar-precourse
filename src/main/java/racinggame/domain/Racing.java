@@ -12,14 +12,11 @@ import static racinggame.common.ErrorMessage.*;
 public class Racing {
 
 	Cars cars;
-	RacingResults racingResults;
-	Winners winners;
 	TryCount tryCount;
 
 	public Racing() {
 		cars = new Cars();
-		winners = new Winners();
-		racingResults = new RacingResults();
+		tryCount = new TryCount();
 	}
 
 	public Cars getCars() {
@@ -28,14 +25,6 @@ public class Racing {
 
 	public void setTryCount(TryCount tryCount) {
 		this.tryCount = tryCount;
-	}
-
-	public Winners getWinner() {
-		return winners;
-	}
-
-	public RacingResults getRacingResults() {
-		return racingResults;
 	}
 
 	public void join(Car car) {
@@ -56,44 +45,48 @@ public class Racing {
 	/**
 	 * 레이스를 진행 후 결과를 저장
 	 */
-	public void run() {
+	public String run() {
 		cars.racing();
-		racingResults.addResult(cars.currentStatusString());
+		return cars.currentStatusString();
 	}
 
 	/**
 	 * 우승자를 판단
 	 */
-	public void audit() {
+	public Winners getWinners() {
+		Winners winners = new Winners();
 		int maxDistance = cars.maxDistance();
 		for (Car car : cars.getCarList()) {
-			addWinnerList(maxDistance, car);
+			winners.addWinner(audit(maxDistance, car));
 		}
+		return winners;
 	}
 
 	/**
-	 * 최대 거리에 도달한 자동차를 우승자 목록에 저장
+	 * 최대 거리에 도달한 자동차를 반환
 	 *
 	 * @param max 최대 이동거리
 	 * @param car 추가되는 자동차
 	 */
-	public void addWinnerList(int max, Car car) {
+	public Car audit(int max, Car car) {
 		if (car.getDistance() == max) {
-			winners.addWinner(car);
+			return car;
 		}
+		return null;
 	}
 
 	/**
 	 * 시도 회수 만큼 레이싱 진행 후 우승자 판단
 	 */
-	public void startRacing() {
+	public RacingResults startRacing() {
 		if (cars.size() == 0) {
 			throw new IllegalStateException(ERROR_NO_CARS);
 		}
+		RacingResults results = new RacingResults();
 		for (int i = 0; i < tryCount.getTryCount(); i++) {
-			run();
+			results.addResult(run());
 		}
-		audit();
+		return results;
 	}
 
 }

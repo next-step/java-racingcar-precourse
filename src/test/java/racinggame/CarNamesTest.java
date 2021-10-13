@@ -14,8 +14,6 @@ import racinggame.domain.TryCount;
 
 public class CarNamesTest {
 
-	CarNames carNames;
-
 	@Test
 	void 자동차이름들_생성() {
 		String names = "자바지기,켄트백,오라클,TDD,우테캠";

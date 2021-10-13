@@ -53,7 +53,7 @@ public class GameView {
 	 */
 	public void outRacingResult(Host host) {
 		System.out.println(MESSAGE_TRY_RESULT);
-		System.out.println(host.getRacingResult());
+		System.out.println(host.start());
 	}
 
 	/**
@@ -72,7 +72,6 @@ public class GameView {
 		Host host = new Host();
 		inputName(host);
 		inputTryCount(host);
-		host.start();
 		outRacingResult(host);
 		outWinner(host);
 	}

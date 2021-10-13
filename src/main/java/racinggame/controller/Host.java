@@ -4,6 +4,7 @@ import static racinggame.common.CommonConstants.*;
 
 import racinggame.domain.CarNames;
 import racinggame.domain.Racing;
+import racinggame.domain.RacingResults;
 import racinggame.domain.TryCount;
 
 /**
@@ -35,16 +36,13 @@ public class Host {
 		racing.setTryCount(tryCount);
 	}
 
-	public void start() {
-		racing.startRacing();
-	}
-
-	public String getRacingResult() {
-		return racing.getRacingResults().toString() + NEW_LINE;
+	public String start() {
+		RacingResults racingResults = racing.startRacing();
+		return racingResults + NEW_LINE;
 	}
 
 	public String getWinner() {
-		return racing.getWinner().toString();
+		return racing.getWinners().toString();
 	}
 
 }

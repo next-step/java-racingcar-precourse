@@ -72,8 +72,10 @@ public class RacingTest {
 			.thenReturn(1, 2, 3, 4, 5, 6);
 
 		racing.run();
+		racing.setTryCount(new TryCount(1));
 
-		RacingResults result = racing.getRacingResults();
+		RacingResults result = racing.startRacing();
+
 		assertThat(result.toString())
 			.contains("Lee")
 			.contains("진")
@@ -97,10 +99,10 @@ public class RacingTest {
 		kim.go();
 		kim.go();
 
-		racing.addWinnerList(3, lee);
-		racing.addWinnerList(3, park);
-		racing.addWinnerList(3, kim);
-		Winners result = racing.getWinner();
+		racing.audit(3, lee);
+		racing.audit(3, park);
+		racing.audit(3, kim);
+		Winners result = racing.getWinners();
 
 		assertThat(result.getCarList())
 			.containsOnly(lee, park);
@@ -112,9 +114,8 @@ public class RacingTest {
 			.thenReturn(1, 2, 3, 4, 5, 6);
 
 		racing.run();
-		racing.audit();
+		Winners result = racing.getWinners();
 
-		Winners result = racing.getWinner();
 		assertThat(result.toString())
 			.contains("제이")
 			.contains("논")
@@ -129,7 +130,7 @@ public class RacingTest {
 		racing.setTryCount(new TryCount(3));
 		racing.startRacing();
 
-		Winners result = racing.getWinner();
+		Winners result = racing.getWinners();
 		assertThat(result.toString())
 			.contains("제이")
 			.contains("논")

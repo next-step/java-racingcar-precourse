@@ -3,7 +3,7 @@ package racinggame.domain;
 import static racinggame.common.CommonConstants.*;
 import static racinggame.common.ErrorMessage.*;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -28,9 +28,7 @@ public class CarNames {
 
 	public List<String> getCarNameList() {
 		String[] carNameArr = carNames.split(DELIMITER);
-		List<String> carNamelist = new ArrayList<>();
-		Collections.addAll(carNamelist, carNameArr);
-		return carNamelist;
+		return Arrays.asList(carNameArr);
 	}
 
 	/**
