@@ -6,8 +6,8 @@ public class Car {
 	private RacingBar racingBar;
 	private CarName name;
 
-	public Car(String name) {
-		this.name = new CarName(name);
+	public Car(CarName name) {
+		this.name = name;
 		racingBar = new RacingBar(0);
 	}
 
