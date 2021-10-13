@@ -34,6 +34,14 @@ public class ApplicationTest extends NSTest {
     }
 
     @Test
+    void 이름에_대한_예외_처리_중복() {
+        assertSimpleTest(() -> {
+            runNoLineFound("pobi,pobi");
+            verify(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
     void 횟수에_대한_예외_처리() {
         assertSimpleTest(() -> {
             runNoLineFound("pobi,woni", "00");

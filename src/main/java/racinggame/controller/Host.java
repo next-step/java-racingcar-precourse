@@ -26,21 +26,37 @@ public class Host {
 		return racing;
 	}
 
+	/**
+	 * 입력받은 문자열로 자동차이름들 생성후 레이싱 객체에 전달
+	 *
+	 * @param input 입력받은 문자열
+	 */
 	public void setRacingCars(String input) {
 		CarNames carNames = new CarNames(input);
 		racing.joinList(carNames);
 	}
 
+	/**
+	 * 입력받은 문자열로 시도 회수 생성후 레이싱 객체에 전달
+	 *
+	 * @param input 입력받은 문자열
+	 */
 	public void setTryCount(String input) {
 		TryCount tryCount = new TryCount(input);
 		racing.setTryCount(tryCount);
 	}
 
+	/**
+	 * 레이싱 시작 및 결과 반환
+	 */
 	public String start() {
 		RacingResults racingResults = racing.startRacing();
 		return racingResults + NEW_LINE;
 	}
 
+	/**
+	 * 우승자 반환
+	 */
 	public String getWinner() {
 		return racing.getWinners().toString();
 	}

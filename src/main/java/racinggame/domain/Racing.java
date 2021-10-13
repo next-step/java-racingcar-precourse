@@ -2,6 +2,8 @@ package racinggame.domain;
 
 import static racinggame.common.ErrorMessage.*;
 
+import java.util.Optional;
+
 /**
  * 레이싱을 진행하고 우승자를 판단하는 역할을 하는 클래스
  *
@@ -32,7 +34,7 @@ public class Racing {
 	}
 
 	/**
-	 * 자동차 이름 목록을 통한 자동차 참가
+	 * 자동차 이름들로 자동차 참가
 	 *
 	 * @param carNames 추가되는 자동차 이름들 객체
 	 */
@@ -43,7 +45,9 @@ public class Racing {
 	}
 
 	/**
-	 * 레이스를 진행 후 결과를 저장
+	 * 레이스를 진행 후 결과를 반환
+	 *
+	 * @return 레이싱 결과를 문자열로 반환
 	 */
 	public String run() {
 		cars.racing();
@@ -52,12 +56,15 @@ public class Racing {
 
 	/**
 	 * 우승자를 판단
+	 *
+	 * @return 우승자 객체 반환
 	 */
 	public Winners getWinners() {
 		Winners winners = new Winners();
 		int maxDistance = cars.maxDistance();
 		for (Car car : cars.getCarList()) {
-			winners.addWinner(audit(maxDistance, car));
+			Optional<Car> winner = Optional.ofNullable(audit(maxDistance, car));
+			winner.ifPresent(winners::addWinner);
 		}
 		return winners;
 	}
@@ -76,7 +83,7 @@ public class Racing {
 	}
 
 	/**
-	 * 시도 회수 만큼 레이싱 진행 후 우승자 판단
+	 * 시도 회수 만큼 레이싱 진행 후 레이싱 결과 반환
 	 */
 	public RacingResults startRacing() {
 		if (cars.size() == 0) {
