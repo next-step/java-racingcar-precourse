@@ -1,10 +1,10 @@
 package racinggame;
 
-import jdk.nashorn.internal.ir.annotations.Ignore;
-import nextstep.test.NSTest;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import nextstep.test.NSTest;
 
 public class ApplicationTest extends NSTest {
     private static final int MOVING_FORWARD = 4;
@@ -18,7 +18,6 @@ public class ApplicationTest extends NSTest {
     }
 
     @Test
-    @Ignore
     void 전진_정지() {
         assertRandomTest(() -> {
             run("pobi,woni", "1");
@@ -27,7 +26,6 @@ public class ApplicationTest extends NSTest {
     }
 
     @Test
-    @Ignore
     void 이름에_대한_예외_처리() {
         assertSimpleTest(() -> {
             runNoLineFound("pobi,javaji");

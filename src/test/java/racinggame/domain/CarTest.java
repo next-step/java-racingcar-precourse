@@ -1,4 +1,4 @@
-package racinggame;
+package racinggame.domain;
 
 import java.util.Arrays;
 import java.util.List;
@@ -24,7 +24,8 @@ public class CarTest {
 	}
 
 	static List<Arguments> parameters() {
-		return Arrays.asList(Arguments.of(new NoMovingStrategy(), 0, "자동차가 멈춘다"),
+		return Arrays.asList(
+			Arguments.of(new NoMovingStrategy(), 0, "자동차가 멈춘다"),
 			Arguments.of(new DefaultMovingStrategy(), 1, "자동차가 전진한다"));
 	}
 }

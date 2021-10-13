@@ -1,4 +1,4 @@
-package racinggame;
+package racinggame.strategy;
 
 import static org.mockito.ArgumentMatchers.*;
 
@@ -9,10 +9,6 @@ import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 
 import nextstep.utils.Randoms;
-import racinggame.strategy.DefaultMovingStrategy;
-import racinggame.strategy.MovingStrategy;
-import racinggame.strategy.NoMovingStrategy;
-import racinggame.strategy.RandomMovingStrategy;
 
 public class MovingStrategyTest {
 	@DisplayName("항상 움직일 수 없다")

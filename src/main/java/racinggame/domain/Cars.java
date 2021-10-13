@@ -1,4 +1,4 @@
-package racinggame;
+package racinggame.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,17 +12,17 @@ public class Cars {
 		this.cars = cars;
 	}
 
-	public void run(MovingStrategy strategy) {
+	public void race(MovingStrategy strategy) {
 		for (Car car : cars) {
 			car.move(strategy);
 		}
 	}
 
 	public List<CarDto> report() {
-		List<CarDto> carDtos = new ArrayList<>();
+		List<CarDto> dtos = new ArrayList<>();
 		for (Car car : cars) {
-			carDtos.add(car.toDto());
+			dtos.add(car.toDto());
 		}
-		return carDtos;
+		return dtos;
 	}
 }

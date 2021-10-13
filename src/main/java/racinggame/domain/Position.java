@@ -1,4 +1,4 @@
-package racinggame;
+package racinggame.domain;
 
 import java.util.Objects;
 
@@ -15,7 +15,7 @@ public class Position {
 		return ++position;
 	}
 
-	public int currentPosition() {
+	public int getCurrentPosition() {
 		return position;
 	}
 
@@ -25,8 +25,8 @@ public class Position {
 			return true;
 		if (o == null || getClass() != o.getClass())
 			return false;
-		Position position1 = (Position)o;
-		return position == position1.position;
+		Position opponent = (Position)o;
+		return position == opponent.position;
 	}
 
 	@Override
