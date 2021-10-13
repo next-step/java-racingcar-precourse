@@ -36,7 +36,7 @@ public class User {
     }
 
     public void printDash(int moveCnt) {
-        for(int i = 0; i < moveCnt; i++) {
+        for (int i = 0; i < moveCnt; i++) {
             System.out.print(Constant.DASH);
         }
         System.out.print(Constant.NEXT_LINE);

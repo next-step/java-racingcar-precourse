@@ -5,7 +5,8 @@ public class Validation {
     public static final int NAME_MAX_LEN = 5;
     public static final int NAME_MIN_LEN = 0;
 
-    public Validation() {}
+    public Validation() {
+    }
 
     public Boolean checkCarNmaeLen(String carName) {
         return carName.length() <= NAME_MAX_LEN && carName.length() > NAME_MIN_LEN;

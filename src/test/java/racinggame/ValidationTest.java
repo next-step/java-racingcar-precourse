@@ -21,6 +21,7 @@ public class ValidationTest {
                 assertThat(validation.checkCarNmaeLen("poro")).isTrue();
             }
         }
+
         @DisplayName("자동차 이름이 다섯글자 초과이면")
         @Nested
         class Context_with_incorrect {
@@ -32,5 +33,4 @@ public class ValidationTest {
             }
         }
     }
-
 }

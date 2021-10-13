@@ -31,6 +31,7 @@ public class CarTest {
         rupiCar = new Car(cars.cars.get(1));
         ediCar = new Car(cars.cars.get(2));
     }
+
     @Nested
     @DisplayName("racingGame 메소드는")
     class Discribe_racingGame {
@@ -38,6 +39,7 @@ public class CarTest {
         @DisplayName("주어진 횟수가 다섯번일 때")
         class Context_with_five_move {
             public static final int CHANCE = 5;
+
             @Test
             @DisplayName("얼만큼 갔는지 횟수 체크를 한다")
             void with_return_winner() {
@@ -59,9 +61,10 @@ public class CarTest {
         @Nested
         @DisplayName("우승한 자동차가 pororoCar일 때")
         class Context_with_win_pororo {
-            int pororoCarCnt =  5;
+            int pororoCarCnt = 5;
             int rupiCarCnt = 3;
             int ediCarCnt = 0;
+
             @Test
             @DisplayName("proroCar를 출력한다.")
             void with_return_pororo() {
