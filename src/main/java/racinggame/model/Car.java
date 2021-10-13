@@ -18,10 +18,8 @@ public class Car {
     }
 
     public void moveForward() {
-        System.out.println("[" + confirmCarName() + "] 차량 이동 합니다." );
         this.nowPosition += 1;
     }
-
 
     public void stayHere() {
         this.nowPosition += 0;
