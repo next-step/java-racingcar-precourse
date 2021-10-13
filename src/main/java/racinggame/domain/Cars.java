@@ -29,7 +29,9 @@ public class Cars {
 	public void move() {
 		for (Car car : cars) {
 			car.move();
+			car.printDistance();
 		}
+		System.out.println();
 	}
 
 	public void move(int repeat) {
@@ -70,5 +72,14 @@ public class Cars {
 
 	private void addWinner(List<Car> winners, Car winner) {
 		winners.add(winner);
+	}
+
+	public void printWinners() {
+		List<String> winnerNames = new ArrayList<>();
+		List<Car> winners = this.getWinner();
+		for (Car winner : winners) {
+			winnerNames.add(winner.getName());
+		}
+		System.out.printf("최종 우승자는 %s 입니다.\n", String.join(",", winnerNames));
 	}
 }

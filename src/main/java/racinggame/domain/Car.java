@@ -2,6 +2,8 @@ package racinggame.domain;
 
 import nextstep.utils.Randoms;
 
+import java.util.Collections;
+
 public class Car {
 	public static final int NAME_MAX_LEN = 5;
 	public static final String NAME_MAX_LEN_ERROR_MESSAGE = "[ERROR] 자동차 이름은 5자 이하만 가능합니다.";
@@ -28,6 +30,12 @@ public class Car {
 	public void move() {
 		int random = Randoms.pickNumberInRange(0, 9);
 		if (random >= MOVE_MIN_THRESHOLD) distance++;
+	}
+
+	public void printDistance() {
+		System.out.printf("%s : %s\n",
+				this.name,
+				String.join("", Collections.nCopies(this.distance, "-")));
 	}
 
 	public int compareDistanceTo(Car anyWinner) {
