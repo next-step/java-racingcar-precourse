@@ -67,7 +67,7 @@ public class RacingGameView {
 	}
 
 	private void printRacingCar(RacingCar racingCar) {
-		System.out.print(racingCar.getName() + " : ");
+		System.out.print(racingCar.getRacingCarName().getName() + " : ");
 		for(int i = 0; i < racingCar.getLocation(); i++) {
 			System.out.print("-");
 		}
@@ -77,10 +77,10 @@ public class RacingGameView {
 	private void printGameResult(RacingCarList racingCarList) {
 		String winnerNames = "";
 		for(RacingCar racingCar : racingCarList.getRacingCarList()) {
-			winnerNames += "," + racingCar.getName();
+			winnerNames += "," + racingCar.getRacingCarName().getName();
 		}
 		winnerNames = winnerNames.replaceFirst(",", "");
-		System.out.print(String.format("최종 우승자는 %s 입니다", winnerNames));
+		System.out.print(String.format("최종 우승자는 %s 입니다.", winnerNames));
 	}
 	
 	private void printMessage(MessageConstant message) {

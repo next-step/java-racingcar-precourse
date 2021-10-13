@@ -1,11 +1,11 @@
 package racinggame.model;
 
 public class RacingCar {
-	private String name;
+	private RacingCarName racingCarName;
 	private Integer location;
 	
-	public RacingCar(String name) {
-		this.name = name;
+	public RacingCar(RacingCarName racingCarName) {
+		this.racingCarName = racingCarName;
 		this.location = 0;
 	}
 	
@@ -13,11 +13,21 @@ public class RacingCar {
 		this.location++;
 	}
 
-	public String getName() {
-		return name;
+	public RacingCarName getRacingCarName() {
+		return racingCarName;
 	}
 	
 	public Integer getLocation() {
 		return location;
+	}
+	
+	public Boolean isValid() {
+		if(racingCarName == null) {
+			return false;
+		}
+		if(!racingCarName.isValid()) {
+			return false;
+		}
+		return true;
 	}
 }

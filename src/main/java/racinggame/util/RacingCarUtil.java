@@ -4,13 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import racinggame.model.RacingCar;
+import racinggame.model.RacingCarName;
 
 public class RacingCarUtil {
 	private RacingCarUtil() {
 	}
 
 	public static RacingCar createRacingCar(String name) {
-		RacingCar racingCar = new RacingCar(name);
+		RacingCar racingCar = new RacingCar(new RacingCarName(name));
 		return racingCar;
 	}
 	
