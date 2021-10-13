@@ -13,4 +13,8 @@ public class Distance {
 	public int getDistance() {
 		return distance;
 	}
+
+	public void move() {
+		this.distance++;
+	}
 }
