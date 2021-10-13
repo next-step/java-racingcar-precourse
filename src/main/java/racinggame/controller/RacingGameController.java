@@ -13,23 +13,21 @@ public class RacingGameController {
 	}
 
 	private Cars readCarNames() {
-		while (true) {
-			try {
-				String[] carNames = UserConsole.readCarNames();
-				return new Cars(carNames);
-			} catch (IllegalArgumentException e) {
-				System.out.println(e.getMessage());
-			}
+		try {
+			String[] carNames = UserConsole.readCarNames();
+			return new Cars(carNames);
+		} catch (IllegalArgumentException e) {
+			System.out.println(e.getMessage());
+			return readCarNames();
 		}
 	}
 
 	private int readTrialNumber() {
-		while (true) {
-			try {
-				return UserConsole.readTrialNumber();
-			} catch (NumberFormatException e) {
-				System.out.println(e.getMessage());
-			}
+		try {
+			return UserConsole.readTrialNumber();
+		} catch (NumberFormatException e) {
+			System.out.println(e.getMessage());
+			return readTrialNumber();
 		}
 	}
 }
