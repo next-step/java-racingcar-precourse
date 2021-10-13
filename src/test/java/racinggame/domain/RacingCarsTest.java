@@ -26,6 +26,19 @@ public class RacingCarsTest {
         }
     }
 
+    @DisplayName("우승자 제대로 찾는지 확인")
+    @Test
+    void findWinners_success() {
+        RacingCars racingCars = new RacingCars("1,2,3");
+
+        racingCars.moveForwardOrStop(0, MoveStatus.FORWARD);
+        racingCars.moveForwardOrStop(1, MoveStatus.FORWARD);
+        racingCars.moveForwardOrStop(2, MoveStatus.STOP);
+
+        assertThat(racingCars.findWinners())
+            .isEqualTo(new Winners(Arrays.asList(new CarName("1"), new CarName("2"))));
+    }
+
     @DisplayName("자동차 레이싱 실행 결과 메시지 제대로 생성하는지 테스트")
     @Test
     void makeResultMessage_success() {
