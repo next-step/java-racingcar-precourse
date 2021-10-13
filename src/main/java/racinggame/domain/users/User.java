@@ -1,4 +1,4 @@
-package racinggame.domain.user;
+package racinggame.domain.users;
 
 import nextstep.utils.Console;
 import racinggame.domain.constants.Messages;
