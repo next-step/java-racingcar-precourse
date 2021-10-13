@@ -22,6 +22,13 @@ public class Position {
         return position;
     }
 
+    public Position findBiggerPosition(Position position) {
+        if (this.position < position.getValue()) {
+            return position;
+        }
+        return this;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

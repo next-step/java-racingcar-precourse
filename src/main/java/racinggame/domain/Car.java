@@ -24,6 +24,17 @@ public class Car {
         return position.getValue();
     }
 
+    public boolean isWinnerCar(Position maxPosition) {
+        if (position.equals(maxPosition)) {
+            return true;
+        }
+        return false;
+    }
+
+    public Position getMaxPosition(Position position) {
+        return this.position.findBiggerPosition(position);
+    }
+
     public String getName() {
         return carName.getValue();
     }
