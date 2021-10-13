@@ -2,40 +2,39 @@ package racinggame.service;
 
 import racinggame.domain.Car;
 import racinggame.domain.Cars;
-import racinggame.domain.Result;
+import racinggame.domain.RacingResult;
 import racinggame.domain.Winner;
 
 
 public class RacingGameService {
     private Cars cars;
-    private Result result;
+    private RacingResult racingResult;
 
     public RacingGameService() {
-        result = new Result();
+        racingResult = new RacingResult();
     }
 
     public void makeCars(String carsName) {
         this.cars = new Cars(carsName);
     }
 
-    public Result makeCar() {
+    public RacingResult setRacingCar() {
         for (String car : cars.cars) {
             Car racingCar = new Car(car);
-            result.addResult(racingCar);
+            racingResult.addResult(racingCar);
         }
-        return result;
+        return racingResult;
     }
 
-    public void moveCar(Result result) {
-        for (int i = 0; i < result.result.size(); i++) {
-            Car racingCar = result.result.get(i);
+    public void moveCar(RacingResult racingResult) {
+        for (int i = 0; i < racingResult.result.size(); i++) {
+            Car racingCar = racingResult.result.get(i);
             racingCar.play();
         }
     }
 
-
-    public Winner findWinner(Result result) {
-        Winner winner = new Winner(result);
+    public Winner findWinner(RacingResult racingResult) {
+        Winner winner = new Winner(racingResult);
         return winner;
     }
 }

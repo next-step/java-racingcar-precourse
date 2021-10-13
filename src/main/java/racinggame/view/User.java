@@ -4,7 +4,7 @@ import nextstep.utils.Console;
 import racinggame.domain.Constant;
 import racinggame.domain.CarsName;
 import racinggame.domain.Chances;
-import racinggame.domain.Result;
+import racinggame.domain.RacingResult;
 import racinggame.domain.Winner;
 
 public class User {
@@ -26,11 +26,15 @@ public class User {
         return chances;
     }
 
-    public void printRacingResult(Result result) {
-        for (int i = 0; i < result.result.size(); i++) {
-            System.out.print(result.result.get(i).getCarName());
+    public void printRacingResultStartMsg() {
+        System.out.println(Constant.OUTPUT_TITLE);
+    }
+
+    public void printRacingResult(RacingResult racingResult) {
+        for (int i = 0; i < racingResult.result.size(); i++) {
+            System.out.print(racingResult.result.get(i).getCarName());
             System.out.print(Constant.COLON);
-            printDash(result.result.get(i).getMoveCnt());
+            printDash(racingResult.result.get(i).getMoveCnt());
         }
         System.out.print(Constant.NEXT_LINE);
     }
@@ -57,9 +61,5 @@ public class User {
         if (commaCnt > 0) {
             System.out.print(Constant.COMMA);
         }
-    }
-
-    public void printRacingResultMsg() {
-        System.out.println(Constant.OUTPUT_TITLE);
     }
 }

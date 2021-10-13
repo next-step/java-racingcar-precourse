@@ -2,13 +2,13 @@ package racinggame.controller;
 
 import racinggame.domain.CarsName;
 import racinggame.domain.Chances;
-import racinggame.domain.Result;
+import racinggame.domain.RacingResult;
 import racinggame.service.RacingGameService;
 import racinggame.view.User;
 
 public class RacingGameController {
     private User user;
-    public RacingGameService racingGameService;
+    private RacingGameService racingGameService;
 
     public RacingGameController() {
         this.racingGameService = new RacingGameService();
@@ -19,16 +19,16 @@ public class RacingGameController {
         CarsName carsName = user.askCarsName();
         Chances chances = user.askChances();
         racingGameService.makeCars(carsName.carsName);
-        Result result = racingGameService.makeCar();
-        racing(chances.chances, result);
-        user.printWinner(racingGameService.findWinner(result));
+        RacingResult racingResult = racingGameService.setRacingCar();
+        racing(chances.chances, racingResult);
+        user.printWinner(racingGameService.findWinner(racingResult));
     }
 
-    public void racing(int chances, Result result) {
-        user.printRacingResultMsg();
+    public void racing(int chances, RacingResult racingResult) {
+        user.printRacingResultStartMsg();
         while (chances != 0) {
-            racingGameService.moveCar(result);
-            user.printRacingResult(result);
+            racingGameService.moveCar(racingResult);
+            user.printRacingResult(racingResult);
             chances--;
         }
     }
