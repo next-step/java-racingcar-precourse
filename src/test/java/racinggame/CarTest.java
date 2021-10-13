@@ -27,15 +27,13 @@ public class CarTest extends NSTest{
     }
 
     @Test
-    void 전진() {
+    void 움직이기() {
         Car carForTest = new Car("latte");
-        for (int i = 0; i < numOfMove; i++) {
-            carForTest.moveForward();
-        }
-        System.out.println(carForTest.getPosition());
-        verify(Integer.toString(numOfMove));
+        assertRandomTest(()-> {
+            run("latte", "1");
+            verify("latte : -");
+        },5);
     }
-
     @Override
     protected void runMain() {
         Application.main(new String[]{});
