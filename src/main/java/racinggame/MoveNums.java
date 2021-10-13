@@ -12,17 +12,17 @@ import nextstep.utils.Randoms;
  */
 public class MoveNums {
 
-  private final List<Integer> carMoveNums;
+  private final int carSize;
 
   public MoveNums(Cars cars) {
-    List<Integer> moveNum = new ArrayList<>();
-    for(int i = 0; i<cars.getCars().size(); i++) {
-      moveNum.add(Randoms.pickNumberInRange(0,9));
-    }
-    this.carMoveNums = moveNum;
+    carSize = cars.getCars().size();
   }
 
   public List<Integer> getCarMoveNums() {
-    return carMoveNums;
+    List<Integer> moveNums = new ArrayList<>();
+    for (int i = 0; i < carSize; i++) {
+      moveNums.add(Randoms.pickNumberInRange(0, 9));
+    }
+    return moveNums;
   }
 }
