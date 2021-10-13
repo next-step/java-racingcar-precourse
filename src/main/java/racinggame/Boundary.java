@@ -2,6 +2,7 @@ package racinggame;
 
 public enum Boundary {
     NAME(1, 5),
+    ATTEMPT(1, -1),
     RANDOM_NUM(0, 9);
 
     private int minNum;

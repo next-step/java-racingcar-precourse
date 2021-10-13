@@ -28,4 +28,34 @@ public class Player {
         }
         return true;
     }
+
+    public int setNumberOfAttempt() {
+        String numberOfAttempt = null;
+        boolean validNumberOfAttempt = false;
+        while (!validNumberOfAttempt) {
+            System.out.println(Message.REQUEST_ATTEMPTS.getMessage());
+            numberOfAttempt = Console.readLine();
+            validNumberOfAttempt = validNumberOfAttempt(numberOfAttempt);
+        }
+        return Integer.parseInt(numberOfAttempt);
+    }
+
+    private boolean validNumberOfAttempt(String strNumberOfAttempt) {
+        int numberOfAttempt;
+        try {
+            numberOfAttempt = Integer.parseInt(strNumberOfAttempt);
+        } catch (Exception e) {
+            System.out.println(Message.ATTEMPTS_INPUT_TYPE.getMessage());
+            return false;
+        }
+        return validRangeNumberOfAttempt(numberOfAttempt);
+    }
+
+    private boolean validRangeNumberOfAttempt(int numberOfAttempt) {
+        if (!Boundary.ATTEMPT.isWithinRange(numberOfAttempt)) {
+            System.out.println(Message.ATTEMPTS_RANGE.getMessage());
+            return false;
+        }
+        return true;
+    }
 }
