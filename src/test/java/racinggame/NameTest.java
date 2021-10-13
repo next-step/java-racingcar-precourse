@@ -1,6 +1,7 @@
 package racinggame;
 
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -10,5 +11,11 @@ class NameTest {
 	@ValueSource(strings = {"틀린이름입니다", "123424", ""})
 	void 자동차이름_예외처리_테스트(String testData) {
 		Assertions.assertThatIllegalArgumentException().isThrownBy(() -> new Name(testData));
+	}
+
+	@Test
+	void 자동차이름_확인_테스트() {
+		Name carName = new Name("code");
+		Assertions.assertThat(carName.value()).isEqualTo("code");
 	}
 }
