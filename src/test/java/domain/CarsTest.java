@@ -22,11 +22,7 @@ public class CarsTest {
 
 	@BeforeEach
 	void setUp() {
-		List<Car> carList = Arrays.asList(
-				new Car("pobi"),
-				new Car("crong"),
-				new Car("honux"));
-		cars = new Cars(carList);
+		cars = new Cars(new String[]{"pobi" ,"crong" ,"honux"});
 	}
 
 	@Test

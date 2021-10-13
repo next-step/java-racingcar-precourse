@@ -10,6 +10,18 @@ public class Cars {
 		this.cars = cars;
 	}
 
+	public Cars(String[] carNames) {
+		this(parseCars(carNames));
+	}
+
+	private static List<Car> parseCars(String[] carNames) {
+		List<Car> cars = new ArrayList<>();
+		for (String carName : carNames) {
+			cars.add(new Car(carName));
+		}
+		return cars;
+	}
+
 	public Car get(int index) {
 		return this.cars.get(index);
 	}
