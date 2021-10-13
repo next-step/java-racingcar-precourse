@@ -26,6 +26,13 @@ public class CarTest {
 	}
 
 	@Test
+	@DisplayName("자동차 이름 길이 0보다 큰지 검증하기")
+	void createCarWithLengthZero() {
+		assertThatThrownBy(() -> new Car("")).hasMessageContaining("[ERROR] 이름")
+												   .isInstanceOf(IllegalArgumentException.class);
+	}
+
+	@Test
 	@DisplayName("랜덤값이 4이상이면 전진")
 	void moveForward() {
 		Car car = new Car("pobi");

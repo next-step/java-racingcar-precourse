@@ -22,6 +22,9 @@ public class Car {
 		if (name.length() > MAX_NAME_LENGTH) {
 			throw new IllegalArgumentException("[ERROR] 이름은 " + MAX_NAME_LENGTH + "자 이하로 만들어야 합니다.");
 		}
+		if (name.length() <= 0) {
+			throw new IllegalArgumentException("[ERROR] 이름은 0보다 큰 길이로 만들어야 합니다");
+		}
 	}
 
 	public void moveOrStop(int randomNo) {
