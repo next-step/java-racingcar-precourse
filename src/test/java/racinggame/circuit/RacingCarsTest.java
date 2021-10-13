@@ -18,10 +18,8 @@ import racinggame.racingcar.LapRecord;
 import racinggame.racingcar.Location;
 import racinggame.common.RacingCarName;
 import racinggame.racingcar.RacingCar;
-import racinggame.rule.RacingRule;
-import racinggame.rule.WinnerDecisionRule;
-import racinggame.rule.winnerrules.FarAwayWinRule;
-import racinggame.racinggame.Rule;
+import racinggame.rule.racing.RacingRule;
+import racinggame.rule.racing.Rule;
 
 class RacingCarsTest {
 	private static final int FORWARD = 4;
@@ -139,11 +137,7 @@ class RacingCarsTest {
 		}
 
 		static Rule rule() {
-			return new RacingRule(winner());
-		}
-
-		static WinnerDecisionRule winner() {
-			return new FarAwayWinRule();
+			return new RacingRule();
 		}
 
 		static Dice dice (){

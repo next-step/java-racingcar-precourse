@@ -2,17 +2,18 @@ package racinggame.ui;
 
 import racinggame.circuit.FinalRecord;
 import racinggame.racinggame.RacingGame;
-import racinggame.racinggame.Rule;
-import racinggame.rule.WinnerNames;
+import racinggame.rule.winnerrules.WinnerDecisionRule;
+import racinggame.rule.winnerrules.WinnerNames;
 import racinggame.ui.config.RacingGameConfig;
 
 public final class RacingGameScreen {
 	private final RacingGameConfig config;
 	private final RacingGame game;
-	private final Rule rule;
+	private final WinnerDecisionRule rule;
 	private final OutputDevice outputDevice;
 
-	public RacingGameScreen(RacingGameConfig config, RacingGame game, Rule rule, OutputDevice outputDevice) {
+	public RacingGameScreen(RacingGameConfig config, RacingGame game,
+							WinnerDecisionRule rule, OutputDevice outputDevice) {
 		this.config = config;
 		this.game = game;
 		this.rule = rule;
@@ -22,11 +23,11 @@ public final class RacingGameScreen {
 	public void turnOn() {
 		Settings settings = config.configGame();
 		FinalRecord finalRecord = game.play(settings.getRacingCars(), settings.getLap());
-		WinnerNames winnerNames = rule.judgeWinners(finalRecord);
+		WinnerNames winnerNames = rule.judgeWinner(finalRecord);
 		printResult(finalRecord, winnerNames);
 	}
 
-	private void printResult (FinalRecord finalRecord, WinnerNames winnerNames){
+	private void printResult(FinalRecord finalRecord, WinnerNames winnerNames) {
 		String result = new StringBuilder()
 			.append("실행결과\n")
 			.append(finalRecord.readFinalRecord())
@@ -38,7 +39,7 @@ public final class RacingGameScreen {
 		outputDevice.print(result);
 	}
 
-	private String winners (WinnerNames winnerNames, String delimiter){
+	private String winners(WinnerNames winnerNames, String delimiter) {
 		return winnerNames.getNamesWithDelimiter(delimiter);
 	}
 }

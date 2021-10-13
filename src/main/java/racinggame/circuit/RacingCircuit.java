@@ -2,7 +2,7 @@ package racinggame.circuit;
 
 import racinggame.dice.Dice;
 import racinggame.racinggame.Circuit;
-import racinggame.racinggame.Rule;
+import racinggame.rule.racing.Rule;
 
 public class RacingCircuit implements Circuit {
 	private final Dice dice;

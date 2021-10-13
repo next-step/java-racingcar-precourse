@@ -1,4 +1,4 @@
-package racinggame.rule;
+package racinggame.rule.winnerrules;
 
 import racinggame.circuit.FinalRecord;
 

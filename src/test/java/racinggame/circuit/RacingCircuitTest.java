@@ -3,10 +3,6 @@ package racinggame.circuit;
 import static org.assertj.core.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -17,10 +13,8 @@ import racinggame.common.RacingCarName;
 import racinggame.dice.Dice;
 import racinggame.dice.TenSidedDice;
 import racinggame.racingcar.RacingCar;
-import racinggame.rule.RacingRule;
-import racinggame.rule.WinnerDecisionRule;
-import racinggame.rule.winnerrules.FarAwayWinRule;
-import racinggame.racinggame.Rule;
+import racinggame.rule.racing.RacingRule;
+import racinggame.rule.racing.Rule;
 
 class RacingCircuitTest {
 	private static final int FORWARD = 4;
@@ -73,11 +67,7 @@ class RacingCircuitTest {
 		}
 
 		static Rule rule() {
-			return new RacingRule(winner());
-		}
-
-		static WinnerDecisionRule winner() {
-			return new FarAwayWinRule();
+			return new RacingRule();
 		}
 
 		public static Dice dice() {

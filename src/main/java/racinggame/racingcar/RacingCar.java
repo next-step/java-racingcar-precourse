@@ -1,7 +1,6 @@
 package racinggame.racingcar;
 
 import racinggame.common.RacingCarName;
-import racinggame.racinggame.Rule;
 
 public final class RacingCar {
 	private final RacingCarName racingCarName;

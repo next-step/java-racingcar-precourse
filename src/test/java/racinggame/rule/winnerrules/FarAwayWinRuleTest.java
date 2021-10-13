@@ -11,8 +11,6 @@ import racinggame.circuit.LapRecords;
 import racinggame.racingcar.LapRecord;
 import racinggame.racingcar.Location;
 import racinggame.common.RacingCarName;
-import racinggame.rule.WinnerDecisionRule;
-import racinggame.rule.WinnerNames;
 
 class FarAwayWinRuleTest {
 	private WinnerDecisionRule rule;

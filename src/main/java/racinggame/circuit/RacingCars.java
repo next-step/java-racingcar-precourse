@@ -7,7 +7,7 @@ import racinggame.dice.Dice;
 import racinggame.racingcar.LapRecord;
 import racinggame.racingcar.Movement;
 import racinggame.racingcar.RacingCar;
-import racinggame.racinggame.Rule;
+import racinggame.rule.racing.Rule;
 
 public final class RacingCars {
 	private final List<RacingCar> racingCars = new ArrayList<>();

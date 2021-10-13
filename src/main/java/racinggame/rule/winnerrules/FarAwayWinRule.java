@@ -3,8 +3,6 @@ package racinggame.rule.winnerrules;
 import racinggame.circuit.FinalRecord;
 import racinggame.circuit.LapRecords;
 import racinggame.racingcar.LapRecord;
-import racinggame.rule.WinnerDecisionRule;
-import racinggame.rule.WinnerNames;
 
 public class FarAwayWinRule implements WinnerDecisionRule {
 	private final String EMPTY = "";

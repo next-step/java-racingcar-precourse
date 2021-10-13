@@ -12,9 +12,9 @@ import racinggame.circuit.RacingCircuit;
 import racinggame.dice.TenSidedDice;
 import racinggame.exception.InvalidNumberException;
 import racinggame.racinggame.RacingGame;
-import racinggame.racinggame.Rule;
-import racinggame.rule.RacingRule;
+import racinggame.rule.racing.RacingRule;
 import racinggame.rule.winnerrules.FarAwayWinRule;
+import racinggame.rule.winnerrules.WinnerDecisionRule;
 import racinggame.ui.config.RacingGameConfig;
 import racinggame.ui.input.ConsoleKeyboard;
 import racinggame.ui.output.ConsolePrinter;
@@ -68,7 +68,7 @@ class RacingGameScreenTest extends NSTest {
 
 	private static class RacingGameScreenConfig {
 		static RacingGameScreen screen() {
-			return new RacingGameScreen(config(), game(), rule(), outputDevice());
+			return new RacingGameScreen(config(), game(), winnerDecisionRule(), outputDevice());
 		}
 
 		private static RacingGameConfig config() {
@@ -79,13 +79,13 @@ class RacingGameScreenTest extends NSTest {
 			return new RacingGame(
 				new RacingCircuit(
 					new TenSidedDice(),
-					rule()
+					new RacingRule()
 				)
 			);
 		}
 
-		private static Rule rule() {
-			return new RacingRule(new FarAwayWinRule());
+		private static WinnerDecisionRule winnerDecisionRule() {
+			return new FarAwayWinRule();
 		}
 
 		private static OutputDevice outputDevice() {

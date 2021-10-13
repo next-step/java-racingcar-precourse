@@ -12,10 +12,8 @@ import racinggame.dice.TenSidedDice;
 import racinggame.racingcar.LapRecord;
 import racinggame.racingcar.Location;
 import racinggame.racingcar.RacingCar;
-import racinggame.racinggame.Rule;
-import racinggame.rule.RacingRule;
-import racinggame.rule.WinnerDecisionRule;
-import racinggame.rule.winnerrules.FarAwayWinRule;
+import racinggame.rule.racing.RacingRule;
+import racinggame.rule.racing.Rule;
 
 class MockRacingCircuitTest {
 	private RacingCircuit mockRacingCircuit;
@@ -68,11 +66,7 @@ class MockRacingCircuitTest {
 		}
 
 		static Rule rule() {
-			return new RacingRule(winner());
-		}
-
-		static WinnerDecisionRule winner() {
-			return new FarAwayWinRule();
+			return new RacingRule();
 		}
 
 		private static FinalRecord expectedRecord() {
