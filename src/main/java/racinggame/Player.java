@@ -2,9 +2,7 @@ package racinggame;
 
 import nextstep.utils.Console;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class Player {
     public List<String> setCarNames() {
@@ -57,5 +55,14 @@ public class Player {
             return false;
         }
         return true;
+    }
+
+    public Map<String, Object> setUserInput() {
+        Map<String, Object> userInput = new HashMap<>();
+        List<String> carNames = setCarNames();
+        int numberOfAttempt = setNumberOfAttempt();
+        userInput.put("carNames", carNames);
+        userInput.put("numberOfAttempt", numberOfAttempt);
+        return userInput;
     }
 }
