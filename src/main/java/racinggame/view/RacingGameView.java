@@ -8,6 +8,7 @@ import racinggame.dto.InitRacingGameDto;
 import racinggame.dto.RacingGameResultDto;
 import racinggame.dto.constant.RacingGameStatusConstant;
 import racinggame.model.RacingCar;
+import racinggame.model.RacingCarList;
 import racinggame.view.constant.MessageConstant;
 
 public class RacingGameView {
@@ -58,8 +59,8 @@ public class RacingGameView {
 		initRacingGame.setRunNumber(Integer.parseInt(Console.readLine()));
 	}
 	
-	private void printRacingCarList(List<RacingCar> racingCarList) {
-		for(RacingCar racingCar : racingCarList) {
+	private void printRacingCarList(RacingCarList racingCarList) {
+		for(RacingCar racingCar : racingCarList.getRacingCarList()) {
 			printRacingCar(racingCar);
 		}
 		System.out.println();
@@ -73,9 +74,9 @@ public class RacingGameView {
 		System.out.println();
 	}
 	
-	private void printGameResult(List<RacingCar> racingCarList) {
+	private void printGameResult(RacingCarList racingCarList) {
 		String winnerNames = "";
-		for(RacingCar racingCar : racingCarList) {
+		for(RacingCar racingCar : racingCarList.getRacingCarList()) {
 			winnerNames += "," + racingCar.getName();
 		}
 		winnerNames = winnerNames.replaceFirst(",", "");

@@ -10,13 +10,13 @@ import racinggame.model.constant.RacingCarConstant;
 public class RacingGame {
 	private Integer runNumber; 
 	private Integer runCount; 
-	private List<RacingCar> racingCarList;
+	private RacingCarList racingCarList;
 	private RacingGameStatusConstant racingGameStatus;
 	
 	public RacingGame(Integer runNumber, List<RacingCar> racingCarList) {
 		this.runNumber = runNumber;
 		this.runCount = 0;
-		this.racingCarList = racingCarList;
+		this.racingCarList = new RacingCarList(racingCarList);
 		this.racingGameStatus = RacingGameStatusConstant.INITED;
 	}
 	
@@ -25,19 +25,12 @@ public class RacingGame {
 			return;
 		}
 		runCount++;			
-		for(RacingCar racingCar : racingCarList) {
-			runRacingCar(racingCar);
-		}
+		racingCarList.runRacingCarList();
 		setRacingGameStatus();
 	}
 	
-	public List<RacingCar> getRacingGameWinner(){
-		List<RacingCar> racingGameWinner = new ArrayList<RacingCar>();
-		Integer maxLocation = 0;
-		for(RacingCar racingCar : racingCarList) {
-			maxLocation = addRacingGameWinner(racingGameWinner, maxLocation, racingCar);
-		}
-		return racingGameWinner;
+	public RacingCarList getRacingGameWinner(){
+		return racingCarList.getRacingGameWinner();
 	}
 	
 	public Integer getRunNumber() {
@@ -48,23 +41,12 @@ public class RacingGame {
 		return runCount;
 	}
 
-	public List<RacingCar> getRacingCarList() {
+	public RacingCarList getRacingCarList() {
 		return racingCarList;
 	}
 
 	public RacingGameStatusConstant getRacingGameStatus() {
 		return racingGameStatus;
-	}
-	
-	private Integer addRacingGameWinner(List<RacingCar> racingGameWinner, Integer maxLocation, RacingCar racingCar) {
-		if(racingCar.getLocation() < maxLocation) {
-			return maxLocation;
-		}
-		if(racingCar.getLocation() > maxLocation) {
-			racingGameWinner.clear();
-		}
-		racingGameWinner.add(racingCar);
-		return racingCar.getLocation();
 	}
 
 	private void setRacingGameStatus() {
@@ -76,13 +58,5 @@ public class RacingGame {
 		}
 	}
 	
-	private void runRacingCar(RacingCar racingCar) {
-		if(isMoveFront()) {
-			racingCar.moveFront();
-		}
-	}
-	
-	private Boolean isMoveFront() {
-		return Randoms.pickNumberInRange(RacingCarConstant.RUN_RANDOM_MIN, RacingCarConstant.RUN_RANDOM_MAX) >= RacingCarConstant.RUN_MINIMUM_NUMBER;
-	}
+
 }
