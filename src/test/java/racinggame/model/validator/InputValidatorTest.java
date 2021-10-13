@@ -1,4 +1,4 @@
-package racinggame.controller;
+package racinggame.model.validator;
 
 import org.junit.jupiter.api.Assertions;
 import static org.assertj.core.api.Assertions.*;
