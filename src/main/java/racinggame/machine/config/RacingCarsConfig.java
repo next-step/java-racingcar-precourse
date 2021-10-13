@@ -17,6 +17,13 @@ public final class RacingCarsConfig {
 		this.outputDevice = outputDevice;
 	}
 
+	/**
+	 * String 을 입력받아 {@link RacingCar}의 {@link RacingCarName} 을 설정한다.
+	 *
+	 * @return {@link RacingCars}
+	 * @throws InvalidNameException : 레이싱카의 이름을 잘못 입력하면 발생하는 Exception
+	 */
+
 	protected RacingCars getRacingCars() {
 		RacingCars racingCars = new RacingCars();
 

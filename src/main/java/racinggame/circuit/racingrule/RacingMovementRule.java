@@ -8,7 +8,7 @@ public final class RacingMovementRule implements MovementRule {
 	private static final int JUDGE_VALUE = 3;
 
 	@Override
-	public Movement judgeMovement(int diceValue) {
+	public Movement judgeMovement(final int diceValue) {
 		if (diceValue >= DICE_MIN && diceValue <= JUDGE_VALUE) {
 			return Movement.STOP;
 		}

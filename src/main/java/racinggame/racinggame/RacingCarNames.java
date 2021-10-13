@@ -7,7 +7,7 @@ import racinggame.exception.InvalidNameException;
 import racinggame.common.RacingCarName;
 
 public final class RacingCarNames {
-	private List<RacingCarName> racingCarNames = new ArrayList<>();
+	private final List<RacingCarName> racingCarNames = new ArrayList<>();
 
 	public void add(final RacingCarName racingCarName) {
 		if (racingCarNames.contains(racingCarName)) {

@@ -11,8 +11,10 @@ public class WinnerNames {
 	 * 우승자를 우승자 리스트에 추가한다.
 	 * @param name
 	 */
-	public void addName(String name) {
-		if ("".equals(name)) {
+	public void addName(final String name) {
+		String EMPTY = "";
+
+		if (EMPTY.equals(name)) {
 			return;
 		}
 		names.add(name);

@@ -17,7 +17,7 @@ public class FarAwayWinRule implements WinnerDecisionRule {
 	 * @return {@link WinnerNames}
 	 */
 	@Override
-	public WinnerNames judgeWinner(FinalRecord finalRecord) {
+	public WinnerNames judgeWinner(final FinalRecord finalRecord) {
 		WinnerNames winnerNames = new WinnerNames();
 		LapRecords finalLap = finalRecord.finalLapRecords();
 		int bestScore = bestScore(finalLap);
@@ -29,7 +29,7 @@ public class FarAwayWinRule implements WinnerDecisionRule {
 		return winnerNames;
 	}
 
-	private int bestScore(LapRecords finalLap) {
+	private int bestScore(final LapRecords finalLap) {
 		int score = 0;
 
 		for (LapRecord lapRecord : finalLap.getLapRecords()) {
@@ -39,7 +39,7 @@ public class FarAwayWinRule implements WinnerDecisionRule {
 		return score;
 	}
 
-	private String getWinnerName(LapRecord lapRecord, int bestScore) {
+	private String getWinnerName(final LapRecord lapRecord, final int bestScore) {
 		if (lapRecord.getScore() == bestScore) {
 			return lapRecord.getName();
 		}
