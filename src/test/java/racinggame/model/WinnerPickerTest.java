@@ -4,6 +4,9 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racinggame.enums.RANDOM_MOVE_RESULT;
+import racinggame.vo.Car;
+import racinggame.vo.CarLocation;
+import racinggame.vo.Cars;
 import racinggame.vo.PlayerName;
 
 public class WinnerPickerTest {

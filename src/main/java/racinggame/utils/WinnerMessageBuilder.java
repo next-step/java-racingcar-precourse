@@ -1,7 +1,7 @@
 package racinggame.utils;
 
-import racinggame.model.Car;
-import racinggame.model.Cars;
+import racinggame.vo.Car;
+import racinggame.vo.Cars;
 
 public class WinnerMessageBuilder {
     private static final String WINNER_MSG_PREFIX = "최종 우승자는 ";

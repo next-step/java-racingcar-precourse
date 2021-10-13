@@ -1,8 +1,10 @@
-package racinggame.model;
+package racinggame.vo;
 
 import racinggame.environments.GlobalVariables;
 
 public class CarLocation {
+    private static final String LOCATION_INDICATOR = "-";
+
     private int location;
 
     public CarLocation(){
@@ -25,10 +27,6 @@ public class CarLocation {
         return this.location;
     }
 
-    public CarLocation getGreaterCompareWith(CarLocation other){
-        return this.isGreaterThan(other) ? this : other;
-    }
-
     public Boolean isGreaterThan(CarLocation other){
         return this.location > other.get();
     }
@@ -40,5 +38,16 @@ public class CarLocation {
         CarLocation that = (CarLocation) o;
 
         return location == that.location;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+
+        for (int i = 0; i < this.location; i++) {
+            builder.append(LOCATION_INDICATOR);
+        }
+
+        return builder.toString();
     }
 }

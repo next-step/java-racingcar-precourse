@@ -7,6 +7,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.MockedStatic;
 import racinggame.enums.RANDOM_MOVE_RESULT;
+import racinggame.vo.Car;
+import racinggame.vo.CarLocation;
 import racinggame.vo.PlayerName;
 
 import static org.mockito.ArgumentMatchers.anyInt;

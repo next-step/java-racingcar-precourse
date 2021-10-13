@@ -2,7 +2,7 @@ package racinggame.controller;
 
 import racinggame.dto.GameTurnCntDTO;
 import racinggame.dto.PlayerNamesDTO;
-import racinggame.model.Cars;
+import racinggame.vo.Cars;
 import racinggame.utils.WinnerMessageBuilder;
 import racinggame.view.InputView;
 import racinggame.view.OutputView;

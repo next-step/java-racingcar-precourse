@@ -2,9 +2,9 @@ package racinggame.utils;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-import racinggame.model.Car;
-import racinggame.model.CarLocation;
-import racinggame.model.Cars;
+import racinggame.vo.Car;
+import racinggame.vo.CarLocation;
+import racinggame.vo.Cars;
 import racinggame.vo.PlayerName;
 
 public class WinnerMessageBuilderTest {

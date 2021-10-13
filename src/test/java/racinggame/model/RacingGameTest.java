@@ -8,8 +8,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.MockedStatic;
 import racinggame.controller.IOController;
-import racinggame.vo.GameTurnCnt;
-import racinggame.vo.PlayerName;
+import racinggame.vo.*;
 
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mockStatic;

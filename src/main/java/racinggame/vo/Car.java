@@ -1,10 +1,7 @@
-package racinggame.model;
-
-import racinggame.vo.PlayerName;
+package racinggame.vo;
 
 public class Car {
     private static final String PLAYER_LOCATION_SEPERATOR = " : ";
-    private static final String LOCATION_INDICATOR = "-";
 
     private PlayerName playerName;
     private CarLocation location;
@@ -32,10 +29,7 @@ public class Car {
     public String toString() {
         StringBuilder builder = new StringBuilder();
 
-        builder.append(this.playerName.get() + PLAYER_LOCATION_SEPERATOR);
-        for (int i = 0; i < this.location.get(); i++) {
-            builder.append(LOCATION_INDICATOR);
-        }
+        builder.append(this.playerName.get() + PLAYER_LOCATION_SEPERATOR + this.location.toString());
 
         return builder.toString();
     }

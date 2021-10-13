@@ -1,6 +1,9 @@
 package racinggame.model;
 
 import racinggame.enums.RANDOM_MOVE_RESULT;
+import racinggame.vo.Car;
+import racinggame.vo.CarLocation;
+import racinggame.vo.Cars;
 
 public class WinnerPicker {
     private Cars winnerCars;
@@ -37,14 +40,13 @@ public class WinnerPicker {
             return true;
         }
 
-        return refreshWinnerCars(car);
+        refreshWinnerCars(car);
+        return true;
     }
 
-    private boolean refreshWinnerCars(Car car) {
+    private void refreshWinnerCars(Car car) {
         this.winnerCars.clear();
         this.winnerCars.add(car);
         this.currentMaxLocation = new CarLocation(car.getLocation());
-
-        return true;
     }
 }

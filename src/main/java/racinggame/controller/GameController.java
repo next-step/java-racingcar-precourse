@@ -1,9 +1,9 @@
 package racinggame.controller;
 
 import racinggame.environments.GlobalVariables;
-import racinggame.model.Car;
-import racinggame.model.CarLocation;
-import racinggame.model.Cars;
+import racinggame.vo.Car;
+import racinggame.vo.CarLocation;
+import racinggame.vo.Cars;
 import racinggame.model.RacingGame;
 import racinggame.vo.GameTurnCnt;
 import racinggame.vo.PlayerName;

@@ -2,6 +2,8 @@ package racinggame.model;
 
 import racinggame.controller.IOController;
 import racinggame.enums.RANDOM_MOVE_RESULT;
+import racinggame.vo.Car;
+import racinggame.vo.Cars;
 import racinggame.vo.GameTurnCnt;
 
 public class RacingGame {
