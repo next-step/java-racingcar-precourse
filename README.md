@@ -20,24 +20,13 @@
     * 초기 위치는 0(출발점)
     * 중복된 이름의 자동차가 존재하면 안됨
     * 1급 클래스를 구현
-
-* 전략
-    * `Car` 클래스 생성 (Model)
-    * `RacingMember` 일급 파티션생성 (Controller)
-    * `CarValidate` 위 조건 확인 (Controller)
-    * `Racing` 레이싱을 관리하는 컨트롤러로 RacingMember 호출(Controller)
-    * `GameConsole` 멤버를 추가하는 로그를 출력(View)
-    * Test 함수 추가
+    
     
 ### 시도 횟수 입력
 * 사용자에게 전진 시도를 몇 번 할 것인지 입력받음
     * 시도 횟수는 숫자로만 구성
     * 입력이 1 이상으로 구현
-
-* 전략
-    * `GameConsole` 시도 횟수를 입력하는 콘솔 출력(View)
-    * `Racing` private 변수로 진행 횟수를 추가
-    * Test 함수 추가
+    
 
 ### 경주 진행
 * 각 자동차 별로 전진 여부를 결정
@@ -47,17 +36,7 @@
         * 값이 4 이상이면 전진
         * 3 이하이면 정지
     * 각 시도가 끝나면 현재의 위치를 출력해줌
-
-* 전략
-    * `Car` 현재 위치를 private 변수로 가지고 getter, setter 생성
-    * `RacingMember` 에 램덤값을 추출해서 각각에 위치에 setter 호출
-    * `RacingMember` 에 함수 컬렉션 getter 생성
-    * `Racing` private 변수로 진행 횟수를 추가
-    * `GameConsole` Racing 클래스 선언 및 게임 진행 메소드 추가
+    
 ###결과 확인
 * 가장 많이 전진한 자동차의 이름을 출력
     * 동점자가 있는 경우에는 모두 출력함
-
-* 전략
-    * `Racing` 에 순위생성 메서드 추가
-    * `GameConsole` 에 순위 결과 출력 메서드 추가
