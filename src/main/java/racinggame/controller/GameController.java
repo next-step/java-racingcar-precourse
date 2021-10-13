@@ -1,6 +1,5 @@
 package racinggame.controller;
 
-import racinggame.environments.GlobalVariables;
 import racinggame.vo.Car;
 import racinggame.vo.CarLocation;
 import racinggame.vo.Cars;
@@ -36,7 +35,7 @@ public class GameController {
         PlayerNames playerNames = this.playerNamesReader.read();
 
         for (PlayerName playerName : playerNames) {
-            this.playerCars.add(new Car(playerName, new CarLocation(GlobalVariables.START_CAR_LOCATION)));
+            this.playerCars.add(new Car(playerName, new CarLocation()));
         }
 
         this.gameTurnCnt = this.gameTurnCntReader.read();

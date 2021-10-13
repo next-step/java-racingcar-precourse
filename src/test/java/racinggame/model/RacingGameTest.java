@@ -13,6 +13,7 @@ import static org.mockito.Mockito.mockStatic;
 import nextstep.utils.Randoms;
 
 import racinggame.controller.IOController;
+import racinggame.environments.GlobalVariables;
 import racinggame.vo.Car;
 import racinggame.vo.Cars;
 import racinggame.vo.CarLocation;
@@ -29,14 +30,14 @@ public class RacingGameTest {
 
         this.playerCars = new Cars();
 
-        this.playerCars.add(new Car(new PlayerName("car1"), new CarLocation(0)));
-        this.playerCars.add(new Car(new PlayerName("car2"), new CarLocation(0)));
-        this.playerCars.add(new Car(new PlayerName("car3"), new CarLocation(0)));
+        this.playerCars.add(new Car(new PlayerName("car1"), new CarLocation()));
+        this.playerCars.add(new Car(new PlayerName("car2"), new CarLocation()));
+        this.playerCars.add(new Car(new PlayerName("car3"), new CarLocation()));
     }
 
     @Test
     void 게임에_참여할_자동차_목록과_총_게임_턴수가_입력되면_게임의_적어도_한_명_이상의_우승자_목록을_생성한다() {
-        Assertions.assertThat(this.racingGame.play(this.playerCars, new GameTurnCnt(5)).size()).isGreaterThan(0);
+        Assertions.assertThat(this.racingGame.play(this.playerCars, new GameTurnCnt(5)).size()).isGreaterThan(GlobalVariables.START_CAR_LOCATION);
     }
 
     @ParameterizedTest
@@ -66,7 +67,7 @@ public class RacingGameTest {
             Cars winnerCars = this.racingGame.play(this.playerCars, new GameTurnCnt(turnCnt));
 
             for (Car winnerCar : winnerCars) {
-                Assertions.assertThat(winnerCar.getLocation()).isEqualTo(new CarLocation(0));
+                Assertions.assertThat(winnerCar.getLocation()).isEqualTo(new CarLocation(GlobalVariables.START_CAR_LOCATION));
             }
         }
     }
