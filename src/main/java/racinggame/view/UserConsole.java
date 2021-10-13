@@ -12,6 +12,7 @@ public class UserConsole {
 	}
 
 	public static int readTrialNumber() {
+		System.out.println("시도할 회수는 몇회인가요?");
 		int trialNumber;
 		try {
 			trialNumber = Integer.parseInt(Console.readLine());
