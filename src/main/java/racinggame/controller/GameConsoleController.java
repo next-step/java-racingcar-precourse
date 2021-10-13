@@ -1,26 +1,19 @@
 package racinggame.controller;
 
 import racinggame.environments.GlobalVariables;
-import racinggame.model.Car;
 import racinggame.model.Cars;
 import racinggame.model.RacingGame;
 import racinggame.utils.InputParser;
-import racinggame.utils.WinnerMessageBuilder;
 import racinggame.view.InputView;
 import racinggame.view.OutputView;
 
 public class GameConsoleController {
     private static final int ILLEGAL_GAME_TURN_COUNT = -1;
-    private static final String ASK_PLAYER_NAME_MSG = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
-    private static final String ERROR_INPUT_PLAYER_NAME_MSG = "[ERROR] 자동차의 이름은 1글자 이상 5글자 이하여야 합니다. 이름을 다시 입력해주세요..";
-    private static final String ASK_GAME_TURN_COUNT_MSG = "시도할 횟수는 몇회인가요?";
-    private static final String ERROR_INPUT_GAME_TURN_COUNT_MSG = "[ERROR] 게임 횟수는 양의 정수여야 합니다. 다시 입력하세요...";
 
     private RacingGame racingGame;
     private InputParser inputParser;
 
-    private InputView inputView;
-    private OutputView outputView;
+    private IOController ioController;
 
     private Cars playerCars;
     private int gameTurnCnt;
@@ -29,8 +22,7 @@ public class GameConsoleController {
         this.racingGame = new RacingGame();
         this.inputParser = new InputParser();
 
-        this.inputView = new InputView();
-        this.outputView = new OutputView();
+        this.ioController = new IOController();
 
         this.playerCars = new Cars();
         this.gameTurnCnt = 0;
@@ -42,58 +34,70 @@ public class GameConsoleController {
     }
 
     private void readPlayerNames() {
-        String[] playerNames = readValidPlayerNames();
+        String playerNamesInput = this.ioController.AskPlayerNames();
+
+        String[] playerNames = tryParsePlayerNames(playerNamesInput);
+
+        if (playerNames == null) {
+            playerNames = repeatReadPlayerNames();
+        }
 
         this.playerCars.add(playerNames);
     }
 
-    private String[] readValidPlayerNames() {
-        this.outputView.write(ASK_PLAYER_NAME_MSG);
-
+    private String[] repeatReadPlayerNames() {
         String[] playerNames = null;
-        while (playerNames == null) {
-            String input = this.inputView.read();
 
-            playerNames = getParsedPlayerNames(input);
+        while (playerNames == null) {
+            String playerNamesInput = this.ioController.AskValidPlayerNames();
+
+            playerNames = tryParsePlayerNames(playerNamesInput);
         }
 
         return playerNames;
     }
 
-    private String[] getParsedPlayerNames(String input) {
+    private String[] tryParsePlayerNames(String input) {
         try {
             String[] playerNames = this.inputParser.splitPlayerNames(input);
 
             return playerNames;
         } catch (IllegalArgumentException e) {
-            this.outputView.write(ERROR_INPUT_PLAYER_NAME_MSG);
+            this.ioController.NotifyInvalidPlayerNames();
         }
 
         return null;
     }
 
     private void readGameTurnCount() {
-        this.gameTurnCnt = readValidGameTurnCount();
-    }
+        String gameTurnCntInput = this.ioController.AskGameTurnCount();
 
-    private int readValidGameTurnCount(){
-        this.outputView.write(ASK_GAME_TURN_COUNT_MSG);
+        int turnCnt = tryParseGameTurnCntInput(gameTurnCntInput);
 
-        int turnCnt = ILLEGAL_GAME_TURN_COUNT;
-        while (turnCnt < GlobalVariables.MIN_GAME_TURN_COUNT) {
-            String input = this.inputView.read();
-
-            turnCnt = getParsedGameTurnCount(input);
+        if (turnCnt < GlobalVariables.MIN_GAME_TURN_COUNT) {
+            turnCnt = repeatReadGameTurnCount();
         }
 
-        return turnCnt;
+        this.gameTurnCnt = turnCnt;
     }
 
-    private int getParsedGameTurnCount(String gameTurnCntInput){
-        try{
+    private int repeatReadGameTurnCount() {
+        int gameTurnCnt = ILLEGAL_GAME_TURN_COUNT;
+
+        while (gameTurnCnt < GlobalVariables.MIN_GAME_TURN_COUNT) {
+            String gameTurnCntInput = this.ioController.AskValidGameTurnCount();
+
+            gameTurnCnt = tryParseGameTurnCntInput(gameTurnCntInput);
+        }
+
+        return gameTurnCnt;
+    }
+
+    private int tryParseGameTurnCntInput(String gameTurnCntInput) {
+        try {
             return this.inputParser.parseGameTurnCnt(gameTurnCntInput);
-        } catch (IllegalArgumentException e){
-            this.outputView.write(ERROR_INPUT_GAME_TURN_COUNT_MSG);
+        } catch (IllegalArgumentException e) {
+            this.ioController.NotifyInvalidGameTurnCnt();
         }
 
         return ILLEGAL_GAME_TURN_COUNT;
@@ -102,8 +106,6 @@ public class GameConsoleController {
     public void playGame() {
         Cars winnerCars = this.racingGame.play(this.playerCars, this.gameTurnCnt);
 
-        String winnerMsg = WinnerMessageBuilder.build(winnerCars);
-
-        this.outputView.write(winnerMsg);
+        this.ioController.NotifyWinners(winnerCars);
     }
 }
