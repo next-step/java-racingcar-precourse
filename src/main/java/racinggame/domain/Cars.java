@@ -1,7 +1,9 @@
 package racinggame.domain;
 
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 public class Cars implements Iterable<Car> {
 	private final List<Car> cars;
@@ -27,13 +29,8 @@ public class Cars implements Iterable<Car> {
 	}
 
 	private void checkSameName() {
-		for (int i = 0; i < cars.size(); i++) {
-			checkSameName(cars.get(i), cars.get((i + 1) % cars.size()));
-		}
-	}
-
-	private void checkSameName(Car car, Car nextCar) {
-		if (car.getName().equals(nextCar.getName())) {
+		Set<Car> carSet = new HashSet<>(cars);
+		if (carSet.size() != cars.size()) {
 			throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
 		}
 	}

@@ -56,7 +56,7 @@ public class CarsTest {
 
 	@Test
 	void checkSameNameTest() {
-		assertThatThrownBy(() -> new Cars(Arrays.asList(new Car(Name.of("pobi")), new Car(Name.of("crong")), new Car(Name.of("pobi")))))
+		assertThatThrownBy(() -> new Cars(Arrays.asList(new Car(Name.of("pobi")), new Car(Name.of("crong")), new Car(Name.of("pobi")), new Car(Name.of("honux")))))
 				.isInstanceOf(IllegalArgumentException.class);
 	}
 }
