@@ -32,6 +32,14 @@ public class ApplicationTest extends NSTest {
         });
     }
 
+    @Test
+    void 레이싱_카운트_예외_처리(){
+        assertSimpleTest(() -> {
+            runNoLineFound("pobi,java","a");
+            verify(ERROR_MESSAGE);
+        });
+    }
+
     @AfterEach
     void tearDown() {
         outputStandard();
