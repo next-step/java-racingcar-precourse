@@ -5,6 +5,7 @@ import nextstep.utils.Randoms;
 public class RacingCar{
     private String carName;
     private int currentMove;
+    private int totalMove;
 
     public RacingCar() {
     }
@@ -30,7 +31,17 @@ public class RacingCar{
         return move;
     }
 
+    public void setTotalMove(){
+        this.totalMove+= this.currentMove;
+    }
 
+    public int getTotalMove(){
+        return this.totalMove;
+    }
 
-
+    public void moveForward(){
+        if (this.currentMove>=4){
+            this.totalMove+=1;
+        }
+    }
 }
