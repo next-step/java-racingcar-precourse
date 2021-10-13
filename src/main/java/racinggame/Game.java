@@ -1,5 +1,6 @@
 package racinggame;
 
+import nextstep.utils.Randoms;
 import racinggame.message.MessageController;
 import racinggame.model.Car;
 
@@ -21,6 +22,19 @@ public class Game {
         List<Car> cars = inputCarInfos();
 
         int moveCount = inputCarMovingCount();
+
+        List<Car> movedCars = showProcessedPrompt(cars, moveCount);
+    }
+
+    private List<Car> showProcessedPrompt(List<Car> cars, int moveCount) {
+        MessageController.getInstance().resultDescription();
+
+        for (int index = 0; index < moveCount; index++) {
+            cars = movingCars(cars);
+            MessageController.getInstance().lineFeed();
+        }
+
+        return cars;
     }
 
     private List<Car> inputCarInfos() {
@@ -75,6 +89,33 @@ public class Game {
             cars.add(new Car(carName, 0));
         }
         return cars;
+    }
+
+    private List<Car> movingCars(List<Car> cars) {
+        for (Car car : cars) {
+            car.setPosition(settingCarPosition(car));
+            MessageController.getInstance().result(car);
+        }
+
+        return cars;
+    }
+
+    private int settingCarPosition(Car car) {
+        Move move = goStop();
+
+        if (move.equals(Move.GO)) {
+            return car.getPosition() + 1;
+        }
+        return car.getPosition();
+    }
+
+    public Move goStop() {
+        int number = Randoms.pickNumberInRange(MIN_NUM, MAX_NUM);
+
+        if (number >= MOVING_REFERENCE_VALUE) {
+            return Move.GO;
+        }
+        return Move.STOP;
     }
 
 }

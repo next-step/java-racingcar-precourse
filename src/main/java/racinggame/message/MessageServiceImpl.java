@@ -1,5 +1,7 @@
 package racinggame.message;
 
+import racinggame.model.Car;
+
 public class MessageServiceImpl implements MessageService {
     @Override
     public void start() {
@@ -12,7 +14,31 @@ public class MessageServiceImpl implements MessageService {
     }
 
     @Override
+    public void resultDescription() {
+        lineFeed();
+        System.out.println("실행 결과");
+    }
+
+    @Override
+    public void result(Car car) {
+        int position = car.getPosition();
+        StringBuffer dot = new StringBuffer();
+
+        for (int i = 0; i < position; i++) {
+            dot.append("-");
+        }
+
+        System.out.printf("%s : %s%n", car.getName(), dot);
+
+    }
+
+    @Override
     public void error() {
         System.out.println("[ERROR]");
+    }
+
+    @Override
+    public void lineFeed() {
+        System.out.print("\n");
     }
 }
