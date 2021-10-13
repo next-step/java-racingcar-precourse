@@ -5,12 +5,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+
 import racinggame.domain.Cars;
 
 public class CarsTest {
     @Nested
-    @DisplayName("carsSplit 메소드는")
-    class Describe_checkCarNameLen {
+    @DisplayName("mapCar 메소드는")
+    class Describe_mapCar {
         @DisplayName("나열된 자동차 이름들을")
         @Nested
         class Context_with_correct {
