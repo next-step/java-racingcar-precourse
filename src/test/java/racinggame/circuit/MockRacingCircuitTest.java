@@ -59,7 +59,7 @@ class MockRacingCircuitTest {
 			};
 		}
 
-		static Dice dice () {
+		static Dice dice() {
 			return new TenSidedDice();
 		}
 

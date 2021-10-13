@@ -35,7 +35,7 @@ public class Application {
 		return new FarAwayWinRule();
 	}
 
-	private static OutputDevice outputDevice(){
+	private static OutputDevice outputDevice() {
 		return new ConsolePrinter();
 	}
 }

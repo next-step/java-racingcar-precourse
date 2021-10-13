@@ -17,7 +17,7 @@ public final class RacingCarsConfig {
 		this.outputDevice = outputDevice;
 	}
 
-	protected RacingCars getRacingCars (){
+	protected RacingCars getRacingCars() {
 		RacingCars racingCars = new RacingCars();
 
 		carNames().getNames()
@@ -29,7 +29,7 @@ public final class RacingCarsConfig {
 	private RacingCarNames carNames() {
 		RacingCarNames racingCarNames = null;
 
-		while(racingCarNames == null){
+		while (racingCarNames == null) {
 			outputDevice.print("경주할 자동차 이름을 입력하세요.");
 			racingCarNames = input();
 		}
@@ -59,12 +59,12 @@ public final class RacingCarsConfig {
 		return racingCarNames;
 	}
 
-	private String[] splitInputNames (){
+	private String[] splitInputNames() {
 		String[] namesChunk = inputDevice.input()
-			.replace(" ","")
+			.replace(" ", "")
 			.split(",");
 
-		if(namesChunk.length == 0){
+		if (namesChunk.length == 0) {
 			throw new InvalidNameException("[ERROR] 이름을 1자 이상 5자 이하로 입력하세요");
 		}
 

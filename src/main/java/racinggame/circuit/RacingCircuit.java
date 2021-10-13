@@ -6,7 +6,7 @@ public class RacingCircuit implements Circuit {
 	private final Dice dice;
 	private final MovementRule movementRule;
 
-	public RacingCircuit (Dice dice, MovementRule movementRule){
+	public RacingCircuit(Dice dice, MovementRule movementRule) {
 		this.dice = dice;
 		this.movementRule = movementRule;
 	}

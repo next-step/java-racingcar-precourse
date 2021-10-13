@@ -21,10 +21,10 @@ public final class LapConfig {
 	 * @throws {@link InvalidNumberException} 0 이하 음수를 입력하면 발생한다.
 	 * @throws {@link NumberFormatException} 문자를 입력하면 발생한다.
 	 */
-	protected Lap getLaps (){
+	protected Lap getLaps() {
 		Lap lap = null;
 
-		while(lap == null){
+		while (lap == null) {
 			outputDevice.print("시도할 횟수는 몇회인가요?");
 			lap = getLaps(inputDevice.input());
 		}

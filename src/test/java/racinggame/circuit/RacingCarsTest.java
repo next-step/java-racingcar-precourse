@@ -138,7 +138,7 @@ class RacingCarsTest {
 			return new RacingMovementRule();
 		}
 
-		static Dice dice (){
+		static Dice dice() {
 			return new TenSidedDice();
 		}
 	}

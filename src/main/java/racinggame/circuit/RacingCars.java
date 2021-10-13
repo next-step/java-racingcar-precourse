@@ -10,7 +10,7 @@ import racinggame.racingcar.RacingCar;
 public final class RacingCars {
 	private final List<RacingCar> racingCars = new ArrayList<>();
 
-	public void add (RacingCar racingCar){
+	public void add(RacingCar racingCar) {
 		this.racingCars.add(racingCar);
 	}
 
