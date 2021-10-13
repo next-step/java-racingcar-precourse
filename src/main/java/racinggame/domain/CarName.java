@@ -10,6 +10,10 @@ public class CarName {
         this.carName = carName;
     }
 
+    public String getName() {
+        return carName;
+    }
+
     private void validateCarName(String carName) {
         isNotNull(carName);
         isValidLength(carName);
