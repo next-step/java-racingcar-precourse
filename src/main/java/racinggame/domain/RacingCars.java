@@ -22,10 +22,6 @@ public class RacingCars {
         }
     }
 
-    public int getSize() {
-        return racingCarList.size();
-    }
-
     public void moveForwardOrStop() {
         for (int idx = 0; idx < racingCarList.size(); idx++) {
             moveForwardOrStop(idx, MoveStatus.createRandom());

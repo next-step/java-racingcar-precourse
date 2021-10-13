@@ -7,20 +7,11 @@ import java.util.Arrays;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.MockedStatic;
 
 import racinggame.utils.Message;
 
 public class RacingCarsTest {
-
-    @DisplayName("자동차 여러 건 생성 기능 테스트")
-    @ParameterizedTest
-    @ValueSource(strings = {"1,2,3,4,5", "1", "1,2,3"})
-    void constructCars_success(String carsStr) {
-        assertThat(new RacingCars(carsStr).getSize()).isEqualTo(carsStr.split(",").length);
-    }
 
     @DisplayName("자동차들 이동 후 우승자 제대로 불러오는지 확인")
     @Test
