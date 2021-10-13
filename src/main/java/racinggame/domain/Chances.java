@@ -18,11 +18,11 @@ public class Chances {
             Integer.parseInt(chances);
         } catch (Exception e) {
             this.isValidValue = false;
-            System.out.println(Message.INPUT_CHANCES_ERROR_MSG);
+            System.out.println(Constant.INPUT_CHANCES_ERROR_MSG);
             return false;
 
         }
-        checkValid(validation.checkChancesRange(Integer.parseInt(chances)),Message.INPUT_CHANCES_RANGE_ERROR_MSG);
+        checkValid(validation.checkChancesRange(Integer.parseInt(chances)), Constant.INPUT_CHANCES_RANGE_ERROR_MSG);
         return true;
     }
 

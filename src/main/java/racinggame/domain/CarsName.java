@@ -19,11 +19,11 @@ public class CarsName {
 
     public void isValidName(String carsName) {
         carsName.replaceAll(" ", "");
-        checkValid(validation.checkCarsNameNull(carsName), Message.INPUT_CARS_NULL_ERROR_MSG);
-        String[] cars = carsName.split(Message.COMMA);
-        checkValid(validation.checkCarsListNull(cars), Message.INPUT_CARS_NULL_ERROR_MSG);
+        checkValid(validation.checkCarsNameNull(carsName), Constant.INPUT_CARS_NULL_ERROR_MSG);
+        String[] cars = carsName.split(Constant.COMMA);
+        checkValid(validation.checkCarsListNull(cars), Constant.INPUT_CARS_NULL_ERROR_MSG);
         for (int i = 0; i < cars.length; i++) {
-            checkValid(validation.checkCarNmaeLen(cars[i]), Message.INPUT_CARS_LEN_ERROR_MSG);
+            checkValid(validation.checkCarNmaeLen(cars[i]), Constant.INPUT_CARS_LEN_ERROR_MSG);
         }
 
     }

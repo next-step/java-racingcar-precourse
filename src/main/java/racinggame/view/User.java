@@ -1,7 +1,7 @@
 package racinggame.view;
 
 import nextstep.utils.Console;
-import racinggame.domain.Message;
+import racinggame.domain.Constant;
 import racinggame.domain.CarsName;
 import racinggame.domain.Chances;
 import racinggame.domain.Result;
@@ -11,7 +11,7 @@ public class User {
     public CarsName askCarsName() {
         CarsName carsName;
         do {
-            System.out.println(Message.ASK_INPUT_CARS_MSG);
+            System.out.println(Constant.ASK_INPUT_CARS_MSG);
             carsName = new CarsName(Console.readLine());
         } while (!carsName.isValidValue);
         return carsName;
@@ -20,7 +20,7 @@ public class User {
     public Chances askChances() {
         Chances chances;
         do {
-            System.out.println(Message.ASK_INPUT_CHANCE_MSG);
+            System.out.println(Constant.ASK_INPUT_CHANCE_MSG);
             chances = new Chances(Console.readLine());
         } while (!chances.isValidValue);
         return chances;
@@ -29,37 +29,37 @@ public class User {
     public void printRacingResult(Result result) {
         for (int i = 0; i < result.result.size(); i++) {
             System.out.print(result.result.get(i).getCarName());
-            System.out.print(Message.COLON);
+            System.out.print(Constant.COLON);
             printDash(result.result.get(i).getMoveCnt());
         }
-        System.out.print(Message.NEXT_LINE);
+        System.out.print(Constant.NEXT_LINE);
     }
 
     public void printDash(int moveCnt) {
         for(int i = 0; i < moveCnt; i++) {
-            System.out.print(Message.DASH);
+            System.out.print(Constant.DASH);
         }
-        System.out.print(Message.NEXT_LINE);
+        System.out.print(Constant.NEXT_LINE);
     }
 
     public void printWinner(Winner winner) {
-        System.out.print(Message.PRINT_WINNER_FRONT);
+        System.out.print(Constant.PRINT_WINNER_FRONT);
         int commaCnt = winner.winner.size() - 1;
         for (String key : winner.winner.keySet()) {
             System.out.print(key);
             printComma(commaCnt);
             commaCnt--;
         }
-        System.out.println(Message.PRINT_WINNER_BACK);
+        System.out.println(Constant.PRINT_WINNER_BACK);
     }
 
     public void printComma(int commaCnt) {
         if (commaCnt > 0) {
-            System.out.print(Message.COMMA);
+            System.out.print(Constant.COMMA);
         }
     }
 
     public void printRacingResultMsg() {
-        System.out.println(Message.OUTPUT_TITLE);
+        System.out.println(Constant.OUTPUT_TITLE);
     }
 }
