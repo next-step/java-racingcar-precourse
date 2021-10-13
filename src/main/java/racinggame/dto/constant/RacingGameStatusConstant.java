@@ -1,6 +1,7 @@
 package racinggame.dto.constant;
 
 public enum RacingGameStatusConstant {
+	ERROR("ERROR"),
 	INITED("INITED"),
 	RUNNING("RUNNING"),
 	FINISH("FINISH");

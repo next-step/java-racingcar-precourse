@@ -16,8 +16,8 @@ public class RacingGameTest {
 	@DisplayName("createRacingCar 테스트")
 	@Test
 	void RacingGameTest() {
-        List<RacingCar> racingCarList = RacingCarUtil.createRacingCars("nankisu");
-        RacingGame racingGeme = new RacingGame(3, racingCarList);
+        List<RacingCar> racingCarList = RacingCarUtil.createRacingCars("kisu");
+        RacingGame racingGeme = new RacingGame(3, new RacingCarList(racingCarList));
         assertThat(racingGeme.getRacingGameStatus()).isEqualByComparingTo(RacingGameStatusConstant.INITED);
         
         racingGeme.runRacingCarList();;

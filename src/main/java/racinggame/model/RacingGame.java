@@ -13,10 +13,10 @@ public class RacingGame {
 	private RacingCarList racingCarList;
 	private RacingGameStatusConstant racingGameStatus;
 	
-	public RacingGame(Integer runNumber, List<RacingCar> racingCarList) {
+	public RacingGame(Integer runNumber, RacingCarList racingCarList) {
 		this.runNumber = runNumber;
 		this.runCount = 0;
-		this.racingCarList = new RacingCarList(racingCarList);
+		this.racingCarList = racingCarList;
 		this.racingGameStatus = RacingGameStatusConstant.INITED;
 	}
 	

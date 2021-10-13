@@ -12,6 +12,9 @@ public class RacingCarUtil {
 
 	public static RacingCar createRacingCar(String name) {
 		RacingCar racingCar = new RacingCar(new RacingCarName(name));
+		if(!racingCar.isValid()) {
+			throw new IllegalArgumentException();
+		}
 		return racingCar;
 	}
 	

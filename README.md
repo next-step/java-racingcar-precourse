@@ -20,6 +20,7 @@
     - (commit)0에서 9사이에서 random 값을 구한 후 random 값이 4 이상일 경우 전진하고, 3 이하의 값이면 멈춘다.
     - (commit)횟수마다 결과를 출력한다.
 - (commit)게임을 완료하고 결과를 출력한다.
+- (commit)사용자가 잘못된 값을 입력할 경우 “[ERROR]”로 시작하는 에러메시지를 출력 후 입력을 다시 받는다
 
 ## 과제 제출 과정
 * [과제 제출 방법](https://github.com/next-step/nextstep-docs/tree/master/precourse)

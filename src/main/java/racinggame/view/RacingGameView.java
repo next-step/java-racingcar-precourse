@@ -9,6 +9,7 @@ import racinggame.dto.RacingGameResultDto;
 import racinggame.dto.constant.RacingGameStatusConstant;
 import racinggame.model.RacingCar;
 import racinggame.model.RacingCarList;
+import racinggame.util.RacingCarUtil;
 import racinggame.view.constant.MessageConstant;
 
 public class RacingGameView {
@@ -19,16 +20,25 @@ public class RacingGameView {
 	}
 
 	public void start() {
-		initRacingGame();
+		RacingGameResultDto racingGameResult;
+		do{
+			racingGameResult = initRacingGame();
+		}while(!racingGameResult.getCode().equals(RacingGameStatusConstant.INITED));
 		runRacingGames();
 		showGameResult();
 	}
 	
-	private void initRacingGame() {
+	private RacingGameResultDto initRacingGame() {
+		RacingGameResultDto racingGameResult = new RacingGameResultDto();
 		InitRacingGameDto initRacingGame = new InitRacingGameDto();
-		inputCarNames(initRacingGame);
-		inputRunNumber(initRacingGame);
-		racingGameController.InitRacingGame(initRacingGame);
+		try {
+			inputInitRacingInfo(initRacingGame);
+			racingGameResult = racingGameController.InitRacingGame(initRacingGame);
+		}
+		catch (IllegalArgumentException e) {
+			initRacingGameExceptionProcess(racingGameResult);
+		}
+		return racingGameResult;
 	}
 	
 	private void runRacingGames() {
@@ -49,14 +59,24 @@ public class RacingGameView {
 		return racingGameController.runRacingGame();
 	}
 	
+	private void inputInitRacingInfo(InitRacingGameDto initRacingGame) {
+		inputCarNames(initRacingGame);
+		inputRunNumber(initRacingGame);
+	}
+	
 	private void inputCarNames(InitRacingGameDto initRacingGame) {
 		printMessage(MessageConstant.INPUT_CAR_NAMES_MESSAGE);
-		initRacingGame.setCarNamesStr(Console.readLine());
+		initRacingGame.setRacingCarList(new RacingCarList(RacingCarUtil.createRacingCars(Console.readLine())));
 	}
 
 	private void inputRunNumber(InitRacingGameDto initRacingGame) {
 		printMessage(MessageConstant.INPUT_RUN_NUMBER_MESSAGE);
 		initRacingGame.setRunNumber(Integer.parseInt(Console.readLine()));
+	}
+	
+	private void initRacingGameExceptionProcess(RacingGameResultDto racingGameResult) {
+		racingGameResult.setCode(RacingGameStatusConstant.ERROR);
+		printMessage(MessageConstant.INIT_GAME_ERROR_MESSAGE);
 	}
 	
 	private void printRacingCarList(RacingCarList racingCarList) {

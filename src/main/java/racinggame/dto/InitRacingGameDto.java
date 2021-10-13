@@ -1,22 +1,21 @@
 package racinggame.dto;
 
+import racinggame.model.RacingCarList;
+
 public class InitRacingGameDto {
 	private Integer runNumber;
-	private String carNamesStr;
+	private RacingCarList racingCarList;
 	
 	public Integer getRunNumber() {
 		return runNumber;
 	}
-
 	public void setRunNumber(Integer runNumber) {
 		this.runNumber = runNumber;
 	}
-
-	public String getCarNamesStr() {
-		return carNamesStr;
+	public RacingCarList getRacingCarList() {
+		return racingCarList;
 	}
-
-	public void setCarNamesStr(String carNamesStr) {
-		this.carNamesStr = carNamesStr;
-	} 
+	public void setRacingCarList(RacingCarList racingCarList) {
+		this.racingCarList = racingCarList;
+	}
 }

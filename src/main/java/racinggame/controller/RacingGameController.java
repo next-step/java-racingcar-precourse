@@ -4,6 +4,7 @@ import java.util.List;
 
 import racinggame.dto.InitRacingGameDto;
 import racinggame.dto.RacingGameResultDto;
+import racinggame.dto.constant.RacingGameStatusConstant;
 import racinggame.model.RacingCar;
 import racinggame.model.RacingGame;
 import racinggame.util.RacingCarUtil;
@@ -11,9 +12,11 @@ import racinggame.util.RacingCarUtil;
 public class RacingGameController {
 	private RacingGame racingGame;
 	
-	public void InitRacingGame(InitRacingGameDto initRacingGame) {
-		List<RacingCar> racingCarList = RacingCarUtil.createRacingCars(initRacingGame.getCarNamesStr());
-		racingGame = new RacingGame(initRacingGame.getRunNumber(), racingCarList);		
+	public RacingGameResultDto InitRacingGame(InitRacingGameDto initRacingGame) {
+		RacingGameResultDto racingGameResult = new RacingGameResultDto();
+		racingGame = new RacingGame(initRacingGame.getRunNumber(), initRacingGame.getRacingCarList());
+		racingGameResult.setCode(racingGame.getRacingGameStatus());
+		return racingGameResult;
 	}
 	
 	public RacingGameResultDto runRacingGame() {

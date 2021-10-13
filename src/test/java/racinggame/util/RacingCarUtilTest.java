@@ -13,29 +13,29 @@ public class RacingCarUtilTest {
 	@DisplayName("createRacingCar 테스트")
 	@Test
 	void createRacingCar() {
-		RacingCar racingCar = RacingCarUtil.createRacingCar("nankisu");
+		RacingCar racingCar = RacingCarUtil.createRacingCar("kisu");
 		assertThat(racingCar).isNotNull();
 		assertThat(racingCar.getLocation()).isEqualTo(0);
-		assertThat(racingCar.getRacingCarName().getName()).isEqualTo("nankisu");
+		assertThat(racingCar.getRacingCarName().getName()).isEqualTo("kisu");
 	}
 	
 	@DisplayName("createRacingCars 테스트")
 	@Test
 	void createRacingCars() {
-		List<RacingCar> racingCarList = RacingCarUtil.createRacingCars("nankisu1,nankisu2,nankisu3");
+		List<RacingCar> racingCarList = RacingCarUtil.createRacingCars("kisu1,kisu2,kisu3");
 		assertThat(racingCarList).isNotNull();
 		assertThat(racingCarList.size()).isEqualTo(3);
 		
 		RacingCar racingCar1 = racingCarList.get(0);
 		assertThat(racingCar1.getLocation()).isEqualTo(0);
-		assertThat(racingCar1.getRacingCarName().getName()).isEqualTo("nankisu1");
+		assertThat(racingCar1.getRacingCarName().getName()).isEqualTo("kisu1");
 		
 		RacingCar racingCar2 = racingCarList.get(1);
 		assertThat(racingCar2.getLocation()).isEqualTo(0);
-		assertThat(racingCar2.getRacingCarName().getName()).isEqualTo("nankisu2");
+		assertThat(racingCar2.getRacingCarName().getName()).isEqualTo("kisu2");
 		
 		RacingCar racingCar3 = racingCarList.get(2);
 		assertThat(racingCar3.getLocation()).isEqualTo(0);
-		assertThat(racingCar3.getRacingCarName().getName()).isEqualTo("nankisu3");
+		assertThat(racingCar3.getRacingCarName().getName()).isEqualTo("kisu3");
 	}
 }
