@@ -2,14 +2,12 @@ package racinggame.domain;
 
 import nextstep.utils.Randoms;
 
-import java.util.List;
-
 public class RacingGame {
     private static final int MIN_GAS_POINT_RANGE = 0;
     private static final int MAX_GAS_POINT_RANGE = 9;
-    private final List<Car> cars;
+    private final Cars cars;
 
-    public RacingGame(List<Car> cars) {
+    public RacingGame(Cars cars) {
         this.cars = cars;
     }
 
@@ -23,7 +21,7 @@ public class RacingGame {
 
     private LapResult moveAllCars() {
         LapResult lapResult = new LapResult();
-        for (Car car : cars) {
+        for (Car car : cars.getCars()) {
             int gasPoint = generateGasPoint();
             lapResult.add(car.move(gasPoint));
         }
