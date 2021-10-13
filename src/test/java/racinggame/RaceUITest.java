@@ -10,20 +10,20 @@ class RaceUITest {
 
     @DisplayName("유저입력검증-유효한 carName로 구성되어 있을 경우")
     @ParameterizedTest
-    @ValueSource(strings = {"sunki,pobii", "a12345,b1234,c1234", "good-job"})
+    @ValueSource(strings = {"sunki,pobii", "a1234,b123,c123", "g"})
     void validateCarNameInput_normal(String input) {
         //given
-        final String[] testCarNameInput = input.split(",");
+        String[] testCarNameInput = input.split(",");
         //when, then
         RaceUI.validateCarNameInput(testCarNameInput);
     }
 
     @DisplayName("유저입력검증-유효하지 않은 carName이 포함되어 있는 경우")
     @ParameterizedTest
-    @ValueSource(strings = {"sunki,pobi", "poby,sunki", "1234"})
+    @ValueSource(strings = {"", "kimsunki,pobi", "poby,kimsunki", "123456"})
     void validateCarNameInput_throwsException(String input) {
         //given
-        final String[] testCarNameInput = input.split(",");
+        String[] testCarNameInput = input.split(",");
         //when, then
         assertThatExceptionOfType(RaceException.class)
                 .isThrownBy(() -> RaceUI.validateCarNameInput(testCarNameInput))

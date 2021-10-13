@@ -38,13 +38,17 @@ public class RaceUI {
         System.out.println(message);
     }
 
-    protected static void validateCarNameInput(String[] input) throws RaceException {
+    public static void validateCarNameInput(String[] input) throws RaceException {
         for (String carName : input) {
-            checkLength(carName);
+            RaceUI.checkLength(carName);
         }
     }
 
     private static void checkLength(String carName) throws RaceException {
+        if (carName.length() == 0) {
+            throw new RaceException(RaceErrorCode.INVALID_CAR_NAME_LENGTH);
+        }
+
         if (carName.length() > MAX_CAR_NAME_LENGTH) {
             throw new RaceException(RaceErrorCode.INVALID_CAR_NAME_LENGTH);
         }
@@ -94,7 +98,7 @@ public class RaceUI {
     }
 
     public static void printCurrentRaceStatus(Map<String, Integer> namePositionMap) {
-        for (String key: namePositionMap.keySet()) {
+        for (String key : namePositionMap.keySet()) {
             StringBuilder sb = new StringBuilder();
             sb.append(key).append(KEY_POSITION_DELIMETER);
             for (int i = 0; i < namePositionMap.get(key); i++) {
