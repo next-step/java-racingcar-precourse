@@ -27,4 +27,21 @@ public class Winner {
         maxPosition = Collections.max(mapPosition(cars));
         return maxPosition;
     }
+
+    private void setWinners() {
+        if(maxPosition == 0) {
+            return;
+        }
+        for (Car car : cars) {
+            if(car.getPosition() == maxPosition) {
+                winners.add(car.getName());
+            }
+        }
+    }
+
+    public List<String> findWinners() {
+        calMaxPosition();
+        setWinners();
+        return winners;
+    }
 }
