@@ -3,6 +3,7 @@ package domain;
 import nextstep.utils.Randoms;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
+import racinggame.domain.Car;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;

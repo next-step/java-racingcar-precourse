@@ -4,6 +4,8 @@ import nextstep.utils.Randoms;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
+import racinggame.domain.Car;
+import racinggame.domain.Cars;
 
 import java.util.Arrays;
 import java.util.List;

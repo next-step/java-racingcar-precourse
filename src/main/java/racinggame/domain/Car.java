@@ -1,4 +1,4 @@
-package domain;
+package racinggame.domain;
 
 import nextstep.utils.Randoms;
 
