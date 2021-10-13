@@ -8,20 +8,15 @@ public class Car {
     private static final int MAX_BOUND = 9;
     private static final int MOVING_FORWARD = 4;        // 4 이상 전진 / 3이하 정지
 
-    private final String name;
+    private final Name name;
     private Position position = new Position();
 
-    public Car(String name) {
-        if (name == null || name.trim().equals(""))
-            throw new IllegalArgumentException("자동차 이름이 빈값일 수 없습니다.");
-        if (!ValidationUtils.validateCarNameLength(name))
-            throw new IllegalArgumentException("자동차 이름은 5글자 이하만 가능합니다.");
-
+    public Car(final Name name) {
         this.name = name;
     }
 
     public String getName() {
-        return name;
+        return name.getName();
     }
 
     public Position getPosition() {

@@ -20,7 +20,7 @@ public class RacingGame {
         String[] names = carNames.split(",");
         List<Car> cars = new ArrayList<>();
         for (String name : names) {
-            cars.add(new Car(name));
+            cars.add(new Car(new Name(name)));
         }
         return cars;
     }
