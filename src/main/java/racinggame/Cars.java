@@ -1,4 +1,4 @@
-package racinggame.model;
+package racinggame;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,4 +41,6 @@ public class Cars {
         }
         return maxPosition;
     }
+
+
 }

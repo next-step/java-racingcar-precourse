@@ -1,4 +1,4 @@
-package racinggame.model;
+package racinggame;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -6,11 +6,8 @@ import java.util.Map;
 import static nextstep.utils.Randoms.pickNumberInRange;
 
 public class RacingCar {
-    private Cars cars;
+    private final Cars cars;
     private RaceCount raceCount;
-
-    public RacingCar() {
-    }
 
     public RacingCar(String carNames) {
         this.cars = new Cars(carNames);
@@ -21,13 +18,8 @@ public class RacingCar {
         return raceCount.getCount();
     }
 
-    public void setCarNames(String carNames) {
-        this.cars = new Cars(carNames);
-    }
-
     public void setRaceCount(int count) {
         this.raceCount = new RaceCount(count);
-        //raceCount.setCount(count);
     }
 
     public Map<String, Integer> race(){

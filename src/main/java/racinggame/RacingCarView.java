@@ -1,6 +1,4 @@
-package racinggame.view;
-
-import racinggame.controller.RacingCarController;
+package racinggame;
 
 import java.util.Map;
 
@@ -14,7 +12,8 @@ public class RacingCarView {
     RacingCarController racingCarController = new RacingCarController();
 
     public void play() {
-        racingCarController.setCarNames(inputCarNames());
+        String carNames = inputCarNames();
+        racingCarController.initRacingCar(carNames);
         racingCarController.setRaceCount(Integer.parseInt(inputRaceCount()));
         printResult();
         for (int i = 0; i < racingCarController.getRaceCount(); i++) {
@@ -40,7 +39,7 @@ public class RacingCarView {
 
     private void printRaceResult(Map<String, Integer> racingResult){
         racingResult.forEach((key, value)->{
-            System.out.print(key + ":");
+            System.out.print(key + " : ");
             for (int i = 0; i < value; i++) {
                 System.out.print("-");
             }

@@ -1,18 +1,12 @@
-package racinggame.controller;
-
-import racinggame.model.RacingCar;
+package racinggame;
 
 import java.util.Map;
 
 public class RacingCarController {
-    RacingCar racingCar = new RacingCar();
+    RacingCar racingCar;
 
     public void initRacingCar(String carNames) {
         racingCar = new RacingCar(carNames);
-    }
-
-    public void setCarNames(String carNames) {
-        racingCar.setCarNames(carNames);
     }
 
     public void setRaceCount(int count) {
