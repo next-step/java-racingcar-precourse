@@ -1,5 +1,7 @@
 package racinggame.model;
 
+import nextstep.utils.Randoms;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -14,7 +16,7 @@ public class RacingCars {
     public String proceedRace() {
         StringBuilder sb = new StringBuilder();
         for (Car car : racingCars) {
-            car.moving(new RandomNumber().playRound());
+            car.moving(Randoms.pickNumberInRange(0, 9));
             sb.append(car.getCarName() + " : ")
                     .append(car.displayDistance(car))
                     .append(System.lineSeparator());

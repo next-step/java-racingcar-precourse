@@ -1,7 +1,5 @@
 package racinggame.model;
 
-import racinggame.exception.ValidationException;
-
 import java.util.Objects;
 
 public class Car implements Comparable<Car> {
@@ -9,12 +7,9 @@ public class Car implements Comparable<Car> {
     private final Distance distance;
     private static final int MOVING_MIN_COUNT = 3;
 
-    private RandomNumber randomNumber;
-
     public Car(String carName) {
         this.carName = carName;
         this.distance = new Distance();
-        this.randomNumber = new RandomNumber();
     }
 
     public Car(String carName, int distance) {
@@ -54,11 +49,12 @@ public class Car implements Comparable<Car> {
         if (this == o) return true;
         if (!(o instanceof Car)) return false;
         Car car = (Car) o;
-        return distance == car.distance && Objects.equals(carName, car.carName) && Objects.equals(randomNumber, car.randomNumber);
+        return Objects.equals(carName, car.carName) && Objects.equals(distance, car.distance);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(carName, distance, randomNumber);
+        return Objects.hash(carName, distance);
     }
+
 }
