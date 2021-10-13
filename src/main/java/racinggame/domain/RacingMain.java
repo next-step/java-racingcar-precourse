@@ -1,27 +1,30 @@
 package racinggame.domain;
 
-import racinggame.view.GameView;
+import racinggame.view.InputView;
+import racinggame.view.ResultView;
 
 public class RacingMain {
 
-    private GameView gameView;
+    private InputView inputView;
+    private ResultView resultView;
     private RacingGame racingGame;
 
     public void run() {
         // 레이싱 게임 생성
-        gameView = new GameView();
+        inputView = new InputView();
         racingGame = new RacingGame(
-                RacingGame.initCars(gameView.inputCars()),
-                gameView.inputTryNo()
+                RacingGame.initCars(inputView.inputCars()),
+                inputView.inputTryNo()
         );
 
+        resultView = new ResultView();
         // 레이싱 반복
         while(racingGame.racing()) {
             racingGame.race();
-            gameView.printCars(racingGame.getCars());
+            resultView.printCars(racingGame.getCars());
         }
 
         // 우승자 출력
-        gameView.printWinners(racingGame.getWinners());
+        resultView.printWinners(racingGame.getWinners());
     }
 }
