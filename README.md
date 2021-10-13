@@ -5,3 +5,12 @@
 
 ## 과제 제출 과정
 * [과제 제출 방법](https://github.com/next-step/nextstep-docs/tree/master/precourse)
+
+
+## to-do
+* Car 객체생성
+* CarHost 객체생성
+* Racing 객체 생성
+* CarHost에서 Racing객체를 통한 게임진행
+* 게임 결과 저장
+    * 저장조건 : 이전결과 + add
