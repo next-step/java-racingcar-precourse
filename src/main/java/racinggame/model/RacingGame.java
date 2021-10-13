@@ -1,5 +1,6 @@
 package racinggame.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import nextstep.utils.Randoms;
@@ -30,6 +31,15 @@ public class RacingGame {
 		setRacingGameStatus();
 	}
 	
+	public List<RacingCar> getRacingGameWinner(){
+		List<RacingCar> racingGameWinner = new ArrayList<RacingCar>();
+		Integer maxLocation = 0;
+		for(RacingCar racingCar : racingCarList) {
+			maxLocation = addRacingGameWinner(racingGameWinner, maxLocation, racingCar);
+		}
+		return racingGameWinner;
+	}
+	
 	public Integer getRunNumber() {
 		return runNumber;
 	}
@@ -44,6 +54,17 @@ public class RacingGame {
 
 	public RacingGameStatusConstant getRacingGameStatus() {
 		return racingGameStatus;
+	}
+	
+	private Integer addRacingGameWinner(List<RacingCar> racingGameWinner, Integer maxLocation, RacingCar racingCar) {
+		if(racingCar.getLocation() < maxLocation) {
+			return maxLocation;
+		}
+		if(racingCar.getLocation() > maxLocation) {
+			racingGameWinner.clear();
+		}
+		racingGameWinner.add(racingCar);
+		return racingCar.getLocation();
 	}
 
 	private void setRacingGameStatus() {

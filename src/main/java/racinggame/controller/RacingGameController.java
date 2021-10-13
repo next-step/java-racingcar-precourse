@@ -23,4 +23,11 @@ public class RacingGameController {
 		racingGameResult.setCode(racingGame.getRacingGameStatus());
 		return racingGameResult;
 	}
+	
+	public RacingGameResultDto getRacingGameWinner() {
+		RacingGameResultDto racingGameResult = new RacingGameResultDto();
+		racingGameResult.setRacingCarList(racingGame.getRacingGameWinner());
+		racingGameResult.setCode(racingGame.getRacingGameStatus());
+		return racingGameResult;
+	}
 }
