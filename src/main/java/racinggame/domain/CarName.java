@@ -15,6 +15,10 @@ public class CarName {
 		this.name = name;
 	}
 
+	public String getName() {
+		return name;
+	}
+
 	private void validateNameLength(final String name) {
 		if(StringUtils.isEmpty(name) || name.length() > MAX_NAME_LENGTH) {
 			throw new InvalidInputException(ErrorMessage.CAR_NAME_MAX_LENGTH.getMessage());

@@ -32,4 +32,16 @@ class CarTest {
 		;
 	}
 
+
+	@Test
+	void 자동차는_이름을_가진다(){
+		Car car = new Car("1234");
+
+		CarName carName = car.getCarName();
+
+		assertThat(carName.getName())
+			.isNotNull()
+			.isEqualTo("1234")
+		;
+	}
 }
