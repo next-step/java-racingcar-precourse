@@ -5,6 +5,7 @@ import java.util.Objects;
 public class Position implements Comparable<Position> {
 
     private static final int INITIAL_VALUE = 0;
+    private static final String ERROR_INVALID_POSITION = "[ERROR] 위치는 0보다 작거나 같을 수 없습니다.";
 
     private final int value;
 
@@ -19,7 +20,7 @@ public class Position implements Comparable<Position> {
 
     private void validate(final int value) {
         if (value < 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ERROR_INVALID_POSITION);
         }
     }
 

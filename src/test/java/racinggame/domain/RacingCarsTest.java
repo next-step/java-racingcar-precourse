@@ -2,7 +2,6 @@ package racinggame.domain;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
-import java.util.Arrays;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -15,7 +14,7 @@ public class RacingCarsTest {
 
     @BeforeEach
     void setUp() {
-        cars = new RacingCars(Arrays.asList("pobi", "crong", "honux"));
+        cars = new RacingCars(new Names("pobi,crong,honux"));
     }
 
     @DisplayName("자동차 이름 목록으로 자동차 일급컬렉션 객체를 생성할 수 있다.")
@@ -25,10 +24,10 @@ public class RacingCarsTest {
 
     @DisplayName("경주를 시작할 수 있다.")
     @ParameterizedTest
-    @ValueSource(ints = {1, 5})
-    void race(final int n) {
+    @ValueSource(strings = {"1", "5"})
+    void race(final String n) {
         assertDoesNotThrow(
-            () -> cars.race(n)
+            () -> cars.race(new NumberOfMoves(n))
         );
     }
 }

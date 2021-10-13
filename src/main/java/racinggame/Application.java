@@ -1,7 +1,16 @@
 package racinggame;
 
+import racinggame.ui.OutputView;
+import racinggame.ui.RacingGameDriver;
+
 public class Application {
+
     public static void main(String[] args) {
-        // TODO 자동차 경주 게임 구현
+        try {
+            final RacingGameDriver driver = new RacingGameDriver();
+            driver.play();
+        } catch (IllegalArgumentException ex) {
+            OutputView.print(ex.getMessage());
+        }
     }
 }

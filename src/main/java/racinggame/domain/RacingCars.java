@@ -8,15 +8,15 @@ public class RacingCars {
 
     private final List<RacingCar> racingCars;
 
-    public RacingCars(final List<String> names) {
+    public RacingCars(final Names names) {
         this.racingCars = new ArrayList<>();
-        for (String name : names) {
-            racingCars.add(new RacingCar(new Name(name)));
+        for (Name name : names.getNames()) {
+            racingCars.add(new RacingCar(name));
         }
     }
 
-    public void race(int numberOfMoves) {
-        for (int i = 0; i < numberOfMoves; i++) {
+    public void race(NumberOfMoves numberOfMoves) {
+        for (int i = 0; i < numberOfMoves.getValue(); i++) {
             moveRacingCars();
             reportCurrentState();
         }
