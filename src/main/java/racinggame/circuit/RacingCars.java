@@ -10,7 +10,7 @@ import racinggame.racingcar.RacingCar;
 public final class RacingCars {
 	private final List<RacingCar> racingCars = new ArrayList<>();
 
-	public void add(RacingCar racingCar) {
+	public void add(final RacingCar racingCar) {
 		this.racingCars.add(racingCar);
 	}
 
@@ -20,7 +20,7 @@ public final class RacingCars {
 	 *
 	 * @return {@link LapRecords}
 	 */
-	public LapRecords run(Dice dice, MovementRule movementRule) {
+	public LapRecords run(final Dice dice, final MovementRule movementRule) {
 		LapRecords lapRecords = new LapRecords();
 		racingCars.forEach(car -> {
 			int diceResult = dice.roll();

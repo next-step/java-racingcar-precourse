@@ -6,15 +6,16 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import racinggame.common.RacingCarName;
 import racinggame.circuit.dice.TenSidedDice;
+import racinggame.circuit.racingrule.RacingMovementRule;
+import racinggame.common.RacingCarName;
 import racinggame.racingcar.LapRecord;
 import racinggame.racingcar.Location;
 import racinggame.racingcar.RacingCar;
-import racinggame.circuit.racingrule.RacingMovementRule;
+import racinggame.racinggame.Circuit;
 
 class MockRacingCircuitTest {
-	private RacingCircuit mockRacingCircuit;
+	private Circuit mockRacingCircuit;
 	private RacingCars racingCars;
 	private Lap lap;
 
@@ -50,13 +51,8 @@ class MockRacingCircuitTest {
 	}
 
 	private static class RacingCircuitConfig {
-		static RacingCircuit mockRacingCircuit() {
-			return new RacingCircuit(dice(), rule()) {
-				@Override
-				public FinalRecord start(RacingCars racingCars, Lap laps) {
-					return expectedRecord();
-				}
-			};
+		static Circuit mockRacingCircuit() {
+			return (racingCars, laps) -> expectedRecord();
 		}
 
 		static Dice dice() {
@@ -83,4 +79,5 @@ class MockRacingCircuitTest {
 			return expectedRecord;
 		}
 	}
+
 }

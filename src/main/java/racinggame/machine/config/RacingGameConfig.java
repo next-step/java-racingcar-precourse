@@ -10,7 +10,7 @@ public final class RacingGameConfig {
 	private final InputDevice inputDevice;
 	private final OutputDevice outputDevice;
 
-	public RacingGameConfig(InputDevice inputDevice, OutputDevice outputDevice) {
+	public RacingGameConfig(final InputDevice inputDevice, final OutputDevice outputDevice) {
 		this.inputDevice = inputDevice;
 		this.outputDevice = outputDevice;
 	}

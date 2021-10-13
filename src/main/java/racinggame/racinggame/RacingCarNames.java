@@ -6,10 +6,10 @@ import java.util.List;
 import racinggame.exception.InvalidNameException;
 import racinggame.common.RacingCarName;
 
-public class RacingCarNames {
+public final class RacingCarNames {
 	private List<RacingCarName> racingCarNames = new ArrayList<>();
 
-	public void add(RacingCarName racingCarName) {
+	public void add(final RacingCarName racingCarName) {
 		if (racingCarNames.contains(racingCarName)) {
 			throw new InvalidNameException("[ERROR] 중복된 이름을 사용할 수 없습니다.");
 		}

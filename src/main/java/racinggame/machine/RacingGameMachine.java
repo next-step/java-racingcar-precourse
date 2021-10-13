@@ -11,8 +11,8 @@ public final class RacingGameMachine {
 	private final WinnerDecisionRule rule;
 	private final OutputDevice outputDevice;
 
-	public RacingGameMachine(RacingGameConfig config, RacingGame game,
-		WinnerDecisionRule rule, OutputDevice outputDevice) {
+	public RacingGameMachine(final RacingGameConfig config, final RacingGame game,
+		final WinnerDecisionRule rule, final OutputDevice outputDevice) {
 		this.config = config;
 		this.game = game;
 		this.rule = rule;
@@ -33,7 +33,7 @@ public final class RacingGameMachine {
 		printResult(finalRecord, winnerNames);
 	}
 
-	private void printResult(FinalRecord finalRecord, WinnerNames winnerNames) {
+	private void printResult(final FinalRecord finalRecord, final WinnerNames winnerNames) {
 		String result = new StringBuilder()
 			.append("실행결과\n")
 			.append(finalRecord.readFinalRecord())
@@ -45,7 +45,7 @@ public final class RacingGameMachine {
 		outputDevice.print(result);
 	}
 
-	private String winners(WinnerNames winnerNames, String delimiter) {
+	private String winners(final WinnerNames winnerNames, final String delimiter) {
 		return winnerNames.getNamesWithDelimiter(delimiter);
 	}
 }

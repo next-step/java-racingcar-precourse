@@ -9,7 +9,7 @@ public final class LapConfig {
 	private final InputDevice inputDevice;
 	private final OutputDevice outputDevice;
 
-	protected LapConfig(InputDevice inputDevice, OutputDevice outputDevice) {
+	protected LapConfig(final InputDevice inputDevice, final OutputDevice outputDevice) {
 		this.inputDevice = inputDevice;
 		this.outputDevice = outputDevice;
 	}
@@ -32,7 +32,7 @@ public final class LapConfig {
 		return lap;
 	}
 
-	private Lap getLaps(String labString) {
+	private Lap getLaps(final String labString) {
 		try {
 			return new Lap(labString);
 		} catch (InvalidNumberException | NumberFormatException error) {

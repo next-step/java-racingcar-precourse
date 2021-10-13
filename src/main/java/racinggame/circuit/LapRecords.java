@@ -7,9 +7,9 @@ import java.util.Objects;
 import racinggame.racingcar.LapRecord;
 
 public final class LapRecords {
-	private List<LapRecord> lapRecords = new ArrayList<>();
+	private final List<LapRecord> lapRecords = new ArrayList<>();
 
-	public void add(LapRecord lapRecord) {
+	public void add(final LapRecord lapRecord) {
 		lapRecords.add(lapRecord);
 	}
 

@@ -7,7 +7,7 @@ import java.util.Objects;
 public final class FinalRecord {
 	private final List<LapRecords> allRecords = new ArrayList<>();
 
-	public void add(LapRecords lapRecords) {
+	public void add(final LapRecords lapRecords) {
 		allRecords.add(lapRecords);
 	}
 

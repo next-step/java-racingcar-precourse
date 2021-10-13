@@ -12,7 +12,7 @@ public final class RacingCarsConfig {
 	private final InputDevice inputDevice;
 	private final OutputDevice outputDevice;
 
-	protected RacingCarsConfig(InputDevice inputDevice, OutputDevice outputDevice) {
+	protected RacingCarsConfig(final InputDevice inputDevice, final OutputDevice outputDevice) {
 		this.inputDevice = inputDevice;
 		this.outputDevice = outputDevice;
 	}

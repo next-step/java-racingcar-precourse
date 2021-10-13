@@ -4,7 +4,7 @@ import java.util.Objects;
 
 import racinggame.common.RacingCarName;
 
-public class LapRecord {
+public final class LapRecord {
 	private static final String DELIMITER = "-";
 
 	private final RacingCarName racingCarName;
@@ -19,7 +19,7 @@ public class LapRecord {
 	 * @param racingCarName
 	 * @param score
 	 */
-	public LapRecord(RacingCarName racingCarName, Location score) {
+	public LapRecord(final RacingCarName racingCarName, final Location score) {
 		this.racingCarName = racingCarName;
 		this.score = score;
 	}

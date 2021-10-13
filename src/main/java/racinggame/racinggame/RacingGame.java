@@ -7,7 +7,7 @@ import racinggame.circuit.RacingCars;
 public final class RacingGame {
 	private final Circuit circuit;
 
-	public RacingGame(Circuit circuit) {
+	public RacingGame(final Circuit circuit) {
 		this.circuit = circuit;
 	}
 
@@ -17,7 +17,7 @@ public final class RacingGame {
 	 *
 	 * @return {@link FinalRecord} 경기 진행 결과를 반환한다.
 	 */
-	public FinalRecord play(RacingCars racingCars, Lap lap) {
+	public FinalRecord play(final RacingCars racingCars, final Lap lap) {
 		return circuit.start(racingCars, lap);
 	}
 

@@ -3,11 +3,11 @@ package racinggame.machine;
 import racinggame.circuit.Lap;
 import racinggame.circuit.RacingCars;
 
-public class Settings {
+public final class Settings {
 	private final RacingCars racingCars;
 	private final Lap lap;
 
-	public Settings(RacingCars racingCars, Lap lap) {
+	public Settings(final RacingCars racingCars, final Lap lap) {
 		this.racingCars = racingCars;
 		this.lap = lap;
 	}

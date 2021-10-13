@@ -2,11 +2,11 @@ package racinggame.circuit;
 
 import racinggame.racinggame.Circuit;
 
-public class RacingCircuit implements Circuit {
+public final class RacingCircuit implements Circuit {
 	private final Dice dice;
 	private final MovementRule movementRule;
 
-	public RacingCircuit(Dice dice, MovementRule movementRule) {
+	public RacingCircuit(final Dice dice, final MovementRule movementRule) {
 		this.dice = dice;
 		this.movementRule = movementRule;
 	}
@@ -23,7 +23,7 @@ public class RacingCircuit implements Circuit {
 	 * @return
 	 */
 	@Override
-	public FinalRecord start(RacingCars racingCars, Lap laps) {
+	public FinalRecord start(final RacingCars racingCars, final Lap laps) {
 		FinalRecord finalRecord = new FinalRecord();
 
 		for (int lap = 0; lap < laps.getLaps(); ++lap) {

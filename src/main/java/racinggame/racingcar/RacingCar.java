@@ -7,7 +7,7 @@ public final class RacingCar {
 
 	private Location location = new Location(0);
 
-	public RacingCar(RacingCarName racingCarName) {
+	public RacingCar(final RacingCarName racingCarName) {
 		this.racingCarName = racingCarName;
 	}
 
@@ -16,7 +16,7 @@ public final class RacingCar {
 	 *
 	 * @return {@link LapRecord}
 	 */
-	public LapRecord pushPedal(Movement movement) {
+	public LapRecord pushPedal(final Movement movement) {
 		this.location = location.forward(movement);
 
 		return new LapRecord(racingCarName, location);
