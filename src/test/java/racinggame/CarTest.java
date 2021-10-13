@@ -2,13 +2,22 @@ package racinggame;
 
 import static org.assertj.core.api.AssertionsForClassTypes.*;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import racinggame.model.Car;
 
 public class CarTest {
 
+	private Car car;
+
+	@BeforeEach
+	void setUp() {
+		car = new Car("chang");
+	}
+
 	@Test
-	void 랜덤수에_대한_자동차_전진(){
-		Car car = new Car("chang");
+	void 자동차_전진(){
 		car.race(5);
 		assertThat(car.getPosition()).isEqualTo(1);
 		car.race(3);
@@ -18,14 +27,9 @@ public class CarTest {
 	}
 
 	@Test
-	void 자동차_현재_위치_출력(){
-		Car car = new Car("chang");
-		car.race(5);
-		car.race(3);
-		car.race(7);
-
-		assertThat(car.getStringCarResult()).isEqualTo("chang : --");
-
+	void 자동차_명(){
+		assertThat(car.getName()).isEqualTo("chang");
+		car = new Car("hyuk");
+		assertThat(car.getName()).isEqualTo("hyuk");
 	}
-
 }

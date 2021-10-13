@@ -2,7 +2,7 @@ package racinggame.model;
 
 public class CarPosition {
 
-	private final int position;
+	private int position;
 
 	public CarPosition(int position){
 		this.position = position;
@@ -10,5 +10,9 @@ public class CarPosition {
 
 	public int getPosition(){
 		return this.position;
+	}
+
+	public CarPosition move(int addPosition){
+		return new CarPosition(this.position + addPosition);
 	}
 }
