@@ -5,6 +5,7 @@ import racinggame.message.MessageController;
 import racinggame.model.Car;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static nextstep.utils.Console.readLine;
@@ -24,6 +25,8 @@ public class Game {
         int moveCount = inputCarMovingCount();
 
         List<Car> movedCars = showProcessedPrompt(cars, moveCount);
+
+        showWinner(movedCars);
     }
 
     private List<Car> showProcessedPrompt(List<Car> cars, int moveCount) {
@@ -45,6 +48,13 @@ public class Game {
     private int inputCarMovingCount() {
         MessageController.getInstance().count();
         return Integer.parseInt(input());
+    }
+
+    private void showWinner(List<Car> cars) {
+        List<Car> winnerList = findWinners(cars);
+        List<String> winners = getWinnerList(winnerList);
+
+        MessageController.getInstance().winner(String.join(", ", winners));
     }
 
     private String input() {
@@ -116,6 +126,37 @@ public class Game {
             return Move.GO;
         }
         return Move.STOP;
+    }
+
+    public List<Car> findWinners(List<Car> cars) {
+        List<Car> winners = new ArrayList<>(Arrays.asList(cars.get(0)));
+
+        for (int i = 1; i < cars.size(); i++) {
+            winners = compareCarPosition(winners, winners.get(winners.size() - 1), cars.get(i));
+        }
+
+        return winners;
+    }
+
+    public List<Car> compareCarPosition(List<Car> winners, Car car1, Car car2) {
+        if (car1.getPosition() < car2.getPosition()) {
+            winners.clear();
+            winners.add(car2);
+        }
+
+        if (car1.getPosition() == car2.getPosition()) {
+            winners.add(car2);
+        }
+        return winners;
+    }
+
+    public List<String> getWinnerList(List<Car> winnerList) {
+        List<String> winners = new ArrayList<>();
+
+        for (Car winner : winnerList) {
+            winners.add(winner.getName());
+        }
+        return winners;
     }
 
 }

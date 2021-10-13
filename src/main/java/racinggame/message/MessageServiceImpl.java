@@ -33,6 +33,11 @@ public class MessageServiceImpl implements MessageService {
     }
 
     @Override
+    public void winner(String winners) {
+        System.out.printf("최종 우승자는 %s 입니다.%n", winners);
+    }
+
+    @Override
     public void error() {
         System.out.println("[ERROR]");
     }

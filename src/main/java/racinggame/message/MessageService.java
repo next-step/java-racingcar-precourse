@@ -11,6 +11,8 @@ public interface MessageService {
 
     void result(Car car);
 
+    void winner(String winners);
+
     void error();
 
     void lineFeed();
