@@ -9,5 +9,7 @@ public class RacingGameController {
         for (String s : carNameList) {
             System.out.println("s = " + s);
         }
+        int tryCount = InputView.enterTryCount();
+        System.out.println("tryCount = " + tryCount);
     }
 }

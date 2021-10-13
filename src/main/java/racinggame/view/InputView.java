@@ -19,6 +19,19 @@ public class InputView {
         return carNameList;
     }
 
+    public static int enterTryCount() {
+        System.out.print("시도할 회수는 몇회인가요?");
+        int tryCount = 0;
+        try {
+            String userInput = Console.readLine();
+            tryCount = Integer.parseInt(userInput);
+        } catch (IllegalArgumentException e) {
+            System.out.println("ERROR");
+            return enterTryCount();
+        }
+        return tryCount;
+    }
+
     private static void validateCarNameList(String[] carNameList) {
         for (String carName : carNameList) {
             CarName.validate(carName);
