@@ -18,6 +18,12 @@ public class WinnerTest {
     private Car rupiCar;
     private Car ediCar;
 
+
+    private RacingResult redVelvet;
+    private Car joy;
+    private Car yeri;
+    private Car iryn;
+
     @BeforeEach
     void setup() {
         Cars cars = new Cars("prr,rupi,edi");
@@ -33,6 +39,20 @@ public class WinnerTest {
         racingResult.addResult(pororoCar);
         racingResult.addResult(rupiCar);
         racingResult.addResult(ediCar);
+
+        Cars redVelvetCars = new Cars("joy,yeri,iryn");
+        joy = new Car(redVelvetCars.cars.get(0));
+        yeri = new Car(redVelvetCars.cars.get(1));
+        iryn = new Car(redVelvetCars.cars.get(2));
+
+        joy.setMoveCnt(3);
+        yeri.setMoveCnt(3);
+        iryn.setMoveCnt(1);
+
+        redVelvet = new RacingResult();
+        redVelvet.addResult(joy);
+        redVelvet.addResult(yeri);
+        redVelvet.addResult(iryn);
     }
 
     @Nested
@@ -44,8 +64,18 @@ public class WinnerTest {
             @Test
             @DisplayName("prr를 매핑한다.")
             void return_winner_map() {
-                Winner winner = new Winner(racingResult);
-                assertThat(winner.findWinner(racingResult)).contains("prr").doesNotContain("rupi", "edi");
+                Winner pororoWinner = new Winner(racingResult);
+                assertThat(pororoWinner.findWinner(racingResult)).contains("prr").doesNotContain("rupi", "edi");
+            }
+        }
+        @Nested
+        @DisplayName("joy, yeri 두명이 우승자이므로")
+        class Context_with_two_winner_car {
+            @Test
+            @DisplayName("joy, yeri가 출력되는지 확인한다.")
+            void return_two_winner_map() {
+                Winner redVelvetWinner = new Winner(redVelvet);
+                assertThat(redVelvetWinner.findWinner(redVelvet)).contains("joy", "yeri").doesNotContain("iryn");
             }
         }
     }
@@ -64,5 +94,4 @@ public class WinnerTest {
             }
         }
     }
-
 }
