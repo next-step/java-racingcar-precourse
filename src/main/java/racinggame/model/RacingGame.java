@@ -27,12 +27,7 @@ public class RacingGame {
 		for(RacingCar racingCar : racingCarList) {
 			runRacingCar(racingCar);
 		}
-		if(runCount < runNumber) {
-			racingGameStatus = RacingGameStatusConstant.RUNNING;
-		}
-		if(runCount == runNumber) {
-			racingGameStatus = RacingGameStatusConstant.FINISH;
-		}
+		setRacingGameStatus();
 	}
 	
 	public Integer getRunNumber() {
@@ -51,6 +46,15 @@ public class RacingGame {
 		return racingGameStatus;
 	}
 
+	private void setRacingGameStatus() {
+		if(runCount < runNumber) {
+			racingGameStatus = RacingGameStatusConstant.RUNNING;
+		}
+		if(runCount == runNumber) {
+			racingGameStatus = RacingGameStatusConstant.FINISH;
+		}
+	}
+	
 	private void runRacingCar(RacingCar racingCar) {
 		if(isMoveFront()) {
 			racingCar.moveFront();

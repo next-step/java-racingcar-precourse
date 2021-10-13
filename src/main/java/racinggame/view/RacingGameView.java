@@ -1,10 +1,13 @@
 package racinggame.view;
 
+import java.util.List;
+
 import nextstep.utils.Console;
 import racinggame.controller.RacingGameController;
 import racinggame.dto.InitRacingGameDto;
 import racinggame.dto.RacingGameResultDto;
 import racinggame.dto.constant.RacingGameStatusConstant;
+import racinggame.model.RacingCar;
 import racinggame.view.constant.MessageConstant;
 
 public class RacingGameView {
@@ -27,12 +30,12 @@ public class RacingGameView {
 	}
 	
 	private void runRacingGames() {
-		while(true) {
-			RacingGameResultDto racingGameResult = runRacingGame();
-			if(racingGameResult.getCode().equals(RacingGameStatusConstant.FINISH)) {
-				break;
-			}
-		}
+		RacingGameResultDto racingGameResult;
+		printMessage(MessageConstant.RUN_RACING_GAME_MESSAGE);
+		do {
+			racingGameResult = runRacingGame();
+			printRacingCarList(racingGameResult.getRacingCarList());
+		} while(!racingGameResult.getCode().equals(RacingGameStatusConstant.FINISH));
 	}
 	
 	private RacingGameResultDto runRacingGame() {
@@ -48,7 +51,22 @@ public class RacingGameView {
 		printMessage(MessageConstant.INPUT_RUN_NUMBER_MESSAGE);
 		initRacingGame.setRunNumber(Integer.parseInt(Console.readLine()));
 	}
+	
+	private void printRacingCarList(List<RacingCar> racingCarList) {
+		for(RacingCar racingCar : racingCarList) {
+			printRacingCar(racingCar);
+		}
+		System.out.println();
+	}
 
+	private void printRacingCar(RacingCar racingCar) {
+		System.out.print(racingCar.getName() + " : ");
+		for(int i = 0; i < racingCar.getLocation(); i++) {
+			System.out.print("-");
+		}
+		System.out.println();
+	}
+	
 	private void printMessage(MessageConstant message) {
 		System.out.print(message.getMessage());
 	}
