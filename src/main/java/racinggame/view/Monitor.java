@@ -59,6 +59,8 @@ public class Monitor {
             System.out.println(GameMsgEnum.COUNT_MSG.value());
 
             finish = Long.parseLong(Console.readLine());
+
+            System.out.println();
         } catch (NumberFormatException e) {
             System.out.println(ErrorMsgEnum.NOT_AVAILABLE_NUMBER_ERROR_MSG.value());
 
@@ -104,6 +106,8 @@ public class Monitor {
 
             System.out.println(player.getName() + " : " + move.toString());
         }
+
+        System.out.println();
     }
 
     private String getWinners(){
@@ -113,7 +117,7 @@ public class Monitor {
             Player player = list.get(i);
 
             if (player.getPosition() >= finish) {
-                if (winners.toString().length() > 0) {
+                if (winners.toString().length() > 1) {
                     winners.append(GameOption.nameDivider);
                 }
 
