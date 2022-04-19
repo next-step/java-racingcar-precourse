@@ -2,5 +2,9 @@ package racingcar.model.racing;
 
 public enum RacingStatus {
     STOP,
-    GO
+    GO;
+
+    public boolean isGo() {
+        return this == GO;
+    }
 }
