@@ -26,4 +26,13 @@ public class Car {
     private boolean isForward(int power) {
         return FORWARD <= power && MAX_POWER >= power;
     }
+
+    public String getPrintString() {
+        StringBuilder result = new StringBuilder();
+        result.append(this.name).append(" : ");
+        for (int i = 0; i < this.position; i++) {
+            result.append("-");
+        }
+        return result.toString();
+    }
 }
