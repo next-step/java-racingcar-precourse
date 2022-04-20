@@ -33,4 +33,14 @@ class GameUtil {
         }
         return null;
     }
+
+    static IntRange parseIntRange(String s) {
+        int num;
+        try {
+            num = Integer.parseInt(s);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("cannot parse '" + s + "'");
+        }
+        return new IntRange(1, num);
+    }
 }

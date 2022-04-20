@@ -16,14 +16,14 @@ class Game {
     }
 
     private static Car move(Car car) {
-        return car.moved(isMoving()? GameConfig.INCREMENT : 0); // 0 can be static final?
+        return car.moved(isMoving()? GameConfig.MOVE_INCREMENT : 0); // 0 can be static final?
     }
 
     static GameState nextState(GameState state) {
         return new GameState(state.getCars().mapAndThen(Game::move, Cars::new));
     }
 
-    void process(Cars cars, Turns turns) {
+    void process(Cars cars, IntRange turns) {
         states.add(new GameState(cars));    // mutation
         turns.forEach(i -> states.add(nextState(lastState()))); // mutation
     }
@@ -55,13 +55,9 @@ class Game {
         if (cars == null) return;
 
         line = GameUtil.readLineWithPrompt(GameMessage.PROMPT_INPUT_NUMBER_OF_TURNS.get());
-        Turns turns = new Turns(line);
+        IntRange turns = GameUtil.parseIntRange(line);
         process(cars, turns);
         Console.print(GameMessage.traces(states));
-
-        Cars winners = winningCars(lastState().getCars());
-        String winMessage = String.join(", ", winners.map(car -> car.getName().get()));
-//        Console.println(winners);
-        Console.println("최종 우승자는 " + winMessage + " 입니다.");
+        Console.println(GameMessage.winMessage(winningCars(lastState().getCars())));
     }
 }

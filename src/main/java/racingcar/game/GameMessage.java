@@ -1,6 +1,7 @@
 package racingcar.game;
 
 import racingcar.game.car.Car;
+import racingcar.game.car.Cars;
 
 enum GameMessage {
 
@@ -13,6 +14,10 @@ enum GameMessage {
         this.message = message;
     }
 
+    String get() {
+        return this.message;
+    }
+
     static String traces(GameStates states) {
         return String.join("",
                 states.map(state ->
@@ -20,7 +25,7 @@ enum GameMessage {
                                 state.getCars().map(Car::toString)) + "\n"));
     }
 
-    String get() {
-        return this.message;
+    static String winMessage(Cars cars) {
+        return "최종 우승자는 " + String.join(", ", cars.map(car -> car.getName().get())) + " 입니다.";
     }
 }
