@@ -10,6 +10,6 @@ public class CarTest {
     @DisplayName("자동차 앞으로 가기")
     void move_car(){
         Car car = new Car();
-        assertThat(car.move()).isEqualTo(1);
+        assertThat(car.move(4)).isEqualTo(1);
     }
 }
