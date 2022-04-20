@@ -20,7 +20,7 @@ class Game {
     }
 
     static GameState nextState(GameState state) {
-        return new GameState(state.getCars().mapAndThen(Game::move, Cars::new));
+        return new GameState(state.getCars().mapAndCollect(Game::move, Cars::new));
     }
 
     void process(Cars cars, IntRange turns) {

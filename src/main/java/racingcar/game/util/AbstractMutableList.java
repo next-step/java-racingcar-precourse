@@ -56,8 +56,8 @@ public abstract class AbstractMutableList<E> {
         return result;
     }
 
-    public <T extends AbstractMutableList<?>, S> T mapAndThen(Function<E, S> mapFunction,
-                                                              Function<Collection<S>, T> finisher) {
+    public <T extends AbstractMutableList<?>, S> T mapAndCollect(Function<E, S> mapFunction,
+                                                                 Function<Collection<S>, T> finisher) {
         return finisher.apply(map(mapFunction));
     }
 }

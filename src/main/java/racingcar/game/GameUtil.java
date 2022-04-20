@@ -27,7 +27,7 @@ class GameUtil {
 
     static Cars parseCars(String line) {
         try {
-            return new CarNames(Arrays.asList(line.split(","))).mapAndThen(Car::new, Cars::new);
+            return new CarNames(Arrays.asList(line.split(","))).mapAndCollect(Car::new, Cars::new);
         } catch (Exception e) {
             Console.println(e.getMessage());
         }
