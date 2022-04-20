@@ -1,6 +1,5 @@
 package racingcar.model.car;
 
-import racingcar.constant.ErrorMessage;
 import racingcar.model.racing.RacingStatus;
 import racingcar.model.racing.RacingStrategy;
 
@@ -11,17 +10,9 @@ public class Car {
         this.carPosition = new CarPosition();
     }
 
-    public void race(RacingStrategy racingStrategy, int racingCount) {
-        validate(racingCount);
-
-        for (int i = 0; i < racingCount; i++) {
+    public void race(RacingStrategy racingStrategy, LapCount lapCount) {
+        for (int i = 0; i < lapCount.getLapCount(); i++) {
             race(racingStrategy);
-        }
-    }
-
-    private void validate(int racingCount) {
-        if (racingCount < 1) {
-            throw new IllegalArgumentException(ErrorMessage.CAR_RACING_COUNT_GREATER_THAN_ZERO);
         }
     }
 
