@@ -4,9 +4,11 @@ import racingcar.model.racing.RacingStatus;
 import racingcar.model.racing.RacingStrategy;
 
 public class Car {
+    private final CarName carName;
     private final CarPosition carPosition;
 
-    public Car() {
+    public Car(String name) {
+        this.carName = new CarName(name);
         this.carPosition = new CarPosition();
     }
 
@@ -25,5 +27,9 @@ public class Car {
 
     public int getPosition() {
         return carPosition.getPosition();
+    }
+
+    public String getName() {
+        return carName.getName();
     }
 }

@@ -23,7 +23,7 @@ class CarTest {
     @DisplayName("n회 경주시 자동차의 위치는 0에서 n 사이의 값이다.")
     void raceFiveTimes() {
         // given
-        Car car = new Car();
+        Car car = new Car("car1");
         LapCount lapCount = new LapCount("5");
 
         // when
