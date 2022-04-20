@@ -12,6 +12,11 @@ import java.util.Collections;
 class GameUtil {
     private GameUtil() { }
 
+    static String readLineWithPrompt(String s) {
+        Console.print(s);
+        return Console.readLine();
+    }
+
     static int rollDice() {
         return Random.randomInt(GameConfig.MIN_DICE, GameConfig.MAX_DICE);
     }

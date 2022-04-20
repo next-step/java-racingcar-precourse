@@ -23,8 +23,9 @@ class Game {
         return new GameState(state.getCars().mapAndThen(Game::move, Cars::new));
     }
 
-    void process(Turns turns) {
-        turns.forEach(i -> states.add(nextState(lastState())));
+    void process(Cars cars, Turns turns) {
+        states.add(new GameState(cars));    // mutation
+        turns.forEach(i -> states.add(nextState(lastState()))); // mutation
     }
 
     private static class CarsMax {
@@ -49,13 +50,12 @@ class Game {
     }
 
     void play() {
-        String line = Console.readLine();
+        String line = GameUtil.readLineWithPrompt("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n");
         Cars cars = GameUtil.parseCars(line);
         if (cars == null) return;
-        states.add(new GameState(cars));    // mutation
 
-        int numTurns = Integer.parseInt(Console.readLine());
-        process(new Turns(numTurns));
+        Turns turns = new Turns(GameUtil.readLineWithPrompt("시도할 회수는 몇회인가요?\n"));
+        process(cars, turns);
         Console.print(GameMessage.traces(states));
 
         Cars winners = winningCars(lastState().getCars());
