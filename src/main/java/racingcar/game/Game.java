@@ -1,0 +1,66 @@
+package racingcar.game;
+
+import racingcar.game.car.Car;
+import racingcar.game.car.Cars;
+import racingcar.game.util.Console;
+
+class Game {
+    private final GameStates states = new GameStates(); // Saves each turn of racing
+
+    private GameState lastState() {
+        return states.getLast();
+    }
+
+    private static boolean isMoving() {
+        return GameUtil.rollDice() >= GameConfig.THRESHOLD_MOVE;
+    }
+
+    private static Car move(Car car) {
+        return car.moved(isMoving()? GameConfig.INCREMENT : 0); // 0 can be static final?
+    }
+
+    static GameState nextState(GameState state) {
+        return new GameState(state.getCars().mapAndThen(Game::move, Cars::new));
+    }
+
+    void process(Turns turns) {
+        turns.forEach(i -> states.add(nextState(lastState())));
+    }
+
+    private static class CarsMax {
+        private final Cars cars;
+        private final Distance max;
+
+        public CarsMax(Cars cars, Distance max) {
+            this.cars = cars;
+            this.max = max;
+        }
+    }
+
+    static Cars winningCars(Cars candidates) {
+        return candidates.foldLeft(new CarsMax(new Cars(), new Distance(-1)), (carsMax, car) -> {
+            Distance max = carsMax.max;
+            Distance distance = car.getDistance();
+
+            if (max.greaterThan(distance)) return carsMax;
+            if (max.equals(distance)) return new CarsMax(new Cars(carsMax.cars, car), distance);
+            return new CarsMax(new Cars(car), distance);    // max is less than distance
+        }).cars;
+    }
+
+    void play() {
+        String line = Console.readLine();
+        Cars cars = GameUtil.parseCars(line);
+        if (cars == null) return;
+        states.add(new GameState(cars));    // mutation
+
+        int numTurns = Integer.parseInt(Console.readLine());
+        process(new Turns(numTurns));
+        Console.print(GameMessage.traces(states));
+
+        Cars winners = winningCars(lastState().getCars());
+        String winMessage = String.join(", ", winners.map(car -> car.getName().get()));
+//        Console.println(winners);
+        Console.println("최종 우승자는 " + winMessage + " 입니다.");
+    }
+}
