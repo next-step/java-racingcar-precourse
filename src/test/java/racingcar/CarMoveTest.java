@@ -12,7 +12,7 @@ public class CarMoveTest {
 
     @BeforeEach
     void setup(){
-        car = new Car();
+        car = new Car("kkobi");
     }
 
     @Test

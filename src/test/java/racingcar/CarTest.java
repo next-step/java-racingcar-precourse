@@ -9,7 +9,7 @@ public class CarTest {
     @Test
     @DisplayName("자동차 앞으로 가기")
     void move_car(){
-        Car car = new Car();
+        Car car = new Car("kkobi");
         assertThat(car.move(4)).isEqualTo(1);
     }
 }
