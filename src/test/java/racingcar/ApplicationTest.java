@@ -34,6 +34,16 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 시도_횟수_예외_처리() {
+        assertSimpleTest(
+            () -> {
+                runException("pobi,kim", "ㄱ");
+                assertThat(output()).contains(ERROR_MESSAGE);
+            }
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
