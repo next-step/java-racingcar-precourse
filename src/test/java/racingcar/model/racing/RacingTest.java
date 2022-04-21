@@ -2,9 +2,9 @@ package racingcar.model.racing;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.model.car.CarDto;
 import racingcar.model.racing.random.RandomRacingConfig;
 import racingcar.model.racing.random.RandomRacingStrategy;
+import racingcar.model.record.RacingRecord;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -23,11 +23,11 @@ class RacingTest {
                 .build();
 
         // when
-        RacingResult racingResult = racing.start(racingStrategy);
+        RacingRecord racingRecord = racing.start(racingStrategy);
 
         // then
-        assertThat(racingResult.getLapCount()).isEqualTo(5);
-        assertThat(racingResult.getChampionNames()).hasSizeGreaterThanOrEqualTo(1);
+        assertThat(racingRecord.getLapCount()).isEqualTo(5);
+        assertThat(racingRecord.getChampionNames()).hasSizeGreaterThanOrEqualTo(1);
     }
 
     @Test
@@ -42,10 +42,10 @@ class RacingTest {
                 .build();
 
         // when
-        RacingResult racingResult = racing.start(racingStrategy);
+        RacingRecord racingRecord = racing.start(racingStrategy);
 
         // then
-        assertThat(racingResult.getLapCount()).isEqualTo(5);
-        assertThat(racingResult.getChampionNames()).hasSize(3);
+        assertThat(racingRecord.getLapCount()).isEqualTo(5);
+        assertThat(racingRecord.getChampionNames()).hasSize(3);
     }
 }

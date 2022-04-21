@@ -1,9 +1,8 @@
 package racingcar.model.racing;
 
-import racingcar.model.car.CarDto;
 import racingcar.model.car.Entries;
-
-import java.util.List;
+import racingcar.model.record.CarRecords;
+import racingcar.model.record.RacingRecord;
 
 public class Racing {
     private final Entries entries;
@@ -18,17 +17,17 @@ public class Racing {
         return new RacingBuilder();
     }
 
-    public RacingResult start(RacingStrategy racingStrategy) {
+    public RacingRecord start(RacingStrategy racingStrategy) {
         for (int i = 0; i < lapCount.getLapCount(); i++) {
             entries.race(racingStrategy);
         }
 
-        return makeResult();
+        return makeRacingRecord();
     }
 
-    private RacingResult makeResult() {
-        List<CarDto> carDtoList = entries.convertCarDto();
+    private RacingRecord makeRacingRecord() {
+        CarRecords carRecords = entries.convertCarRecords();
 
-        return new RacingResult(carDtoList, lapCount);
+        return new RacingRecord(carRecords, lapCount);
     }
 }

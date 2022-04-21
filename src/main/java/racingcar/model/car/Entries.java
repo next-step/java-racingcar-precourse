@@ -1,6 +1,8 @@
 package racingcar.model.car;
 
 import racingcar.model.racing.RacingStrategy;
+import racingcar.model.record.CarRecord;
+import racingcar.model.record.CarRecords;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -10,7 +12,7 @@ public class Entries {
     private final List<Car> cars;
 
     public Entries(List<Car> cars) {
-        this.cars = cars;
+        this.cars = new ArrayList<>(cars);
     }
 
     public void race(RacingStrategy racingStrategy) {
@@ -19,15 +21,15 @@ public class Entries {
         }
     }
 
-    public List<CarDto> convertCarDto() {
+    public CarRecords convertCarRecords() {
         int maxPosition = getMaxPosition();
 
-        List<CarDto> carDtoList = new ArrayList<>();
+        List<CarRecord> carRecordList = new ArrayList<>();
         for (Car car : cars) {
-            carDtoList.add(car.convertCarDto(maxPosition));
+            carRecordList.add(car.convertCarRecord(maxPosition));
         }
 
-        return carDtoList;
+        return new CarRecords(carRecordList);
     }
 
     private int getMaxPosition() {

@@ -2,7 +2,9 @@ package racingcar.model.car;
 
 import racingcar.model.racing.RacingStatus;
 import racingcar.model.racing.RacingStrategy;
+import racingcar.model.record.CarRecord;
 
+import java.util.Objects;
 import java.util.Queue;
 
 public class Car implements Comparable<Car> {
@@ -32,8 +34,8 @@ public class Car implements Comparable<Car> {
         return carPosition.getPositions();
     }
 
-    public CarDto convertCarDto(int maxPosition) {
-        return new CarDto(getName(), getPositions(), isChampion(maxPosition));
+    public CarRecord convertCarRecord(int maxPosition) {
+        return new CarRecord(getName(), getPositions(), isChampion(maxPosition));
     }
 
     private boolean isChampion(int maxPosition) {
@@ -43,5 +45,22 @@ public class Car implements Comparable<Car> {
     @Override
     public int compareTo(Car o) {
         return getPosition() - o.getPosition();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Car car = (Car) o;
+        return Objects.equals(getName(), car.getName()) && Objects.equals(getPosition(), car.getPosition());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(carName, carPosition);
     }
 }
