@@ -18,7 +18,8 @@ class Game {
     }
 
     static GameStates process(Cars cars, IntRange turns) {
-        return turns.foldLeft(new GameStates(new GameState(cars)),
+        GameState initialState = new GameState(cars);
+        return turns.rest().foldLeft(new GameStates(initialState),
                 (states, i) -> new GameStates(states, nextState(states.getLast())));
     }
 
