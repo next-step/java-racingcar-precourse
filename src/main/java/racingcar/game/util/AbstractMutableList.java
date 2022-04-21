@@ -60,7 +60,7 @@ public abstract class AbstractMutableList<E> {
     }
 
     public <T extends AbstractMutableList<?>, S> T mapAndCollect(Function<E, S> mapFunction,
-                                                                 Function<List<S>, T> finisher) {
-        return finisher.apply(map(mapFunction));
+                                                                 Function<List<S>, T> accumulator) {
+        return accumulator.apply(map(mapFunction));
     }
 }
