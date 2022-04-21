@@ -1,7 +1,10 @@
 package racingcar;
 
+import racingcar.domain.RaceManager;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        RaceManager raceManager = new RaceManager();
+        raceManager.run();
     }
 }
