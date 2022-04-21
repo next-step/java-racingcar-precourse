@@ -19,6 +19,12 @@ class DistanceTest {
         final Distance distance = Distance.fromFactor(3);
         assertThat(distance).isEqualTo(MoveState.IDLE.getDistance());
     }
+    @Test
+    @DisplayName("주행거리를 문자열로 표현할 수 있다.")
+    void 주행거리를_문자로_표현() {
+        final Distance distance = Distance.valueOf(3);
+        assertThat(distance.getValueAsSymbol()).isEqualTo("---");
+    }
 
     @Test
     @DisplayName("add 함수를 통해 계산이 가능하다.")

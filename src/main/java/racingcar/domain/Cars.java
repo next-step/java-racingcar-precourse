@@ -25,26 +25,25 @@ public class Cars {
 
     public String findWinners() {
         final List<String> winners = new ArrayList<>();
-        final int maxMileage = calcMaxMileage();
         for (Car car : cars) {
-            addToListIfWinner(winners, car, maxMileage);
+            addToListIfWinner(winners, car, calcMaxMileage());
         }
         return String.join(",", winners);
     }
 
-    private void addToListIfWinner(List<String> winners, Car car, int maxMileage) {
-        if (maxMileage == car.calcMileage()) {
+    private void addToListIfWinner(List<String> winners, Car car, Distance maxMileage) {
+        if (maxMileage.equals(car.getMileage())) {
             winners.add(car.getName().toString());
         }
     }
 
-    private int calcMaxMileage() {
+    private Distance calcMaxMileage() {
         int max = 0;
         for (Car car : cars) {
-            final String mileageAsSymbol = car.calcMileageAsSymbol();
+            final String mileageAsSymbol = car.getMileageAsSymbol();
             max = Math.max(max, mileageAsSymbol.length());
         }
-        return max;
+        return Distance.valueOf(max);
     }
 
     @Override

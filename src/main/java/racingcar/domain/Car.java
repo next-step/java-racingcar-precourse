@@ -3,30 +3,35 @@ package racingcar.domain;
 public class Car {
 
     private final Name name;
-    private final DistanceLog driveLog = new DistanceLog();
+    private Distance mileage = Distance.valueOf(0);
 
     public Car(String name) {
         this.name = new Name(name);
     }
 
     public void drive(int factor) {
-        driveLog.record(factor);
+        final Distance distance = Distance.fromFactor(factor);
+        setMileage(mileage.add(distance));
     }
 
-    public String calcMileageAsSymbol() {
-        return driveLog.calcMileageAsSymbol();
+    public String getMileageAsSymbol() {
+        return mileage.getValueAsSymbol();
     }
 
-    public int calcMileage() {
-        return calcMileageAsSymbol().length();
+    public Distance getMileage() {
+        return mileage;
     }
 
     public Name getName() {
         return name;
     }
 
+    private void setMileage(Distance mileage) {
+        this.mileage = mileage;
+    }
+
     @Override
     public String toString() {
-        return String.format("%s : %s", name, calcMileageAsSymbol());
+        return String.format("%s : %s", name, getMileageAsSymbol());
     }
 }

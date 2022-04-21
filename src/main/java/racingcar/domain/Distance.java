@@ -2,7 +2,7 @@ package racingcar.domain;
 
 public class Distance {
 
-    private int value;
+    private final int value;
 
     private Distance(int distance) {
         this.value = distance;
@@ -29,6 +29,14 @@ public class Distance {
 
     public Distance add(Distance distance) {
         return add(distance.toNumber());
+    }
+
+    public String getValueAsSymbol() {
+        StringBuilder mileageSymbol = new StringBuilder();
+        for (int i = 0; i < value; i++) {
+            mileageSymbol.append("-");
+        }
+        return mileageSymbol.toString();
     }
 
     @Override
