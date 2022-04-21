@@ -18,16 +18,16 @@ public class IntRange extends AbstractImmutableList<Integer> {
         this(1, endInclusive);
     }
 
+    public IntRange(List<Integer> list) {
+        super(new ArrayList<>(list));
+    }
+
     private static List<Integer> range(int start, int endInclusive) {
         List<Integer> result = new ArrayList<>();
         for (int i = start; i <= endInclusive; i++) {
             result.add(i);
         }
         return result;
-    }
-
-    private IntRange(List<Integer> list) {
-        super(list);
     }
 
     public IntRange rest() {
