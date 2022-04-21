@@ -5,12 +5,6 @@ import racingcar.game.car.Cars;
 import racingcar.game.util.Console;
 
 class Game {
-    private final GameStates states = new GameStates(); // Saves each turn of racing
-
-    private GameState lastState() {
-        return states.getLast();
-    }
-
     private static boolean isMoving() {
         return GameUtil.rollDice() >= GameConfig.THRESHOLD_MOVE;
     }
@@ -19,13 +13,13 @@ class Game {
         return car.moved(isMoving()? GameConfig.MOVE_INCREMENT : 0); // 0 can be static final?
     }
 
-    static GameState nextState(GameState state) {
+    private static GameState nextState(GameState state) {
         return new GameState(state.getCars().mapAndCollect(Game::move, Cars::new));
     }
 
-    void process(Cars cars, IntRange turns) {
-        states.add(new GameState(cars));    // mutation
-        turns.forEach(i -> states.add(nextState(lastState()))); // mutation
+    static GameStates process(Cars cars, IntRange turns) {
+        return turns.foldLeft(new GameStates(new GameState(cars)),
+                (states, i) -> new GameStates(states, nextState(states.getLast())));
     }
 
     private static class CarsMax {
@@ -56,8 +50,7 @@ class Game {
 
         line = GameUtil.readLineWithPrompt(GameMessage.PROMPT_INPUT_NUMBER_OF_TURNS.get());
         IntRange turns = GameUtil.parseIntRange(line);
-        process(cars, turns);
-        Console.print(GameMessage.traces(states));
-        Console.println(GameMessage.winMessage(winningCars(lastState().getCars())));
+        GameStates states = process(cars, turns);   // Saves each turn of racing
+        Console.println(GameMessage.resultMessage(states, Game::winningCars));
     }
 }

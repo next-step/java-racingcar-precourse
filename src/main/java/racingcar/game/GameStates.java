@@ -3,10 +3,6 @@ package racingcar.game;
 import racingcar.game.util.AbstractMutableList;
 
 public class GameStates extends AbstractMutableList<GameState> {
-    public GameStates() {
-        super();
-    }
-
     public GameStates(GameState state) {
         super(state);
     }
