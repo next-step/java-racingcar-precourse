@@ -19,8 +19,9 @@ class Game {
 
     static GameStates process(Cars cars, IntRange turns) {
         GameState initialState = new GameState(cars);
-        return turns.rest().foldLeft(new GameStates(initialState),
-                (states, i) -> new GameStates(states, nextState(states.getLast())));
+        return turns.foldLeft(new GameStates(initialState),
+                (states, i) -> new GameStates(states, nextState(states.getLast()))
+        ).rest();
     }
 
     private static class CarsMax {
