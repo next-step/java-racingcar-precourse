@@ -38,7 +38,7 @@ class Game {
             Distance max = carsMax.max;
             Distance distance = car.getDistance();
 
-            if (max.greaterThan(distance)) return carsMax;
+            if (max.isGreaterThan(distance)) return carsMax;
             if (max.equals(distance)) return new CarsMax(new Cars(carsMax.cars, car), max);
             return new CarsMax(new Cars(car), distance);    // max is less than distance
         }).cars;

@@ -18,11 +18,11 @@ public class Distance extends SingleValue<Integer> implements Comparable<Distanc
         return new Distance(value + distance.value);
     }
 
-    public boolean greaterThan(Distance another) {
+    public boolean isGreaterThan(Distance another) {
         return compareTo(another) > 0;
     }
 
-    public boolean lessThan(Distance another) {
+    public boolean isLessThan(Distance another) {
         return compareTo(another) < 0;
     }
 
