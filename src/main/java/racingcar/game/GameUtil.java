@@ -1,14 +1,11 @@
 package racingcar.game;
 
-import racingcar.game.car.Car;
 import racingcar.game.car.CarName;
 import racingcar.game.car.CarNames;
-import racingcar.game.car.Cars;
 import racingcar.game.internal.Strings;
 import racingcar.game.util.Console;
 import racingcar.game.util.Random;
 
-import java.util.Arrays;
 import java.util.Collections;
 
 class GameUtil {
@@ -27,17 +24,8 @@ class GameUtil {
         return String.join("", Collections.nCopies(n, s));
     }
 
-    static Cars parseCars(String line) {
-        Strings names = new Strings(line.split(","));
-        if (names.size() < GameConfig.MIN_CARS) {
-            throw new IllegalArgumentException("not enough cars");
-        }
-        try {
-            return names.mapAndCollect(CarName::new, CarNames::new).mapAndCollect(Car::new, Cars::new);
-        } catch (Exception e) {
-            Console.println(e.getMessage());
-        }
-        return null;
+    static CarNames parseCarNames(String line) {
+        return new Strings(line.split(",")).mapAndCollect(CarName::new, CarNames::new);
     }
 
     static int parseInt(String s) {

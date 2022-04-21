@@ -46,8 +46,7 @@ class Game {
 
     static void play() {
         String inputCarNames = GameUtil.readLineWithPrompt(GameMessage.PROMPT_INPUT_CAR_NAMES.get());
-        Cars cars = GameUtil.parseCars(inputCarNames);
-        if (cars == null) return;
+        Cars cars = GameUtil.parseCarNames(inputCarNames).mapAndCollect(Car::new, Cars::new);
 
         String inputNumTurns = GameUtil.readLineWithPrompt(GameMessage.PROMPT_INPUT_NUMBER_OF_TURNS.get());
         IntRange turns = new IntRange(GameUtil.parseInt(inputNumTurns));
