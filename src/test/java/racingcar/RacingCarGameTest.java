@@ -1,16 +1,22 @@
 package racingcar;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingCarGameTest {
+    private String carNameList;
+
+    @BeforeEach
+    void setup() {
+        carNameList = "ck87,gater,atube";
+    }
 
     @Test
     @DisplayName("자동차 이름은 쉼표(,)를 기준으로 구분하여 경주용 차를 생성한다.")
     void create_car(){
-        String carNameList = "ck87,gater,atube";
         RacingCarGame racingCarGame = new RacingCarGame(carNameList);
         assertThat(racingCarGame).isNotNull();
     }
@@ -27,14 +33,13 @@ public class RacingCarGameTest {
                         carNameList.split(",")[2]);
     }
 
-//    @Test
-//    @DisplayName("주어진 횟수 동안 n대의 자동차들이 전진 또는 멈출 수 있다")
-//    void repeated_move(){
-//        String carNameList = "ck87,gater,atube";
-//        RacingCarGame racingCarGame = new RacingCarGame(carNameList);
-//        GameResult result = racingCarGame.play(5);
-//        assertThat(racingCarGame).isNotNull();
-//    }
+    @Test
+    @DisplayName("주어진 횟수 동안 n대의 자동차들이 전진 또는 멈추며 결과 값을 출력한다.")
+    void repeated_move(){
+        RacingCarGame racingCarGame = new RacingCarGame(carNameList);
+        racingCarGame.racing(5);
+        assertThat(racingCarGame).isNotNull();
+    }
 
 
 }

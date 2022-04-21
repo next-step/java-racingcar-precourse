@@ -1,10 +1,14 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class RacingCarGame {
+    private static final int MIN = 0;
+    private static final int MAX = 9;
     private List<Car> racingCarList = new ArrayList<>();
 
     public RacingCarGame(String carNameList) {
@@ -34,5 +38,34 @@ public class RacingCarGame {
 
     private boolean isWinner(int max, int position) {
         return max <= position;
+    }
+
+    public void racing(int tryCount) {
+        for (int i = 0; i < tryCount; i++) {
+            for(Car car : racingCarList) {
+                car.move(Randoms.pickNumberInRange(MIN, MAX));
+            }
+            this.print();
+        }
+    }
+
+    private void print() {
+        StringBuilder result = new StringBuilder();
+        for(Car car : racingCarList) {
+            result.append(car.getName()).append(": ");
+            if(car.getPosition() > MIN){
+                result.append(this.stepString(car.getPosition()));
+            }
+            result.append("\n");
+        }
+        System.out.println(result.toString());
+    }
+
+    private String stepString(int position) {
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < position; i++) {
+            result.append("-");
+        }
+        return result.toString();
     }
 }
