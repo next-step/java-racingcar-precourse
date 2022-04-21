@@ -12,7 +12,7 @@ public class Car {
 
     Car(String name){
         if(name.length() > MAX_CAR_NAME_LENGTH) {
-            throw new IllegalArgumentException("[ERROR] 이름은 5자 이하 입니다.");
+            System.out.println("[ERROR] 이름은 5자 이하 입니다");
         }
         this.position = INIT_POSITION;
         this.name = name;

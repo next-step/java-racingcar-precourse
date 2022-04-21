@@ -22,7 +22,7 @@ public class RacingCarGame {
     }
 
     public String getWinnerNames() {
-        StringBuilder result = new StringBuilder("최종 우승자: ");
+        StringBuilder result = new StringBuilder("최종 우승자는 ");
         Collections.sort(racingCarList, (car1, car2) -> car2.getPosition() - car1.getPosition());
         int max = 0;
         for(Car car : racingCarList) {
@@ -33,7 +33,7 @@ public class RacingCarGame {
             }
             break;
         }
-        return result.substring(0, result.length()-1);
+        return result.substring(0, result.length()-1) + " 입니다.";
     }
 
     private boolean isWinner(int max, int position) {
@@ -57,13 +57,15 @@ public class RacingCarGame {
         }catch (Exception e){
             throw new NumberFormatException("[ERROR] 시도 횟수는 숫자여야 합니다.");
         }
-        if(result <= 0) throw new IllegalArgumentException("[ERROR] 시도 횟수는 0보다 커야합니다.");
+        if(result <= 0) {
+            throw new IllegalArgumentException("[ERROR] 시도 횟수는 0보다 커야합니다.");
+        }
     }
 
     private void print() {
         StringBuilder result = new StringBuilder();
         for(Car car : racingCarList) {
-            result.append(car.getName()).append(": ");
+            result.append(car.getName()).append(" : ");
             if(car.getPosition() > MIN){
                 result.append(this.stepString(car.getPosition()));
             }

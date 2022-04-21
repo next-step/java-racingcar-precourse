@@ -29,7 +29,7 @@ public class RacingCarGameTest {
         String carNameList = "ck87,gater,atube";
         RacingCarGame racingCarGame = new RacingCarGame(carNameList);
         String winnerNames = racingCarGame.getWinnerNames();
-        assertThat(winnerNames).startsWith("최종 우승자: ")
+        assertThat(winnerNames).startsWith("최종 우승자는 ")
                 .containsAnyOf(carNameList.split(",")[0],
                         carNameList.split(",")[1],
                         carNameList.split(",")[2]);
@@ -56,11 +56,6 @@ public class RacingCarGameTest {
                 ()-> {
                     assertThatThrownBy(()-> {
                         racingCarGame.racing("0");
-                    }).hasMessageStartingWith("[ERROR]");
-                },
-                ()-> {
-                    assertThatThrownBy(()-> {
-                        Car car = new Car("abvcccw");
                     }).hasMessageStartingWith("[ERROR]");
                 }
         );

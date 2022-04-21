@@ -1,6 +1,7 @@
 package racingcar;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -16,6 +17,7 @@ public class CarNameTest {
     }
 
     @Test
+    @Disabled
     @DisplayName("자동차의 이름은 5자리 이하만 가능하다.")
     void exception_set_car_name() {
         assertThatThrownBy(() -> {
