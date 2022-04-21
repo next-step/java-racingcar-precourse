@@ -43,7 +43,7 @@ class Game {
         }).cars;
     }
 
-    void play() {
+    static void play() {
         String line = GameUtil.readLineWithPrompt(GameMessage.PROMPT_INPUT_CAR_NAMES.get());
         Cars cars = GameUtil.parseCars(line);
         if (cars == null) return;
