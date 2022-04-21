@@ -1,7 +1,6 @@
 package racingcar.domain;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Optional;
 
 public class RaceRecordBoard {
@@ -20,6 +19,4 @@ public class RaceRecordBoard {
     public Optional<Integer> findRecord(String carName){
         return Optional.ofNullable(recordBoard.get(carName));
     }
-
-
 }

@@ -14,15 +14,17 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class RacingCarTest {
     @Test
-    void 차_생성_성공_테스트(){
+    void 차_생성_후_이름_거리_테스트() {
         //given
         int moveMaxLimit = 5;
         String[] names = "pobi,woni,jun".split(",");
 
+
         //when
-        RacingCar rc1 = new RacingCar(names[0], moveMaxLimit, new RaceRecordBoard());
-        RacingCar rc2 = new RacingCar(names[1], moveMaxLimit, new RaceRecordBoard());
-        RacingCar rc3 = new RacingCar(names[2], moveMaxLimit, new RaceRecordBoard());
+        RaceRecordBoard board = new RaceRecordBoard();
+        RacingCar rc1 = new RacingCar(names[0], moveMaxLimit, board);
+        RacingCar rc2 = new RacingCar(names[1], moveMaxLimit, board);
+        RacingCar rc3 = new RacingCar(names[2], moveMaxLimit, board);
 
         //then
         assertThat(rc1).extracting("name").isEqualTo("pobi");
@@ -34,32 +36,33 @@ public class RacingCarTest {
     }
 
     @Test
-    void 차_생성시_이름이_5자_이상은_실패_테스트(){
+    void 차_생성시_이름이_5자_이상은_실패_테스트() {
         //given
         String[] names = "pobi12,woniaaa,junabc,jung y".split(",");
 
-        for (int i = 0; i < names.length; i++){
+        RaceRecordBoard board = new RaceRecordBoard();
+        for (int i = 0; i < names.length; i++) {
             String name = names[i];
-            assertThrows(IllegalArgumentException.class, () -> new RacingCar(name, 5, new RaceRecordBoard()));
+            assertThrows(IllegalArgumentException.class, () -> new RacingCar(name, 5, board));
         }
     }
 
     @Test
-    void 차량_전진_테스트(){
+    void 차량_전진_테스트() {
         //given
         int moveMaxLimit = 9;
         RacingCar rc = new RacingCar("pobi", moveMaxLimit, new RaceRecordBoard());
         int realMoveCnt = 0;
 
         List<Integer> numbers = new ArrayList<>();
-        for (int i = 1; i <= moveMaxLimit; i++){
-            int randNum = Randoms.pickNumberInRange(1, 9);
+        for (int i = 1; i <= moveMaxLimit; i++) {
+            int randNum = getRandomNumber();
             numbers.add(randNum);
             realMoveCnt += randNum > 3 ? 1 : 0; // 이동횟수 세기
         }
 
         //when
-        for(int i = 0; i < moveMaxLimit; i++){
+        for (int i = 0; i < moveMaxLimit; i++) {
             rc.move(numbers.get(i));
         }
 
@@ -70,7 +73,7 @@ public class RacingCarTest {
     }
 
     @Test
-    void 이동시마다_거리_기록_현황판에_업데이트_되는지_테스트(){
+    void 이동_거리_현황판의_값과_차량의_최종_이동거리가_같은지_테스트() {
         // 이동 기록 현황판 객체 생성
         RaceRecordBoard board = new RaceRecordBoard();
 
@@ -83,24 +86,24 @@ public class RacingCarTest {
         RacingCar rc3 = new RacingCar("jun", MAX_MOVE_DISTANCE, board);
 
         // 최대 시도 횟수만큼 차량을 이동
-        for(int i = 0; i < MAX_MOVE_DISTANCE; i++){
+        for (int i = 0; i < MAX_MOVE_DISTANCE; i++) {
             // move 메소드에서 이동시 마다 기록 현황판에 이동 기록을 업데이트
             rc1.move(getRandomNumber());
             rc2.move(getRandomNumber());
             rc3.move(getRandomNumber());
         }
 
-        // 이동 기록 현황판의 값과 실제 차량의 이동 거리가 같은지 비교
+        // 이동 기록 현황판의 값과 실제 차량의 최종 이동 거리가 같은지 비교
         isEqualRecord(rc1, board);
         isEqualRecord(rc2, board);
         isEqualRecord(rc3, board);
     }
 
-    public int getRandomNumber(){
-       return Randoms.pickNumberInRange(1, 9);
+    public int getRandomNumber() {
+        return Randoms.pickNumberInRange(1, 9);
     }
 
-    public void isEqualRecord(RacingCar rc, RaceRecordBoard board){
+    public void isEqualRecord(RacingCar rc, RaceRecordBoard board) {
         Optional<Integer> record = board.findRecord(rc.getName());
         record.ifPresent(integer -> assertThat(integer).isEqualTo(rc.getDistance()));
     }
