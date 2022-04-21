@@ -15,7 +15,6 @@ public class ValidationCheck {
 
     public static boolean numberValidation(String value) {
         if (!Pattern.matches(NUMBER_PATTERN, value)) {
-            // throw new IllegalArgumentException(SystemMessage.NUMBER_EXCEPTION);
             return false;
         }
         return true;
