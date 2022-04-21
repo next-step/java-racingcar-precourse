@@ -1,5 +1,6 @@
 package racingcar.game.car;
 
+import racingcar.game.GameConfig;
 import racingcar.game.util.SingleValue;
 
 public class CarName extends SingleValue<String> {
@@ -9,7 +10,7 @@ public class CarName extends SingleValue<String> {
     }
 
     static void validateNameLength(String name) {
-        if (name.length() > 5) {
+        if (name.length() > GameConfig.MAX_CAR_NAME_LENGTH) {
             throw new IllegalArgumentException("[ERROR] name is too long");
         }
     }
