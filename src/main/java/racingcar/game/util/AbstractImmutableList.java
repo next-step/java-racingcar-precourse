@@ -36,7 +36,7 @@ public abstract class AbstractImmutableList<E> {
         list.forEach(action);
     }
 
-    public <T> List<T> map(Function<E, T> function) {
+    public <T> List<T> map(Function<? super E, T> function) {
         List<T> result = new ArrayList<>();
         for (E element: list) {
             result.add(function.apply(element));
@@ -55,7 +55,7 @@ public abstract class AbstractImmutableList<E> {
         return result;
     }
 
-    public <T extends AbstractImmutableList<?>, S> T mapAndCollect(Function<E, S> mapFunction,
+    public <T extends AbstractImmutableList<?>, S> T mapAndCollect(Function<? super E, S> mapFunction,
                                                                    Function<List<S>, T> accumulator) {
         return accumulator.apply(map(mapFunction));
     }
