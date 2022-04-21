@@ -15,7 +15,7 @@ public class Distance extends SingleValue<Integer> implements Comparable<Distanc
     }
 
     public Distance increased(Distance distance) {
-        return new Distance(value + distance.value);
+        return increased(distance.value);
     }
 
     public boolean isGreaterThan(Distance another) {
