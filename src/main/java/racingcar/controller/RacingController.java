@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import racingcar.error.Error;
 import racingcar.service.RacingService;
+import racingcar.view.ErrorView;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -24,7 +25,7 @@ public class RacingController {
             validateIsMoreThan2(carNames);
             validateEachNameLengthLessThan5(carNames);
         } catch (IllegalArgumentException exception) {
-            printErrorMessage(exception);
+            ErrorView.print(exception);
             inputCarNameView();
         }
         return Arrays.asList(carNames);
@@ -52,7 +53,7 @@ public class RacingController {
         try {
             return parseToNumber(InputView.inputRound());
         } catch (IllegalArgumentException exception) {
-            printErrorMessage(exception);
+            ErrorView.print(exception);
             return inputRoundView();
         }
     }
@@ -63,9 +64,5 @@ public class RacingController {
         } catch (NumberFormatException exception) {
             throw new IllegalArgumentException(Error.MUST_BE_NUMBER.toString());
         }
-    }
-
-    private static void printErrorMessage(IllegalArgumentException exception) {
-        System.out.println(exception.getMessage());
     }
 }
