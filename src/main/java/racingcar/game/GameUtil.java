@@ -28,7 +28,7 @@ class GameUtil {
     }
 
     static Cars parseCars(String line) {
-        Strings names = new Strings(Arrays.asList(line.split(",")));
+        Strings names = new Strings(line.split(","));
         if (names.size() < GameConfig.MIN_CARS) {
             throw new IllegalArgumentException("not enough cars");
         }
