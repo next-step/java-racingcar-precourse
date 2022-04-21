@@ -38,10 +38,6 @@ public class Car {
         return new Car(this, getDistance().increased(distance));
     }
 
-    public Car moved(int distance) {
-        return moved(new Distance(distance));
-    }
-
     @Override
     public String toString() {
         return getName() + " : " + getDistance() + "\n";

@@ -10,7 +10,7 @@ class Game {
     }
 
     private static Car move(Car car) {
-        return car.moved(isMoving()? GameConfig.MOVE_INCREMENT : 0); // 0 can be static final?
+        return car.moved(new Distance(isMoving()? GameConfig.MOVE_INCREMENT : 0)); // 0 can be static final?
     }
 
     private static GameState nextState(GameState state) {
