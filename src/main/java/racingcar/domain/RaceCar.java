@@ -14,10 +14,14 @@ public class RaceCar {
 
     }
 
+
     public String[] getParticipateCarName(Scanner scanner) {
         String inputCar = scanner.nextLine();
 
+        // validation 추가 후 stream
+        String[] result = inputCar.split(SEPARATOR);
 
+        return result;
     }
 
 }
