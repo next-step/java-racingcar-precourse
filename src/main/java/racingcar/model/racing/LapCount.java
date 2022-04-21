@@ -1,6 +1,7 @@
-package racingcar.model.car;
+package racingcar.model.racing;
 
 import racingcar.constant.ErrorMessage;
+import racingcar.model.car.CarConfig;
 
 public class LapCount {
     private final int count;

@@ -3,7 +3,9 @@ package racingcar.model.car;
 import racingcar.model.racing.RacingStatus;
 import racingcar.model.racing.RacingStrategy;
 
-public class Car {
+import java.util.Queue;
+
+public class Car implements Comparable<Car> {
     private final CarName carName;
     private final CarPosition carPosition;
 
@@ -12,24 +14,34 @@ public class Car {
         this.carPosition = new CarPosition();
     }
 
-    public void race(RacingStrategy racingStrategy, LapCount lapCount) {
-        for (int i = 0; i < lapCount.getLapCount(); i++) {
-            race(racingStrategy);
-        }
+    public void race(RacingStrategy racingStrategy) {
+        RacingStatus racingStatus = racingStrategy.race();
+
+        carPosition.recordPosition(racingStatus);
     }
 
-    private void race(RacingStrategy racingStrategy) {
-        RacingStatus racingStatus = racingStrategy.race();
-        if (racingStatus.isGo()) {
-            carPosition.increasePosition();
-        }
+    public String getName() {
+        return carName.getName();
     }
 
     public int getPosition() {
         return carPosition.getPosition();
     }
 
-    public String getName() {
-        return carName.getName();
+    public Queue<Integer> getPositions() {
+        return carPosition.getPositions();
+    }
+
+    public CarDto convertCarDto(int maxPosition) {
+        return new CarDto(getName(), getPositions(), isChampion(maxPosition));
+    }
+
+    private boolean isChampion(int maxPosition) {
+        return getPosition() == maxPosition;
+    }
+
+    @Override
+    public int compareTo(Car o) {
+        return getPosition() - o.getPosition();
     }
 }
