@@ -45,12 +45,12 @@ class Game {
     }
 
     static void play() {
-        String line = GameUtil.readLineWithPrompt(GameMessage.PROMPT_INPUT_CAR_NAMES.get());
-        Cars cars = GameUtil.parseCars(line);
+        String inputCarNames = GameUtil.readLineWithPrompt(GameMessage.PROMPT_INPUT_CAR_NAMES.get());
+        Cars cars = GameUtil.parseCars(inputCarNames);
         if (cars == null) return;
 
-        line = GameUtil.readLineWithPrompt(GameMessage.PROMPT_INPUT_NUMBER_OF_TURNS.get());
-        IntRange turns = new IntRange(GameUtil.parseInt(line));
+        String inputNumTurns = GameUtil.readLineWithPrompt(GameMessage.PROMPT_INPUT_NUMBER_OF_TURNS.get());
+        IntRange turns = new IntRange(GameUtil.parseInt(inputNumTurns));
         GameStates states = process(cars, turns);   // Saves each turn of racing
         Console.println(GameMessage.resultMessage(states, Game::winningCars));
     }
