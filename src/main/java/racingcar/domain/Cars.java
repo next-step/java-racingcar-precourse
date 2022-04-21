@@ -1,13 +1,10 @@
 package racingcar.domain;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
-    private static final int MIN_NUMBER = 0;
-    private static final int MAX_NUMBER = 9;
+    private PickNumberStrategy strategy = new PickRandomNumberStrategy();
     private final List<Car> cars = new ArrayList<>();
 
     public void lineUpCars(List<String> names) {
@@ -18,7 +15,7 @@ public class Cars {
 
     public void processRound() {
         for (Car car : cars) {
-            final int pickedNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
+            final int pickedNumber = strategy.pick();
             car.drive(pickedNumber);
         }
     }
@@ -44,6 +41,10 @@ public class Cars {
             max = Math.max(max, mileageAsSymbol.length());
         }
         return Distance.valueOf(max);
+    }
+
+    public void changeStrategy(PickNumberStrategy strategy) {
+        this.strategy = strategy;
     }
 
     @Override
