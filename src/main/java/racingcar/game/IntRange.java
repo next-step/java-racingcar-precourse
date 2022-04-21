@@ -2,6 +2,7 @@ package racingcar.game;
 
 import racingcar.game.util.AbstractMutableList;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class IntRange extends AbstractMutableList<Integer> {
@@ -10,9 +11,19 @@ public class IntRange extends AbstractMutableList<Integer> {
     }
 
     public IntRange(int start, int endInclusive) {
+        super(range(start, endInclusive));
+    }
+
+    public IntRange(int endInclusive) {
+        this(1, endInclusive);
+    }
+
+    private static List<Integer> range(int start, int endInclusive) {
+        List<Integer> result = new ArrayList<>();
         for (int i = start; i <= endInclusive; i++) {
-            add(i);
+            result.add(i);
         }
+        return result;
     }
 
     private IntRange(List<Integer> list) {

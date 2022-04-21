@@ -1,8 +1,10 @@
 package racingcar.game;
 
 import racingcar.game.car.Car;
+import racingcar.game.car.CarName;
 import racingcar.game.car.CarNames;
 import racingcar.game.car.Cars;
+import racingcar.game.internal.Strings;
 import racingcar.game.util.Console;
 import racingcar.game.util.Random;
 
@@ -26,21 +28,25 @@ class GameUtil {
     }
 
     static Cars parseCars(String line) {
+        Strings names = new Strings(Arrays.asList(line.split(",")));
+        if (names.size() < GameConfig.MIN_CARS) {
+            throw new IllegalArgumentException("not enough cars");
+        }
         try {
-            return new CarNames(Arrays.asList(line.split(","))).mapAndCollect(Car::new, Cars::new);
+            return names.mapAndCollect(CarName::new, CarNames::new).mapAndCollect(Car::new, Cars::new);
         } catch (Exception e) {
             Console.println(e.getMessage());
         }
         return null;
     }
 
-    static IntRange parseIntRange(String s) {
+    static int parseInt(String s) {
         int num;
         try {
             num = Integer.parseInt(s);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("cannot parse '" + s + "'");
         }
-        return new IntRange(1, num);
+        return num;
     }
 }

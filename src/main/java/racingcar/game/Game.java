@@ -6,7 +6,7 @@ import racingcar.game.util.Console;
 
 class Game {
     private static boolean isMoving() {
-        return GameUtil.rollDice() >= GameConfig.THRESHOLD_MOVE;
+        return GameUtil.rollDice() >= GameConfig.THRESHOLD_MOVABLE;
     }
 
     private static Car move(Car car) {
@@ -50,7 +50,7 @@ class Game {
         if (cars == null) return;
 
         line = GameUtil.readLineWithPrompt(GameMessage.PROMPT_INPUT_NUMBER_OF_TURNS.get());
-        IntRange turns = GameUtil.parseIntRange(line);
+        IntRange turns = new IntRange(GameUtil.parseInt(line));
         GameStates states = process(cars, turns);   // Saves each turn of racing
         Console.println(GameMessage.resultMessage(states, Game::winningCars));
     }

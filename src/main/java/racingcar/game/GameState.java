@@ -3,7 +3,7 @@ package racingcar.game;
 import racingcar.game.car.Cars;
 
 class GameState {
-    private Cars cars;
+    private final Cars cars;
 
     GameState(Cars cars) {
         this.cars = cars;

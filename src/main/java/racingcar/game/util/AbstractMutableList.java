@@ -1,7 +1,6 @@
 package racingcar.game.util;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.function.BiFunction;
@@ -33,12 +32,16 @@ public abstract class AbstractMutableList<E> {
         return list.add(element);
     }
 
+    public int size() {
+        return list.size();
+    }
+
     public void forEach(Consumer<? super E> action) {
         list.forEach(action);
     }
 
-    public <T> Collection<T> map(Function<E, T> function) {
-        Collection<T> result = new ArrayList<>();
+    public <T> List<T> map(Function<E, T> function) {
+        List<T> result = new ArrayList<>();
         for (E element: list) {
             result.add(function.apply(element));
         }
@@ -57,7 +60,7 @@ public abstract class AbstractMutableList<E> {
     }
 
     public <T extends AbstractMutableList<?>, S> T mapAndCollect(Function<E, S> mapFunction,
-                                                                 Function<Collection<S>, T> finisher) {
+                                                                 Function<List<S>, T> finisher) {
         return finisher.apply(map(mapFunction));
     }
 }
