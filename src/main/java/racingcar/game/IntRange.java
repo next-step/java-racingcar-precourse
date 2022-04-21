@@ -1,11 +1,11 @@
 package racingcar.game;
 
-import racingcar.game.util.AbstractMutableList;
+import racingcar.game.util.AbstractImmutableList;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class IntRange extends AbstractMutableList<Integer> {
+public class IntRange extends AbstractImmutableList<Integer> {
     public IntRange() {
         super();
     }

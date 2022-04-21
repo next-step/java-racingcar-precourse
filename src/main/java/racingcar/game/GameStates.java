@@ -1,8 +1,8 @@
 package racingcar.game;
 
-import racingcar.game.util.AbstractMutableList;
+import racingcar.game.util.AbstractImmutableList;
 
-public class GameStates extends AbstractMutableList<GameState> {
+public class GameStates extends AbstractImmutableList<GameState> {
     public GameStates(GameState state) {
         super(state);
     }

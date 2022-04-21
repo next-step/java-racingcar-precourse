@@ -7,29 +7,25 @@ import java.util.function.BiFunction;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
-public abstract class AbstractMutableList<E> {
+public abstract class AbstractImmutableList<E> {
     protected final List<E> list;
 
-    protected AbstractMutableList() {
+    protected AbstractImmutableList() {
         list = new ArrayList<>();
     }
 
-    protected AbstractMutableList(E element) {
+    protected AbstractImmutableList(E element) {
         this();
         list.add(element);
     }
 
-    protected AbstractMutableList(List<E> list) {
+    protected AbstractImmutableList(List<E> list) {
         this.list = list;
     }
 
-    protected AbstractMutableList(List<E> list, E[] elements) {
+    protected AbstractImmutableList(List<E> list, E[] elements) {
         this(list);
         Collections.addAll(this.list, elements);
-    }
-
-    public boolean add(E element) {
-        return list.add(element);
     }
 
     public int size() {
@@ -59,8 +55,8 @@ public abstract class AbstractMutableList<E> {
         return result;
     }
 
-    public <T extends AbstractMutableList<?>, S> T mapAndCollect(Function<E, S> mapFunction,
-                                                                 Function<List<S>, T> accumulator) {
+    public <T extends AbstractImmutableList<?>, S> T mapAndCollect(Function<E, S> mapFunction,
+                                                                   Function<List<S>, T> accumulator) {
         return accumulator.apply(map(mapFunction));
     }
 }
