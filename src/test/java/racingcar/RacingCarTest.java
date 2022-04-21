@@ -6,10 +6,9 @@ import org.junit.jupiter.api.Test;
 import racingcar.domain.RaceRecordBoard;
 import racingcar.domain.RacingCar;
 import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.domain.dto.RacingCarDto;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -105,13 +104,38 @@ public class RacingCarTest {
     }
 
     @Test
-    void 최종_우승자_단독_CASE_테스트(){
-        // 테스트 시나리오
+    void 최종_단독_우승자_찾기_테스트(){
+        // given
+        board.resetRecord();
+        board.updateRecord("pobi", 4);
+        board.updateRecord("woni", 2);
+        board.updateRecord("june", 6);
 
-        // 가장 distance 가 큰 자동차가 우승자 이다.
-        // 이동 기록 현황판에 임의로 기록을 설정한다. (공동, 단독 case)
-        // 이동 기록 현황판에서 최대 값을 찾는다.
-        // 최대값과 똑같은 사람을 우승자로 판단하는지 테스트 한다.
+        // when
+        List<RacingCarDto> winnerList = board.findWinners();
+        RacingCarDto winner = winnerList.get(0);
+
+        // given
+        assertThat(winnerList).hasSize(1);
+        assertThat(winner).extracting("name").isEqualTo("june");
+    }
+
+    @Test
+    void 최종_공동_우승자_찾기_테스트(){
+        // given
+        board.resetRecord();
+        board.updateRecord("pobi", 1);
+        board.updateRecord("woni", 2);
+        board.updateRecord("june", 9);
+        board.updateRecord("parker", 9);
+        board.updateRecord("peter", 9);
+
+        // when
+        List<RacingCarDto> winnerList = board.findWinners();
+
+        // then
+        assertThat(winnerList).hasSize(3);
+        assertThat(winnerList).extracting("name").containsOnly("june", "parker", "peter");
     }
 
 
