@@ -39,7 +39,7 @@ public class RacingCarGameTest {
     @DisplayName("주어진 횟수 동안 n대의 자동차들이 전진 또는 멈추며 결과 값을 출력한다.")
     void repeated_move(){
         RacingCarGame racingCarGame = new RacingCarGame(carNameList);
-        racingCarGame.racing(5);
+        racingCarGame.racing("5");
         assertThat(racingCarGame).isNotNull();
     }
 
@@ -50,7 +50,12 @@ public class RacingCarGameTest {
         Assertions.assertAll(
                 ()-> {
                     assertThatThrownBy(()-> {
-                        racingCarGame.racing(0);
+                        racingCarGame.racing("하나");
+                    }).hasMessageStartingWith("[ERROR]");
+                },
+                ()-> {
+                    assertThatThrownBy(()-> {
+                        racingCarGame.racing("0");
                     }).hasMessageStartingWith("[ERROR]");
                 },
                 ()-> {

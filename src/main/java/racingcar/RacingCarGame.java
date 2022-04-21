@@ -40,14 +40,24 @@ public class RacingCarGame {
         return max <= position;
     }
 
-    public void racing(int tryCount) {
-        if(tryCount <= 0) throw new IllegalArgumentException("[ERROR] 시도 횟수는 0보다 커야합니다.");
-        for (int i = 0; i < tryCount; i++) {
+    public void racing(String tryCount) {
+        this.validateTryCount(tryCount);
+        for (int i = 0; i < Integer.parseInt(tryCount); i++) {
             for(Car car : racingCarList) {
                 car.move(Randoms.pickNumberInRange(MIN, MAX));
             }
             this.print();
         }
+    }
+
+    private void validateTryCount(String tryCount) {
+        int result = 0;
+        try {
+            result = Integer.parseInt(tryCount);
+        }catch (Exception e){
+            throw new NumberFormatException("[ERROR] 시도 횟수는 숫자여야 합니다.");
+        }
+        if(result <= 0) throw new IllegalArgumentException("[ERROR] 시도 횟수는 0보다 커야합니다.");
     }
 
     private void print() {
