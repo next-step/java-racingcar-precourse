@@ -41,6 +41,7 @@ public class RacingCarGame {
     }
 
     public void racing(int tryCount) {
+        if(tryCount <= 0) throw new IllegalArgumentException("[ERROR] 시도 횟수는 0보다 커야합니다.");
         for (int i = 0; i < tryCount; i++) {
             for(Car car : racingCarList) {
                 car.move(Randoms.pickNumberInRange(MIN, MAX));

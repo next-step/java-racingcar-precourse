@@ -1,10 +1,12 @@
 package racingcar;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class RacingCarGameTest {
     private String carNameList;
@@ -39,6 +41,25 @@ public class RacingCarGameTest {
         RacingCarGame racingCarGame = new RacingCarGame(carNameList);
         racingCarGame.racing(5);
         assertThat(racingCarGame).isNotNull();
+    }
+
+    @Test
+    @DisplayName("예외 발생시 예외문구는 [ERROR]로 시작해야한다.")
+    void exception(){
+        RacingCarGame racingCarGame = new RacingCarGame(carNameList);
+        Assertions.assertAll(
+                ()-> {
+                    assertThatThrownBy(()-> {
+                        racingCarGame.racing(0);
+                    }).hasMessageStartingWith("[ERROR]");
+                },
+                ()-> {
+                    assertThatThrownBy(()-> {
+                        Car car = new Car("abvcccw");
+                    }).hasMessageStartingWith("[ERROR]");
+                }
+        );
+
     }
 
 
