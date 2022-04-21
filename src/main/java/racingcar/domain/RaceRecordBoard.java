@@ -19,4 +19,8 @@ public class RaceRecordBoard {
     public Optional<Integer> findRecord(String carName){
         return Optional.ofNullable(recordBoard.get(carName));
     }
+
+    public void resetRecord(){
+        recordBoard.clear();
+    }
 }
