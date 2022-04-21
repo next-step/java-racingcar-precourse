@@ -11,7 +11,7 @@ public class CarName extends SingleValue<String> {
 
     static void validateNameLength(String name) {
         if (name.length() > GameConfig.MAX_CAR_NAME_LENGTH) {
-            throw new IllegalArgumentException("[ERROR] name is too long");
+            throw new IllegalArgumentException("name is too long");
         }
     }
 
