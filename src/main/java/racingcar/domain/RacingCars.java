@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import java.util.List;
 import java.util.ArrayList;
+import racingcar.common.ValidationCheck;
 
 public class RacingCars {
     private final List<RacingCar> racingCars;

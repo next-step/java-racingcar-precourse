@@ -18,8 +18,14 @@ public class Game {
     private void inputRacingCarName() {
         System.out.println(SystemMessage.INPUT_RACING_CAR_NAME);
 
-        String racingCarName = Console.readLine();
-        racingCars = new RacingCars(racingCarName.split(","));
+        String racingCarName;
+        try {
+            racingCarName = Console.readLine();
+            racingCars = new RacingCars(racingCarName.split(","));
+        } catch (IllegalArgumentException exception) {
+            System.out.println(exception.toString());
+            initGame();
+        }
     }
 
 
