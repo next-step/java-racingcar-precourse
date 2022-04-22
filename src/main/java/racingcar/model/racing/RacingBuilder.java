@@ -2,27 +2,28 @@ package racingcar.model.racing;
 
 import racingcar.model.car.Car;
 import racingcar.model.car.CarNameSplitter;
-import racingcar.model.car.Entries;
+import racingcar.model.car.CarEntries;
+import racingcar.model.lap.LapCount;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class RacingBuilder {
-    private Entries entries;
+    private CarEntries carEntries;
     private LapCount lapCount;
 
     RacingBuilder() {
     }
 
     public RacingBuilder carNames(String carNamesWithComma) {
-        this.entries = createEntries(carNamesWithComma);
+        this.carEntries = createEntries(carNamesWithComma);
         return this;
     }
 
-    private Entries createEntries(String carNamesWithComma) {
+    private CarEntries createEntries(String carNamesWithComma) {
         List<Car> cars = convertCars(carNamesWithComma);
 
-        return new Entries(cars);
+        return new CarEntries(cars);
     }
 
     private List<Car> convertCars(String carNamesWithComma) {
@@ -42,6 +43,6 @@ public class RacingBuilder {
     }
 
     public Racing build() {
-        return new Racing(this.entries, this.lapCount);
+        return new Racing(this.carEntries, this.lapCount);
     }
 }

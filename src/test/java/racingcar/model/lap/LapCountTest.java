@@ -1,4 +1,4 @@
-package racingcar.model.racing;
+package racingcar.model.lap;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.function.Executable;

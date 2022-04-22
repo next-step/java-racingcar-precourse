@@ -1,6 +1,6 @@
 package racingcar.model.record;
 
-import racingcar.model.racing.LapCount;
+import racingcar.model.lap.LapCount;
 
 import java.util.ArrayList;
 import java.util.List;

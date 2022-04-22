@@ -1,6 +1,6 @@
 package racingcar.model.car;
 
-import racingcar.model.racing.RacingStatus;
+import racingcar.model.movement.MovementStatus;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -14,8 +14,8 @@ public class CarPosition {
         this.position = 0;
     }
 
-    public void recordPosition(RacingStatus racingStatus) {
-        if (racingStatus.isGo()) {
+    public void recordPosition(MovementStatus movementStatus) {
+        if (movementStatus.isGo()) {
             increasePosition();
         }
         positions.offer(position);

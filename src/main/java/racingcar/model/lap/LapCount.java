@@ -1,6 +1,4 @@
-package racingcar.model.racing;
-
-import racingcar.model.car.CarConfig;
+package racingcar.model.lap;
 
 public class LapCount {
     private final int count;
@@ -25,7 +23,7 @@ public class LapCount {
     }
 
     private void validateIfRange(int lapCount) {
-        if (lapCount < CarConfig.MIN_LAP_COUNT || lapCount > CarConfig.MAX_LAP_COUNT) {
+        if (lapCount < LapConfig.MIN_LAP_COUNT || lapCount > LapConfig.MAX_LAP_COUNT) {
             throw new NumberFormatException();
         }
     }

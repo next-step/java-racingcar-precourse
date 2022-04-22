@@ -1,7 +1,7 @@
 package racingcar.model.car;
 
-import racingcar.model.racing.RacingStatus;
-import racingcar.model.racing.RacingStrategy;
+import racingcar.model.movement.MovementStatus;
+import racingcar.model.movement.MovementStrategy;
 import racingcar.model.record.CarRecord;
 
 import java.util.Objects;
@@ -16,10 +16,10 @@ public class Car implements Comparable<Car> {
         this.carPosition = new CarPosition();
     }
 
-    public void race(RacingStrategy racingStrategy) {
-        RacingStatus racingStatus = racingStrategy.race();
+    public void race(MovementStrategy movementStrategy) {
+        MovementStatus movementStatus = movementStrategy.race();
 
-        carPosition.recordPosition(racingStatus);
+        carPosition.recordPosition(movementStatus);
     }
 
     public String getName() {

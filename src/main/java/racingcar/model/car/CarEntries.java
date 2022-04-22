@@ -1,6 +1,6 @@
 package racingcar.model.car;
 
-import racingcar.model.racing.RacingStrategy;
+import racingcar.model.movement.MovementStrategy;
 import racingcar.model.record.CarRecord;
 import racingcar.model.record.CarRecords;
 
@@ -8,16 +8,16 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Entries {
+public class CarEntries {
     private final List<Car> cars;
 
-    public Entries(List<Car> cars) {
+    public CarEntries(List<Car> cars) {
         this.cars = new ArrayList<>(cars);
     }
 
-    public void race(RacingStrategy racingStrategy) {
+    public void race(MovementStrategy movementStrategy) {
         for (Car car : cars) {
-            car.race(racingStrategy);
+            car.race(movementStrategy);
         }
     }
 

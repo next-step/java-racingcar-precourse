@@ -1,20 +1,20 @@
-package racingcar.model.racing.random;
+package racingcar.model.movement.random;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.model.racing.RacingStatus;
+import racingcar.model.movement.MovementStatus;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class RandomRacingStrategyTest {
-    private RandomRacingStrategy randomRacingStrategy;
+class RandomMovementStrategyTest {
+    private RandomMovementStrategy randomMovementStrategy;
 
     @BeforeEach
     void setUp() {
-        randomRacingStrategy = new RandomRacingStrategy(RandomRacingConfig.START_RANDOM_NUMBER,
-                                                           RandomRacingConfig.END_RANDOM_NUMBER,
-                                                           RandomRacingConfig.GREATER_THAN_OR_EQUAL_TO_STANDARD_NUMBER);
+        randomMovementStrategy = new RandomMovementStrategy(RandomMovementConfig.START_RANDOM_NUMBER,
+                                                            RandomMovementConfig.END_RANDOM_NUMBER,
+                                                            RandomMovementConfig.GREATER_THAN_OR_EQUAL_TO_STANDARD_NUMBER);
     }
 
     @Test
@@ -23,7 +23,7 @@ class RandomRacingStrategyTest {
         // given
 
         // when
-        int randomNumber = randomRacingStrategy.pickRandomNumber();
+        int randomNumber = randomMovementStrategy.pickRandomNumber();
 
         // then
         assertThat(randomNumber)
@@ -39,10 +39,10 @@ class RandomRacingStrategyTest {
         int randomNumber = 4;
 
         // when
-        RacingStatus racingStatus = randomRacingStrategy.race(randomNumber);
+        MovementStatus movementStatus = randomMovementStrategy.race(randomNumber);
 
         // then
-        assertThat(racingStatus).isEqualTo(RacingStatus.GO);
+        assertThat(movementStatus).isEqualTo(MovementStatus.GO);
     }
 
     @Test
@@ -52,10 +52,10 @@ class RandomRacingStrategyTest {
         int randomNumber = 3;
 
         // when
-        RacingStatus racingStatus = randomRacingStrategy.race(randomNumber);
+        MovementStatus movementStatus = randomMovementStrategy.race(randomNumber);
 
         // then
-        assertThat(racingStatus).isEqualTo(RacingStatus.STOP);
+        assertThat(movementStatus).isEqualTo(MovementStatus.STOP);
     }
 
     @Test
@@ -64,9 +64,9 @@ class RandomRacingStrategyTest {
         // given
 
         // when
-        RacingStatus racingStatus = randomRacingStrategy.race();
+        MovementStatus movementStatus = randomMovementStrategy.race();
 
         // then
-        assertThat(racingStatus).isNotNull();
+        assertThat(movementStatus).isNotNull();
     }
 }

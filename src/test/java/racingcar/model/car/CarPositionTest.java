@@ -2,7 +2,7 @@ package racingcar.model.car;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.model.racing.RacingStatus;
+import racingcar.model.movement.MovementStatus;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -26,9 +26,9 @@ class CarPositionTest {
         CarPosition carPosition = new CarPosition();
 
         // when
-        carPosition.recordPosition(RacingStatus.GO);
-        carPosition.recordPosition(RacingStatus.STOP);
-        carPosition.recordPosition(RacingStatus.GO);
+        carPosition.recordPosition(MovementStatus.GO);
+        carPosition.recordPosition(MovementStatus.STOP);
+        carPosition.recordPosition(MovementStatus.GO);
 
         // then
         assertThat(carPosition.getPosition()).isEqualTo(2);

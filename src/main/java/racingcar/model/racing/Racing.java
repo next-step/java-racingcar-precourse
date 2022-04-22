@@ -1,15 +1,17 @@
 package racingcar.model.racing;
 
-import racingcar.model.car.Entries;
+import racingcar.model.car.CarEntries;
+import racingcar.model.lap.LapCount;
+import racingcar.model.movement.MovementStrategy;
 import racingcar.model.record.CarRecords;
 import racingcar.model.record.RacingRecord;
 
 public class Racing {
-    private final Entries entries;
+    private final CarEntries carEntries;
     private final LapCount lapCount;
 
-    Racing(Entries entries, LapCount lapCount) {
-        this.entries = entries;
+    Racing(CarEntries carEntries, LapCount lapCount) {
+        this.carEntries = carEntries;
         this.lapCount = lapCount;
     }
 
@@ -17,16 +19,16 @@ public class Racing {
         return new RacingBuilder();
     }
 
-    public RacingRecord start(RacingStrategy racingStrategy) {
+    public RacingRecord start(MovementStrategy movementStrategy) {
         for (int i = 0; i < lapCount.getLapCount(); i++) {
-            entries.race(racingStrategy);
+            carEntries.race(movementStrategy);
         }
 
         return makeRacingRecord();
     }
 
     private RacingRecord makeRacingRecord() {
-        CarRecords carRecords = entries.convertCarRecords();
+        CarRecords carRecords = carEntries.convertCarRecords();
 
         return new RacingRecord(carRecords, lapCount);
     }

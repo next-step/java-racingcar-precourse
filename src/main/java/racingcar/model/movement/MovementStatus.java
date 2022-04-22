@@ -1,6 +1,6 @@
-package racingcar.model.racing;
+package racingcar.model.movement;
 
-public enum RacingStatus {
+public enum MovementStatus {
     STOP,
     GO;
 

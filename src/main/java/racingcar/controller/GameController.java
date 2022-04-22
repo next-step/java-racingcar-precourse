@@ -2,20 +2,21 @@ package racingcar.controller;
 
 import racingcar.constant.ErrorMessage;
 import racingcar.model.car.CarConfig;
+import racingcar.model.lap.LapConfig;
 import racingcar.model.racing.Racing;
 import racingcar.model.racing.RacingBuilder;
-import racingcar.model.racing.RacingStrategy;
+import racingcar.model.movement.MovementStrategy;
 import racingcar.model.record.RacingRecord;
 import racingcar.view.GameInput;
 import racingcar.view.GameOutput;
 
 public class GameController {
-    private final RacingStrategy racingStrategy;
+    private final MovementStrategy movementStrategy;
     private final GameInput input;
     private final GameOutput output;
 
-    public GameController(RacingStrategy racingStrategy, GameInput input, GameOutput output) {
-        this.racingStrategy = racingStrategy;
+    public GameController(MovementStrategy movementStrategy, GameInput input, GameOutput output) {
+        this.movementStrategy = movementStrategy;
         this.input = input;
         this.output = output;
     }
@@ -26,7 +27,7 @@ public class GameController {
         setLapCount(builder);
         Racing racing = builder.build();
 
-        RacingRecord racingRecord = racing.start(racingStrategy);
+        RacingRecord racingRecord = racing.start(movementStrategy);
         showResult(racingRecord);
     }
 
@@ -48,8 +49,8 @@ public class GameController {
             String lapCount = input.read();
             builder.lapCount(lapCount);
         } catch (IllegalArgumentException e) {
-            output.error(String.format(ErrorMessage.INVALID_CAR_RACING_COUNT_RANGE, CarConfig.MIN_LAP_COUNT,
-                                       CarConfig.MAX_LAP_COUNT));
+            output.error(String.format(ErrorMessage.INVALID_CAR_RACING_COUNT_RANGE, LapConfig.MIN_LAP_COUNT,
+                                       LapConfig.MAX_LAP_COUNT));
             setLapCount(builder);
         }
     }

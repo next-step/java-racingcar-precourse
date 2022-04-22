@@ -1,32 +1,32 @@
-package racingcar.model.racing.random;
+package racingcar.model.movement.random;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import racingcar.model.racing.RacingStrategy;
-import racingcar.model.racing.RacingStatus;
+import racingcar.model.movement.MovementStrategy;
+import racingcar.model.movement.MovementStatus;
 
-public class RandomRacingStrategy implements RacingStrategy {
+public class RandomMovementStrategy implements MovementStrategy {
     private final int startRandomNumber;
     private final int endRandomNumber;
     private final int greaterThanOrEqualToStandardNumber;
 
-    public RandomRacingStrategy(int startRandomNumber, int endRandomNumber, int greaterThanOrEqualToStandardNumber) {
+    public RandomMovementStrategy(int startRandomNumber, int endRandomNumber, int greaterThanOrEqualToStandardNumber) {
         this.startRandomNumber = startRandomNumber;
         this.endRandomNumber = endRandomNumber;
         this.greaterThanOrEqualToStandardNumber = greaterThanOrEqualToStandardNumber;
     }
 
     @Override
-    public RacingStatus race() {
+    public MovementStatus race() {
         int randomNumber = pickRandomNumber();
 
         return race(randomNumber);
     }
 
-    RacingStatus race(int randomNumber) {
+    MovementStatus race(int randomNumber) {
         if (randomNumber >= greaterThanOrEqualToStandardNumber) {
-            return RacingStatus.GO;
+            return MovementStatus.GO;
         }
-        return RacingStatus.STOP;
+        return MovementStatus.STOP;
     }
 
     int pickRandomNumber() {
