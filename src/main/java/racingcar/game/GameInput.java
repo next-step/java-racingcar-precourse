@@ -5,8 +5,8 @@ import racingcar.game.car.CarNames;
 import racingcar.game.internal.Strings;
 import racingcar.game.util.Console;
 
-import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 class GameInput {
@@ -17,27 +17,36 @@ class GameInput {
         return Console.readLine();
     }
 
-    private static <T, U> T wrapTryCatch(Supplier<U> supplier,
-                                         Function<U, T> function,
-                                         Function<T, Boolean> validator,
-                                         AtomicBoolean validationResult) {
-        T result = null;
+    private static class ObjectBoolean<T> {
+        private final T obj;
+        private final Boolean bool;
+        private ObjectBoolean(T obj, Boolean bool) {
+            this.obj = obj;
+            this.bool = bool;
+        }
+    }
+
+    private static <T, U> ObjectBoolean<T> wrapHandleException(Supplier<U> supplier,
+                                                               Function<U, T> function,
+                                                               Predicate<T> validator) {
         try {
-            result = function.apply(supplier.get());
-            validationResult.set(validator.apply(result)); // side effect
+            T ret = function.apply(supplier.get());
+            return new ObjectBoolean<>(ret, validator.test(ret));
         } catch (Exception e) {
             Console.println(EXCEPTION_MESSAGE_PREFIX + e.getMessage());
         }
-        return result;
+        return new ObjectBoolean<>(null, false);
     }
 
-    private static <T, U> T loopUntilDone(Supplier<U> supplier,
+    private static <T, U> T getUntilValid(Supplier<U> supplier,
                                           Function<U, T> function,
-                                          Function<T, Boolean> validator) {
+                                          Predicate<T> validator) {
         T result = null;
-        AtomicBoolean done = new AtomicBoolean(false);
-        while (!done.get()) {
-            result = wrapTryCatch(supplier, function, validator, done);
+        boolean done = false;
+        while (!done) {
+            ObjectBoolean<T> ret = wrapHandleException(supplier, function, validator);
+            result = ret.obj;
+            done = ret.bool;
         }
         return result;
     }
@@ -55,7 +64,7 @@ class GameInput {
     }
 
     static CarNames inputCarNames() {
-        return loopUntilDone(
+        return getUntilValid(
                 () -> readLineWithPrompt(GameMessage.PROMPT_INPUT_CAR_NAMES.get()),
                 GameInput::parseCarNames,
                 GameInput::validateCarNames
@@ -80,7 +89,7 @@ class GameInput {
     }
 
     static int inputNumTurns() {
-        return loopUntilDone(
+        return getUntilValid(
                 () -> readLineWithPrompt(GameMessage.PROMPT_INPUT_NUMBER_OF_TURNS.get()),
                 GameInput::parseInt,
                 GameInput::validateNumTurns
