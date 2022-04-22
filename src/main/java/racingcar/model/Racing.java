@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 public class Racing {
     private static final String NUMBER_REGEX = "^[0-9]*$";
+    private static final String RACE_RESULT_TITLE_MESSAGE = "실행결과";
     private final int moveCount;
     private int maxCarDistance = 0;
     private final List<Car> cars;
@@ -35,8 +36,10 @@ public class Racing {
     }
 
     public List<Car> race() {
+        System.out.println(RACE_RESULT_TITLE_MESSAGE);
         for(int i=0; i<moveCount; i++) {
             moveCars();
+            System.out.println();
         }
         return getWinner();
     }
