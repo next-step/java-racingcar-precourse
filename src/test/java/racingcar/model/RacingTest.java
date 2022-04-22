@@ -33,4 +33,11 @@ class RacingTest {
             assertThat(car.getDistance()).isLessThanOrEqualTo(racing.getMoveCount()).isGreaterThanOrEqualTo(0);
         }
     }
+
+    @Test
+    void 자동차_최대_이동거리는_이동횟수보다_같거나_낮다() {
+        Racing racing = new Racing("5", cars);
+        racing.play();
+        assertThat(racing.getMaxCarDistance()).isLessThanOrEqualTo(racing.getMoveCount());
+    }
 }

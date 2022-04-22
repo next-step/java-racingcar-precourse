@@ -6,6 +6,7 @@ import java.util.regex.Pattern;
 public class Racing {
     private static final String NUMBER_REGAX = "^[0-9]*$";
     private final int moveCount;
+    private int maxCarDistance = 0;
     private final List<Car> cars;
 
     public Racing(String moveCount, List<Car> cars) {
@@ -23,6 +24,13 @@ public class Racing {
     public void moveCars() {
         for (Car car : cars) {
             car.move();
+            updateMaxCarDistance(maxCarDistance);
+        }
+    }
+
+    public void updateMaxCarDistance(int distance) {
+        if(maxCarDistance < distance) {
+            maxCarDistance = distance;
         }
     }
 
@@ -38,5 +46,9 @@ public class Racing {
 
     public List<Car> getCars() {
         return cars;
+    }
+
+    public int getMaxCarDistance() {
+        return maxCarDistance;
     }
 }
