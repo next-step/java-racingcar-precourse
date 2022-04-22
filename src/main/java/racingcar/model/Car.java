@@ -1,6 +1,7 @@
 package racingcar.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.error.ErrorMessage;
 
 import java.util.Collections;
 
@@ -33,9 +34,9 @@ public class Car {
         validateNameLength(name);
     }
 
-    public void validateNameLength(String name) {
+    public static void validateNameLength(String name) {
         if(name.length() > NAME_MAX_LENGTH || name.length() < NAME_MIN_LENGTH) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.INVALID_CAR_NAME_LENGTH.getMessage());
         }
     }
 

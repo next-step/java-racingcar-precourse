@@ -1,5 +1,7 @@
 package racingcar.model;
 
+import racingcar.error.ErrorMessage;
+
 import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -12,15 +14,15 @@ public class Racing {
     private final List<Car> cars;
 
     public Racing(String moveCount, List<Car> cars) {
-        if(!isNumber(moveCount)) {
-            throw new IllegalArgumentException();
-        }
+        validNumber(moveCount);
         this.moveCount = Integer.parseInt(moveCount);
         this.cars = cars;
     }
 
-    private boolean isNumber(String input) {
-        return Pattern.matches(NUMBER_REGEX, input);
+    public static void validNumber(String moveCount) {
+        if(!Pattern.matches(NUMBER_REGEX, moveCount)) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_MOVE_COUNT.getMessage());
+        }
     }
 
     public void moveCars() {
