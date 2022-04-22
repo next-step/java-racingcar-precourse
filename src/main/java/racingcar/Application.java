@@ -1,5 +1,6 @@
 package racingcar;
 
+import controller.RacingContoller;
 import domain.CarNames;
 import domain.Laps;
 import view.InputView;
@@ -10,5 +11,8 @@ public class Application {
         // TODO: 프로그램 구현
         CarNames carNames = InputView.getCarNames();
         Laps laps = InputView.getLaps();
+
+        RacingContoller racingContoller = new RacingContoller();
+        racingContoller.startRace(carNames, laps);
     }
 }
