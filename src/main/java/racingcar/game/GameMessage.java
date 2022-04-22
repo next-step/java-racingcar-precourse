@@ -27,7 +27,7 @@ enum GameMessage {
     }
 
     private static String winMessage(Cars cars) {
-        return "최종 우승자는 " + String.join(", ", cars.map(car -> car.getName().get())) + " 입니다.";
+        return "최종 우승자: " + String.join(", ", cars.map(car -> car.getName().get()));
     }
 
     static String resultMessage(GameStates states, Function<Cars, Cars> getWinningCars) {
