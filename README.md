@@ -5,3 +5,14 @@
 
 ## 과제 제출 과정
 * [과제 제출 방법](https://github.com/next-step/nextstep-docs/tree/master/precourse)
+
+## 기능 목록 정리
+- 자동차 등록
+    - 글자 수 유효성 체크
+    - split 처리
+    - 자동차 생성
+- 경주 진행
+    - 이동 횟수 지정
+    - 0~9 랜덤 값 생성
+    - 경기 점수 기록
+- 우승자 비교
