@@ -1,7 +1,5 @@
 package racingcar.domain.model;
 
-import racingcar.domain.dto.RacingCarDto;
-
 import java.util.*;
 
 public class RaceRecordBoard {
@@ -28,17 +26,20 @@ public class RaceRecordBoard {
     /**
      * 우승자 리스트 찾기
      */
-    public List<RacingCarDto> findWinners() {
-        List<RacingCarDto> winnerList = new ArrayList<>();
+    public List<String> findWinners() {
+        List<String> winnerList = new ArrayList<>();
         Integer maxDistance = Collections.max(recordBoard.values());
 
         recordBoard.forEach((key, value) -> {
             if (value == maxDistance.intValue())
-                winnerList.add(new RacingCarDto(key, value));
+                winnerList.add(key);
         });
         return winnerList;
     }
 
+    /**
+     * 기록 초기화
+     */
     public void resetRecord() {
         recordBoard.clear();
     }

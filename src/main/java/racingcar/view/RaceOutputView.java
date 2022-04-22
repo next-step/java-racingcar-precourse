@@ -16,13 +16,14 @@ public class RaceOutputView {
 
             System.out.printf("%s : %s\n", name, hyphens);
         }
+        System.out.println();
     }
 
     /**
      * 최종 우승자 출력
      */
-    public void printWinners(List<RacingCarDto> winners){
-        System.out.printf("%s: %s\n", WINNERS_MESSAGE, winners.toString());
+    public void printWinners(List<String> winners){
+        System.out.printf("%s: %s\n", WINNERS_MESSAGE, String.join(",", winners));
     }
 
     /**

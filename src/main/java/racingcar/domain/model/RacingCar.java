@@ -4,12 +4,12 @@ public class RacingCar {
     private final int FORWARD_MIN_VALUE = 3; // 전진 가능한 최소 값
     private final CarName name;
     private final Distance distance;
-    private final RaceRecordBoard board;
+    private final RaceRecordBoard recordBoard;
 
-    public RacingCar(String name, Distance distance, RaceRecordBoard board) {
+    public RacingCar(String name, Distance distance, RaceRecordBoard recordBoard) {
         this.name = new CarName(name);
         this.distance = distance;
-        this.board = board;
+        this.recordBoard = recordBoard;
     }
 
     /**
@@ -19,8 +19,8 @@ public class RacingCar {
         if (n > FORWARD_MIN_VALUE) {
             distance.increase();
         }
-        // RaceRecordBoard 객체에 이동 기록을 업데이트
-        board.updateRecord(name.getName(), distance.getDistance());
+        // 현황판에 이동 기록을 업데이트
+        recordBoard.updateRecord(name.getName(), distance.getDistance());
     }
 
     public String getName() {

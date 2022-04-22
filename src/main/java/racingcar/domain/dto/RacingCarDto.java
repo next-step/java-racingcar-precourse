@@ -1,8 +1,8 @@
 package racingcar.domain.dto;
 
 public class RacingCarDto {
-    private String name;
-    private int distance;
+    private final String name;
+    private final int distance;
 
     public RacingCarDto(String name, int distance) {
         this.name = name;

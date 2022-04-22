@@ -8,7 +8,6 @@ import racingcar.domain.model.Distance;
 import racingcar.domain.model.RaceRecordBoard;
 import racingcar.domain.model.RacingCar;
 import camp.nextstep.edu.missionutils.Randoms;
-import racingcar.domain.dto.RacingCarDto;
 
 import java.util.*;
 
@@ -118,12 +117,12 @@ public class RacingCarTest {
         board.updateRecord("june", 6);
 
         // when
-        List<RacingCarDto> winnerList = board.findWinners();
-        RacingCarDto winner = winnerList.get(0);
+        List<String> winnerList = board.findWinners();
+        String winner = winnerList.get(0);
 
         // given
         assertThat(winnerList).hasSize(1);
-        assertThat(winner).extracting("name").isEqualTo("june");
+        assertThat(winner).isEqualTo("june");
     }
 
     @Test
@@ -137,18 +136,19 @@ public class RacingCarTest {
         board.updateRecord("peter", 9);
 
         // when
-        List<RacingCarDto> winnerList = board.findWinners();
+        List<String> winnerList = board.findWinners();
 
         // then
         assertThat(winnerList)
                 .hasSize(3)
-                .extracting("name").containsOnly("june", "parker", "peter");
+                .containsOnly("june", "parker", "peter");
     }
 
     @Test
     void 차량_생성_팩토리로_차량생성_테스트() {
         // given
-        CarFactory factory = new CarFactory(DEFAULT_NAMES, DEFAULT_TRY_LIMIT, board);
+        String[] names = DEFAULT_NAMES.split(",");
+        CarFactory factory = new CarFactory(names, DEFAULT_TRY_LIMIT, board);
 
         // when
         factory.createCars();
@@ -158,32 +158,13 @@ public class RacingCarTest {
         // 이름, board 객체, 사이즈 검증
         assertThat(carList).hasSize(3)
                 .extracting("name").containsOnly("pobi", "woni", "jun");
-        assertThat(carList).extracting("board").containsOnly(board, board, board); // 원소의 순서, 중복여부 상관없이 원소값과 갯수가 일치해야함
+        assertThat(carList).extracting("recordBoard").containsOnly(board, board, board); // 원소의 순서, 중복여부 상관없이 원소값과 갯수가 일치해야함
 
         // 최대 이동 시도 횟수 검증
         for (RacingCar r : carList) {
             Integer limit = r.getTryLimit();
             assertThat(limit).isEqualTo(DEFAULT_TRY_LIMIT);
         }
-    }
-
-    @Test
-    void 게임_매니저_게임_진행_테스트() {
-        // 게임매니저
-
-        // UI
-        // 차량 이름을 입력 받는 View 클래스의 메소드를 호출한다.
-        // 이동 시도 횟수를 입력받는 View 클래스의 메소드를 호출한다.
-
-        // Domain Logic
-        //        게임매니저 객체 생성 시 이동 거리 현황 객체를 생성한다.
-        //        - 차량 생성 팩토리 클래스의 차량 생성 메소드를 호출한다. 호출하면서 이동 거리 현황 객체를 넘긴다.
-        //        - 차량들을 리스트로 관리한다.
-        //        - 게임 종료 판단 후 이동 거리 현황 객체의 최종 우승자를 찾는 메소드를 호출한다.
-
-        // UI
-        // View 클래스의 진행 상황 출력 메소드을 호출 한다.
-        // 최종 우승자를 출력하는 View 클래스의 메소드를 호출한다.
     }
 
     public int getRandomNumber() {

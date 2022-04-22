@@ -9,13 +9,13 @@ import java.util.List;
 
 public class CarFactory {
     private final String[] names;
-    private final RaceRecordBoard board;
+    private final RaceRecordBoard recordBoard;
     private final int moveTryLimit;
     private final List<RacingCar> carList;
 
-    public CarFactory(String carNames, int moveTryLimit, RaceRecordBoard board) {
-        this.names = carNames.split(",");
-        this.board = board;
+    public CarFactory(String[] carNames, int moveTryLimit, RaceRecordBoard board) {
+        this.names = carNames;
+        this.recordBoard = board;
         this.moveTryLimit = moveTryLimit;
         this.carList = new ArrayList<>();
     }
@@ -26,11 +26,14 @@ public class CarFactory {
     public void createCars() {
         if (names.length != 0) {
             for (String name : names) {
-                carList.add(new RacingCar(name, new Distance(moveTryLimit), board));
+                carList.add(new RacingCar(name, new Distance(moveTryLimit), recordBoard));
             }
         }
     }
 
+    /**
+     * 차량 리스트 반환
+     */
     public List<RacingCar> getCarList(){
         return carList;
     }
