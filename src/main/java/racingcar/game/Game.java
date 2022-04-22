@@ -46,11 +46,8 @@ class Game {
     }
 
     static void play() {
-        String inputCarNames = GameUtil.readLineWithPrompt(GameMessage.PROMPT_INPUT_CAR_NAMES.get());
-        Cars cars = GameUtil.parseCarNames(inputCarNames).mapAndCollect(Car::new, Cars::new);
-
-        String inputNumTurns = GameUtil.readLineWithPrompt(GameMessage.PROMPT_INPUT_NUMBER_OF_TURNS.get());
-        IntRange turns = new IntRange(GameUtil.parseInt(inputNumTurns));
+        Cars cars = GameInput.inputCarNames().mapAndCollect(Car::new, Cars::new);
+        IntRange turns = new IntRange(GameInput.inputNumTurns());
 
         GameStates states = process(cars, turns);   // Saves each turn of racing
         Console.println(GameMessage.resultMessage(states, Game::winningCars));
