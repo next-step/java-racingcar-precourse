@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class IntRange extends AbstractImmutableList<Integer> {
-    public IntRange() {
+    private IntRange() {
         super();
     }
 
