@@ -10,8 +10,9 @@ public class CarName extends SingleValue<String> {
     }
 
     static void validateNameLength(String name) {
-        if (name.length() > GameConfig.MAX_CAR_NAME_LENGTH) {
-            throw new IllegalArgumentException("name is too long");
+        if (name.length() > GameConfig.MAX_CAR_NAME_LENGTH || name.length() < GameConfig.MIN_CAR_NAME_LENGTH) {
+            throw new IllegalArgumentException("length of name must be between "
+                    + GameConfig.MIN_CAR_NAME_LENGTH + " and " + GameConfig.MAX_CAR_NAME_LENGTH);
         }
     }
 

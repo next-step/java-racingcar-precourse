@@ -7,4 +7,5 @@ public class GameConfig {
     public static final int MOVE_INCREMENT = 1;
     public static final int MIN_CARS = 2;
     public static final int MAX_CAR_NAME_LENGTH = 5;
+    public static final int MIN_CAR_NAME_LENGTH = 1;
 }
