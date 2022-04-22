@@ -19,6 +19,11 @@ public abstract class AbstractImmutableList<E> {
         list.add(element);
     }
 
+    protected AbstractImmutableList(E[] elements) {
+        this();
+        Collections.addAll(this.list, elements);
+    }
+
     protected AbstractImmutableList(List<E> list) {
         this.list = new ArrayList<>(list);
     }

@@ -14,6 +14,10 @@ public class Cars extends AbstractImmutableList<Car> {
         super(car);
     }
 
+    public Cars(Car... cars) {
+        super(cars);
+    }
+
     public Cars(List<Car> cars) {
         super(new ArrayList<>(cars));
     }
