@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class Racing {
-    private static final String NUMBER_REGAX = "^[0-9]*$";
+    private static final String NUMBER_REGEX = "^[0-9]*$";
     private final int moveCount;
     private int maxCarDistance = 0;
     private final List<Car> cars;
@@ -18,7 +18,7 @@ public class Racing {
     }
 
     private boolean isNumber(String input) {
-        return Pattern.matches(NUMBER_REGAX, input);
+        return Pattern.matches(NUMBER_REGEX, input);
     }
 
     public void moveCars() {
