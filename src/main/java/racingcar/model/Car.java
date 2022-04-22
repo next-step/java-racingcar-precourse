@@ -1,9 +1,13 @@
 package racingcar.model;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 public class Car {
     private static final int NAME_MAX_LENGTH = 5;
     private static final int NAME_MIN_LENGTH = 1;
-    private static final int CAN_MOVE = 4;
+    private static final int IS_MOVE = 4;
+    private static final int MIN_RANDOM_VALUE = 0;
+    private static final int MAX_RANDOM_VALUE = 0;
     private final String name;
     private int distance = 0;
 
@@ -12,8 +16,8 @@ public class Car {
         this.name = name;
     }
 
-    public void move(int randomNumber) {
-        if(isMove(randomNumber)) {
+    public void move() {
+        if(isMove()) {
             distance++;
         }
     }
@@ -28,8 +32,8 @@ public class Car {
         }
     }
 
-    boolean isMove(int randomNumber) {
-        return randomNumber >= CAN_MOVE;
+    boolean isMove() {
+        return Randoms.pickNumberInRange(MIN_RANDOM_VALUE, MAX_RANDOM_VALUE) >= IS_MOVE;
     }
 
     public int getDistance() {
