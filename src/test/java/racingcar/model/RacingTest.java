@@ -40,4 +40,14 @@ class RacingTest {
         racing.play();
         assertThat(racing.getMaxCarDistance()).isLessThanOrEqualTo(racing.getMoveCount());
     }
+
+    @Test
+    void 이동거리가_제일_큰_자동차_리스트_구하기() {
+        Racing racing = new Racing("5", cars);
+        racing.play();
+        List<Car> winners = racing.getWinner();
+        for (Car car : winners) {
+            assertThat(car.getDistance()).isEqualTo(racing.getMaxCarDistance());
+        }
+    }
 }

@@ -2,6 +2,7 @@ package racingcar.model;
 
 import java.util.List;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class Racing {
     private static final String NUMBER_REGEX = "^[0-9]*$";
@@ -38,6 +39,10 @@ public class Racing {
         for(int i=0; i<moveCount; i++) {
             moveCars();
         }
+    }
+
+    public List<Car> getWinner() {
+        return cars.stream().filter(car -> car.getDistance() == maxCarDistance).collect(Collectors.toList());
     }
 
     public int getMoveCount() {
