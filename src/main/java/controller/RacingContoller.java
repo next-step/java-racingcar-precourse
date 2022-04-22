@@ -12,6 +12,7 @@ public class RacingContoller {
     public static final int START_INCLUSIVE = 0;
     public static final int END_INCLUSIVE = 9;
     public static final int MOVE_FORWARD_BASE_VALUE = 4;
+    public static final String MESSAGE_INFO_RACE_RESULT = "실행 결과";
     private static Map<CarName, String> RECORD;
 
     public void startRace(CarNames carNames, Laps laps) {
@@ -22,9 +23,11 @@ public class RacingContoller {
             RECORD.put(name, "");
         }
 
+        System.out.println(MESSAGE_INFO_RACE_RESULT);
         while (lap < laps.getLaps()) {
             progressRace(carNames);
             lap++;
+            System.out.println();
         }
     }
 
@@ -38,5 +41,10 @@ public class RacingContoller {
         if (Randoms.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE) >= MOVE_FORWARD_BASE_VALUE) {
             RECORD.put(name, RECORD.get(name) + "-");
         }
+        recordResult(name);
+    }
+
+    private void recordResult(CarName name) {
+        System.out.println(name.getName() + " : " + RECORD.get(name));
     }
 }
