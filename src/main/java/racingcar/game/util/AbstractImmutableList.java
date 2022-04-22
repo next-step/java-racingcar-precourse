@@ -28,6 +28,10 @@ public abstract class AbstractImmutableList<E> {
         Collections.addAll(this.list, elements);
     }
 
+    public E get(int index) {
+        return list.get(index);
+    }
+
     public int size() {
         return list.size();
     }
