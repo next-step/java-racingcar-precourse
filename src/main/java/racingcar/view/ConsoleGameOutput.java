@@ -11,8 +11,7 @@ public class ConsoleGameOutput implements GameOutput {
     private static final String INPUT_LAP_COUNT = "시도할 회수는 몇회인가요?";
     private static final String RESULT_TITLE = "실행 결과";
     private static final String ERROR_MESSAGE_PREFIX = "[ERROR]";
-//    private static final String NOTIFY_CHAMPIONS = "최종 우승자: %s%n"; // 입출력 요구사항 형식
-    private static final String NOTIFY_CHAMPIONS = "최종 우승자는 %s 입니다.%n"; // 테스트케이스 형식
+    private static final String NOTIFY_CHAMPIONS = "최종 우승자: %s%n";
 
     private final PrintStream output;
 
