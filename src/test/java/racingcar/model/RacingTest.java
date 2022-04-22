@@ -28,7 +28,7 @@ class RacingTest {
     @Test
     void 이동횟수만큼_자동차들을_이동() {
         Racing racing = new Racing("5", cars);
-        racing.play();
+        racing.race();
         for (Car car : racing.getCars()) {
             assertThat(car.getDistance()).isLessThanOrEqualTo(racing.getMoveCount()).isGreaterThanOrEqualTo(0);
         }
@@ -37,14 +37,14 @@ class RacingTest {
     @Test
     void 자동차_최대_이동거리는_이동횟수보다_같거나_낮다() {
         Racing racing = new Racing("5", cars);
-        racing.play();
+        racing.race();
         assertThat(racing.getMaxCarDistance()).isLessThanOrEqualTo(racing.getMoveCount());
     }
 
     @Test
     void 이동거리가_제일_큰_자동차_리스트_구하기() {
         Racing racing = new Racing("5", cars);
-        racing.play();
+        racing.race();
         List<Car> winners = racing.getWinner();
         for (Car car : winners) {
             assertThat(car.getDistance()).isEqualTo(racing.getMaxCarDistance());

@@ -35,10 +35,11 @@ public class Racing {
         }
     }
 
-    public void play() {
+    public List<Car> race() {
         for(int i=0; i<moveCount; i++) {
             moveCars();
         }
+        return getWinner();
     }
 
     public List<Car> getWinner() {
