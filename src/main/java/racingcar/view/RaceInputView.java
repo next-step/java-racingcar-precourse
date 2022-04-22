@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 public class RaceInputView {
     private final String NAME_INPUT_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분";
     private final String TRY_INPUT_MESSAGE = "시도할 회수는 몇회인가요?";
+    private final int NAME_MAX_LENGTH = 5;
 
     /**
      * 차량 이름 입력
@@ -34,7 +35,7 @@ public class RaceInputView {
      */
     private void validateName(String[] names) {
         for (String name : names) {
-            if (name.length() > 5) {
+            if (name.length() > NAME_MAX_LENGTH) {
                 throw new IllegalArgumentException();
             }
         }
