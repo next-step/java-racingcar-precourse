@@ -28,7 +28,7 @@ class Game {
         private final Cars cars;
         private final Distance max;
 
-        public CarsMax(Cars cars, Distance max) {
+        private CarsMax(Cars cars, Distance max) {
             this.cars = cars;
             this.max = max;
         }
