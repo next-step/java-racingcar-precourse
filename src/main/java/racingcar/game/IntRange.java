@@ -18,7 +18,7 @@ public class IntRange extends AbstractImmutableList<Integer> {
         this(1, endInclusive);
     }
 
-    public IntRange(List<Integer> list) {
+    private IntRange(List<Integer> list) {
         super(list);
     }
 
