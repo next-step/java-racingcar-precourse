@@ -51,6 +51,7 @@ class Game {
 
         String inputNumTurns = GameUtil.readLineWithPrompt(GameMessage.PROMPT_INPUT_NUMBER_OF_TURNS.get());
         IntRange turns = new IntRange(GameUtil.parseInt(inputNumTurns));
+
         GameStates states = process(cars, turns);   // Saves each turn of racing
         Console.println(GameMessage.resultMessage(states, Game::winningCars));
     }
