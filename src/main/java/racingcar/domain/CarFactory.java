@@ -1,8 +1,8 @@
-package racingcar;
+package racingcar.domain;
 
-import racingcar.domain.Distance;
-import racingcar.domain.RaceRecordBoard;
-import racingcar.domain.RacingCar;
+import racingcar.domain.model.Distance;
+import racingcar.domain.model.RaceRecordBoard;
+import racingcar.domain.model.RacingCar;
 
 import java.util.ArrayList;
 import java.util.List;

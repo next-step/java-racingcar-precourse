@@ -1,4 +1,4 @@
-package racingcar.domain;
+package racingcar.domain.model;
 
 public class Distance {
     private int distance;            // 이동한 거리

@@ -3,9 +3,10 @@ package racingcar;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.Distance;
-import racingcar.domain.RaceRecordBoard;
-import racingcar.domain.RacingCar;
+import racingcar.domain.CarFactory;
+import racingcar.domain.model.Distance;
+import racingcar.domain.model.RaceRecordBoard;
+import racingcar.domain.model.RacingCar;
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.domain.dto.RacingCarDto;
 
@@ -51,7 +52,7 @@ public class RacingCarTest {
     }
 
     @Test
-    void 차_생성시_이름이_5자_이상은_실패_테스트() {
+    void 차_객체_생성시_이름이_5자_이상은_실패_테스트() {
         //given
         String[] names = "pobi12,woniaaa,junabc,jung y".split(",");
 
@@ -104,7 +105,12 @@ public class RacingCarTest {
     }
 
     @Test
-    void 최종_단독_우승자_찾기_테스트() {
+    void 단독차량생성후_최종_단독_우승자_찾기_테스트(){
+
+    }
+
+    @Test
+    void 다수차량생성후_최종_단독_우승자_찾기_테스트() {
         // given
         board.resetRecord();
         board.updateRecord("pobi", 4);
@@ -121,7 +127,7 @@ public class RacingCarTest {
     }
 
     @Test
-    void 최종_공동_우승자_찾기_테스트() {
+    void 다수차량생성후_최종_공동_우승자_찾기_테스트() {
         // given
         board.resetRecord();
         board.updateRecord("pobi", 1);
@@ -140,29 +146,6 @@ public class RacingCarTest {
     }
 
     @Test
-    void 게임_매니저_게임_진행_테스트() {
-        // 게임매니저
-
-        // UI
-        // 차량 이름을 입력 받는 View 클래스의 메소드를 호출한다.
-        // 이동 시도 횟수를 입력받는 View 클래스의 메소드를 호출한다.
-
-        // Domain Logic
-        // 게임매니저 객체 생성 시 이동 거리 현황 객체를 생성한다.
-        // - 차량 생성 팩토리 클래스의 차량 생성 메소드를 호출한다. 호출하면서 이동 거리 현황 객체를 넘긴다.
-        // - 차량들을 리스트로 관리한다.
-        // - View 클래스의 진행 상황 출력 메소드을 호출 한다.
-        // - 게임 종료 판단 후 이동 거리 현황 객체의 최종 우승자를 찾는 메소드를 호출한다.
-
-        // UI
-        // 최종 우승자를 출력하는 View 클래스의 메소드를 호출한다.
-
-        // 차량 팩토리 클래스
-        // - 이름 개수에 따라 RacingCar 객체를 생성한다. 차량 생성 시 이동 거리 현황 객체를 설정한다.
-        // - 생성한 차량들을 리스트로 반환한다.
-    }
-
-    @Test
     void 차량_생성_팩토리로_차량생성_테스트() {
         // given
         CarFactory factory = new CarFactory(DEFAULT_NAMES, DEFAULT_TRY_LIMIT, board);
@@ -174,7 +157,7 @@ public class RacingCarTest {
         // then
         // 이름, board 객체, 사이즈 검증
         assertThat(carList).hasSize(3)
-                           .extracting("name").containsOnly("pobi", "woni", "jun");
+                .extracting("name").containsOnly("pobi", "woni", "jun");
         assertThat(carList).extracting("board").containsOnly(board, board, board); // 원소의 순서, 중복여부 상관없이 원소값과 갯수가 일치해야함
 
         // 최대 이동 시도 횟수 검증
@@ -182,6 +165,25 @@ public class RacingCarTest {
             Integer limit = r.getTryLimit();
             assertThat(limit).isEqualTo(DEFAULT_TRY_LIMIT);
         }
+    }
+
+    @Test
+    void 게임_매니저_게임_진행_테스트() {
+        // 게임매니저
+
+        // UI
+        // 차량 이름을 입력 받는 View 클래스의 메소드를 호출한다.
+        // 이동 시도 횟수를 입력받는 View 클래스의 메소드를 호출한다.
+
+        // Domain Logic
+        //        게임매니저 객체 생성 시 이동 거리 현황 객체를 생성한다.
+        //        - 차량 생성 팩토리 클래스의 차량 생성 메소드를 호출한다. 호출하면서 이동 거리 현황 객체를 넘긴다.
+        //        - 차량들을 리스트로 관리한다.
+        //        - 게임 종료 판단 후 이동 거리 현황 객체의 최종 우승자를 찾는 메소드를 호출한다.
+
+        // UI
+        // View 클래스의 진행 상황 출력 메소드을 호출 한다.
+        // 최종 우승자를 출력하는 View 클래스의 메소드를 호출한다.
     }
 
     public int getRandomNumber() {

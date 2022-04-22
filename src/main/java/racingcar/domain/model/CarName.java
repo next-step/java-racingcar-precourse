@@ -1,4 +1,4 @@
-package racingcar.domain;
+package racingcar.domain.model;
 
 public class CarName {
     private final int MAX_NAME_LENGTH = 5;

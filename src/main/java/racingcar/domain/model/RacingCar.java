@@ -1,7 +1,7 @@
-package racingcar.domain;
+package racingcar.domain.model;
 
 public class RacingCar {
-    private final int FORWARD_MIN_VALUE = 3; // 천진 가능한 최소 값
+    private final int FORWARD_MIN_VALUE = 3; // 전진 가능한 최소 값
     private final CarName name;
     private final Distance distance;
     private final RaceRecordBoard board;
