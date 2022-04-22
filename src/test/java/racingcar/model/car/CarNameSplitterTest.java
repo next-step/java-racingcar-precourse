@@ -7,31 +7,30 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-class CarNameTest {
+class CarNameSplitterTest {
     @Test
-    @DisplayName("1 ~ 5자리의 자동차 이름을 생성한다.")
-    void createLapCount() {
+    @DisplayName("자동차 이름 문자열을 배열로 나눈다.")
+    void split() {
         // given
-        String value = "car1";
+        String carNamesWithComma = "car1,car2,car3";
 
         // when
-        CarName carName = assertDoesNotThrow(() -> new CarName(value));
+        String[] carNames = CarNameSplitter.split(carNamesWithComma);
 
         // then
-        assertThat(carName.getName()).isEqualTo(value);
+        assertThat(carNames).containsExactly("car1", "car2", "car3");
     }
 
     @ParameterizedTest(name = "{displayName} message={0}")
-    @ValueSource(strings = {"", " ", "car123"})
-    @DisplayName("자동차 이름이 빈값, 공백, 6자 이상이면 예외가 발생한다.")
+    @ValueSource(strings = {"", " ", " ,car1", "car1, ", " , "})
+    @DisplayName("잘못된 문자열을 입력하면 예외가 발생한다.")
     void createCarNameThrows(String value) {
         // given
 
         // when
-        Executable executable = () -> new CarName(value);
+        Executable executable = () -> CarNameSplitter.split(value);
 
         // then
         assertThrows(IllegalArgumentException.class, executable);

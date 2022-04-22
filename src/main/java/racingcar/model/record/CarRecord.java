@@ -10,7 +10,7 @@ public class CarRecord {
 
     public CarRecord(String name, Queue<Integer> positions, boolean champion) {
         this.name = name;
-        this.positions = positions;
+        this.positions = new LinkedList<>(positions);
         this.champion = champion;
     }
 
@@ -18,8 +18,8 @@ public class CarRecord {
         return name;
     }
 
-    public Queue<Integer> getPositions() {
-        return new LinkedList<>(positions);
+    public Integer getPosition() {
+        return positions.poll();
     }
 
     public boolean isChampion() {

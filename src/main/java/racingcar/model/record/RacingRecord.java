@@ -31,4 +31,12 @@ public class RacingRecord {
             champions.add(carRecord.getName());
         }
     }
+
+    public int getCarRecordSize() {
+        return carRecords.size();
+    }
+
+    public CarRecord getCarRecord(int index) {
+        return carRecords.get(index);
+    }
 }

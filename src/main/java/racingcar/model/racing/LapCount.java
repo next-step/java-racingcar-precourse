@@ -1,6 +1,5 @@
 package racingcar.model.racing;
 
-import racingcar.constant.ErrorMessage;
 import racingcar.model.car.CarConfig;
 
 public class LapCount {
@@ -19,14 +18,15 @@ public class LapCount {
     private void validate(String value) {
         try {
             int lapCount = Integer.parseInt(value);
-
-            if (lapCount < CarConfig.MIN_LAP_COUNT) {
-                throw new NumberFormatException();
-            }
+            validateIfRange(lapCount);
         } catch (NullPointerException | NumberFormatException e) {
-            throw new IllegalArgumentException(
-                    String.format(ErrorMessage.INVALID_CAR_RACING_COUNT_RANGE, CarConfig.MIN_LAP_COUNT,
-                                  Integer.MAX_VALUE));
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateIfRange(int lapCount) {
+        if (lapCount < CarConfig.MIN_LAP_COUNT || lapCount > CarConfig.MAX_LAP_COUNT) {
+            throw new NumberFormatException();
         }
     }
 

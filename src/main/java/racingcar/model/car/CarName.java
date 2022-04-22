@@ -1,21 +1,28 @@
 package racingcar.model.car;
 
-import racingcar.constant.ErrorMessage;
-
 public class CarName {
     private final String name;
 
     public CarName(String name) {
         validate(name);
-
         this.name = name;
     }
 
     private void validate(String name) {
-        if (name == null || name.trim().length() < CarConfig.MIN_CAR_NAME_LENGTH || name.trim().length() > CarConfig.MAX_CAR_NAME_LENGTH) {
-            throw new IllegalArgumentException(
-                    String.format(ErrorMessage.INVALID_CAR_NAMES_LENGTH, CarConfig.MIN_CAR_NAME_LENGTH,
-                                  CarConfig.MAX_CAR_NAME_LENGTH));
+        validateIfNull(name);
+        validateIfLength(name);
+    }
+
+    private void validateIfNull(String name) {
+        if (name == null) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateIfLength(String name) {
+        String nameTrim = name.trim();
+        if (nameTrim.length() < CarConfig.MIN_CAR_NAME_LENGTH || nameTrim.length() > CarConfig.MAX_CAR_NAME_LENGTH) {
+            throw new IllegalArgumentException();
         }
     }
 
