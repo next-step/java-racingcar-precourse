@@ -28,7 +28,7 @@ public class Distance extends SingleValue<Integer> implements Comparable<Distanc
 
     @Override
     public String toString() {
-        return GameUtil.repeatString(value, "-");
+        return String.valueOf(value);
     }
 
     @Override

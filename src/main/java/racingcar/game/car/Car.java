@@ -40,6 +40,6 @@ public class Car {
 
     @Override
     public String toString() {
-        return getName() + " : " + getDistance() + "\n";
+        return getName() + ":" + getDistance();
     }
 }

@@ -1,6 +1,5 @@
 package racingcar.game;
 
-import racingcar.game.car.Car;
 import racingcar.game.car.Cars;
 
 import java.util.function.Function;
@@ -15,15 +14,16 @@ enum GameMessage {
         this.message = message;
     }
 
-    String get() {
-        return this.message;
-    }
-
     private static String carTraces(GameStates states) {
         return String.join("",
                 states.map(state ->
                         String.join("",
-                                state.getCars().map(Car::toString)) + "\n"));
+                                state.getCars().map(car -> car.getName() + " : " +
+                                        GameUtil.repeatString(car.getDistance().get(), "-") + "\n"
+                                )
+                        ) + "\n"
+                )
+        );
     }
 
     private static String winMessage(Cars cars) {
@@ -33,5 +33,9 @@ enum GameMessage {
     static String resultMessage(GameStates states, Function<Cars, Cars> getWinningCars) {
         Cars winningCars = getWinningCars.apply(states.getLast().getCars());
         return carTraces(states) + winMessage(winningCars);
+    }
+
+    String get() {
+        return this.message;
     }
 }
