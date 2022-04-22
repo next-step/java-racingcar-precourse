@@ -4,22 +4,22 @@ import racingcar.model.movement.MovementStatus;
 import racingcar.model.movement.MovementStrategy;
 import racingcar.model.record.CarRecord;
 
+import java.util.List;
 import java.util.Objects;
-import java.util.Queue;
 
 public class Car implements Comparable<Car> {
     private final CarName carName;
-    private final CarPosition carPosition;
+    private final CarPositions carPositions;
 
     public Car(String name) {
         this.carName = new CarName(name);
-        this.carPosition = new CarPosition();
+        this.carPositions = new CarPositions();
     }
 
     public void race(MovementStrategy movementStrategy) {
         MovementStatus movementStatus = movementStrategy.race();
 
-        carPosition.recordPosition(movementStatus);
+        carPositions.recordPosition(movementStatus);
     }
 
     public String getName() {
@@ -27,11 +27,11 @@ public class Car implements Comparable<Car> {
     }
 
     public int getPosition() {
-        return carPosition.getPosition();
+        return carPositions.getPosition();
     }
 
-    public Queue<Integer> getPositions() {
-        return carPosition.getPositions();
+    public List<Integer> getPositions() {
+        return carPositions.getPositions();
     }
 
     public CarRecord convertCarRecord(int maxPosition) {
@@ -61,6 +61,6 @@ public class Car implements Comparable<Car> {
 
     @Override
     public int hashCode() {
-        return Objects.hash(carName, carPosition);
+        return Objects.hash(carName, carPositions);
     }
 }

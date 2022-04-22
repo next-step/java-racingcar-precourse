@@ -6,32 +6,32 @@ import racingcar.model.movement.MovementStatus;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class CarPositionTest {
+class CarPositionsTest {
     @Test
     @DisplayName("자동차 위치를 생성한다.")
     void createCarPosition() {
         // given
 
         // when
-        CarPosition carPosition = new CarPosition();
+        CarPositions carPositions = new CarPositions();
 
         // then
-        assertThat(carPosition.getPosition()).isZero();
+        assertThat(carPositions.getPosition()).isZero();
     }
 
     @Test
     @DisplayName("자동차 위치를 기록한다.")
     void recordCarPosition() {
         // given
-        CarPosition carPosition = new CarPosition();
+        CarPositions carPositions = new CarPositions();
 
         // when
-        carPosition.recordPosition(MovementStatus.GO);
-        carPosition.recordPosition(MovementStatus.STOP);
-        carPosition.recordPosition(MovementStatus.GO);
+        carPositions.recordPosition(MovementStatus.GO);
+        carPositions.recordPosition(MovementStatus.STOP);
+        carPositions.recordPosition(MovementStatus.GO);
 
         // then
-        assertThat(carPosition.getPosition()).isEqualTo(2);
-        assertThat(carPosition.getPositions()).contains(1, 1, 2);
+        assertThat(carPositions.getPosition()).isEqualTo(2);
+        assertThat(carPositions.getPositions()).contains(1, 1, 2);
     }
 }

@@ -34,17 +34,22 @@ public class ConsoleGameOutput implements GameOutput {
         output.println();
         output.println(RESULT_TITLE);
         for (int i = 0; i < racingRecord.getLapCount(); i++) {
-            showRacingCars(racingRecord);
+            showRacingCars(racingRecord, i);
             output.println();
         }
     }
 
-    private void showRacingCars(RacingRecord racingRecord) {
+    private void showRacingCars(RacingRecord racingRecord, int lapIndex) {
         for (int i = 0; i < racingRecord.getCarRecordSize(); i++) {
             CarRecord car = racingRecord.getCarRecord(i);
-            String positionExpression = new String(new char[car.getPosition()]).replace("\0", "-");
+            int position = car.getPosition(lapIndex);
+            String positionExpression = getPositionExpression(position);
             output.printf("%s : %s%n", car.getName(), positionExpression);
         }
+    }
+
+    private String getPositionExpression(int position) {
+        return new String(new char[position]).replace("\0", "-");
     }
 
     @Override
