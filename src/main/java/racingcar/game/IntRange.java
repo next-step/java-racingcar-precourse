@@ -19,7 +19,7 @@ public class IntRange extends AbstractImmutableList<Integer> {
     }
 
     public IntRange(List<Integer> list) {
-        super(new ArrayList<>(list));
+        super(list);
     }
 
     private static List<Integer> range(int start, int endInclusive) {
