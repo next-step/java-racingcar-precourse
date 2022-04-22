@@ -3,6 +3,7 @@ package racingcar;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Distance;
 import racingcar.domain.RaceRecordBoard;
 import racingcar.domain.RacingCar;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -14,21 +15,21 @@ import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class RacingCarTest {
-    private final int DEFAULT_LIMIT_OF_MOVE = 5;
+    private final int DEFAULT_TRY_LIMIT = 5;
     private final String DEFAULT_NAMES = "pobi,woni,jun";
     private final RaceRecordBoard board = new RaceRecordBoard();
-    private List<RacingCar> racingCarList = new ArrayList<>();
+    private final List<RacingCar> racingCarList = new ArrayList<>();
 
     @BeforeEach
-    void initDefaultTestData(){
+    void initDefaultTestData() {
         String[] arrName = DEFAULT_NAMES.split(",");
-        for (int i=0; i < arrName.length; i++){
-            racingCarList.add(new RacingCar(arrName[i], DEFAULT_LIMIT_OF_MOVE, board));
+        for (int i = 0; i < arrName.length; i++) {
+            racingCarList.add(new RacingCar(arrName[i], new Distance(DEFAULT_TRY_LIMIT), board));
         }
     }
 
     @AfterEach
-    void resetDefaultTestData(){
+    void resetDefaultTestData() {
         board.resetRecord();
         racingCarList.clear();
     }
@@ -57,28 +58,25 @@ public class RacingCarTest {
         //when, then
         for (int i = 0; i < names.length; i++) {
             String n = names[i];
-            assertThrows(IllegalArgumentException.class, () -> new RacingCar(n, DEFAULT_LIMIT_OF_MOVE, board));
+            assertThrows(IllegalArgumentException.class, () -> new RacingCar(n, new Distance(DEFAULT_TRY_LIMIT), board));
         }
     }
 
     @Test
     void 차량_전진_테스트() {
         //given
-        int realMoveCnt = 0;
-        RacingCar rc = new RacingCar("pobi", DEFAULT_LIMIT_OF_MOVE, board);
+        int distance = 0;
+        RacingCar rc = new RacingCar("pobi", new Distance(DEFAULT_TRY_LIMIT), board);
 
         //when
-        for (int i = 1; i <= DEFAULT_LIMIT_OF_MOVE; i++) {
+        for (int i = 1; i <= DEFAULT_TRY_LIMIT; i++) {
             int randNum = getRandomNumber();
             rc.move(randNum);
-
-            // 수동으로 이동횟수 세기
-            realMoveCnt += randNum > 3 ? 1 : 0;
+            distance += randNum > 3 ? 1 : 0;
         }
 
         //then
-        System.out.println("실제 이동 거리 : " + realMoveCnt);
-        assertThat(rc).extracting("distance").isEqualTo(realMoveCnt);
+        assertThat(rc).extracting("distance").isEqualTo(distance);
     }
 
     @Test
@@ -89,22 +87,24 @@ public class RacingCarTest {
         RacingCar rc3 = racingCarList.get(2);
 
         // when
-        // move 메소드 내부에서 이동 후 거리 현황판에 거리를 업데이트
-        for (int i = 0; i < DEFAULT_LIMIT_OF_MOVE; i++) {
+        for (int i = 0; i < DEFAULT_TRY_LIMIT; i++) {
+            // move 메소드 내부에서 이동 후 현황판에 이동한 거리를 업데이트
             rc1.move(getRandomNumber());
             rc2.move(getRandomNumber());
             rc3.move(getRandomNumber());
         }
 
         // then
-        // 이동 기록 현황판의 값과 실제 차량의 최종 이동 거리가 같은지 비교
-        isEqualRecord(rc1, board);
-        isEqualRecord(rc2, board);
-        isEqualRecord(rc3, board);
+        for (RacingCar rc : racingCarList) {
+            // 현황판 이동 기록 얻기
+            Optional<Integer> record = board.findRecord(rc.getName());
+            // 차량의 최종 이동 거리와 비교
+            record.ifPresent(integer -> assertThat(integer).isEqualTo(rc.getDistance()));
+        }
     }
 
     @Test
-    void 최종_단독_우승자_찾기_테스트(){
+    void 최종_단독_우승자_찾기_테스트() {
         // given
         board.resetRecord();
         board.updateRecord("pobi", 4);
@@ -121,7 +121,7 @@ public class RacingCarTest {
     }
 
     @Test
-    void 최종_공동_우승자_찾기_테스트(){
+    void 최종_공동_우승자_찾기_테스트() {
         // given
         board.resetRecord();
         board.updateRecord("pobi", 1);
@@ -134,17 +134,57 @@ public class RacingCarTest {
         List<RacingCarDto> winnerList = board.findWinners();
 
         // then
-        assertThat(winnerList).hasSize(3);
-        assertThat(winnerList).extracting("name").containsOnly("june", "parker", "peter");
+        assertThat(winnerList)
+                .hasSize(3)
+                .extracting("name").containsOnly("june", "parker", "peter");
     }
 
+    @Test
+    void 게임_매니저_게임_진행_테스트() {
+        // 게임매니저
+
+        // UI
+        // 차량 이름을 입력 받는 View 클래스의 메소드를 호출한다.
+        // 이동 시도 횟수를 입력받는 View 클래스의 메소드를 호출한다.
+
+        // Domain Logic
+        // 게임매니저 객체 생성 시 이동 거리 현황 객체를 생성한다.
+        // - 차량 생성 팩토리 클래스의 차량 생성 메소드를 호출한다. 호출하면서 이동 거리 현황 객체를 넘긴다.
+        // - 차량들을 리스트로 관리한다.
+        // - View 클래스의 진행 상황 출력 메소드을 호출 한다.
+        // - 게임 종료 판단 후 이동 거리 현황 객체의 최종 우승자를 찾는 메소드를 호출한다.
+
+        // UI
+        // 최종 우승자를 출력하는 View 클래스의 메소드를 호출한다.
+
+        // 차량 팩토리 클래스
+        // - 이름 개수에 따라 RacingCar 객체를 생성한다. 차량 생성 시 이동 거리 현황 객체를 설정한다.
+        // - 생성한 차량들을 리스트로 반환한다.
+    }
+
+    @Test
+    void 차량_생성_팩토리로_차량생성_테스트() {
+        // given
+        CarFactory factory = new CarFactory(DEFAULT_NAMES, DEFAULT_TRY_LIMIT, board);
+
+        // when
+        factory.createCars();
+        List<RacingCar> carList = factory.getCarList();
+
+        // then
+        // 이름, board 객체, 사이즈 검증
+        assertThat(carList).hasSize(3)
+                           .extracting("name").containsOnly("pobi", "woni", "jun");
+        assertThat(carList).extracting("board").containsOnly(board, board, board); // 원소의 순서, 중복여부 상관없이 원소값과 갯수가 일치해야함
+
+        // 최대 이동 시도 횟수 검증
+        for (RacingCar r : carList) {
+            Integer limit = r.getTryLimit();
+            assertThat(limit).isEqualTo(DEFAULT_TRY_LIMIT);
+        }
+    }
 
     public int getRandomNumber() {
         return Randoms.pickNumberInRange(1, 9);
-    }
-
-    public void isEqualRecord(RacingCar rc, RaceRecordBoard board) {
-        Optional<Integer> record = board.findRecord(rc.getName());
-        record.ifPresent(integer -> assertThat(integer).isEqualTo(rc.getDistance()));
     }
 }

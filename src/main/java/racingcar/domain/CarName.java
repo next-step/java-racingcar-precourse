@@ -2,9 +2,9 @@ package racingcar.domain;
 
 public class CarName {
     private final int MAX_NAME_LENGTH = 5;
-    private String name ;
+    private String name;
 
-    public CarName(String name){
+    public CarName(String name) {
         validateLength(name);
         this.name = name;
     }
@@ -14,7 +14,7 @@ public class CarName {
             throw new IllegalArgumentException();
     }
 
-    public String getName(){
+    public String getName() {
         return this.name;
     }
 }

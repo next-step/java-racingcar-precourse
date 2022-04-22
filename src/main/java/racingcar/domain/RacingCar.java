@@ -1,24 +1,25 @@
 package racingcar.domain;
 
 public class RacingCar {
-    private final int FORWARD_MIN_VALUE = 3;
+    private final int FORWARD_MIN_VALUE = 3; // 천진 가능한 최소 값
+    private final CarName name;
+    private final Distance distance;
+    private final RaceRecordBoard board;
 
-    private CarName name;
-    private Distance distance;
-    private RaceRecordBoard board;
-
-    public RacingCar(String name, int maxDistance, RaceRecordBoard board) {
+    public RacingCar(String name, Distance distance, RaceRecordBoard board) {
         this.name = new CarName(name);
-        this.distance = new Distance(maxDistance);
+        this.distance = distance;
         this.board = board;
     }
 
-    public void move(int move_num){
-        if (move_num > FORWARD_MIN_VALUE) {
+    /**
+     * 차량 전진
+     */
+    public void move(int n) {
+        if (n > FORWARD_MIN_VALUE) {
             distance.increase();
         }
-
-        // 이동 현황판에 이동 기록을 업데이트
+        // RaceRecordBoard 객체에 이동 기록을 업데이트
         board.updateRecord(name.getName(), distance.getDistance());
     }
 
@@ -26,7 +27,11 @@ public class RacingCar {
         return name.getName();
     }
 
-    public int getDistance() {
+    public Integer getDistance() {
         return distance.getDistance();
+    }
+
+    public Integer getTryLimit() {
+        return distance.getLimit();
     }
 }
