@@ -16,11 +16,11 @@ public class RacingBuilder {
     }
 
     public RacingBuilder carNames(String carNamesWithComma) {
-        this.carEntries = makeEntries(carNamesWithComma);
+        this.carEntries = makeCarEntries(carNamesWithComma);
         return this;
     }
 
-    private CarEntries makeEntries(String carNamesWithComma) {
+    private CarEntries makeCarEntries(String carNamesWithComma) {
         List<Car> cars = convertCars(carNamesWithComma);
 
         return new CarEntries(cars);

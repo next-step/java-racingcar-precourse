@@ -1,44 +1,44 @@
 package racingcar.model.car;
 
+import racingcar.dto.CarRecordDto;
 import racingcar.model.movement.MovementStatus;
 import racingcar.model.movement.MovementStrategy;
-import racingcar.model.record.CarRecord;
 
 import java.util.List;
 import java.util.Objects;
 
 public class Car implements Comparable<Car> {
-    private final CarName carName;
-    private final CarPositions carPositions;
+    private final CarName name;
+    private final CarPositions positions;
 
     public Car(String name) {
-        this.carName = new CarName(name);
-        this.carPositions = new CarPositions();
+        this.name = new CarName(name);
+        this.positions = new CarPositions();
     }
 
     public void race(MovementStrategy movementStrategy) {
         MovementStatus movementStatus = movementStrategy.race();
 
-        carPositions.recordPosition(movementStatus);
+        positions.recordPosition(movementStatus);
     }
 
     public String getName() {
-        return carName.getName();
+        return name.getName();
     }
 
     public int getPosition() {
-        return carPositions.getPosition();
+        return positions.getPosition();
+    }
+
+    public CarRecordDto convertCarRecord(int maxPosition) {
+        return new CarRecordDto(getName(), getPositions(), isWinner(maxPosition));
     }
 
     public List<Integer> getPositions() {
-        return carPositions.getPositions();
+        return positions.getPositions();
     }
 
-    public CarRecord convertCarRecord(int maxPosition) {
-        return new CarRecord(getName(), getPositions(), isChampion(maxPosition));
-    }
-
-    private boolean isChampion(int maxPosition) {
+    private boolean isWinner(int maxPosition) {
         return getPosition() == maxPosition;
     }
 
@@ -56,11 +56,11 @@ public class Car implements Comparable<Car> {
             return false;
         }
         Car car = (Car) o;
-        return Objects.equals(getName(), car.getName()) && Objects.equals(getPosition(), car.getPosition());
+        return Objects.equals(getName(), car.getName()) && Objects.equals(getPositions(), car.getPositions());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(carName, carPositions);
+        return Objects.hash(getName(), getPositions());
     }
 }

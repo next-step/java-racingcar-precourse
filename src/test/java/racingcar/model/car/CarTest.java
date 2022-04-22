@@ -26,6 +26,6 @@ class CarTest {
         // then
         assertThat(car.getPosition())
                 .isNotNegative()
-                .isLessThanOrEqualTo(lapCount.getLapCount());
+                .isLessThanOrEqualTo(lapCount.getCount());
     }
 }

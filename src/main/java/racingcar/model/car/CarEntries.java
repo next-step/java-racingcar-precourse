@@ -1,8 +1,7 @@
 package racingcar.model.car;
 
+import racingcar.dto.CarRecordDto;
 import racingcar.model.movement.MovementStrategy;
-import racingcar.model.record.CarRecord;
-import racingcar.model.record.CarRecords;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -21,15 +20,15 @@ public class CarEntries {
         }
     }
 
-    public CarRecords convertCarRecords() {
+    public List<CarRecordDto> convertCarRecords() {
         int maxPosition = getMaxPosition();
 
-        List<CarRecord> carRecordList = new ArrayList<>();
+        List<CarRecordDto> carRecordList = new ArrayList<>();
         for (Car car : cars) {
             carRecordList.add(car.convertCarRecord(maxPosition));
         }
 
-        return new CarRecords(carRecordList);
+        return Collections.unmodifiableList(carRecordList);
     }
 
     private int getMaxPosition() {

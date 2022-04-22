@@ -24,11 +24,11 @@ public class LapCount {
 
     private void validateIfRange(int lapCount) {
         if (lapCount < LapConfig.MIN_LAP_COUNT || lapCount > LapConfig.MAX_LAP_COUNT) {
-            throw new NumberFormatException();
+            throw new IllegalArgumentException();
         }
     }
 
-    public int getLapCount() {
+    public int getCount() {
         return count;
     }
 }

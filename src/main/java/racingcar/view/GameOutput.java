@@ -1,6 +1,6 @@
 package racingcar.view;
 
-import racingcar.model.record.RacingRecord;
+import racingcar.dto.RacingRecordDto;
 
 import java.util.List;
 
@@ -9,9 +9,9 @@ public interface GameOutput {
 
     void inputLapCount();
 
-    void showRacingRecord(RacingRecord racingRecord);
+    void showRacingRecord(RacingRecordDto racingRecord);
 
-    void showChampions(List<String> champions);
+    void showWinners(List<String> winnerNames);
 
     void error(String message);
 }

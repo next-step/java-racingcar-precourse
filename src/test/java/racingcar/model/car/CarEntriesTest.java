@@ -2,15 +2,15 @@ package racingcar.model.car;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.dto.CarRecordDto;
 import racingcar.model.movement.MovementStatus;
 import racingcar.model.movement.MovementStrategy;
-import racingcar.model.record.CarRecords;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 class CarEntriesTest {
     @Test
@@ -41,9 +41,9 @@ class CarEntriesTest {
 
         // when
         CarEntries carEntries = new CarEntries(cars);
-        CarRecords carRecords = carEntries.convertCarRecords();
+        List<CarRecordDto> carRecords = carEntries.convertCarRecords();
 
         // then
-        assertThat(carRecords.size()).isEqualTo(3);
+        assertThat(carRecords).hasSize(3);
     }
 }

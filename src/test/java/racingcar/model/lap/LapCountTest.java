@@ -20,7 +20,7 @@ class LapCountTest {
         LapCount lapCount = assertDoesNotThrow(() -> new LapCount(value));
 
         // then
-        assertThat(lapCount.getLapCount()).isEqualTo(Integer.parseInt(value));
+        assertThat(lapCount.getCount()).isEqualTo(Integer.parseInt(value));
     }
 
     @ParameterizedTest(name = "{displayName} message={0}")

@@ -1,7 +1,7 @@
 package racingcar.view;
 
-import racingcar.model.record.CarRecord;
-import racingcar.model.record.RacingRecord;
+import racingcar.dto.CarRecordDto;
+import racingcar.dto.RacingRecordDto;
 
 import java.io.PrintStream;
 import java.util.List;
@@ -11,7 +11,7 @@ public class ConsoleGameOutput implements GameOutput {
     private static final String INPUT_LAP_COUNT = "시도할 회수는 몇회인가요?";
     private static final String RESULT_TITLE = "실행 결과";
     private static final String ERROR_MESSAGE_PREFIX = "[ERROR]";
-    private static final String NOTIFY_CHAMPIONS = "최종 우승자: %s%n";
+    private static final String NOTIFY_WINNERS = "최종 우승자: %s%n";
 
     private final PrintStream output;
 
@@ -30,7 +30,7 @@ public class ConsoleGameOutput implements GameOutput {
     }
 
     @Override
-    public void showRacingRecord(RacingRecord racingRecord) {
+    public void showRacingRecord(RacingRecordDto racingRecord) {
         output.println();
         output.println(RESULT_TITLE);
         for (int i = 0; i < racingRecord.getLapCount(); i++) {
@@ -39,12 +39,11 @@ public class ConsoleGameOutput implements GameOutput {
         }
     }
 
-    private void showRacingCars(RacingRecord racingRecord, int lapIndex) {
-        for (int i = 0; i < racingRecord.getCarRecordSize(); i++) {
-            CarRecord car = racingRecord.getCarRecord(i);
-            int position = car.getPosition(lapIndex);
+    private void showRacingCars(RacingRecordDto racingRecord, int lapIndex) {
+        for (CarRecordDto carRecord : racingRecord.getCarRecords()) {
+            int position = carRecord.getPosition(lapIndex);
             String positionExpression = getPositionExpression(position);
-            output.printf("%s : %s%n", car.getName(), positionExpression);
+            output.printf("%s : %s%n", carRecord.getName(), positionExpression);
         }
     }
 
@@ -53,8 +52,8 @@ public class ConsoleGameOutput implements GameOutput {
     }
 
     @Override
-    public void showChampions(List<String> champions) {
-        output.printf(NOTIFY_CHAMPIONS, String.join(", ", champions));
+    public void showWinners(List<String> winnerNames) {
+        output.printf(NOTIFY_WINNERS, String.join(", ", winnerNames));
     }
 
     @Override

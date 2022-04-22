@@ -1,12 +1,12 @@
 package racingcar.controller;
 
 import racingcar.constant.ErrorMessage;
+import racingcar.dto.RacingRecordDto;
 import racingcar.model.car.CarConfig;
 import racingcar.model.lap.LapConfig;
+import racingcar.model.movement.MovementStrategy;
 import racingcar.model.racing.Racing;
 import racingcar.model.racing.RacingBuilder;
-import racingcar.model.movement.MovementStrategy;
-import racingcar.model.record.RacingRecord;
 import racingcar.view.GameInput;
 import racingcar.view.GameOutput;
 
@@ -27,7 +27,7 @@ public class GameController {
         setLapCount(builder);
         Racing racing = builder.build();
 
-        RacingRecord racingRecord = racing.start(movementStrategy);
+        RacingRecordDto racingRecord = racing.start(movementStrategy);
         showResult(racingRecord);
     }
 
@@ -55,8 +55,8 @@ public class GameController {
         }
     }
 
-    private void showResult(RacingRecord racingRecord) {
+    private void showResult(RacingRecordDto racingRecord) {
         output.showRacingRecord(racingRecord);
-        output.showChampions(racingRecord.getChampionNames());
+        output.showWinners(racingRecord.getWinnerNames());
     }
 }

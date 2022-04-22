@@ -2,18 +2,19 @@ package racingcar.model.racing;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.dto.CarRecordDto;
+import racingcar.dto.RacingRecordDto;
 import racingcar.model.movement.MovementStatus;
 import racingcar.model.movement.MovementStrategy;
 import racingcar.model.movement.random.RandomMovementConfig;
 import racingcar.model.movement.random.RandomMovementStrategy;
-import racingcar.model.record.RacingRecord;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingTest {
     @Test
     @DisplayName("최종 우승자는 1명 이상이다.")
-    void championCountIsPositive() {
+    void winnerCountIsPositive() {
         // given
         MovementStrategy movementStrategy = new RandomMovementStrategy(RandomMovementConfig.START_RANDOM_NUMBER,
                                                                        RandomMovementConfig.END_RANDOM_NUMBER,
@@ -25,16 +26,17 @@ class RacingTest {
                 .build();
 
         // when
-        RacingRecord racingRecord = racing.start(movementStrategy);
+        RacingRecordDto racingRecord = racing.start(movementStrategy);
 
         // then
         assertThat(racingRecord.getLapCount()).isEqualTo(5);
-        assertThat(racingRecord.getChampionNames()).hasSizeGreaterThanOrEqualTo(1);
+        assertThat(racingRecord.getCarRecords()).anyMatch(CarRecordDto::isWinner);
+        assertThat(racingRecord.getWinnerNames()).hasSizeGreaterThanOrEqualTo(1);
     }
 
     @Test
     @DisplayName("모든 자동차의 위치가 동일한 경우 최종 우승자의 수는 모든 자동차의 수와 같다.")
-    void championCountIsEqualToCarCount() {
+    void winnerCountIsEqualToCarCount() {
         // given
         MovementStrategy movementStrategy = () -> MovementStatus.GO;
 
@@ -44,10 +46,11 @@ class RacingTest {
                 .build();
 
         // when
-        RacingRecord racingRecord = racing.start(movementStrategy);
+        RacingRecordDto racingRecord = racing.start(movementStrategy);
 
         // then
         assertThat(racingRecord.getLapCount()).isEqualTo(5);
-        assertThat(racingRecord.getChampionNames()).hasSize(3);
+        assertThat(racingRecord.getCarRecords()).allMatch(CarRecordDto::isWinner);
+        assertThat(racingRecord.getWinnerNames()).hasSize(3);
     }
 }
