@@ -7,7 +7,7 @@ public class Car {
     private static final int NAME_MIN_LENGTH = 1;
     private static final int IS_MOVE = 4;
     private static final int MIN_RANDOM_VALUE = 0;
-    private static final int MAX_RANDOM_VALUE = 0;
+    private static final int MAX_RANDOM_VALUE = 9;
     private final String name;
     private int distance = 0;
 
