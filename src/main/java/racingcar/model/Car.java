@@ -16,10 +16,11 @@ public class Car {
         this.name = name;
     }
 
-    public void move() {
+    public int move() {
         if(isMove()) {
             distance++;
         }
+        return distance;
     }
 
     public void validateName(String name) {

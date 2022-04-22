@@ -24,8 +24,7 @@ public class Racing {
 
     public void moveCars() {
         for (Car car : cars) {
-            car.move();
-            updateMaxCarDistance(maxCarDistance);
+            updateMaxCarDistance(car.move());
         }
     }
 
