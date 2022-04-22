@@ -50,4 +50,11 @@ class RacingTest {
             assertThat(car.getDistance()).isEqualTo(racing.getMaxCarDistance());
         }
     }
+
+    @Test
+    void 최중우승자_구하기() {
+        Racing racing = new Racing("0", cars);
+        List<Car> winner = racing.race();
+        assertThat(winner).isEqualTo(cars);
+    }
 }
