@@ -50,6 +50,7 @@ class Game {
         IntRange turns = new IntRange(GameInput.inputNumTurns());
 
         GameStates states = process(cars, turns);   // Saves each turn of racing
-        Console.println(GameMessage.resultMessage(states, Game::winningCars));
+        Cars winningCars = winningCars(states.getLast().getCars());
+        Console.println(GameMessage.resultMessage(states, winningCars));
     }
 }
