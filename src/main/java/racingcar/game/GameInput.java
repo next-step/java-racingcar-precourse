@@ -73,7 +73,7 @@ class GameInput {
         return true;
     }
 
-    static CarNames inputCarNames() {
+    static CarNames readCarNames() {
         return readLineUntilValid(
                 GameMessage.PROMPT_INPUT_CAR_NAMES.get(),
                 GameInput::parseCarNames,
@@ -98,7 +98,7 @@ class GameInput {
         return true;
     }
 
-    static int inputNumTurns() {
+    static int readNumTurns() {
         return readLineUntilValid(
                 GameMessage.PROMPT_INPUT_NUMBER_OF_TURNS.get(),
                 GameInput::parseInt,

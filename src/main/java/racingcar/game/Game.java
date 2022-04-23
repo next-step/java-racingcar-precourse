@@ -45,8 +45,8 @@ class Game {
     }
 
     static void play() {
-        Cars cars = GameInput.inputCarNames().mapAndCollect(Car::new, Cars::new);
-        IntRange turns = new IntRange(GameInput.inputNumTurns());
+        Cars cars = GameInput.readCarNames().mapAndCollect(Car::new, Cars::new);
+        IntRange turns = new IntRange(GameInput.readNumTurns());
 
         GameStates states = process(cars, turns);   // Saves each turn of racing
         Cars winningCars = winningCars(states.getLast().getCars());
