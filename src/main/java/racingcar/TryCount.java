@@ -11,7 +11,7 @@ public class TryCount {
 
     private int validateTryCount(String input) {
         if (input == null || !input.matches(NUMBER_REGEX)) {
-            throw new IllegalArgumentException("[ERROR] 시도횟수를 정확히 입력해주세요(숫자)");
+            throw new IllegalArgumentException("[ERROR] 시도 횟수는 숫자여야 한다.");
         }
 
         return Integer.parseInt(input);
