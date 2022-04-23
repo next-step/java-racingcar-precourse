@@ -15,10 +15,12 @@ public class RaceInputView {
      * 차량 이름 입력
      */
     public String[] readCarNames() {
-        System.out.printf("%s ", NAME_INPUT_MESSAGE);
-        String s = Console.readLine();
-        String[] names = s.split(",");
-        validateLength(names);
+        String[] names;
+
+        do {
+            System.out.printf("%s\n", NAME_INPUT_MESSAGE);
+            names = Console.readLine().split(",");
+        } while(!validateLength(names));
 
         return names;
     }
@@ -27,9 +29,11 @@ public class RaceInputView {
      * 이동 시도 횟수 입력
      */
     public Integer readTryNumber() {
-        System.out.printf("%s ", TRY_INPUT_MESSAGE);
-        String n = Console.readLine();
-        validateIsDigit(n);
+        String n;
+        do {
+            System.out.printf("%s\n", TRY_INPUT_MESSAGE);
+            n = Console.readLine();
+        } while(!validateIsDigit(n));
 
         return Integer.parseInt(n);
     }
@@ -37,21 +41,31 @@ public class RaceInputView {
     /**
      * 차량 이름 유효성 검증
      */
-    private void validateLength(String[] names) {
-        for (String name : names) {
-            if (name.length() > NAME_MAX_LENGTH) {
-                throw new NoSuchElementException(NAME_INPUT_ERROR_MESSAGE);
+    private boolean validateLength(String[] names) {
+        try {
+            for (String name : names) {
+                if (name.length() > NAME_MAX_LENGTH)
+                    throw new IllegalArgumentException();
             }
+        } catch (IllegalArgumentException ie){
+            System.out.println(NAME_INPUT_ERROR_MESSAGE);
+            return false;
         }
+        return true;
     }
 
     /**
      * 이동 시도 횟수 유효성 검증
      */
-    private void validateIsDigit(String s) {
-        boolean isNumeric = s.chars().allMatch(Character::isDigit);
-        if (!isNumeric) {
-            throw new NoSuchElementException(TRY_INPUT_ERROR_MESSAGE);
+    private boolean validateIsDigit(String s) {
+        try{
+            boolean isNumeric = s.chars().allMatch(Character::isDigit);
+            if (!isNumeric)
+                throw new NoSuchElementException();
+        } catch(IllegalArgumentException ie){
+            System.out.println(TRY_INPUT_ERROR_MESSAGE);
+            return false;
         }
+        return true;
     }
 }
