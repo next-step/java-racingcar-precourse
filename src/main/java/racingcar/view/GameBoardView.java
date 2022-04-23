@@ -12,9 +12,8 @@ public class GameBoardView {
     }
 
     public static void display(List<Car> cars) {
-        for (Car car : cars) {
-            System.out.printf("%s: %s\n", car.getName(), car.getPosition());
-        }
+        for (Car car : cars)
+            System.out.printf("%s : %s\n", car.getName(), car.drawCurrentPosition());
         System.out.println();
     }
 
