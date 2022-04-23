@@ -9,16 +9,13 @@ class CarHubTest {
 
     @Test
     void init() {
-        CarHub hub = new CarHub();
-        hub.init("pobi", "woni", "jun");
+        CarHub hub = new CarHub("pobi", "woni", "jun");
 
         assertThat(hub.getCars().size()).isEqualTo(3);
     }
 
     @Test
     void initFail() {
-        CarHub hub = new CarHub();
-
-        assertThrows(IllegalArgumentException.class, () -> hub.init("pobiii", "woni", "jun"));
+        assertThrows(IllegalArgumentException.class, () -> new CarHub("pobiii", "woni", "jun"));
     }
 }
