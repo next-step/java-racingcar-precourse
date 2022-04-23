@@ -10,7 +10,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.*;
 
-class RacingCarNamesTest {
+class RacingCarsTest {
 
     @DisplayName("자동차 이름의 길이가 1~5이하 인지 검증")
     @ParameterizedTest
@@ -19,7 +19,7 @@ class RacingCarNamesTest {
         List<String> carNameList = Collections.singletonList(carName);
 
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> new RacingCarNames(carNameList))
+                .isThrownBy(() -> new RacingCars(carNameList))
                 .withMessage("[ERROR] 자동차 이름은 길이 1~5 사이로 입력해주세요.");
     }
 
@@ -29,7 +29,7 @@ class RacingCarNamesTest {
         List<String> duplicationCarNameList = Arrays.asList("아폴로5호", "아폴로5호", "뉴카");
 
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> new RacingCarNames(duplicationCarNameList))
+                .isThrownBy(() -> new RacingCars(duplicationCarNameList))
                 .withMessage("[ERROR] 자동차 이름은 중복을 허용하지 않습니다.");
     }
 

@@ -5,16 +5,16 @@ import java.util.List;
 import racingcar.constant.RacingCarNameLength;
 import racingcar.constant.ErrorMessage;
 
-public class RacingCarNames {
+public class RacingCars {
 
-    private List<String> carNameList;
+    private List<String> carList;
 
-    public RacingCarNames(List<String> carNameList) {
-        for (String carName : carNameList) {
+    public RacingCars(List<String> carList) {
+        for (String carName : carList) {
             validateCarNameLength(carName);
         }
-        validateDuplication(carNameList);
-        this.carNameList = carNameList;
+        validateCarNameDuplication(carList);
+        this.carList = carList;
     }
 
     private void validateCarNameLength(String carName) {
@@ -24,7 +24,7 @@ public class RacingCarNames {
         }
     }
 
-    private void validateDuplication(List<String> carNameList){
+    private void validateCarNameDuplication(List<String> carNameList){
         int inputCarNameSize = carNameList.size();
         int deleteDuplicationCarNameSize = new HashSet<>(carNameList).size();
         if(inputCarNameSize > deleteDuplicationCarNameSize){
