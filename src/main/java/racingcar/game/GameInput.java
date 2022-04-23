@@ -51,6 +51,16 @@ class GameInput {
         return result;
     }
 
+    private static <T> Supplier<T> readLineUntilValid(String prompt,
+                                                      Function<String, T> function,
+                                                      Predicate<T> validator) {
+        return () -> getUntilValid(
+                () -> readLineWithPrompt(prompt),
+                function,
+                validator
+        );
+    }
+
     static CarNames parseCarNames(String line) {
         return new Strings(line.split(","))
                 .mapAndCollect(CarName::new, CarNames::new);
@@ -64,11 +74,11 @@ class GameInput {
     }
 
     static CarNames inputCarNames() {
-        return getUntilValid(
-                () -> readLineWithPrompt(GameMessage.PROMPT_INPUT_CAR_NAMES.get()),
+        return readLineUntilValid(
+                GameMessage.PROMPT_INPUT_CAR_NAMES.get(),
                 GameInput::parseCarNames,
                 GameInput::validateCarNames
-        );
+        ).get();
     }
 
     private static int parseInt(String s) {
@@ -89,10 +99,10 @@ class GameInput {
     }
 
     static int inputNumTurns() {
-        return getUntilValid(
-                () -> readLineWithPrompt(GameMessage.PROMPT_INPUT_NUMBER_OF_TURNS.get()),
+        return readLineUntilValid(
+                GameMessage.PROMPT_INPUT_NUMBER_OF_TURNS.get(),
                 GameInput::parseInt,
                 GameInput::validateNumTurns
-        );
+        ).get();
     }
 }
