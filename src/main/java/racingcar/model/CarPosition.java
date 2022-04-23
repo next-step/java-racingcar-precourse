@@ -15,4 +15,13 @@ public class CarPosition {
     public void forward(int distance) {
         this.position += distance;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < this.position; i++) {
+            builder.append("-");
+        }
+        return builder.toString();
+    }
 }

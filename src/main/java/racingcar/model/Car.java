@@ -45,4 +45,9 @@ public class Car implements Comparable<Car> {
     public int hashCode() {
         return Objects.hash(name, position);
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s : %s", this.name, this.position);
+    }
 }
