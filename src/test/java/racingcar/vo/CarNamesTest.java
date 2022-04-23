@@ -1,5 +1,6 @@
 package racingcar.vo;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
@@ -22,5 +23,14 @@ class CarNamesTest {
                 .withMessage("[ERROR] 자동차 이름은 길이 1~5 사이로 입력해주세요.");
     }
 
+    @DisplayName("자동차 이름들에 중복이 없는지 검증")
+    @Test
+    void validateDuplication() {
+        List<String> duplicationCarNameList = Arrays.asList("아폴로5호", "아폴로5호", "뉴카");
+
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> new CarNames(duplicationCarNameList))
+                .withMessage("[ERROR] 자동차 이름은 중복을 허용하지 않습니다.");
+    }
 
 }
