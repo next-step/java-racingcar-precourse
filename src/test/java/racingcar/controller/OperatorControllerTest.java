@@ -85,7 +85,7 @@ public class OperatorControllerTest extends NsTest {
 	@Test
 	void 자동차_레이싱_시도_회수_입력값_0_검증() {
 		assertThrows(IllegalArgumentException.class,() -> {
-			System.out.print(InterfaceMsg.REQUEST_INPUT_CAR_NAME.getValue()); run("0");
+			System.out.print(InterfaceMsg.REQUEST_INPUT_GAME_TRY_COUNT.getValue()); run("0");
 			String carName = readLine(); System.out.println(carName);
 			ValidationMsg validationMsg = validatorServiceTest.getInstance().validationCarRaceTimes(carName);
 			if (validationMsg == ValidationMsg.ZERO_TYPE) {
@@ -97,7 +97,7 @@ public class OperatorControllerTest extends NsTest {
 	@Test
 	void 자동차_레이싱_시도_회수_입력값_숫자_이외_값_검증() {
 		assertThrows(IllegalArgumentException.class,() -> {
-			System.out.print(InterfaceMsg.REQUEST_INPUT_CAR_NAME.getValue()); run("pobi");
+			System.out.print(InterfaceMsg.REQUEST_INPUT_GAME_TRY_COUNT.getValue()); run("pobi");
 			String carName = readLine(); System.out.println(carName);
 			ValidationMsg validationMsg = validatorServiceTest.getInstance().validationCarRaceTimes(carName);
 			if (validationMsg == ValidationMsg.NOT_NUMBER) {
