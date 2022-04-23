@@ -24,7 +24,7 @@ class RacingCarsTest {
         );
         RacingCars racingCars = new RacingCars(cars);
 
-        assertThat(racingCars.getSize()).isEqualTo(3);
+        assertThat(racingCars.getCars().size()).isEqualTo(cars.size());
     }
 
     @DisplayName("playRound 호출 시 car의 move메소드 호출하는지 확인")

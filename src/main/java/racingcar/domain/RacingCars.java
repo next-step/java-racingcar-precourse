@@ -10,10 +10,6 @@ public class RacingCars {
         this.cars = cars;
     }
 
-    public int getSize() {
-        return cars.size();
-    }
-
     public void playRound() {
         for (Car car: cars) {
             car.move();
@@ -44,5 +40,9 @@ public class RacingCars {
         if (car.isWinner(winnerPosition)) {
             winnerNames.add(car.getName());
         }
+    }
+
+    public List<Car> getCars() {
+        return new ArrayList<>(cars);
     }
 }
