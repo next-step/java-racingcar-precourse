@@ -1,6 +1,7 @@
-package racingcar;
+package racingcar.domain;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.handler.ViewHandler;
 
 public class RaceCar {
     private CarHub hub;

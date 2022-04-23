@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.handler;
+
+import racingcar.domain.Car;
 
 import java.util.List;
 import java.util.StringJoiner;
