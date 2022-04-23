@@ -34,7 +34,6 @@ public class RacingGameController {
     }
 
     private void setCars() {
-        // 자동차 생성
         try {
             QuestionView.carNames();
             String names = Console.readLine();
@@ -45,7 +44,6 @@ public class RacingGameController {
     }
 
     private void setRound() {
-        // 자동차 생성
         try {
             QuestionView.howManyRound();
             nRound = Integer.parseUnsignedInt(Console.readLine());
