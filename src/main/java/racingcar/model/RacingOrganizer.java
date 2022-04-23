@@ -5,9 +5,12 @@ import java.util.List;
 
 public class RacingOrganizer {
 
-    public static List<Car> createCars(String names) {
+    public static List<Car> createCars(String rawNames) {
+        String[] names = rawNames.split(",");
+
         List<Car> cars = new ArrayList<>();
-        cars.add(new Car());
+        for(String name: names)
+            cars.add(new Car(name));
         return cars;
     }
 }
