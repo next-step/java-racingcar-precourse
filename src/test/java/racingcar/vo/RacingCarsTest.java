@@ -9,6 +9,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 class RacingCarsTest {
 
@@ -31,6 +32,17 @@ class RacingCarsTest {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> new RacingCars(duplicationCarNameList))
                 .withMessage("[ERROR] 자동차 이름은 중복을 허용하지 않습니다.");
+    }
+
+    @DisplayName("자동차 이름에 매핑하는 RacingCar 객체로 변환하여 리스트로 가져오는지 확인")
+    @Test
+    void getRacingCarList() {
+        List<String> carNameList = Arrays.asList("레드", "화이트", "그린");
+
+        RacingCars racingCars = new RacingCars(carNameList);
+        List<RacingCar> racingCarList = racingCars.getRacingCarList();
+
+        assertEquals(carNameList.size(), racingCarList.size());
     }
 
 }

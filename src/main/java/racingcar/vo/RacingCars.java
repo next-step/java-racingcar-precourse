@@ -32,4 +32,7 @@ public class RacingCars {
         }
     }
 
+    public List<RacingCar> getRacingCarList() {
+        return null;
+    }
 }
