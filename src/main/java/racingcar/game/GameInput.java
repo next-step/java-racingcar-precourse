@@ -32,7 +32,7 @@ class GameInput {
         try {
             T ret = function.apply(supplier.get());
             return new ObjectBoolean<>(ret, validator.test(ret));
-        } catch (Exception e) {
+        } catch (IllegalArgumentException e) {
             Console.println(EXCEPTION_MESSAGE_PREFIX + e.getMessage());
         }
         return new ObjectBoolean<>(null, false);
