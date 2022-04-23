@@ -5,6 +5,8 @@ public class Car {
     private final String name;
     private int distance;
 
+    private static final int FORWARD = 4;
+
     public Car() {
         this.name = "";
     }
@@ -17,8 +19,8 @@ public class Car {
         }
     }
 
-    public void go(int randomNumber) {
-        if (randomNumber > 3) {
+    public void go(int moveDistance) {
+        if (moveDistance >= FORWARD) {
             distance += 1;
         }
     }
