@@ -24,17 +24,16 @@ class Game {
         ).rest();
     }
 
-    private static class CarsMax {
-        private final Cars cars;
-        private final Distance max;
-
-        private CarsMax(Cars cars, Distance max) {
-            this.cars = cars;
-            this.max = max;
-        }
-    }
-
     static Cars winningCars(Cars candidates) {
+        class CarsMax {
+            private final Cars cars;
+            private final Distance max;
+
+            private CarsMax(Cars cars, Distance max) {
+                this.cars = cars;
+                this.max = max;
+            }
+        }
         return candidates.foldLeft(new CarsMax(new Cars(), new Distance(-1)), (carsMax, car) -> {
             Distance max = carsMax.max;
             Distance distance = car.getDistance();
