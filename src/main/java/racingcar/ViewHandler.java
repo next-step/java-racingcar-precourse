@@ -22,6 +22,8 @@ public class ViewHandler {
         for (Car car : cars) {
             printCarStatus(car);
         }
+
+        System.out.println();
     }
 
     private static void printCarStatus(final Car car) {
