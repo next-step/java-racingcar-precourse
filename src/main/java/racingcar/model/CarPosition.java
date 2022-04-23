@@ -12,7 +12,7 @@ public class CarPosition {
         return this.position;
     }
 
-    public void forward() {
-        this.position += 1;
+    public void forward(int distance) {
+        this.position += distance;
     }
 }

@@ -24,7 +24,7 @@ public class CarPositionTest {
     @Test
     @DisplayName("자동차 위치 증가 테스트")
     void addCarPositionTest() {
-        carPosition.forward();
+        carPosition.forward(1);
         assertThat(carPosition.getPosition()).isEqualTo(1);
     }
 
