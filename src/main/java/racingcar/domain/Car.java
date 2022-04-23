@@ -4,9 +4,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Car {
     public static final int MOVEMENT_STANDARD = 4;
+    public static final int DEFAULT_POSITION = 0;
+    public static final int MOVE_DISTANCE = 1;
 
-    private static final int DEFAULT_POSITION = 0;
-    private static final int MOVE_DISTANCE = 1;
     private static final int MIN_RANDOM_RANGE = 0;
     private static final int MAX_RANDOM_RANGE = 9;
 
@@ -34,5 +34,9 @@ public class Car {
 
     private boolean isMovable() {
         return Randoms.pickNumberInRange(MIN_RANDOM_RANGE, MAX_RANDOM_RANGE) >= MOVEMENT_STANDARD;
+    }
+
+    public boolean isWinner(int winnerPosition) {
+        return this.position.getPosition() == winnerPosition;
     }
 }

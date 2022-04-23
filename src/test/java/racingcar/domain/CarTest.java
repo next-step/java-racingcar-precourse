@@ -3,10 +3,10 @@ package racingcar.domain;
 import camp.nextstep.edu.missionutils.Randoms;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.MockedStatic;
-import org.mockito.Mockito;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.anyInt;
@@ -52,6 +52,29 @@ class CarTest {
             Car car = new Car("TEST");
             car.move();
             assertThat(car.getPosition()).isEqualTo(0);
+        }
+    }
+
+    @DisplayName("우승자 위치와 같은 경우")
+    @Test
+    void winner() {
+        try (final MockedStatic<Randoms> mock = mockStatic(Randoms.class)) {
+            mock.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
+                    .thenReturn(Car.MOVEMENT_STANDARD);
+            Car car = new Car("TEST");
+            car.move();
+            assertThat(car.isWinner(Car.DEFAULT_POSITION + Car.MOVE_DISTANCE)).isTrue();
+        }
+    }
+
+    @DisplayName("우승자 위치와 같지 않은 경우")
+    @Test
+    void notWinner() {
+        try (final MockedStatic<Randoms> mock = mockStatic(Randoms.class)) {
+            mock.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
+                    .thenReturn(Car.MOVEMENT_STANDARD);
+            Car car = new Car("TEST");
+            assertThat(car.isWinner(Car.DEFAULT_POSITION + 1)).isFalse();
         }
     }
 }
