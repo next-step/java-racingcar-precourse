@@ -1,11 +1,11 @@
 package racingcar.constant;
 
-public class CarNameLength {
+public class RacingCarNameLength {
 
     public static final int MIN = 1;
     public static final int MAX = 5;
 
-    private CarNameLength() {
+    private RacingCarNameLength() {
         throw new IllegalStateException("Constant class");
     }
 

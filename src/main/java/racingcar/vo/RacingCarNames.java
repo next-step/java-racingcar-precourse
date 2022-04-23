@@ -2,14 +2,14 @@ package racingcar.vo;
 
 import java.util.HashSet;
 import java.util.List;
-import racingcar.constant.CarNameLength;
+import racingcar.constant.RacingCarNameLength;
 import racingcar.constant.ErrorMessage;
 
-public class CarNames {
+public class RacingCarNames {
 
     private List<String> carNameList;
 
-    public CarNames(List<String> carNameList) {
+    public RacingCarNames(List<String> carNameList) {
         for (String carName : carNameList) {
             validateCarNameLength(carName);
         }
@@ -19,7 +19,7 @@ public class CarNames {
 
     private void validateCarNameLength(String carName) {
         int carNameLength = carName.length();
-        if (carNameLength < CarNameLength.MIN || carNameLength > CarNameLength.MAX) {
+        if (carNameLength < RacingCarNameLength.MIN || carNameLength > RacingCarNameLength.MAX) {
             throw new IllegalArgumentException(ErrorMessage.CAR_NAME_LIMIT);
         }
     }
