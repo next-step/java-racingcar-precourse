@@ -113,14 +113,22 @@ public class RacingCarTest {
 
     @Test
     void 단독차량생성후_최종_단독_우승자_찾기_테스트(){
+        //given
+        board.updateRecord("pobi", 4);
 
+        // when
+        List<String> winnerList = board.findWinners();
+        String winner = winnerList.get(0);
+
+        // then
+        assertThat(winnerList).hasSize(1);
+        assertThat(winner).isEqualTo("pobi");
     }
 
     @Test
     void 다수차량생성후_최종_단독_우승자_찾기_테스트() {
         // given
         // 기록 수동생성
-        board.resetRecord();
         board.updateRecord("pobi", 4);
         board.updateRecord("woni", 2);
         board.updateRecord("june", 6);
@@ -129,7 +137,7 @@ public class RacingCarTest {
         List<String> winnerList = board.findWinners();
         String winner = winnerList.get(0);
 
-        // given
+        // then
         assertThat(winnerList).hasSize(1);
         assertThat(winner).isEqualTo("june");
     }
@@ -138,7 +146,6 @@ public class RacingCarTest {
     void 다수차량생성후_최종_공동_우승자_찾기_테스트() {
         // given
         // 기록 수동 생성
-        board.resetRecord();
         board.updateRecord("pobi", 1);
         board.updateRecord("woni", 2);
         board.updateRecord("june", 9);
@@ -161,8 +168,7 @@ public class RacingCarTest {
         CarFactory factory = new CarFactory(names, DEFAULT_TRY_LIMIT, board);
 
         // when
-        factory.createCars();
-        List<RacingCar> carList = factory.getCarList();
+        List<RacingCar> carList = factory.createCars();
 
         // then
         // 이름, 사이즈 검증

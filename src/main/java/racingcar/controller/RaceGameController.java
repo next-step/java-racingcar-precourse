@@ -27,21 +27,12 @@ public class RaceGameController {
      * 자동차 경주 게임 플레이
      */
     public void playGame() {
-        // 0. 차량이름, 시도횟수 입력받기
         String[] carNames = inputView.readCarNames();
         Integer tryNumber = inputView.readTryNumber();
 
-        // 1. 팩토리에서 입력된 이름 수 만큼 차량 생성
         CarFactory factory = new CarFactory(carNames, tryNumber, recordBoard);
-        factory.createCars();
-
-        // 2. 생성된 차량 얻기
-        List<RacingCar> carList = factory.getCarList();
-
-        // 3. 이동 시도 횟수만큼 race
+        List<RacingCar> carList = factory.createCars();
         race(carList, tryNumber);
-
-        // 4. 우승자 출력
         outputView.printWinners(recordBoard.findWinners());
     }
 

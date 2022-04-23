@@ -16,7 +16,6 @@ public class RaceInputView {
      */
     public String[] readCarNames() {
         String[] names;
-
         do {
             System.out.printf("%s\n", NAME_INPUT_MESSAGE);
             names = Console.readLine().split(",");
@@ -61,7 +60,7 @@ public class RaceInputView {
         try{
             boolean isNumeric = s.chars().allMatch(Character::isDigit);
             if (!isNumeric)
-                throw new NoSuchElementException();
+                throw new IllegalArgumentException();
         } catch(IllegalArgumentException ie){
             System.out.println(TRY_INPUT_ERROR_MESSAGE);
             return false;
