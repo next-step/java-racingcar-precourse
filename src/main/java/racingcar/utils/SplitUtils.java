@@ -1,6 +1,6 @@
 package racingcar.utils;
 
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
 
 public class SplitUtils {
@@ -10,6 +10,7 @@ public class SplitUtils {
     }
 
     public static List<String> splitToList(String words, String delimiter) {
-        return Collections.emptyList();
+        List<String> wordList = Arrays.asList(words.split(delimiter));
+        return wordList;
     }
 }
