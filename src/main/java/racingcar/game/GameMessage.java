@@ -2,8 +2,6 @@ package racingcar.game;
 
 import racingcar.game.car.Cars;
 
-import java.util.function.Function;
-
 enum GameMessage {
     PROMPT_INPUT_CAR_NAMES("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"),
     PROMPT_INPUT_NUMBER_OF_TURNS("시도할 회수는 몇회인가요?\n");
@@ -14,16 +12,16 @@ enum GameMessage {
         this.message = message;
     }
 
-    private static String carTraces(GameStates states) {
+    private static String carTraces(GameState state) {
         return String.join("",
-                states.map(state ->
-                        String.join("",
-                                state.getCars().map(car -> car.getName() + " : " +
-                                        GameUtil.repeatString(car.getDistance().get(), "-") + "\n"
-                                )
-                        ) + "\n"
+                state.getCars().map(car ->
+                        car.getName() + " : " + GameUtil.repeatString(car.getDistance().get(), "-") + "\n"
                 )
-        );
+        ) + "\n";
+    }
+
+    private static String carTraces(GameStates states) {
+        return String.join("",states.map(GameMessage::carTraces));
     }
 
     private static String winMessage(Cars cars) {
