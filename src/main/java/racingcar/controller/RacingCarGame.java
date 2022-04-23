@@ -1,7 +1,7 @@
 package racingcar.controller;
 
-import racingcar.Model.RacingCarGameValidator;
-import racingcar.Model.RacingCars;
+import racingcar.model.RacingCarGameValidator;
+import racingcar.model.RacingCars;
 import racingcar.view.RacingGameInputReader;
 
 public class RacingCarGame {
