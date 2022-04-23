@@ -70,6 +70,17 @@ public class GameInputTest {
         assertThat(output()).contains(ERROR_MESSAGE);
     }
 
+    @ParameterizedTest(name = "readCarNames() 너무 짧은 이름({arguments})을 입력하면, 에러 메시지 출력")
+    @ValueSource(strings = {" , "})
+    void readCarNames_InputTooShortCarNames_ErrorMessagePrints(String input) {
+        try {
+            command(input);
+            GameInput.readCarNames();
+        } catch (NoSuchElementException ignore) {
+        }
+        assertThat(output()).contains(ERROR_MESSAGE);
+    }
+
     @ParameterizedTest(name = "readCarNames() 2개 미만의 이름({arguments})을 입력하면, 에러 메시지 출력")
     @ValueSource(strings = {"a", "a,", ",b", ","})
     void readCarNames_InputCarNamesLessThan2_ErrorMessagePrints(String input) {
