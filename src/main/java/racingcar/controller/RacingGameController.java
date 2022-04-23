@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import racingcar.model.Car;
 import racingcar.model.RacingOrganizer;
 import racingcar.view.ErrorView;
+import racingcar.view.GameBoardView;
 import racingcar.view.QuestionView;
 
 import java.util.List;
@@ -17,6 +18,18 @@ public class RacingGameController {
             setCars();
         while (nRound == null)
             setRound();
+    }
+
+    public void race() {
+        GameBoardView.start();
+        for (int i = 0; i < nRound; i++)
+            startRound();
+    }
+
+    private void startRound() {
+        for (Car car : cars)
+            car.drive();
+        GameBoardView.display(cars);
     }
 
     private void setCars() {
