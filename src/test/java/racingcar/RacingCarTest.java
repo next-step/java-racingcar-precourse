@@ -4,6 +4,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.CarFactory;
+import racingcar.domain.model.CarName;
 import racingcar.domain.model.Distance;
 import racingcar.domain.model.RaceRecordBoard;
 import racingcar.domain.model.RacingCar;
@@ -23,8 +24,10 @@ public class RacingCarTest {
     @BeforeEach
     void initDefaultTestData() {
         String[] arrName = DEFAULT_NAMES.split(",");
-        for (int i = 0; i < arrName.length; i++) {
-            racingCarList.add(new RacingCar(arrName[i], new Distance(DEFAULT_TRY_LIMIT), board));
+        for (String s : arrName) {
+            CarName name = new CarName(s);
+            Distance distance = new Distance(DEFAULT_TRY_LIMIT);
+            racingCarList.add(new RacingCar(name, distance, board));
         }
     }
 
@@ -35,20 +38,19 @@ public class RacingCarTest {
     }
 
     @Test
-    void 차_생성_후_이름_거리_테스트() {
-        //given
+    void 차_생성_후_이름_거리_동일여부_테스트() {
+        //given, when
         RacingCar rc1 = racingCarList.get(0);
         RacingCar rc2 = racingCarList.get(1);
         RacingCar rc3 = racingCarList.get(2);
 
         //then
-        assertThat(rc1).extracting("name").isEqualTo("pobi");
-        assertThat(rc1).extracting("distance").isEqualTo(0);
-        assertThat(rc2).extracting("name").isEqualTo("woni");
-        assertThat(rc2).extracting("distance").isEqualTo(0);
-        assertThat(rc3).extracting("name").isEqualTo("jun");
-        assertThat(rc3).extracting("distance").isEqualTo(0);
+        isEqaulNameAndDistance(rc1, "pobi");
+        isEqaulNameAndDistance(rc2, "woni");
+        isEqaulNameAndDistance(rc3, "jun");
     }
+
+
 
     @Test
     void 차_객체_생성시_이름이_5자_이상은_실패_테스트() {
@@ -57,22 +59,28 @@ public class RacingCarTest {
 
         //when, then
         for (int i = 0; i < names.length; i++) {
-            String n = names[i];
-            assertThrows(IllegalArgumentException.class, () -> new RacingCar(n, new Distance(DEFAULT_TRY_LIMIT), board));
+            String name = names[i];
+            assertThrows(IllegalArgumentException.class,
+                                () -> new RacingCar(new CarName(name),
+                                                    new Distance(DEFAULT_TRY_LIMIT),
+                                                    board));
         }
     }
 
     @Test
-    void 차량_전진_테스트() {
+    void 차량_1대_전진_테스트() {
         //given
-        int distance = 0;
-        RacingCar rc = new RacingCar("pobi", new Distance(DEFAULT_TRY_LIMIT), board);
+        RacingCar rc = new RacingCar(
+                new CarName("pobi"),
+                new Distance(DEFAULT_TRY_LIMIT),
+                board);
 
         //when
+        int distance = 0;
         for (int i = 1; i <= DEFAULT_TRY_LIMIT; i++) {
             int randNum = getRandomNumber();
             rc.move(randNum);
-            distance += randNum > 3 ? 1 : 0;
+            distance += randNum > 3 ? 1 : 0; // 수동으로 이동 거리 세기
         }
 
         //then
@@ -111,6 +119,7 @@ public class RacingCarTest {
     @Test
     void 다수차량생성후_최종_단독_우승자_찾기_테스트() {
         // given
+        // 기록 수동생성
         board.resetRecord();
         board.updateRecord("pobi", 4);
         board.updateRecord("woni", 2);
@@ -128,6 +137,7 @@ public class RacingCarTest {
     @Test
     void 다수차량생성후_최종_공동_우승자_찾기_테스트() {
         // given
+        // 기록 수동 생성
         board.resetRecord();
         board.updateRecord("pobi", 1);
         board.updateRecord("woni", 2);
@@ -155,16 +165,27 @@ public class RacingCarTest {
         List<RacingCar> carList = factory.getCarList();
 
         // then
-        // 이름, board 객체, 사이즈 검증
-        assertThat(carList).hasSize(3)
-                .extracting("name").containsOnly("pobi", "woni", "jun");
-        assertThat(carList).extracting("recordBoard").containsOnly(board, board, board); // 원소의 순서, 중복여부 상관없이 원소값과 갯수가 일치해야함
+        // 이름, 사이즈 검증
+        assertThat(carList)
+                .hasSize(3)
+                .extracting("name")
+                .containsOnly("pobi", "woni", "jun");
+        
+        // board 객체 동일여부 검증
+        assertThat(carList)
+                .extracting("recordBoard")
+                .containsOnly(board, board, board); // 원소의 순서, 중복여부 상관없이 원소값과 갯수가 일치해야함
 
         // 최대 이동 시도 횟수 검증
         for (RacingCar r : carList) {
             Integer limit = r.getTryLimit();
             assertThat(limit).isEqualTo(DEFAULT_TRY_LIMIT);
         }
+    }
+
+    private void isEqaulNameAndDistance(RacingCar rc, String name) {
+        assertThat(rc).extracting("name").isEqualTo(name);
+        assertThat(rc).extracting("distance").isEqualTo(0);
     }
 
     public int getRandomNumber() {

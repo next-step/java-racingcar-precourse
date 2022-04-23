@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import racingcar.domain.model.CarName;
 import racingcar.domain.model.Distance;
 import racingcar.domain.model.RaceRecordBoard;
 import racingcar.domain.model.RacingCar;
@@ -25,8 +26,11 @@ public class CarFactory {
      */
     public void createCars() {
         if (names.length != 0) {
-            for (String name : names) {
-                carList.add(new RacingCar(name, new Distance(moveTryLimit), recordBoard));
+            for (String n : names) {
+                carList.add(new RacingCar(
+                        new CarName(n),
+                        new Distance(moveTryLimit),
+                        recordBoard));
             }
         }
     }

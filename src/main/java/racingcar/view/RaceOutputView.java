@@ -12,7 +12,7 @@ public class RaceOutputView {
     public void printRaceProgress(List<RacingCarDto> carList) {
         for (RacingCarDto rc : carList) {
             String name = rc.getName();
-            String hyphens = getTransformHyphen(rc.getDistance());
+            String hyphens = getHyphenChars(rc.getDistance());
 
             System.out.printf("%s : %s\n", name, hyphens);
         }
@@ -29,7 +29,7 @@ public class RaceOutputView {
     /**
      * 이동 거리 to 하이픈 변환
      */
-    private String getTransformHyphen(int distance) {
+    private String getHyphenChars(int distance) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < distance; i++){
             sb.append("-");

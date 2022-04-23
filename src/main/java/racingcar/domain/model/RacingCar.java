@@ -6,8 +6,8 @@ public class RacingCar {
     private final Distance distance;
     private final RaceRecordBoard recordBoard;
 
-    public RacingCar(String name, Distance distance, RaceRecordBoard recordBoard) {
-        this.name = new CarName(name);
+    public RacingCar(CarName name, Distance distance, RaceRecordBoard recordBoard) {
+        this.name = name;
         this.distance = distance;
         this.recordBoard = recordBoard;
     }
