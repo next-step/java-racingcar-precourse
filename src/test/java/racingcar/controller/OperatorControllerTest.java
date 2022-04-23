@@ -1,7 +1,8 @@
 package racingcar.controller;
 
-import static camp.nextstep.edu.missionutils.Console.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static camp.nextstep.edu.missionutils.Console.readLine;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
@@ -14,12 +15,12 @@ public class OperatorControllerTest extends NsTest {
 	private ValidatorServiceTest validatorServiceTest = ValidatorServiceTest.getInstance();
 
 	@Test
-	void string_null_입력_체크() {
+	void 자동차_이름_string_null_입력_체크() {
 		assertEquals(ValidationMsg.NULL_TYPE, validatorServiceTest.getInstance().validationCarName(null));
 	}
 
 	@Test
-	void string_empty_입력_체크() {
+	void 자동차_이름_string_empty_입력_체크() {
 		assertEquals(ValidationMsg.EMPTY_TYPE, validatorServiceTest.getInstance().validationCarName(""));
 	}
 
@@ -66,6 +67,40 @@ public class OperatorControllerTest extends NsTest {
 			String carName = readLine(); System.out.println(carName);
 			ValidationMsg validationMsg = validatorServiceTest.getInstance().validationCarName(carName);
 			if (validationMsg == ValidationMsg.NOT_DUPLICATE_NAME) {
+				System.out.println(validationMsg.getValue()); throw new IllegalArgumentException();
+			}
+		});
+	}
+
+	@Test
+	void 자동차_레이싱_시도_회수_string_null_입력_체크() {
+		assertEquals(ValidationMsg.NULL_TYPE, validatorServiceTest.getInstance().validationCarRaceTimes(null));
+	}
+
+	@Test
+	void 자동차_레이싱_시도_회수_string_empty_입력_체크() {
+		assertEquals(ValidationMsg.EMPTY_TYPE, validatorServiceTest.getInstance().validationCarRaceTimes(""));
+	}
+
+	@Test
+	void 자동차_레이싱_시도_회수_입력값_0_검증() {
+		assertThrows(IllegalArgumentException.class,() -> {
+			System.out.print(InterfaceMsg.REQUEST_INPUT_CAR_NAME.getValue()); run("0");
+			String carName = readLine(); System.out.println(carName);
+			ValidationMsg validationMsg = validatorServiceTest.getInstance().validationCarRaceTimes(carName);
+			if (validationMsg == ValidationMsg.ZERO_TYPE) {
+				System.out.println(validationMsg.getValue()); throw new IllegalArgumentException();
+			}
+		});
+	}
+
+	@Test
+	void 자동차_레이싱_시도_회수_입력값_숫자_이외_값_검증() {
+		assertThrows(IllegalArgumentException.class,() -> {
+			System.out.print(InterfaceMsg.REQUEST_INPUT_CAR_NAME.getValue()); run("pobi");
+			String carName = readLine(); System.out.println(carName);
+			ValidationMsg validationMsg = validatorServiceTest.getInstance().validationCarRaceTimes(carName);
+			if (validationMsg == ValidationMsg.NOT_NUMBER) {
 				System.out.println(validationMsg.getValue()); throw new IllegalArgumentException();
 			}
 		});

@@ -6,6 +6,8 @@ public enum ValidationMsg {
 	MORE_THEN_TWO("[ERROR] 자동차를 2대이상 입력해주세요"),
 	CAR_NAME_OVER_FIVE("[ERROR] 자동차의 이름은 5자 이하만 가능합니다."),
 	NOT_DUPLICATE_NAME("[ERROR] 자동차의 이름들은 중복될 수 없습니다."),
+	NOT_NUMBER("[ERROR] 숫자만 입력해주세요."),
+	ZERO_TYPE("[ERROR] 자동차 경주 게임에서 사용될 값은 0이 될 수 없습니다."),
 	PROPER_TYPE("바르게 입력되었습니다.")
 	;
 
