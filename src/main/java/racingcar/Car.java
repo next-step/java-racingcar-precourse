@@ -11,11 +11,11 @@ public class Car {
         this.name = "";
     }
 
-    public Car(String name) {
+    public Car(String name) throws IllegalArgumentException {
         this.name = name;
 
         if (!validateName()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 자동차 이름은 5차 이하여야합니다.");
         }
     }
 
