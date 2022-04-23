@@ -24,6 +24,7 @@ public class RacingGameController {
         GameBoardView.start();
         for (int i = 0; i < nRound; i++)
             startRound();
+        GameBoardView.declareWinners(cars);
     }
 
     private void startRound() {

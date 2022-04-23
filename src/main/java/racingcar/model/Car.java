@@ -28,7 +28,11 @@ public class Car {
         return name;
     }
 
-    public String getPosition() {
+    public int getPosition() {
+        return position;
+    }
+
+    public String drawCurrentPosition() {
         StringBuilder builder = new StringBuilder();
         for (int i = 0; i < position; i++)
             builder.append("-");

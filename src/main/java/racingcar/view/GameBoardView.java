@@ -2,6 +2,8 @@ package racingcar.view;
 
 import racingcar.model.Car;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class GameBoardView {
@@ -14,5 +16,25 @@ public class GameBoardView {
             System.out.printf("%s: %s\n", car.getName(), car.getPosition());
         }
         System.out.println();
+    }
+
+    public static void declareWinners(List<Car> cars) {
+        System.out.printf("최종 우승자: %s", winners(cars));
+    }
+
+    private static String winners(List<Car> cars) {
+        // 정렬
+        cars.sort(Comparator.comparingInt(Car::getPosition));
+
+        List<String> winners = new ArrayList();
+
+        Car winner = cars.get(cars.size() - 1);
+        for (Car car : cars)
+            if (car.getPosition() == winner.getPosition())
+                winners.add(car.getName());
+
+        if (winners.size() == 1)
+            winner.getName();
+        return String.join(",", winners);
     }
 }
