@@ -1,0 +1,34 @@
+# 기능목록
+
+- 레이싱 준비
+    - 쉼표(,)로 자동차 이름을 분리 (O)
+    - 분리된 n대의 자동차 생성 (O)
+    - 자동차의 이동 횟수 입력 (O)
+- 레이싱 진행
+    - 0에서 9사이의 무작위 값을 a를 구하여 a > 3 일 경우 전진 (O)
+    - 입력 받은 횟수 만큼만 이동 가능함 (O)
+- 레이싱 결과
+    - 제일 전진을 많이한 레이싱 우승자를 구함 (O)
+    - 우승자 출력, 2명 이상일 경우 콤마로 구분 출력 (O)
+- 예외처리
+    - 에러 처리는 [ERROR]로 시작하는 메세지 출력 후 다시 입력 받기 (O)
+    - 입력 받은 사용자 이름이 6글자 이상일 경우 (O)
+    - 시도 횟수가 숫자가 아닐 경우 (O)
+- 제약사항
+    - JDK8에서 동작
+    - JDK Random 및 Scanner API 대신 camp.nextstep.edu.missionutils에서 제공하
+      는 Randoms 및 Console API를 사용
+        - 랜덤숫자: camp.nextstep.edu.missionutils.Randoms.pickNumberInRange() 사용
+        - 콘솔 출력: camp.nextstep.edu.missionutils.Console.readLine() 사용
+    - racingcar.ApplicationTest 통과할 것
+    - 자바 코드 컨벤션을 지키기
+        - [컨벤션 정보](https://github.com/woowacourse/woowacourse-docs/tree/master/styleguide/java])
+    - indent depth 1까지만 허용
+    - stream api 사용 금지, lambda는 사용가능
+    - else 사용하지 말 것
+    - 함수 길이 10줄 넘지 않도록
+    - 일급콜렉션을 활용
+    - 모든 원시값과 문자열을 포장
+- 단위테스트
+    - 도메인 로직에 단위테스트 구현
+        - UI(System.out, System.in, Scanner)제외
