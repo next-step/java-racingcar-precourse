@@ -14,6 +14,7 @@ public class OperatorController {
 	private ValidatorService validatorService = ValidatorService.getInstance();
 	private StringUtilService stringUtilService = StringUtilService.getInstance();
 	private List<String> carNameList = new ArrayList<>();
+	private Integer inputCarRaceTimes = 0;
 
 	// start: Singleton Holder
 	private OperatorController() {
@@ -36,16 +37,25 @@ public class OperatorController {
 		this.carNameList = carNameList;
 	}
 
+	public Integer getInputCarRaceTimes() {
+		return inputCarRaceTimes;
+	}
+
+	public void setInputCarRaceTimes(Integer inputCarRaceTimes) {
+		this.inputCarRaceTimes = inputCarRaceTimes;
+	}
+
 	public void initOperator() {
 		this.printMenu();
 	}
 
 	private void printMenu() {
 		System.out.println(InterfaceMsg.GAME_INFO.getValue()); // 자동차 레이싱 게임 안내
-		String inputCarName = RequestInputCarName();
-		this.setCarNameList(validateCarNames(inputCarName));
-
+		this.setCarNameList(this.validateCarNames(this.RequestInputCarName()));
 		System.out.println(this.getCarNameList());
+
+		this.setInputCarRaceTimes(this.validateCarRaceTimes(this.RequestInputCarRaceTimes()));
+		System.out.println(this.getInputCarRaceTimes());
 	}
 
 	private String RequestInputCarName() {
@@ -54,6 +64,14 @@ public class OperatorController {
 		System.out.println(inputCarName); // Player로부터 자동차 이름들을 입력받음
 
 		return inputCarName;
+	}
+
+	private String RequestInputCarRaceTimes() {
+		System.out.print(InterfaceMsg.REQUEST_INPUT_CAR_RACE_TIMES.getValue());
+		String inputCarRaceTimes = readLine();
+		System.out.println(inputCarRaceTimes); // Player로부터 자동차 경주의 회수를 입력받음
+
+		return inputCarRaceTimes;
 	}
 
 	// 유효성을 통과할 때까지 사용자로부터 자동차 이름들을 입력받는다. 유효성을 통과할 때 List<String>를 반환
@@ -77,4 +95,22 @@ public class OperatorController {
 		return stringUtilService.splitByComma(inputCarName);
 	}
 
+	private Integer validateCarRaceTimes(String inputCarRaceTimes) {
+		Integer properCarRaceTimes = 0;
+		try {
+			properCarRaceTimes = this.properCarRaceTimes(inputCarRaceTimes);
+		} catch (IllegalArgumentException e) {
+			System.out.println(e.getMessage()); inputCarRaceTimes = RequestInputCarRaceTimes();
+			return validateCarRaceTimes(inputCarRaceTimes);
+		}
+		return properCarRaceTimes;
+	}
+
+	private Integer properCarRaceTimes(String inputCarRaceTimes) throws IllegalArgumentException {
+		ValidationMsg validationMsg = validatorService.validationCarRaceTimes(inputCarRaceTimes);
+		if (validationMsg != ValidationMsg.PROPER_TYPE) {
+			throw new IllegalArgumentException(validationMsg.getValue());
+		}
+		return Integer.valueOf(inputCarRaceTimes);
+	}
 }
