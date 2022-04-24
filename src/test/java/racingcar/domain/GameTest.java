@@ -2,7 +2,6 @@ package racingcar.domain;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
 public class GameTest {
@@ -14,6 +13,4 @@ public class GameTest {
             assertThat(racingCarName[index]).isEqualTo(racingCars.getNameByIndex(index + 1));
         }
     }
-
-
 }
