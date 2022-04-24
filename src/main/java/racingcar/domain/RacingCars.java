@@ -1,10 +1,10 @@
 package racingcar.domain;
 
-import java.util.List;
 import java.util.ArrayList;
-import racingcar.common.ValidationCheck;
+import java.util.List;
 
 public class RacingCars {
+
     private final List<RacingCar> racingCars;
 
     public RacingCars(String[] racingCarsName) {
@@ -16,7 +16,7 @@ public class RacingCars {
         for (int index = 0; index < racingCarsName.length; index++) {
             racingCars.add(new RacingCar(racingCarsName[index]));
         }
-        return  racingCars;
+        return racingCars;
     }
 
     public String getNameByIndex(int index) {
@@ -37,6 +37,4 @@ public class RacingCars {
     public List<RacingCar> getRacingCars() {
         return this.racingCars;
     }
-
-
 }
