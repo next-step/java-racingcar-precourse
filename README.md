@@ -7,6 +7,7 @@
 * [과제 제출 방법](https://github.com/next-step/nextstep-docs/tree/master/precourse)
 
 ## ︎📝 구현할 기능 목록
+### ⌨️ 입력 및 입력 값의 유효성 검사
 * Operator(컨트롤러) :  
   * 사용자로부터 경주 할 자동자 이름과 게임을 시도할 회수를 입력받는다.
 * Validator : Operator(컨트롤러)가 사용자로부터 경주 할 자동자 이름을 입력받을 때, 이름이 5자 이하인지 검사한다.
@@ -19,6 +20,21 @@
   "[ERROR]"로 시작하는 에러 메시지를 출력 후, 'IllegalArgumentException'을 발생시키고, 그 부분부터 입력을 다시 받는다.
   * Validator가 자동자 경주 게임을 몇 번 실행할 지, 시도할 회수를 입력받을 때, 빈값이 입력되거나, 입력값이 0이거나, 숫자가 아니라고 알려주면, 
   "[ERROR]"로 시작하는 에러 메시지를 출력 후, 'IllegalArgumentException'을 발생시키고, 그 부분부터 입력을 다시 받는다.
+
+### 🧮 RacingCar게임의 데이터 처리 및 저장
+* 개별 자동차의 이름과 자동차가 전진할 횟수를 가진 RacingCar를 RacingCarRepository에 보관한다.
+* RacingCar : 
+  * 각각의 개별 자동차 클래스
+  * 개별 자동차의 이름과 자동차가 전진할 횟수를 가짐
+  * Random 값(전진할 값) : camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange() 사용
+  * 전진하는 조건은 0에서 9 사이에서 random 값을 구한 후 random 값이 4 이상일 경우 전진하고, 3 이하의 값이면 멈춘다.
+* RacingCarRepository(저장소 대역) : 
+  * RacingCar를 가진 일급객체
+
+### 🖨 출력
+ * RacingCarRepository가 가진 RacingCar들의 이름과 전진한 값을 출력
+ * RacingCarRepository가 가진 RacingCar들의 역순 정렬처리 멤버 함수 추가
+ * RacingCarRepository가 가진 RacingCar들의 최종 우승자 출력 멤버 함수 추가
 
 ## ︎💡 구현할 기능 후보 목록(브레인 스토밍)
 ### ☕️ 객체 종류
@@ -98,7 +114,7 @@
 * 사용자의 값 입력 : camp.nextstep.edu.missionutils.Console의 readLine() 사용
 * racingcar package의 ApplicationTest.전진_정지() Test Case 성공
 * racingcar package의 ApplicationTest.이름에_대한_예외_처리() Test Case 성공
-* 필수는 아니지만, 제공된 소스 코드를 참고해서 야구 게임을 위한 모든 Test Cast 추가
+* 필수는 아니지만, 제공된 소스 코드를 참고해서 자동차 경주 게임을 위한 모든 Test Cast 추가
 * [자바 코드 컨벤션](https://github.com/woowacourse/woowacourse-docs/tree/master/styleguide/java) 을 지키기
 * indent(인덴트,들여쓰기) depth는 1까지만 허용 : depth를 줄이는 좋은 방법은 함수(또는메소드)를 분리
 * 자바8에 추가된 stream api를 사용하지 않고 구현. 단, 람다는 사용 가능
@@ -114,7 +130,7 @@
 * JUnit5 기반 단위 테스트를 구현
 
 ## 💬 과제 진행 요구사항
-* 미션은 [저장소](https://github.com/next-step/java-baseball-precourse)를 fork/clone해 시작한다.
+* 미션은 [저장소](https://github.com/next-step/java-racingcar-precourse)를 fork/clone해 시작한다.
 * 기능을 구현하기 전에 docs/README.md 파일에 구현할 기능 목록을 정리해 추가한다.
 * git의 commit단위는 앞단계에서 docs/README.md 파일에 정리한 기능 목록 단위 또는 의미있는 단위로 Commit 한다.
 * [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153)을 참고해 commit log를 남기려고 노력해 본다.
