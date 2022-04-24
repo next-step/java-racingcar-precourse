@@ -19,6 +19,14 @@ public class Utils {
     public static String[] splitStr(String str, String div){
         return str.split(div);
     }
+
+    public static int stringToInt(String str){
+        try{
+            return Integer.parseInt(str);
+        } catch (IllegalArgumentException e ){
+            throw new IllegalArgumentException();
+        }
+    }
 }
 
 
