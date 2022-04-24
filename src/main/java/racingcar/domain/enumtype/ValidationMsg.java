@@ -3,7 +3,7 @@ package racingcar.domain.enumtype;
 public enum ValidationMsg {
 	NULL_TYPE("[ERROR] 입력하신 값은 NULL이 될 수 없습니다."),
 	EMPTY_TYPE("[ERROR] 자동차 경주 게임에서 사용될 값이 입력되지 않았습니다."),
-	MORE_THEN_TWO("[ERROR] 자동차를 2대이상 입력해주세요"),
+	NEED_MORE_THEN_TWO("[ERROR] 자동차를 2대이상 입력해주세요"),
 	CAR_NAME_OVER_FIVE("[ERROR] 자동차의 이름은 5자 이하만 가능합니다."),
 	NOT_DUPLICATE_NAME("[ERROR] 자동차의 이름들은 중복될 수 없습니다."),
 	NOT_NUMBER("[ERROR] 숫자만 입력해주세요."),
