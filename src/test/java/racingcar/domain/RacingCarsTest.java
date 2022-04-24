@@ -6,12 +6,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class RacingCarsTest {
+
     String[] racingCarName;
     RacingCars racingCars;
 
     @BeforeEach
     public void create() {
-        racingCarName = new String[]{"자동차1","자동차2","자동차3"};
+        racingCarName = new String[]{"자동차1", "자동차2", "자동차3"};
         racingCars = new RacingCars(racingCarName);
     }
 
