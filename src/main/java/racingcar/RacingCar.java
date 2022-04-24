@@ -1,11 +1,12 @@
 package racingcar;
 
 public class RacingCar {
+    private static final int INIT_GAME_POSITION_NUM = 0;
     private String name;
     private int gamePosition;
 
     public RacingCar(String name) {
-        this(name, 0);
+        this(name, INIT_GAME_POSITION_NUM);
     }
 
     public RacingCar(String name, int gamePosition) {
