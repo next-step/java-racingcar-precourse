@@ -86,7 +86,8 @@ public class RacingCarsTest {
         cars.add(new RacingCar("hello", 2, carMoveRule));
         cars.add(new RacingCar("hell2", 2, carMoveRule));
         racingCars = new RacingCars(cars);
-        assertThat(racingCars.getWinners()).isEqualTo("hi");
+        racingCars.setWinners();
+        assertThat(racingCars.getWinnerOutPutResult().getPrintWinners()).isEqualTo("hi");
     }
 
     @DisplayName("게임 결과를 조회했을 때, 우승자가 두명일 경우 우승자 두명의 이름을 반환한다.")
@@ -97,6 +98,7 @@ public class RacingCarsTest {
         cars.add(new RacingCar("hello", 3, carMoveRule));
         cars.add(new RacingCar("hell2", 2, carMoveRule));
         racingCars = new RacingCars(cars);
-        assertThat(racingCars.getWinners()).isEqualTo("hi, hello");
+        racingCars.setWinners();
+        assertThat(racingCars.getWinnerOutPutResult().getPrintWinners()).isEqualTo("hi, hello");
     }
 }

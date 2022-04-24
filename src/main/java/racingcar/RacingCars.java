@@ -3,11 +3,11 @@ package racingcar;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.StringJoiner;
 import org.assertj.core.util.VisibleForTesting;
 import racingcar.model.CarMoveRule;
 import racingcar.model.CarName;
 import racingcar.model.Position;
+import racingcar.model.WinnerResult;
 
 public class RacingCars {
     @VisibleForTesting
@@ -27,12 +27,11 @@ public class RacingCars {
         cars.forEach(car -> car.move(RandomUtils.getRandomNumber()));
     }
 
-    public String getWinners() {
+    public void setWinners() {
         Position winnerPosition = getMaxPosition();
         for (RacingCar car : cars) {
             addWinner(car, winnerPosition);
         }
-        return getWinnerOutPutResult();
     }
 
     private void addWinner(RacingCar car, Position winnerPosition) {
@@ -49,12 +48,8 @@ public class RacingCars {
         return new Position(Collections.max(positions));
     }
 
-    private String getWinnerOutPutResult() {
-        StringJoiner stringJoiner = new StringJoiner(", ");
-        for (CarName winner : winners) {
-            stringJoiner.add(winner.getName());
-        }
-        return stringJoiner.toString();
+    public WinnerResult getWinnerOutPutResult() {
+        return new WinnerResult(winners);
     }
 
     private void validCarNames(String inputCarNames) {
