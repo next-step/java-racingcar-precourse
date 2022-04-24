@@ -25,6 +25,8 @@
       |내용   |Exception|
       |---|---|
       | 시도 횟수가 숫자가 아닌 경우     |IllegalArgumentException|
+      | 시도 횟수가 음수인 경우     |IllegalArgumentException|
+      | 시도 횟수 범위가 너무 큰 경우    |IllegalArgumentException|
 
 - [ ] 각각의 사용자 입력에 Exception이 발생하는 경우 다시 재입력
 
