@@ -47,4 +47,8 @@ public class RacingCarGameController {
     public String allRoundResult(RacingCars racingCars) {
         return racingCarGameResultView.allRoundResultView(racingCars);
     }
+
+    public String racingGameWinners(RacingCars racingCars) {
+        return racingCarGameResultView.racingGameWinnersView(racingCars.getGameWinnerList());
+    }
 }

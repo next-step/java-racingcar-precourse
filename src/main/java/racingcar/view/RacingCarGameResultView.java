@@ -1,5 +1,6 @@
 package racingcar.view;
 
+import java.util.ArrayList;
 import java.util.List;
 import racingcar.vo.RacingCar;
 import racingcar.vo.RacingCars;
@@ -10,6 +11,9 @@ public class RacingCarGameResultView {
     private static final String ENTER = "\n";
     private static final String COLON = ":";
     private static final String FORWARD = "-";
+    private static final String COMMA = ",";
+    private static final String GAP = " ";
+    private static final String WINNERS_MAIN_HEADER = "최종우승자";
 
     public String allRoundResultView(RacingCars racingCars) {
         StringBuilder resultView = new StringBuilder(MAIN_HEADER).append(ENTER);
@@ -37,4 +41,18 @@ public class RacingCarGameResultView {
         }
     }
 
+    public String racingGameWinnersView(List<RacingCar> gameWinnerList) {
+        StringBuilder winnersView = new StringBuilder(WINNERS_MAIN_HEADER).append(COLON).append(GAP);
+        List<String> winnerNameList = extractedWinnerNameList(gameWinnerList);
+        winnersView.append(String.join(COMMA,winnerNameList));
+        return winnersView.toString();
+    }
+
+    private List<String> extractedWinnerNameList(List<RacingCar> gameWinnerList) {
+        List<String> winnersNameList = new ArrayList<>();
+        for(RacingCar racingCar : gameWinnerList){
+            winnersNameList.add(racingCar.getCarName());
+        }
+        return winnersNameList;
+    }
 }
