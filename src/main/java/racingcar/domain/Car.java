@@ -17,12 +17,6 @@ public class Car {
         this.carName = carName;
     }
 
-    /**
-     * 각 자동차의 이름을 정하고, 1~5자
-     * 사용자의 이동 횟수를 입력받는다.
-     * @param carName
-     * @param position
-     */
     public Car(String carName, int position) {
         if(isOverFive(carName)){
             throw new IllegalArgumentException(Constant.ERROR_CAR_NAME_LENGTH);
