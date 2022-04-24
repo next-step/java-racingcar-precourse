@@ -51,7 +51,7 @@ public class Car {
         }
 
         if (carName.length() > Car.NAME_LENGTH_MAX){
-            throw new IllegalArgumentException(ERROR_INPUT_TOO_LONG_NAME);
+            throw new IllegalArgumentException(String.format(ERROR_INPUT_TOO_LONG_NAME, carName));
         }
     }
 }
