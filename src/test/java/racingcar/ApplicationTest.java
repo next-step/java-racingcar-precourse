@@ -18,7 +18,51 @@ class ApplicationTest extends NsTest {
         assertRandomNumberInRangeTest(
             () -> {
                 run("pobi,woni", "1");
-                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자는 pobi 입니다.");
+                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자: pobi");
+            },
+            MOVING_FORWARD, STOP
+        );
+    }
+
+    @Test
+    void 자동차_한대_입력() {
+        assertRandomNumberInRangeTest(
+            () -> {
+                run("one", "ming,pobi", "1");
+                assertThat(output()).contains("ming : -", "pobi : ", "최종 우승자: ming");
+            },
+            MOVING_FORWARD, STOP
+        );
+    }
+
+    @Test
+    void 자동차_이름_공백_입력() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run(" ,ming", "ming,pobi", "1");
+                    assertThat(output()).contains("ming : -", "pobi : ", "최종 우승자: ming");
+                },
+                MOVING_FORWARD, STOP
+        );
+    }
+
+    @Test
+    void 자동차_이름_중복_입력() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("ming,ming", "ming,pobi", "1");
+                    assertThat(output()).contains("ming : -", "pobi : ", "최종 우승자: ming");
+                },
+                MOVING_FORWARD, STOP
+        );
+    }
+
+    @Test
+    void 게임_회수_잘못_입력() {
+        assertRandomNumberInRangeTest(
+            () -> {
+                run("pobi,woni", "asd","1");
+                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자: pobi");
             },
             MOVING_FORWARD, STOP
         );
