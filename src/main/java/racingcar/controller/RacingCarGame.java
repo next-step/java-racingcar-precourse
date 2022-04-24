@@ -17,6 +17,10 @@ public class RacingCarGame {
         while (!racingCarGameValidator.isValid()) {
             racingCarGameValidator.racingCarNamesValidate(RacingGameInputReader.inquireRacingCarNames());
         }
+        racingCarGameValidator.initValidator();
+        while (!racingCarGameValidator.isValid()) {
+            racingCarGameValidator.racingCarGameRoundsValidate(RacingGameInputReader.inquireRacingCarGameRounds());
+        }
 
 
 //        for (String carName : RacingGameInputReader.inquireRacingCarNames().split(",")) {

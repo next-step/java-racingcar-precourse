@@ -3,6 +3,7 @@ package racingcar.model;
 import racingcar.common.Constants;
 import racingcar.common.message.ExceptionMessage;
 import racingcar.exception.InvalidCarNameLengthException;
+import racingcar.exception.InvalidRacingCarGameRoundsException;
 import racingcar.view.RacingGameOutputWriter;
 
 public class RacingCarGameValidator {
@@ -13,11 +14,37 @@ public class RacingCarGameValidator {
         this.racingGameOutputWriter = new RacingGameOutputWriter();
     }
 
+    public void initValidator() {
+        this.validStatus = false;
+    }
+
     public void racingCarNamesValidate(String racingCarNames) {
         try {
             checkRacingCarName(racingCarNames);
         } catch (InvalidCarNameLengthException invalidCarNameLengthException) {
             racingGameOutputWriter.answer(ExceptionMessage.RACING_CAR_NAME_LENGTH_EXCEPTION_MESSAGE);
+        }
+    }
+
+    public void racingCarGameRoundsValidate(String racingCarGameRounds) {
+        try {
+            checkRacingCarGameRounds(racingCarGameRounds);
+        } catch (InvalidRacingCarGameRoundsException invalidRacingCarGameRoundsException) {
+            racingGameOutputWriter.answer(ExceptionMessage.RACING_CAR_GAME_ROUNDS_EXCEPTION_MESSAGE);
+        }
+    }
+
+    public void checkRacingCarGameRounds(String racingCarGameRounds) {
+        for (int i = 0; i < racingCarGameRounds.length(); i++) {
+            checkRacingCarGameRoundsIsDigit(racingCarGameRounds, i);
+        }
+
+        validationSuccess();
+    }
+
+    public void checkRacingCarGameRoundsIsDigit(String racingCarGameRounds, int index) {
+        if (!Character.isDigit(racingCarGameRounds.charAt(index))) {
+            throw new InvalidRacingCarGameRoundsException(ExceptionMessage.RACING_CAR_GAME_ROUNDS_EXCEPTION_MESSAGE);
         }
     }
 
