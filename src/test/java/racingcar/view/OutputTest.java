@@ -39,6 +39,12 @@ class OutputTest {
     }
 
     @Test
+    @DisplayName("중간결과 시작 출력 테스트")
+    void printProcessStartTest() {
+        output.printProcessStart();
+    }
+
+    @Test
     @DisplayName("자동차 경주 실행 결과 출력 테스트")
     void printProcessTest() {
         Car javaCar = Car.create("java");

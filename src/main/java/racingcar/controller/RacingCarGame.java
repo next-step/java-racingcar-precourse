@@ -28,6 +28,7 @@ public class RacingCarGame implements Game {
         List<String> carNames = carNameRequest();
         int round = roundRequest();
         Cars cars = Cars.of(carNames);
+        output.printProcessStart();
         raceStart(cars, round);
         List<String> winnerCarNames = cars.getWinnerCarNames();
         output.printResult(winnerCarNames);

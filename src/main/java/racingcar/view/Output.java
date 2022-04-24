@@ -22,14 +22,20 @@ public class Output {
     public void printCarNameRequest() {
         System.out.println(CAR_NAME_REQUEST);
     }
+
     public void printRoundRequest() {
         System.out.println(ROUND_REQUEST);
     }
-    public void printProcess(List<Object> objects) {
+
+    public void printProcessStart() {
         System.out.println(PROCESS);
+    }
+
+    public void printProcess(List<?> objects) {
         objects.forEach(System.out::println);
         System.out.println();
     }
+
     public void printResult(List<String> winners) {
         String winnerNames = String.join(DELIMITER, winners);
         System.out.print(RESULT + winnerNames);
