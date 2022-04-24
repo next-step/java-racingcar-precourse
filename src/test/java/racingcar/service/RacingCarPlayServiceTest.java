@@ -1,5 +1,6 @@
 package racingcar.service;
 
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Arrays;
@@ -9,6 +10,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.MockedStatic;
 
 import static org.mockito.Mockito.mockStatic;
@@ -48,7 +50,7 @@ class RacingCarPlayServiceTest {
     @DisplayName("자동차 경주게임 플레이(우승자 확인)")
     @Test
     void proceedGame() {
-        int round = 3;
+        String round = "3";
         int expectedWinnerCount = 1;
         int winner = 0;
         String expectedWinnerCarName = "한국팀";
@@ -68,4 +70,35 @@ class RacingCarPlayServiceTest {
             assertEquals(expectedWinnerCarName, winnerCarList.get(winner).getCarName());
         }
     }
+
+
+    @DisplayName("시도 횟수 입력값 예외 처리 검증(숫자가 아닌경우)")
+    @ParameterizedTest(name = "round 입력 값이 [{0}]")
+    @ValueSource(strings = {"$", "일", "!"})
+    void proceedGame_throw_not_number(String round) {
+
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> racingCarPlayService.proceedGame(null, round))
+                .withMessage("[ERROR] 시도 횟수는 숫자여야 합니다.");
+
+    }
+
+    @DisplayName("시도 횟수 입력값 예외 처리 검증(음수인 경우)")
+    @Test
+    void proceedGame_throw_negative_number() {
+        String round = "-100";
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> racingCarPlayService.proceedGame(null, round))
+                .withMessage("[ERROR] 시도 횟수는 양수로 입력해주세요.");
+    }
+
+    @DisplayName("시도 횟수 입력값 예외 처리 검증(범위가 너무 큰 경우)")
+    @Test
+    void proceedGame_throw_not_range() {
+        String round = "1000000000";
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> racingCarPlayService.proceedGame(null, round))
+                .withMessage("[ERROR] 시도 횟수가 너무 많습니다.");
+    }
+
 }
