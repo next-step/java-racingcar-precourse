@@ -27,6 +27,11 @@ public class CarRacingGame {
         return result;
     }
 
+    private String appendRandomTrace(final String target) {
+        boolean isForwardMove = Randoms.pickNumberInRange(0, 9) > 3;
+        return isForwardMove ? target + "-" : target;
+    }
+
     private int findMaxTraceSize(final Map<String, String> source) {
         int maxTraceSize = 0;
         for (String integer : source.values()) {
@@ -43,11 +48,22 @@ public class CarRacingGame {
         for (String key : carTraceMap.keySet()) {
             System.out.printf("%s : %s%n", key, carTraceMap.getOrDefault(key, ""));
         }
+
+        this.printFinalWinner(carTraceMap, maxTraceSize);
     }
 
-    private String appendRandomTrace(final String target) {
-        boolean isForwardMove = Randoms.pickNumberInRange(0, 9) > 3;
-        return isForwardMove ? target + "-" : target;
+    private void printFinalWinner(final Map<String, String> carTraceMap, final int maxTraceSize) {
+        StringBuilder winner = new StringBuilder();
+        for (String key : carTraceMap.keySet()) {
+            if (carTraceMap.getOrDefault(key, "").length() != maxTraceSize) {
+                continue;
+            }
+
+            final String DELIMITER = winner.length() > 0 ? ", " : "";
+            winner.append(DELIMITER).append(key);
+        }
+
+        System.out.printf("최종 우승자: %s", winner);
     }
 
 }
