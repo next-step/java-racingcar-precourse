@@ -3,12 +3,13 @@ package racingcar.domain;
 import java.util.List;
 
 public class Result {
+
     private RacingCars racingCars;
     private String result;
 
     public Result(RacingCars racingCars) {
-       this.racingCars = racingCars;
-       this.result = getwinner();
+        this.racingCars = racingCars;
+        this.result = getwinner();
     }
 
     private String getwinner() {
@@ -26,14 +27,14 @@ public class Result {
     private String compareWinner(RacingCar racingCar, int maxWinnerCount, String result) {
         int racingCarWinCount = racingCar.getGoCount();
         if (maxWinnerCount < racingCarWinCount) {
-          return racingCar.getName() + ",";
-        } else if (maxWinnerCount == racingCarWinCount) {;
-          return result + racingCar.getName() + ",";
+            return racingCar.getName() + ",";
+        } else if (maxWinnerCount == racingCarWinCount) {
+            return result + racingCar.getName() + ",";
         }
         return result;
     }
 
     public String getResult() {
-        return this.result;
-    }
+    return this.result;
+  }
 }
