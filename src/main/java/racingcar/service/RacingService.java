@@ -39,6 +39,7 @@ public class RacingService implements Service {
                 racingCars.moveCheck();
                 System.out.println();
             }
+            racingCars.getResult();
         } catch (IllegalArgumentException e) {
             System.out.println("[ERROR]");
             return true;
