@@ -15,4 +15,13 @@ public class ValidationTest {
         ;
         assertThat(validation.isDuplicated(str)).isEqualTo(true);
     }
+    @Test
+    void 참가자_인원_체크_부족_테스트() {
+        // given
+        String[] str = {"pobi"};
+        // when
+        // then
+        Validation validation = new Validation();
+        assertThat(validation.hasNotEnoughParticipant(str)).isEqualTo(true);
+    }
 }
