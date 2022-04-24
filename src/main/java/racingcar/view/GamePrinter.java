@@ -10,7 +10,7 @@ public class GamePrinter {
     public final static String CAR_NAME_EMPTY = "자동차 이름이 비어있습니다. 다시 입력해주세요";
     public final static String DUPLICATE_NAME = "동일한 이름의 자동차가 존재합니다. 다시 입력해주세요";
     public final static String FIVE_LETTER = " 이름은 다섯글자까지 입력할 수 있습니다. 다시 입력해주세요";
-    private static final String ONLY_POSITIVES = " 양의 정수를 입력해주세요.";
+    public static final String ONLY_POSITIVES = " 양의 정수를 입력해주세요.";
 
     public static void printInitMessage() {
         System.out.println(GAME_INIT_MESSAGE);
