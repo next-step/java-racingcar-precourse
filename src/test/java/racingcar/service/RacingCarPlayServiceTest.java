@@ -61,7 +61,7 @@ class RacingCarPlayServiceTest {
                             FORWARD, FORWARD, STOP);
 
             racingCars = racingCarPlayService.proceedGame(racingCars, round);
-            List<RacingCar> winnerCarList = racingCars.getGameWinners();
+            List<RacingCar> winnerCarList = racingCars.getGameWinnerList();
 
             assertEquals(expectedWinnerCount, winnerCarList.size());
             assertEquals(expectedWinnerCarName, winnerCarList.get(0).getCarName());
