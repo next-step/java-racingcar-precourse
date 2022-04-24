@@ -11,4 +11,11 @@ public class RacingCarTest {
         assertThat("자동차1").isEqualTo(racingCar.getName());
         assertThat(0).isEqualTo(racingCar.getGoCount());
     }
+
+    @Test
+    void 전진_테스트() {
+        RacingCar racingCar = new RacingCar("자동차1");
+        racingCar.goRacingCar();
+        assertThat(1).isEqualTo(racingCar.getGoCount());
+    }
 }
