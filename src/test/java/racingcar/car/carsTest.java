@@ -20,7 +20,7 @@ public class carsTest {
         Cars cars = new Cars(carList);
         cars.inputScores();
 
-        Map<String, Integer> moves = cars.getCarMoves();
+        Map<String, Integer> moves = cars.getMoveByName();
         
         assertThat(moves.containsKey("TEST1")).isTrue();
         assertThat(moves.containsKey("TEST2")).isTrue();
