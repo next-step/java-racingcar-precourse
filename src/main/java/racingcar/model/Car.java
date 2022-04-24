@@ -14,7 +14,7 @@ public class Car {
     public static Car withName(String name) {
 
         if (name.length() > 5) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("자동차 이름 길이는 5 이하");
         }
 
         return new Car(name);

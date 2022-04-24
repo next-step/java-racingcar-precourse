@@ -1,7 +1,7 @@
 package racingcar.service;
 
-import camp.nextstep.edu.missionutils.Console;
-import java.util.ArrayList;
+import static racingcar.util.Utils.stringToInt;
+
 import racingcar.model.Racing;
 import racingcar.util.Utils;
 
@@ -41,7 +41,7 @@ public class RacingService implements Service {
             }
             racingCars.getResult();
         } catch (IllegalArgumentException e) {
-            System.out.println("[ERROR]");
+            System.out.println("[ERROR]" + e.getMessage());
             return true;
         }
         return false;

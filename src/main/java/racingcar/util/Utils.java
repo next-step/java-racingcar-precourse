@@ -24,7 +24,7 @@ public class Utils {
         try{
             return Integer.parseInt(str);
         } catch (IllegalArgumentException e ){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("시도 횟수는 숫자여야 한다.");
         }
     }
 }
