@@ -8,6 +8,7 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ApplicationTest extends NsTest {
+
     private static final int MOVING_FORWARD = 4;
     private static final int STOP = 3;
 
@@ -18,7 +19,7 @@ class ApplicationTest extends NsTest {
         assertRandomNumberInRangeTest(
             () -> {
                 run("pobi,woni", "1");
-                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자는 pobi 입니다.");
+                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자: pobi");
             },
             MOVING_FORWARD, STOP
         );
@@ -38,4 +39,5 @@ class ApplicationTest extends NsTest {
     public void runMain() {
         Application.main(new String[]{});
     }
+
 }
