@@ -1,8 +1,6 @@
-package racingcar;
+package racingcar.model;
 
-import racingcar.model.CarMoveRule;
-import racingcar.model.CarName;
-import racingcar.model.Position;
+import racingcar.model.rule.CarMoveRule;
 
 public class RacingCar {
     private static final int INIT_GAME_POSITION_NUM = 0;

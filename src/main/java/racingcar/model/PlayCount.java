@@ -1,6 +1,7 @@
 package racingcar.model;
 
 import racingcar.model.Message.ErrorMessage;
+import racingcar.model.rule.PlayCountRule;
 
 public class PlayCount {
 

@@ -1,4 +1,4 @@
-package racingcar.model;
+package racingcar.model.rule;
 
 public class PlayCountRule {
     private final int minNum;

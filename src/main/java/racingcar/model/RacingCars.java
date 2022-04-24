@@ -1,15 +1,13 @@
-package racingcar;
+package racingcar.model;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import org.assertj.core.util.VisibleForTesting;
-import racingcar.model.CarMoveRule;
-import racingcar.model.CarName;
-import racingcar.model.CurrentResult;
+import racingcar.RacingCarConstants;
+import racingcar.RandomUtils;
 import racingcar.model.Message.ErrorMessage;
-import racingcar.model.Position;
-import racingcar.model.WinnerResult;
+import racingcar.model.rule.CarMoveRule;
 
 public class RacingCars {
     @VisibleForTesting

@@ -1,4 +1,4 @@
-package racingcar.model;
+package racingcar.model.rule;
 
 public class CarMoveRule {
     private final int moveNum;

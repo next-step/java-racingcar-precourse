@@ -3,10 +3,10 @@ package racingcar.controller;
 import racingcar.RacingCarConstants;
 import racingcar.View.InputView;
 import racingcar.View.OutputView;
-import racingcar.model.CarMoveRule;
 import racingcar.model.Game;
 import racingcar.model.GameStatus;
-import racingcar.model.PlayCountRule;
+import racingcar.model.rule.CarMoveRule;
+import racingcar.model.rule.PlayCountRule;
 
 public class GameController {
     Game game;

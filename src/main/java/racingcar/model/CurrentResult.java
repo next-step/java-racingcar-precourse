@@ -2,7 +2,6 @@ package racingcar.model;
 
 import java.util.ArrayList;
 import java.util.StringJoiner;
-import racingcar.RacingCar;
 
 public class CurrentResult {
     String currentResult;

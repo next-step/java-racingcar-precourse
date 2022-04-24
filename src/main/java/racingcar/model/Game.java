@@ -1,6 +1,7 @@
 package racingcar.model;
 
-import racingcar.RacingCars;
+import racingcar.model.rule.CarMoveRule;
+import racingcar.model.rule.PlayCountRule;
 
 public class Game {
     CarMoveRule carMoveRule;

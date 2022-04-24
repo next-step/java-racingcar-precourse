@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.model.rule.PlayCountRule;
 
 public class PlayCountRuleTest {
     @DisplayName("게임 횟수 규칙 생성에 성공한다.")
