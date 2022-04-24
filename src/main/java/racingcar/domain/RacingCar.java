@@ -26,7 +26,6 @@ public class RacingCar {
     }
 
     public void goRacingCar() {
-        this.goCount++;
-    }
-
+    this.goCount++;
+  }
 }
