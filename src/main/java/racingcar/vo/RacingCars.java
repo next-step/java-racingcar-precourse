@@ -45,8 +45,22 @@ public class RacingCars {
         return racingCarList;
     }
 
-    public List<RacingCar> getGameWinners() {
+    public List<RacingCar> getGameWinnerList() {
+        List<RacingCar> copyRacingCarList = new ArrayList<>(racingCarList);
+        copyRacingCarList.sort((car1, car2) -> Integer.compare(car2.getLocation(), car1.getLocation()));
+        List<RacingCar> winnerList = new ArrayList<>();
+        calcWinnerList(winnerList, copyRacingCarList);
+        return winnerList;
+    }
 
-        return null;
+    private void calcWinnerList(List<RacingCar> winnerList, List<RacingCar> copyRacingCarList) {
+        int pervRacingCarLocation = 0;
+        for (RacingCar racingCar : copyRacingCarList) {
+            if (pervRacingCarLocation > racingCar.getLocation()) {
+                break;
+            }
+            pervRacingCarLocation = racingCar.getLocation();
+            winnerList.add(racingCar);
+        }
     }
 }
