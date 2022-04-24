@@ -6,13 +6,14 @@ import racingcar.view.GamePrinter;
 import java.util.Map;
 
 public class GameRound {
+
     int MIN_NUMBER = 0;
     int MAX_NUMBER = 9;
     public int rounds;
 
     public GameRound(int round) {
         if (round < 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(GamePrinter.ERROR + GamePrinter.ONLY_POSITIVES);
         }
         this.rounds = round;
     }
@@ -20,7 +21,7 @@ public class GameRound {
     public void playEachRound(RacingCar racingCar) {
         Map<String, Integer> racingCarRecords = racingCar.racingCarRecords;
         racingCarRecords.forEach((car, dashLine) -> {
-            int dashCount = moveForward(racingCarRecords, car);
+            int dashCount = moveForward(dashLine);
             if (dashLine != dashCount) {
                 racingCarRecords.put(car, dashCount);
             }
@@ -28,15 +29,9 @@ public class GameRound {
         });
     }
 
-    private int moveForward(Map<String, Integer> racingCarRecords, String car) {
-        int originCount = racingCarRecords.get(car);
-        if (isMove()) {
-            return originCount + 1;
-        }
-        return originCount;
-    }
-
-    private boolean isMove() {
-        return Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER) >= 4;
+    public int moveForward(Integer racingCarRecords) {
+        return Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER) >= 4
+                ? racingCarRecords + 1
+                : racingCarRecords;
     }
 }
