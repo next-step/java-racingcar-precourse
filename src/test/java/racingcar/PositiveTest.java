@@ -19,8 +19,7 @@ class PositiveTest {
     @Test
     @DisplayName("음수 값 입력 생성")
     void get2() {
-        Positive p = new Positive(-1);
-        assertThat(p.get()).isEqualTo(0L);
+        assertThrows(IllegalArgumentException.class, () -> new Positive(-1));
     }
 
     @Test
