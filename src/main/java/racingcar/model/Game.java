@@ -5,6 +5,8 @@ import java.util.List;
 
 public class Game {
     private final int INIT_MAX = 0;
+    private final int MIN_NUMBER_OF_EXECUTIONS = 1;
+    private final int MAX_LENGTH_OF_EXECUTIONS = 4;
 
     private int numberOfExecutions;
     private int maxCnt;
@@ -25,8 +27,14 @@ public class Game {
     }
 
     private void checkInputParameter(String str) {
+        if (str.length() > MAX_LENGTH_OF_EXECUTIONS) {
+            throw new IllegalArgumentException();
+        }
         boolean isNotNumeric = !str.chars().allMatch(Character::isDigit);
         if (isNotNumeric) {
+            throw new IllegalArgumentException();
+        }
+        if (Integer.parseInt(str) < MIN_NUMBER_OF_EXECUTIONS) {
             throw new IllegalArgumentException();
         }
     }

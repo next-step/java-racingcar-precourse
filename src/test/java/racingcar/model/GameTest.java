@@ -49,18 +49,36 @@ public class GameTest {
     void 입력받은_횟수로_세팅여부_테스트() {
         // given
         // when
-        Game game = new Game("1");
+        Game game = new Game("0123");
         // then
-        assertThat(game.getNumberOfExecutions()).isEqualTo(1);
+        assertThat(game.getNumberOfExecutions()).isEqualTo(123);
     }
 
     @Test
-    void 입력받은_횟수_검증_테스트_에러발생() {
+    void 입력받은_횟수_숫자열_검증_테스트_에러발생() {
         // given
         // when
         // then
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> new Game("5st12"));
+    }
+
+    @Test
+    void 입력받은_횟수_1이상인지_검증_에러발생() {
+        // given
+        // when
+        // then
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> new Game("0"));
+    }
+    
+    @Test
+    void 입력받은_횟수_4자리이하인지_검증_에러발생() {
+        // given
+        // when
+        // then
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> new Game("12345"));
     }
 
     @Test
