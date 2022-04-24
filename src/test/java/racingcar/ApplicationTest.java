@@ -18,9 +18,20 @@ class ApplicationTest extends NsTest {
         assertRandomNumberInRangeTest(
             () -> {
                 run("pobi,woni", "1");
-                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자는 pobi 입니다.");
+                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자: pobi");
             },
             MOVING_FORWARD, STOP
+        );
+    }
+
+    @Test
+    void 전진_정지2_공동우승() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni", "1");
+                    assertThat(output()).contains("pobi : -", "woni : -", "최종 우승자: pobi, woni");
+                },
+                MOVING_FORWARD, MOVING_FORWARD
         );
     }
 
@@ -33,6 +44,18 @@ class ApplicationTest extends NsTest {
             }
         );
     }
+
+
+    @Test
+    void 이름에_대한_예외_처리2() {
+        assertSimpleTest(
+                () -> {
+                    runException("pobi,,abc");
+                    assertThat(output()).contains(ERROR_MESSAGE);
+                }
+        );
+    }
+
 
     @Override
     public void runMain() {
