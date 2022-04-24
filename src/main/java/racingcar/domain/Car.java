@@ -18,8 +18,8 @@ public class Car {
     }
 
     /**
-     * 각 자동차에 이름을 부여할 수 있다. 자동차 이름은 1~5.
-     * 사용자는 몇 번의 이동을 할 것인지를 입력할 수 있어야 한다.
+     * 각 자동차의 이름을 정하고, 1~5자
+     * 사용자의 이동 횟수를 입력받는다.
      * @param carName
      * @param position
      */
@@ -35,8 +35,9 @@ public class Car {
         return carName;
     }
 
+
     private boolean isOverFive(String carName) {
-        return carName.length() > Constant.MAX_CAR_NAME_LENGTH;
+        return carName.length() >= Constant.MIN_CAR_NAME_LENGTH && carName.length() > Constant.MAX_CAR_NAME_LENGTH;
     }
 
     public boolean isMove(MovingStrategy movingStrategy){

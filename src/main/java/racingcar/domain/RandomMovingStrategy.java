@@ -2,20 +2,17 @@ package racingcar.domain;
 
 
 import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.Constant;
 
 import java.util.Random;
 
 public class RandomMovingStrategy implements MovingStrategy{
-    private static final int MAX_NUM = 9;
-    private static final int MIN_NUM = 0;
-    private static final int FORWARD_NUM = 4;
-
     @Override
     public boolean movable() {
-        return getRandomNumber() >= FORWARD_NUM;
+        return getRandomNumber() >= Constant.FORWARD_CONDITION;
     }
 
     private int getRandomNumber(){
-        return Randoms.pickNumberInRange(MIN_NUM, MAX_NUM);
+        return Randoms.pickNumberInRange(Constant.MIN_RANDOM_VALUE, Constant.MAX_RANDOM_VALUE);
     }
 }

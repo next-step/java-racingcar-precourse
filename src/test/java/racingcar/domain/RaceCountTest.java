@@ -13,7 +13,7 @@ class RaceCountTest {
     void generator_test(){
         assertThatThrownBy(() -> raceCount = new RaceCount("d"))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("[ERROR] 시도 횟수는 숫자여야 한다.");
-        ;
+                .hasMessageContaining("시도 횟수는 숫자여야 한다.");
+
     }
 }

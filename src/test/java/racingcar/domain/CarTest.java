@@ -26,12 +26,12 @@ class CarTest {
     }
 
     /**
-     * 각 자동차에 이름을 부여할 수 있다. 자동차 이름은 5자를 초과할 수 없다.
+     * 각 자동차에 이름을 부여할 수 있다. 자동차 이름은 1~5.
      */
-    @DisplayName("Car 이름 5자 초과 valid 확인 테스트")
+    @DisplayName("Car 이름 1~5 valid 확인 테스트")
     @Test
     void car_name_vaild_test(){
-        assertThatThrownBy(() -> new Car("overfivename", 3))
+        assertThatThrownBy(() -> new Car("errorcarname", 3))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("1 ~ 5자의 이름을 입력해야 합니다.");
     }

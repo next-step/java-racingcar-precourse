@@ -23,6 +23,7 @@ public class RaceCount {
         if (strNum == null) {
             return false;
         }
+
         return pattern.matcher(strNum).matches();
     }
 
