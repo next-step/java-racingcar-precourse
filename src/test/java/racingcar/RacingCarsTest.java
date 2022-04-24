@@ -23,7 +23,7 @@ public class RacingCarsTest {
     @BeforeEach
     public void set() {
         ArrayList<RacingCar> cars = new ArrayList<>();
-        carMoveRule = new CarMoveRule(1, 0, 4);
+        carMoveRule = new CarMoveRule(1, 0, 4, "-");
         cars.add(new RacingCar("hi", carMoveRule));
         cars.add(new RacingCar("hello", carMoveRule));
         cars.add(new RacingCar("hello", carMoveRule));
@@ -100,5 +100,16 @@ public class RacingCarsTest {
         racingCars = new RacingCars(cars);
         racingCars.setWinners();
         assertThat(racingCars.getWinnerOutPutResult().getPrintWinners()).isEqualTo("hi, hello");
+    }
+
+    @DisplayName("게임 현재상태를 조회했을 때, 기대한 값과 같아야 한다.")
+    @Test
+    public void getCurrentResult_P01() {
+        String expected = "hi : ---\nhello : ---\n";
+        ArrayList<RacingCar> cars = new ArrayList<>();
+        cars.add(new RacingCar("hi", 3, carMoveRule));
+        cars.add(new RacingCar("hello", 3, carMoveRule));
+        racingCars = new RacingCars(cars);
+        assertThat(racingCars.getCurrentResult().getResult()).isEqualTo(expected);
     }
 }

@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.model.CarMoveRule;
 import racingcar.model.CarName;
@@ -17,7 +18,7 @@ public class RacingCarTest {
     @BeforeEach
     @Test
     void set() {
-        carMoveRule = new CarMoveRule(1, 0, 4);
+        carMoveRule = new CarMoveRule(1, 0, 4, "-");
     }
 
     @DisplayName("자동차 생성 후 이름 테스트")
@@ -58,5 +59,13 @@ public class RacingCarTest {
     void isWinnerReturnFalseWhenWinnerPositionNotEqualGamePosition(int currentPosition) {
         RacingCar car = new RacingCar("test", currentPosition, carMoveRule);
         assertThat(car.isWinner(new Position(4))).isFalse();
+    }
+
+    @DisplayName("자동차는 현재상태 결과가 예상한 문자열과 같아야 한다")
+    @ParameterizedTest
+    @CsvSource(value = {"3^test : ---", "1^test : -",}, delimiter = '^')
+    void getPrintCurrentResultEqualExpected(String position, String expected) {
+        RacingCar car = new RacingCar("test", Integer.parseInt(position), carMoveRule);
+        assertThat(car.getPrintCurrentResult()).isEqualTo(expected);
     }
 }

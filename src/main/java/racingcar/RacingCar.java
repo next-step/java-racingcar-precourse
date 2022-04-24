@@ -41,4 +41,14 @@ public class RacingCar {
     public boolean isWinner(Position winnerPosition) {
         return gamePosition.getPosition() == winnerPosition.getPosition();
     }
+
+    public String getPrintCurrentResult() {
+        StringBuilder builder = new StringBuilder();
+        builder.append(name.getName());
+        builder.append(" : ");
+        for (int i = 0; i < gamePosition.getPosition(); i++) {
+            builder.append(carMoveRule.getPrintMoveWord());
+        }
+        return builder.toString();
+    }
 }

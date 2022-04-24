@@ -6,6 +6,7 @@ import java.util.List;
 import org.assertj.core.util.VisibleForTesting;
 import racingcar.model.CarMoveRule;
 import racingcar.model.CarName;
+import racingcar.model.CurrentResult;
 import racingcar.model.Position;
 import racingcar.model.WinnerResult;
 
@@ -65,5 +66,9 @@ public class RacingCars {
             inputCars.add(new RacingCar(carName, carMoveRule));
         }
         return inputCars;
+    }
+
+    public CurrentResult getCurrentResult() {
+        return new CurrentResult(cars);
     }
 }
