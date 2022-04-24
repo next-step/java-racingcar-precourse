@@ -1,8 +1,10 @@
 package racingcar.util;
 
 import org.junit.jupiter.api.Test;
+import racingcar.model.Name;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class ValidationTest {
     @Test
@@ -12,16 +14,17 @@ public class ValidationTest {
         String[] str = {"pobi", "dobi", "pobi"};
         // when
         // then
-        ;
-        assertThat(validation.isDuplicated(str)).isEqualTo(true);
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> validation.isDuplicated(str));
     }
     @Test
     void 참가자_인원_체크_부족_테스트() {
         // given
         String[] str = {"pobi"};
+        Validation validation = new Validation();
         // when
         // then
-        Validation validation = new Validation();
-        assertThat(validation.hasNotEnoughParticipant(str)).isEqualTo(true);
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> validation.hasNotEnoughParticipant(str));
     }
 }
