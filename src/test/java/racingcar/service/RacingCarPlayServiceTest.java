@@ -1,6 +1,7 @@
 package racingcar.service;
 
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.assertj.core.api.Assertions.in;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Arrays;
@@ -45,6 +46,15 @@ class RacingCarPlayServiceTest {
             String actualCarName = racingCarList.get(idx++).getCarName();
             assertEquals(expectedCarName, actualCarName);
         }
+    }
+
+    @DisplayName("입력받은 자동차이름(문자열)의 마지막이 쉼표(,)인지 검증")
+    @ParameterizedTest
+    @ValueSource(strings = {"볼보,1등카,"})
+    void registerRacingCars_throw(String inputCarNames) {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> racingCarPlayService.registerRacingCars(inputCarNames))
+                .withMessage("[ERROR] 쉼표(,)로 끝날 수 없습니다.");
     }
 
     @DisplayName("자동차 경주게임 플레이(우승자 확인)")
