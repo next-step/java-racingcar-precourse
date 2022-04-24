@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.PriorityQueue;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import racingcar.view.Console;
 
 public class CarsTest {
     @Test
@@ -49,7 +50,7 @@ public class CarsTest {
         Car car1 = new Car("car1");
         car1.setSteps(1);
         Car car2 = new Car("car2");
-        car2.setSteps(2);
+        car2.setSteps(3);
         Car car3 = new Car("car3");
         car3.setSteps(3);
 
@@ -58,5 +59,6 @@ public class CarsTest {
         cars.setCars(_cars);
         List<Car> winners = cars.getWinners();
         System.out.println(winners);
+        Console.printWinner(cars);
     }
 }

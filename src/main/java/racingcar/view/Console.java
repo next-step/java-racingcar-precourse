@@ -1,5 +1,8 @@
 package racingcar.view;
 
+import java.util.ArrayList;
+import java.util.List;
+import racingcar.model.Car;
 import racingcar.model.Cars;
 
 public class Console {
@@ -16,7 +19,24 @@ public class Console {
     }
 
     public static void printResult(Cars cars){
-        cars.getCars().forEach(car -> System.out.println(car.getName() + ":" + car.getSteps()));
+        cars.getCars().forEach(car -> System.out.println(car.getName() + " : " + getSteps(car.getSteps())));
         System.out.println();
+    }
+
+    private static String getSteps(Integer steps){
+        StringBuilder ret = new StringBuilder("");
+        for(int i=0; i<steps; i++){
+            ret.append("-");
+        }
+        return ret.toString();
+    }
+
+    public static void printWinner(Cars cars){
+        List<Car> winners = cars.getWinners();
+        List<String> winnerNames = new ArrayList<>();
+        for(Car car : winners){
+            winnerNames.add(car.getName());
+        }
+        System.out.println("최종 우승자: " + String.join(",",winnerNames));
     }
 }

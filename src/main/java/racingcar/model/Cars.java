@@ -2,12 +2,10 @@ package racingcar.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.PriorityQueue;
 import java.util.regex.PatternSyntaxException;
-import java.util.stream.Collectors;
 import racingcar.utils.ValidationUtil;
 
 public class Cars {
@@ -32,7 +30,7 @@ public class Cars {
         try{
             return convertCars(cars);
         }catch (PatternSyntaxException exception){
-            throw new IllegalArgumentException("[ERROR] car names must be tokenized by comma");
+            throw new IllegalArgumentException("car names must be tokenized by comma");
         }
     }
 
@@ -56,6 +54,11 @@ public class Cars {
         List<Car> winners = new ArrayList<>();
         PriorityQueue<Car> pq = new PriorityQueue<>(Collections.reverseOrder());
         pq.addAll(this.cars);
+        getWinners(winners, pq);
+        return winners;
+    }
+
+    private void getWinners(List<Car> winners, PriorityQueue<Car> pq) {
         Car top = pq.poll();
         winners.add(top);
         while(!pq.isEmpty()){
@@ -64,7 +67,5 @@ public class Cars {
                 winners.add(car);
             }
         }
-
-        return winners;
     }
 }
