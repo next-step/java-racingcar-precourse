@@ -3,6 +3,7 @@ package racingcar;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import racingcar.controller.RaceGameController;
 import racingcar.domain.CarFactory;
 import racingcar.domain.model.CarName;
 import racingcar.domain.model.Distance;
@@ -49,8 +50,6 @@ public class RacingCarTest {
         isEqaulNameAndDistance(rc2, "woni");
         isEqaulNameAndDistance(rc3, "jun");
     }
-
-
 
     @Test
     void 차_객체_생성시_이름이_5자_이상은_실패_테스트() {
@@ -187,6 +186,17 @@ public class RacingCarTest {
             Integer limit = r.getTryLimit();
             assertThat(limit).isEqualTo(DEFAULT_TRY_LIMIT);
         }
+    }
+
+    @Test
+    void 게임컨트롤러_싱글톤_객체_동일한지_테스트(){
+        // given
+        RaceGameController c1 = RaceGameController.getInstance();
+        RaceGameController c2 = RaceGameController.getInstance();
+        RaceGameController c3 = RaceGameController.getInstance();
+
+        // then
+        assertThat(c1).isEqualTo(c2).isEqualTo(c3);
     }
 
     private void isEqaulNameAndDistance(RacingCar rc, String name) {

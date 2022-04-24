@@ -12,15 +12,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RaceGameController {
+    private static RaceGameController controller = null;
+    private static final RaceInputView inputView = new RaceInputView();
+    private static final RaceOutputView outputView = new RaceOutputView();
+    private static final RaceRecordBoard recordBoard = new RaceRecordBoard();
 
-    private final RaceInputView inputView;
-    private final RaceOutputView outputView;
-    private final RaceRecordBoard recordBoard;
+    private RaceGameController() {}
 
-    public RaceGameController() {
-        this.inputView = new RaceInputView();
-        this.outputView = new RaceOutputView();
-        this.recordBoard = new RaceRecordBoard();
+    public static RaceGameController getInstance(){
+        if (controller == null){
+            controller = new RaceGameController();
+        }
+
+        return controller;
     }
 
     /**
