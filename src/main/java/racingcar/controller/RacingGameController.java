@@ -3,6 +3,7 @@ package racingcar.controller;
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.model.Car;
 import racingcar.model.RacingOrganizer;
+import racingcar.model.Referee;
 import racingcar.view.ErrorView;
 import racingcar.view.GameBoardView;
 import racingcar.view.QuestionView;
@@ -24,7 +25,7 @@ public class RacingGameController {
         GameBoardView.start();
         for (int i = 0; i < nRound; i++)
             startRound();
-        GameBoardView.declareWinners(cars);
+        GameBoardView.declareWinners(Referee.judgeWinners(cars));
     }
 
     private void startRound() {

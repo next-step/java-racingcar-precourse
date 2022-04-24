@@ -27,6 +27,8 @@
 - Car
   - Engine(Random) 결과를 통해 이동할지 결정한다.
   - 이름과 위치 정보를 관리한다.
+- Referee
+  - 주어진 자동차의 우승자를 결정한다.
 - QuestionView
   - 게임 설정에 필요한 질문 뷰
 - ErrorView
