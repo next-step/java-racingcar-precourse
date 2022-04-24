@@ -2,7 +2,7 @@ package racingcar.controller;
 
 import racingcar.model.RacingCarGameValidator;
 import racingcar.model.RacingCars;
-import racingcar.view.RacingGameInputReader;
+import racingcar.view.RacingCarGameInputReader;
 
 public class RacingCarGame {
     private RacingCars racingCars;
@@ -15,15 +15,15 @@ public class RacingCarGame {
 
     public void start() {
         while (!racingCarGameValidator.isValid()) {
-            racingCarGameValidator.racingCarNamesValidate(RacingGameInputReader.inquireRacingCarNames());
+            racingCarGameValidator.racingCarNamesValidate(RacingCarGameInputReader.inquireRacingCarNames());
         }
         racingCarGameValidator.initValidator();
         while (!racingCarGameValidator.isValid()) {
-            racingCarGameValidator.racingCarGameRoundsValidate(RacingGameInputReader.inquireRacingCarGameRounds());
+            racingCarGameValidator.racingCarGameRoundsValidate(RacingCarGameInputReader.inquireRacingCarGameRounds());
         }
 
 
-//        for (String carName : RacingGameInputReader.inquireRacingCarNames().split(",")) {
+//        for (String carName : RacingCarGameInputReader.inquireRacingCarNames().split(",")) {
 //            racingCars.addRacingCar(carName);
 //        }
 

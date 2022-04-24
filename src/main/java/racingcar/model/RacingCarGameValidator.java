@@ -4,14 +4,14 @@ import racingcar.common.Constants;
 import racingcar.common.message.ExceptionMessage;
 import racingcar.exception.InvalidCarNameLengthException;
 import racingcar.exception.InvalidRacingCarGameRoundsException;
-import racingcar.view.RacingGameOutputWriter;
+import racingcar.view.RacingCarGameOutputWriter;
 
 public class RacingCarGameValidator {
-    RacingGameOutputWriter racingGameOutputWriter;
+    RacingCarGameOutputWriter racingGameOutputWriter;
     boolean validStatus;
 
     public RacingCarGameValidator() {
-        this.racingGameOutputWriter = new RacingGameOutputWriter();
+        this.racingGameOutputWriter = new RacingCarGameOutputWriter();
     }
 
     public void initValidator() {
