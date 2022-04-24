@@ -27,4 +27,17 @@ public class RacingCarGameController {
             return new ResultRacingCarsDTO(true, e.getMessage());
         }
     }
+
+    public String inputRoundMessage() {
+        return racingCarGameInputView.inputRoundMessage();
+    }
+
+    public ResultRacingCarsDTO playRacingCarGame(RacingCars racingCars, String round) {
+        try {
+            RacingCars resultRacingCars = racingCarPlayService.proceedGame(racingCars, round);
+            return new ResultRacingCarsDTO(resultRacingCars, false);
+        } catch (IllegalArgumentException e) {
+            return new ResultRacingCarsDTO(true, e.getMessage());
+        }
+    }
 }
