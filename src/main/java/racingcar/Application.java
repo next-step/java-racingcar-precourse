@@ -13,6 +13,7 @@ public class Application {
     private void startRacingCarGame(RacingCarGameController racingCarGameController) {
         ResultRacingCarsDTO resultRacingCarsDTO = inputCarNamesToRacingCar(racingCarGameController);
         resultRacingCarsDTO = ployRacingCar(resultRacingCarsDTO.getRacingCars(), racingCarGameController);
+        allRoundResult(resultRacingCarsDTO.getRacingCars(), racingCarGameController);
     }
 
     private ResultRacingCarsDTO inputCarNamesToRacingCar(RacingCarGameController racingCarGameController) {
@@ -55,5 +56,11 @@ public class Application {
         String message = racingCarGameController.inputRoundMessage();
         System.out.println(message);
         return Console.readLine();
+    }
+
+
+    private void allRoundResult(RacingCars racingCars, RacingCarGameController racingCarGameController) {
+        String allRoundResultView = racingCarGameController.allRoundResult(racingCars);
+        System.out.println(allRoundResultView);
     }
 }

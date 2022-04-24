@@ -3,16 +3,19 @@ package racingcar.controller;
 import racingcar.dto.ResultRacingCarsDTO;
 import racingcar.service.RacingCarPlayService;
 import racingcar.view.RacingCarGameInputView;
+import racingcar.view.RacingCarGameResultView;
 import racingcar.vo.RacingCars;
 
 public class RacingCarGameController {
 
     private final RacingCarPlayService racingCarPlayService;
     private final RacingCarGameInputView racingCarGameInputView;
+    private final RacingCarGameResultView racingCarGameResultView;
 
     public RacingCarGameController() {
         this.racingCarPlayService = new RacingCarPlayService();
         this.racingCarGameInputView = new RacingCarGameInputView();
+        this.racingCarGameResultView = new RacingCarGameResultView();
     }
 
     public String startGameInputCarNamesMessage() {
@@ -39,5 +42,9 @@ public class RacingCarGameController {
         } catch (IllegalArgumentException e) {
             return new ResultRacingCarsDTO(true, e.getMessage());
         }
+    }
+
+    public String allRoundResult(RacingCars racingCars) {
+        return racingCarGameResultView.allRoundResultView(racingCars);
     }
 }
