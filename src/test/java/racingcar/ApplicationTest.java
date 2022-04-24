@@ -18,19 +18,69 @@ class ApplicationTest extends NsTest {
         assertRandomNumberInRangeTest(
             () -> {
                 run("pobi,woni", "1");
-                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자는 pobi 입니다.");
+                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자: pobi");
             },
             MOVING_FORWARD, STOP
         );
     }
 
     @Test
-    void 이름에_대한_예외_처리() {
+    void 이름에_대한_예외_처리_옳바르지_않은_길이() {
         assertSimpleTest(
             () -> {
                 runException("pobi,javaji");
                 assertThat(output()).contains(ERROR_MESSAGE);
             }
+        );
+    }
+
+    @Test
+    void 입력에_대한_예외_처리_중복된_차량_이름() {
+        assertSimpleTest(
+                () -> {
+                    runException("steve,steve");
+                    assertThat(output()).contains(ERROR_MESSAGE);
+                }
+        );
+    }
+
+    @Test
+    void 입력에_대한_예외_처리_완전하지_않은_입력_1() {
+        assertSimpleTest(
+                () -> {
+                    runException("steve,");
+                    assertThat(output()).contains(ERROR_MESSAGE);
+                }
+        );
+    }
+
+    @Test
+    void 입력에_대한_예외_처리_완전하지_않은_입력_2() {
+        assertSimpleTest(
+                () -> {
+                    runException(",steve");
+                    assertThat(output()).contains(ERROR_MESSAGE);
+                }
+        );
+    }
+
+    @Test
+    void 입력에_대한_예외_처리_라운드_횟수_0() {
+        assertSimpleTest(
+                () -> {
+                    runException("steve,jobs", "0");
+                    assertThat(output()).contains(ERROR_MESSAGE);
+                }
+        );
+    }
+
+    @Test
+    void 입력에_대한_예외_처리_라운드_문자() {
+        assertSimpleTest(
+                () -> {
+                    runException("steve,jobs", "hello");
+                    assertThat(output()).contains(ERROR_MESSAGE);
+                }
         );
     }
 
