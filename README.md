@@ -7,7 +7,7 @@
 * [과제 제출 방법](https://github.com/next-step/nextstep-docs/tree/master/precourse)
 
 
-## 🎱 프로그래밍 요구사항
+## 프로그래밍 요구사항
 - 자바 코드 컨벤션을 지키면서 프로그래밍한다.
   - 기본적으로 [Google Java Style Guide](https://google.github.io/styleguide/javaguide.html)을 원칙으로 한다.
   - 단, 들여쓰기는 '2 spaces'가 아닌 '4 spaces'로 한다.
@@ -55,7 +55,7 @@ public class Application {
 
 <br>
 
-## 📈 진행 요구사항
+## 진행 요구사항
 - 미션은 [java-racingcar-precourse 저장소](https://github.com/woowacourse/java-racingcar-precourse) 를 fork/clone해 시작한다.
 - 기능을 구현하기 전에 java-racingcar-precourse/docs/README.md 파일에 구현할 기능 목록을 정리해 추가한다.
 - git의 commit 단위는 앞 단계에서 README.md 파일에 정리한 기능 목록 단위로 추가한다.
