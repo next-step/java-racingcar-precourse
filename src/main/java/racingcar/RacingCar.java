@@ -4,9 +4,13 @@ public class RacingCar {
     private String name;
     private int gamePosition;
 
-    public RacingCar(String name){
+    public RacingCar(String name) {
+        this(name, 0);
+    }
+
+    public RacingCar(String name, int gamePosition) {
         this.name = name;
-        gamePosition = 0;
+        this.gamePosition = gamePosition;
     }
 
     public String getName() {
@@ -21,8 +25,8 @@ public class RacingCar {
         return gamePosition;
     }
 
-    public void move(int randomValue){
-        if(randomValue >= RacingCarConstants.MIN_CAR_MOVE_CONDITION){
+    public void move(int randomValue) {
+        if (randomValue >= RacingCarConstants.MIN_CAR_MOVE_CONDITION) {
             gamePosition++;
         }
     }
