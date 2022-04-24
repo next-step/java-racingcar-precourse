@@ -42,35 +42,14 @@ public class GameView {
         return cars;
     }
 
-    public int inputRoundCount() {
+    public RoundCount inputRoundCount() {
         System.out.println(INPUT_PLAY_ROUND_COUNT);
         try {
             String input = Console.readLine();
-            validRoundCountInput(input);
-            return Integer.parseInt(input);
+            return new RoundCount(input);
         } catch (IllegalArgumentException iae) {
             System.out.println(ERROR_MESSAGE_PREFIX + iae.getMessage());
             return inputRoundCount();
-        }
-    }
-
-    private void validRoundCountInput(String input) {
-        validEmpty(input);
-        validNumber(input);
-        validLessZero(input);
-    }
-
-    private void validNumber(String input) {
-        try {
-            Integer.parseInt(input);
-        } catch (NumberFormatException nfe) {
-            throw new IllegalArgumentException("시도 횟수는 숫자여야 합니다");
-        }
-    }
-
-    private void validLessZero(String input) {
-        if (Integer.parseInt(input) <= 0) {
-            throw new IllegalArgumentException("시도 횟수는 0보다 커야 합니다");
         }
     }
 

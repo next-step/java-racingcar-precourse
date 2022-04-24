@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import racingcar.domain.RacingCars;
 import racingcar.view.GameView;
+import racingcar.view.RoundCount;
 
 public class Game {
     private final String PLAY_ROUND_MESSAGE = "실행 결과";
@@ -18,9 +19,9 @@ public class Game {
         gameView.printWinnerNames(racingCars.getWinnerNames());
     }
 
-    private void playRound(RacingCars racingCars, int roundCount) {
+    private void playRound(RacingCars racingCars, RoundCount roundCount) {
         System.out.println(PLAY_ROUND_MESSAGE);
-        for (int i = 0; i < roundCount; i++) {
+        for (int i = 0; i < roundCount.getRoundCount(); i++) {
             racingCars.playRound();
             gameView.printCarsPosition(racingCars.getCars());
         }
