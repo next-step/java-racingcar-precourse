@@ -14,18 +14,19 @@ import static org.junit.jupiter.api.Assertions.*;
 class RacingCarsTest {
 
     @DisplayName("자동차 이름의 수가 2개 이상 인지 검증")
-    @ParameterizedTest
-    @ValueSource(strings = {"런닝호"})
-    void validateCarListSize(String carName) {
-        List<String> carNameList = Collections.singletonList(carName);
+    @Test
+    void validateCarListSize() {
+        String errMessage = "[ERROR] 자동차 이름은 2개 이상으로 입력해주세요.";
 
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> new RacingCars(carNameList))
-                .withMessage("[ERROR] 자동차 이름은 2개 이상으로 입력해주세요.");
+                .isThrownBy(() -> new RacingCars(Collections.singletonList("런닝호")))
+                .withMessage(errMessage);
 
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> new RacingCars(Collections.emptyList()))
-                .withMessage("[ERROR] 자동차 이름은 2개 이상으로 입력해주세요.");
+                .withMessage(errMessage);
+
+        assertDoesNotThrow(()->new RacingCars(Arrays.asList("드림카","추카")));
 
     }
 
