@@ -24,5 +24,19 @@ public class RacingCars {
         return racingCar.getName();
     }
 
+    public int getGoCountByIndex(int index) {
+        RacingCar racingCar = racingCars.get(index - 1);
+        return racingCar.getGoCount();
+    }
+
+    public RacingCar getRacingCarByIndex(int index) {
+        RacingCar racingCar = racingCars.get(index - 1);
+        return racingCar;
+    }
+
+    public List<RacingCar> getRacingCars() {
+        return this.racingCars;
+    }
+
 
 }
