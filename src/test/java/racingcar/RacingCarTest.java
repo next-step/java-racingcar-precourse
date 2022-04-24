@@ -33,4 +33,20 @@ public class RacingCarTest {
         car.move(inputValue);
         assertThat(car.getGamePosition()).isEqualTo(0);
     }
+
+    @DisplayName("자동차는 winnerPostion과 값이 같을 경우 우승자다.")
+    @Test
+    void isWinnerReturnTrueWhenWinnerPositionEqualGamePosition() {
+        RacingCar car = new RacingCar("test", 3);
+        assertThat(car.isWinner(3)).isTrue();
+    }
+
+    @DisplayName("자동차는 winnerPostion과 값이 다를경우 우승자가 아니다.")
+    @ParameterizedTest
+    @ValueSource(ints = {0, 1, 2, 3})
+    void isWinnerReturnFalseWhenWinnerPositionNotEqualGamePosition(int currentPosition) {
+        RacingCar car = new RacingCar("test", currentPosition);
+        assertThat(car.isWinner(4)).isFalse();
+    }
+
 }

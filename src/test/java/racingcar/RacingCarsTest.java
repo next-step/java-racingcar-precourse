@@ -17,10 +17,10 @@ public class RacingCarsTest {
 
     @BeforeEach
     public void set() {
-        ArrayList<String> cars = new ArrayList<>();
-        cars.add("hi");
-        cars.add("hello");
-        cars.add("hihi");
+        ArrayList<RacingCar> cars = new ArrayList<>();
+        cars.add(new RacingCar("hi"));
+        cars.add(new RacingCar("hello"));
+        cars.add(new RacingCar("hello"));
         racingCars = new RacingCars(cars);
         mRandomUtils = mockStatic(RandomUtils.class);
     }
@@ -49,10 +49,32 @@ public class RacingCarsTest {
     @DisplayName("라운드를 진행할 때 랜덤값이 모두 4 미만이면, 각 자동차의 포지션은 초기값이어야 한다.")
     @Test
     public void playRound_P02() {
-        when(RandomUtils.getRandomNumber()).thenReturn(4);
+        when(RandomUtils.getRandomNumber()).thenReturn(3);
         racingCars.playRound();
         assertThat(racingCars.cars).allMatch(racingCar ->
                 racingCar.getGamePosition() == 0
         );
+    }
+
+    @DisplayName("게임 결과를 조회했을 때, 우승자가 한명일 경우 우승자 한명의 이름만 반환한다.")
+    @Test
+    public void getWinners_P01() {
+        ArrayList<RacingCar> cars = new ArrayList<>();
+        cars.add(new RacingCar("hi", 3));
+        cars.add(new RacingCar("hello", 2));
+        cars.add(new RacingCar("hello1", 2));
+        racingCars = new RacingCars(cars);
+        assertThat(racingCars.getWinners()).isEqualTo("hi");
+    }
+
+    @DisplayName("게임 결과를 조회했을 때, 우승자가 두명일 경우 우승자 두명의 이름을 반환한다.")
+    @Test
+    public void getWinners_P02() {
+        ArrayList<RacingCar> cars = new ArrayList<>();
+        cars.add(new RacingCar("hi", 3));
+        cars.add(new RacingCar("hello", 3));
+        cars.add(new RacingCar("hello1", 2));
+        racingCars = new RacingCars(cars);
+        assertThat(racingCars.getWinners()).isEqualTo("hi, hello");
     }
 }

@@ -31,4 +31,8 @@ public class RacingCar {
             gamePosition++;
         }
     }
+
+    public boolean isWinner(int winnerPosition) {
+        return gamePosition == winnerPosition;
+    }
 }
