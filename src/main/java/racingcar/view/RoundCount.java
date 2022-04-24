@@ -1,19 +1,15 @@
 package racingcar.view;
 
+import racingcar.utils.ValidUtil;
+
 public class RoundCount {
     private final int roundCount;
 
     public RoundCount(String roundCount) {
-        validEmpty(roundCount);
+        ValidUtil.emptyString(roundCount);
         validNumber(roundCount);
         validLessZero(roundCount);
         this.roundCount = Integer.parseInt(roundCount);
-    }
-
-    private void validEmpty(String input) {
-        if (input.trim().isEmpty()) {
-            throw new IllegalArgumentException("빈 값은 입력할 수 없습니다.");
-        }
     }
 
     private void validNumber(String input) {

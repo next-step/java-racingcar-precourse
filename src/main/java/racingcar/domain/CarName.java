@@ -1,11 +1,14 @@
 package racingcar.domain;
 
+import racingcar.utils.ValidUtil;
+
 public class CarName {
     private static final int MAX_NAME_LENGTH = 5;
 
     private String name;
 
     public CarName(String name) {
+        ValidUtil.emptyString(name);
         validLength(name);
         this.name = name;
     }

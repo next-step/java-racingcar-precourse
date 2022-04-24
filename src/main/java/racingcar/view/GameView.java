@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import racingcar.domain.Car;
 import racingcar.domain.RacingCars;
 import racingcar.domain.Winners;
+import racingcar.utils.ValidUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,18 +21,12 @@ public class GameView {
         System.out.println(INPUT_CAR_NAMES_MESSAGE);
         try {
             String input = Console.readLine();
-            validEmpty(input);
+            ValidUtil.emptyString(input);
             List<Car> cars = parseCarName(input);
             return new RacingCars(cars);
         } catch (IllegalArgumentException iae) {
             System.out.println(ERROR_MESSAGE_PREFIX + iae.getMessage());
             return inputRacingCars();
-        }
-    }
-
-    private void validEmpty(String input) {
-        if (input.trim().isEmpty()) {
-            throw new IllegalArgumentException("빈 값은 입력할 수 없습니다.");
         }
     }
 
