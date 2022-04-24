@@ -2,6 +2,7 @@ package racingcar.view;
 
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.constant.Delimiter;
 import racingcar.vo.RacingCar;
 import racingcar.vo.RacingCars;
 
@@ -11,7 +12,6 @@ public class RacingCarGameResultView {
     private static final String ENTER = "\n";
     private static final String COLON = ":";
     private static final String FORWARD = "-";
-    private static final String COMMA = ",";
     private static final String GAP = " ";
     private static final String WINNERS_MAIN_HEADER = "최종 우승자";
 
@@ -44,7 +44,7 @@ public class RacingCarGameResultView {
     public String racingGameWinnersView(List<RacingCar> gameWinnerList) {
         StringBuilder winnersView = new StringBuilder(WINNERS_MAIN_HEADER).append(COLON).append(GAP);
         List<String> winnerNameList = extractedWinnerNameList(gameWinnerList);
-        winnersView.append(String.join(COMMA,winnerNameList));
+        winnersView.append(String.join(Delimiter.COMMA,winnerNameList));
         return winnersView.toString();
     }
 
