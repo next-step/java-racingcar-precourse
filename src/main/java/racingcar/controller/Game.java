@@ -21,7 +21,7 @@ public class Game {
     private void playRound(RacingCars racingCars, RoundCount roundCount) {
         System.out.println(PLAY_ROUND_MESSAGE);
         for (int i = 0; i < roundCount.getRoundCount(); i++) {
-            racingCars.playRound();
+            racingCars.race();
             gameView.printCarsPosition(racingCars.getCars());
         }
     }

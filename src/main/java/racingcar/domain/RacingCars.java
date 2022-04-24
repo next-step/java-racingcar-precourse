@@ -19,7 +19,7 @@ public class RacingCars {
         this.movingStrategy = movingStrategy;
     }
 
-    public void playRound() {
+    public void race() {
         for (Car car: cars) {
             car.move(movingStrategy);
         }

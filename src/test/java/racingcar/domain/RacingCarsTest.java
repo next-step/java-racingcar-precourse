@@ -26,13 +26,13 @@ class RacingCarsTest {
         assertThat(racingCars.getCars().size()).isEqualTo(cars.size());
     }
 
-    @DisplayName("playRound 호출 시 car의 move메소드 호출하는지 확인")
+    @DisplayName("race 호출 시 car의 move메소드 호출하는지 확인")
     @Test
     void playRound() {
         Car car = mock(Car.class);
         RacingCars racingCars = new RacingCars(Collections.singletonList(car));
 
-        racingCars.playRound();
+        racingCars.race();
 
         verify(car).move(any());
     }
