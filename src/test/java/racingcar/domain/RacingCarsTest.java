@@ -1,11 +1,8 @@
 package racingcar.domain;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.MockedStatic;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -35,20 +32,21 @@ class RacingCarsTest {
 
         racingCars.playRound();
 
-        verify(car).move();
+        verify(car).move(any());
     }
 
     @DisplayName("우승자 정보를 얻어온다")
     @Test
     void getWinnerNames() {
-        String[] carNames = {"win1", "win2", "lo1", "lo2"};
-        RacingCars racingCars = createRacingCars(carNames);
+        RacingCars racingCars = new RacingCars(
+            Arrays.asList(
+                createMockCar("win1", true),
+                createMockCar("win2", true),
+                createMockCar("lo1", false),
+                createMockCar("lo2", false)
+            )
+        );
 
-        try (final MockedStatic<Randoms> mock = mockStatic(Randoms.class)) {
-            mock.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
-                    .thenReturn(Car.MOVEMENT_STANDARD, Car.MOVEMENT_STANDARD, Car.MOVEMENT_STANDARD - 1, Car.MOVEMENT_STANDARD - 1);
-            racingCars.playRound();
-        }
         Winners winners = racingCars.getWinners();
         List<String> winnerNames = winners.getNames();
 
@@ -56,11 +54,10 @@ class RacingCarsTest {
         assertThat(winnerNames.toString()).contains("win1", "win2");
     }
 
-    private RacingCars createRacingCars(String ...carNames) {
-        List<Car> cars = new ArrayList<>();
-        for (String name: carNames) {
-            cars.add(new Car(name));
-        }
-        return new RacingCars(cars);
+    private Car createMockCar(String willReturnName, boolean willReturnIsWinner) {
+        Car car = mock(Car.class);
+        when(car.getName()).thenReturn(willReturnName);
+        when(car.isWinner(anyInt())).thenReturn(willReturnIsWinner);
+        return car;
     }
 }

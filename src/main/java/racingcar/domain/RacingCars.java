@@ -5,14 +5,20 @@ import java.util.List;
 
 public class RacingCars {
     private final List<Car> cars;
+    private final MovingStrategy movingStrategy;
 
     public RacingCars(List<Car> cars) {
+        this(cars, new RandomMovingStrategy());
+    }
+
+    public RacingCars(List<Car> cars, MovingStrategy movingStrategy) {
         this.cars = cars;
+        this.movingStrategy = movingStrategy;
     }
 
     public void playRound() {
         for (Car car: cars) {
-            car.move();
+            car.move(movingStrategy);
         }
     }
 
