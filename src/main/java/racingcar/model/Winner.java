@@ -23,7 +23,8 @@ public class Winner {
         }
     }
 
-    public void getWinner(Map<String, Integer> carMap) {
+    public void getWinner(RacingCar racingCar) {
+        Map<String, Integer> carMap = racingCar.racingCarRecords;
         int maxValue = Collections.max(carMap.values());
         for (Map.Entry<String, Integer> m : carMap.entrySet()) {
             if (m.getValue() == maxValue) {

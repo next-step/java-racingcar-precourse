@@ -17,7 +17,8 @@ public class GameRound {
         this.rounds = round;
     }
 
-    public void playEachRound(Map<String, Integer> racingCarRecords) {
+    public void playEachRound(RacingCar racingCar) {
+        Map<String, Integer> racingCarRecords = racingCar.racingCarRecords;
         racingCarRecords.forEach((car, dashLine) -> {
             int dashCount = moveForward(racingCarRecords, car);
             if (dashLine != dashCount) {
