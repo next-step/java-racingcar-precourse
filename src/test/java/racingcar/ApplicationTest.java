@@ -34,6 +34,16 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 게임횟수에_대한_예외_처리() {
+        assertSimpleTest(
+                () -> {
+                    runException("pobi,woni", "세번");
+                    assertThat(output()).contains(ERROR_MESSAGE);
+                }
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
