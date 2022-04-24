@@ -12,4 +12,7 @@ public class RacingCarPlayService {
         return new RacingCars(inputCarNameList);
     }
 
+    public RacingCars proceedGame(RacingCars racingCars, int round) {
+        return racingCars;
+    }
 }

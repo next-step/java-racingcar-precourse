@@ -44,4 +44,9 @@ public class RacingCars {
     public List<RacingCar> getRacingCarList() {
         return racingCarList;
     }
+
+    public List<RacingCar> getGameWinners() {
+
+        return null;
+    }
 }
