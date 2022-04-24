@@ -3,6 +3,7 @@ package racingcar.view;
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.domain.Car;
 import racingcar.domain.RacingCars;
+import racingcar.domain.Winners;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,7 +69,7 @@ public class GameView {
         return sb.toString();
     }
 
-    public void printWinnerNames(List<String> winnerNames) {
-        System.out.println(WINNER_MESSAGE_PREFIX + String.join(", ", winnerNames));
+    public void printWinners(Winners winners) {
+        System.out.println(WINNER_MESSAGE_PREFIX + String.join(", ", winners.getNames()));
     }
 }

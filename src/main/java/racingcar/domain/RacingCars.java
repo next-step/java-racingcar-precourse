@@ -16,8 +16,8 @@ public class RacingCars {
         }
     }
 
-    public List<String> getWinnerNames() {
-        return findWinnerNames(findMaxPosition());
+    public Winners getWinners() {
+        return new Winners(findWinnerCars(findMaxPosition()));
     }
 
     private int findMaxPosition() {
@@ -28,17 +28,17 @@ public class RacingCars {
         return position;
     }
 
-    private List<String> findWinnerNames(int maxPosition) {
-        List<String> winnerNames = new ArrayList<>();
+    private List<Car> findWinnerCars(int maxPosition) {
+        List<Car> winnerCars = new ArrayList<>();
         for (Car car: cars) {
-            containWinner(winnerNames, car, maxPosition);
+            containWinner(winnerCars, car, maxPosition);
         }
-        return winnerNames;
+        return winnerCars;
     }
 
-    private void containWinner(List<String> winnerNames, Car car, int winnerPosition) {
+    private void containWinner(List<Car> winnerNames, Car car, int winnerPosition) {
         if (car.isWinner(winnerPosition)) {
-            winnerNames.add(car.getName());
+            winnerNames.add(car);
         }
     }
 

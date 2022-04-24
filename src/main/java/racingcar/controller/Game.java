@@ -16,7 +16,7 @@ public class Game {
         GameView gameView = new GameView();
         RacingCars racingCars = gameView.inputRacingCars();
         playRound(racingCars, gameView.inputRoundCount());
-        gameView.printWinnerNames(racingCars.getWinnerNames());
+        gameView.printWinners(racingCars.getWinners());
     }
 
     private void playRound(RacingCars racingCars, RoundCount roundCount) {

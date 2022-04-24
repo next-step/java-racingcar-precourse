@@ -38,7 +38,7 @@ class RacingCarsTest {
         verify(car).move();
     }
 
-    @DisplayName("우승자 이름을 얻어온다")
+    @DisplayName("우승자 정보를 얻어온다")
     @Test
     void getWinnerNames() {
         String[] carNames = {"win1", "win2", "lo1", "lo2"};
@@ -49,7 +49,8 @@ class RacingCarsTest {
                     .thenReturn(Car.MOVEMENT_STANDARD, Car.MOVEMENT_STANDARD, Car.MOVEMENT_STANDARD - 1, Car.MOVEMENT_STANDARD - 1);
             racingCars.playRound();
         }
-        List<String> winnerNames = racingCars.getWinnerNames();
+        Winners winners = racingCars.getWinners();
+        List<String> winnerNames = winners.getNames();
 
         assertThat(winnerNames.size()).isEqualTo(2);
         assertThat(winnerNames.toString()).contains("win1", "win2");
