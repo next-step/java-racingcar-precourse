@@ -35,7 +35,7 @@ public class Car implements NumberGenerator {
     }
 
     public boolean isMovealble(int generatedNumber) {
-        if (generatedNumber > MOVEABLE_MIN_NUMBER) {
+        if (generatedNumber >= MOVEABLE_MIN_NUMBER) {
             return true;
         }
         return false;

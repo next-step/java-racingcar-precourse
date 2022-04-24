@@ -85,7 +85,7 @@ public class CarTest {
     void 자동차_MOVE메서드_테스트_전진() {
         // given
         Car car = new Car("pobi");
-        randoms.when(verification).thenReturn(5);
+        randoms.when(verification).thenReturn(4);
         // when
         car.move();
         // then
