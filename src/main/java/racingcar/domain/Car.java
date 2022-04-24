@@ -1,11 +1,10 @@
 package racingcar.domain;
 
+import racingcar.Constant;
+
 import java.util.Objects;
 
 public class Car {
-    private final static String OVER_FIVE_CAR_NAME = "[ERROR] 자동차 이름은 5자를 초과할 수 없습니다.";
-    private final static int MAX_CAR_NAME = 5;
-
     private StringBuilder showCarDistance;
 
     private String carName;
@@ -13,20 +12,20 @@ public class Car {
 
     public Car(String carName){
         if(isOverFive(carName)){
-            throw new IllegalArgumentException(OVER_FIVE_CAR_NAME);
+            throw new IllegalArgumentException(Constant.ERROR_CAR_NAME_LENGTH);
         }
         this.carName = carName;
     }
 
     /**
-     * 각 자동차에 이름을 부여할 수 있다. 자동차 이름은 5자를 초과할 수 없다.
+     * 각 자동차에 이름을 부여할 수 있다. 자동차 이름은 1~5.
      * 사용자는 몇 번의 이동을 할 것인지를 입력할 수 있어야 한다.
      * @param carName
      * @param position
      */
     public Car(String carName, int position) {
         if(isOverFive(carName)){
-            throw new IllegalArgumentException(OVER_FIVE_CAR_NAME);
+            throw new IllegalArgumentException(Constant.ERROR_CAR_NAME_LENGTH);
         }
         this.position = position;
         this.carName = carName;
@@ -37,7 +36,7 @@ public class Car {
     }
 
     private boolean isOverFive(String carName) {
-        return carName.length() > MAX_CAR_NAME;
+        return carName.length() > Constant.MAX_CAR_NAME_LENGTH;
     }
 
     public boolean isMove(MovingStrategy movingStrategy){
@@ -55,7 +54,7 @@ public class Car {
     public String showCarDistance() {
         showCarDistance = new StringBuilder();
         for (int i = 0; i < position; i++) {
-            showCarDistance.append("-");
+            showCarDistance.append(Constant.FORWARD_SIGN);
         }
         return showCarDistance.toString();
     }

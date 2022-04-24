@@ -33,7 +33,7 @@ class CarTest {
     void car_name_vaild_test(){
         assertThatThrownBy(() -> new Car("overfivename", 3))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("자동차 이름은 5자를 초과할 수 없습니다.");
+                .hasMessageContaining("1 ~ 5자의 이름을 입력해야 합니다.");
     }
 
     @DisplayName("전진 조건에 의한 이동거리 테스트")

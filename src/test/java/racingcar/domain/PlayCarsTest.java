@@ -6,18 +6,18 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
-class CarsTest {
-    private Cars cars;
+class PlayCarsTest {
+    private PlayCars playCars;
 
     @BeforeEach
     void setUp(){
-        cars = new Cars("pobi,crong,honux");
+        playCars = new PlayCars("pobi,crong,honux");
     }
 
     @DisplayName("n대의 자동차 생성자 테스트")
     @Test
     void cars_unit_test(){
-        assertThat(cars.getCars().size()).isEqualTo(3);
+        assertThat(playCars.getCars().size()).isEqualTo(3);
     }
 
     /**
@@ -26,16 +26,16 @@ class CarsTest {
     @DisplayName("자동차 경주 우승자 확인 테스트")
     @Test
     void is_winner_test(){
-        Cars testCars = new Cars();
+        PlayCars testPlayCars = new PlayCars();
 
         Car pobi = new Car("pobi",3);
         Car crong = new Car("crong",2);
         Car honux = new Car("honux",1);
-        testCars.add(pobi);
-        testCars.add(crong);
-        testCars.add(honux);
+        testPlayCars.add(pobi);
+        testPlayCars.add(crong);
+        testPlayCars.add(honux);
 
-        assertThat(testCars.isWinners()).contains(new Car("pobi",3));
+        assertThat(testPlayCars.isWinners()).contains(new Car("pobi",3));
     }
 
     /**
@@ -44,9 +44,9 @@ class CarsTest {
     @DisplayName("자동차 이름 출력 확인 테스트")
     @Test
     void print_car_name_test(){
-        Cars printCars = new Cars("pobi,crong");
-        printCars.play();
-        assertThat(printCars.getCarsStatus()).contains("pobi :");
-        assertThat(printCars.getCarsStatus()).contains("crong :");
+        PlayCars printPlayCars = new PlayCars("pobi,crong");
+        printPlayCars.play();
+        assertThat(printPlayCars.getCarsStatus()).contains("pobi :");
+        assertThat(printPlayCars.getCarsStatus()).contains("crong :");
     }
 }

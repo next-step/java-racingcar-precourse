@@ -1,7 +1,7 @@
 package racingcar.view;
 
 import racingcar.domain.Car;
-import racingcar.domain.Cars;
+import racingcar.domain.PlayCars;
 
 import java.util.List;
 
@@ -12,14 +12,14 @@ public class ResultView {
     public static void printStartResult(){
         System.out.println("실행 결과");
     }
-    public static void printCars(Cars cars) {
-        System.out.println(cars.getCarsStatus());
+    public static void printCars(PlayCars playCars) {
+        System.out.println(playCars.getCarsStatus());
     }
 
-    public static void printWinners(Cars cars) {
+    public static void printWinners(PlayCars playCars) {
         final StringBuilder sb = new StringBuilder();
         sb.append("최종 우승자: ");
-        List<Car> winners = cars.isWinners();
+        List<Car> winners = playCars.isWinners();
         sb.append(winners.get(0).getCarName());
         for (int i = 1; i < winners.size(); i++) {
             sb.append(", " + winners.get(i).getCarName());

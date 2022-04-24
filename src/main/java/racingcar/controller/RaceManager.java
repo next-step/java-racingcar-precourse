@@ -1,23 +1,23 @@
 package racingcar.controller;
 
-import racingcar.domain.Cars;
+import racingcar.domain.PlayCars;
 import racingcar.domain.RaceCount;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
 public class RaceManager {
-    public static Cars generateCars() {
-        Cars cars;
+    public static PlayCars generateCars() {
+        PlayCars playCars;
         while (true){
             try {
                 String carList = InputView.getCarNames();
-                cars = new Cars(carList);
+                playCars = new PlayCars(carList);
                 break;
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }
         }
-        return cars;
+        return playCars;
     }
 
     public static RaceCount getPlayCount() {
@@ -33,15 +33,15 @@ public class RaceManager {
         return raceCount;
     }
 
-    public static void start(Cars cars, RaceCount raceCount) {
+    public static void start(PlayCars playCars, RaceCount raceCount) {
         int index = 0;
 
         ResultView.printStartResult();
         while ( !raceCount.isLast(index) ) {
-            cars.play();
+            playCars.play();
             index++;
         }
-        ResultView.printCars(cars);
+        ResultView.printCars(playCars);
     }
 
 

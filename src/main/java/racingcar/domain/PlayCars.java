@@ -1,20 +1,22 @@
 package racingcar.domain;
 
+import racingcar.Constant;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Cars {
+public class PlayCars {
     private static final StringBuilder carsStatus = new StringBuilder();
 
     private final List<Car> cars = new ArrayList<>();
     private int winnerScore;
 
-    public Cars(){
+    public PlayCars(){
     }
 
-    public Cars(String carList) {
-        String[] carNames = carList.split(",");
+    public PlayCars(String carList) {
+        String[] carNames = carList.split(Constant.SEPARATOR);
 
         for (String car : carNames) {
             cars.add(new Car(car));
@@ -38,7 +40,7 @@ public class Cars {
         for (Car car : cars) {
             car.isMove(randomMovingStrategy);
             checkWinnerScore(car);
-            carsStatus.append(car.getCarName() + " : " + car.showCarDistance());
+            carsStatus.append(car.getCarName() + Constant.COLON + car.showCarDistance());
             carsStatus.append("\n");
         }
         carsStatus.append("\n");
