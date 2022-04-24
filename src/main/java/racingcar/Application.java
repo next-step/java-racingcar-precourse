@@ -1,16 +1,16 @@
 package racingcar;
 
-import racingcar.domain.RaceManager;
-
-import java.util.Scanner;
+import racingcar.domain.Cars;
+import racingcar.controller.RaceManager;
+import racingcar.domain.RaceCount;
+import racingcar.view.ResultView;
 
 public class Application {
     public static void main(String[] args) {
-        final Scanner scanner = new Scanner(System.in);
+        Cars cars = RaceManager.generateCars();
+        RaceCount raceCount = RaceManager.getPlayCount();
 
-        RaceManager raceManager = new RaceManager();
-        raceManager.generateCars(scanner);
-        raceManager.setRaceCount(scanner);
-        raceManager.start();
+        RaceManager.start(cars, raceCount);
+        ResultView.printWinners(cars);
     }
 }

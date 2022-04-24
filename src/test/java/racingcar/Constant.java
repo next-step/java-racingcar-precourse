@@ -10,7 +10,7 @@ public class Constant {
     public static final String ERROR_CAR_NAME_EMPTY = ERROR_PREFIX + "비어있는 이름은 입력받을 수 없습니다.";
     public static final String ERROR_CAR_NAME_LENGTH = ERROR_PREFIX + "1 ~ 5자의 이름을 입력해야 합니다.";
     public static final String ERROR_CAR_NAME_DUPLICATE = ERROR_PREFIX + "중복된 이름을 입력할 수 없습니다.";
-    public static final String ERROR_RACE_ROUND = "[ERROR] 시도 횟수는 숫자여야 한다.";
+    public static final String ERROR_RACE_ROUND = ERROR_PREFIX + "시도 횟수는 숫자여야 한다.";
     public static final String ERROR_RACE_ROUND_NON_POSITIVE_INTEGER = ERROR_PREFIX + "회수는 1이상의 수여야합니다.";
 
     public static final String BLANK = " ";
