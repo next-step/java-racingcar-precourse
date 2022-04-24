@@ -13,7 +13,6 @@ public class Game {
     }
 
     public void play() {
-        GameView gameView = new GameView();
         RacingCars racingCars = gameView.inputRacingCars();
         playRound(racingCars, gameView.inputRoundCount());
         gameView.printWinners(racingCars.getWinners());
