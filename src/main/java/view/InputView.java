@@ -14,7 +14,7 @@ public class InputView {
         try {
             return new CarNames(Console.readLine());
         } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+            OutputView.printExceptionMessage(e.getMessage());
             return getCarNames();
         }
     }
@@ -24,7 +24,7 @@ public class InputView {
         try {
             return new Laps(Console.readLine());
         } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+            OutputView.printExceptionMessage(e.getMessage());
             return getLaps();
         }
     }
