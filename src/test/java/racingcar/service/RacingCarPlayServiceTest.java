@@ -50,6 +50,7 @@ class RacingCarPlayServiceTest {
     void proceedGame() {
         int round = 3;
         int expectedWinnerCount = 1;
+        int winner = 0;
         String expectedWinnerCarName = "한국팀";
 
         RacingCars racingCars = new RacingCars(Arrays.asList("미국팀", "한국팀", "독일팀"));
@@ -64,7 +65,7 @@ class RacingCarPlayServiceTest {
             List<RacingCar> winnerCarList = racingCars.getGameWinnerList();
 
             assertEquals(expectedWinnerCount, winnerCarList.size());
-            assertEquals(expectedWinnerCarName, winnerCarList.get(0).getCarName());
+            assertEquals(expectedWinnerCarName, winnerCarList.get(winner).getCarName());
         }
     }
 }
