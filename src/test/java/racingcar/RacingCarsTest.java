@@ -42,7 +42,7 @@ public class RacingCarsTest {
         when(RandomUtils.getRandomNumber()).thenReturn(4);
         racingCars.playRound();
         assertThat(racingCars.cars).allMatch(racingCar ->
-                racingCar.getGamePosition() == 1
+                racingCar.getGamePosition().getPosition() == 1
         );
     }
 
@@ -52,7 +52,7 @@ public class RacingCarsTest {
         when(RandomUtils.getRandomNumber()).thenReturn(3);
         racingCars.playRound();
         assertThat(racingCars.cars).allMatch(racingCar ->
-                racingCar.getGamePosition() == 0
+                racingCar.getGamePosition().getPosition() == 0
         );
     }
 

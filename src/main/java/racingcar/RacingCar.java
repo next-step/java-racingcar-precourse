@@ -1,11 +1,12 @@
 package racingcar;
 
 import racingcar.model.CarName;
+import racingcar.model.Position;
 
 public class RacingCar {
     private static final int INIT_GAME_POSITION_NUM = 0;
     private final CarName name;
-    private int gamePosition;
+    private final Position gamePosition;
 
     public RacingCar(String name) {
         this(name, INIT_GAME_POSITION_NUM);
@@ -13,24 +14,24 @@ public class RacingCar {
 
     public RacingCar(String name, int gamePosition) {
         this.name = new CarName(name);
-        this.gamePosition = gamePosition;
+        this.gamePosition = new Position(gamePosition);
     }
 
     public CarName getName() {
         return name;
     }
 
-    public int getGamePosition() {
+    public Position getGamePosition() {
         return gamePosition;
     }
 
     public void move(int randomValue) {
         if (randomValue >= RacingCarConstants.MIN_CAR_MOVE_CONDITION) {
-            gamePosition++;
+            gamePosition.setPosition(1);
         }
     }
 
-    public boolean isWinner(int winnerPosition) {
-        return gamePosition == winnerPosition;
+    public boolean isWinner(Position winnerPosition) {
+        return gamePosition.getPosition() == winnerPosition.getPosition();
     }
 }

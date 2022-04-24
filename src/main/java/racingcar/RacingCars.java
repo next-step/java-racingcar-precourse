@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.StringJoiner;
 import org.assertj.core.util.VisibleForTesting;
 import racingcar.model.CarName;
+import racingcar.model.Position;
 
 public class RacingCars {
     @VisibleForTesting
@@ -21,25 +22,25 @@ public class RacingCars {
     }
 
     public String getWinners() {
-        int winnerPosition = getMaxPosition();
+        Position winnerPosition = getMaxPosition();
         for (RacingCar car : cars) {
             addWinner(car, winnerPosition);
         }
         return getWinnerOutPutResult();
     }
 
-    private void addWinner(RacingCar car, int winnerPosition) {
+    private void addWinner(RacingCar car, Position winnerPosition) {
         if (car.isWinner(winnerPosition)) {
             winners.add(car.getName());
         }
     }
 
-    private int getMaxPosition() {
+    private Position getMaxPosition() {
         List<Integer> positions = new ArrayList<>();
         for (RacingCar racingCar : cars) {
-            positions.add(racingCar.getGamePosition());
+            positions.add(racingCar.getGamePosition().getPosition());
         }
-        return Collections.max(positions);
+        return new Position(Collections.max(positions));
     }
 
     private String getWinnerOutPutResult() {

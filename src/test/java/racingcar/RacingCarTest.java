@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.model.CarName;
+import racingcar.model.Position;
 
 public class RacingCarTest {
 
@@ -23,7 +24,7 @@ public class RacingCarTest {
     void movePositionUpdateWhenInputFourOver_P01(int inputValue) {
         RacingCar car = new RacingCar("test");
         car.move(inputValue);
-        assertThat(car.getGamePosition()).isEqualTo(1);
+        assertThat(car.getGamePosition().getPosition()).isEqualTo(1);
     }
 
     @DisplayName("자동차는 각 라운드에서 4이하일 경우 정지한다.")
@@ -32,14 +33,14 @@ public class RacingCarTest {
     void movePositionNotUpdateWhenInputFourLess_N01(int inputValue) {
         RacingCar car = new RacingCar("test");
         car.move(inputValue);
-        assertThat(car.getGamePosition()).isEqualTo(0);
+        assertThat(car.getGamePosition().getPosition()).isEqualTo(0);
     }
 
     @DisplayName("자동차는 winnerPostion과 값이 같을 경우 우승자다.")
     @Test
     void isWinnerReturnTrueWhenWinnerPositionEqualGamePosition() {
         RacingCar car = new RacingCar("test", 3);
-        assertThat(car.isWinner(3)).isTrue();
+        assertThat(car.isWinner(new Position(3))).isTrue();
     }
 
     @DisplayName("자동차는 winnerPostion과 값이 다를경우 우승자가 아니다.")
@@ -47,7 +48,7 @@ public class RacingCarTest {
     @ValueSource(ints = {0, 1, 2, 3})
     void isWinnerReturnFalseWhenWinnerPositionNotEqualGamePosition(int currentPosition) {
         RacingCar car = new RacingCar("test", currentPosition);
-        assertThat(car.isWinner(4)).isFalse();
+        assertThat(car.isWinner(new Position(4))).isFalse();
     }
 
 }
