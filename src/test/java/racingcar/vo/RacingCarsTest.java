@@ -26,7 +26,7 @@ class RacingCarsTest {
                 .isThrownBy(() -> new RacingCars(Collections.emptyList()))
                 .withMessage(errMessage);
 
-        assertDoesNotThrow(()->new RacingCars(Arrays.asList("드림카","추카")));
+        assertDoesNotThrow(() -> new RacingCars(Arrays.asList("드림카", "추카")));
 
     }
 

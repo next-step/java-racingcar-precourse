@@ -5,12 +5,14 @@ import java.util.HashSet;
 import java.util.List;
 import racingcar.constant.RacingCarNameLength;
 import racingcar.constant.ErrorMessage;
+import racingcar.constant.RacingCarSize;
 
 public class RacingCars {
 
     private final List<RacingCar> racingCarList;
 
     public RacingCars(List<String> carNameList) {
+        validateCarNameSize(carNameList);
         for (String carName : carNameList) {
             validateCarNameLength(carName);
         }
@@ -18,6 +20,12 @@ public class RacingCars {
 
         this.racingCarList = new ArrayList<>();
         convertToRacingCar(carNameList);
+    }
+
+    private void validateCarNameSize(List<String> carNameList) {
+        if (carNameList.size() < RacingCarSize.MIN) {
+            throw new IllegalArgumentException(ErrorMessage.CAR_NAME_NUMBER_OF_TWO);
+        }
     }
 
     private void validateCarNameLength(String carName) {
