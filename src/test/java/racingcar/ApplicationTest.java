@@ -18,9 +18,20 @@ class ApplicationTest extends NsTest {
         assertRandomNumberInRangeTest(
             () -> {
                 run("pobi,woni", "1");
-                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자는 pobi 입니다.");
+                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자: pobi");
             },
             MOVING_FORWARD, STOP
+        );
+    }
+
+    @Test
+    void 전진_전진() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni", "3");
+                    assertThat(output()).contains("pobi : ---", "woni : ---","최종 우승자: pobi,woni");
+                },
+                MOVING_FORWARD, MOVING_FORWARD
         );
     }
 
@@ -31,6 +42,67 @@ class ApplicationTest extends NsTest {
                 runException("pobi,javaji");
                 assertThat(output()).contains(ERROR_MESSAGE);
             }
+        );
+    }
+
+
+    @Test
+    void 이름_입력안할때_예외_처리() {
+        assertSimpleTest(
+                () -> {
+                    runException("\n");
+                    assertThat(output()).contains(ERROR_MESSAGE);
+                }
+        );
+    }
+
+    @Test
+    void 공백이름_대한_예외_처리2() {
+        assertSimpleTest(
+                () -> {
+                    runException(",");
+                    assertThat(output()).contains(ERROR_MESSAGE);
+                }
+        );
+    }
+
+    @Test
+    void 시도횟수_음수입력_예외_처리() {
+        assertSimpleTest(
+                () -> {
+                    runException("a,b,c","-1");
+                    assertThat(output()).contains(ERROR_MESSAGE);
+                }
+        );
+    }
+
+    @Test
+    void 시도횟수_문자입력_예외_처리() {
+        assertSimpleTest(
+                () -> {
+                    runException("a,b,c","eaz");
+                    assertThat(output()).contains(ERROR_MESSAGE);
+                }
+        );
+    }
+
+    @Test
+    void 시도횟수_공백_입력_예외_처리() {
+        assertSimpleTest(
+                () -> {
+                    runException("a,b,c"," ");
+                    assertThat(output()).contains(ERROR_MESSAGE);
+                }
+        );
+    }
+
+    @Test
+    void 시도횟수_입력안했을때_예외_처리2() {
+        assertSimpleTest(
+                () -> {
+                    runException("a,b,c","\n");
+                    assertThat(output()).contains(ERROR_MESSAGE);
+                }
         );
     }
 
