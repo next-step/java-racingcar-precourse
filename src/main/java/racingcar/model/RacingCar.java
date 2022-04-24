@@ -26,7 +26,7 @@ public class RacingCar {
     private void validateDuplicate(String car) {
         if (cacheDuplicateCars.contains(car)) {
             GamePrinter.printDuplicateName();
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(GamePrinter.ERROR + GamePrinter.DUPLICATE_NAME);
         }
         cacheDuplicateCars.add(car);
     }
@@ -34,7 +34,7 @@ public class RacingCar {
     private void validateEmpty(String read) {
         if (StringUtils.isBlank(read)) {
             GamePrinter.printEmptyName();
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(GamePrinter.ERROR + GamePrinter.CAR_NAME_EMPTY);
         }
     }
 
@@ -45,7 +45,7 @@ public class RacingCar {
     private void validateInputLength(String car) {
         if (car.length() > 5 || car.length() < 1) {
             GamePrinter.printErrorValidNames();
-            throw new IllegalArgumentException("[ERROR]");
+            throw new IllegalArgumentException(GamePrinter.ERROR + GamePrinter.FIVE_LETTER);
         }
     }
 
