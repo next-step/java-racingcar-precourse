@@ -1,6 +1,7 @@
 package racingcar;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,4 +55,14 @@ public class RacingCarTest {
     System.out.println("최종 우승자 : " + carNames);
     return true;
   }
+
+  //자동차 경주 값 입력 및 오류 처리
+  @Test
+  @DisplayName("자동차이름입력테스트")
+  void 입력테스트() {
+    String carName = "asdddddddde";
+    RacingCarUtil.validationCarNameNull(carName);
+    RacingCarUtil.validationCarNameLength(carName);
+  }
+
 }

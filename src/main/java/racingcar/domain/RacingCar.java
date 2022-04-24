@@ -19,7 +19,6 @@ public class RacingCar {
 
   public static boolean addGoCount(RacingCar racingCar, int cnt) {
     racingCar.GO_COUNT += cnt;
-    racingCar.printRacingCar();
     return true;
   }
 

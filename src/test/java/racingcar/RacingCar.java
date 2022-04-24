@@ -20,11 +20,11 @@ public class RacingCar {
 
   public static boolean addGoCount(RacingCar racingCar, int cnt) {
     racingCar.GO_COUNT += cnt;
-    racingCar.printRacingCar();
+    racingCar.printRacingCar(cnt);
     return true;
   }
 
-  public void printRacingCar() {
+  public void printRacingCar(int cnt) {
     System.out.println(this.CAR_NAME + " : " + this.GO_COUNT);
   }
 

@@ -1,5 +1,6 @@
 package racingcar.util;
 
+import java.util.Arrays;
 import java.util.List;
 import org.junit.platform.commons.util.StringUtils;
 import racingcar.domain.RacingCar;
@@ -7,6 +8,9 @@ import racingcar.domain.RacingCar;
 public class RacingCarUtil {
 
   public static final int GO_STATUS = 4;
+  static final String CAR_NULL_MESSAGE = "[ERROR] 자동차 이름을 입력해주세요.";
+  static final String CAR_LENGTH_MESSAGE = "[ERROR] 자동차 이름을  5자 이하로 입력해주세요.";
+  public static final int MAX_CAR_NAME_LENGTH = 5;
 
   public static boolean isGoOrStop(int cnt) {
     if (isGo(cnt)) {
@@ -17,6 +21,23 @@ public class RacingCarUtil {
 
   public static boolean isGo(int cnt) {
     return cnt >= GO_STATUS;
+  }
+
+
+  public static List<String> splitCarNames(String carNames) {
+    return Arrays.asList(carNames.split(","));
+  }
+
+  public static void validationCarNameNull(String carName) throws IllegalArgumentException {
+    if(StringUtils.isBlank(carName)) {
+      throw new IllegalArgumentException(CAR_NULL_MESSAGE);
+    }
+  }
+
+  public static void validationCarNameLength(String carName) throws IllegalArgumentException {
+    if(carName.length() > MAX_CAR_NAME_LENGTH) {
+      throw new IllegalArgumentException(CAR_LENGTH_MESSAGE);
+    }
   }
 
   public static String getCarName(List<RacingCar> racingCarList) {
@@ -36,7 +57,6 @@ public class RacingCarUtil {
     return maxCarNames;
   }
 
-  //0 인지 체크
   private static boolean isZero(RacingCar comparisonCar) {
     if (comparisonCar.getGoCount() != 0) {
       return true;
