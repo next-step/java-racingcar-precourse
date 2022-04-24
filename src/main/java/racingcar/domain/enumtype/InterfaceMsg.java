@@ -1,6 +1,7 @@
 package racingcar.domain.enumtype;
 
 public enum InterfaceMsg {
+	GAME_INFO("자동차 경주 게임에 오신 것을 환영합니다.\n자동차 경주 게임은 경주할 자동차 이름과 시도할 회수를 입력받습니다."),
 	REQUEST_INPUT_CAR_NAME("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분) : "),
 	REQUEST_INPUT_GAME_TRY_COUNT("시도할 회수는 몇회인가요? : ")
 	;
