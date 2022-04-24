@@ -1,4 +1,4 @@
-package racingcar.model.util;
+package racingcar.util;
 
 import org.junit.jupiter.api.Test;
 

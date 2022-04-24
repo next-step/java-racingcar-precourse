@@ -1,6 +1,6 @@
 package racingcar.model;
 
-import racingcar.model.util.NumberGenerator;
+import racingcar.util.NumberGenerator;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 

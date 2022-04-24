@@ -1,4 +1,4 @@
-package racingcar.model.util;
+package racingcar.util;
 
 public interface NumberGenerator {
     final int MAX = 9;

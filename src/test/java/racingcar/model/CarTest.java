@@ -5,7 +5,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
-import racingcar.model.util.NumberGenerator;
+import racingcar.util.NumberGenerator;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 import static org.assertj.core.api.Assertions.assertThat;
