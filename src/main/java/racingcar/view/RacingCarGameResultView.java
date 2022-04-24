@@ -7,16 +7,16 @@ import racingcar.vo.RacingCars;
 
 public class RacingCarGameResultView {
 
-    private static final String MAIN_HEADER = "실행결과";
+    private static final String ALL_ROUND_MAIN_HEADER = "실행결과";
     private static final String ENTER = "\n";
     private static final String COLON = ":";
     private static final String FORWARD = "-";
     private static final String COMMA = ",";
     private static final String GAP = " ";
-    private static final String WINNERS_MAIN_HEADER = "최종우승자";
+    private static final String WINNERS_MAIN_HEADER = "최종 우승자";
 
     public String allRoundResultView(RacingCars racingCars) {
-        StringBuilder resultView = new StringBuilder(MAIN_HEADER).append(ENTER);
+        StringBuilder resultView = new StringBuilder(ALL_ROUND_MAIN_HEADER).append(ENTER);
         List<RacingCar> racingCarList = racingCars.getRacingCarList();
         int allRound = racingCarList.get(0).getLocationHistory().size();
         for (int round = 0; round < allRound; round++) {
@@ -28,7 +28,7 @@ public class RacingCarGameResultView {
 
     private void roundResultView(StringBuilder resultView, List<RacingCar> racingCarList, int round) {
         for (RacingCar racingCar : racingCarList) {
-            resultView.append(racingCar.getCarName()).append(COLON);
+            resultView.append(racingCar.getCarName()).append(GAP).append(COLON).append(GAP);
             int location = racingCar.getLocationHistory().get(round);
             addMoveLocationView(resultView, location);
             resultView.append(ENTER);
