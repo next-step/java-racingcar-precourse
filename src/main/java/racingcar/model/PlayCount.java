@@ -27,14 +27,14 @@ public class PlayCount {
         try {
             Integer.parseInt(playCount);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(ErrorMessage.ERROR_PLAY_COUNT);
+            throw new IllegalArgumentException(ErrorMessage.ERROR_PLAY_COUNT_NOT_NUMBER);
         }
     }
 
     private void checkRangeNumber(String playCount) {
         int checkNumber = Integer.parseInt(playCount);
         if (checkNumber < playCountRule.getMinNum() || checkNumber > playCountRule.getMaxNum()) {
-            throw new IllegalArgumentException(ErrorMessage.ERROR_PLAY_COUNT);
+            throw new IllegalArgumentException(ErrorMessage.ERROR_PLAY_COUNT_NOT_RANGE);
         }
     }
 
