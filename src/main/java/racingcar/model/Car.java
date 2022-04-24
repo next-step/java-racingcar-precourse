@@ -3,7 +3,7 @@ package racingcar.model;
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.utils.ValidationUtil;
 
-public class Car {
+public class Car implements Comparable<Car>{
     private String name;
     private Integer steps;
 
@@ -24,6 +24,17 @@ public class Car {
         return steps;
     }
 
+    public void setSteps(Integer steps) {
+        this.steps = steps;
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "name='" + name + '\'' +
+                ", steps=" + steps +
+                '}';
+    }
 
     public void createSteps(int number){
         ValidationUtil.isNumberInRange(number);
@@ -37,5 +48,10 @@ public class Car {
             return Boolean.FALSE;
         }
         return Boolean.TRUE;
+    }
+
+    @Override
+    public int compareTo(Car o) {
+        return this.steps - o.getSteps();
     }
 }
