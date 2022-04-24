@@ -41,8 +41,8 @@ public class OperatorControllerTest extends NsTest {
 		assertThrows(IllegalArgumentException.class,() -> {
 			System.out.print(InterfaceMsg.REQUEST_INPUT_CAR_NAME.getValue()); run("pobi");
 			String carName = readLine(); System.out.println(carName);
-			ValidationMsg validationMsg = validatorServiceTest.getInstance().validateCarCount(carName);
-			if (validationMsg == ValidationMsg.MORE_THEN_TWO) {
+			ValidationMsg validationMsg = validatorServiceTest.getInstance().validationCarName(carName);
+			if (validationMsg == ValidationMsg.NEED_MORE_THEN_TWO) {
 				System.out.println(validationMsg.getValue()); throw new IllegalArgumentException();
 			}
 		});
