@@ -28,13 +28,14 @@ public class ValidatorServiceTest {
 
 	public ValidationMsg validateCarCount(String carName) {
 		if (this.isMoreThanTwoCar(carName)) return ValidationMsg.PROPER_TYPE;
-		return ValidationMsg.MORE_THEN_TWO;
+		return ValidationMsg.NEED_MORE_THEN_TWO;
 	}
 
 	public ValidationMsg validationCarName(String carName) {
 		if (carName == null) return ValidationMsg.NULL_TYPE;
 		if (carName.isEmpty()) return ValidationMsg.EMPTY_TYPE;
 		if (this.isPassCarNameLength(carName) == false) return ValidationMsg.CAR_NAME_OVER_FIVE;
+		if (!this.isMoreThanTwoCar(carName)) return ValidationMsg.NEED_MORE_THEN_TWO;
 		if (this.isDuplicateUserInput(carName)) return ValidationMsg.NOT_DUPLICATE_NAME;
 		return ValidationMsg.PROPER_TYPE;
 	}
