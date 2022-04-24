@@ -26,12 +26,12 @@ public class GameController {
     public void processGame() {
         int rounds = gameRound.rounds;
         while (rounds > 0) {
-            gameRound.playEachRound(racingCar.racingCarRecords);
+            gameRound.playEachRound(racingCar);
             rounds -= 1;
         }
     }
 
     public void endGame() {
-        winner.getWinner(racingCar.racingCarRecords);
+        winner.getWinner(racingCar);
     }
 }
