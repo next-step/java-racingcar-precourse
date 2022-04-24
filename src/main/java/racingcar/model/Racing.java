@@ -19,7 +19,7 @@ public class Racing {
         }
     }
 
-    public void moveCheck(){
+    public void moveCheck() {
         for (Car car : carList) {
             car.update();
             System.out.println(car.getLaps());
@@ -34,17 +34,16 @@ public class Racing {
             result.put(car.getName(), car.getLapInfo().length());
         }
 
-        ArrayList<String> max_list=new ArrayList<>();
+        ArrayList<String> max_list = new ArrayList<>();
         int maxValue = Collections.max(result.values());
-        for(Map.Entry<String, Integer> m : result.entrySet()) {
-            if(m.getValue()==maxValue) {
+        for (Map.Entry<String, Integer> m : result.entrySet()) {
+            if (m.getValue() == maxValue) {
                 max_list.add(m.getKey());
             }
         }
 
-
-        String winners=Arrays.toString(max_list.toArray());
-        System.out.println("최종 우승자: "+winners.replace("[","").replace("]",""));
+        String winners = Arrays.toString(max_list.toArray());
+        System.out.println("최종 우승자: " + winners.replace("[", "").replace("]", ""));
 
     }
 }

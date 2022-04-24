@@ -1,7 +1,5 @@
 package racingcar.service;
 
-import static racingcar.util.Utils.stringToInt;
-
 import racingcar.model.Racing;
 import racingcar.util.Utils;
 
@@ -20,7 +18,7 @@ public class RacingService implements Service {
     @Override
     public void start() {
 
-        while(RacingGame()){
+        while (RacingGame()) {
             RacingGame();
         }
 

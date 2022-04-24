@@ -7,8 +7,9 @@ import org.junit.jupiter.api.Test;
 public class CarTest {
 
     String testName = "TEST";
+
     @Test
-    public void carTest(){
+    public void carTest() {
         Car car = Car.withName(testName);
         assertThat(car.getName()).isEqualTo(testName);
         car.update();

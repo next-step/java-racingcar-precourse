@@ -28,14 +28,14 @@ public class Car {
         return lapInfo;
     }
 
-    public void update(){
+    public void update() {
 
-        if(Utils.getRandom(0, 9)>3){
+        if (Utils.getRandom(0, 9) > 3) {
             lapInfo += "-";
         }
     }
 
-    public String getLaps(){
+    public String getLaps() {
         return getName() + " : " + getLapInfo();
     }
 }
