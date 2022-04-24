@@ -4,8 +4,8 @@ public class Car {
     public static int SCORE_MIN = 0;
     public static int SCORE_MAX = 9;
     public static int GO_MIN_SCORE = 4;
-    public static String ERROR_SCORE_UNDERFLOW = "[ERROR] 너무 작은 값입니다. %d";
-    public static String ERROR_SCORE_OVERFLOW = "[ERROR] 너무 큰 값입니다. %d";
+    public static final String ERROR_SCORE_UNDERFLOW = "[ERROR] 너무 작은 값입니다. %d";
+    public static final String ERROR_SCORE_OVERFLOW = "[ERROR] 너무 큰 값입니다. %d";
 
     String name;
     int move;
