@@ -6,16 +6,16 @@ import java.util.List;
 import racingcar.common.SystemMessage;
 
 public class Game {
-    private RacingCars racingCars;
-    private int tryTime;
 
     private final int GO_VALUE = 4;
     private final int MAX_VALUE = 9;
     private final int MIN_VALUE = 0;
+    private RacingCars racingCars;
+    private int tryTime;
 
     public Game() {
-        this.initGame();
-    }
+    this.initGame();
+  }
 
     public void initGame() {
         inputRacingCarName();
@@ -88,7 +88,7 @@ public class Game {
 
     private String getResult(int goCount) {
         String result = "";
-        for(int index = 0; index < goCount; index++) {
+        for (int index = 0; index < goCount; index++) {
             result += "-";
         }
         return result;
@@ -98,5 +98,4 @@ public class Game {
         Result result = new Result(racingCars);
         return result.getResult();
     }
-
 }
