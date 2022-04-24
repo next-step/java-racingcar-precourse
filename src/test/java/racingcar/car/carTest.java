@@ -1,6 +1,8 @@
 package racingcar.car;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
 import org.junit.jupiter.api.Test;
 
 public class carTest {
@@ -14,5 +16,14 @@ public class carTest {
 
         car.inputScore(Car.GO_MIN_SCORE);
         assertThat(car.getMove()).isEqualTo(1);
+    }
+
+    @Test
+    void name_validation(){
+        String tooLongName = "ERROR_NAME";
+        assertThatThrownBy(() -> new Car(tooLongName)).isInstanceOf(IllegalArgumentException.class);
+
+        String emptyName = "";
+        assertThatThrownBy(() -> new Car(emptyName)).isInstanceOf(IllegalArgumentException.class);
     }
 }
