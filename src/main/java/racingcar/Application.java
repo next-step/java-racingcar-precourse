@@ -14,5 +14,6 @@ public class Application {
             game.turn();
             game.printResult();
         }
+        System.out.println(SystemMessage.WINNER + game.getWinner() + " 입니다.");
     }
 }

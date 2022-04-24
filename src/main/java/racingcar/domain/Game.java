@@ -74,5 +74,29 @@ public class Game {
         return this.tryTime;
     }
 
+    public void printResult() {
+        List<RacingCar> racingCarsList = racingCars.getRacingCars();
+        for (int index = 0; index < racingCarsList.size(); index++) {
+            RacingCar racingCar = racingCarsList.get(index);
+            String carName = racingCar.getName();
+            String result = getResult(racingCar.getGoCount());
+
+            System.out.println(carName + " : " + result);
+        }
+        System.out.println();
+    }
+
+    private String getResult(int goCount) {
+        String result = "";
+        for(int index = 0; index < goCount; index++) {
+            result += "-";
+        }
+        return result;
+    }
+
+    public String getWinner() {
+        Result result = new Result(racingCars);
+        return result.getResult();
+    }
 
 }
