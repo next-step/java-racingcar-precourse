@@ -7,6 +7,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.constant.Delimiter;
+import racingcar.utils.SplitUtils;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -32,9 +34,9 @@ class RacingCarsTest {
 
     @DisplayName("자동차 이름의 길이가 1~5이하 인지 검증")
     @ParameterizedTest
-    @ValueSource(strings = {"", "람보르기니79"})
-    void validateCarNameLength(String carName) {
-        List<String> carNameList = Collections.singletonList(carName);
+    @ValueSource(strings = {",제리", "타다,람보르기니79"})
+    void validateCarNameLength(String inputCarNames){
+        List<String> carNameList = SplitUtils.splitToList(inputCarNames, Delimiter.COMMA);
 
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> new RacingCars(carNameList))
