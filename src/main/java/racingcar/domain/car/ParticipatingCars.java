@@ -1,6 +1,8 @@
 package racingcar.domain.car;
 
 
+import racingcar.domain.race.RacePreparation;
+
 import java.util.List;
 
 public class ParticipatingCars {
@@ -8,8 +10,8 @@ public class ParticipatingCars {
 
     public ParticipatingCars(String[] allParticipateCars) {
         CarNameValidation.validation(allParticipateCars);
-//        RacePreparation racePreparation = new RacePreparation();
-//        this.cars = racePreparation.carRegistration(allCarName);
+        RacePreparation racePreparation = new RacePreparation();
+        this.cars = racePreparation.carRegistration(allCarName);
     }
 
     public List<Car> getCars() {

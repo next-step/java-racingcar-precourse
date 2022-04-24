@@ -9,7 +9,7 @@ public class Application {
         final Scanner scanner = new Scanner(System.in);
 
         RaceManager raceManager = new RaceManager();
-        raceManager.run(scanner);
+        raceManager.generateCars(scanner);
         raceManager.setRaceCount(scanner);
     }
 }
