@@ -74,28 +74,19 @@ class RacingCarPlayServiceTest {
 
     @DisplayName("시도 횟수 입력값 예외 처리 검증(숫자가 아닌경우)")
     @ParameterizedTest(name = "round 입력 값이 [{0}]")
-    @ValueSource(strings = {"$", "일", "!"})
+    @ValueSource(strings = {"$", "일", "!", "-1", "0"})
     void proceedGame_throw_not_number(String round) {
 
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> racingCarPlayService.proceedGame(null, round))
-                .withMessage("[ERROR] 시도 횟수는 숫자여야 합니다.");
+                .withMessage("[ERROR] 시도 횟수는 1이상의 숫자여야 합니다.");
 
-    }
-
-    @DisplayName("시도 횟수 입력값 예외 처리 검증(음수인 경우)")
-    @Test
-    void proceedGame_throw_negative_number() {
-        String round = "-100";
-        assertThatIllegalArgumentException()
-                .isThrownBy(() -> racingCarPlayService.proceedGame(null, round))
-                .withMessage("[ERROR] 시도 횟수는 양수로 입력해주세요.");
     }
 
     @DisplayName("시도 횟수 입력값 예외 처리 검증(범위가 너무 큰 경우)")
     @Test
     void proceedGame_throw_not_range() {
-        String round = "1000000000";
+        String round = "10000000000000";
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> racingCarPlayService.proceedGame(null, round))
                 .withMessage("[ERROR] 시도 횟수가 너무 많습니다.");
