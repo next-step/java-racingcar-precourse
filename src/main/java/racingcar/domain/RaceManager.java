@@ -1,22 +1,42 @@
 package racingcar.domain;
 
-import racingcar.domain.Car.RaceCar;
+import racingcar.Constant;
+import racingcar.domain.car.ParticipatingCars;
+import racingcar.domain.car.RaceCar;
+import racingcar.domain.count.Count;
 
 import java.util.Scanner;
 
 public class RaceManager {
-
-    private static final String REQUEST_CAR_NAME = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
-    private static final String TRY_COUNT = "시도할 회수는 몇회인가요?";
-
+    private ParticipatingCars participatingCars;
     private RaceCar raceCar;
+    private Count count;
 
-    public void run() {
-        final Scanner scanner = new Scanner(System.in);
-        // 자동차 생성
-        raceCar.generateRaceCars(scanner);
+    public void run(Scanner scanner) {
+        while (true) {
+            System.out.println(Constant.PARTICIPATING_CAR_NAME_INPUT_MESSAGE);
 
-
+            try {
+                String[] allCarName = raceCar.generateRaceCars(scanner);
+                this.participatingCars = new ParticipatingCars(allCarName);
+                break;
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
     }
 
+    public void setRaceCount(Scanner scanner) {
+        while (true) {
+            System.out.println(Constant.RACE_ROUND_INPUT_MESSAGE);
+
+            try {
+                String number = raceCar.getRaceCount(scanner);
+                this.count = new Count(number);
+                break;
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
 }

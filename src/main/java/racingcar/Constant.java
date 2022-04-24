@@ -15,7 +15,7 @@ public class Constant {
 
     public static final String BLANK = " ";
     public static final String EMPTY_NAME = "";
-    public static final String DELIMITER = ",";
+    public static final String SEPARATOR = ",";
     public static final String COMMA = ", ";
     public static final String COLON = " : ";
     public static final String FORWARD_SIGN = "-";
