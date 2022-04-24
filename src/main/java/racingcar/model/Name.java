@@ -1,6 +1,6 @@
 package racingcar.model;
 
-import racingcar.Exception.RacingIllegalArgumentException;
+import racingcar.exception.RacingIllegalArgumentException;
 
 public class Name {
     private static final int LENGTH = 5;

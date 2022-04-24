@@ -1,4 +1,4 @@
-package racingcar.Exception;
+package racingcar.exception;
 
 public class RacingIllegalArgumentException extends IllegalArgumentException{
     private static final String ERROR_MESSAGE = "[ERROR]";

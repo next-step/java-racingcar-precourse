@@ -1,7 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
-import racingcar.Controller.Controller;
+import racingcar.controller.Controller;
 import racingcar.model.Car;
 import racingcar.util.Validation;
 

@@ -1,4 +1,4 @@
-package racingcar.Exception;
+package racingcar.exception;
 
 import org.junit.jupiter.api.Test;
 

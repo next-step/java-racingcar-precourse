@@ -1,6 +1,6 @@
 package racingcar.util;
 
-import racingcar.Exception.RacingIllegalArgumentException;
+import racingcar.exception.RacingIllegalArgumentException;
 
 import java.util.HashSet;
 import java.util.Set;
