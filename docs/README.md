@@ -13,6 +13,7 @@
       |---|---|
       | 자동차 이름이 없거나 5자 초과하는 경우 |IllegalArgumentException|
       | 자동차 이름에 중복이 있는 경우  |IllegalArgumentException|
+      | 자동차 이름이 2개 미만인 경우 |IllegalArgumentException|
 
 - [X] 각 자동차당 전진과 멈춤을 임의의 수 (0\~9) 를 통해 결정 ( 멈춤 0\~3, 전진 4\~9 )
 
