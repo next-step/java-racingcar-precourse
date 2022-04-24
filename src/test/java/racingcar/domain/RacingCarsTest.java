@@ -3,11 +3,13 @@ package racingcar.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.*;
 
 class RacingCarsTest {
@@ -59,5 +61,11 @@ class RacingCarsTest {
         when(car.getName()).thenReturn(willReturnName);
         when(car.isWinner(anyInt())).thenReturn(willReturnIsWinner);
         return car;
+    }
+
+    @DisplayName("이동전략으로 null을 입력하는 경우")
+    @Test
+    void strategyIsNull() {
+        assertThatThrownBy(() -> new RacingCars(new ArrayList<>(), null)).isInstanceOf(IllegalArgumentException.class);
     }
 }

@@ -12,6 +12,9 @@ public class RacingCars {
     }
 
     public RacingCars(List<Car> cars, MovingStrategy movingStrategy) {
+        if (movingStrategy == null) {
+            throw new IllegalArgumentException("이동 전략으로 Null을 사용할 수 없습니다");
+        }
         this.cars = cars;
         this.movingStrategy = movingStrategy;
     }
