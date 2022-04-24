@@ -13,6 +13,7 @@
       | 자동차 이름이 없거나 5자 초과하는 경우 |IllegalArgumentException|
       | 자동차 이름에 중복이 있는 경우  |IllegalArgumentException|
       | 자동차 이름이 2개 미만인 경우 |IllegalArgumentException|
+      | 자동차 이름의 끝이 쉼표(,)로 끝나는 경우  |IllegalArgumentException|
 
 - [X] 각 자동차당 전진과 멈춤을 임의의 수 (0\~9) 를 통해 결정 ( 멈춤 0\~3, 전진 4\~9 )
 
@@ -31,6 +32,6 @@
 
 - [X] 전체 라운드에 대한 결과 메세지 출력
 
-- [ ] 우승자 목록에 대한 결과 메세지 출력
+- [X] 우승자 목록에 대한 결과 메세지 출력
 
 > 입력에 대한 예외상황 발생시 [ERROR] 형태의 에러 메세지를 출력한다.. 
