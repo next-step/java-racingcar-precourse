@@ -12,6 +12,8 @@ import racingcar.vo.RacingCars;
 public class RacingCarPlayService {
 
     private static final String INPUT_ZERO = "0";
+    private static final String COMMA = ",";
+    private static final int NOT_EXIST = -1;
 
     private final RacingCarMoveService racingCarMoveService;
 
@@ -20,8 +22,17 @@ public class RacingCarPlayService {
     }
 
     public RacingCars registerRacingCars(String inputCarNames) {
+        validateLastComma(inputCarNames);
         List<String> inputCarNameList = SplitUtils.splitToList(inputCarNames, Delimiter.COMMA);
         return new RacingCars(inputCarNameList);
+    }
+
+    private void validateLastComma(String inputCarNames) {
+        int lastIndex = inputCarNames.length()-1;
+        int lastCommaIndex = inputCarNames.lastIndexOf(COMMA);
+        if(lastCommaIndex != NOT_EXIST && lastCommaIndex == lastIndex){
+            throw new IllegalArgumentException(ErrorMessage.CAR_NAME_LAST_COMMA);
+        }
     }
 
     public RacingCars proceedGame(RacingCars racingCars, String inputRound) {
