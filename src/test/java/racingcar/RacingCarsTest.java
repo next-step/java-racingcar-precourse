@@ -1,6 +1,7 @@
 package racingcar;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.mockito.Mockito.mockStatic;
 import static org.mockito.Mockito.when;
 
@@ -9,18 +10,23 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.mockito.MockedStatic;
+import racingcar.model.CarMoveRule;
 
 public class RacingCarsTest {
-    public RacingCars racingCars;
+    RacingCars racingCars;
+    CarMoveRule carMoveRule;
     private static MockedStatic<RandomUtils> mRandomUtils;
 
     @BeforeEach
     public void set() {
         ArrayList<RacingCar> cars = new ArrayList<>();
-        cars.add(new RacingCar("hi"));
-        cars.add(new RacingCar("hello"));
-        cars.add(new RacingCar("hello"));
+        carMoveRule = new CarMoveRule(1, 0, 4);
+        cars.add(new RacingCar("hi", carMoveRule));
+        cars.add(new RacingCar("hello", carMoveRule));
+        cars.add(new RacingCar("hello", carMoveRule));
         racingCars = new RacingCars(cars);
         mRandomUtils = mockStatic(RandomUtils.class);
     }
@@ -34,6 +40,22 @@ public class RacingCarsTest {
     @Test
     public void createRacingCarsSuccess_P01() {
         assertThat(racingCars).isNotNull();
+    }
+
+    @DisplayName("경주게임_자동차_이름_검증_통과")
+    @ParameterizedTest
+    @CsvSource(value = {"하이브리드,번개", "하이브리드,번개,번개3"}, delimiter = ':')
+    void validCarNamesReturnTrue_P01(String inputName) {
+        RacingCars dummyCars = new RacingCars(inputName, carMoveRule);
+        assertThat(dummyCars).isNotNull();
+    }
+
+    @DisplayName("경주게임_자동차_이름_검증_실패")
+    @ParameterizedTest
+    @CsvSource(value = {"하이브리드1,하이브리드", "하이브리드,번개44444444,번개3", "hi,,hihi"}, delimiter = ':')
+    void validCarNamesThrowException_N01(String inputName) {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> new RacingCars(inputName, carMoveRule));
     }
 
     @DisplayName("라운드를 진행할 때 랜덤값이 모두 4 이상이면, 각 자동차의 포지션은 증가해야한다.")
@@ -60,9 +82,9 @@ public class RacingCarsTest {
     @Test
     public void getWinners_P01() {
         ArrayList<RacingCar> cars = new ArrayList<>();
-        cars.add(new RacingCar("hi", 3));
-        cars.add(new RacingCar("hello", 2));
-        cars.add(new RacingCar("hell2", 2));
+        cars.add(new RacingCar("hi", 3, carMoveRule));
+        cars.add(new RacingCar("hello", 2, carMoveRule));
+        cars.add(new RacingCar("hell2", 2, carMoveRule));
         racingCars = new RacingCars(cars);
         assertThat(racingCars.getWinners()).isEqualTo("hi");
     }
@@ -71,9 +93,9 @@ public class RacingCarsTest {
     @Test
     public void getWinners_P02() {
         ArrayList<RacingCar> cars = new ArrayList<>();
-        cars.add(new RacingCar("hi", 3));
-        cars.add(new RacingCar("hello", 3));
-        cars.add(new RacingCar("hell2", 2));
+        cars.add(new RacingCar("hi", 3, carMoveRule));
+        cars.add(new RacingCar("hello", 3, carMoveRule));
+        cars.add(new RacingCar("hell2", 2, carMoveRule));
         racingCars = new RacingCars(cars);
         assertThat(racingCars.getWinners()).isEqualTo("hi, hello");
     }

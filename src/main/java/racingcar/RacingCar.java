@@ -1,5 +1,6 @@
 package racingcar;
 
+import racingcar.model.CarMoveRule;
 import racingcar.model.CarName;
 import racingcar.model.Position;
 
@@ -7,14 +8,16 @@ public class RacingCar {
     private static final int INIT_GAME_POSITION_NUM = 0;
     private final CarName name;
     private final Position gamePosition;
+    private final CarMoveRule carMoveRule;
 
-    public RacingCar(String name) {
-        this(name, INIT_GAME_POSITION_NUM);
+    public RacingCar(String name, CarMoveRule carMoveRule) {
+        this(name, INIT_GAME_POSITION_NUM, carMoveRule);
     }
 
-    public RacingCar(String name, int gamePosition) {
+    public RacingCar(String name, int gamePosition, CarMoveRule carMoveRule) {
         this.name = new CarName(name);
         this.gamePosition = new Position(gamePosition);
+        this.carMoveRule = carMoveRule;
     }
 
     public CarName getName() {
@@ -26,9 +29,13 @@ public class RacingCar {
     }
 
     public void move(int randomValue) {
-        if (randomValue >= RacingCarConstants.MIN_CAR_MOVE_CONDITION) {
-            gamePosition.setPosition(1);
+        if (randomValue >= carMoveRule.getMoveMinCondition()) {
+            gamePosition.setPosition(carMoveRule.getMoveNum());
         }
+    }
+
+    public CarMoveRule getCarMoveRule() {
+        return carMoveRule;
     }
 
     public boolean isWinner(Position winnerPosition) {
