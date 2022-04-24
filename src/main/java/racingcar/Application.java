@@ -1,7 +1,16 @@
 package racingcar;
 
+import racingcar.domain.PlayCars;
+import racingcar.controller.RaceManager;
+import racingcar.domain.RaceCount;
+import racingcar.view.ResultView;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        PlayCars playCars = RaceManager.generateCars();
+        RaceCount raceCount = RaceManager.getPlayCount();
+
+        RaceManager.start(playCars, raceCount);
+        ResultView.printWinners(playCars);
     }
 }
