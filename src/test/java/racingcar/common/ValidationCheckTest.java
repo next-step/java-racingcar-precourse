@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.Test;
 
 public class ValidationCheckTest {
+
     public ValidationCheck validationCheck = new ValidationCheck();
 
     @Test
@@ -18,5 +19,4 @@ public class ValidationCheckTest {
         assertThat(validationCheck.numberValidation("123")).isEqualTo(true);
         assertThat(validationCheck.numberValidation("abc")).isEqualTo(false);
     }
-
 }
