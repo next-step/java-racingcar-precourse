@@ -4,14 +4,16 @@ import racingcar.Constant;
 import racingcar.domain.car.ParticipatingCars;
 import racingcar.domain.count.Count;
 import racingcar.domain.race.RacePreparation;
+import racingcar.domain.race.RaceProcess;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class RaceManager {
     private ParticipatingCars participatingCars;
     private RacePreparation racePreparation;
     private Count count;
+    private RaceProcess raceProcess;
+    private int leadPosition = 0;
 
     public void generateCars(Scanner scanner) {
         while (true) {
@@ -41,14 +43,14 @@ public class RaceManager {
         }
     }
 
-//    public void start() {
-//        System.out.println(Constant.RACE_PROCESS);
-//
-//        for (int i = 0; i < round.getRound(); i++) {
-//            this.leadPosition = raceProcess.driveCar(cars, leadPosition);
-//            raceProcess.showCurrentSituation(cars);
-//        }
-//    }
+    public void start() {
+        System.out.println(Constant.RACE_PROCESS);
+
+        for (int i = 0; i < count.getRound(); i++) {
+            this.leadPosition = raceProcess.startrace(participatingCars, leadPosition);
+            raceProcess.showCurrentSituation(participatingCars);
+        }
+    }
 //
 //    public void showWinner() {
 //        List<String> winners = raceResult.findWinner(cars, leadPosition);

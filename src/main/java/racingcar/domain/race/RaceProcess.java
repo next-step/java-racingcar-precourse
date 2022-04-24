@@ -1,11 +1,11 @@
 package racingcar.domain.race;
 
 import racingcar.Constant;
-import racingcar.car.Car;
-import racingcar.car.ParticipatingCars;
+import racingcar.domain.car.Car;
+import racingcar.domain.car.ParticipatingCars;
 
 public class RaceProcess {
-    public int driveCar(ParticipatingCars allRacingCars, int position) {
+    public int startrace(ParticipatingCars allRacingCars, int position) {
         int leadPosition = position;
 
         for (Car car : allRacingCars.getCars()) {
@@ -21,6 +21,11 @@ public class RaceProcess {
         return leadPosition;
     }
 
+    private boolean updateLeadPosition(Car car, int leadPosition) {
+        return car.isLead(leadPosition);
+    }
+
+
     public void showCurrentSituation(ParticipatingCars allRacingCars) {
         for (Car car : allRacingCars.getCars()) {
             System.out.print(car.getName() + Constant.COLON);
@@ -28,10 +33,6 @@ public class RaceProcess {
         }
 
         System.out.println();
-    }
-
-    private boolean updateLeadPosition(Car car, int leadPosition) {
-        return car.isLead(leadPosition);
     }
 
     private void showEachCarSituation(int position) {

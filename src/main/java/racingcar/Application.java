@@ -11,5 +11,6 @@ public class Application {
         RaceManager raceManager = new RaceManager();
         raceManager.generateCars(scanner);
         raceManager.setRaceCount(scanner);
+        raceManager.start();
     }
 }
