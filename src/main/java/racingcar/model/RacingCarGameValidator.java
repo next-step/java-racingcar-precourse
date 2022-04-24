@@ -26,7 +26,7 @@ public class RacingCarGameValidator {
             checkRacingCarNameLength(racingCarName);
         }
 
-        ValidationSuccess();
+        validationSuccess();
     }
 
     public void checkRacingCarNameLength(String racingCarNames) {
@@ -39,7 +39,7 @@ public class RacingCarGameValidator {
         return this.validStatus;
     }
 
-    public void ValidationSuccess() {
+    public void validationSuccess() {
         this.validStatus = true;
     }
 }
