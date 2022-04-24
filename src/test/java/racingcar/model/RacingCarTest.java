@@ -10,7 +10,6 @@ class RacingCarTest {
 
     final String ERROR = "[ERROR]";
     String[] validCars = {"iron", "man", "black", "widow"};
-    String[] invalidCars = {"iron man", "ironman", "blackWidow", "", "  ", " ironman"};
     String[] duplicateCars = {"iron ", " iron", "iron "};
     String[] invalidLengthCars = {"iron man", "ironman", "blackWidow", "", "  ", " ironman"};
     String[] emptyNameCars = {"iron", "", "  "};
@@ -45,8 +44,4 @@ class RacingCarTest {
             new RacingCar(emptyNameCars);
         }).isInstanceOf(IllegalArgumentException.class).hasMessageContaining(ERROR);
     }
-
-
-
 }
-// TODO : 3 이하, 4 이상 로직도 테스트해야한다.

@@ -1,6 +1,5 @@
 package racingcar.model;
 
-import org.junit.platform.commons.util.StringUtils;
 import racingcar.view.GamePrinter;
 
 import java.util.ArrayList;
@@ -11,17 +10,6 @@ import java.util.Map;
 public class Winner {
 
     public List<String> winnerNominates = new ArrayList<>();
-
-    public void add(String winner) {
-        validateWinner(winner);
-        winnerNominates.add(winner);
-    }
-
-    private void validateWinner(String winner) {
-        if (StringUtils.isBlank(winner)) {
-            throw new IllegalArgumentException();
-        }
-    }
 
     public void getWinner(RacingCar racingCar) {
         Map<String, Integer> carMap = racingCar.racingCarRecords;
