@@ -19,6 +19,10 @@ public class CarTest {
     static void before() {
         randoms = mockStatic(Randoms.class);
     }
+    @AfterAll
+    public static void after() {
+        randoms.close();
+    }
 
     @Test
     void 자동차_이름_설정_테스트() {
@@ -90,10 +94,5 @@ public class CarTest {
         car.move();
         // then
         assertThat(car.getMoveCnt()).isEqualTo(1);
-    }
-
-    @AfterAll
-    public static void after() {
-        randoms.close();
     }
 }
