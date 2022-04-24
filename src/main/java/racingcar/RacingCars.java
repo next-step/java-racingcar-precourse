@@ -7,6 +7,7 @@ import org.assertj.core.util.VisibleForTesting;
 import racingcar.model.CarMoveRule;
 import racingcar.model.CarName;
 import racingcar.model.CurrentResult;
+import racingcar.model.Message.ErrorMessage;
 import racingcar.model.Position;
 import racingcar.model.WinnerResult;
 
@@ -55,7 +56,7 @@ public class RacingCars {
 
     private void validCarNames(String inputCarNames) {
         if (inputCarNames == null || inputCarNames.isEmpty()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.ERROR_INPUT_CAR_NAMES);
         }
     }
 

@@ -1,5 +1,7 @@
 package racingcar.model;
 
+import racingcar.model.Message.ErrorMessage;
+
 public class PlayCount {
 
     private final int playCount;
@@ -24,14 +26,14 @@ public class PlayCount {
         try {
             Integer.parseInt(playCount);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.ERROR_PLAY_COUNT);
         }
     }
 
     private void checkRangeNumber(String playCount) {
         int checkNumber = Integer.parseInt(playCount);
         if (checkNumber < playCountRule.getMinNum() || checkNumber > playCountRule.getMaxNum()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.ERROR_PLAY_COUNT);
         }
     }
 
