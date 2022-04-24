@@ -1,5 +1,7 @@
 package racingcar.model;
 
+import racingcar.Exception.RacingIllegalArgumentException;
+
 import java.util.List;
 
 public class CarList {
@@ -11,7 +13,7 @@ public class CarList {
 
     public Car getCarByIndex(int index) {
         if (index < 0 || this.carList.size() <= index) {
-            throw new IllegalArgumentException();
+            throw new RacingIllegalArgumentException("가져오려는 차량 LIST의 인덱스가 잘못 되었습니다.");
         }
 
         return this.carList.get(index);

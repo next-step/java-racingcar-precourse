@@ -1,5 +1,7 @@
 package racingcar.model;
 
+import racingcar.Exception.RacingIllegalArgumentException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,14 +30,14 @@ public class Game {
 
     private void checkInputParameter(String str) {
         if (str.length() > MAX_LENGTH_OF_EXECUTIONS) {
-            throw new IllegalArgumentException();
+            throw new RacingIllegalArgumentException("실행 횟수 입력 값의 최대길이는 4입니다.");
         }
         boolean isNotNumeric = !str.chars().allMatch(Character::isDigit);
         if (isNotNumeric) {
-            throw new IllegalArgumentException();
+            throw new RacingIllegalArgumentException("실행 횟수 입력 값이 숫자형식이 아닙니다.");
         }
         if (Integer.parseInt(str) < MIN_NUMBER_OF_EXECUTIONS) {
-            throw new IllegalArgumentException();
+            throw new RacingIllegalArgumentException("실행 횟수 최소 입력 값은 2이상입니다.");
         }
     }
 

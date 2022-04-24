@@ -1,5 +1,7 @@
 package racingcar.model;
 
+import racingcar.Exception.RacingIllegalArgumentException;
+
 public class Name {
     private static final int LENGTH = 5;
 
@@ -16,7 +18,7 @@ public class Name {
 
     private void checkNameLength(String name) {
         if (name.length() > LENGTH) {
-            throw new IllegalArgumentException();
+            throw new RacingIllegalArgumentException("이름의 최대길이는 5입니다.");
         }
     }
 }
