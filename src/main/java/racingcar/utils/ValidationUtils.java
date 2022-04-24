@@ -1,5 +1,7 @@
 package racingcar.utils;
 
+import racingcar.cars.Cars;
+
 import java.util.regex.Pattern;
 
 public class ValidationUtils {
@@ -16,5 +18,9 @@ public class ValidationUtils {
             return false;
         }
         return ONLY_NUMBER.matcher(input).matches();
+    }
+
+    public static boolean validateSeparator(final String input) {
+        return input != null && !input.trim().isEmpty() && !input.contains(Cars.CAR_NAME_SEPARATOR + Cars.CAR_NAME_SEPARATOR);
     }
 }

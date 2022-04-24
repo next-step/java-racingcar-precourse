@@ -23,4 +23,10 @@ public class ValidationUtilTest {
     void test02(String input, boolean expected) {
         assertThat(ValidationUtils.isNumeric(input)).isEqualTo(expected);
     }
+
+    @Test
+    @DisplayName("','구분자 여러개 입력 시 검증")
+    void test03() {
+        assertThat(ValidationUtils.validateSeparator("123,,")).isFalse();
+    }
 }
