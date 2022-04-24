@@ -1,8 +1,8 @@
 package racingcar.domain.race;
 
 import racingcar.Constant;
-import racingcar.car.Car;
-import racingcar.car.ParticipatingCars;
+import racingcar.domain.car.Car;
+import racingcar.domain.car.ParticipatingCars;
 
 import java.util.ArrayList;
 import java.util.List;

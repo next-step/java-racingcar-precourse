@@ -5,7 +5,9 @@ import racingcar.domain.car.ParticipatingCars;
 import racingcar.domain.count.Count;
 import racingcar.domain.race.RacePreparation;
 import racingcar.domain.race.RaceProcess;
+import racingcar.domain.race.RaceResult;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class RaceManager {
@@ -13,6 +15,7 @@ public class RaceManager {
     private RacePreparation racePreparation;
     private Count count;
     private RaceProcess raceProcess;
+    private RaceResult raceResult;
     private int leadPosition = 0;
 
     public void generateCars(Scanner scanner) {
@@ -51,9 +54,9 @@ public class RaceManager {
             raceProcess.showCurrentSituation(participatingCars);
         }
     }
-//
-//    public void showWinner() {
-//        List<String> winners = raceResult.findWinner(cars, leadPosition);
-//        raceResult.printWinner(winners);
-//    }
+
+    public void showWinner() {
+        List<String> winners = raceResult.findWinner(participatingCars, leadPosition);
+        raceResult.printWinner(winners);
+    }
 }
