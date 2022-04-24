@@ -10,5 +10,5 @@ public class RacingCarConstants {
     public static final String CAR_MOVE_PRINT_WORD = "-";
 
     public static final int PLAY_COUNT_MIN_SIZE = 0;
-    public static final int PLAY_COUNT_MAX_SIZE = 9;
+    public static final int PLAY_COUNT_MAX_SIZE = Integer.MAX_VALUE;
 }
