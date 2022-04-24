@@ -6,15 +6,14 @@ import java.util.List;
 
 public class Referee {
      public static String judgeWinners(List<Car> cars) {
-        // 정렬
-        cars.sort(Comparator.comparingInt(Car::getPosition));
+         List<String> winners = new ArrayList<>();
 
-        List<String> winners = new ArrayList<>();
+         cars.sort(Comparator.comparingInt(Car::getPosition));
 
-        Car winner = cars.get(cars.size() - 1);
-        for (Car car : cars)
-            if (car.getPosition() == winner.getPosition())
-                winners.add(car.getName());
-        return String.join(",", winners);
+         Car winner = cars.get(cars.size() - 1);
+         for (Car car : cars)
+             if (car.getPosition() == winner.getPosition())
+                 winners.add(car.getName());
+         return String.join(",", winners);
     }
 }
