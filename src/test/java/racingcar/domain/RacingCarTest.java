@@ -5,6 +5,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import org.junit.jupiter.api.Test;
 
 public class RacingCarTest {
+
     @Test
     void RacingCar_객체_생성() {
         RacingCar racingCar = new RacingCar("자동차1");
