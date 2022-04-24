@@ -6,6 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.model.CarName;
 
 public class RacingCarTest {
 
@@ -13,7 +14,7 @@ public class RacingCarTest {
     @Test
     void getNamePass_P01() {
         RacingCar car = new RacingCar("test");
-        assertThat(car.getName()).isEqualTo("test");
+        assertThat(car.getName().getName()).isEqualTo(new CarName("test").getName());
     }
 
     @DisplayName("자동차는 각 라운드에서 4이상일 경우 전진한다.")

@@ -62,7 +62,7 @@ public class RacingCarsTest {
         ArrayList<RacingCar> cars = new ArrayList<>();
         cars.add(new RacingCar("hi", 3));
         cars.add(new RacingCar("hello", 2));
-        cars.add(new RacingCar("hello1", 2));
+        cars.add(new RacingCar("hell2", 2));
         racingCars = new RacingCars(cars);
         assertThat(racingCars.getWinners()).isEqualTo("hi");
     }
@@ -73,7 +73,7 @@ public class RacingCarsTest {
         ArrayList<RacingCar> cars = new ArrayList<>();
         cars.add(new RacingCar("hi", 3));
         cars.add(new RacingCar("hello", 3));
-        cars.add(new RacingCar("hello1", 2));
+        cars.add(new RacingCar("hell2", 2));
         racingCars = new RacingCars(cars);
         assertThat(racingCars.getWinners()).isEqualTo("hi, hello");
     }

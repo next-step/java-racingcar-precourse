@@ -5,11 +5,12 @@ import java.util.Collections;
 import java.util.List;
 import java.util.StringJoiner;
 import org.assertj.core.util.VisibleForTesting;
+import racingcar.model.CarName;
 
 public class RacingCars {
     @VisibleForTesting
     ArrayList<RacingCar> cars = new ArrayList<>();
-    ArrayList<String> winners = new ArrayList<>();
+    ArrayList<CarName> winners = new ArrayList<>();
 
     public RacingCars(ArrayList<RacingCar> cars) {
         this.cars.addAll(cars);
@@ -43,8 +44,8 @@ public class RacingCars {
 
     private String getWinnerOutPutResult() {
         StringJoiner stringJoiner = new StringJoiner(", ");
-        for (String winner : winners) {
-            stringJoiner.add(winner);
+        for (CarName winner : winners) {
+            stringJoiner.add(winner.getName());
         }
         return stringJoiner.toString();
     }

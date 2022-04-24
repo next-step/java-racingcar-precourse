@@ -1,8 +1,10 @@
 package racingcar;
 
+import racingcar.model.CarName;
+
 public class RacingCar {
     private static final int INIT_GAME_POSITION_NUM = 0;
-    private String name;
+    private final CarName name;
     private int gamePosition;
 
     public RacingCar(String name) {
@@ -10,16 +12,12 @@ public class RacingCar {
     }
 
     public RacingCar(String name, int gamePosition) {
-        this.name = name;
+        this.name = new CarName(name);
         this.gamePosition = gamePosition;
     }
 
-    public String getName() {
+    public CarName getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public int getGamePosition() {

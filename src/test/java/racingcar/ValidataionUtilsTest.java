@@ -8,21 +8,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 public class ValidataionUtilsTest {
-    @DisplayName("경주게임_자동차_이름_검증_통과")
-    @ParameterizedTest
-    @CsvSource(value = {"하이브리드,번개", "하이브리드,번개,번개3"}, delimiter = ':')
-    void validCarNamesReturnTrue_P01(String inputName) {
-        assertThat(ValidataionUtils.validCarNames(inputName)).isTrue();
-    }
-
-    @DisplayName("경주게임_자동차_이름_검증_실패")
-    @ParameterizedTest
-    @CsvSource(value = {"하이브리드1,하이브리드", "번개", "하이브리드,번개44444444,번개3", "hi,,hihi"}, delimiter = ':')
-    void validCarNamesThrowException_N01(String inputName) {
-        assertThatIllegalArgumentException()
-                .isThrownBy(() -> ValidataionUtils.validCarNames(inputName));
-    }
-
     @DisplayName("경주게임_경기횟수_검증_통과")
     @ParameterizedTest
     @CsvSource({"1", "2", "3", "4", "1000", "2000"})
