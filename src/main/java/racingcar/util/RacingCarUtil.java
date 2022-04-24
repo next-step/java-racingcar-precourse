@@ -16,7 +16,6 @@ public class RacingCarUtil {
   static final int MAX_RANDOM_VALUE = 9;
 
 
-
   public static int getRandomValue() {
     return assertNumber(Randoms.pickNumberInRange(MIN_RANDOM_VALUE, MAX_RANDOM_VALUE));
   }
@@ -27,6 +26,7 @@ public class RacingCarUtil {
     }
     return number;
   }
+
   public static boolean isGoOrStop(int cnt) {
     if (isGo(cnt)) {
       return true;
@@ -35,28 +35,21 @@ public class RacingCarUtil {
   }
 
   public static boolean isGo(int cnt) {
-//    if() {
-//
-//    }
     return cnt >= GO_STATUS;
   }
-
-//  public static boolean isNumber() {
-//
-//  }
 
   public static List<String> splitCarNames(String carNames) {
     return Arrays.asList(carNames.split(","));
   }
 
   public static void validationCarNameNull(String carName) throws IllegalArgumentException {
-    if(StringUtils.isBlank(carName)) {
+    if (StringUtils.isBlank(carName)) {
       throw new IllegalArgumentException(CAR_NULL_MESSAGE);
     }
   }
 
   public static void validationCarNameLength(String carName) throws IllegalArgumentException {
-    if(carName.length() > MAX_CAR_NAME_LENGTH) {
+    if (carName.length() > MAX_CAR_NAME_LENGTH) {
       throw new IllegalArgumentException(CAR_LENGTH_MESSAGE);
     }
   }
@@ -93,10 +86,10 @@ public class RacingCarUtil {
     System.out.println(carName + " : " + cntToDash(cnt));
   }
 
-  public static String cntToDash(int cnt){
+  public static String cntToDash(int cnt) {
     String dash = "";
-    for(int idx = 0; idx < cnt; idx++) {
-      dash+="-";
+    for (int idx = 0; idx < cnt; idx++) {
+      dash += "-";
     }
     return dash;
   }

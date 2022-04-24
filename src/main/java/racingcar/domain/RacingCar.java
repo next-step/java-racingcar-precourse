@@ -17,8 +17,7 @@ public class RacingCar {
     return this.CAR_NAME;
   }
 
-  public static boolean addGoCount(RacingCar racingCar, int cnt) {
+  public static void addGoCount(RacingCar racingCar, int cnt) {
     racingCar.GO_COUNT ++;
-    return true;
   }
 }
