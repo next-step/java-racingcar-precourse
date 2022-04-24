@@ -8,9 +8,9 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ApplicationTest extends NsTest {
+
     private static final int MOVING_FORWARD = 4;
     private static final int STOP = 3;
-
     private static final String ERROR_MESSAGE = "[ERROR]";
 
     @Test
@@ -41,6 +41,28 @@ class ApplicationTest extends NsTest {
                     runException("pobi,woni", "세번");
                     assertThat(output()).contains(ERROR_MESSAGE);
                 }
+        );
+    }
+
+    @Test
+    void 전진() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni", "1");
+                    assertThat(output()).contains("pobi : -", "woni : -");
+                },
+                MOVING_FORWARD, MOVING_FORWARD
+        );
+    }
+
+    @Test
+    void 정지() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni", "1");
+                    assertThat(output()).contains("pobi :", "woni :");
+                },
+                STOP, STOP
         );
     }
 
