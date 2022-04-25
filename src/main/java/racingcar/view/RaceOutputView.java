@@ -1,14 +1,16 @@
 package racingcar.view;
 
 import racingcar.domain.dto.RacingCarDto;
+
 import java.util.List;
 
-public class RaceOutputView {
+public class RaceOutputView implements OutputView<RacingCarDto, String> {
     private final String WINNERS_MESSAGE = "최종 우승자";
 
     /**
      * 이동 진행 상황 출력
      */
+    @Override
     public void printRaceProgress(List<RacingCarDto> carList) {
         for (RacingCarDto rc : carList) {
             String name = rc.getName();
@@ -22,7 +24,8 @@ public class RaceOutputView {
     /**
      * 최종 우승자 출력
      */
-    public void printWinners(List<String> winners){
+    @Override
+    public void printWinners(List<String> winners) {
         System.out.printf("%s: %s\n", WINNERS_MESSAGE, String.join(",", winners));
     }
 
@@ -31,7 +34,7 @@ public class RaceOutputView {
      */
     private String getHyphenChars(int distance) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < distance; i++){
+        for (int i = 0; i < distance; i++) {
             sb.append("-");
         }
         return sb.toString();

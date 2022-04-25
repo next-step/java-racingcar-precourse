@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.domain.CarFactory;
+import racingcar.domain.VehicleFactory;
 import racingcar.domain.dto.RacingCarDto;
 import racingcar.domain.model.RaceRecordBoard;
 import racingcar.domain.model.RacingCar;
@@ -31,11 +32,11 @@ public class RaceGameController {
      * 자동차 경주 게임 플레이
      */
     public void playGame() {
-        String[] carNames = inputView.readCarNames();
-        Integer tryNumber = inputView.readTryNumber();
+        String[] carNames = inputView.readNames();
+        Integer tryNumber = inputView.readTryCount();
 
-        CarFactory factory = new CarFactory(carNames, tryNumber, recordBoard);
-        List<RacingCar> carList = factory.createCars();
+        VehicleFactory<RacingCar> factory = new CarFactory(carNames, tryNumber, recordBoard);
+        List<RacingCar> carList = factory.creates();
         race(carList, tryNumber);
         outputView.printWinners(recordBoard.findWinners());
     }

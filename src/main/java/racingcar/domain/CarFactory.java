@@ -8,7 +8,7 @@ import racingcar.domain.model.RacingCar;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CarFactory {
+public class CarFactory implements VehicleFactory <RacingCar> {
     private final String[] names;
     private final RaceRecordBoard recordBoard;
     private final int moveTryLimit;
@@ -22,14 +22,15 @@ public class CarFactory {
     /**
      * 차량 객체 생성
      */
-    public List<RacingCar> createCars() {
+    @Override
+    public List<RacingCar> creates() {
         List<RacingCar> carList = new ArrayList<>();
         if (names.length != 0) {
             for (String n : names) {
                 carList.add(new RacingCar(
-                                new CarName(n),
-                                new Distance(moveTryLimit),
-                                recordBoard));
+                        new CarName(n),
+                        new Distance(moveTryLimit),
+                        recordBoard));
             }
         }
         return carList;

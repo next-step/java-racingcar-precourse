@@ -2,7 +2,7 @@ package racingcar.domain.model;
 
 import java.util.*;
 
-public class RaceRecordBoard {
+public class RaceRecordBoard implements RecordBoard<String, Integer>{
     private final HashMap<String, Integer> recordBoard;
 
     public RaceRecordBoard() {
@@ -12,6 +12,7 @@ public class RaceRecordBoard {
     /**
      * 차량 이동 현황 업데이트
      */
+    @Override
     public void updateRecord(String carName, int distance) {
         recordBoard.put(carName, distance);
     }
@@ -19,6 +20,7 @@ public class RaceRecordBoard {
     /**
      * 차량 이동 기록 찾기
      */
+    @Override
     public Optional<Integer> findRecord(String carName) {
         return Optional.ofNullable(recordBoard.get(carName));
     }
@@ -26,6 +28,7 @@ public class RaceRecordBoard {
     /**
      * 우승자 리스트 찾기
      */
+    @Override
     public List<String> findWinners() {
         List<String> winnerList = new ArrayList<>();
         Integer maxDistance = Collections.max(recordBoard.values());
@@ -40,6 +43,7 @@ public class RaceRecordBoard {
     /**
      * 기록 초기화
      */
+    @Override
     public void resetRecord() {
         recordBoard.clear();
     }

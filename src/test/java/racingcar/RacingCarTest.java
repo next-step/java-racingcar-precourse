@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racingcar.controller.RaceGameController;
 import racingcar.domain.CarFactory;
+import racingcar.domain.VehicleFactory;
 import racingcar.domain.model.CarName;
 import racingcar.domain.model.Distance;
 import racingcar.domain.model.RaceRecordBoard;
@@ -21,6 +22,7 @@ public class RacingCarTest {
     private final String DEFAULT_NAMES = "pobi,woni,jun";
     private final RaceRecordBoard board = new RaceRecordBoard();
     private final List<RacingCar> racingCarList = new ArrayList<>();
+
 
     @BeforeEach
     void initDefaultTestData() {
@@ -60,9 +62,9 @@ public class RacingCarTest {
         for (int i = 0; i < names.length; i++) {
             String name = names[i];
             assertThrows(IllegalArgumentException.class,
-                                () -> new RacingCar(new CarName(name),
-                                                    new Distance(DEFAULT_TRY_LIMIT),
-                                                    board));
+                    () -> new RacingCar(new CarName(name),
+                            new Distance(DEFAULT_TRY_LIMIT),
+                            board));
         }
     }
 
@@ -111,7 +113,7 @@ public class RacingCarTest {
     }
 
     @Test
-    void 단독차량생성후_최종_단독_우승자_찾기_테스트(){
+    void 단독차량생성후_최종_단독_우승자_찾기_테스트() {
         //given
         board.updateRecord("pobi", 4);
 
@@ -164,10 +166,10 @@ public class RacingCarTest {
     void 차량_생성_팩토리로_차량생성_테스트() {
         // given
         String[] names = DEFAULT_NAMES.split(",");
-        CarFactory factory = new CarFactory(names, DEFAULT_TRY_LIMIT, board);
+        VehicleFactory<RacingCar> factory = new CarFactory(names, DEFAULT_TRY_LIMIT, board);
 
         // when
-        List<RacingCar> carList = factory.createCars();
+        List<RacingCar> carList = factory.creates();
 
         // then
         // 이름, 사이즈 검증
@@ -175,7 +177,7 @@ public class RacingCarTest {
                 .hasSize(3)
                 .extracting("name")
                 .containsOnly("pobi", "woni", "jun");
-        
+
         // board 객체 동일여부 검증
         assertThat(carList)
                 .extracting("recordBoard")
@@ -189,7 +191,7 @@ public class RacingCarTest {
     }
 
     @Test
-    void 게임컨트롤러_싱글톤_객체_동일한지_테스트(){
+    void 게임컨트롤러_싱글톤_객체_동일한지_테스트() {
         // given
         RaceGameController c1 = RaceGameController.getInstance();
         RaceGameController c2 = RaceGameController.getInstance();
