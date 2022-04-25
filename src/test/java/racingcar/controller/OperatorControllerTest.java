@@ -156,6 +156,14 @@ public class OperatorControllerTest extends NsTest {
 		racingCarServiceTest.playCarRacing();
 	}
 
+	@Test
+	void 최종_우승자_결과출력() {
+		RacingCarInitDto racingCarInitDto = RacingCarInitDto.builder().carNameList(carNameList).inputCarRaceTimes(5).build();
+		racingCarServiceTest.initSaveRacingCar(racingCarInitDto);
+		racingCarServiceTest.playCarRacing();
+		racingCarServiceTest.printCarRacingResult();
+	}
+
 	@Override
 	protected void runMain() {
 

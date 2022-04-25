@@ -3,10 +3,12 @@ package racingcar.service;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Map;
+import java.util.StringJoiner;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import racingcar.domain.enumtype.InterfaceMsg;
 import racingcar.domain.racingcar.RacingCar;
 import racingcar.domain.racingcar.RacingCarRepository;
 import racingcar.dto.RacingCarDto;
@@ -83,5 +85,16 @@ public class RacingCarServiceTest {
 			System.out.print("-");
 		}
 		System.out.println();
+	}
+
+	public void printCarRacingResult() {
+		Map<String, RacingCar> racingCarMap = racingCarRepository.sortRacingCarMapByValueDesc(this.getRacingCarMap());
+		StringJoiner stringJoiner = new StringJoiner(", ");
+		Integer maxMoveForwardPosition = (racingCarMap.entrySet().iterator().next().getValue()).getCarPosition();
+		racingCarMap.forEach((key, val) -> {
+			if (val.getCarPosition() >= maxMoveForwardPosition) stringJoiner.add(key);
+			// this.printMoveForward(key, val.getCarPosition());
+		});
+		System.out.print(InterfaceMsg.GAME_RESULT.getValue() + stringJoiner);
 	}
 }
