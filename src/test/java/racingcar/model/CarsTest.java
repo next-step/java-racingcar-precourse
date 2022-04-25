@@ -19,7 +19,7 @@ public class CarsTest extends NsTest {
     Cars cars;
 
     @BeforeEach
-    void 설정(){
+    void 설정() {
         List<Car> carList = new ArrayList<>();
 
         carList.add(new Car("krad"));
