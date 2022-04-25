@@ -8,7 +8,7 @@ public class CarName {
     private static final int CAR_NAME_LENGTH_MIN = 1;
     private static final int CAR_NAME_LENGTH_MAX = 5;
 
-    private String carName;
+    private final String carName;
 
     public CarName(String carName) {
         validCarName(carName);
