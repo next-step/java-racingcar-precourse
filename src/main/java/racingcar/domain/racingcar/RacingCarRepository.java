@@ -1,12 +1,12 @@
 package racingcar.domain.racingcar;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import racingcar.dto.RacingCarDto;
 
 public class RacingCarRepository {
-	private Map<String, RacingCar> racingCarMap = new HashMap<>();
+	private Map<String, RacingCar> racingCarMap = new LinkedHashMap<>();
 
 	// start: Singleton Holder
 	private RacingCarRepository() {
