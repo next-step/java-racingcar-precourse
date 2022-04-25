@@ -7,14 +7,19 @@ import java.util.List;
 
 import racingcar.domain.enumtype.InterfaceMsg;
 import racingcar.domain.enumtype.ValidationMsg;
+import racingcar.dto.RacingCarDto;
+import racingcar.dto.RacingCarInitDto;
+import racingcar.service.RacingCarService;
 import racingcar.service.StringUtilService;
 import racingcar.service.ValidatorService;
 
 public class OperatorController {
 	private ValidatorService validatorService = ValidatorService.getInstance();
 	private StringUtilService stringUtilService = StringUtilService.getInstance();
+	private RacingCarService racingCarService = RacingCarService.getInstance();
 	private List<String> carNameList = new ArrayList<>();
 	private Integer inputCarRaceTimes = 0;
+	private RacingCarDto racingCarDto;
 
 	// start: Singleton Holder
 	private OperatorController() {
@@ -51,14 +56,16 @@ public class OperatorController {
 
 	private void printMenu() {
 		System.out.println(InterfaceMsg.GAME_INFO.getValue()); // 자동차 레이싱 게임 안내
-		this.setCarNameList(this.validateCarNames(this.RequestInputCarName()));
-		System.out.println(this.getCarNameList());
-
-		this.setInputCarRaceTimes(this.validateCarRaceTimes(this.RequestInputCarRaceTimes()));
-		System.out.println(this.getInputCarRaceTimes());
+		this.requestUserInput();
+		this.initSaveRacingCar();
 	}
 
-	private String RequestInputCarName() {
+	private void requestUserInput() {
+		this.setCarNameList(this.validateCarNames(this.requestInputCarName()));
+		this.setInputCarRaceTimes(this.validateCarRaceTimes(this.requestInputCarRaceTimes()));
+	}
+
+	private String requestInputCarName() {
 		System.out.print(InterfaceMsg.REQUEST_INPUT_CAR_NAME.getValue());
 		String inputCarName = readLine();
 		System.out.println(inputCarName); // Player로부터 자동차 이름들을 입력받음
@@ -66,7 +73,7 @@ public class OperatorController {
 		return inputCarName;
 	}
 
-	private String RequestInputCarRaceTimes() {
+	private String requestInputCarRaceTimes() {
 		System.out.print(InterfaceMsg.REQUEST_INPUT_CAR_RACE_TIMES.getValue());
 		String inputCarRaceTimes = readLine();
 		System.out.println(inputCarRaceTimes); // Player로부터 자동차 경주의 회수를 입력받음
@@ -74,13 +81,17 @@ public class OperatorController {
 		return inputCarRaceTimes;
 	}
 
-	// 유효성을 통과할 때까지 사용자로부터 자동차 이름들을 입력받는다. 유효성을 통과할 때 List<String>를 반환
+	/**
+	 * 유효성을 통과할 때까지 사용자로부터 자동차 이름들을 입력받는다. 유효성을 통과할 때 List<String>를 반환
+	 * @param inputCarName : String
+	 * @return properCarNameList : List<String>
+	 */
 	private List<String> validateCarNames(String inputCarName) {
 		List<String> properCarNameList = new ArrayList<>();
 		try {
 			properCarNameList = this.properCarNameList(inputCarName);
 		} catch (IllegalArgumentException e) {
-			System.out.println(e.getMessage()); inputCarName = RequestInputCarName();
+			System.out.println(e.getMessage()); inputCarName = requestInputCarName();
 			return validateCarNames(inputCarName);
 		}
 		return properCarNameList;
@@ -100,7 +111,7 @@ public class OperatorController {
 		try {
 			properCarRaceTimes = this.properCarRaceTimes(inputCarRaceTimes);
 		} catch (IllegalArgumentException e) {
-			System.out.println(e.getMessage()); inputCarRaceTimes = RequestInputCarRaceTimes();
+			System.out.println(e.getMessage()); inputCarRaceTimes = requestInputCarRaceTimes();
 			return validateCarRaceTimes(inputCarRaceTimes);
 		}
 		return properCarRaceTimes;
@@ -112,5 +123,13 @@ public class OperatorController {
 			throw new IllegalArgumentException(validationMsg.getValue());
 		}
 		return Integer.valueOf(inputCarRaceTimes);
+	}
+
+	private void initSaveRacingCar() {
+		RacingCarInitDto racingCarInitDto = RacingCarInitDto.builder()
+			.carNameList(this.getCarNameList())
+			.inputCarRaceTimes(this.getInputCarRaceTimes())
+			.build();
+		racingCarService.initSaveRacingCar(racingCarInitDto);
 	}
 }
