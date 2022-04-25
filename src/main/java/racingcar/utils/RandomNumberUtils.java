@@ -9,7 +9,7 @@ public class RandomNumberUtils {
     }
 
     public static int getRandomNumberFromZeroToNine() {
-        return Randoms.pickNumberInRange(0,9);
+        return Randoms.pickNumberInRange(0, 9);
     }
 
 }

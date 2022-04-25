@@ -44,13 +44,13 @@ public class RacingCarGameResultView {
     public String racingGameWinnersView(List<RacingCar> gameWinnerList) {
         StringBuilder winnersView = new StringBuilder(WINNERS_MAIN_HEADER).append(COLON).append(GAP);
         List<String> winnerNameList = extractedWinnerNameList(gameWinnerList);
-        winnersView.append(String.join(Delimiter.COMMA,winnerNameList));
+        winnersView.append(String.join(Delimiter.COMMA, winnerNameList));
         return winnersView.toString();
     }
 
     private List<String> extractedWinnerNameList(List<RacingCar> gameWinnerList) {
         List<String> winnersNameList = new ArrayList<>();
-        for(RacingCar racingCar : gameWinnerList){
+        for (RacingCar racingCar : gameWinnerList) {
             winnersNameList.add(racingCar.getCarName());
         }
         return winnersNameList;

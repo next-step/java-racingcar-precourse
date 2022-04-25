@@ -28,9 +28,9 @@ public class RacingCarPlayService {
     }
 
     private void validateLastComma(String inputCarNames) {
-        int lastIndex = inputCarNames.length()-1;
+        int lastIndex = inputCarNames.length() - 1;
         int lastCommaIndex = inputCarNames.lastIndexOf(COMMA);
-        if(lastCommaIndex != NOT_EXIST && lastCommaIndex == lastIndex){
+        if (lastCommaIndex != NOT_EXIST && lastCommaIndex == lastIndex) {
             throw new IllegalArgumentException(ErrorMessage.CAR_NAME_LAST_COMMA);
         }
     }
@@ -54,7 +54,7 @@ public class RacingCarPlayService {
         int round;
         try {
             round = Integer.parseInt(inputRound);
-        }catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ErrorMessage.ROUND_NOT_RANGE);
         }
         return round;
