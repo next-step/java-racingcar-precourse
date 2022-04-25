@@ -1,23 +1,24 @@
 package racingcar.model;
 
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.junit.platform.commons.util.StringUtils;
 import racingcar.common.message.ExceptionMessage;
 import racingcar.exception.InvalidCarNameLengthException;
 import racingcar.exception.InvalidRacingCarGameRoundsException;
-
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class RacingCarGameValidatorTest {
     private RacingCarGameValidator racingCarGameValidator = new RacingCarGameValidator();
-    private ByteArrayOutputStream output = new ByteArrayOutputStream();
+    private RacingCarGameError racingCarGameError;
 
     @BeforeEach
-    public void setUpOutput() {
-        System.setOut(new PrintStream(output));
+    public void setUp() {
+        racingCarGameError = new RacingCarGameError();
     }
 
     @Test
@@ -55,29 +56,29 @@ class RacingCarGameValidatorTest {
     }
 
     @Test
-    @DisplayName("올바른 자동차 이름들을 입력하는 경우(에러 메시지 발생 x)")
+    @DisplayName("올바른 자동차 이름들을 입력하는 경우(에러 객체 메시지 x)")
     public void racingCarNamesValidateSuccessTest() {
         // Given
         String racingCarName = "pogi, jiji";
 
         // When
-        racingCarGameValidator.racingCarNamesValidate(racingCarName);
+        racingCarGameValidator.racingCarNamesValidate(racingCarName, racingCarGameError);
 
         // Then
-        assertThat(output.toString()).doesNotContain(ExceptionMessage.RACING_CAR_NAME_LENGTH_EXCEPTION_MESSAGE);
+        assertThat(StringUtils.isBlank(racingCarGameError.getDefaultMessage())).isTrue();
     }
 
     @Test
-    @DisplayName("올바르지 않는 자동차 이름들을 입력하는 경우(에러 메시지 발생)")
+    @DisplayName("올바르지 않는 자동차 이름들을 입력하는 경우(에러 객체 메시지 발생)")
     public void racingCarNamesValidateFailTest() {
         // Given
         String racingCarName = "pdsadsaogi";
 
         // When
-        racingCarGameValidator.racingCarNamesValidate(racingCarName);
+        racingCarGameValidator.racingCarNamesValidate(racingCarName, racingCarGameError);
 
         // Then
-        assertThat(output.toString()).contains(ExceptionMessage.RACING_CAR_NAME_LENGTH_EXCEPTION_MESSAGE);
+        assertThat(racingCarGameError.getDefaultMessage()).isEqualTo(ExceptionMessage.RACING_CAR_NAME_LENGTH_EXCEPTION_MESSAGE);
     }
 
     @Test
@@ -104,18 +105,17 @@ class RacingCarGameValidatorTest {
                 .isInstanceOf(InvalidRacingCarGameRoundsException.class);
     }
 
-
     @Test
-    @DisplayName("올바른 레이싱게임 라운드를 입력하는 경우(에러 메시지 발생 x)")
+    @DisplayName("올바른 레이싱게임 라운드를 입력하는 경우(에러 객체 메시지 발생 x)")
     public void racingCarGameRoundsValidateSuccessTest() {
         // Given
         String racingCarGameRounds = "5";
 
         // When
-        racingCarGameValidator.racingCarGameRoundsValidate(racingCarGameRounds);
+        racingCarGameValidator.racingCarGameRoundsValidate(racingCarGameRounds, racingCarGameError);
 
         // Then
-        assertThat(output.toString()).doesNotContain(ExceptionMessage.RACING_CAR_GAME_ROUNDS_EXCEPTION_MESSAGE);
+        assertThat(StringUtils.isBlank(racingCarGameError.getDefaultMessage())).isTrue();
     }
 
     @Test
@@ -125,14 +125,9 @@ class RacingCarGameValidatorTest {
         String racingCarGameRounds = "3q";
 
         // When
-        racingCarGameValidator.racingCarGameRoundsValidate(racingCarGameRounds);
+        racingCarGameValidator.racingCarGameRoundsValidate(racingCarGameRounds, racingCarGameError);
 
         // Then
-        assertThat(output.toString()).contains(ExceptionMessage.RACING_CAR_GAME_ROUNDS_EXCEPTION_MESSAGE);
-    }
-
-    @AfterEach
-    public void restoreOutput() {
-        output.reset();
+        assertThat(racingCarGameError.getDefaultMessage()).isEqualTo(ExceptionMessage.RACING_CAR_GAME_ROUNDS_EXCEPTION_MESSAGE);
     }
 }
