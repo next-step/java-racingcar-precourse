@@ -42,19 +42,14 @@ public class RacingService implements Service {
     }
 
     public int getLap(){
-        boolean flag = true;
-        int lap = 0;
 
-        while(flag){
-            try{
-                String lapStr = Utils.getInput("시도할 회수는 몇회인가요?");
-                lap = Utils.stringToInt(lapStr);
-                flag = false;
-            } catch (Exception e){
-                System.out.println("[ERROR]" + e.getMessage());
-            }
+        try{
+            String lapStr = Utils.getInput("시도할 회수는 몇회인가요?");
+            return Utils.stringToInt(lapStr);
+        } catch (Exception e){
+            throw e;
         }
 
-        return lap;
+
     }
 }
