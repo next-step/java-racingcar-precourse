@@ -15,6 +15,10 @@ public class CarName {
         this.carName = carName;
     }
 
+    public String getCarName() {
+        return carName;
+    }
+
     private void validCarName(String carName) {
         if (!ValidationUtils
                 .validNumberOfLetter(carName, CAR_NAME_LENGTH_MIN, CAR_NAME_LENGTH_MAX)) {

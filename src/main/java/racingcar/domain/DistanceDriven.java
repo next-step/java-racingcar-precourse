@@ -5,7 +5,7 @@ import racingcar.util.ValidationUtils;
 
 public class DistanceDriven {
 
-    private int distanceDriven = 0;
+    private int distanceDriven;
 
     public DistanceDriven(int distanceDriven) {
         validDistanceDriven(distanceDriven);
