@@ -33,4 +33,32 @@ public class CarNameTest {
                 .isThrownBy(() -> new CarName(inputName));
     }
 
+    @DisplayName("CarName 끼리 비교했을 때, 같은 값을 가지면 equal함수는 true")
+    @Test
+    void equalToReturnTrue_P01() {
+        CarName carName = new CarName("hi");
+        CarName other = new CarName("hi");
+        assertThat(carName.equals(other)).isTrue();
+        assertThat(other.equals(carName)).isTrue();
+    }
+
+    @DisplayName("CarName 끼리 비교했을 때, 다른 값을 가지면 equal함수는 false")
+    @Test
+    void equalToReturnFalse_N01() {
+        CarName carName = new CarName("hi");
+        CarName other = new CarName("hii");
+        assertThat(carName.equals(other)).isFalse();
+        assertThat(other.equals(carName)).isFalse();
+    }
+
+
+    @DisplayName("다른 객체와 비교했을 때, equal함수는 false")
+    @Test
+    void equalToReturnFalse_N03() {
+        CarName carName = new CarName("hi");
+        Object other = new Object();
+        assertThat(carName.equals(other)).isFalse();
+        assertThat(other.equals(carName)).isFalse();
+    }
+
 }

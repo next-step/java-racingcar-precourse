@@ -20,4 +20,13 @@ public class CarName {
     public String getName() {
         return name;
     }
+
+    @Override
+    public boolean equals(Object other) {
+        if(!(other instanceof CarName)){
+            return false;
+        }
+        CarName cn = (CarName) other;
+        return (cn.name).equals(name);
+    }
 }
