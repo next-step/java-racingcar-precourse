@@ -5,3 +5,13 @@
 
 ## 과제 제출 과정
 * [과제 제출 방법](https://github.com/next-step/nextstep-docs/tree/master/precourse)
+
+* 기능 요구 사항
+* 경주할 자동차 이름을 쉼표로 구분해 입력 받는다
+* 시도할 횟수를 입력 받는다
+* 개별 이름을 가진 자동차는 시도 횟수마다 0~9사이의 random값을 부여 받는다
+* 개별 이름을 가진 자동차는 ramdom값이 4 이상이면 전진('-'dash)한다
+* 개별 이름을 가진 자동차는 random값이 3 이하이면 멈춘다 (No Action)
+* 시도 횟수가 종료되면 가장 많이 전진한 자동차 이름을 출력한다
+* 시도 횟수 숫자가 아닌 경우 Exception
+* 자동차 이름 쉼표로 구분 되지 않은 경우 Exception
