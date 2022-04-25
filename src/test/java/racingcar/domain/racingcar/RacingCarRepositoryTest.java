@@ -3,7 +3,7 @@ package racingcar.domain.racingcar;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -13,7 +13,7 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 
 public class RacingCarRepositoryTest extends NsTest {
 	private RacingCar racingCar;
-	private Map<String, RacingCar> racingCarMap = new HashMap<>();
+	private Map<String, RacingCar> racingCarMap = new LinkedHashMap<>();
 
 	@BeforeEach
 	void setUp() {

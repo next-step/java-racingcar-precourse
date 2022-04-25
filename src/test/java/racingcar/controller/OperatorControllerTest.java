@@ -26,11 +26,13 @@ import racingcar.service.ValidatorServiceTest;
 public class OperatorControllerTest extends NsTest {
 	private ValidatorServiceTest validatorServiceTest;
 	private RacingCarServiceTest racingCarServiceTest;
+	private List<String> carNameList;
 
 	@BeforeEach
 	void setUp() {
 		validatorServiceTest = ValidatorServiceTest.getInstance();
 		racingCarServiceTest = RacingCarServiceTest.getInstance();
+		carNameList = new ArrayList<>(Arrays.asList("pobi", "woni", "crong"));
 	}
 
 	@Test
@@ -128,7 +130,6 @@ public class OperatorControllerTest extends NsTest {
 
 	@Test
 	void RacingCarServiceTest를_통해_RacingCarRepository에_여러_자동차_저장() {
-		List<String> carNameList = new ArrayList<>(Arrays.asList("pobi, woni"));
 		RacingCarInitDto racingCarInitDto = RacingCarInitDto.builder().carNameList(carNameList).inputCarRaceTimes(1).build();
 
 		racingCarServiceTest.initSaveRacingCar(racingCarInitDto);
@@ -139,12 +140,28 @@ public class OperatorControllerTest extends NsTest {
 
 	@Test
 	void RacingCarService를_통해_RacingCarRepository에_여러_자동차_저장() {
-		List<String> carNameList = new ArrayList<>(Arrays.asList("pobi, woni"));
 		RacingCarInitDto racingCarInitDto = RacingCarInitDto.builder().carNameList(carNameList).inputCarRaceTimes(1).build();
 
 		RacingCarService.getInstance().initSaveRacingCar(racingCarInitDto);
 
 		RacingCarService.getInstance().getRacingCarMap().forEach((key, val) -> assertThat(carNameList).contains(key));
+		RacingCarService.getInstance().getRacingCarMap().forEach((key, val) -> val.movingForward());
+		RacingCarService.getInstance().getRacingCarMap().forEach((key, val) -> System.out.println(key + " : " + val.getCarPosition()));
+	}
+
+	@Test
+	void RacingCarRepository가_가진_RacingCar들의_이름과_전진한_값을_출력() {
+		RacingCarInitDto racingCarInitDto = RacingCarInitDto.builder().carNameList(carNameList).inputCarRaceTimes(5).build();
+		racingCarServiceTest.initSaveRacingCar(racingCarInitDto);
+		racingCarServiceTest.playCarRacing();
+	}
+
+	@Test
+	void 최종_우승자_결과출력() {
+		RacingCarInitDto racingCarInitDto = RacingCarInitDto.builder().carNameList(carNameList).inputCarRaceTimes(5).build();
+		racingCarServiceTest.initSaveRacingCar(racingCarInitDto);
+		racingCarServiceTest.playCarRacing();
+		racingCarServiceTest.printCarRacingResult();
 	}
 
 	@Override

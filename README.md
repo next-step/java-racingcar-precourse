@@ -31,8 +31,8 @@
 * RacingCarRepository(저장소 대역) : 
   * RacingCar를 가진 일급객체
 
-### 🖨 출력
- * RacingCarRepository가 가진 RacingCar들의 이름과 전진한 값을 출력
+### 🖨 레이싱 게임 진행 및 출력
+ * 각각의 시도 횟수마다 레이싱 게임을 진행 한 뒤, RacingCarRepository가 가진 RacingCar들의 이름과 전진한 값을 출력
  * RacingCarRepository가 가진 RacingCar들의 역순 정렬처리 멤버 함수 추가
  * RacingCarRepository가 가진 RacingCar들의 최종 우승자 출력 멤버 함수 추가
 
