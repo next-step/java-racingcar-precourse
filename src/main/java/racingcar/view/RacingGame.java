@@ -56,10 +56,14 @@ public class RacingGame {
 
     public void startGame() {
         for (int i = 0; i < gameCount; i++) {
-            for (Player plyer : playerList) {
-                plyer.plyeGame();
-            }
+            playGame();
             System.out.println();
+        }
+    }
+
+    public void playGame(){
+        for (Player plyer : playerList) {
+            plyer.plyeGame();
         }
     }
 
