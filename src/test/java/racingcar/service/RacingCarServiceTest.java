@@ -63,4 +63,25 @@ public class RacingCarServiceTest {
 	public Map<String, RacingCar> getRacingCarMap() {
 		return racingCarRepository.getRacingCarMap();
 	}
+
+	public void playCarRacing() {
+		Map<String, RacingCar> racingCarMap = this.getRacingCarMap();
+		for (int i = 0; i < this.inputCarRaceTimes; i++) {
+			racingCarMap.forEach((key, val) -> val.movingForward());
+			printRacingStatus();
+		}
+	}
+	private void printRacingStatus() {
+		Map<String, RacingCar> racingCarMap = this.getRacingCarMap();
+		racingCarMap.forEach((key, val) -> this.printMoveForward(key, val.getCarPosition()));
+		System.out.println();
+	}
+
+	private void printMoveForward(String carName, Integer carPosition) {
+		System.out.print(carName + " : ");
+		for (int i = 0; i < carPosition; i++) {
+			System.out.print("-");
+		}
+		System.out.println();
+	}
 }
