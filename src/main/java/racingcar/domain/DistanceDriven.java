@@ -23,7 +23,7 @@ public class DistanceDriven {
     }
 
     private void validDistanceDriven(int distanceDriven) {
-        if (!ValidationUtils.validNumberMinimum(distanceDriven, 0)) {
+        if (ValidationUtils.isLessThanMinimum(distanceDriven, 0)) {
             throw new IllegalArgumentException(ErrorMessage.DISTANCE_DRIVEN_ERROR.getMessage());
         }
     }

@@ -20,13 +20,13 @@ public class NumberOfRace {
         for (int i = 0; i < numbers.length(); i++) {
             isNumber(numbers.charAt(i));
         }
-        if (!ValidationUtils.validNumberMinimum(Integer.parseInt(numbers), 1)) {
+        if (ValidationUtils.isLessThanMinimum(Integer.parseInt(numbers), 1)) {
             throw new IllegalArgumentException(ErrorMessage.NUMBER_OF_RACE_THEN_ZERO.getMessage());
         }
     }
 
     private void isNumber(char number) {
-        if (!((int) number >= 48 && (int) number <= 57)) {
+        if (!ValidationUtils.isNumber(number)) {
             throw new IllegalArgumentException(ErrorMessage.NUMBER_OF_RACE_NOT_NUMBER.getMessage());
         }
     }

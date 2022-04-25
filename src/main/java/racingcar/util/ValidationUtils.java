@@ -10,11 +10,15 @@ public class ValidationUtils {
         return letterLength >= minNumber && letterLength <= maxNumber;
     }
 
-    public static boolean validNumberMinimum(int number, int min) {
-        return min <= number;
+    public static boolean isLessThanMinimum(int number, int min) {
+        return min > number;
     }
 
     public static <T> boolean isEmpty(Collection<T> collection) {
         return collection != null && !collection.isEmpty();
+    }
+
+    public static boolean isNumber(char number) {
+        return ((int) number >= 48 && (int) number <= 57);
     }
 }
