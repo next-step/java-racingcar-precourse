@@ -3,6 +3,7 @@ package racingcar.views;
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.cars.Cars;
 import racingcar.firstcollections.Positive;
+import racingcar.utils.PrintUtils;
 
 public class InputView {
 
@@ -11,7 +12,7 @@ public class InputView {
         try {
             cars = new Cars(Console.readLine());
         } catch (IllegalArgumentException e) {
-            System.out.printf("%s %s%n", DisplayView.ERROR_MESSAGE_PREFIX, e.getMessage());
+            PrintUtils.error(e.getMessage());
         }
         return cars;
     }
@@ -21,7 +22,7 @@ public class InputView {
         try {
             positive = new Positive(Console.readLine());
         } catch (IllegalArgumentException e) {
-            System.out.printf("%s %s%n", DisplayView.ERROR_MESSAGE_PREFIX, e.getMessage());
+            PrintUtils.error(e.getMessage());
         }
         return positive;
     }
