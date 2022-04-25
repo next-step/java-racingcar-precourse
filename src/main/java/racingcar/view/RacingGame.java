@@ -9,7 +9,9 @@ import java.util.*;
 public class RacingGame {
     private static final RacingGame RACING_GAME = new RacingGame();
     private List<Player> playerList = new ArrayList<>();
+    private List<Player> bestPlayerList = new ArrayList<>();
     private int gameCount = 0;
+    private int bestPlyerCount = 0;
 
     private RacingGame() {
     }
@@ -22,6 +24,7 @@ public class RacingGame {
         inputPlayer();
         inputGameCount();
         startGame();
+        gameResult();
     }
 
     public void inputPlayer() {
@@ -57,6 +60,29 @@ public class RacingGame {
                 plyer.plyeGame();
             }
             System.out.println();
+        }
+    }
+
+    public void gameResult(){
+        bestPlyerCount = playerList.get(0).getHeadway();
+        for(Player player : playerList){
+            checkPlayerResult(player);
+        }
+
+        int bestPlayerSize = bestPlayerList.size();
+        String[] resultPlayers = new String[bestPlayerSize];
+        for(int i = 0; i < bestPlayerSize; i++){
+            resultPlayers[i] = bestPlayerList.get(i).getName();
+        }
+
+        System.out.print("최종 우승자: ");
+        System.out.print(String.join(",", resultPlayers));
+    }
+
+    public void checkPlayerResult(Player player){
+        int playerHeadway = player.getHeadway();
+        if(playerHeadway > bestPlyerCount || playerHeadway == gameCount){
+            bestPlayerList.add(player);
         }
     }
 
