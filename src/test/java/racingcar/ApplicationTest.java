@@ -14,23 +14,50 @@ class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
 
     @Test
-    void 전진_정지() {
+    void 전진_정지_1() {
         assertRandomNumberInRangeTest(
-            () -> {
-                run("pobi,woni", "1");
-                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자는 pobi 입니다.");
-            },
-            MOVING_FORWARD, STOP
+                () -> {
+                    run("pobi,woni", "1");
+                    assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자: pobi");
+                },
+                MOVING_FORWARD, STOP
+        );
+    }
+
+    @Test
+    void 전진_정지_2() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni,jun", "3");
+                    assertThat(output()).contains(
+                            "pobi : ", "woni : -", "jun : ",
+                            "pobi : -", "woni : -", "jun : -",
+                            "pobi : --", "woni : -", "jun : --",
+                            "최종 우승자: pobi, jun");
+                },
+                STOP, MOVING_FORWARD, MOVING_FORWARD,
+                MOVING_FORWARD, STOP, STOP,
+                MOVING_FORWARD, STOP, MOVING_FORWARD
         );
     }
 
     @Test
     void 이름에_대한_예외_처리() {
         assertSimpleTest(
-            () -> {
-                runException("pobi,javaji");
-                assertThat(output()).contains(ERROR_MESSAGE);
-            }
+                () -> {
+                    runException("pobi,javaji");
+                    assertThat(output()).contains(ERROR_MESSAGE);
+                }
+        );
+    }
+
+    @Test
+    void 시도_횟수에_대한_예외_처리() {
+        assertSimpleTest(
+                () -> {
+                    runException("pobi,java", "-3");
+                    assertThat(output()).contains(ERROR_MESSAGE);
+                }
         );
     }
 
