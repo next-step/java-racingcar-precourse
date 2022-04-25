@@ -25,7 +25,7 @@ public abstract class AbstractImmutableList<E> {
     }
 
     protected AbstractImmutableList(List<E> list) {
-        this.list = new ArrayList<>(list);
+        this.list = list;
     }
 
     protected AbstractImmutableList(List<E> list, E[] elements) {

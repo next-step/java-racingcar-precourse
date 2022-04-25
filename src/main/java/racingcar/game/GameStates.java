@@ -2,6 +2,7 @@ package racingcar.game;
 
 import racingcar.game.util.AbstractImmutableList;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GameStates extends AbstractImmutableList<GameState> {
@@ -28,6 +29,6 @@ public class GameStates extends AbstractImmutableList<GameState> {
 
     public GameStates rest() {
         if (list.size() < 1) new GameStates();
-        return new GameStates(list.subList(1, list.size()));
+        return new GameStates(new ArrayList<>(list.subList(1, list.size())));
     }
 }

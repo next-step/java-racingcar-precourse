@@ -32,6 +32,6 @@ public class IntRange extends AbstractImmutableList<Integer> {
 
     public IntRange rest() {
         if (list.size() < 1) new IntRange();
-        return new IntRange(list.subList(1, list.size()));
+        return new IntRange(new ArrayList<>(list.subList(1, list.size())));
     }
 }
