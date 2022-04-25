@@ -19,7 +19,7 @@ public class Cars extends AbstractImmutableList<Car> {
     }
 
     public Cars(List<Car> cars) {
-        super(new ArrayList<>(cars));
+        super(cars);
     }
 
     public Cars(Cars cars, Car... more) {
