@@ -1,19 +1,36 @@
 package racingcar.controller;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import racingcar.domain.enumtype.InterfaceMsg;
 import racingcar.domain.enumtype.ValidationMsg;
+import racingcar.domain.racingcar.RacingCar;
+import racingcar.dto.RacingCarInitDto;
+import racingcar.service.RacingCarServiceTest;
 import racingcar.service.ValidatorServiceTest;
 
 public class OperatorControllerTest extends NsTest {
-	private ValidatorServiceTest validatorServiceTest = ValidatorServiceTest.getInstance();
+	private ValidatorServiceTest validatorServiceTest;
+	private RacingCarServiceTest racingCarServiceTest;
+
+	@BeforeEach
+	void setUp() {
+		validatorServiceTest = ValidatorServiceTest.getInstance();
+		racingCarServiceTest = RacingCarServiceTest.getInstance();
+	}
 
 	@Test
 	void 자동차_이름_string_null_입력_체크() {
@@ -106,6 +123,17 @@ public class OperatorControllerTest extends NsTest {
 				System.out.println(validationMsg.getValue()); throw new IllegalArgumentException();
 			}
 		});
+	}
+
+	@Test
+	void RacingCarServiceTest를_통해_RacingCarRepository에_여러_자동차_저장() {
+		List<String> carNameList = new ArrayList<>(Arrays.asList("pobi, woni"));
+		RacingCarInitDto racingCarInitDto = RacingCarInitDto.builder().carNameList(carNameList).inputCarRaceTimes(1).build();
+
+		racingCarServiceTest.initSaveRacingCar(racingCarInitDto);
+
+		Map<String, RacingCar> racingCarMap = racingCarServiceTest.getRacingCarMap();
+		racingCarMap.forEach((key, val) -> assertThat(carNameList).contains(key));
 	}
 
 	@Override
