@@ -30,7 +30,7 @@ public class GameTest {
     }
 
     @Test
-    @DisplayName("winningCars() X는 전진, Y는 정지일 때, 이동거리가 X는 1, Y는 0")
+    @DisplayName("process() X는 전진, Y는 정지일 때, 이동거리가 X는 1, Y는 0")
     void process_2Cars1Turns_MoveXAndStopY_DistanceOfXIs1AndDistanceOfYIs0() {
         GameStates states;
         try (MockedStatic<Randoms> mock = mockStatic(Randoms.class)) {
