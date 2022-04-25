@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
 import racingcar.util.NumberGenerator;
 
+import java.util.Random;
+
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.anyInt;
@@ -50,7 +52,7 @@ public class CarTest {
         NumberGenerator numberGenerator = new NumberGenerator() {
             @Override
             public int generateNumber() {
-                return pickNumberInRange(0, 3);
+                return new Random().nextInt(4);
             }
         };
         Car car = new Car("pobi");
@@ -65,7 +67,7 @@ public class CarTest {
         NumberGenerator numberGenerator = new NumberGenerator() {
             @Override
             public int generateNumber() {
-                return pickNumberInRange(4, 9);
+                return new Random().nextInt(6) + 4;
             }
         };
         Car car = new Car("pobi");
