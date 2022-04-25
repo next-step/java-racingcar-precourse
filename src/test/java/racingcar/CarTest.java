@@ -47,17 +47,22 @@ public class CarTest {
     }
 
     @Test
-    @DisplayName("차가 정상적으로 행동하는지 테스트한다.")
-    void carBehaviorTest() {
+    @DisplayName("차가 정상적으로 행동하는지 테스트한다.(전진케이스)")
+    void carBehaviorTest1() {
         Car car = new Car("felix");
-        int number = Randoms.pickNumberInRange(0, 9);
+        int number = 4; //Randoms.pickNumberInRange(0, 9);
         car.carBehavior(number);
-        if(number < 4) {
-            assertThat(car.isStart()).isTrue();
-        } else {
-            assertThat(car.getCurrentPosition()).isEqualTo(1);
-            assertThat(car.displayTrace()).isEqualTo("-");
-        }
+        assertThat(car.getCurrentPosition()).isEqualTo(1);
+        assertThat(car.displayTrace()).isEqualTo("-");
+    }
+
+    @Test
+    @DisplayName("차가 정상적으로 행동하는지 테스트한다.(가만히 있는 케이스)")
+    void carBehaviorTest2() {
+        Car car = new Car("felix");
+        int number = 4; //Randoms.pickNumberInRange(0, 9);
+        car.carBehavior(number);
+        assertThat(car.getCurrentPosition()).isEqualTo(1);
     }
 
 
