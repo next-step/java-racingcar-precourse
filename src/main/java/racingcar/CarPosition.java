@@ -28,4 +28,8 @@ public class CarPosition {
     public String getTrace() {
         return this.trace;
     }
+
+    public int compareTo(CarPosition carPosition) {
+        return this.getPosition() - carPosition.getPosition();
+    }
 }

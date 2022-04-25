@@ -1,6 +1,8 @@
 package racingcar;
 
-public class Car {
+import camp.nextstep.edu.missionutils.Randoms;
+
+public class Car implements Comparable<Car>{
 
     private CarName carName;
     private CarPosition carPosition;
@@ -31,13 +33,12 @@ public class Car {
         return number >= 4 && number <= 9;
     }
 
-    public boolean isStart() {
-        return this.carPosition.isStart();
-    }
-
     public String displayTrace() {
-        return this.carPosition.getTrace();
+        return this.carName.getName() + " : " + this.carPosition.getTrace();
     }
 
-
+    @Override
+    public int compareTo(Car o) {
+        return o.carPosition.compareTo(this.carPosition);
+    }
 }
