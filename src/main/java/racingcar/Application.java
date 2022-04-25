@@ -1,7 +1,11 @@
 package racingcar;
 
+import racingcar.domain.Car;
+import racingcar.domain.Round;
+import racingcar.service.RacingCarGame;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        new RacingCarGame(new Car().getCarNames(), new Round().getRoundNum());
     }
 }
