@@ -50,6 +50,5 @@ class RaceTest {
 
         // then
         assertThat(race.raceResult(cars).size()).isGreaterThan(0);
-
     }
 }
