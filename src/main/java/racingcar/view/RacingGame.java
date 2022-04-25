@@ -21,6 +21,7 @@ public class RacingGame {
 
     public void playRacing() {
         inputPlayer();
+        inputGameCount();
     }
 
     public void inputPlayer() {
@@ -39,4 +40,9 @@ public class RacingGame {
         }
     }
 
+    public void inputGameCount() {
+            System.out.println("시도할 회수");
+            String inputGameCount = Console.readLine();
+            gameCount = Integer.parseInt(inputGameCount);
+    }
 }
