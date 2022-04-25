@@ -56,12 +56,16 @@ public class OperatorController {
 
 	private void printMenu() {
 		System.out.println(InterfaceMsg.GAME_INFO.getValue()); // 자동차 레이싱 게임 안내
-		this.setCarNameList(this.validateCarNames(this.RequestInputCarName()));
-		this.setInputCarRaceTimes(this.validateCarRaceTimes(this.RequestInputCarRaceTimes()));
+		this.requestUserInput();
 		this.initSaveRacingCar();
 	}
 
-	private String RequestInputCarName() {
+	private void requestUserInput() {
+		this.setCarNameList(this.validateCarNames(this.requestInputCarName()));
+		this.setInputCarRaceTimes(this.validateCarRaceTimes(this.requestInputCarRaceTimes()));
+	}
+
+	private String requestInputCarName() {
 		System.out.print(InterfaceMsg.REQUEST_INPUT_CAR_NAME.getValue());
 		String inputCarName = readLine();
 		System.out.println(inputCarName); // Player로부터 자동차 이름들을 입력받음
@@ -69,7 +73,7 @@ public class OperatorController {
 		return inputCarName;
 	}
 
-	private String RequestInputCarRaceTimes() {
+	private String requestInputCarRaceTimes() {
 		System.out.print(InterfaceMsg.REQUEST_INPUT_CAR_RACE_TIMES.getValue());
 		String inputCarRaceTimes = readLine();
 		System.out.println(inputCarRaceTimes); // Player로부터 자동차 경주의 회수를 입력받음
@@ -87,7 +91,7 @@ public class OperatorController {
 		try {
 			properCarNameList = this.properCarNameList(inputCarName);
 		} catch (IllegalArgumentException e) {
-			System.out.println(e.getMessage()); inputCarName = RequestInputCarName();
+			System.out.println(e.getMessage()); inputCarName = requestInputCarName();
 			return validateCarNames(inputCarName);
 		}
 		return properCarNameList;
@@ -107,7 +111,7 @@ public class OperatorController {
 		try {
 			properCarRaceTimes = this.properCarRaceTimes(inputCarRaceTimes);
 		} catch (IllegalArgumentException e) {
-			System.out.println(e.getMessage()); inputCarRaceTimes = RequestInputCarRaceTimes();
+			System.out.println(e.getMessage()); inputCarRaceTimes = requestInputCarRaceTimes();
 			return validateCarRaceTimes(inputCarRaceTimes);
 		}
 		return properCarRaceTimes;
