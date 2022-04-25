@@ -7,7 +7,7 @@ public class NumberValidator {
     public static boolean isValidCountInput(String count) {
         try {
             validCountCheck(count);
-            positiveNumberCheck(count);
+            positiveNumberCheck(Integer.parseInt(count));
             return true;
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -26,8 +26,7 @@ public class NumberValidator {
         }
     }
 
-    private static void positiveNumberCheck(String input) {
-        int number = Integer.parseInt(input);
+    public static void positiveNumberCheck(int number) {
         if (number < MIN_RACE_COUNT) {
             throw new IllegalArgumentException(INVALID_RACE_COUNT_MESSAGE);
         }
