@@ -27,11 +27,11 @@ public class Cars {
     public List<String> getFirstPlaceCarNameList() {
         validCarsIsNotEmpty();
         int max = getMaxDistanceDriven();
-        List<String> firstPlaceCarNames = new ArrayList<>();
+        List<String> firstPlaceCarNames;
+        firstPlaceCarNames = new ArrayList<>();
         cars.forEach(car -> {
-            if (car.getDistanceDriven() == max) {
-                firstPlaceCarNames.add(car.getCarName());
-            }
+            if (car.getDistanceDriven() != max) return;
+            firstPlaceCarNames.add(car.getCarName());
         });
         return firstPlaceCarNames;
     }

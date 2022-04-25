@@ -10,7 +10,8 @@ public class RandomEngine implements Engine {
     private static final int MAX = 9;
     private static final int ACCELERATE_POINT = 4;
 
-    private RandomEngine() {}
+    private RandomEngine() {
+    }
 
     public static RandomEngine getInstance() {
         return engine;
