@@ -1,18 +1,15 @@
 package racingcar.service;
 
 import racingcar.model.Racing;
+import racingcar.model.primitive.CarNameList;
 import racingcar.util.Utils;
 
 public class RacingService implements Service {
 
     Racing racingCars;
-    int lap;
-    String carsNameList;
-    String lapStr;
+    CarNameList carsNameList;
 
     public RacingService() {
-        carsNameList = "";
-        lapStr = "";
     }
 
     @Override
@@ -25,15 +22,14 @@ public class RacingService implements Service {
     }
 
     private Boolean RacingGame() {
-        try {
-            carsNameList = Utils.getInput("경주할자동차이름(이름은쉼표(,)기준으로구분)");
-            racingCars = new Racing(carsNameList);
 
-            lapStr = Utils.getInput("시도할 회수는 몇회인가요?");
-            int lap = Integer.parseInt(lapStr);
+        try {
+            carsNameList = new CarNameList(Utils.getInput("경주할자동차이름(이름은쉼표(,)기준으로구분)"));
+            racingCars = new Racing(carsNameList.getList());
+
+            int lap = getLap();
 
             for (int i = 0; i < lap; i++) {
-                //경기 중
                 racingCars.moveCheck();
                 System.out.println();
             }
@@ -43,5 +39,22 @@ public class RacingService implements Service {
             return true;
         }
         return false;
+    }
+
+    public int getLap(){
+        boolean flag = true;
+        int lap = 0;
+
+        while(flag){
+            try{
+                String lapStr = Utils.getInput("시도할 회수는 몇회인가요?");
+                lap = Utils.stringToInt(lapStr);
+                flag = false;
+            } catch (Exception e){
+                System.out.println("[ERROR]" + e.getMessage());
+            }
+        }
+
+        return lap;
     }
 }

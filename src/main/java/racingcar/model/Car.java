@@ -1,37 +1,34 @@
 package racingcar.model;
 
+import racingcar.model.primitive.LapInfo;
+import racingcar.model.primitive.Name;
 import racingcar.util.Utils;
 
 public class Car {
-    private String name;
-    private String lapInfo;
+    private Name name;
+    private LapInfo lapInfo;
 
-    public Car(String name) {
-        this.lapInfo = "";
-        this.name = name;
+    private Car(String name) {
+        this.lapInfo = new LapInfo("");
+        this.name = new Name(name);
     }
 
     public static Car withName(String name) {
-
-        if (name.length() > 5) {
-            throw new IllegalArgumentException("자동차 이름 길이는 5 이하");
-        }
-
         return new Car(name);
     }
 
     public String getName() {
-        return name;
+        return this.name.getName();
     }
 
     public String getLapInfo() {
-        return lapInfo;
+        return this.lapInfo.getLapInfo();
     }
 
     public void update() {
 
         if (Utils.getRandom(0, 9) > 3) {
-            lapInfo += "-";
+            this.lapInfo.addLap();
         }
     }
 
