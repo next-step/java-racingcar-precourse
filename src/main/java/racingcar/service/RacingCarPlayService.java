@@ -3,6 +3,7 @@ package racingcar.service;
 import java.util.List;
 import racingcar.constant.Delimiter;
 import racingcar.constant.ErrorMessage;
+import racingcar.constant.InputWord;
 import racingcar.constant.MoveStatus;
 import racingcar.utils.RandomNumberUtils;
 import racingcar.utils.SplitUtils;
@@ -10,10 +11,6 @@ import racingcar.vo.RacingCar;
 import racingcar.vo.RacingCars;
 
 public class RacingCarPlayService {
-
-    private static final String INPUT_ZERO = "0";
-    private static final String COMMA = ",";
-    private static final int NOT_EXIST = -1;
 
     private final RacingCarMoveService racingCarMoveService;
 
@@ -29,8 +26,8 @@ public class RacingCarPlayService {
 
     private void validateLastComma(String inputCarNames) {
         int lastIndex = inputCarNames.length() - 1;
-        int lastCommaIndex = inputCarNames.lastIndexOf(COMMA);
-        if (lastCommaIndex != NOT_EXIST && lastCommaIndex == lastIndex) {
+        int lastCommaIndex = inputCarNames.lastIndexOf(InputWord.COMMA);
+        if (lastCommaIndex != InputWord.NOT_EXIST && lastCommaIndex == lastIndex) {
             throw new IllegalArgumentException(ErrorMessage.CAR_NAME_LAST_COMMA);
         }
     }
@@ -45,7 +42,7 @@ public class RacingCarPlayService {
     }
 
     private void validateRoundPositiveNumber(String inputRound) {
-        if (!inputRound.matches("\\p{Digit}+") || INPUT_ZERO.equals(inputRound)) {
+        if (!inputRound.matches("\\p{Digit}+") || InputWord.ZERO.equals(inputRound)) {
             throw new IllegalArgumentException(ErrorMessage.ROUND_NOT_POSITIVE_NUMBER);
         }
     }
