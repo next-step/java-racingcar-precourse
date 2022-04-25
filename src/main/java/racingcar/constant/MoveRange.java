@@ -8,6 +8,6 @@ public class MoveRange {
     public static final int FORWARD_MIN = 4;
 
     private MoveRange() {
-        throw new IllegalStateException("Constant class");
+        throw new IllegalStateException(ErrorMessage.CONSTANT_CLASS);
     }
 }
