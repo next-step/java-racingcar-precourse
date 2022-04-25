@@ -7,10 +7,10 @@ public class CurrentResult {
     String currentResult;
 
     public CurrentResult(ArrayList<RacingCar> cars) {
-        this.currentResult = setCurrrentResult(cars);
+        this.currentResult = setCurrentResult(cars);
     }
 
-    String setCurrrentResult(ArrayList<RacingCar> cars) {
+    String setCurrentResult(ArrayList<RacingCar> cars) {
         StringJoiner stringJoiner = new StringJoiner("\n");
         for (RacingCar car : cars) {
             stringJoiner.add(car.getPrintCurrentResult());
