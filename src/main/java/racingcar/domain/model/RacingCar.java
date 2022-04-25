@@ -18,9 +18,8 @@ public class RacingCar {
     public void move(int n) {
         if (n > FORWARD_MIN_VALUE) {
             distance.increase();
+            recordBoard.updateRecord(name.getName(), distance.getDistance());
         }
-        // 현황판에 이동 기록을 업데이트
-        recordBoard.updateRecord(name.getName(), distance.getDistance());
     }
 
     public String getName() {

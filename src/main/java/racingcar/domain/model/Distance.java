@@ -22,7 +22,7 @@ public class Distance {
      * 거리 증가가 가능한지 판단
      */
     private boolean isPossible() {
-        return distance != LIMIT;
+        return distance < LIMIT;
     }
 
     public Integer getDistance(){
