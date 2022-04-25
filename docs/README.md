@@ -1,0 +1,49 @@
+# 자동차 경주 게임
+## 요구 사항 분석
+- 주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다.
+  - Playable 인터페이스 생성
+    - play() 메서드 생성
+  - RacingCar 클래스 생성
+    - Playable 인터페이스 구현
+    - play() 메서드 구현
+- 각 자동차에 이름을 부여할 수 있다. 전진하는 자동차를 출력할 때 자동차 이름을 같이 출력한다.
+- 자동차 이름은 쉼표(,)를 기준으로 구분하며 이름은 5자 이하만 가능하다.
+  - RacingCars 클래스 생성
+    - private final List<RacingCar> racingCars; 
+    - List<RacingCar>를 파라미터로 받는 생성자 구현 
+  - RacingCar 클래스 생성
+    - 생성자에 validation 로직 추가
+  - CarName 클래스 생성
+    - 정적 멤버 상수 MAX_NAME_LENGTH = 5 추가
+    - 생성자 추가
+      - 파라미터가 MAX_NAME_LENGTH 보다 크면 IllegalArgumentException 발생
+- 사용자는 몇 번의 이동을 할 것인지를 입력할 수 있어야 한다.
+  - PlayCount 클래스 생성
+    - 생성자에 게임 횟수를 파라미터로 받도록 구현 및 validation 작업 추가
+      - 파라미터값 멤버 상수 PLAY_COUNT에 할당
+  - Car 인터페이스 생성
+    - move() 메서드 생성
+  - RacingCar 클래스
+    - Car 인터페이스 구현
+    - move() 메서드 구현
+- 전진하는 조건은 0에서 9 사이에서 random 값을 구한 후 random 값이 4 이상일 경우 전진하고, 3 이하의 값이면 멈춘다.
+  - RacingCarCommand 클래스 생성
+    - 정적 멤버 상수 MIN_NUMBER = 0, MAX_NUMBER 9 추가
+    - 생성자 추가
+      - 파라미터가 MIN_NUMBER보다 작거나 MAX_NUMBER보다 큰 경우 IllegalArgumentException 발생
+    - RacingCarStatus Enum 생성
+    - 생성자에 숫자를 받아서 RacingCarStatus Enum 리턴
+      - 파라미터가 MIN_NUMBER보다 작거나 MAX_NUMBER보다 큰 경우 IllegalArgumentException 발생
+- 자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다.
+  - RacingCars 클래스에 isGameEnd() 메서드 생성
+  - PlayResult getResult() 구현
+- 우승자가 한 명 이상일 경우, 쉼표(,)로 이름을 구분해 출력한다.
+  - isGameEnd() 메서드 수정
+    - PlayResult getResult() 수정
+- 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException을 발생시키고, "[ERROR]"로 시작하는 에러 메시지를 출력 후 그 부분부터 입력을 다시 받는다.
+  - Exception이 아닌 IllegalArgumentException, IllegalStateException 등과 같은 명확한 유형을 처리한다.
+    - RacingCars 클래스
+      - getErrorMessage() 메서드 구현
+        - private static final ERROR_MESSAGE_PREFIX = "[ERROR]";
+        - 에러 메세지 앞에 ERROR_MESSAGE_PREFIX 붙여서 리턴
+    - RacingCars.play()에 입력값 예외처리 로직 추가
