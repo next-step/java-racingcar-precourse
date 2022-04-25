@@ -20,4 +20,32 @@ public class PositionTest {
         position.setPosition(2);
         assertThat(position.getPosition()).isEqualTo(3);
     }
+
+    @DisplayName("포지션 끼리 비교했을 때, 같은 값을 가지면 equal함수는 true")
+    @Test
+    void equalToReturnTrue_P01() {
+        Position position = new Position(1);
+        Position other = new Position(1);
+        assertThat(position.equals(other)).isTrue();
+        assertThat(other.equals(position)).isTrue();
+    }
+
+    @DisplayName("포지션 끼리 비교했을 때, 다른 값을 가지면 equal함수는 false")
+    @Test
+    void equalToReturnFalse_N01() {
+        Position position = new Position(1);
+        Position other = new Position(2);
+        assertThat(position.equals(other)).isFalse();
+        assertThat(other.equals(position)).isFalse();
+    }
+
+
+    @DisplayName("다른 객체와 비교했을 때, equal함수는 false")
+    @Test
+    void equalToReturnFalse_N03() {
+        Position position = new Position(1);
+        Object other = new Object();
+        assertThat(position.equals(other)).isFalse();
+        assertThat(other.equals(position)).isFalse();
+    }
 }
