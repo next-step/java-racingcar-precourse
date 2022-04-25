@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.factory.CarFactory;
 
 import java.util.ArrayList;
 import java.util.List;

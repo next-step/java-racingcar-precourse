@@ -2,7 +2,7 @@ package racingcar.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class Car{
+public class Car {
 
     private final Integer MIN_NUMBER = 0;
     private final Integer MAX_NUMBER = 9;

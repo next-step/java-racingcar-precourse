@@ -15,6 +15,6 @@ public class TotalLaps implements TotalLapsValidation {
     }
 
     private int totalLaps(String totalLaps) {
-        return Integer.parseInt(validTotalLaps(totalLaps));
+        return validTotalLaps(totalLaps);
     }
 }
