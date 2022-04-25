@@ -49,7 +49,7 @@ public class RacingCars {
     }
 
     public WinnerResult getWinnerOutPutResult() {
-        return new WinnerResult(winners);
+        return new WinnerResult(new Winners(winners));
     }
 
     private void validCarNames(String inputCarNames) {

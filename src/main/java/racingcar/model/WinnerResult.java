@@ -1,20 +1,19 @@
 package racingcar.model;
 
-import java.util.ArrayList;
 import java.util.StringJoiner;
 
 public class WinnerResult {
-    ArrayList<CarName> winners = new ArrayList<>();
+    Winners winners;
     private final String printWinners;
 
-    public WinnerResult(ArrayList<CarName> winners) {
-        this.winners.addAll(winners);
+    public WinnerResult(Winners winners) {
+        this.winners = winners;
         this.printWinners = setPrintWinners();
     }
 
     private String setPrintWinners() {
         StringJoiner stringJoiner = new StringJoiner(", ");
-        for (CarName winner : winners) {
+        for (CarName winner : winners.getWinners()) {
             stringJoiner.add(winner.getName());
         }
         return stringJoiner.toString();
