@@ -19,6 +19,7 @@ import racingcar.domain.enumtype.InterfaceMsg;
 import racingcar.domain.enumtype.ValidationMsg;
 import racingcar.domain.racingcar.RacingCar;
 import racingcar.dto.RacingCarInitDto;
+import racingcar.service.RacingCarService;
 import racingcar.service.RacingCarServiceTest;
 import racingcar.service.ValidatorServiceTest;
 
@@ -134,6 +135,16 @@ public class OperatorControllerTest extends NsTest {
 
 		Map<String, RacingCar> racingCarMap = racingCarServiceTest.getRacingCarMap();
 		racingCarMap.forEach((key, val) -> assertThat(carNameList).contains(key));
+	}
+
+	@Test
+	void RacingCarService를_통해_RacingCarRepository에_여러_자동차_저장() {
+		List<String> carNameList = new ArrayList<>(Arrays.asList("pobi, woni"));
+		RacingCarInitDto racingCarInitDto = RacingCarInitDto.builder().carNameList(carNameList).inputCarRaceTimes(1).build();
+
+		RacingCarService.getInstance().initSaveRacingCar(racingCarInitDto);
+
+		RacingCarService.getInstance().getRacingCarMap().forEach((key, val) -> assertThat(carNameList).contains(key));
 	}
 
 	@Override
