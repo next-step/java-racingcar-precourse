@@ -8,6 +8,7 @@ public class RandomEngine implements Engine {
     private static final RandomEngine engine = new RandomEngine();
     private static final int MIN = 1;
     private static final int MAX = 9;
+    private static final int CLASSIFY_NUM = 4;
 
     private RandomEngine() {}
 
@@ -26,7 +27,7 @@ public class RandomEngine implements Engine {
     }
 
     public boolean isAccelerate(int number) {
-        return number >= 4;
+        return number >= CLASSIFY_NUM;
     }
 
 }
