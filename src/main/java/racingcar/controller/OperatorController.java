@@ -58,6 +58,7 @@ public class OperatorController {
 		System.out.println(InterfaceMsg.GAME_INFO.getValue()); // 자동차 레이싱 게임 안내
 		this.requestUserInput();
 		this.initSaveRacingCar();
+		racingCarService.playCarRacing();
 	}
 
 	private void requestUserInput() {
