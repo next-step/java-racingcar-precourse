@@ -4,9 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingCars {
-    List<Car> racingCars = new ArrayList<>();
+    List<RacingCar> racingCars = new ArrayList<>();
 
-    public void addRacingCar(String carName) {
-        this.racingCars.add(new Car(carName));
+    public List<RacingCar> getRacingCars() {
+        return this.racingCars;
+    }
+
+    public void addRacingCar(RacingCar racingCar) {
+        this.racingCars.add(racingCar);
     }
 }
