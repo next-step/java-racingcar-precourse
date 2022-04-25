@@ -38,7 +38,7 @@ class CarsTest {
     public void 자동차_이름이_하나이상_5글자_이상인_경우_실패를_반환한다(String input) {
         // given & when & then
         assertThatIllegalArgumentException().isThrownBy(
-                () -> new Car(input));
+                () -> new Cars(Arrays.asList(input.split(",",-1))));
     }
 
     @ParameterizedTest
@@ -46,7 +46,7 @@ class CarsTest {
     public void 자동차_이름이_하나이상_공백인_경우_실패를_반환한다(String input) {
         // given & when & then
         assertThatIllegalArgumentException().isThrownBy(
-                () -> new Car(input));
+                () -> new Cars(Arrays.asList(input.split(",",-1))));
     }
 
     @ParameterizedTest
@@ -54,7 +54,7 @@ class CarsTest {
     public void 자동차_이름이_중복되는_경우_실패를_반환한다(String input) {
         // given & when & then
         assertThatIllegalArgumentException().isThrownBy(
-                () -> new Car(input));
+                () -> new Cars(Arrays.asList(input.split(",",-1))));
     }
 
     @Test
