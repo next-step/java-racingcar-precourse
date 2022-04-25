@@ -63,7 +63,7 @@ class GameInput {
 
     static CarNames parseCarNames(String line) {
         return new Strings(line.split(","))
-                .mapAndCollect(CarName::new, CarNames::new);
+                .mapAndWrap(CarName::new, CarNames::new);
     }
 
     private static boolean validateCarNames(CarNames carNames) {

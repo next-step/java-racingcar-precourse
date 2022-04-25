@@ -64,8 +64,8 @@ public abstract class AbstractImmutableList<E> {
         return result;
     }
 
-    public <T extends AbstractImmutableList<?>, S> T mapAndCollect(Function<? super E, S> mapper,
-                                                                   Function<List<S>, T> collector) {
-        return collector.apply(map(mapper));
+    public <T extends AbstractImmutableList<?>, S> T mapAndWrap(Function<? super E, S> mapper,
+                                                                Function<List<S>, T> wrapper) {
+        return wrapper.apply(map(mapper));
     }
 }

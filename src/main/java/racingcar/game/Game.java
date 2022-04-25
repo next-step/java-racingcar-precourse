@@ -14,7 +14,7 @@ class Game {
     }
 
     private static GameState nextState(GameState state) {
-        return new GameState(state.getCars().mapAndCollect(Game::move, Cars::new));
+        return new GameState(state.getCars().mapAndWrap(Game::move, Cars::new));
     }
 
     static GameStates process(Cars cars, IntRange turns) {
@@ -45,11 +45,12 @@ class Game {
     }
 
     static void play() {
-        Cars cars = GameInput.readCarNames().mapAndCollect(Car::new, Cars::new);
+        Cars cars = GameInput.readCarNames().mapAndWrap(Car::new, Cars::new);
         IntRange turns = new IntRange(GameInput.readNumTurns());
 
         GameStates states = process(cars, turns);   // Saves each turn of racing
         Cars winningCars = winningCars(states.getLast().getCars());
         Console.println(GameMessage.resultMessage(states, winningCars));
+//        Console.println(winningCars);
     }
 }
