@@ -41,8 +41,13 @@ public class RacingGame {
     }
 
     public void inputGameCount() {
+        try {
             System.out.println("시도할 회수");
             String inputGameCount = Console.readLine();
-            gameCount = Integer.parseInt(inputGameCount);
+            gameCount = InputValidation.inputGameCountValidation(inputGameCount);
+        } catch (IllegalArgumentException iae) {
+            System.out.println("[ERROR] " + iae.getMessage());
+            inputGameCount();
+        }
     }
 }
