@@ -6,10 +6,7 @@ import org.junit.jupiter.api.Test;
 import racingcar.controller.RaceGameController;
 import racingcar.domain.CarFactory;
 import racingcar.domain.VehicleFactory;
-import racingcar.domain.model.CarName;
-import racingcar.domain.model.Distance;
-import racingcar.domain.model.RaceRecordBoard;
-import racingcar.domain.model.RacingCar;
+import racingcar.domain.model.*;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
@@ -20,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class RacingCarTest {
     private final int DEFAULT_TRY_LIMIT = 5;
     private final String DEFAULT_NAMES = "pobi,woni,jun";
-    private final RaceRecordBoard board = new RaceRecordBoard();
+    private final RecordBoard<String, Integer> board = new RaceRecordBoard();
     private final List<RacingCar> racingCarList = new ArrayList<>();
 
 
@@ -28,7 +25,7 @@ public class RacingCarTest {
     void initDefaultTestData() {
         String[] arrName = DEFAULT_NAMES.split(",");
         for (String s : arrName) {
-            CarName name = new CarName(s);
+            Name name = new Name(s);
             Distance distance = new Distance(DEFAULT_TRY_LIMIT);
             racingCarList.add(new RacingCar(name, distance, board));
         }
@@ -62,7 +59,7 @@ public class RacingCarTest {
         for (int i = 0; i < names.length; i++) {
             String name = names[i];
             assertThrows(IllegalArgumentException.class,
-                    () -> new RacingCar(new CarName(name),
+                    () -> new RacingCar(new Name(name),
                             new Distance(DEFAULT_TRY_LIMIT),
                             board));
         }
@@ -72,7 +69,7 @@ public class RacingCarTest {
     void 차량_1대_전진_테스트() {
         //given
         RacingCar rc = new RacingCar(
-                new CarName("pobi"),
+                new Name("pobi"),
                 new Distance(DEFAULT_TRY_LIMIT),
                 board);
 

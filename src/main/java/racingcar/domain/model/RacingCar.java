@@ -2,11 +2,11 @@ package racingcar.domain.model;
 
 public class RacingCar implements Vehicle<Integer> {
     private final int FORWARD_MIN_VALUE = 3; // 전진 가능한 최소 값
-    private final CarName name;
+    private final Name name;
     private final Distance distance;
-    private final RaceRecordBoard recordBoard;
+    private final RecordBoard<String, Integer> recordBoard;
 
-    public RacingCar(CarName name, Distance distance, RaceRecordBoard recordBoard) {
+    public RacingCar(Name name, Distance distance, RecordBoard<String, Integer> recordBoard) {
         this.name = name;
         this.distance = distance;
         this.recordBoard = recordBoard;

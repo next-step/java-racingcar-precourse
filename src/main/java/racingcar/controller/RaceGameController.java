@@ -6,6 +6,9 @@ import racingcar.domain.VehicleFactory;
 import racingcar.domain.dto.RacingCarDto;
 import racingcar.domain.model.RaceRecordBoard;
 import racingcar.domain.model.RacingCar;
+import racingcar.domain.model.RecordBoard;
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
 import racingcar.view.RaceInputView;
 import racingcar.view.RaceOutputView;
 
@@ -14,9 +17,9 @@ import java.util.List;
 
 public class RaceGameController {
     private static RaceGameController controller = null;
-    private static final RaceInputView inputView = new RaceInputView();
-    private static final RaceOutputView outputView = new RaceOutputView();
-    private static final RaceRecordBoard recordBoard = new RaceRecordBoard();
+    private static final InputView<String[], Integer> inputView = new RaceInputView();
+    private static final OutputView<RacingCarDto, String> outputView = new RaceOutputView();
+    private static final RecordBoard<String, Integer> recordBoard = new RaceRecordBoard();
 
     private RaceGameController() {}
 
