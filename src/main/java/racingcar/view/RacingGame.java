@@ -4,12 +4,11 @@ import camp.nextstep.edu.missionutils.Console;
 import racingcar.util.InputValidation;
 import racingcar.domain.Player;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class RacingGame {
     private static final RacingGame RACING_GAME = new RacingGame();
-    private Set<Player> playerList = new HashSet<>();
+    private List<Player> playerList = new ArrayList<>();
     private int gameCount = 0;
 
     private RacingGame() {
@@ -22,6 +21,7 @@ public class RacingGame {
     public void playRacing() {
         inputPlayer();
         inputGameCount();
+        startGame();
     }
 
     public void inputPlayer() {
@@ -50,4 +50,14 @@ public class RacingGame {
             inputGameCount();
         }
     }
+
+    public void startGame() {
+        for (int i = 0; i < gameCount; i++) {
+            for (Player plyer : playerList) {
+                plyer.plyeGame();
+            }
+            System.out.println();
+        }
+    }
+
 }
