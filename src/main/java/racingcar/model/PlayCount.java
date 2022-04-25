@@ -38,4 +38,12 @@ public class PlayCount {
         }
     }
 
+    @Override
+    public boolean equals(Object other) {
+        if (!(other instanceof PlayCount)) {
+            return false;
+        }
+        PlayCount po = (PlayCount) other;
+        return po.playCount == playCount && po.playCountRule.equals(playCountRule);
+    }
 }

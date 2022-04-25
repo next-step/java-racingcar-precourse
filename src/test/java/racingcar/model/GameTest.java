@@ -15,7 +15,7 @@ public class GameTest {
     Game game;
 
     @BeforeEach
-    void set(){
+    void set() {
         carMoveRule = new CarMoveRule(
                 RacingCarConstants.CAR_MOVE_RULE_MOVE_SIZE,
                 RacingCarConstants.CAR_MOVE_RULE_STOP_SIZE,
@@ -30,7 +30,15 @@ public class GameTest {
 
     @DisplayName("game을 처음 생성했을때, GameStatus는 INIT이어야한다.")
     @Test
-    void createGameGameStatusIsInit_P01(){
+    void createGameGameStatusIsInit_P01() {
         assertThat(game.gameStatus.isInit()).isTrue();
     }
+
+    @DisplayName("playCount get set 테스트")
+    @Test
+    void setPlayCountSuccess_P01() {
+        game.setPlayCount("5");
+        assertThat(game.playCount.equals(new PlayCount("5", playCountRule))).isTrue();
+    }
 }
+

@@ -16,4 +16,13 @@ public class PlayCountRule {
     public int getMaxNum() {
         return maxNum;
     }
+
+    @Override
+    public boolean equals(Object other) {
+        if (!(other instanceof PlayCountRule)) {
+            return false;
+        }
+        PlayCountRule po = (PlayCountRule) other;
+        return po.minNum == minNum && po.maxNum == maxNum;
+    }
 }
