@@ -82,13 +82,11 @@ class GameInput {
     }
 
     private static int parseInt(String s) {
-        int num;
         try {
-            num = Integer.parseInt(s);
+            return Integer.parseInt(s);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("cannot parse '" + s + "'");
         }
-        return num;
     }
 
     private static boolean validateNumTurns(int num) {
