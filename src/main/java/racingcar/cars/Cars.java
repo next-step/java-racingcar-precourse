@@ -1,6 +1,8 @@
 package racingcar.cars;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.utils.ValidationUtils;
+import racingcar.views.DisplayView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,8 +28,11 @@ public class Cars {
         this.cars.addAll(list);
     }
 
-    public List<Car> getCars() {
-        return this.cars;
+    public void move() {
+        for (final Car car : cars) {
+            car.move(Randoms.pickNumberInRange(Car.MINIMUM_SPEED, Car.MAXIMUM_SPEED));
+            DisplayView.print(car);
+        }
     }
 
     public List<Car> getWinners() {

@@ -29,7 +29,7 @@ public class CarsTest {
     public void test01() {
         String input = "pobi,woni,jun";
         Cars cars = new Cars(input);
-        List<Car> list = cars.getCars();
+        List<Car> list = cars.getWinners();
         assertThat(list.get(0).getName()).isEqualTo("pobi");
         assertThat(list.get(1).getName()).isEqualTo("woni");
         assertThat(list.get(2).getName()).isEqualTo("jun");
@@ -39,10 +39,8 @@ public class CarsTest {
     @DisplayName("각 자동차 위치 조회")
     public void test02() {
         Cars cars = new Cars(carList);
-        List<Car> list = cars.getCars();
+        List<Car> list = cars.getWinners();
         assertThat(list.get(0).getDistance()).isEqualTo(2L);
-        assertThat(list.get(1).getDistance()).isEqualTo(0L);
-        assertThat(list.get(2).getDistance()).isEqualTo(1L);
     }
 
     @Test

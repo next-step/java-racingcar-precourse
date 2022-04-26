@@ -1,6 +1,5 @@
 package racingcar.views;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.cars.Car;
 import racingcar.cars.Cars;
 import racingcar.firstcollections.Positive;
@@ -19,6 +18,11 @@ public class DisplayView {
 
     public static void play() {
         start(inputCarNames(), inputRacingCount());
+    }
+
+    public static void print(final Car car) {
+        printCarName(car);
+        printCarDistance(car);
     }
 
     private static Cars inputCarNames() {
@@ -40,26 +44,11 @@ public class DisplayView {
     }
 
     private static void start(final Cars cars, final Positive positive) {
-        while (Positive.MIN_VALUE < positive.get()){
-            List<Car> carList = cars.getCars();
-            move(carList);
-            print(carList);
+        while (Positive.MIN_VALUE < positive.get()) {
+            cars.move();
             positive.sub();
         }
         printWinners(cars);
-    }
-
-    private static void move(final List<Car> carList) {
-        for (final Car car : carList) {
-            car.move(Randoms.pickNumberInRange(Car.MINIMUM_SPEED, Car.MAXIMUM_SPEED));
-        }
-    }
-
-    private static void print(final List<Car> carList) {
-        for (final Car car : carList) {
-            printCarName(car);
-            printCarDistance(car);
-        }
     }
 
     private static void printCarName(final Car car) {
