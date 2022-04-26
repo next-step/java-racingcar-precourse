@@ -2,7 +2,6 @@ package racingcar.game.car;
 
 import racingcar.game.util.AbstractImmutableList;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Cars extends AbstractImmutableList<Car> {
