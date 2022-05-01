@@ -1,7 +1,11 @@
 package racingcar;
 
 public class Application {
+
+    private static RacingCarService racingCarService;
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        racingCarService = new RacingCarService();
+        racingCarService.play();
     }
 }
