@@ -5,3 +5,13 @@
 
 ## 과제 제출 과정
 * [과제 제출 방법](https://github.com/next-step/nextstep-docs/tree/master/precourse)
+
+## 기능
+1. 자동차가 전진하기 위한 조건
+2. 자동차 도메인 구현
+   1. 자동차의 이름
+   2. 자동차의 움직임
+   3. 자동차의 위치(상태)
+3. input/output UI 구현
+   * 입력 예외처리 및 에러문구
+4. 전체 기능 구현
