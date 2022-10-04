@@ -1,0 +1,39 @@
+package racingcar.domain;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static racingcar.constant.ERROR.*;
+
+import org.junit.jupiter.api.Test;
+
+class CarNameTest {
+
+	@Test
+	public void 자동차_이름_길이_유효성_검사(){
+		//given
+		String str = "pooooo";
+		CarName carName = CarName.of(str);
+
+		//when
+		//then
+		Throwable exception = assertThrows(IllegalArgumentException.class,()->{
+			carName.lengthCheck();
+		});
+
+		assertEquals(EXCESS_LENGTH,exception.getMessage());
+	}
+
+	@Test
+	public void 자동차_이름_빈값_유효성_검사(){
+		//given
+		String str = "";
+		CarName carName = CarName.of(str);
+
+		//when
+		//then
+		Throwable exception = assertThrows(IllegalArgumentException.class,()->{
+			carName.emptyNameCheck();
+		});
+
+		assertEquals(EMPTY_NAME,exception.getMessage());
+	}
+}
