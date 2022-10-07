@@ -5,3 +5,31 @@
 
 ## 과제 제출 과정
 * [과제 제출 방법](https://github.com/next-step/nextstep-docs/tree/master/precourse)
+
+
+자동차
+- 이름 필드 게터 세터(유효성 체크: 5자 이하)
+- 위치 필드 게터 세터  
+- 전진 기능 
+- 멈춤 기능
+
+사용자 
+- 이동 횟수 입력
+
+라운드 
+- 라운드별 레이싱 결과 저장 
+
+규칙
+- 전진 후진 판단 조건: 0 에서 9 사이에서 random 값을 구한후 random 값
+
+메세지
+- 경기 관련 메세지 enum 
+
+게임
+- 경기 시작
+- 우승 판단
+
+에러
+- IllegalArgumentException
+- IllegalStateException
+
