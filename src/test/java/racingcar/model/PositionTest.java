@@ -15,4 +15,6 @@ class PositionTest {
 
 		Assertions.assertThat(position.toString()).isEqualTo("---");
 	}
+
+
 }

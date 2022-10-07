@@ -15,6 +15,15 @@ public class Game {
 		}
 	}
 
+
+	public List<Car> getCarList() {
+		return carList;
+	}
+
+	public void setCarList(List<Car> carList) {
+		this.carList = carList;
+	}
+
 	public String toString() {
 		String str = "";
 		for (Car car : carList) {

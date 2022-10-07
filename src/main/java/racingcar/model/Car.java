@@ -25,4 +25,8 @@ public class Car {
 	public void setPosition(Position position) {
 		this.position = position;
 	}
+
+	public void moveForward() {
+		this.position.setPosition(this.position.getPosition() + 1);
+	}
 }
