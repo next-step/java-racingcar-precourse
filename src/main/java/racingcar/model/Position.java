@@ -11,4 +11,13 @@ public class Position {
 		this.position = position;
 	}
 
+	public String toString() {
+		String str = "";
+		for (int i = 0; i < position; i++) {
+			str += "-";
+		}
+		return str;
+	}
+
+
 }

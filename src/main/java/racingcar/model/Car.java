@@ -10,4 +10,19 @@ public class Car {
 		this.position = new Position(position);
 	}
 
+	public Name getName() {
+		return name;
+	}
+
+	public void setName(Name name) {
+		this.name = name;
+	}
+
+	public Position getPosition() {
+		return position;
+	}
+
+	public void setPosition(Position position) {
+		this.position = position;
+	}
 }
