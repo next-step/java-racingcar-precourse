@@ -10,17 +10,17 @@ public class Car {
 	private static final int FORWARD_NUM = 4;
 
 	private final Name name;
-	private int position;
+	private final Position position;
 
 	public Car(final Name name) {
 		this.name = name;
-		this.position = 0;
+		this.position = new Position();
 	}
 
 	//== 비지니스 로직 ==//
 	public void move() {
 		if (getRandomNo() >= FORWARD_NUM) {
-			this.position++;
+			position.move();
 		}
 	}
 
@@ -33,7 +33,7 @@ public class Car {
 	}
 
 	public int getPosition() {
-		return position;
+		return position.getPosition();
 	}
 
 	@Override
