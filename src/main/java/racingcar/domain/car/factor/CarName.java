@@ -1,9 +1,8 @@
-package racingcar.domain;
+package racingcar.domain.car.factor;
 
 import racingcar.constant.ERROR;
 
 public class CarName {
-
 
 	private final String name;
 
@@ -24,5 +23,12 @@ public class CarName {
 		if(name.isEmpty()){
 			throw new IllegalArgumentException(ERROR.EMPTY_NAME);
 		}
+	}
+
+	@Override
+	public String toString() {
+		return "CarName{" +
+			"name='" + name + '\'' +
+			'}';
 	}
 }
