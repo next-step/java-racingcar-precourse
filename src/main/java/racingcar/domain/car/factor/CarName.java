@@ -8,6 +8,8 @@ public class CarName {
 
 	public CarName(String name) {
 		this.name = name;
+		lengthCheck();
+		emptyNameCheck();
 	}
 
 	public static CarName of(String name) {
