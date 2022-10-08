@@ -6,16 +6,18 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class CarTest {
 
-	@Test
-	@DisplayName("자동차 이름이 5글자 초과된 경우, 오류가 발생한다.")
-	void new_FailedByOverNameMaxLength() {
+	@ParameterizedTest(name = "자동차 이름이 빈값이거나 5자 초과시 오류가 발생한다. 이름: {argumentsWithNames}")
+	@ValueSource(strings = {"", " ", "123456"})
+	void new_FailedByOverNameMaxLength(String name) {
 		assertThatThrownBy(() -> {
-			new Car("123456");
+			new Car(name);
 		}).isInstanceOf(IllegalArgumentException.class)
-			.hasMessageContaining("자동차 이름은 5자 이하여야 합니다.");
+			.hasMessageContaining("자동차 이름은 빈값이 아니며 5자 이하여야 합니다.");
 	}
 
 	@RepeatedTest(value = 10, name = "0-9 랜덤값 생성 - 실행 횟수 {currentRepetition}/{totalRepetitions}")

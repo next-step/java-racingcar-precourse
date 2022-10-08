@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import static org.junit.platform.commons.util.StringUtils.isBlank;
+
 import org.junit.platform.commons.util.ToStringBuilder;
 
 import camp.nextstep.edu.missionutils.Randoms;
@@ -14,8 +16,8 @@ public class Car {
 	private int position;
 
 	public Car(String name) {
-		if (name.length() > CAR_NAME_MAX_LENGTH) {
-			throw new IllegalArgumentException("[ERROR] 자동차 이름은 5자 이하여야 합니다.");
+		if (isBlank(name) || name.length() > CAR_NAME_MAX_LENGTH) {
+			throw new IllegalArgumentException("[ERROR] 자동차 이름은 빈값이 아니며 5자 이하여야 합니다.");
 		}
 		this.name = name;
 		this.position = 0;
