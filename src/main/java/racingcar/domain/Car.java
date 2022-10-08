@@ -1,7 +1,5 @@
 package racingcar.domain;
 
-import static org.junit.platform.commons.util.StringUtils.isBlank;
-
 import org.junit.platform.commons.util.ToStringBuilder;
 
 import camp.nextstep.edu.missionutils.Randoms;
@@ -10,15 +8,11 @@ public class Car {
 	private static final int RANDOM_MIN_NO = 0;
 	private static final int RANDOM_MAX_NO = 9;
 	private static final int FORWARD_NUM = 4;
-	private static final int CAR_NAME_MAX_LENGTH = 5;
 
-	private final String name;
+	private final Name name;
 	private int position;
 
-	public Car(String name) {
-		if (isBlank(name) || name.length() > CAR_NAME_MAX_LENGTH) {
-			throw new IllegalArgumentException("[ERROR] 자동차 이름은 빈값이 아니며 5자 이하여야 합니다.");
-		}
+	public Car(final Name name) {
 		this.name = name;
 		this.position = 0;
 	}
@@ -35,7 +29,7 @@ public class Car {
 	}
 
 	public String getName() {
-		return name;
+		return name.getName();
 	}
 
 	public int getPosition() {
