@@ -11,7 +11,7 @@ class CarTest {
 	@RepeatedTest(value = 10, name = "0-9 랜덤값 생성 - 실행 횟수 {currentRepetition}/{totalRepetitions}")
 	void random1_9() {
 		Car car = new Car(new Name("pobi"));
-		assertThat(car.getRandomNo()).isGreaterThanOrEqualTo(0).isLessThanOrEqualTo(9);
+		assertThat(car.getRandomNo()).isBetween(0, 9);
 	}
 
 	@Test
@@ -37,6 +37,6 @@ class CarTest {
 			}
 		};
 		car.move();
-		assertThat(car.getPosition()).isEqualTo(0);
+		assertThat(car.getPosition()).isZero();
 	}
 }
