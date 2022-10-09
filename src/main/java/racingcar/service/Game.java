@@ -12,15 +12,18 @@ public class Game {
 
     private static final String GAME_ROUND_PATTERN = "^[1-9][0-9]*$";
 
+    private final ReaderBoard readerBoard;
     private RacingCars racingCars;
     private int gameRound;
 
     public Game() {
+        this.readerBoard = new ReaderBoard();
         joinCar();
         setGameRound();
     }
 
     public void racing() {
+        readerBoard.notice();
         for (int i = 0; i < gameRound; i++) {
             drive();
         }
@@ -30,11 +33,14 @@ public class Game {
     private void drive() {
         for (Car car : racingCars.getCars()) {
             car.drive(Driving.isDrive());
+            readerBoard.round(car);
         }
+        readerBoard.newLine();
     }
 
     private void winner() {
         List<Car> winners = racingCars.winners();
+        readerBoard.winners(winners);
     }
 
     private void joinCar() {
