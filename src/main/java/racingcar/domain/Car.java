@@ -10,7 +10,7 @@ public class Car {
         this.position = position;
     }
 
-    public Car release(String name) {
+    public static Car release(String name) {
         return new Car(new CarName(name), new Position());
     }
 
@@ -18,11 +18,11 @@ public class Car {
         this.position.moveForward(randomNumber);
     }
 
-    public CarName getCarName() {
-        return carName;
+    public String getCarName() {
+        return this.carName.getName();
     }
 
-    public Position getPosition() {
-        return position;
+    public int getPosition() {
+        return this.position.getPosition();
     }
 }

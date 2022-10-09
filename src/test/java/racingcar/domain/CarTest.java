@@ -14,7 +14,7 @@ public class CarTest {
     @ValueSource(strings = {"mrlee", "jplee", "pobi"})
     void release(String name) {
         // given & when
-        Car car = new Car(name);
+        Car car = Car.release(name);
 
         // then
         assertThat(car.getCarName()).isEqualTo(name);
@@ -25,7 +25,7 @@ public class CarTest {
     void move() {
         // given & when
         String name = "mrlee";
-        Car car = new Car(name);
+        Car car = Car.release(name);
         car.move(5);
 
         // then
