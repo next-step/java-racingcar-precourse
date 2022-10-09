@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.junit.platform.commons.util.ToStringBuilder;
@@ -9,7 +10,7 @@ public class Cars {
 	private final List<Car> cars;
 
 	public Cars(final List<Car> cars) {
-		this.cars = cars;
+		this.cars = new ArrayList<>(cars);
 	}
 
 	public void move() {
@@ -38,7 +39,7 @@ public class Cars {
 	}
 
 	public List<Car> getCars() {
-		return cars;
+		return Collections.unmodifiableList(cars);
 	}
 
 	@Override
