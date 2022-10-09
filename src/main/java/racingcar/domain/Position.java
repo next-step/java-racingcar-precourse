@@ -12,6 +12,7 @@ public class Position {
         if (position < 0) {
             throw new IllegalArgumentException("position은 1이상의 정수값이어야 합니다.");
         }
+        this.position = position;
     }
 
     public void moveForward(int randomNumber) {
