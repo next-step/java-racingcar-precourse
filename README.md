@@ -42,6 +42,31 @@
 - [x] 자동차의 최종 우승자를 출력한다.
   - 우승자가 한 명 이상일 경우, 쉼표(,)로 이름을 구분해서 출력한다.
 
+## 코드 컨벤션
+- [Java Style Guide 준수](https://google.github.io/styleguide/javaguide.html)
+  - 블럭 들여쓰기: +4 스페이스
+  - 열 제한: 120
+  - 들여쓰기 지속은 최소 +8 스페이스
+  - 수직 빈줄 ...
+- indent(들여쓰기) depth - 1까지만 허용
+- 자바 8에 추가된 stream api 사용 금지 (람다는 허용)
+- else 예약어 금지
+- 메서드 길이는 10 라인이 넘어가지 않도록 구현
+
+## 패키지 정보
+```shell
+racingcar
+ ┗ app      # [Controller] 부분
+ ┗ domain   # [Model] 클래스
+ ┗ io       # 입출력 담당
+ ┗ message  # 안내, 오류 메시지 모음
+ ┗ util     # 검증 유틸 클래스
+ ┗ view     # [View] 부분
+```
+
+## CLASS DIAGRAM
+![image](https://user-images.githubusercontent.com/93169519/194773030-f7d825fb-aa9a-4b18-bd72-4e25c471f08f.png)
+
 ## 콘솔 실행 결과
 ```shell
 경주할 자동차 이름을 입력하세요. (이름은 쉼표(,) 기준으로 구분)
