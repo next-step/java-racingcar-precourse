@@ -1,5 +1,6 @@
 package racingcar.view;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import racingcar.domain.Car;
@@ -63,5 +64,14 @@ public class GameView {
 			output.printGameMessage(GameMessage.RACING_CAR, name, position);
 		}
 		output.printNewLine();
+	}
+
+	public void printWinners(List<Car> winners) {
+		List<String> winnerNames = new ArrayList<>();
+		for (Car car : winners) {
+			winnerNames.add(car.getName());
+		}
+		String result = String.join(",", winnerNames);
+		output.printGameMessage(GameMessage.WINNERS, result);
 	}
 }
