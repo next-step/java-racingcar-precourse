@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 class PositionTest {
 
 	@Test
+	@DisplayName("위치 초기값이 0 미만인 경우 오류가 발생한다.")
 	void new_FailedByLessThanZero() {
 		assertThatThrownBy(() -> {
 			new Position(-1);

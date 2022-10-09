@@ -17,7 +17,6 @@ public class Car {
 		this.position = new Position();
 	}
 
-	//== 비지니스 로직 ==//
 	public void move() {
 		if (getRandomNo() >= FORWARD_NUM) {
 			position.move();
