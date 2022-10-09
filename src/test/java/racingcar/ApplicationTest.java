@@ -1,11 +1,14 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.Test;
-
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
+import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.Test;
+import racingcar.model.RacingCar;
+import racingcar.util.Validation;
 
 class ApplicationTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
@@ -37,5 +40,46 @@ class ApplicationTest extends NsTest {
     @Override
     public void runMain() {
         Application.main(new String[]{});
+    }
+
+    @Test
+    public void 자동차생성_후_원시_포장된_이름_가져오기(){
+        RacingCar racingCar = new RacingCar("test");
+        assertThat(racingCar.getName()).isEqualTo("test");
+    }
+
+    @Test
+    public void 이름_다섯자_초과인_자동차_생성시_오류(){
+        assertSimpleTest(() ->
+            assertThatThrownBy(() -> {
+                new RacingCar("12345");
+                throw new RuntimeException();
+            }).isNotInstanceOf(IllegalArgumentException.class)
+        );
+        assertSimpleTest(() ->
+            assertThatThrownBy(() -> {
+                new RacingCar("123456");
+                throw new RuntimeException();
+            }).isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    public void 횟수_아닌_값은_오류(){
+        assertSimpleTest(() ->
+            assertThatThrownBy(() -> {
+                Validation.checkRetryCount("-1");
+            }).isInstanceOf(IllegalArgumentException.class)
+        );
+        assertSimpleTest(() ->
+            assertThatThrownBy(() -> {
+                Validation.checkRetryCount("1231546879846321357687321");
+            }).isInstanceOf(IllegalArgumentException.class)
+        );
+        assertSimpleTest(() ->
+            assertThatThrownBy(() -> {
+                Validation.checkRetryCount("asdfas123");
+            }).isInstanceOf(IllegalArgumentException.class)
+        );
     }
 }
