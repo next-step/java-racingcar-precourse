@@ -3,7 +3,9 @@ package racingcar;
 import controller.RacingController;
 import domain.CarNames;
 import domain.Laps;
+import domain.RaceResult;
 import view.InputView;
+import view.OutputView;
 
 public class Application {
 
@@ -11,7 +13,9 @@ public class Application {
         CarNames carNames = InputView.getCarNames();
         Laps laps = InputView.getLaps();
 
-        RacingController racingContoller = new RacingController();
-        racingContoller.startRace(carNames, laps);
+        RacingController racingController = new RacingController();
+        RaceResult raceResult = racingController.startRace(carNames, laps);
+
+        OutputView.announceWinner(raceResult);
     }
 }
