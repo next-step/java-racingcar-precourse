@@ -10,7 +10,7 @@ public class Position {
 
     public Position(int position) {
         if (position < 0) {
-            throw new IllegalArgumentException("position은 1이상의 정수값이어야 합니다.");
+            throw new IllegalArgumentException("[ERROR] position은 1이상의 정수값이어야 합니다.");
         }
         this.position = position;
     }
