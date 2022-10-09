@@ -34,10 +34,10 @@ public class RacingCarsTest {
     @Test
     void 포니_우승() {
 
-        racingCars.cars.get(0).drive(DriveStatus.DRIVE);
-        racingCars.cars.get(0).drive(DriveStatus.DRIVE);
+        racingCars.getCars().get(0).drive(DriveStatus.DRIVE);
+        racingCars.getCars().get(0).drive(DriveStatus.DRIVE);
 
-        racingCars.cars.get(1).drive(DriveStatus.DRIVE);
+        racingCars.getCars().get(1).drive(DriveStatus.DRIVE);
 
         List<Car> winners = racingCars.winners();
         assertThat(winners.contains(new Car("pony"))).isTrue();
@@ -48,11 +48,11 @@ public class RacingCarsTest {
     @Test
     void 포니_벤츠_공동우승() {
 
-        racingCars.cars.get(0).drive(DriveStatus.DRIVE);
-        racingCars.cars.get(0).drive(DriveStatus.DRIVE);
+        racingCars.getCars().get(0).drive(DriveStatus.DRIVE);
+        racingCars.getCars().get(0).drive(DriveStatus.DRIVE);
 
-        racingCars.cars.get(1).drive(DriveStatus.DRIVE);
-        racingCars.cars.get(1).drive(DriveStatus.DRIVE);
+        racingCars.getCars().get(1).drive(DriveStatus.DRIVE);
+        racingCars.getCars().get(1).drive(DriveStatus.DRIVE);
 
         List<Car> winners = racingCars.winners();
         assertThat(winners.contains(new Car("pony"))).isTrue();
@@ -63,14 +63,14 @@ public class RacingCarsTest {
     @Test
     void 레보_우승() {
 
-        racingCars.cars.get(0).drive(DriveStatus.DRIVE);
-        racingCars.cars.get(0).drive(DriveStatus.DRIVE);
+        racingCars.getCars().get(0).drive(DriveStatus.DRIVE);
+        racingCars.getCars().get(0).drive(DriveStatus.DRIVE);
 
-        racingCars.cars.get(1).drive(DriveStatus.DRIVE);
+        racingCars.getCars().get(1).drive(DriveStatus.DRIVE);
 
-        racingCars.cars.get(2).drive(DriveStatus.DRIVE);
-        racingCars.cars.get(2).drive(DriveStatus.DRIVE);
-        racingCars.cars.get(2).drive(DriveStatus.DRIVE);
+        racingCars.getCars().get(2).drive(DriveStatus.DRIVE);
+        racingCars.getCars().get(2).drive(DriveStatus.DRIVE);
+        racingCars.getCars().get(2).drive(DriveStatus.DRIVE);
 
         List<Car> winners = racingCars.winners();
         assertThat(winners.contains(new Car("pony"))).isFalse();

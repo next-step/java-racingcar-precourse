@@ -5,7 +5,7 @@ import java.util.List;
 
 public class RacingCars {
 
-    List<Car> cars = new ArrayList<>();
+    private final List<Car> cars = new ArrayList<>();
 
     public RacingCars(final String carNames) {
         joinCar(carNames);
