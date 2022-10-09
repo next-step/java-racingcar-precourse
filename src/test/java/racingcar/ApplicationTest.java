@@ -25,6 +25,28 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 공동우승() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni,jdk,hello", "1");
+                    assertThat(output()).contains("pobi : -", "woni : ","jdk : -", "hello : ", "최종 우승자 : pobi,jdk");
+                },
+                MOVING_FORWARD, STOP, MOVING_FORWARD, STOP
+        );
+    }
+
+    @Test
+    void 회차별출력() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni", "2");
+                    assertThat(output()).contains("pobi : -", "woni : ","pobi : --", "woni : ", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP, MOVING_FORWARD, STOP
+        );
+    }
+
+    @Test
     void 이름에_대한_예외_처리() {
         assertSimpleTest(
                 () -> {
