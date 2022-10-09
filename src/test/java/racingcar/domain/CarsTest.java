@@ -29,7 +29,7 @@ class CarsTest {
 		Cars cars = getForwardCars("pobi", "crong");
 		cars.move();
 		for (Car car : cars.getCars()) {
-			assertThat(car.getPosition()).isEqualTo(1);
+			assertThat(car.getPosition().getPosition()).isEqualTo(1);
 		}
 	}
 
