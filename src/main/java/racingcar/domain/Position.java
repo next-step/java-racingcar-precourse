@@ -22,6 +22,14 @@ public class Position {
 		this.position++;
 	}
 
+	public String getPositionToBar() {
+		StringBuilder builder = new StringBuilder();
+		for (int i = 0; i < position; i++) {
+			builder.append("-");
+		}
+		return builder.toString();
+	}
+
 	public int getPosition() {
 		return position;
 	}

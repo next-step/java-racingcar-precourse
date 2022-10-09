@@ -1,5 +1,8 @@
 package racingcar.view;
 
+import java.util.List;
+
+import racingcar.domain.Car;
 import racingcar.io.Input;
 import racingcar.io.Output;
 import racingcar.message.ErrorMessage;
@@ -47,5 +50,18 @@ public class GameView {
 			return false;
 		}
 		return true;
+	}
+
+	public void printRacingResult() {
+		output.printGameMessage(GameMessage.RACING_RESULT);
+	}
+
+	public void printCars(List<Car> cars) {
+		for (Car car : cars) {
+			String name = car.getName();
+			String position = car.getPosition().getPositionToBar();
+			output.printGameMessage(GameMessage.RACING_CAR, name, position);
+		}
+		output.printNewLine();
 	}
 }

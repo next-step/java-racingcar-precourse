@@ -35,7 +35,7 @@
   - 시도 횟수 : 숫자이고 1 이상이여야 한다.
   - 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException를 발생시키고, "[ERROR]"로 시작하는 에러 메시지를 출력 후 그 부분부터 입력을 다시 받는다.
     - Exception이 아닌 IllegalArgumentException, IllegalStateException 등과 같은 명확한 유형을 처리한다.
-- [ ] 자동차의 실행 결과를 출력한다.
+- [x] 자동차의 실행 결과를 출력한다.
   - 자동차 이동 시, 각 자동차의 위치 '-'로 출력한다.
     <br>
     (postion 1당 '-' 하나로 출력 : Car(name: 'pobi', position: 2) → 'pobi:--' 출력)
