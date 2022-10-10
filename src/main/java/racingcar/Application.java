@@ -1,7 +1,13 @@
 package racingcar;
 
+import racingcar.controller.RacingCarController;
+import racingcar.domain.RacingWinnerMaxForwardStrategy;
+import racingcar.view.RacingCarView;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        RacingCarView view = new RacingCarView();
+        RacingCarController controller = new RacingCarController(view, new RacingWinnerMaxForwardStrategy());
+        controller.start();
     }
 }
