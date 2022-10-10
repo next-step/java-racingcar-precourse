@@ -34,6 +34,16 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 게임_횟수에_문자값_입력_예외_처리() {
+        assertSimpleTest(
+                () -> {
+                    runException("pobi", "dd");
+                    assertThat(output()).contains(ERROR_MESSAGE);
+                }
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
