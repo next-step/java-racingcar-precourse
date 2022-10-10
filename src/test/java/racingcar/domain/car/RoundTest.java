@@ -10,8 +10,8 @@ import org.junit.jupiter.params.provider.CsvSource;
 class RoundTest {
 
 
-	@Test
-	@CsvSource(value = { "0","10"})
+	@ParameterizedTest
+	@CsvSource(value = { "5"})
 	public void 자동차_이동_횟수_입력(Integer count){
 		//given
 		//when
