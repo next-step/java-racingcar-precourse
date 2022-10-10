@@ -1,5 +1,7 @@
 package racingcar.service;
 
+import static racingcar.constant.COMMENT.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,18 +18,19 @@ public class CarFacade {
 	private final Round round;
 	private final RandomMachine randomMachine;
 	private final CarNames carNames;
+
 	public CarFacade(Round round, RandomMachine randomMachine, CarNames carNames) {
 		this.round = round;
 		this.randomMachine = randomMachine;
 		this.carNames = carNames;
 	}
 
-	public Players playGame() {
+	public void playGame() {
 		List<MyCars> players = new ArrayList<>();
 		for(CarName carName : carNames.getCarNames()){
 			players.add(getMyCars(carName));
 		}
-		return new Players(players);
+		resultGame(new Players(players));
 	}
 
 	private MyCars getMyCars(CarName carName) {
@@ -37,6 +40,43 @@ public class CarFacade {
 		}
 		return new MyCars(myCars);
 	}
+	private void resultGame(Players players){
+		System.out.print(PLAY_RESULT);
+		for(int roundIndex=0;roundIndex<round.getRound();roundIndex++){
+			gameResultOutPut(players,roundIndex);
+		}
+		System.out.print(WINNER);
+		Players winners = players.winnerPlayer();
+		winnerResultOutPut(winners);
+	}
 
+	private void gameResultOutPut(Players players, int roundIndex) {
+		for (MyCars myCars : players.getPlayers()) {
+			resultOutByPlayer(roundIndex, myCars);
+		}
+		System.out.println();
+	}
+
+	private void resultOutByPlayer(int roundIndex, MyCars myCars) {
+		MyCar myCar = myCars.myCarsByRound(roundIndex);
+		outCarName(myCar.getName()+" : ");
+		outCountToBar(myCars.currentDistance(roundIndex));
+	}
+
+	private void winnerResultOutPut(Players winners) {
+		CarNames winnerCarNames = winners.playerCarNames();
+		System.out.print(winnerCarNames.join(","));
+	}
+
+	private void outCarName(String name){
+		System.out.print(name);
+	}
+
+	private void outCountToBar(int count){
+		for(int i = 0;i<count;i++){
+			System.out.print("-");
+		}
+		System.out.println();
+	}
 
 }

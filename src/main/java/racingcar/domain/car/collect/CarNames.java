@@ -1,6 +1,8 @@
 package racingcar.domain.car.collect;
 
 import java.util.List;
+import java.util.Objects;
+import java.util.StringJoiner;
 
 import racingcar.domain.car.CarName;
 
@@ -13,6 +15,15 @@ public class CarNames {
 
 	public List<CarName> getCarNames() {
 		return carNames;
+	}
+
+	public String join(CharSequence delimiter) {
+		Objects.requireNonNull(delimiter);
+		StringJoiner joiner = new StringJoiner(delimiter);
+		for (CarName carName : carNames) {
+			joiner.add(carName.name());
+		}
+		return joiner.toString();
 	}
 
 	@Override

@@ -1,5 +1,6 @@
 package racingcar.domain.car;
 
+import static racingcar.constant.ERROR.*;
 import static racingcar.constant.SETTING.*;
 
 import racingcar.constant.ERROR;
@@ -14,6 +15,14 @@ public class Round {
 
 	public static Round of(Integer count) {
 		return new Round(count);
+	}
+
+	public static Round stringOf(String count) {
+		boolean isNotNumber = !count.chars().allMatch( Character::isDigit );
+		if(isNotNumber){
+			throw new IllegalArgumentException(COUNT_TYPE_ERROR);
+		}
+		return new Round(Integer.parseInt(count));
 	}
 
 	private void lengthCheck() {

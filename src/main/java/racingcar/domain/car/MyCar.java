@@ -2,8 +2,8 @@ package racingcar.domain.car;
 
 public class MyCar {
 
-	private CarName carName;
-	private int distance;
+	private final CarName carName;
+	private final int distance;
 	public MyCar(CarName carName, int distance) {
 		this.carName = carName;
 		this.distance = distance;
@@ -11,6 +11,9 @@ public class MyCar {
 
 	public CarName getCarName() {
 		return carName;
+	}
+	public String getName() {
+		return carName.name();
 	}
 
 	public int getDistance() {
