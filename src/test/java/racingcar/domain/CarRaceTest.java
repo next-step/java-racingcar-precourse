@@ -14,7 +14,7 @@ class CarRaceTest {
     @DisplayName("자동차 이름이 5글자를 초과하는 경우 IllegalArgumentException가 발생한다.")
     void check_validate_carname_test(String carNameString) {
         assertThatThrownBy(() ->
-            new CarRace(carNameString, "3")
+            new CarRace(carNameString)
         ).isInstanceOf(IllegalArgumentException.class)
             .hasMessageContaining("[ERROR] 이름은 5자 이하만 가능합니다.");
 
@@ -25,7 +25,7 @@ class CarRaceTest {
     @DisplayName("시도 횟수가 숫자가 아닌 경우 IllegalArgumentException가 발생한다.")
     void check_validate_carname_test(String carNameString, String tryCount) {
         assertThatThrownBy(() ->
-            new CarRace(carNameString, tryCount)
+            new CarRace(carNameString).inputTryCount(tryCount)
         ).isInstanceOf(IllegalArgumentException.class)
             .hasMessageContaining("[ERROR] 시도 횟수는 숫자여야 합니다.");
     }

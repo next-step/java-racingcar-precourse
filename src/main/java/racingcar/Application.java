@@ -6,15 +6,31 @@ import racingcar.view.ResultView;
 
 public class Application {
     public static void main(String[] args) {
-        String carNameString = InputView.inputCarCount();
-        String tryCount = InputView.inputTryCount();
+        CarRace carRace = loopInputCars();
 
-        CarRace carRace = new CarRace(carNameString, tryCount);
+        String tryCount = InputView.inputTryCount();
+        carRace.inputTryCount(tryCount);
 
         ResultView.printResultStart();
 
         ResultView.printResult(carRace.racingGameStart());
 
         ResultView.printWinner(carRace.extractWinner());
+
+    }
+
+    private static CarRace loopInputCars() {
+        while (true) {
+            try {
+                return createCars();
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+    private static CarRace createCars() {
+        String carNameString = InputView.inputCarCount();
+        return new CarRace(carNameString);
     }
 }

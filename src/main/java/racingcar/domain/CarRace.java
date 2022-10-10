@@ -8,10 +8,13 @@ public class CarRace {
     private Number tryCount;
     private RaceSheet raceSheet;
 
-    public CarRace(String carNames, String tryCount) {
+    public CarRace(String carNames) {
         this.cars = new Cars(initCars(carNames));
-        this.tryCount = new Number(tryCount);
         this.raceSheet = new RaceSheet();
+    }
+
+    public void inputTryCount(String tryCount) {
+        this.tryCount = new Number(tryCount);
     }
 
     private List<Car> initCars(String carNameString) {
