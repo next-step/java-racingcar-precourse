@@ -1,7 +1,18 @@
 package racingcar;
 
+import racingcar.controller.RacingCarController;
+import racingcar.domain.fuel.FuelGenerator;
+import racingcar.domain.fuel.RandomFuelGenerateStrategy;
+import racingcar.view.RacingCarInput;
+import racingcar.view.RacingCarView;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        RacingCarController racingCarController = new RacingCarController(
+                new FuelGenerator(new RandomFuelGenerateStrategy()),
+                new RacingCarInput(),
+                new RacingCarView()
+        );
+        racingCarController.play();
     }
 }
