@@ -25,6 +25,27 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 프로그램_실행_결과_예시_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,crong,honux", "5");
+                    assertThat(output()).contains(
+                            "pobi : -", "crong : ", "honux : -"
+                            , "pobi : --", "crong : -", "honux : --"
+                            , "pobi : ---", "crong : --", "honux : ---"
+                            , "pobi : ----", "crong : ---", "honux : ----"
+                            , "pobi : -----", "crong : ----", "honux : -----"
+                            , "최종 우승자 : pobi, honux");
+                },
+                MOVING_FORWARD, STOP, MOVING_FORWARD
+                , MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD
+                , MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD
+                , MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD
+                , MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD
+        );
+    }
+
+    @Test
     void 이름에_대한_예외_처리() {
         assertSimpleTest(
                 () -> {
