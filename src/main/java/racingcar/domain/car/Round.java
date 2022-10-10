@@ -5,7 +5,6 @@ import static racingcar.constant.SETTING.*;
 import racingcar.constant.ERROR;
 
 public class Round {
-
 	int round;
 
 	public Round (int round){
@@ -17,9 +16,13 @@ public class Round {
 		return new Round(count);
 	}
 
-	public void lengthCheck() {
+	private void lengthCheck() {
 		if(round <MIN_ROUND|| round >MAX_ROUND){
 			throw new IllegalArgumentException(ERROR.COUNT_MISS);
 		}
+	}
+
+	public int getRound() {
+		return round;
 	}
 }

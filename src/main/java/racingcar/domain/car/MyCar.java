@@ -1,8 +1,6 @@
 package racingcar.domain.car;
 
-import racingcar.domain.car.factor.CarName;
-
-public class MyCar implements Component {
+public class MyCar {
 
 	private CarName carName;
 	private int distance;
@@ -10,8 +8,12 @@ public class MyCar implements Component {
 		this.carName = carName;
 		this.distance = distance;
 	}
-	@Override
-	public int getDistances() {
+
+	public CarName getCarName() {
+		return carName;
+	}
+
+	public int getDistance() {
 		return distance;
 	}
 
@@ -22,4 +24,7 @@ public class MyCar implements Component {
 			", distance=" + distance +
 			'}';
 	}
+
+
+
 }
