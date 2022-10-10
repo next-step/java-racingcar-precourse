@@ -1,0 +1,19 @@
+## 기능목록
+- [x] model 구현
+  - [x] 사용자 입력 도메인 구현 (`PlayerInput`)
+  - [x] 자동차 이름 도메인 구현 (`CarName`, `CarNames`)
+  - [x] 경주 진행횟수 도메인 구현 (`Lap`)
+  - [x] 자동차 도메인 구현 (`RacingCar`, `RacingCars`)
+    - [x] 자동차 움직임 전략 도메인 구현 (`MoveStrategy`, `RacingCarMoveStrategy`)
+    - [x] 자동차 움직임 기록 도메인 구현 (`MoveRecord`, `MoveRecords`) 
+  - [x] 자동차 경주 도메인 구현 (`RacingMatch`)
+- [x] controller 구현 (`RacingMatchController`)
+  - [x] `PlayerInput`과 `RacingMatch` model 연결
+- [x] view 구현 (`RacingMatchView`)
+  - [x] 사용자 입력을 관리하는 dto 객체 구현
+  - [x] 자동차 이름과, 시도 횟수 입력 구현
+  - [x] 경기 결과 출력 구현
+- [x] validation 구현
+  - [x] 자동차 이름 5글자 초과 시 exception 처리
+  - [x] 횟수가 숫자로 들어오지 않았을 때 exception 처리
+  - [x] 자동차 이름이 빈 값으로 들어올 경우 exception 처리
