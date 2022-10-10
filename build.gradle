@@ -12,6 +12,7 @@ repositories {
 
 dependencies {
     implementation 'com.github.woowacourse-projects:mission-utils:1.0.0'
+    testImplementation 'org.mockito:mockito-inline:4.8.0'
 }
 
 java {
