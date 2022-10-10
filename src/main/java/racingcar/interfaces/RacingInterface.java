@@ -50,11 +50,7 @@ public class RacingInterface {
 	}
 	private Process inputNames(){
 		return input->{
-			List<CarName> carNames = new ArrayList<>();
-			for(String name:multiNameToList(input)){
-				carNames.add(CarName.of(name));
-			}
-			this.carNames = new CarNames(carNames);
+			this.carNames = new CarNames(input);
 			return inputRound();
 		};
 	}
@@ -72,15 +68,6 @@ public class RacingInterface {
 		carFacade.playGame();
 		isAlive = false;
 		return input-> null;
-	}
-
-
-	private List<String> multiNameToList(String input) {
-		if(input.isEmpty()){
-			throw new IllegalArgumentException(EMPTY_NAME);
-		}
-
-		return Arrays.asList(input.split(COMMA));
 	}
 
 	public String flushOutPut() {
