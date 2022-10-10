@@ -5,8 +5,6 @@ import static racingcar.constant.ERROR.*;
 
 import org.junit.jupiter.api.Test;
 
-import racingcar.domain.car.factor.CarName;
-
 class CarNameTest {
 
 	@Test
