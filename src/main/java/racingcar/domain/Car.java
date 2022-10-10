@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 public class Car {
+    private static final int DEFAULT_MOVE_DISTANCE = 0;
     private static final int NAME_LENGTH_LIMIT = 5;
     private static final int FORWARD_DISTANCE_NUMBER = 1;
 
@@ -10,7 +11,7 @@ public class Car {
     public Car(String name) {
         validate(name);
         this.name = name;
-        this.moveDistance = 0;
+        this.moveDistance = DEFAULT_MOVE_DISTANCE;
     }
 
     private void validate(String name) {
