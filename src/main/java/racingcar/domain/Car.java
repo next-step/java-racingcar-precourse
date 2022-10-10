@@ -2,14 +2,15 @@ package racingcar.domain;
 
 public class Car {
     private static final int NAME_LENGTH_LIMIT = 5;
+    private static final int FORWARD_DISTANCE_NUMBER = 1;
 
     private String name;
-    private int forwardDistance;
+    private int moveDistance;
 
     public Car(String name) {
         validate(name);
         this.name = name;
-        this.forwardDistance = 0;
+        this.moveDistance = 0;
     }
 
     private void validate(String name) {
@@ -20,5 +21,15 @@ public class Car {
 
     public String getName() {
         return name;
+    }
+
+    public void moveForward(MovingStrategy movingStrategy) {
+        if (movingStrategy.movable()) {
+            addMoveDistance();
+        }
+    }
+
+    private void addMoveDistance() {
+        this.moveDistance += FORWARD_DISTANCE_NUMBER;
     }
 }
