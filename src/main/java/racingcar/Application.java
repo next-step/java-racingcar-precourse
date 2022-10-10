@@ -1,7 +1,12 @@
 package racingcar;
 
+import racingcar.controller.CarController;
+
 public class Application {
+
+    static CarController carController = new CarController();
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        carController.play(carController.getCars(), carController.getTryNumber());
     }
 }
