@@ -34,6 +34,52 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 입력_오류_후_재입력() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("aaa,bbb,111111", "aaa,bbb,111111", "pobi,woni", "1");
+                    assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP, STOP, STOP, STOP, STOP
+        );
+    }
+
+    @Test
+    void 모든_자동차_전부_우승_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("11,22,33,44,55,66,77,88,99,00", "1");
+                    assertThat(output()).contains(
+                            "11 : -", "22 : -", "33 : -", "44 : -", "55 : -",
+                            "66 : -", "77 : -", "88 : -", "99 : -", "00 : -",
+                            "최종 우승자 : 11, 22, 33, 44, 55, 66, 77, 88, 99, 00");
+                },
+                MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD,
+                MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD
+        );
+    }
+
+    @Test
+    void 시도_횟수_음수_예외_처리() {
+        assertSimpleTest(
+                () -> {
+                    runException("pobi,java", "-1", "1");
+                    assertThat(output()).contains(ERROR_MESSAGE);
+                }
+        );
+    }
+
+    @Test
+    void 시도_횟수_문자_예외_처리() {
+        assertSimpleTest(
+                () -> {
+                    runException("pobi,java", "hello", "1");
+                    assertThat(output()).contains(ERROR_MESSAGE);
+                }
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
