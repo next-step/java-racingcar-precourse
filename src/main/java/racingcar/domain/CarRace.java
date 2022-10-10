@@ -5,29 +5,13 @@ import java.util.List;
 
 public class CarRace {
     private Cars cars;
-    private int tryCount;
+    private Number tryCount;
     private RaceSheet raceSheet;
 
     public CarRace(String carNames, String tryCount) {
         this.cars = new Cars(initCars(carNames));
-        this.tryCount = parseInt(tryCount);
+        this.tryCount = new Number(tryCount);
         this.raceSheet = new RaceSheet();
-    }
-
-    private static int parseInt(String tryCount) {
-        if (!isNumeric(tryCount)) {
-            throw new IllegalArgumentException("[ERROR] 시도 횟수는 숫자여야 합니다.");
-        }
-        return Integer.parseInt(tryCount);
-    }
-
-    public static boolean isNumeric(String s) {
-        try {
-            Double.parseDouble(s);
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
-        }
     }
 
     private List<Car> initCars(String carNameString) {
@@ -41,12 +25,16 @@ public class CarRace {
     }
 
     public List<Cars> racingGameStart() {
-        while (tryCount > 0) {
+        while (tryCount.getNumber() > 0) {
             cars.racing();
             raceSheet.addSheet(cars);
-            tryCount--;
+            tryCount.minusNumber();
         }
 
         return raceSheet.getRaceSheets();
+    }
+
+    public List<Car> extractWinner() {
+        return cars.extractWinner();
     }
 }
