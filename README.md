@@ -5,3 +5,16 @@
 
 ## 과제 제출 과정
 * [과제 제출 방법](https://github.com/next-step/nextstep-docs/tree/master/precourse)
+
+## 구현할 기능
+* 자동차 이름 입력
+  * 5자 이하
+  * 쉼표(,)로 구분
+* 이동할 횟수 입력
+* 전진 조건 구현
+  * 0~9 랜덤값
+  * 4이상 전진, 3이하 스탑
+* 우승자 추출
+  * 동시 우승 시 ,로 구분
+* 입력이 잘못됐을 경우 Exception 발생
+  * [ERROR]로 시작
