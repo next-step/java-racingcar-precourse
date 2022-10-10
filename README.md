@@ -5,3 +5,6 @@
 
 ## 과제 제출 과정
 * [과제 제출 방법](https://github.com/next-step/nextstep-docs/tree/master/precourse)
+
+## 미션 수행 후 느낀점 정리
+* https://web2eye.tistory.com/270
