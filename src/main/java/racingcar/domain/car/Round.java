@@ -17,7 +17,7 @@ public class Round {
 		return new Round(count);
 	}
 
-	public static Round stringOf(String count) {
+	public static Round of(String count) {
 		boolean isNotNumber = !count.chars().allMatch( Character::isDigit );
 		if(isNotNumber){
 			throw new IllegalArgumentException(COUNT_TYPE_ERROR);

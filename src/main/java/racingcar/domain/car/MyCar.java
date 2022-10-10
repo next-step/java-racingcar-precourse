@@ -15,7 +15,6 @@ public class MyCar {
 	public String getName() {
 		return carName.name();
 	}
-
 	public int getDistance() {
 		return distance;
 	}

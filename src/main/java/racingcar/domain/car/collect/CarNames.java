@@ -1,5 +1,7 @@
 package racingcar.domain.car.collect;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.StringJoiner;
@@ -10,11 +12,11 @@ public class CarNames {
 	private final List<CarName> carNames;
 
 	public CarNames(List<CarName> carNames) {
-		this.carNames = carNames;
+		this.carNames = new ArrayList(carNames);
 	}
 
 	public List<CarName> getCarNames() {
-		return carNames;
+		return Collections.unmodifiableList(carNames);
 	}
 
 	public String join(CharSequence delimiter) {

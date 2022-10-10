@@ -19,6 +19,9 @@ public class CarName {
 	public static CarName of(String name) {
 		return new CarName(name);
 	}
+	public String name() {
+		return name;
+	}
 
 	public void lengthCheck() {
 		if(isMaxLengthExcess()){
@@ -36,17 +39,6 @@ public class CarName {
 		}
 	}
 
-	public String name() {
-		return name;
-	}
-
-	@Override
-	public String toString() {
-		return "CarName{" +
-			"name='" + name + '\'' +
-			'}';
-	}
-
 	@Override
 	public boolean equals(Object o) {
 		if (this == o)
@@ -60,5 +52,13 @@ public class CarName {
 	@Override
 	public int hashCode() {
 		return Objects.hash(name);
+	}
+
+
+	@Override
+	public String toString() {
+		return "CarName{" +
+			"name='" + name + '\'' +
+			'}';
 	}
 }

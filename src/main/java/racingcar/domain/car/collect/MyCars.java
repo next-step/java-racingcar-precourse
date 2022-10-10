@@ -44,10 +44,6 @@ public class MyCars {
 		return myCarsByRound(FIRST_INDEX).getCarName();
 	}
 
-	public List<MyCar> getMyCars() {
-		return myCars;
-	}
-
 	@Override
 	public String toString() {
 		return "MyCars{" +

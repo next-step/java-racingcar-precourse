@@ -62,7 +62,7 @@ public class RacingInterface {
 	private Process inputRound(){
 		printLines(INPUT_ROUND_MESSAGE);
 		return input->{
-			round = Round.stringOf(input);
+			round = Round.of(input);
 			return gamePlay();
 		};
 	}
