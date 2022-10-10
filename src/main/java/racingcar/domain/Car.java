@@ -33,4 +33,8 @@ public class Car {
     private void addMoveDistance() {
         this.moveDistance += FORWARD_DISTANCE_NUMBER;
     }
+
+    public int getMoveDistance() {
+        return moveDistance;
+    }
 }
