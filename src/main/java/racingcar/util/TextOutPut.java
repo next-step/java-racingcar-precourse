@@ -3,6 +3,8 @@ package racingcar.util;
 public class TextOutPut {
 	private final StringBuffer buffer = new StringBuffer();
 
+	public static final String ERROR = "[ERROR] ";
+
 	public TextOutPut(String lines) {
 		buffer.append(lines);
 	}
@@ -16,7 +18,7 @@ public class TextOutPut {
 	}
 
 	public void printLines(IllegalArgumentException lines) {
-		buffer.append("[ERROR] ");
+		buffer.append(ERROR);
 		buffer.append(lines);
 	}
 

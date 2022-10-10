@@ -1,6 +1,7 @@
 package racingcar.service;
 
 import static racingcar.constant.COMMENT.*;
+import static racingcar.constant.COMMON_LETTER.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,13 +60,14 @@ public class CarFacade {
 
 	private void resultOutByPlayer(int roundIndex, MyCars myCars) {
 		MyCar myCar = myCars.myCarsByRound(roundIndex);
-		outCarName(myCar.getName()+" : ");
+
+		outCarName(myCar.getName()+ COLON);
 		outCountToBar(myCars.currentDistance(roundIndex));
 	}
 
 	private void winnerResultOutPut(Players winners) {
 		CarNames winnerCarNames = winners.playerCarNames();
-		System.out.print(winnerCarNames.join(","));
+		System.out.print(winnerCarNames.join(COMMA));
 	}
 
 	private void outCarName(String name){
@@ -74,7 +76,7 @@ public class CarFacade {
 
 	private void outCountToBar(int count){
 		for(int i = 0;i<count;i++){
-			System.out.print("-");
+			System.out.print(BAR);
 		}
 		System.out.println();
 	}

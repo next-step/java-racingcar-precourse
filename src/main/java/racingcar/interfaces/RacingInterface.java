@@ -1,6 +1,7 @@
 package racingcar.interfaces;
 
 import static racingcar.constant.COMMENT.*;
+import static racingcar.constant.COMMON_LETTER.*;
 import static racingcar.constant.ERROR.*;
 import static racingcar.constant.SETTING.*;
 
@@ -17,14 +18,11 @@ import racingcar.service.CarFacade;
 import racingcar.util.TextOutPut;
 
 public class RacingInterface {
-
 	private Process process;
 	private boolean isAlive;
 	private Round round;
 	private RandomMachine randomMachine;
-
 	private CarNames carNames;
-
 	private TextOutPut textOutPut;
 
 	public boolean isAlive() {
@@ -82,7 +80,7 @@ public class RacingInterface {
 			throw new IllegalArgumentException(EMPTY_NAME);
 		}
 
-		return Arrays.asList(input.split(","));
+		return Arrays.asList(input.split(COMMA));
 	}
 
 	public String flushOutPut() {

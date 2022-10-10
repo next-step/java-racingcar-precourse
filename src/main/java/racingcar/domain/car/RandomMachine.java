@@ -17,10 +17,14 @@ public class RandomMachine {
 
 	public int goAndStop() {
 		Integer number = Randoms.pickNumberInRange(startRange,endRange);
-		if(number>=4){
+		if(isGo(number)){
 			return GO;
 		}
 		return STOP;
+	}
+
+	private boolean isGo(Integer number) {
+		return number >= GO_NO;
 	}
 
 }

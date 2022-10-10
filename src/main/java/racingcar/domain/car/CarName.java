@@ -1,5 +1,7 @@
 package racingcar.domain.car;
 
+import static racingcar.constant.SETTING.*;
+
 import java.util.Objects;
 
 import racingcar.constant.ERROR;
@@ -19,10 +21,15 @@ public class CarName {
 	}
 
 	public void lengthCheck() {
-		if(name.length()>5){
+		if(isMaxLengthExcess()){
 			throw new IllegalArgumentException(ERROR.EXCESS_LENGTH);
 		}
 	}
+
+	private boolean isMaxLengthExcess() {
+		return name.length() > MAX_NAME_LENGTH;
+	}
+
 	public void emptyNameCheck() {
 		if(name.isEmpty()){
 			throw new IllegalArgumentException(ERROR.EMPTY_NAME);
