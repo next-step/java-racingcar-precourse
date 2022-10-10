@@ -6,9 +6,10 @@ public class Car {
     private String name;
     private int forwardDistance;
 
-    public Car(String name, int forwardDistance) {
+    public Car(String name) {
+        validate(name);
         this.name = name;
-        this.forwardDistance = forwardDistance;
+        this.forwardDistance = 0;
     }
 
     private void validate(String name) {
