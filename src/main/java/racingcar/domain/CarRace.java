@@ -6,10 +6,12 @@ import java.util.List;
 public class CarRace {
     private Cars cars;
     private int tryCount;
+    private RaceSheet raceSheet;
 
     public CarRace(String carNames, String tryCount) {
         this.cars = new Cars(initCars(carNames));
         this.tryCount = parseInt(tryCount);
+        this.raceSheet = new RaceSheet();
     }
 
     private static int parseInt(String tryCount) {
@@ -38,10 +40,13 @@ public class CarRace {
         return cars;
     }
 
-    public void racingGameStart() {
+    public List<Cars> racingGameStart() {
         while (tryCount > 0) {
             cars.racing();
+            raceSheet.addSheet(cars);
             tryCount--;
         }
+
+        return raceSheet.getRaceSheets();
     }
 }

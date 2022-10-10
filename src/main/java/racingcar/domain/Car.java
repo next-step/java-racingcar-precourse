@@ -8,10 +8,14 @@ public class Car {
     private String name;
     private int moveDistance;
 
-    public Car(String name) {
+    public Car(String name, int moveDistance) {
         validate(name);
         this.name = name;
-        this.moveDistance = DEFAULT_MOVE_DISTANCE;
+        this.moveDistance = moveDistance;
+    }
+
+    public Car(String name) {
+        this(name, DEFAULT_MOVE_DISTANCE);
     }
 
     private void validate(String name) {
