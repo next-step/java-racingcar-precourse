@@ -48,7 +48,7 @@ class PlayersTest {
 		assertTrue(winnerCarNames.getCarNames().contains(CarName.of("join")));
 		assertFalse(winnerCarNames.getCarNames().contains(CarName.of("doing")));
 		assertFalse(winnerCarNames.getCarNames().contains(CarName.of("going")));
-인
+
 	}
 
 	@Test
