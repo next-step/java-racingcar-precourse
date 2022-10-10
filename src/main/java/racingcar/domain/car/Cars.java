@@ -20,7 +20,7 @@ public final class Cars {
     }
 
     public static Cars from(String carNames) {
-        List<Car> cars = new ArrayList<>();
+        final List<Car> cars = new ArrayList<>();
         for (String carName : carNames.split(",")) {
             cars.add(new Car(new Name(carName), Position.zero()));
         }
@@ -50,7 +50,7 @@ public final class Cars {
     }
 
     public List<String> carNames() {
-        List<String> carNames = new ArrayList<>();
+        final List<String> carNames = new ArrayList<>();
         for (Car car : content) {
             carNames.add(car.nameValue());
         }

@@ -20,7 +20,7 @@ public final class History {
     }
 
     public History add(Cars cars) {
-        List<Cars> newCars = new ArrayList<>(this.cars);
+        final List<Cars> newCars = new ArrayList<>(this.cars);
         newCars.add(cars);
         return new History(newCars);
     }
