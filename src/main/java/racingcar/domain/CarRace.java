@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CarRace {
-    private List<Car> cars;
+    private Cars cars;
     private int tryCount;
 
     public CarRace(String carNames, String tryCount) {
-        this.cars = initCars(carNames);
+        this.cars = new Cars(initCars(carNames));
         this.tryCount = parseInt(tryCount);
     }
 
@@ -40,14 +40,8 @@ public class CarRace {
 
     public void racingGameStart() {
         while (tryCount > 0) {
-            racing();
+            cars.racing();
             tryCount--;
-        }
-    }
-
-    private void racing() {
-        for (Car car : cars) {
-            car.moveForward(new RandomMovingStrategy());
         }
     }
 }
