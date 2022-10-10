@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import java.util.Objects;
+
 public class Car {
     private static final int DEFAULT_MOVE_DISTANCE = 0;
     private static final int NAME_LENGTH_LIMIT = 5;
@@ -40,5 +42,22 @@ public class Car {
 
     public int getMoveDistance() {
         return moveDistance;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Car car = (Car) o;
+        return moveDistance == car.moveDistance && Objects.equals(name, car.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, moveDistance);
     }
 }
