@@ -5,15 +5,14 @@ import java.util.Objects;
 public class Car {
     private static final int DEFAULT_MOVE_DISTANCE = 0;
     private static final int NAME_LENGTH_LIMIT = 5;
-    private static final int FORWARD_DISTANCE_NUMBER = 1;
 
     private String name;
-    private int moveDistance;
+    private Number moveDistance;
 
     public Car(String name, int moveDistance) {
         validate(name);
         this.name = name;
-        this.moveDistance = moveDistance;
+        this.moveDistance = new Number(moveDistance);
     }
 
     public Car(String name) {
@@ -37,11 +36,11 @@ public class Car {
     }
 
     private void addMoveDistance() {
-        this.moveDistance += FORWARD_DISTANCE_NUMBER;
+        this.moveDistance.plusNumber();
     }
 
     public int getMoveDistance() {
-        return moveDistance;
+        return moveDistance.getNumber();
     }
 
     @Override
