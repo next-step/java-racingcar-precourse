@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d60b968a-4b71-45c7-aea8-dbc874f45158" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/CarTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/RaceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,6 +86,7 @@
     "Gradle.Build java-racingcar-precourse.executor": "Run",
     "Gradle.Unnamed.executor": "Run",
     "Gradle.java-racingcar-precourse [:Main.main()].executor": "Run",
+    "JUnit.CarTest.executor": "Run",
     "Kotlin script (Beta).settings.gradle.kts.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -121,7 +118,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.CarTest">
+  <component name="RunManager" selected="JUnit.RaceTest">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="17" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -162,6 +159,25 @@
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="CarTest" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RaceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="racingcar.test" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="RaceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RaceTest.raceWinners" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="racingcar.test" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="RaceTest" />
+      <option name="METHOD_NAME" value="raceWinners" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -282,9 +298,13 @@
     <list>
       <item itemvalue="Application.Main" />
       <item itemvalue="JUnit.CarTest" />
+      <item itemvalue="JUnit.RaceTest" />
+      <item itemvalue="JUnit.RaceTest.raceWinners" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.RaceTest" />
+        <item itemvalue="JUnit.RaceTest.raceWinners" />
         <item itemvalue="JUnit.CarTest" />
         <item itemvalue="Application.Main" />
       </list>
@@ -314,7 +334,7 @@
       <workItem from="1716725538814" duration="45000" />
       <workItem from="1716725617151" duration="79000" />
       <workItem from="1716725813665" duration="233000" />
-      <workItem from="1716726052847" duration="7517000" />
+      <workItem from="1716726052847" duration="7839000" />
     </task>
     <servers />
   </component>
