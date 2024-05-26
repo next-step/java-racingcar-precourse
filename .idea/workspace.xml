@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d60b968a-4b71-45c7-aea8-dbc874f45158" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/RaceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,6 +88,8 @@
     "Gradle.Unnamed.executor": "Run",
     "Gradle.java-racingcar-precourse [:Main.main()].executor": "Run",
     "JUnit.CarTest.executor": "Run",
+    "JUnit.RaceTest.executor": "Run",
+    "JUnit.RaceTest.raceWinners.executor": "Run",
     "Kotlin script (Beta).settings.gradle.kts.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -334,7 +337,7 @@
       <workItem from="1716725538814" duration="45000" />
       <workItem from="1716725617151" duration="79000" />
       <workItem from="1716725813665" duration="233000" />
-      <workItem from="1716726052847" duration="7839000" />
+      <workItem from="1716726052847" duration="8796000" />
     </task>
     <servers />
   </component>
