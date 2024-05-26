@@ -19,6 +19,7 @@ public class Race {
             for(Car car : cars){
                 car.move(random.nextInt(10));
             }
+            ResultView.printRaceResult(cars);
         }
     }
 
