@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d60b968a-4b71-45c7-aea8-dbc874f45158" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/ResultView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ResultView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Application.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,6 +78,7 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Application.Applicaion.executor": "Run",
+    "Application.Application.executor": "Run",
     "Application.Main.executor": "Run",
     "Application.org.example.Main.executor": "Run",
     "Application.racingcar.Main.executor": "Run",
@@ -286,7 +287,7 @@
       <workItem from="1716725538814" duration="45000" />
       <workItem from="1716725617151" duration="79000" />
       <workItem from="1716725813665" duration="233000" />
-      <workItem from="1716726052847" duration="5145000" />
+      <workItem from="1716726052847" duration="5514000" />
     </task>
     <servers />
   </component>
