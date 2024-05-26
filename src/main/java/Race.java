@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
-import org.junit.jupiter.api.ClassOrderer.Random;
+import java.util.Random;
 
 public class Race {
     private List<Car> cars;
@@ -13,5 +13,12 @@ public class Race {
         }
         this.attempts = attempts;
     }
-
+    public void start(){
+        Random random = new Random();
+        for(int i=0; i<attempts; i++){
+            for(Car car : cars){
+                car.move(random.nextInt(10));
+            }
+        }
+    }
 }
