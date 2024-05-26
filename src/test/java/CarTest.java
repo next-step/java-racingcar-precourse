@@ -12,4 +12,15 @@ class CarTest {
         assertThatThrownBy(() -> new Car("")).isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> new Car("123456")).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    @DisplayName("무작위 값이 4이상일때 position이 1 증가하고, 4보다 작을때는 position이 증가하지 않는지 테스트")
+    void moveCar() {
+        Car car = new Car("test");
+        car.move(4);
+        assertThat(car.getPosition()).isEqualTo(1);
+
+        car.move(3);
+        assertThat(car.getPosition()).isEqualTo(1);
+    }
 }
