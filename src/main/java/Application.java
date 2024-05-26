@@ -10,7 +10,7 @@ public class Application {
             Race race = new Race(Arrays.asList(carNames), attempts);
             race.start();
 
-            System.out.println("실행 결과");
+            System.out.println("\n실행 결과");
             ResultView.printRaceResult(race.getCars());
             ResultView.printWinners(race.getWinners());
         } catch (IllegalArgumentException e) {
