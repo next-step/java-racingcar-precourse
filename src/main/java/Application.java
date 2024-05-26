@@ -8,10 +8,9 @@ public class Application {
             int attempts = InputView.getAttempts();
 
             Race race = new Race(Arrays.asList(carNames), attempts);
-            race.start();
 
             System.out.println("\n실행 결과");
-            ResultView.printRaceResult(race.getCars());
+            race.start();
             ResultView.printWinners(race.getWinners());
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
