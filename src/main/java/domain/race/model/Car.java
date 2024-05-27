@@ -1,4 +1,6 @@
-package domain.car;
+package domain.race.model;
+
+import domain.race.util.CarUtils;
 
 public class Car {
     private int position = 0;

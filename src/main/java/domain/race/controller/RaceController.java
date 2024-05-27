@@ -1,21 +1,28 @@
-package domain.race;
+package domain.race.controller;
+
+import domain.race.service.RaceService;
 
 public class RaceController {
 
-    public boolean startRace(String carNames, int round) {
-        try{
-            if(!validationCarNames(carNames)){
+    RaceService raceService = new RaceService();
+
+    public void startRace(String carNames, int round) {
+        raceService.startRace(carNames, round);
+    }
+
+    public boolean canRace(String carNames, int round) {
+        try {
+            if (!validationCarNames(carNames)) {
                 throw new IllegalArgumentException("자동차 이름이 잘못 입력되었습니다. 다시 입력해 주세요.");
             }
-            if(!validationRound(round)){
+            if (!validationRound(round)) {
                 throw new IllegalArgumentException("라운드가 잘못 입력되었습니다.. 다시 입력해 주세요.");
             }
-            // race 시작
-        }catch (IllegalArgumentException exception){
-            System.out.println("[ERROR] "+ exception.getMessage());
+            return true;
+        } catch (IllegalArgumentException exception) {
+            System.out.println("[ERROR] " + exception.getMessage());
             return false;
         }
-        return true;
     }
 
     public boolean validationCarNames(String carNames) {
@@ -26,7 +33,7 @@ public class RaceController {
     }
 
     public boolean validationRound(int round) {
-        if(round <= 0) return false;
+        if (round <= 0) return false;
         return true;
     }
 }

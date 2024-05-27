@@ -1,4 +1,4 @@
-package domain.race;
+package domain.race.util;
 
 public abstract class RaceUtils {
 

@@ -1,10 +1,11 @@
-package domain.race;
+package domain.race.service;
 
-import domain.car.Car;
+import domain.race.model.Car;
+import domain.race.model.Race;
+import domain.race.util.RaceUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class RaceService {

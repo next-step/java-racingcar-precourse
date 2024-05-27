@@ -1,9 +1,5 @@
-package domain.race;
+package domain.race.model;
 
-import domain.car.Car;
-
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Race {
