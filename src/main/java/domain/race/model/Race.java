@@ -1,5 +1,6 @@
 package domain.race.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Race {
@@ -25,5 +26,23 @@ public class Race {
 
     public List<Car> getCarList() {
         return carList;
+    }
+
+    public List<String> getWinner() {
+        List<Car> cars = new ArrayList<>(carList.stream().toList());
+        cars.sort((a, b) -> b.getPosition() - a.getPosition());
+
+        List<String> winnerList = new ArrayList<>();
+        winnerList.add(cars.get(0).getName());
+
+        for (int i = 1; i < cars.size(); i++) {
+            if (cars.get(i).getPosition() == cars.get(0).getPosition()) {
+                winnerList.add(cars.get(i).getName());
+                continue;
+            }
+            break;
+        }
+
+        return winnerList;
     }
 }

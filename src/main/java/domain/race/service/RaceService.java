@@ -6,6 +6,7 @@ import domain.race.util.RaceUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class RaceService {
@@ -36,27 +37,10 @@ public class RaceService {
     }
 
     public void printPrize(Race race) {
-        List<String> winnerList = getWinner(race.getCarList());
+        List<String> winnerList = race.getWinner();
 
         String winner = String.join(DELIMITER, winnerList);
 
         System.out.println(WINNER + winner);
-    }
-
-    public List<String> getWinner(List<Car> carList) {
-        carList.sort((a, b) -> b.getPosition() - a.getPosition());
-
-        List<String> winnerList = new ArrayList<>();
-        winnerList.add(carList.get(0).getName());
-
-        for (int i = 1; i < carList.size(); i++) {
-            if (carList.get(i).getPosition() == carList.get(0).getPosition()) {
-                winnerList.add(carList.get(i).getName());
-                continue;
-            }
-            break;
-        }
-
-        return winnerList;
     }
 }
