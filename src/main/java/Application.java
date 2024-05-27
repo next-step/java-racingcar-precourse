@@ -13,9 +13,9 @@ public class Application {
         raceController.startRace(carNames,round);
     }
 
+    // 자동차 이름을 입력받는 함수
     public static String inputCarNames(){
         String carNames;
-
         do{
             System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
             carNames = sc.nextLine();
@@ -25,6 +25,7 @@ public class Application {
         return carNames;
     }
 
+    // 라운드를 입력받는 함수
     public static int inputRound(){
         String round;
         do{

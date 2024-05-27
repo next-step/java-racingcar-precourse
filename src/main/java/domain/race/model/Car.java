@@ -17,6 +17,7 @@ public class Car {
         return this.name;
     }
 
+    // 랜덤 값에 따라 전진하는 함수
     public void move(){
         boolean canMove = CarUtils.canMove();
         if(canMove){

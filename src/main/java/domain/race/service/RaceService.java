@@ -14,6 +14,7 @@ public class RaceService {
     private static final String DELIMITER = ",";
     private static final String WINNER = "최종우승자 : ";
 
+    // 입력값이 정상인 경우 새로운 경주 객체를 만들어 경주를 시작하는 함수
     public void startRace(String carNames, int round) {
         String[] cars = carNames.split(DELIMITER);
         List<Car> carList = Arrays.stream(cars).map(Car::new).toList();
@@ -28,6 +29,7 @@ public class RaceService {
         printPrize(race);
     }
 
+    // 현재 각 자동차 마다 몇번 전진했는지 표현하는 함수
     public void printCurrentRace(Race race) {
         List<Car> carList = race.getCarList();
         for (Car car : carList) {
@@ -36,6 +38,7 @@ public class RaceService {
         System.out.println();
     }
 
+    // 최종 우승자가 누구인지 찾는 함수
     public void printPrize(Race race) {
         List<String> winnerList = race.getWinner();
 
