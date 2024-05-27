@@ -7,9 +7,9 @@ import java.util.Collections;
 import java.util.List;
 
 public class Race {
-    private int round;
+    private final int round;
     private int currRound = 0;
-    private List<Car> carList;
+    private final List<Car> carList;
 
     public Race(List<Car> carList, int round) {
         this.carList = carList;
@@ -25,5 +25,9 @@ public class Race {
             car.move();
         }
         currRound++;
+    }
+
+    public List<Car> getCarList() {
+        return carList;
     }
 }
