@@ -35,4 +35,18 @@ class RaceControllerTest {
         String overLengthCarNames = "test,test2,test3";
         Assertions.assertThat(raceController.canUseCarNames(overLengthCarNames)).isTrue();
     }
+
+    @Test
+    @DisplayName("0보다 작은 라운드가 입력된 경우")
+    void invalidRoundLessThanZero() {
+        String invalidRoundLessZero = "-3";
+        Assertions.assertThat(raceController.canUseRound(invalidRoundLessZero)).isFalse();
+    }
+
+    @Test
+    @DisplayName("숫자가 아닌 라운드가 입력된 경우")
+    void invalidRoundNotNumber() {
+        String invalidRoundNotNumber = "aaa";
+        Assertions.assertThat(raceController.canUseRound(invalidRoundNotNumber)).isFalse();
+    }
 }
