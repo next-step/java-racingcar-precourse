@@ -6,6 +6,8 @@ public class Application {
         InputGetter inputGetter = new InputGetter();
         String[] userName = inputGetter.getUserName();
         int numberOfTry = inputGetter.getNumberOfTry();
-        
+
+        RaceGame raceGame = new RaceGame(userName);
+        raceGame.doGame(numberOfTry);
     }
 }
