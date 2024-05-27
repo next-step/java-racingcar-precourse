@@ -31,9 +31,9 @@ class RaceControllerTest {
 
     @Test
     @DisplayName("정상적인 자동차 이름이 입력된 경우")
-    void validCarNameLength() {
-        String overLengthCarNames = "test,test2,test3";
-        Assertions.assertThat(raceController.canUseCarNames(overLengthCarNames)).isTrue();
+    void validCarName() {
+        String validCarName = "test,test2,test3";
+        Assertions.assertThat(raceController.canUseCarNames(validCarName)).isTrue();
     }
 
     @Test
@@ -48,5 +48,12 @@ class RaceControllerTest {
     void invalidRoundNotNumber() {
         String invalidRoundNotNumber = "aaa";
         Assertions.assertThat(raceController.canUseRound(invalidRoundNotNumber)).isFalse();
+    }
+
+    @Test
+    @DisplayName("정상적인 라운드가 입력된 경우")
+    void validRound() {
+        String validRound = "10";
+        Assertions.assertThat(raceController.canUseRound(validRound)).isTrue();
     }
 }
