@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.OptionalInt;
 
 public class Game {
     private ArrayList<Car> Cars = new ArrayList<>();
@@ -16,5 +18,18 @@ public class Game {
             }
             System.out.println();
         }
+    }
+    public String[] chooseWinner(){
+        ArrayList<String> winner = new ArrayList<>();
+        int[] length = new int[Cars.size()];
+        for(int i = 0; i < Cars.size(); i++){
+            length[i] = Cars.get(i).getName().length();
+        }
+        int max = Arrays.stream(length).max().getAsInt();
+        for (Car car : Cars) {
+            if(car.getName().length() == max)
+                winner.add(car.getName());
+        }
+        return winner.toArray(new String[0]);
     }
 }
