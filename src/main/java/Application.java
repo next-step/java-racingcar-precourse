@@ -64,6 +64,8 @@ public class Application {
             throw new IllegalArgumentException("[ERROR] 입력의 끝이 ',' 일 수 없습니다!");
     }
     private static void validateInputSeq(int count){
+        if(count == 0)
+            throw new IllegalArgumentException("[Error] 횟수가 0일 수 없습니다!");
         if (count < 0)
             throw new IllegalArgumentException("[ERROR] 횟수가 음수일 수 없습니다!");
     }
