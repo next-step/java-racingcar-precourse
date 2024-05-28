@@ -54,10 +54,11 @@ public class Application {
         System.out.print("최종 우승자 : ");
         String[] strings = game.chooseWinner();
         for (int i = 0; i < strings.length; i++) {
-            if(strings.length-1 == i)
+            if (strings.length - 1 == i) {
                 System.out.println(strings[i]);
-            else
-                System.out.print(strings[i]);
+                break;
+            }
+            System.out.print(strings[i]);
         }
     }
 }
