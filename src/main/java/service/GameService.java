@@ -1,12 +1,39 @@
 package service;
 
+import java.util.List;
+import model.Car;
+import model.Cars;
 import util.RandomGenerator;
 
 public class GameService {
+    public static final int THRESHOLD = 4;
 
-    private final RandomGenerator randomGenerator;
 
-    public GameService(RandomGenerator randomGenerator) {
-        this.randomGenerator = randomGenerator;
+    public void playGame(Cars cars, int trial) {
+
+
+
     }
+
+    public void playOneTurn(List<Car> cars) {
+
+        for (Car car:cars) {
+            int randomNumber = RandomGenerator.createRandomNumber();
+            checkMoveOrStay(randomNumber, car);
+        }
+
+    }
+
+    public void checkMoveOrStay(int i, Car a) {
+        if (i < 0 || i > 9) {
+            throw new IllegalArgumentException("게임 진행 도중 오류가 발생하였습니다.");
+        }
+
+        if (i >= THRESHOLD) {
+            a.setCount(a.getCount() + 1);
+        }
+    }
+
+
+
 }
