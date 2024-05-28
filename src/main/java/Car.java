@@ -25,6 +25,15 @@ public class Car {
     public void setRoute(String route) {
         this.route = route;
     }
+
+    public int getRand_number() {
+        return rand_number;
+    }
+
+    public void setRand_number(int rand_number) {
+        this.rand_number = rand_number;
+    }
+
     public void makeDecision(){
         Random rand = new Random();
         rand_number = rand.nextInt(0, 10);
