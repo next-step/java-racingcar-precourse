@@ -18,7 +18,7 @@
   - View : UI 클래스 -> 유저로부터의 입력, 유저에게로의 출력을 담당한다.
   - Controller : RacingCarController, RacingCarUtil 클래스 -> Model과 View를 흐름에 따라서 관리한다.
 - 클래스의 분리
-    - 처음에는 RacingCarController 클래스의 책임이 너무 무거워서 RacingCarutil 클래스로 책임을 분리해줬지만 
+    - 처음에는 RacingCarController 클래스의 책임이 너무 무거워서 RacingCarUtil 클래스로 책임을 분리해줬지만 
     - 나중가서 RacingCarUtil 클래스도 너무 많은 책임을 가지고 있어서 비즈니스 로직은 RacingCarService로 분리했다.
 - 예외처리
   - while true loop를 이용하여 IllegalArgumentException이 안뜰 때 까지 유저의 input을 받는 방식을 사용했다.
