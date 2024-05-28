@@ -11,6 +11,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import service.GameService;
 import util.RandomGenerator;
+import view.OutputView;
 
 public class GameTest {
 
@@ -79,6 +80,18 @@ public class GameTest {
                 Assertions.assertThat(A.getCount()).isEqualTo(beforeCount+1);
             }
         }
+    }
+
+    @Test
+    void printCars() {
+        int trial  = 5;
+        for (int i = 0; i<trial;i++) {
+            gameService.playOneTurn(cars.getCars());
+        }
+        for (Car car: cars.getCars()) {
+            System.out.println(car.getName() +"은 " + car.getCount() + "칸 이동하였다.");
+        }
+        OutputView.printResult(cars.getCars());
     }
 
 }
