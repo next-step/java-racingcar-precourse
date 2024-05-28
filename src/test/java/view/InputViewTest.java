@@ -89,6 +89,54 @@ class InputViewTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    @DisplayName("시도 횟수 입력 테스트 - 정상 입력")
+    void inputAttemptCount_normal_case() {
+
+        // given
+        String input = "5";
+        systemIn(input);
+
+        // when
+        int expected = 5;
+        int actual = InputView.inputAttemptCount();
+
+        // then
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("시도 횟수 입력 테스트 - NoneIntegerArgumentException 발생")
+    void inputAttemptCount_none_integer() {
+
+        // given
+        String input = "hello\n5";
+        systemIn(input);
+
+        // when
+        int expected = 5;
+        int actual = InputView.inputAttemptCount();
+
+        // then
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("시도 횟수 입력 테스트 - AttemptBelowZeroException 발생")
+    void inputAttemptCount_attempt_below_zero() {
+
+        // given
+        String input = "-5\n5";
+        systemIn(input);
+
+        // when
+        int expected = 5;
+        int actual = InputView.inputAttemptCount();
+
+        // then
+        assertEquals(expected, actual);
+    }
+
     private void systemIn(String input) {
         String inputString = input + "\n";
         InputView.setScanner(new Scanner(new ByteArrayInputStream(inputString.getBytes())));
