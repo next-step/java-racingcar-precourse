@@ -12,4 +12,8 @@ public class Cars {
     public List<Car> getCars() {
         return cars;
     }
+
+    public Car getCar(int index) {
+        return cars.get(index);
+    }
 }
