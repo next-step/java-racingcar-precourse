@@ -1,8 +1,6 @@
 import static org.assertj.core.api.Assertions.*;
 
 import controller.GameController;
-import java.util.List;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class CarNameInputTest {
@@ -15,56 +13,56 @@ public class CarNameInputTest {
 
     @Test
     void validCarName() {
-        assertThat(gameController.parseInputs("abc,acb")).containsOnly("abc", "acb");
-        assertThat(gameController.parseInputs("abc, acb")).containsOnly("abc", "acb");
-        assertThat(gameController.parseInputs("abc ,acb")).containsOnly("abc", "acb");
-        assertThat(gameController.parseInputs("abc , acb")).containsOnly("abc", "acb");
+        assertThat(gameController.getCarNames("abc,acb")).containsOnly("abc", "acb");
+        assertThat(gameController.getCarNames("abc, acb")).containsOnly("abc", "acb");
+        assertThat(gameController.getCarNames("abc ,acb")).containsOnly("abc", "acb");
+        assertThat(gameController.getCarNames("abc , acb")).containsOnly("abc", "acb");
         assertThat(
-            gameController.parseInputs("aaa,bbb,ccc,ddd,eee,fff,ggg,iii,hhh,kkk")
+            gameController.getCarNames("aaa,bbb,ccc,ddd,eee,fff,ggg,iii,hhh,kkk")
         ).containsOnly("aaa","bbb","ccc","ddd","eee","fff","ggg","iii","hhh","kkk");
     }
 
     @Test
     void invalidCarName() {
         assertThatThrownBy(
-            () -> gameController.parseInputs("")
+            () -> gameController.getCarNames("")
         ).isInstanceOf(IllegalArgumentException.class);
 
         assertThatThrownBy(
-            () -> gameController.parseInputs("aaa")
+            () -> gameController.getCarNames("aaa")
         ).isInstanceOf(IllegalArgumentException.class);
 
         assertThatThrownBy(
-            () -> gameController.parseInputs(",")
+            () -> gameController.getCarNames(",")
         ).isInstanceOf(IllegalArgumentException.class);
 
         assertThatThrownBy(
-            () -> gameController.parseInputs(",aaa")
+            () -> gameController.getCarNames(",aaa")
         ).isInstanceOf(IllegalArgumentException.class);
 
         assertThatThrownBy(
-            () -> gameController.parseInputs("aaa,")
+            () -> gameController.getCarNames("aaa,")
         ).isInstanceOf(IllegalArgumentException.class);
 
         assertThatThrownBy(
-            () -> gameController.parseInputs("aaa,,bbb")
+            () -> gameController.getCarNames("aaa,,bbb")
         ).isInstanceOf(IllegalArgumentException.class);
 
         assertThatThrownBy(
-            () -> gameController.parseInputs("aaa,,,,,bbb")
+            () -> gameController.getCarNames("aaa,,,,,bbb")
         ).isInstanceOf(IllegalArgumentException.class);
 
         assertThatThrownBy(
-            () -> gameController.parseInputs("aaa,aaa")
+            () -> gameController.getCarNames("aaa,aaa")
         ).isInstanceOf(IllegalArgumentException.class);
 
         assertThatThrownBy(
-            () -> gameController.parseInputs("aaaaaa,bbb")
+            () -> gameController.getCarNames("aaaaaa,bbb")
         ).isInstanceOf(IllegalArgumentException.class);
 
 
         assertThatThrownBy(
-            () -> gameController.parseInputs("aaa,bbb,ccc,ddd,eee,fff,ggg,iii,hhh,kkk,lll")
+            () -> gameController.getCarNames("aaa,bbb,ccc,ddd,eee,fff,ggg,iii,hhh,kkk,lll")
         ).isInstanceOf(IllegalArgumentException.class);
 
 

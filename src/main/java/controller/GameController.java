@@ -24,7 +24,7 @@ public class GameController {
 
     }
 
-    public List<String> parseInputs(String input) {
+    public List<String> getCarNames(String input) {
 
         if (input.isEmpty() || input.length() > MAX_LENGTH_INPUT ) {
             throw new IllegalArgumentException("[ERROR] 입력 길이가 맞지 않습니다.");
