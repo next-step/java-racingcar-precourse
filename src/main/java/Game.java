@@ -19,14 +19,13 @@ public class Game {
             cars.add(new Car(s));
         }
     }
-    public void racing(int count){
-        for (int i = 0; i < count; i++){
-            for (Car car : cars) {
-                car.makeDecision();
-                System.out.println(car);
-            }
-            System.out.println();
+    public String racing(){
+        String str = "";
+        for (Car car : cars) {
+            car.makeDecision();
+            str = str + car.getRoute() + "\n";
         }
+        return str;
     }
     public String[] chooseWinner(){
         ArrayList<String> winner = new ArrayList<>();
