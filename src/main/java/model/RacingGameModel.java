@@ -16,14 +16,17 @@ public class RacingGameModel {
         }
     }
 
-    private int generateRandomNumber() {
+    public int generateRandomNumber() {
         Random random = new Random();
         return random.nextInt(0, 10);
     }
 
-    public Car[] updateCars() {
+    public Car[] getCars() {
+        return cars;
+    }
+
+    public Car[] updateCars(int randomNumber) {
         for (Car car : cars) {
-            int randomNumber = generateRandomNumber();
             if (randomNumber >= 4) {
                 car.forward();
             }
@@ -31,7 +34,7 @@ public class RacingGameModel {
         return cars;
     }
 
-    public Car[] generateWinner() {
+    public Car[] generateWinner(Car[] cars) {
         int max = -1;
         List<Car> carList = new ArrayList<>();
         for (Car car : cars) {
@@ -42,6 +45,6 @@ public class RacingGameModel {
                 carList.add(car);
             }
         }
-        return  carList.toArray(new Car[0]);
+        return carList.toArray(new Car[0]);
     }
 }
