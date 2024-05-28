@@ -7,6 +7,9 @@ import model.Cars;
 
 public class OutputView {
 
+    public static void printDefault() {
+        System.out.println("\n실행 결과");
+    }
     public static void printResult(List<Car> cars) {
         for (Car car: cars) {
             StringBuilder progress = new StringBuilder();
