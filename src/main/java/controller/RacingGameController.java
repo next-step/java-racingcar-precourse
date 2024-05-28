@@ -12,8 +12,9 @@ public class RacingGameController {
         int attemptCount = view.getAttemptCount();
         view.displayRaceResult();
         for (int i = 0; i < attemptCount; i++) {
-            view.displayUpdatedCars(model.updateCars());
+            int randomNumber = model.generateRandomNumber();
+            view.displayUpdatedCars(model.updateCars(randomNumber));
         }
-        view.displayWinner(model.generateWinner());
+        view.displayWinner(model.generateWinner(model.getCars()));
     }
 }
