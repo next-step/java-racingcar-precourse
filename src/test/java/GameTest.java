@@ -2,6 +2,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class GameTest {
     Game game = new Game();
@@ -29,5 +30,27 @@ public class GameTest {
         String[] strArr = str.split(",");
         game.makeCars(str);
         game.racing(5);
+    }
+
+    @Test
+    void chooseWinnerTest(){
+        String str = "test1,test2,test3";
+        String[] strArr = str.split(",");
+        game.makeCars(str);
+        game.racing(5);
+        String[] strings = game.chooseWinner();
+
+        int[] arr = new int[3];
+        for(int i = 0; i < 3; i++) {
+            arr[i] = game.getCars().get(i).getRoute().length();
+        }
+        int max = Arrays.stream(arr).max().getAsInt();
+
+        boolean tf = true;
+        for (String string : strings) {
+            if(string.length() != max)
+                tf = false;
+        }
+        Assertions.assertTrue(tf);
     }
 }
