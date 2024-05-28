@@ -26,8 +26,9 @@
     - 이때 쉼표 기준으로 구분하는 것에 유의
     - e.g. `test1,test2,test3`
 - **입력 예외 처리**(예외 발생 시 프로그램 종료)
-    - 자동차 이름의 길이가 1~4자가 아닌 경우
+    - 자동차 이름의 길이가 1~5자가 아닌 경우
     - 자동차 이름이 1개 이하로 입력된 경우(쉼표 기준으로 구분)
+    - 중복된 자동차 이름이 입력된 경우
 
 ### 2. input number of attempts
 - 시도 횟수(0 이상의 정수)를 입력
@@ -66,8 +67,9 @@
 - 에러 메시지 출력 후 해당 부분부터 다시 입력을 받는다.
 
 ### Racing car name list input exception
-- `ArgumentLengthException` : 각 자동차의 이름이 1~4자가 아닙니다.
-- `OnlyOneRacingCarInputException` : 자동차가 1개만 입력되었습니다.
+- `CarNameLengthException` : 각 자동차의 이름이 1~5자가 아닙니다.
+- `CarCountLessThenTwoException` : 자동차가 2개 미만으로 입력되었습니다.
+- `DuplicatedCarNameException` : 중복된 자동차 이름이 존재합니다.
 
 ### Number of attempt input exception
 - `NonIntegerArgumentException` : 입력이 정수가 아닙니다.
