@@ -3,6 +3,9 @@ package racingCar.view;
 import java.util.InputMismatchException;
 import java.util.Map;
 import java.util.Scanner;
+import racingCar.CustomException.CustomException;
+import racingCar.CustomException.TooLowAttemptException;
+import racingCar.CustomException.TooMuchAttemptException;
 
 public class UI {
 
@@ -20,24 +23,29 @@ public class UI {
 
     public int userInputAttempts() {
         System.out.println("시도할 회수는 몇회인가요?");
-
         try {
             int userInputInt = scanner.nextInt();
-            if(userInputInt < 1 || userInputInt > MAX_ATTEMPTS) {
-                throw new IllegalArgumentException();
-            }
+            if(userInputInt < 1)
+                throw new TooLowAttemptException("[Error] 시도 횟수가 너무 적습니다. 1 ~ 1000 만 입력 가능합니다.");
+            if(userInputInt > MAX_ATTEMPTS)
+                throw new TooMuchAttemptException("[Error] 시도 횟수가 너무 많습니다. 1 ~ 1000 만 입력 가능합니다.");
             return userInputInt;
         } catch (InputMismatchException e) {
             throw new IllegalArgumentException();
         } finally {
             scanner.nextLine();
         }
-
     }
 
-    public void printIllegalArgumentException() {
-        System.out.println("[ERROR] 잘못된 입력입니다. 다시 입력해주세요.");
+    public void printIllegalArgumentException(IllegalArgumentException e) {
+        if(e instanceof CustomException) {
+            System.out.println(e.getMessage());
+            return;
+        }
+        this.printIllegalArgumentException();
     }
+
+    public void printIllegalArgumentException() { System.out.println("[ERROR] 잘못된 입력입니다. 다시 입력해주세요.");}
 
     public void printCriticalException(Exception e) {
         e.printStackTrace();

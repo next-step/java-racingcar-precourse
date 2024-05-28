@@ -3,6 +3,8 @@ package racingCar.controller;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Map;
+import racingCar.CustomException.TooLongNameException;
+import racingCar.CustomException.TooLowNameLengthException;
 import racingCar.model.RacingCarModel;
 import racingCar.service.RacingCarService;
 import racingCar.view.UI;
@@ -19,8 +21,11 @@ public class RacingCarUtil {
     }
 
     private boolean exceptIllegalLength(String carName) { //길이가 5 초과되거나 빈칸이 있을 경우 throw Exception
-        if (carName.length() > MAX_NAME_LENGTH || carName.isBlank()) {
-            throw new IllegalArgumentException();
+        if (carName.length() > MAX_NAME_LENGTH) {
+            throw new TooLongNameException("[Error] 차 이름이 너무 긺니다. 1 ~ 5자만 가능합니다.");
+        }
+        if(carName.isBlank()){
+            throw new TooLowNameLengthException("[Error] 차 이름이 너무 짧습니다. 1 ~ 5자만 가능합니다.");
         }
         return true;
     }
@@ -33,7 +38,7 @@ public class RacingCarUtil {
                 UserInputCarName = this.trimInput(UserInputCarName);
                 break;
             } catch (IllegalArgumentException e) {
-                ui.printIllegalArgumentException();
+                ui.printIllegalArgumentException(e);
             } catch (Exception e) {
                 ui.printCriticalException(e);
                 return null;
@@ -47,9 +52,8 @@ public class RacingCarUtil {
             try {
                 racingCarModel.setAttempts(ui.userInputAttempts());
                 return true;
-
             } catch (IllegalArgumentException e) {
-                ui.printIllegalArgumentException();
+                ui.printIllegalArgumentException(e);
             } catch (Exception e) {
                 ui.printCriticalException(e);
                 return false;
