@@ -20,4 +20,32 @@ class GameTest {
         // then
         assertEquals(game.getCarPosition().get("a"), "-");
     }
+
+    @Test
+    @DisplayName("우승자를 반환한다.")
+    void getWinners() {
+        // given
+        Game game = new Game(List.of("a", "b", "c"));
+
+        // when
+        game.advance("a");
+        game.advance("b");
+        game.advance("c");
+        game.advance("a");
+        game.advance("b");
+
+        // then
+        assertEquals(game.getWinners(), List.of("a", "b"));
+    }
+
+    @Test
+    @DisplayName("우승자를 반환한다.")
+    void getWinners_no_one_is_advanced() {
+        // given
+        Game game = new Game(List.of("a", "b", "c"));
+
+        // when
+        // then
+        assertEquals(game.getWinners(), List.of("a", "b", "c"));
+    }
 }
