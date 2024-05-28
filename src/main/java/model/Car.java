@@ -2,7 +2,7 @@ package model;
 
 public class Car {
 
-    private String name;
+    private final String name;
     private int count;
 
     public Car(String name) {
@@ -18,8 +18,12 @@ public class Car {
         return count;
     }
 
-    public void updateCount(int count) {
+    public void setCount(int count) {
         this.count = count;
+    }
+
+    public void move() {
+        this.count += 1;
     }
 
 }
