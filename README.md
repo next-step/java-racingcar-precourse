@@ -9,7 +9,7 @@
   - [5. print racing process](#5-print-racing-process)
   - [6. determine winner](#6-determine-winner)
   - [7. print winner](#7-print-winner)
-- [Exception](#exception)
+- [Exception](#exceptions)
   - [Racing car name list input exception](#racing-car-name-list-input-exception)
   - [Number of attempt input exception](#number-of-attempt-input-exception)
 
