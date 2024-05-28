@@ -66,7 +66,7 @@ public class RacingGameView {
         System.out.println(sb.toString());
     }
 
-    private void isValidateCarNameInput(String input) {
+    public void isValidateCarNameInput(String input) {
 
         String[] splitInput = input.split(",");
         for (String carName : splitInput) {
@@ -76,7 +76,7 @@ public class RacingGameView {
         }
     }
 
-    private void isValidateAttemptCountInput(String input) {
+    public void isValidateAttemptCountInput(String input) {
         for (int i = 0; i < input.length(); i++) {
             if (!('0' <= input.charAt(i) && input.charAt(i) <= '9')) {
                 throw new IllegalArgumentException("[ERROR] 숫자만 입력 가능합니다.");
