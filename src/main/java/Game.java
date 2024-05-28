@@ -38,6 +38,6 @@ public class Game {
             if(car.getRoute().length() == max)
                 winner.add(car.getName());
         }
-        return winner.toArray(new String[winner.size()]);
+        return winner.toArray(new String[0]);
     }
 }
