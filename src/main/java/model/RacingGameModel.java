@@ -25,9 +25,9 @@ public class RacingGameModel {
         return cars;
     }
 
-    public Car[] updateCars(int randomNumber) {
+    public Car[] updateCars() {
         for (Car car : cars) {
-            if (randomNumber >= 4) {
+            if (generateRandomNumber() >= 4) {
                 car.forward();
             }
         }
