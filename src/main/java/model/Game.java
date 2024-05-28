@@ -4,7 +4,6 @@ import java.util.*;
 
 /**
  * 게임 모델 클래스
-
  */
 public class Game {
 
