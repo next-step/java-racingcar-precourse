@@ -1,6 +1,7 @@
 package racingCar.controller;
 
 import racingCar.model.RacingCarModel;
+import racingCar.service.RacingCarService;
 import racingCar.view.UI;
 
 public class RacingCarController {
@@ -10,6 +11,7 @@ public class RacingCarController {
         String[] UserInputCarName;
         RacingCarModel racingCarModel;
         RacingCarUtil racingCarUtil = new RacingCarUtil();
+        RacingCarService racingCarService = new RacingCarService();
 
         UserInputCarName = racingCarUtil.getUserInputCarName(ui); // 차 이름 입력 받기
         if (UserInputCarName == null) {
@@ -28,9 +30,9 @@ public class RacingCarController {
 
         ui.notifyThisIsResult(); // 앞으로 결과를 출력하겠다고 알리기
 
-        racingCarUtil.doRacing(racingCarModel.getCarStatus(), racingCarModel.getAttempts(), ui); //레이싱 진행하기
+        racingCarService.doRacing(racingCarModel.getCarStatus(), racingCarModel.getAttempts(), ui); //레이싱 진행하기
         
-        ui.printWinner(racingCarUtil.retWinner(racingCarModel.getCarStatus())); //승자 출력하기
+        ui.printWinner(racingCarService.retWinner(racingCarModel.getCarStatus())); //승자 출력하기
         ui.close(); //ui의 scanner 닫기
 
     }
