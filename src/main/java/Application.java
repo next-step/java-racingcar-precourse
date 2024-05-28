@@ -10,6 +10,7 @@ public class Application {
         Scanner sc = new Scanner(System.in);
 
         List<Car> cars = new ArrayList<>();
+        int count = 0;
 
         while (true) {
             try {
@@ -21,6 +22,22 @@ public class Application {
                 for (String name : names) {
                     cars.add(new Car(name));
                 }
+
+                break;
+
+            } catch (IllegalArgumentException e) {
+                print.printError("IllegalArgumentException");
+            }
+        }
+
+        while (true) {
+            try {
+                print.print("시도할 회수는 몇회인가요?");
+                String num = sc.nextLine();
+
+                util.isNumber(num);
+
+                count = Integer.parseInt(num);
 
                 break;
 

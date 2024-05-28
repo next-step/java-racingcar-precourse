@@ -15,4 +15,12 @@ public class Util {
             }
         }
     }
+
+    // 시도횟수 검증
+    public void isNumber(String number) {
+        if (!number.matches("[0-9]+")) {
+            throw new IllegalArgumentException();
+        }
+    }
+
 }
