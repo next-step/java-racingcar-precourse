@@ -69,7 +69,7 @@
 ### Racing car name list input exception
 - `CarNameLengthException` : 각 자동차의 이름이 1~5자가 아닙니다.
 - `CarCountLessThenTwoException` : 자동차가 2개 미만으로 입력되었습니다.
-- `DuplicatedRacingCarNameException` : 중복된 자동차 이름이 존재합니다.
+- `DuplicatedCarNameException` : 중복된 자동차 이름이 존재합니다.
 
 ### Number of attempt input exception
 - `NonIntegerArgumentException` : 입력이 정수가 아닙니다.
