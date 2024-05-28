@@ -6,7 +6,7 @@ public enum ErrorMessage {
     CAR_NAME_DUPLICATE("[ERROR] 자동차 이름은 중복될 수 없습니다."),
     CAR_COUNT_LESS_THAN_TWO("[ERROR] 자동차는 2대 이상이어야 합니다."),
     ATTEMPT_COUNT_NOT_INTEGER("[ERROR] 시도 횟수는 정수여야 합니다."),
-    ATTEMPT_COUNT_LESS_THEN_ONE("[ERROR] 시도 횟수는 1 이상이어야 합니다.");
+    ATTEMPT_COUNT_MUST_BE_AT_LEAST_ONE("[ERROR] 시도 횟수는 1 이상이어야 합니다.");
 
     private final String message;
 
