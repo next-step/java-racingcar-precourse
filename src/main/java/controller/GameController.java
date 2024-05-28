@@ -32,6 +32,7 @@ public class GameController {
         }
 
         List<String> winners = game.getWinners();
+        OutputView.printWinners(winners);
     }
 
     /**
