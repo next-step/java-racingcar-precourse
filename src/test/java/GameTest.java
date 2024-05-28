@@ -29,7 +29,10 @@ public class GameTest {
         String str = "test1,test2,test3";
         String[] strArr = str.split(",");
         game.makeCars(str);
-        game.racing(5);
+        for(int i = 0; i < 3; i++) {
+            String temp = game.racing();
+            System.out.println(temp);
+        }
     }
 
     @Test
@@ -37,7 +40,8 @@ public class GameTest {
         String str = "test1,test2,test3";
         String[] strArr = str.split(",");
         game.makeCars(str);
-        game.racing(5);
+        for(int i = 0; i < 3; i++)
+            game.racing();
         String[] strings = game.chooseWinner();
 
         int[] arr = new int[3];
