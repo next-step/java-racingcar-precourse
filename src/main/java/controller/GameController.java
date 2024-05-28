@@ -17,7 +17,7 @@ public class GameController {
     private static final int MAX_CARS = 10;
 
     public GameController() {
-        this.gameService = new GameService(randomGenerator);
+        this.gameService = new GameService();
     }
 
     public void playGame() {

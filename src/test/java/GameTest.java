@@ -64,17 +64,21 @@ public class GameTest {
 
     @Test
     void randomTest() {
-        Car A = cars.getCar(0);
-        int beforeCount = A.getCount();
-        int randomNumber = RandomGenerator.createRandomNumber();
-        gameService.checkMoveOrStay(randomNumber, A);
 
-        if(randomNumber < 4) {
-            Assertions.assertThat(A.getCount()).isEqualTo(beforeCount);
-        } else {
-            Assertions.assertThat(A.getCount()).isEqualTo(beforeCount+1);
+        for (int i=0; i<50;i++) {
+            Car A = cars.getCar(0);
+            A.setCount(0);
+            int beforeCount = A.getCount();
+            int randomNumber = RandomGenerator.createRandomNumber();
+
+            gameService.checkMoveOrStay(randomNumber, A);
+
+            if(randomNumber < 4) {
+                Assertions.assertThat(A.getCount()).isEqualTo(beforeCount);
+            } else {
+                Assertions.assertThat(A.getCount()).isEqualTo(beforeCount+1);
+            }
         }
-
     }
 
 }
