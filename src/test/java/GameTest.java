@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 import model.Car;
 import model.Cars;
+import model.MaxNumber;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -85,8 +86,10 @@ public class GameTest {
     @Test
     void printCars() {
         int trial  = 5;
+        MaxNumber maxNumber = new MaxNumber(0);
+
         for (int i = 0; i<trial;i++) {
-            gameService.playOneTurn(cars.getCars());
+            gameService.playOneTurn(cars.getCars(), maxNumber);
         }
         for (Car car: cars.getCars()) {
             System.out.println(car.getName() +"은 " + car.getCount() + "칸 이동하였다.");
