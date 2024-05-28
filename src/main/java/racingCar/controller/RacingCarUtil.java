@@ -41,17 +41,17 @@ public class RacingCarUtil {
         return UserInputCarName;
     }
 
-    public void setAttempts(RacingCarModel racingCarModel, UI ui) {
+    public boolean setAttempts(RacingCarModel racingCarModel, UI ui) {
         while (true) {
             try {
                 racingCarModel.setAttempts(ui.userInputAttempts());
-                break;
+                return true;
 
             } catch (IllegalArgumentException e) {
                 ui.printIllegalArgumentException();
             } catch (Exception e) {
                 ui.printCriticalException(e);
-
+                return false;
             }
         }
     }

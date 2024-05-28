@@ -11,22 +11,27 @@ public class RacingCarController {
         RacingCarModel racingCarModel;
         RacingCarUtil racingCarUtil = new RacingCarUtil();
 
-        UserInputCarName = racingCarUtil.getUserInputCarName(ui);
+        UserInputCarName = racingCarUtil.getUserInputCarName(ui); // 차 이름 입력 받기
         if (UserInputCarName == null) {
-            ui.notifyExit();
+            ui.notifyExit(); // 예기치 못한 예외시 프로그램을 종료하겠다고 알리기
             return;
         }
 
         racingCarModel = new RacingCarModel();
-        racingCarModel.initCarStats(UserInputCarName);
-        racingCarUtil.setAttempts(racingCarModel, ui);
+        racingCarModel.initCarStats(UserInputCarName); //차 이름 입력 받은거 가지고 carStats들 초기화 시키기
+        boolean isSuccess = racingCarUtil.setAttempts(racingCarModel, ui); //시도 횟수 입력 받기
 
-        ui.notifyThisIsResult();
+        if(!isSuccess) {
+            ui.notifyExit(); // 예기치 못한 예외시 프로그램을 종료하겠다고 알리기
+            return;
+        }
 
-        racingCarUtil.doRacing(racingCarModel.getCarStatus(), racingCarModel.getAttempts(), ui);
+        ui.notifyThisIsResult(); // 앞으로 결과를 출력하겠다고 알리기
 
-        ui.printWinner(racingCarUtil.retWinner(racingCarModel.getCarStatus()));
-        ui.close();
+        racingCarUtil.doRacing(racingCarModel.getCarStatus(), racingCarModel.getAttempts(), ui); //레이싱 진행하기
+        
+        ui.printWinner(racingCarUtil.retWinner(racingCarModel.getCarStatus())); //승자 출력하기
+        ui.close(); //ui의 scanner 닫기
 
     }
 
