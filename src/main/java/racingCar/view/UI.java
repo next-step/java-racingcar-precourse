@@ -69,6 +69,10 @@ public class UI {
         System.out.println("최종 우승자 : " + string);
     }
 
+    public void notifyExit(){
+        System.out.println("예상치 못한 에러로 인해 프로그램을 종료합니다.");
+    }
+
     public void close() {
         scanner.close();
     }
