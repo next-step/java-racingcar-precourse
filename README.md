@@ -67,8 +67,8 @@
 - 에러 메시지 출력 후 해당 부분부터 다시 입력을 받는다.
 
 ### Racing car name list input exception
-- `ArgumentLengthException` : 각 자동차의 이름이 1~5자가 아닙니다.
-- `OnlyOneRacingCarInputException` : 자동차가 1개만 입력되었습니다.
+- `CarNameLengthException` : 각 자동차의 이름이 1~5자가 아닙니다.
+- `CarCountLessThenTwoException` : 자동차가 2개 미만으로 입력되었습니다.
 - `DuplicatedRacingCarNameException` : 중복된 자동차 이름이 존재합니다.
 
 ### Number of attempt input exception
