@@ -1,6 +1,7 @@
 package controller;
 
 import java.util.List;
+import model.Game;
 import view.InputView;
 
 public class GameController {
@@ -10,6 +11,7 @@ public class GameController {
         List<String> carNames = InputView.inputCarNames();
         int attemptCount = InputView.inputAttemptCount();
 
+        Game game = new Game(carNames);
     }
 
 }
