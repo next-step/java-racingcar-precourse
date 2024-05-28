@@ -4,6 +4,15 @@ import java.util.OptionalInt;
 
 public class Game {
     private ArrayList<Car> Cars = new ArrayList<>();
+
+    public ArrayList<Car> getCars() {
+        return Cars;
+    }
+
+    public void setCars(ArrayList<Car> cars) {
+        Cars = cars;
+    }
+
     public void makeCars(String str){
         String[] strArr = str.split(",");
         for (String s : strArr) {
