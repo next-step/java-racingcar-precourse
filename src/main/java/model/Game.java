@@ -4,9 +4,10 @@ import java.util.*;
 
 public class Game {
 
-    private Map<String, String> carPosition = new HashMap<>();
+    private final Map<String, String> carPosition;
 
     public Game(List<String> carNames) {
+        carPosition = new HashMap<>();
         for (String carName : carNames) {
             carPosition.put(carName, "");
         }
