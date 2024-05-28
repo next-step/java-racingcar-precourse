@@ -29,17 +29,15 @@ public class Util {
     }
 
 
-    // 최대 이동 자동차명 반환
+    // 최대로 이동한 자동차명 반환
     public String[] printWinner(List<Car> cars) {
         List<String> winner = new ArrayList<>();
         int max = cars.get(0).getNum();
-
         for (Car car : cars) {
             if (max == car.getNum()) {
                 winner.add(car.getName());
                 continue;
             }
-
             if (max < car.getNum()) {
                 winner.clear();
                 winner.add(car.getName());
