@@ -26,9 +26,9 @@ public class UI {
         try {
             int userInputInt = scanner.nextInt();
             if(userInputInt < 1)
-                throw new TooLowAttemptException("[Error] 시도 횟수가 너무 적습니다. 1 ~ 1000 만 입력 가능합니다.");
+                throw new TooLowAttemptException("[ERROR] 시도 횟수가 너무 적습니다. 1 ~ 1000 만 입력 가능합니다.");
             if(userInputInt > MAX_ATTEMPTS)
-                throw new TooMuchAttemptException("[Error] 시도 횟수가 너무 많습니다. 1 ~ 1000 만 입력 가능합니다.");
+                throw new TooMuchAttemptException("[ERROR] 시도 횟수가 너무 많습니다. 1 ~ 1000 만 입력 가능합니다.");
             return userInputInt;
         } catch (InputMismatchException e) {
             throw new IllegalArgumentException();
