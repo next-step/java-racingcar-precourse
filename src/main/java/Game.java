@@ -8,4 +8,13 @@ public class Game {
             Cars.add(new Car(s));
         }
     }
+    public void racing(int count){
+        for (int i = 0; i < count; i++){
+            for (Car car : Cars) {
+                car.makeDecision();
+                System.out.println(car);
+            }
+            System.out.println();
+        }
+    }
 }
