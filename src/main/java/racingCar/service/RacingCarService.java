@@ -1,22 +1,12 @@
 package racingCar.service;
 
-import racingCar.view.UI;
-
 import java.util.*;
 
 public class RacingCarService {
 
     private static final int GO = 4;
 
-    public void doRacing(Map<String, Integer> carStats, int attempts, UI ui) {
-        for (int i = 0; i < attempts; i++) {
-            Iterator<String> keys = carStats.keySet().iterator();
-            this.doRaceOneTurn(carStats, keys);
-            ui.printCarStatus(carStats);
-        }
-    }
-
-    private void doRaceOneTurn(Map<String, Integer> carStats, Iterator<String> iter) {
+    public void doRaceOneTurn(Map<String, Integer> carStats, Iterator<String> iter) {
         while (iter.hasNext()) {
             String key = iter.next();
             if (isGo()) {

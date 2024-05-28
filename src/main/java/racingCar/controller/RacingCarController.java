@@ -30,7 +30,7 @@ public class RacingCarController {
             return;
         }
         ui.notifyThisIsResult(); // 앞으로 결과를 출력하겠다고 알리기
-        racingCarService.doRacing(racingCarModel.getCarStatus(), racingCarModel.getAttempts(), ui); //레이싱 진행하기
+        racingCarUtil.iterateRace(racingCarModel.getCarStatus(), racingCarModel.getAttempts(), ui); //레이싱 시작
         ui.printWinner(racingCarService.retWinner(racingCarModel.getCarStatus())); //승자 출력하기
         ui.close(); //ui의 scanner 닫기
     }

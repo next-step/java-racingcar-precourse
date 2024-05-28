@@ -1,7 +1,10 @@
 package racingCar.controller;
 
 import java.util.Arrays;
+import java.util.Iterator;
+import java.util.Map;
 import racingCar.model.RacingCarModel;
+import racingCar.service.RacingCarService;
 import racingCar.view.UI;
 
 public class RacingCarUtil {
@@ -51,6 +54,16 @@ public class RacingCarUtil {
                 ui.printCriticalException(e);
                 return false;
             }
+        }
+    }
+
+    public void iterateRace(Map<String, Integer> carStats, int attempts, UI ui) {
+        RacingCarService racingCarService = new RacingCarService();
+
+        for (int i = 0; i < attempts; i++) {
+            Iterator<String> keys = carStats.keySet().iterator();
+            racingCarService.doRaceOneTurn(carStats, keys);
+            ui.printCarStatus(carStats);
         }
     }
 
