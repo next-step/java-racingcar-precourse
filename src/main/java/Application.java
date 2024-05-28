@@ -43,6 +43,8 @@ public class Application {
 
             } catch (IllegalArgumentException e) {
                 print.printError("IllegalArgumentException");
+            }catch (IllegalStateException e){
+                print.printError("IllegalStateException");
             }
         }
 

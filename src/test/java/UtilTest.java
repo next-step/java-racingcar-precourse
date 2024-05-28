@@ -98,6 +98,22 @@ class UtilTest {
     }
 
     @Test
+    @DisplayName("숫자인지 검증(오버플로우)")
+    void OverflowIsNumber() {
+//        given
+//        입력으로 오류를 발생시키지 않기 위해 nextLine으로 입력을 받음
+//        따라서 입력으로 들어온 문자열 숫자를 검증
+        String test = "2147483648";
+
+//        when
+
+//        then
+        assertThrows(IllegalStateException.class, () -> {
+            u.isNumber(test);
+        });
+    }
+
+    @Test
     @DisplayName("숫자인지 검증(음수)")
     void NegativeIsNumber() {
 //        given

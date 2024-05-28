@@ -17,10 +17,18 @@ public class Util {
     }
 
     // 시도횟수 검증
+    // int 자료형 최대 크기를 넘지 않는다.
     public void isNumber(String number) {
         if (!number.matches("[0-9]+")) {
             throw new IllegalArgumentException();
         }
+
+        try {
+            Integer.parseInt(number);
+        } catch (NumberFormatException e) {
+            throw new IllegalStateException();
+        }
+
     }
 
     // 랜덤 넘버 생성
