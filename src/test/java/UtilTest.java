@@ -40,11 +40,24 @@ class UtilTest {
     @DisplayName("자동차명 검증(빈칸)")
     void BlankCheckNames() {
 //        given
-        String[] test = {""};
+        String[] test = {" 123","4 5 6","789"};
 //        when
 
 //        then
-        assertDoesNotThrow(() -> {
+        assertThrows(IllegalArgumentException.class, () -> {
+            u.checkNames(test);
+        });
+    }
+
+    @Test
+    @DisplayName("자동차명 검증(중복)")
+    void DuplicateCheckNames() {
+//        given
+        String[] test = {"123","123"};
+//        when
+
+//        then
+        assertThrows(IllegalArgumentException.class, () -> {
             u.checkNames(test);
         });
     }

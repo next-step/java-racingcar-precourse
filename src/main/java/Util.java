@@ -1,6 +1,8 @@
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 import org.w3c.dom.ls.LSOutput;
 
 public class Util {
@@ -8,9 +10,19 @@ public class Util {
     Random random = new Random();
 
     // 자동차명 입력 확인
+    // 중복여부 검사
+    // 이름에는 공백을 포함할 수 없다.
     public void checkNames(String[] names) {
+        Set<String> set = new HashSet<>();
+
         for (String name : names) {
             if (name.length() > 5) {
+                throw new IllegalArgumentException();
+            }
+            if (!set.add(name)) {
+                throw new IllegalArgumentException();
+            }
+            if (name.contains(" ")){
                 throw new IllegalArgumentException();
             }
         }
