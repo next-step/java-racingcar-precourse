@@ -13,10 +13,7 @@ public class Application {
         while (true) {
             try {
                 str = sc.nextLine();
-                if (str.charAt(0) == ',')
-                    throw new IllegalArgumentException("[ERROR] 입력의 시작이 ',' 일 수 없습니다!");
-                else if (str.charAt(str.length() - 1) == ',')
-                    throw new IllegalArgumentException("[ERROR] 입력의 끝이 ',' 일 수 없습니다!");
+                validateInputName(str);
                 break;
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
@@ -32,8 +29,7 @@ public class Application {
             try {
                 String temp = sc.next();
                 count = Integer.parseInt(temp);
-                if (count < 0)
-                    throw new IllegalArgumentException("[ERROR] 횟수가 음수일 수 없습니다!");
+                validateInputSeq(count);
                 break;
             } catch (NumberFormatException e) {
                 System.out.println("[Error] 정수를 입력해주세요!");
@@ -60,5 +56,15 @@ public class Application {
             }
             System.out.print(strings[i]);
         }
+    }
+    private static void validateInputName(String str){
+        if (str.charAt(0) == ',')
+            throw new IllegalArgumentException("[ERROR] 입력의 시작이 ',' 일 수 없습니다!");
+        else if (str.charAt(str.length() - 1) == ',')
+            throw new IllegalArgumentException("[ERROR] 입력의 끝이 ',' 일 수 없습니다!");
+    }
+    private static void validateInputSeq(int count){
+        if (count < 0)
+            throw new IllegalArgumentException("[ERROR] 횟수가 음수일 수 없습니다!");
     }
 }
