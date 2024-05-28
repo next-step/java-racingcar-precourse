@@ -3,7 +3,9 @@ package service;
 import java.util.List;
 import model.Car;
 import model.Cars;
+import model.MaxNumber;
 import util.RandomGenerator;
+import view.OutputView;
 
 public class GameService {
     public static final int THRESHOLD = 4;
@@ -11,15 +13,26 @@ public class GameService {
 
     public void playGame(Cars cars, int trial) {
 
+        MaxNumber maxNumber = new MaxNumber(0);
+        OutputView.printDefault();
 
+        do {
+            playOneTurn(cars.getCars(), maxNumber);
+            OutputView.printResult(cars.getCars());
+            trial -= 1;
+        } while (trial > 0);
+
+        OutputView.printWinners(cars.getCars(), maxNumber.getMaxNumber());
 
     }
 
-    public void playOneTurn(List<Car> cars) {
+
+    public void playOneTurn(List<Car> cars, MaxNumber maxNumber) {
 
         for (Car car:cars) {
             int randomNumber = RandomGenerator.createRandomNumber();
             checkMoveOrStay(randomNumber, car);
+            maxNumber.setMaxNumber(Math.max(maxNumber.getMaxNumber(), car.getCount()));
         }
 
     }
