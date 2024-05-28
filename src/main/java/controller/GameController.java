@@ -45,6 +45,27 @@ public class GameController {
         return cars;
     }
 
+    public int getTrial(String input) {
+        try {
+            int trial = Integer.parseInt(input);
+            isValidTrial(trial);
+
+            return trial;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR] 잘못된 입력 양식입니다.");
+        }
+    }
+
+
+
+
+
+    private void isValidTrial(int trial) {
+        if (trial < 1 || trial > 100) {
+            throw new IllegalArgumentException("[ERROR] 1~100 범위 내의 숫자를 입력해주세요.");
+        }
+    }
+
     private void checkName(String s, List<String> cars) {
         isValidLength(s); //차 이름은 1~5자
         isDuplicateName(s,cars); //차 이름 중복 불가
