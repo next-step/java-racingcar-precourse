@@ -3,6 +3,7 @@ import java.util.Random;
 public class Car {
     private String name;
     private String route;
+    private int rand_number;
 
     public Car(String name) {
         this.name = name;
@@ -26,7 +27,7 @@ public class Car {
     }
     public void makeDecision(){
         Random rand = new Random();
-        int rand_number = rand.nextInt(0, 10);
+        rand_number = rand.nextInt(0, 10);
         if(rand_number >= 4)
             route += "-";
     }
