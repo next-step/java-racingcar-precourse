@@ -2,7 +2,6 @@ package view;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import exceptions.CarNameLengthException;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.List;
