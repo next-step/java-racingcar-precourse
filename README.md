@@ -73,4 +73,4 @@
 
 ### Number of attempt input exception
 - `NonIntegerArgumentException` : 입력이 정수가 아닙니다.
-- `InputBelowZeroException` : 입력이 0 이하입니다.
+- `AttemptBelowZeroException` : 입력이 0 이하입니다.
