@@ -30,4 +30,9 @@ public class Car {
         if(rand_number >= 4)
             route += "-";
     }
+
+    @Override
+    public String toString() {
+        return name + " : " + route;
+    }
 }
