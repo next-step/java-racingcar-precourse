@@ -18,7 +18,7 @@
 
 ## Functions(feature)
 - feature 단위로 작성
-- branch 생성 시 `feature/feature#-function description` 형식으로 생성
+- branch 생성 시 `feature/function description` 형식으로 생성
 
 ### 1. input racing car names
 - 경주할 자동차 이름들을 입력
