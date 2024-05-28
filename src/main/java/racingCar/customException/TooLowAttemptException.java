@@ -1,4 +1,4 @@
-package racingCar.CustomException;
+package racingCar.customException;
 
 public class TooLowAttemptException extends IllegalArgumentException implements CustomException {
     public TooLowAttemptException() {}

@@ -1,4 +1,4 @@
-package racingCar.CustomException;
+package racingCar.customException;
 
 public interface CustomException {
 

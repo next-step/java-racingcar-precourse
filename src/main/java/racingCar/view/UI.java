@@ -3,9 +3,9 @@ package racingCar.view;
 import java.util.InputMismatchException;
 import java.util.Map;
 import java.util.Scanner;
-import racingCar.CustomException.CustomException;
-import racingCar.CustomException.TooLowAttemptException;
-import racingCar.CustomException.TooMuchAttemptException;
+import racingCar.customException.CustomException;
+import racingCar.customException.TooLowAttemptException;
+import racingCar.customException.TooMuchAttemptException;
 
 public class UI {
 
