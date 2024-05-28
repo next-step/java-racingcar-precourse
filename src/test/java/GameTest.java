@@ -94,4 +94,20 @@ public class GameTest {
         OutputView.printResult(cars.getCars());
     }
 
+    @Test
+    void printWinners() {
+        Car A = cars.getCar(0);
+        Car B = cars.getCar(1);
+        Car C = cars.getCar(2);
+
+        A.setCount(4); B.setCount(3); C.setCount(2);
+        OutputView.printWinners(cars.getCars(), 4);
+
+        A.setCount(4); B.setCount(4); C.setCount(3);
+        OutputView.printWinners(cars.getCars(), 4);
+
+        A.setCount(4); B.setCount(4); C.setCount(4);
+        OutputView.printWinners(cars.getCars(), 4);
+    }
+
 }
