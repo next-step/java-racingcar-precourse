@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Car {
     private String name;
     private String route;
@@ -21,5 +23,11 @@ public class Car {
 
     public void setRoute(String route) {
         this.route = route;
+    }
+    public void makeDecision(){
+        Random rand = new Random();
+        int rand_number = rand.nextInt(0, 10);
+        if(rand_number >= 4)
+            route += "-";
     }
 }
