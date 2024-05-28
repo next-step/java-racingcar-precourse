@@ -12,7 +12,7 @@
 ##### 9. 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException를 발생시키고, "[ERROR]"로 시작하는 에러 메시지를 출력 후 그 부분부터 입력을 다시 받는다.
 ##### 10. Exception이 아닌 IllegalArgumentException, IllegalStateException 등과 같은 명확한 유형을 처리한다.
 
-### <대강적인 로직 및 구현 방식>
+### 💡 <대강적인 로직 및 구현 방식>
 - MVC 패턴을 적용함
   - Model : RacingCarModel 클래스 -> 차 이름을 Key, 위치를 Value로 하는 Map과 이동 횟수를 저장한다.
   - View : UI 클래스 -> 유저로부터의 입력, 유저에게로의 출력을 담당한다.
