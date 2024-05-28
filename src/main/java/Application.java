@@ -55,6 +55,8 @@ public class Application {
             System.out.println();
         }
 
+        print.printWinners(util.printWinner(cars));
+
     }
 
 }

@@ -28,4 +28,25 @@ public class Util {
         return random.nextInt(10);
     }
 
+
+    // 최대 이동 자동차명 반환
+    public String[] printWinner(List<Car> cars) {
+        List<String> winner = new ArrayList<>();
+        int max = cars.get(0).getNum();
+
+        for (Car car : cars) {
+            if (max == car.getNum()) {
+                winner.add(car.getName());
+                continue;
+            }
+
+            if (max < car.getNum()) {
+                winner.clear();
+                winner.add(car.getName());
+                max = car.getNum();
+            }
+        }
+        return winner.toArray(new String[0]);
+    }
+
 }

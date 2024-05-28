@@ -15,5 +15,8 @@ public class Print {
         System.out.println(name + " : " + "-".repeat(step));
     }
 
-
+    // 최종 우승자들 출력
+    public void printWinners(String[] names) {
+        System.out.println("최종 우승자 : " + String.join(", ", names));
+    }
 }
