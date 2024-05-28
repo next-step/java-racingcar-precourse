@@ -2,9 +2,11 @@ package utils;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import exceptions.AttemptBelowZeroException;
 import exceptions.CarCountLessThenTwoException;
 import exceptions.CarNameLengthException;
 import exceptions.DuplicatedCarNameException;
+import exceptions.NoneIntegerArgumentException;
 import java.util.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -73,6 +75,32 @@ class InputValidatorTest {
         // when
         // then
         assertThrows(DuplicatedCarNameException.class, () -> InputValidator.validateCarNames(carNames));
+
+    }
+
+    @Test
+    @DisplayName("시도 횟수가 정수가 아닌 경우 예외 발생")
+    void validateAttemptCount_not_integer() {
+
+        // given
+        String input = "a";
+
+        // when
+        // then
+        assertThrows(NoneIntegerArgumentException.class, () -> InputValidator.validateAttemptCount(input));
+
+    }
+
+    @Test
+    @DisplayName("시도 횟수가 0인 경우 예외 발생")
+    void validateAttemptCount_not_positive() {
+
+        // given
+        String input = "0";
+
+        // when
+        // then
+        assertThrows(AttemptBelowZeroException.class, () -> InputValidator.validateAttemptCount(input));
 
     }
 
