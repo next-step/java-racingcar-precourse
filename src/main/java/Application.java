@@ -46,6 +46,15 @@ public class Application {
             }
         }
 
+        print.print("\n 실행결과");
+        while (count-- > 0) {
+            for (Car car : cars) {
+                car.updateNum(util.generateRandomNumber());
+                print.printSteps(car.getName(), car.getNum());
+            }
+            System.out.println();
+        }
+
     }
 
 }

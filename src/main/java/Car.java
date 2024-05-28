@@ -15,5 +15,10 @@ public class Car {
     public Integer getNum() {
         return num;
     }
-    
+
+    public void updateNum(int num) {
+        if (num >= 4) {
+            this.num++;
+        }
+    }
 }

@@ -10,4 +10,10 @@ public class Print {
         System.out.println("[ERROR]" + error);
     }
 
+    // 자동차 이동거리 출력
+    public void printSteps(String name, int step) {
+        System.out.println(name + " : " + "-".repeat(step));
+    }
+
+
 }

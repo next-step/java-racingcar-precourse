@@ -23,4 +23,9 @@ public class Util {
         }
     }
 
+    // 랜덤 넘버 생성
+    public int generateRandomNumber() {
+        return random.nextInt(10);
+    }
+
 }
