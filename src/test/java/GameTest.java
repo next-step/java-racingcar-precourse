@@ -22,4 +22,12 @@ public class GameTest {
         boolean tf = count && name;
         Assertions.assertTrue(tf);
     }
+
+    @Test
+    void racingTest(){
+        String str = "test1,test2,test3";
+        String[] strArr = str.split(",");
+        game.makeCars(str);
+        game.racing(5);
+    }
 }
