@@ -3,13 +3,15 @@ package controller;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
+import model.Car;
+import model.Cars;
 import service.GameService;
 import util.RandomGenerator;
+import view.InputView;
 
 public class GameController {
 
     private final GameService gameService;
-    public static RandomGenerator randomGenerator;
 
     private static final String DEL = ",";
     private static final int MAX_LENGTH_INPUT = 60;
@@ -20,8 +22,15 @@ public class GameController {
         this.gameService = new GameService();
     }
 
-    public void playGame() {
+    public void startGame() {
+        String line1 = InputView.inputFirstLine();
+        List<String> carNames = getCarNames(line1);
 
+        String line2 = InputView.inputSecondLine();
+        int trials = getTrial(line2);
+
+        Cars cars = createCars(carNames);
+        gameService.playGame(cars, trials);
     }
 
     public List<String> getCarNames(String input) {
@@ -56,7 +65,15 @@ public class GameController {
         }
     }
 
+    public Cars createCars(List<String> names) {
+        List<Car> cars = new ArrayList<>();
 
+        for (String name:names) {
+            cars.add(new Car(name));
+        }
+
+        return new Cars(cars);
+    }
 
 
 
