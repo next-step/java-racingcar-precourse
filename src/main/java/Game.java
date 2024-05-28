@@ -23,7 +23,7 @@ public class Game {
         String str = "";
         for (Car car : cars) {
             car.makeDecision();
-            str = str + car.getRoute() + "\n";
+            str += car.toString() + "\n";
         }
         return str;
     }
