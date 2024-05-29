@@ -11,4 +11,11 @@ public class GameView {
         return scanner.nextLine();
     }
 
+    public String getTotalMoveInput() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("시도할 회수는 몇회인가요?");
+
+        return scanner.nextLine();
+    }
+
 }
