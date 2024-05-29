@@ -4,12 +4,18 @@ import java.util.Random;
 
 public class RandomDriveCar implements Car {
 
-    private static final Random random = new Random();
-
+    private final Random random;
     private final String name;
     private String state;
 
     public RandomDriveCar(String name) {
+        this.random = new Random();
+        this.name = name;
+        this.state = "";
+    }
+
+    public RandomDriveCar(String name, Random random) {
+        this.random = random;
         this.name = name;
         this.state = "";
     }
