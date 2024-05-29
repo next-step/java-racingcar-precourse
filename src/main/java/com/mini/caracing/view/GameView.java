@@ -18,4 +18,7 @@ public class GameView {
         return scanner.nextLine();
     }
 
+    public void displayRaceStart() {
+        System.out.println("\n실행 결과");
+    }
 }
