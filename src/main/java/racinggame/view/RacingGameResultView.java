@@ -17,4 +17,16 @@ public class RacingGameResultView {
         System.out.println();
     }
 
+    // 우승자를 출력하는 메서드
+    public void printWinners(List<Car> winners){
+        System.out.println("최종 우승자 : ");
+        for (int i = 0; i < winners.size(); i++){
+            System.out.println(winners.get(i).getName());
+            // 아직 뒤에 우승자를 더 출력해야 한다면 , 붙임
+            if (i < winners.size() - 1){
+                System.out.print(", ");
+            }
+        }
+        System.out.println();
+    }
 }
