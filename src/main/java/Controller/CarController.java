@@ -13,4 +13,10 @@ public class CarController {
     public void addCar(String name){
         cars.add(new Car(name));
     }
+
+    public ArrayList<Car> getAllCar(){
+        return cars;
+    }
+
+
 }
