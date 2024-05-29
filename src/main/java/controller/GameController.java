@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.StringTokenizer;
 import model.Car;
 import model.Cars;
+import model.Trial;
 import service.GameService;
 import view.InputView;
 
@@ -21,10 +22,10 @@ public class GameController {
 
     public void startGame() {
         List<String> carNames = getFirstLine();
-        int trials = getSecondLine();
+        Trial trial = getSecondLine();
 
         Cars cars = Cars.createCars(carNames);
-        gameService.playGame(cars, trials);
+        gameService.playGame(cars, trial);
     }
 
     public List<String> getFirstLine() {
@@ -43,20 +44,20 @@ public class GameController {
         return carNames;
     }
 
-    private int getSecondLine() {
-        int trials;
+    private Trial getSecondLine() {
+        Trial trial;
 
         while (true) {
             try {
                 String line2 = InputView.inputSecondLine();
-                trials = getTrial(line2);
+                trial = Trial.getTrial(line2);
                 break;
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage() + '\n');
             }
         }
 
-        return trials;
+        return trial;
     }
 
     public List<String> getCarNames(String input) {
@@ -80,22 +81,9 @@ public class GameController {
         return cars;
     }
 
-    public int getTrial(String input) {
-        try {
-            int trial = Integer.parseInt(input);
-            checkTrialBoundary(trial);
 
-            return trial;
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 잘못된 입력 양식입니다.");
-        }
-    }
 
-    private void checkTrialBoundary(int trial) {
-        if (trial < 1 || trial > 100) {
-            throw new IllegalArgumentException("[ERROR] 1~100 범위 내의 숫자를 입력해주세요.");
-        }
-    }
+
 
 
 }
