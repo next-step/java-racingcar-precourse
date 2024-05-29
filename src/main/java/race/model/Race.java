@@ -5,12 +5,14 @@ import java.util.stream.Collectors;
 
 public class Race {
     private final List<Car> carList;
+    private final CustomRandom random;
 
-    public Race(List<Car> carList) {
+    public Race(List<Car> carList, CustomRandom random) {
         this.carList = carList;
+        this.random = random;
     }
 
-    public void proceedStep(CustomRandom random) {
+    public void proceedStep() {
         for (Car car : carList) {
             if (random.canMove())
                 car.moveForward();
