@@ -1,6 +1,10 @@
 package model;
 
+import java.util.Random;
+
 public class RandomDriveCar implements Car {
+
+    private static final Random random = new Random();
 
     private final String name;
     private String state;
@@ -12,7 +16,11 @@ public class RandomDriveCar implements Car {
 
     @Override
     public String drive() {
-        return "";
+        int randomNumber = random.nextInt(9);
+        if (randomNumber >= 4) {
+            state += "-";
+        }
+        return state;
     }
 
     public String getName() {
