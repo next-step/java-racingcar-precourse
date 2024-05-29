@@ -18,7 +18,7 @@
 - [x] 최종 우승자 출력
 ## Controller
 ### GameController
-- [ ] 게임 시작 기능
+- [x] 게임 시작 기능
 ## Util
 ### RandomNumberGenerator
 - [x] 랜덤 숫자 생성 기능
