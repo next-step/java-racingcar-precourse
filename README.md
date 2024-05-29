@@ -22,6 +22,7 @@
 ---
 # Car Class
 - getter and setter
+- void moveForward() : distance +
 
 # CarController
 - void addCar() : make new Car
