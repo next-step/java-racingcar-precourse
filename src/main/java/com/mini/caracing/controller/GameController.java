@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class GameController {
+
     private GameModel gameModel;
     private GameView gameView;
 
@@ -30,4 +31,21 @@ public class GameController {
 
         return Arrays.asList(carNamesInput.split(","));
     }
+
+    public int readTotalMove() {
+        String totalMoveInput;
+
+        while (true) {
+            try {
+                totalMoveInput = gameView.getTotalMoveInput();
+                Validator.validateTotalMove(totalMoveInput);
+                break;
+            } catch (IllegalArgumentException e) {
+                System.out.println("[ERROR]" + e.toString());
+            }
+        }
+
+        return Integer.parseInt(totalMoveInput);
+    }
+
 }
