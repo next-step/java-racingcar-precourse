@@ -25,4 +25,8 @@ public class CarService {
             car.moveForward();
         }
     }
+
+    public void raceCar(){
+        cars.stream().forEach(this::moveCar);
+    }
 }
