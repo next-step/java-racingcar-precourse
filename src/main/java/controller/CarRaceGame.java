@@ -36,7 +36,9 @@ public class CarRaceGame {
             }
         }
 
+        output.printResultMessage();
         Map<String, String> result = drive(carList);
+        output.printResult(result);
     }
 
     private Map<String, String> drive(List<Car> carList) {
