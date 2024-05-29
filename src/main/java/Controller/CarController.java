@@ -11,16 +11,4 @@ public class CarController {
         this.carService = new CarService();
     }
 
-    public ArrayList<Car> getAllCar(){
-        return carService.getCars();
-    }
-
-    public Car getCar(String name){
-        for(Car car : carService.getCars()){
-            if(car.getName() == name){
-                return car;
-            }
-        }
-        return null;
-    }
 }

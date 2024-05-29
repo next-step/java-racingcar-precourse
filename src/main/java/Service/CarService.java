@@ -29,4 +29,13 @@ public class CarService {
     public void raceCar(){
         cars.stream().forEach(this::moveCar);
     }
+
+    public Car getCar(String name){
+        for(Car car : getCars()){
+            if(car.getName() == name){
+                return car;
+            }
+        }
+        return null;
+    }
 }
