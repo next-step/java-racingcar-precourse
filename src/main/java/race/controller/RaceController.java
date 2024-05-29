@@ -8,6 +8,7 @@ import race.view.InputView;
 import race.view.OutputView;
 
 import java.util.Arrays;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -32,10 +33,7 @@ public class RaceController {
                 isInputValid = true;
             }
             catch (LengthLimitException e) {
-                outputView.outputPromptForErrorMessage(e);
-            }
-            catch (IllegalArgumentException e) {
-                outputView.outputPromptForErrorMessage(e);
+                outputView.outputPromptForErrorMessage(e.getMessage());
             }
         } while (!isInputValid);
 
@@ -46,8 +44,8 @@ public class RaceController {
                 inputForTryCount();
                 isInputValid = true;
             }
-            catch (IllegalArgumentException e) {
-                outputView.outputPromptForErrorMessage(e);
+            catch (InputMismatchException e) {
+                outputView.outputPromptForErrorMessage("[ERROR] 입력한 형식이 잘못 되었습니다. 숫자를 넣어주세요");
             }
         } while (!isInputValid);
 
