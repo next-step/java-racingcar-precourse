@@ -26,7 +26,7 @@ class RacingCarModelTest {
     @DisplayName("RacingCarModel이 Initialize가 잘 되는지 테스트")
     void initCarStats() {
         String[] input = {"car1", "   car2", "c3"};
-        String[] trimmedInput = racingCarUtil.trimInput(input);
+        String[] trimmedInput = racingCarUtil.filterInput(input);
         assertThat(trimmedInput).isEqualTo(new String[]{"car1", "car2", "c3"});
 
         Map<String, Integer> mapForTest = new HashMap<>();
