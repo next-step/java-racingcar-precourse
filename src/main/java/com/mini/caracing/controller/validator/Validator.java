@@ -14,6 +14,11 @@ public class Validator {
         checkDuplicatedCarName(carNamesInput);
     }
 
+    public static void validateTotalMove(String totalMoveInput) throws IllegalArgumentException {
+        checkNotNumber(totalMoveInput);
+        checkBelowZero(totalMoveInput);
+    }
+
     public static void checkBlank(String input) {
         if (input.isEmpty()) {
             throw new IllegalArgumentException("Input is blank");
