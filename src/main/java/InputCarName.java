@@ -15,4 +15,8 @@ public class InputCarName {
             carList.add(new Car(name));
         }
     }
+
+    public ArrayList<Car> getCarList() {
+        return carList;
+    }
 }
