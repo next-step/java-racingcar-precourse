@@ -19,7 +19,6 @@ class GameModelTest {
         gameModel = new GameModel();
     }
 
-
     @ParameterizedTest
     @DisplayName("게임 초기 세팅 테스트")
     @CsvSource({
