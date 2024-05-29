@@ -1,5 +1,8 @@
 package com.mini.caracing.controller.validator;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Validator {
     public static void checkBlank(String input) {
         if (input.isEmpty()) {
@@ -23,6 +26,16 @@ public class Validator {
         for (String carName : input.split(",")) {
             if (carName.length() > 5) {
                 throw new IllegalArgumentException("Car name is longer than 5");
+            }
+        }
+    }
+
+    public static void checkDuplicatedCarName(String input) {
+        Set<String> carNameSet = new HashSet<>();
+
+        for (String carName : input.split(",")) {
+            if (!carNameSet.add(carName)) {
+                throw new IllegalArgumentException("Car names are duplicated");
             }
         }
     }
