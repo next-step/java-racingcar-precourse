@@ -16,15 +16,18 @@
 ### OutputView
 - [x] 실행 결과 출력
 - [x] 최종 우승자 출력
-- [x] 에러 메시지 출력
 ## Controller
 ### GameController
 - [ ] 게임 시작 기능
 ## Util
 ### RandomNumberGenerator
-- [ ] 랜덤 숫자 생성 기능
+- [x] 랜덤 숫자 생성 기능
   - 0에서 9 사이의 정수
 ### InputValidator
 - [ ] 입력 숫자 유효성 검증 기능
 - [ ] 자동차 이름 유효성 검증 기능
 ## Exception
+- 이름이 중복된 경우
+- 이름의 길이가 5보다 큰 경우
+- 시도 횟수가 정수가 아닌 경우
+- 시도 횟수가 1보다 작은 경우
