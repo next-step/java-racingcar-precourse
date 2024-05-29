@@ -72,7 +72,7 @@ public class RaceController {
 
     private void initializeRace() {
         inputView.inputPromptForCarName();
-        this.race = new Race(inputForCarNameList(), CustomRandom.getInstance());
+        this.race = new Race(inputForCarNameList(), new CustomRandom());
     }
 
     private void proceedStep() {
