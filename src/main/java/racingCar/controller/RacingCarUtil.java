@@ -31,11 +31,11 @@ public class RacingCarUtil {
     }
 
     public String[] getUserInputCarName(UI ui) {
-        String[] UserInputCarName;
+        String[] userInputCarName;
         while (true) {
             try {
-                UserInputCarName = ui.userInputCarName().split(",");
-                UserInputCarName = this.trimInput(UserInputCarName);
+                userInputCarName = ui.userInputCarName().split(",");
+                userInputCarName = this.trimInput(userInputCarName);
                 break;
             } catch (IllegalArgumentException e) {
                 ui.printIllegalArgumentException(e);
@@ -44,7 +44,7 @@ public class RacingCarUtil {
                 return null;
             }
         }
-        return UserInputCarName;
+        return userInputCarName;
     }
 
     public boolean setAttempts(RacingCarModel racingCarModel, UI ui) {
