@@ -8,14 +8,18 @@ public class Car {
     private int position;
 
 
-    public Car(String carName, int position) {
+    public Car(String carName) {
         validateCarName(carName);
         this.carName = carName;
-        this.position = position;
+        this.position = 0;
     }
 
     private void validateCarName(String carName) {
         if (carName.length() > CAR_NAME_LENGTH_LIMIT)
             throw new LengthLimitException();
+    }
+
+    public void moveForward() {
+        position += 1;
     }
 }
