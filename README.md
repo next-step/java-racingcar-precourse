@@ -24,6 +24,7 @@
 - void moveForward() : distance +
 
 # CarController
+- void setCars() : set Cars for game
 - void run() : start Game
 
 # CarService
@@ -31,7 +32,7 @@
 - void moveCar() : move forward Car
 - void raceCar() : race Cars
 - Car getCar() : get Car By Name
-- getWinner() : get Winner
+- ArrayList<Car> getWinner() : get Winner
 
 # Accelator
 - boolean accel() : randomly accel
