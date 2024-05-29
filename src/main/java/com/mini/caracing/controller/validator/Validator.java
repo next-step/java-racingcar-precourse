@@ -4,6 +4,16 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Validator {
+
+    public static void validateCarNames(String carNamesInput) throws IllegalArgumentException {
+        checkBlank(carNamesInput);
+        containsBlank(carNamesInput);
+        containsBlank(carNamesInput);
+        checkNoCarName(carNamesInput);
+        checkCarNameLengthOver(carNamesInput);
+        checkDuplicatedCarName(carNamesInput);
+    }
+
     public static void checkBlank(String input) {
         if (input.isEmpty()) {
             throw new IllegalArgumentException("Input is blank");
