@@ -7,11 +7,11 @@ import java.util.Scanner;
 public class InputView {
     private Scanner scanner = new Scanner(System.in);
 
-    String readCarName(){
+    public String readCarName(){
         return scanner.nextLine();
     }
 
-    int readRound(){
+    public int readRound(){
         return scanner.nextInt();
     }
 }
