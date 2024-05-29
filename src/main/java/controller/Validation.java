@@ -14,4 +14,9 @@ public class Validation {
             throw new IllegalArgumentException("[ERROR] 자동차 이름은 중복되지 않아야 합니다.");
         }
     }
+
+    public void validationCarName(String[] carNames) {
+        Arrays.stream(carNames).forEach(this::isCarNameLengthUnderFive);
+        isCarNameSame(carNames);
+    }
 }
