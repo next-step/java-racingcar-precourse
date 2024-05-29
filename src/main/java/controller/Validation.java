@@ -19,4 +19,12 @@ public class Validation {
         Arrays.stream(carNames).forEach(this::isCarNameLengthUnderFive);
         isCarNameSame(carNames);
     }
+
+    public void isTryCountInteger(String tryCount) {
+        try {
+            Integer.parseInt(tryCount);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR] 시도 횟수는 숫자여야 합니다.");
+        }
+    }
 }
