@@ -23,7 +23,7 @@ public class GameController {
         List<String> carNames = getFirstLine();
         int trials = getSecondLine();
 
-        Cars cars = createCars(carNames);
+        Cars cars = Cars.createCars(carNames);
         gameService.playGame(cars, trials);
     }
 
@@ -90,18 +90,6 @@ public class GameController {
             throw new IllegalArgumentException("[ERROR] 잘못된 입력 양식입니다.");
         }
     }
-
-    public Cars createCars(List<String> carNames) {
-        List<Car> cars = new ArrayList<>();
-
-        for (String name:carNames) {
-            cars.add(new Car(name));
-        }
-
-        return new Cars(cars);
-    }
-
-
 
     private void checkTrialBoundary(int trial) {
         if (trial < 1 || trial > 100) {

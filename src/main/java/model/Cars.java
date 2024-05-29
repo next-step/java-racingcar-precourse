@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
@@ -15,5 +16,15 @@ public class Cars {
 
     public Car getCar(int index) {
         return cars.get(index);
+    }
+
+    public static Cars createCars(List<String> carNames) {
+        List<Car> cars = new ArrayList<>();
+
+        for (String name:carNames) {
+            cars.add(new Car(name));
+        }
+
+        return new Cars(cars);
     }
 }
