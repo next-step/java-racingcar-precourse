@@ -3,6 +3,8 @@ package controller;
 import io.Input;
 import io.Output;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 import model.Car;
 
 public class CarRaceGame {
@@ -33,5 +35,11 @@ public class CarRaceGame {
                 output.printNumberFormatErrorMessage();
             }
         }
+
+        Map<String, String> result = drive(carList);
+    }
+
+    private Map<String, String> drive(List<Car> carList) {
+        return carList.stream().collect(Collectors.toMap(Car::getName, Car::drive));
     }
 }
