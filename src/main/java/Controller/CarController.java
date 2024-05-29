@@ -20,4 +20,21 @@ public class CarController {
             carService.addCar(carName);
         }
     }
+
+    public void run(){
+        outputView.printQuestCarName();
+        setCars(inputView.readCarName());
+
+        outputView.printQuestRound();
+        int round = inputView.readRound();
+
+        outputView.printExeResult();
+        for(int i = 0; i < round; i++){
+            carService.raceCar();
+            outputView.printCarDistance(carService.getCars());
+        }
+
+        outputView.printWinner(carService.getWinner());
+    }
+
 }
