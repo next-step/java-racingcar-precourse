@@ -22,12 +22,12 @@ public class OutputView {
             System.out.println(car);
     }
 
-    public String outputPromptForWinnerList(List<Car> carList) {
+    public void outputPromptForWinnerList(List<Car> carList) {
         String winnerNames = carList.stream()
                 .map(Car::getCarName)
                 .collect(Collectors.joining(", "));
 
-        return "최종 우승자 : " + winnerNames;
+        System.out.println("최종 우승자 : " + winnerNames);
     }
 
     public void outputPromptForErrorMessage(Exception e) {
