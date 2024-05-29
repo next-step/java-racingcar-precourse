@@ -60,13 +60,14 @@ public class RacingCarUtil {
         }
     }
 
-    public void iterateRace(Map<String, Integer> carStats, int attempts, UI ui) {
+    public void iterateRace(RacingCarModel racingCarModel, UI ui) {
         RacingCarService racingCarService = new RacingCarService();
+        Map<String, Integer> carStatus = racingCarModel.getCarStatus();
 
-        for (int i = 0; i < attempts; i++) {
-            Iterator<String> keys = carStats.keySet().iterator();
-            racingCarService.doRaceOneTurn(carStats, keys);
-            ui.printCarStatus(carStats);
+        for (int i = 0; i < racingCarModel.getAttempts(); i++) {
+            Iterator<String> keys = carStatus.keySet().iterator();
+            racingCarService.doRaceOneTurn(carStatus, keys);
+            ui.printCarStatus(carStatus);
         }
     }
 
