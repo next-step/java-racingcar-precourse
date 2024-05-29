@@ -31,10 +31,10 @@
 - void moveCar() : move forward Car
 - void raceCar() : race Cars
 - Car getCar() : get Car By Name
+- getWinner() : get Winner
 
 # GameController
 - void run() : start Game
-- getWinner() : get Winner
 
 # Accelator
 - boolean accel() : randomly accel
