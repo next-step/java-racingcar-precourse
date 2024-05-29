@@ -12,4 +12,9 @@ public class Input {
         String carNames = br.readLine();
         return carNames.split(",");
     }
+
+    public static Integer tryCountInput() throws IOException {
+        Integer tryCount = Integer.parseInt(br.readLine());
+        return tryCount;
+    }
 }
