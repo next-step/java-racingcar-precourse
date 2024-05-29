@@ -10,4 +10,5 @@ Proxy를 통해 스프링의 @RequestBody처럼 컨트롤러에 들어온 데이
 3. service 작성
 4. adaptor 작성
 5. view 작성
-6. application 작성
+6. config 작성
+7. application 작성
