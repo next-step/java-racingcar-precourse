@@ -12,8 +12,23 @@ public class Trial {
         return trials;
     }
 
-    public void setTrials(int trials) {
-        this.trials = trials;
+    public void endOneTrial() {
+        this.trials -= 1;
+    }
+
+    public boolean isContinued() {
+        return this.trials > 0;
+    }
+
+    public static Trial getTrial(String input) {
+        try {
+            int trials = Integer.parseInt(input);
+            Trial.checkTrialBoundary(trials);
+
+            return new Trial(trials);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR] 잘못된 입력 양식입니다.");
+        }
     }
 
     public static void checkTrialBoundary(int trial) {
