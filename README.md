@@ -27,7 +27,7 @@
 # CarController
 - void addCar() : make new Car
 - ArrayList<Car> getAllCar() :  get All Cars
-
+- Car getCar() : get Car By Name
 # CarService
 - void moveCar() :  move forward Car
 
