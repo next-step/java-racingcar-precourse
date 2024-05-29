@@ -47,4 +47,10 @@ public class Validator {
             throw new IllegalArgumentException("Total Move is not integer number");
         }
     }
+
+    public static void checkBelowZero(String input) {
+        if (Integer.parseInt(input) <= 0) {
+            throw new IllegalArgumentException("Total move is below zero");
+        }
+    }
 }
