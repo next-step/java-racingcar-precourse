@@ -13,4 +13,8 @@ public class CarService {
     public ArrayList<Car> getCars() {
         return cars;
     }
+
+    public void addCar(String name){
+        cars.add(new Car(name));
+    }
 }
