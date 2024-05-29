@@ -24,4 +24,8 @@ public class Print {
     public static void printExecutionResult() {
         System.out.println("실행 결과");
     }
+
+    public static void printWinner(List<Car> winners) {
+        System.out.println("최종 우승자: " + String.join(", ", winners.stream().map(Car::getName).toList()));
+    }
 }
