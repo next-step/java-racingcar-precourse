@@ -1,7 +1,6 @@
 package com.mini.caracing.controller;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
 
 import com.mini.caracing.controller.validator.Validator;
 import com.mini.caracing.model.GameModel;
