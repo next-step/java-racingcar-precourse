@@ -19,7 +19,13 @@ public final class GameModel {
         }
     }
 
-    public void updateOneCarDistance(Map.Entry<String, Integer> entry, int distance){
+    public void updateCarDistances() {
+        for (Map.Entry<String, Integer> entry : carDistances.entrySet()) {
+            updateOneCarDistance(entry, GameUtil.randomDistance());
+        }
+    }
+
+    public void updateOneCarDistance(Map.Entry<String, Integer> entry, int distance) {
         entry.setValue(entry.getValue() + distance);
     }
 
