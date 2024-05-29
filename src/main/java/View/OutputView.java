@@ -2,6 +2,7 @@ package View;
 
 import Model.Car;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class OutputView {
     private static final String QUESTION_CAR_NAME = "경주할 자동차 이름을 입력하세요. (이름은 쉼표, 기준으로 구분)";
@@ -23,5 +24,12 @@ public class OutputView {
             }
             System.out.println();
         }
+    }
+
+    public void printWinner(ArrayList<Car> winners){
+        String winnerNames = winners.stream()
+            .map(Car::getName)
+            .collect(Collectors.joining(", "));
+        System.out.println("최종 우승자 : " + winnerNames);
     }
 }
