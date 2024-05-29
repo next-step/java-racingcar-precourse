@@ -5,7 +5,8 @@
     - `int totalMove` 이동 횟수
     - `LinkedHashMap<String, Integer> carDistances` { 차 이름 : 주행 거리 }로 구성된 LinkedHashMap
     - `initGameModel()` 차량 개수, 이동 횟수로 게임 초기값 세팅
-    - `updateCarDistances()` 차량별 주행 거리 갱신
+    - `updateCarDistances()` 전체 차량 주행 거리 갱신
+      - `updateOneCarDistance()` 차량 하나 주행 거리 갱신
     - `getWinnerList()` 우승한 차량 이름 리스트로 반환
     - `getCarDistances()` 차량별 주행거리 LinkedHashMap 반환
     - `getTotalMove()` 이동 횟수 반환
