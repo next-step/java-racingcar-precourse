@@ -31,7 +31,7 @@ public class OutputView {
         System.out.println("최종 우승자 : " + winnerNames);
     }
 
-    public void outputPromptForErrorMessage(Exception e) {
-        System.out.println(e.getMessage());
+    public void outputPromptForErrorMessage(String message) {
+        System.out.println(message);
     }
 }
