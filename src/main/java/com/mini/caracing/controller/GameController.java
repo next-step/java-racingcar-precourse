@@ -6,7 +6,7 @@ import com.mini.caracing.view.GameView;
 import java.util.Arrays;
 import java.util.List;
 
-public class GameController {
+public final class GameController {
 
     private GameModel gameModel;
     private GameView gameView;

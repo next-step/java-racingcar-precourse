@@ -3,7 +3,7 @@ package com.mini.caracing.controller.validator;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Validator {
+public final class Validator {
 
     public static void validateCarNames(String carNamesInput) throws IllegalArgumentException {
         checkBlank(carNamesInput);

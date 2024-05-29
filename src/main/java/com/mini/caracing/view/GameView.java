@@ -2,7 +2,7 @@ package com.mini.caracing.view;
 
 import java.util.Scanner;
 
-public class GameView {
+public final class GameView {
 
     public String getCarNamesInput() {
         Scanner scanner = new Scanner(System.in);
