@@ -10,11 +10,12 @@ public class OutputView {
     public static void printDefault() {
         System.out.println("\n실행 결과");
     }
+
     public static void printResult(List<Car> cars) {
-        for (Car car: cars) {
-            StringBuilder progress = new StringBuilder();
-            progress.append("-".repeat(Math.max(0, car.getCount())));
-            System.out.println(car.getName() + " : " + progress);
+        for (Car car : cars) {
+            System.out.println(car.getName() + " : "
+                + "-".repeat(Math.max(0, car.getCount())
+            ));
         }
         System.out.println();
     }
@@ -22,7 +23,7 @@ public class OutputView {
     public static void printWinners(List<Car> cars, int maxMoved) {
         List<String> winners = new ArrayList<>();
 
-        for (Car car: cars) {
+        for (Car car : cars) {
             if (car.getCount() == maxMoved) {
                 winners.add(car.getName());
             }
