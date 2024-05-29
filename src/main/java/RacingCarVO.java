@@ -10,7 +10,18 @@ public class RacingCarVO {
     public RacingCarVO(int try_num, int car_size) {
         this.try_num = try_num;
         this.car_size = car_size;
-    }// constructor 
+        this.go_prob=4;
+    }// constructor
+
+
+    public RacingCarVO(int try_num, int go_prob, int car_size) {
+        this.try_num = try_num;
+        this.go_prob = go_prob;
+        this.car_size = car_size;
+    }// constructor overloading
+
+
+
 
 
 }
