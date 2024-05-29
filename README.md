@@ -25,11 +25,12 @@
 - void moveForward() : distance +
 
 # CarController
-- void addCar() : make new Car
 - ArrayList<Car> getAllCar() :  get All Cars
 - Car getCar() : get Car By Name
+
 # CarService
-- void moveCar() :  move forward Car
+- void addCar() : make new Car
+- void moveCar() : move forward Car
 
 # GameController
 - void run() : start Game
