@@ -16,4 +16,8 @@ public final class GameModel {
             this.carDistances.put(carName, 0);
         }
     }
+
+    public LinkedHashMap<String, Integer> getCarDistances() {
+        return carDistances;
+    }
 }
