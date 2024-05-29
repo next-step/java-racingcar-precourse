@@ -46,5 +46,5 @@
 - void printQuestRound() : print "시도할 회수는 몇회인가요?"
 - void printCarDistance() : print distance of Cars
 - void printWinner() : print Winner
-
+- void printExeResult() : print "실행 결과"
 # Validator
