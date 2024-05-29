@@ -7,4 +7,8 @@ public class OutputView {
     public void printQuestCarName(){
         System.out.println(QUESTION_CAR_NAME);
     }
+
+    public void printQuestRound(){
+        System.out.println(QUESTION_ROUND);
+    }
 }
