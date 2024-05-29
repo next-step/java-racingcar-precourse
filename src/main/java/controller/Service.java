@@ -23,4 +23,13 @@ public class Service {
             }
         });
     }
+
+    public List<Car> getWinner(List<Car> cars) {
+        Integer maxDistance = cars.stream()
+                .map(Car::getDistance)
+                .max(Integer::compareTo)
+                .orElse(0);
+        return cars.stream().filter(car -> car.getDistance().equals(maxDistance))
+                .collect(Collectors.toList());
+    }
 }
