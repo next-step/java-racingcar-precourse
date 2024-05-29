@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 public class RacingCarVO {
     private int try_num;
@@ -19,6 +20,14 @@ public class RacingCarVO {
         this.go_prob = go_prob;
         this.car_size = car_size;
     }// constructor overloading
+
+
+    public int GetCar(String car) {
+        int n=0;
+        race.put(car, 0);
+        return n;
+    } //get a carname
+
 
 
 
