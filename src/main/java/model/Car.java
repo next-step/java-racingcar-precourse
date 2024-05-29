@@ -20,4 +20,8 @@ public class Car {
     public void setPosition(int position) {
         this.position = position;
     }
+
+    public void move() {
+        this.position++;
+    }
 }

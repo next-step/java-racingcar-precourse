@@ -13,6 +13,16 @@ public class CarTest {
     @DisplayName("이름 저장 및 조회 확인")
     public void checkGetterSetter() {
         car.setName("Pobi");
+
         Assertions.assertThat(car.getName()).isEqualTo("Pobi");
+    }
+
+    @Test
+    @DisplayName("자동차 전진 기능 확인")
+    public void move() {
+        car.setPosition(1);
+        car.move();
+
+        Assertions.assertThat(car.getPosition()).isEqualTo(2);
     }
 }
