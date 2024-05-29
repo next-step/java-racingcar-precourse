@@ -18,4 +18,12 @@ public class Validator {
             throw new IllegalArgumentException("Input has no car name");
         }
     }
+
+    public static void checkCarNameLengthOver(String input) {
+        for (String carName : input.split(",")) {
+            if (carName.length() > 5) {
+                throw new IllegalArgumentException("Car name is longer than 5");
+            }
+        }
+    }
 }
