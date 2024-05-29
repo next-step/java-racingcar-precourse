@@ -12,4 +12,10 @@ public class Validator {
             throw new IllegalArgumentException("Input contains blank");
         }
     }
+
+    public static void checkNoCarName(String input) {
+        if (input.matches("^,.*") || input.matches(".*,$")) {
+            throw new IllegalArgumentException("Input has no car name");
+        }
+    }
 }
