@@ -31,6 +31,14 @@ public class RacingGameInputValidatorTest {
     }
 
     @Test
+    void isValidateCarNames_InvalidNames_EmptyName2() {
+        RacingGameInputValidator validator = new RacingGameInputValidator();
+        assertThrows(IllegalArgumentException.class, () -> {
+            validator.isValidateCarNames("전남대,부산대,");
+        });
+    }
+
+    @Test
     void isValidateInputNum_ValidCount() {
         RacingGameInputValidator validator = new RacingGameInputValidator();
         validator.isValidateInputNum("5");
