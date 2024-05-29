@@ -7,7 +7,7 @@ public class UserInputView {
     private Scanner scanner = new Scanner(System.in);
     private RacingGameInputValidator racingGameInputValidator;
 
-    // 만들어뒀던 racingGameInputCalidator를 사용하여 입력 값을 검증
+    // 만들어뒀던 racingGameInputValidator 를 사용하여 입력 값을 검증
     public UserInputView(RacingGameInputValidator racingGameInputValidator) {
         this.racingGameInputValidator = racingGameInputValidator;
     }
