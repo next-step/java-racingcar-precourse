@@ -1,7 +1,5 @@
 # java-racingcar-precourse
 
-# java-racingcar-precourse
-
 ## Model
 ### Car
 - [ ] 자동차 이름 저장
