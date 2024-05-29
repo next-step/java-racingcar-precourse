@@ -34,7 +34,7 @@ public class GameController {
         while (true) {
             try {
                 String line1 = InputView.inputFirstLine();
-                carNames = getCarNames(line1);
+                carNames = parsingCarNames(line1);
                 break;
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage() + '\n');
@@ -60,7 +60,7 @@ public class GameController {
         return trial;
     }
 
-    public List<String> getCarNames(String input) {
+    public List<String> parsingCarNames(String input) {
 
         if (input.isEmpty() || input.length() > MAX_LENGTH_INPUT ) {
             throw new IllegalArgumentException("[ERROR] 입력 길이가 맞지 않습니다.");
@@ -80,10 +80,6 @@ public class GameController {
         Car.checkCarsCount(cars); //차 입력 개수는 2~10개
         return cars;
     }
-
-
-
-
 
 
 }
