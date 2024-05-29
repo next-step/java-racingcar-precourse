@@ -36,4 +36,18 @@ class GameControllerTest {
             .hasMessageContaining(errorMessage);
     }
 
+    @ParameterizedTest
+    @DisplayName("이동 횟수 입력값 유효성 검사")
+    @CsvSource({
+        "'', 'is not integer number'",
+        "'3.14', 'is not integer number'",
+        "'number', 'is not integer number'",
+        "'0', 'below zero'",
+        "'-3', 'below zero'"
+    })
+    void testValidateTotalMove(String totalMoveInput, String errorMessage) {
+        assertThatThrownBy(() -> Validator.validateTotalMove(totalMoveInput))
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessageContaining(errorMessage);
+    }
 }
