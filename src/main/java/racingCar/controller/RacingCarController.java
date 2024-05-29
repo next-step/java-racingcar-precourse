@@ -7,7 +7,6 @@ import racingCar.view.UI;
 public class RacingCarController {
     UI ui;
     RacingCarModel racingCarModel;
-    String[] UserInputCarName;
     RacingCarService racingCarService;
     RacingCarUtil racingCarUtil;
 
@@ -19,12 +18,12 @@ public class RacingCarController {
     }
 
     public void doGame(){
-        this.UserInputCarName = racingCarUtil.getUserInputCarName(ui); // 차 이름 입력 받기
-        if (UserInputCarName == null) {
+        String[] carName = racingCarUtil.getUserInputCarName(ui); // 차 이름 입력 받기
+        if (carName == null) {
             ui.notifyExit(); // 예기치 못한 예외시 프로그램을 종료하겠다고 알리기
             return;
         }
-        racingCarModel.initCarStats(UserInputCarName); //차 이름 입력 받은거 가지고 carStats들 초기화 시키기
+        racingCarModel.initCarStats(carName); //차 이름 입력 받은거 가지고 carStats들 초기화 시키기
         if(!racingCarUtil.setAttempts(racingCarModel, ui)) { // 시도 횟수를 입력 받아서 모델에 저장
             ui.notifyExit(); // 예기치 못한 예외시 (반환값 -> false 일때) 프로그램을 종료하겠다고 알리기
             return;
