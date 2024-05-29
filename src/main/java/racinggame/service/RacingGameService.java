@@ -2,7 +2,6 @@ package racinggame.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import racinggame.domain.Car;
 
 public class RacingGameService {
@@ -14,6 +13,12 @@ public class RacingGameService {
         }
     }
 
-
+    public void race(int numOfAttempts){
+        for (int i = 0; i < numOfAttempts; i++) {
+            for (Car car : cars) {
+                car.move();
+            }
+        }
+    }
 
 }
