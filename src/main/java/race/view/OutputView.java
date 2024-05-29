@@ -20,6 +20,7 @@ public class OutputView {
     public void outputPromptForCarList(List<Car> carList) {
         for (Car car : carList)
             System.out.println(car);
+        System.out.println();
     }
 
     public void outputPromptForWinnerList(List<Car> carList) {
