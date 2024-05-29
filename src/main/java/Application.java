@@ -5,8 +5,14 @@ import java.util.Scanner;
 public class Application {
     static String[] nameArray;
     static List<String> nameList = new ArrayList<String>();
+    static int chance;
     public static void main(String[] args) {
         inputName();
+        if (vaildName() == false){
+            return;
+        }
+
+        inputChance();
 
     }
 
@@ -19,17 +25,24 @@ public class Application {
         for (int i = 0; i < nameArray.length; i++) {
             nameList.add(nameArray[i]);
         }
-        vaildName();
+        System.out.println(nameList); // 배열에 잘 들어갔는지 확인용도
 
     }
-    static void vaildName(){ // 이름이 5자 이상이면 프로그램을 종료한다.
+    static boolean vaildName(){ // 이름이 5자 이상이면 프로그램을 종료한다.
         for (int i = 0; i < nameArray.length; i++) {
             int nameLength = nameArray[i].length();
             if (nameLength > 5) {
                 System.out.println("이름의 길이는 5자 이하로 만들어야 합니다.");
-                return;
+                return false;
             }
         }
+        return true;
     }
+    static void inputChance(){
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        Scanner scan = new Scanner(System.in);
+        chance = scan.nextInt();
+    }
+
 
 }
