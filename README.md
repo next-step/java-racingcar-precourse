@@ -31,6 +31,7 @@
 # CarService
 - void addCar() : make new Car
 - void moveCar() : move forward Car
+- void raceCar() : race Cars
 
 # GameController
 - void run() : start Game
