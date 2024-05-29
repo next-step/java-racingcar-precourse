@@ -13,7 +13,6 @@
 - Car : Car Model
 - CarController : preparing Car to View
 - CarService : choose Cars to move forward
-- GameService : managing Round
 - Accelator : randomly accel the car
 - InputView : view inputs
 - OutputView : view outputs
@@ -25,6 +24,7 @@
 - void moveForward() : distance +
 
 # CarController
+- void run() : start Game
 
 # CarService
 - void addCar() : make new Car
@@ -32,9 +32,6 @@
 - void raceCar() : race Cars
 - Car getCar() : get Car By Name
 - getWinner() : get Winner
-
-# GameController
-- void run() : start Game
 
 # Accelator
 - boolean accel() : randomly accel
