@@ -27,4 +27,8 @@ public class Validation {
             throw new IllegalArgumentException("[ERROR] 시도 횟수는 숫자여야 합니다.");
         }
     }
+
+    public void validationTryCount(String tryCount) {
+        isTryCountInteger(tryCount);
+    }
 }
