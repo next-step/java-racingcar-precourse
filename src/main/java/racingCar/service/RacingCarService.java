@@ -4,7 +4,8 @@ import java.util.*;
 
 public class RacingCarService {
 
-    private static final int GO = 4;
+    private final int GO = 4;
+    private final int DELAY = 1000;
 
     public void doRaceOneTurn(Map<String, Integer> carStats, Iterator<String> iter) {
         while (iter.hasNext()) {
@@ -33,4 +34,9 @@ public class RacingCarService {
         }
         return String.join(", ", resultList);
     }
+
+    public void sleep() throws InterruptedException {
+        Thread.sleep(DELAY);
+    }
+
 }

@@ -68,6 +68,11 @@ public class RacingCarUtil {
             Iterator<String> keys = carStatus.keySet().iterator();
             racingCarService.doRaceOneTurn(carStatus, keys);
             ui.printCarStatus(carStatus);
+            try{
+                racingCarService.sleep();
+            } catch(InterruptedException e){
+                Thread.currentThread().interrupt();
+            }
         }
     }
 
