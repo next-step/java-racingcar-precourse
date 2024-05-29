@@ -29,10 +29,12 @@ public class RandomDriveCar implements Car {
         return state;
     }
 
+    @Override
     public String getName() {
         return name;
     }
 
+    @Override
     public String getState() {
         return state;
     }
