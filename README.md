@@ -14,7 +14,7 @@
 - [x] 자동차 이름 입력
 - [x] 시도 횟수 입력
 ### OutputView
-- [ ] 실행 결과 출력
+- [x] 실행 결과 출력
 - [ ] 최종 우승자 출력
 ## Controller
 ### GameController

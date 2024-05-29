@@ -11,4 +11,8 @@ public class OutputView {
             System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
         }
     }
+
+    public static void printWinner() {
+
+    }
 }
