@@ -1,13 +1,32 @@
 package race.view;
 
+import race.model.Car;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class OutputView {
     private OutputView() {}
 
-    private static class SingleToneHelper {
+    // 내부 클래스가 호출될 때, Instance 가 생성된다
+    private static class SingletonHelper {
         private static final OutputView INSTANCE = new OutputView();
     }
 
-    public OutputView getInstance() {
-        return SingleToneHelper.INSTANCE;
+    public static OutputView getInstance() {
+        return SingletonHelper.INSTANCE;
+    }
+
+    public void outputPromptForCarList(List<Car> carList) {
+        for (Car car : carList)
+            System.out.println(car);
+    }
+
+    public String outputPromptForWinnerList(List<Car> carList) {
+        String winnerNames = carList.stream()
+                .map(Car::getCarName)
+                .collect(Collectors.joining(", "));
+
+        return "최종 우승자 : " + winnerNames;
     }
 }
