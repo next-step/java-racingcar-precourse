@@ -30,7 +30,6 @@
 - void addCar() : make new Car
 - void moveCar() : move forward Car
 - void raceCar() : race Cars
-- ArrayList<Car> getAllCar() :  get All Cars
 - Car getCar() : get Car By Name
 
 # GameController
