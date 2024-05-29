@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.Random;
+
 public class Car {
     private String carName;
     private int positon;
@@ -33,6 +35,13 @@ public class Car {
 
         if (carName.contains(" ")) {
             throw new IllegalArgumentException("[ERROR] 자동차 이름은 공백을 포함할 수 없습니다.");
+        }
+    }
+
+    public void move() {
+        Random random = new Random();
+        if (random.nextInt(10) >= 4) {
+            positon++;
         }
     }
 }
