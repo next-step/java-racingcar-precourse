@@ -31,9 +31,9 @@ public class UserInputView {
         while (true){
             try{
                 System.out.println("시도할 횟수는 몇 회인가요?");
-                String trialNum = scanner.nextLine();
-                racingGameInputValidator.isValidateInputNum(trialNum);
-                return Integer.parseInt(trialNum);
+                String numOfAttempts = scanner.nextLine();
+                racingGameInputValidator.isValidateInputNum(numOfAttempts);
+                return Integer.parseInt(numOfAttempts);
             } catch (IllegalArgumentException e){
                 System.out.println(e.getMessage());
             }
