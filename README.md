@@ -16,7 +16,7 @@
 ### OutputView
 - [x] 실행 결과 출력
 - [x] 최종 우승자 출력
-- [ ] 에러 메시지 출력
+- [x] 에러 메시지 출력
 ## Controller
 ### GameController
 - [ ] 게임 시작 기능
