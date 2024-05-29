@@ -20,4 +20,11 @@
 ## Controller
 ### GameController
 - [ ] 게임 시작 기능
+## Util
+### RandomNumberGenerator
+- [ ] 랜덤 숫자 생성 기능
+  - 0에서 9 사이의 정수
+### InputValidator
+- [ ] 입력 숫자 유효성 검증 기능
+- [ ] 자동차 이름 유효성 검증 기능
 ## Exception
