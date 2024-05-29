@@ -1,8 +1,8 @@
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import controller.GameController;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import model.Car;
 import model.Cars;
@@ -19,6 +19,7 @@ public class GameTest {
     GameController gameController;
     GameService gameService;
     Cars cars;
+    int trial  = 5;
 
     public GameTest() {
         this.gameController = new GameController();
@@ -39,6 +40,7 @@ public class GameTest {
 
     @Test
     void move() {
+        //난수가 4 이상 9 이하일때 자동차는 전진한다.
         Car A = cars.getCar(0);
         int beforeCount1 = A.getCount();
         gameService.checkMoveOrStay(4, A);
@@ -53,6 +55,7 @@ public class GameTest {
 
     @Test
     void stay() {
+        //난수가 0 이상 3 이하일때 자동차는 전진하지 않는다.
         Car A = cars.getCar(0);
         int beforeCount1 = A.getCount();
         gameService.checkMoveOrStay(0, A);
@@ -65,9 +68,16 @@ public class GameTest {
     }
 
     @Test
-    void randomTest() {
+    void randomGenerate() {
+        for (int i=0; i<1000;i++) {
+            assertThat(RandomGenerator.createRandomNumber()).isBetween(0,10);
+        }
+    }
 
-        for (int i=0; i<50;i++) {
+    @Test
+    void moveOrStay() {
+
+        for (int i=0; i<100;i++) {
             Car A = cars.getCar(0);
             A.setCount(0);
             int beforeCount = A.getCount();
@@ -75,9 +85,9 @@ public class GameTest {
 
             gameService.checkMoveOrStay(randomNumber, A);
 
-            if(randomNumber < 4) {
+            if(randomNumber < 4) { //난수 0~3: 전진 x
                 Assertions.assertThat(A.getCount()).isEqualTo(beforeCount);
-            } else {
+            } else { //난수 4~9: 전진 o
                 Assertions.assertThat(A.getCount()).isEqualTo(beforeCount+1);
             }
         }
@@ -85,11 +95,9 @@ public class GameTest {
 
     @Test
     void printCars() {
-        int trial  = 5;
-        MaxNumber maxNumber = new MaxNumber(0);
 
         for (int i = 0; i<trial;i++) {
-            gameService.playOneTurn(cars.getCars(), maxNumber);
+            gameService.playOneTurn(cars.getCars());
         }
         for (Car car: cars.getCars()) {
             System.out.println(car.getName() +"은 " + car.getCount() + "칸 이동하였다.");
@@ -102,15 +110,19 @@ public class GameTest {
         Car A = cars.getCar(0);
         Car B = cars.getCar(1);
         Car C = cars.getCar(2);
+        MaxNumber maxNumber = new MaxNumber(0);
 
         A.setCount(4); B.setCount(3); C.setCount(2);
-        OutputView.printWinners(cars.getCars(), 4);
+        maxNumber.updateMaxNumber(cars.getCars());
+        OutputView.printWinners(cars.getCars(), maxNumber.getMaxNumber());
 
         A.setCount(4); B.setCount(4); C.setCount(3);
-        OutputView.printWinners(cars.getCars(), 4);
+        maxNumber.updateMaxNumber(cars.getCars());
+        OutputView.printWinners(cars.getCars(), maxNumber.getMaxNumber());
 
         A.setCount(4); B.setCount(4); C.setCount(4);
-        OutputView.printWinners(cars.getCars(), 4);
+        maxNumber.updateMaxNumber(cars.getCars());
+        OutputView.printWinners(cars.getCars(), maxNumber.getMaxNumber());
     }
 
 }
