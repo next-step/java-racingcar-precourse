@@ -11,11 +11,9 @@ import view.InputView;
 public class GameController {
 
     private final GameService gameService;
+    public static final String DEL = ",";
+    public static final int MAX_LENGTH_INPUT = 60;
 
-    private static final String DEL = ",";
-    private static final int MAX_LENGTH_INPUT = 60;
-    private static final int MAX_LENGTH_NAME = 5;
-    private static final int MAX_CARS = 10;
 
     public GameController() {
         this.gameService = new GameService();
@@ -70,15 +68,15 @@ public class GameController {
         StringTokenizer st = new StringTokenizer(input, DEL);
         List<String> cars = new ArrayList<>();
 
-        checkContainsEmpty(input);
+        Car.checkContainsEmpty(input);
 
         while (st.hasMoreTokens()) {
             String s = st.nextToken().trim(); //쉼표 양옆 공백을 제거
-            isValidCarNames(s, cars); // 파싱 전 검사 작업, 도중 오류가 있으면 예외를 뱉고 종료
+            Car.isValidCarNames(s, cars); // 파싱 전 검사 작업, 도중 오류가 있으면 예외를 뱉고 종료
             cars.add(s);
         }
 
-        checkCarsCount(cars); //차 입력 개수는 2~10개
+        Car.checkCarsCount(cars); //차 입력 개수는 2~10개
         return cars;
     }
 
@@ -103,10 +101,7 @@ public class GameController {
         return new Cars(cars);
     }
 
-    private void isValidCarNames(String s, List<String> carNames) {
-        checkCarNameLength(s); //차 이름은 1~5자
-        checkDuplicatedName(s,carNames); //차 이름 중복 불가
-    }
+
 
     private void checkTrialBoundary(int trial) {
         if (trial < 1 || trial > 100) {
@@ -114,27 +109,5 @@ public class GameController {
         }
     }
 
-    private void checkCarsCount(List<String> carNames) {
-        if (carNames.size() < 2 || carNames.size() > MAX_CARS) {
-            throw new IllegalArgumentException("[ERROR] 입력 가능한 이름의 개수는 2~10개 입니다.");
-        }
-    }
 
-    private void checkDuplicatedName(String s, List<String> carNames) {
-        if (carNames.contains(s)) {
-            throw new IllegalArgumentException("[ERROR] 차 이름을 중복되게 입력할 수 없습니다.");
-        }
-    }
-
-    private void checkContainsEmpty(String input) {
-        if (input.startsWith(DEL) || input.endsWith(DEL) || input.contains(DEL+DEL)) {
-            throw new IllegalArgumentException("[ERROR] 잘못된 입력 양식입니다.");
-        }
-    }
-
-    private void checkCarNameLength(String carName) {
-        if (carName.isEmpty() || carName.length() > MAX_LENGTH_NAME) {
-            throw new IllegalArgumentException("[ERROR] 잘못된 입력 양식입니다.");
-        }
-    }
 }
