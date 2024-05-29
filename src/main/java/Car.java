@@ -11,6 +11,10 @@ public class Car {
         return name;
     }
 
+    public int getProgress() {
+        return progress;
+    }
+
     public int movingForward(int randNum){
         if (randNum >= 4){
             progress += 1;

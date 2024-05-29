@@ -5,7 +5,6 @@ public class Main {
     public static void main(String[] args) {
 
         InputCarName icn = new InputCarName();
-        HandleGame hg = new HandleGame();
         Scanner sc = new Scanner(System.in);
         ArrayList<Car> carList = new ArrayList<>();
 
@@ -14,9 +13,9 @@ public class Main {
         icn.splitInput(sc.next());
         carList = icn.getCarList();
 
-
+        HandleGame hg = new HandleGame(carList);
         System.out.println("시도할 회수는 몇회인가요?");
-        hg.startGame(sc.nextInt(), carList);
+        hg.startGame(sc.nextInt());
 
         sc.close();
     }
