@@ -39,4 +39,12 @@ public class Validator {
             }
         }
     }
+
+    public static void checkNotNumber(String input) {
+        try {
+            Integer.parseInt(input);
+        } catch (NumberFormatException numberFormatException) {
+            throw new IllegalArgumentException("Total Move is not integer number");
+        }
+    }
 }
