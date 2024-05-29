@@ -1,25 +1,22 @@
 package Controller;
 
 import Model.Car;
+import Service.CarService;
 import java.util.ArrayList;
 
 public class CarController {
-    private ArrayList<Car> cars;
+    private CarService carService;
 
     public CarController() {
-        this.cars = new ArrayList<>();
-    }
-
-    public void addCar(String name){
-        cars.add(new Car(name));
+        this.carService = new CarService();
     }
 
     public ArrayList<Car> getAllCar(){
-        return cars;
+        return carService.getCars();
     }
 
     public Car getCar(String name){
-        for(Car car : cars){
+        for(Car car : carService.getCars()){
             if(car.getName() == name){
                 return car;
             }

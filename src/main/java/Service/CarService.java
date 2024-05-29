@@ -9,4 +9,8 @@ public class CarService {
     public CarService(){
         cars = new ArrayList<>();
     }
+
+    public ArrayList<Car> getCars() {
+        return cars;
+    }
 }
