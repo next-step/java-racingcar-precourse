@@ -17,4 +17,12 @@ public class Racing {
         ErrorDetect.roundsTest(String.valueOf(rounds));
         this.rounds = rounds;
     }
+
+    public List<Car> getCarList() {
+        return carList;
+    }
+
+    public int getRounds() {
+        return rounds;
+    }
 }
