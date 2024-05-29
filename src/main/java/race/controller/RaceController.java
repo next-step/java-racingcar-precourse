@@ -69,7 +69,7 @@ public class RaceController {
     }
 
     private List<String> splitStringByComma(String string) {
-        return Arrays.asList(string.split("\\s,\\s"));
+        return Arrays.asList(string.split("\\s*,\\s*"));
     }
 
     private void initializeRace() {
