@@ -20,6 +20,7 @@ public class RacingGameInputValidator implements InputValidator{
         }
     }
 
+    // 시도 횟수 검증 메서드
     @Override
     public void isValidateInputNum(String inputNum) {
         try {
@@ -29,7 +30,7 @@ public class RacingGameInputValidator implements InputValidator{
                 throw new IllegalArgumentException("[ERROR] 시도 가능한 수는 양의 정수입니다.");
             }
         } catch (NumberFormatException e) {
-            // Integer.parseInt에서 정수가 아닌 오류가 발생하였다면
+            // Integer.parseInt 에서 정수가 아닌 오류가 발생하였다면
             throw new IllegalArgumentException("[ERROR] 시도 회수는 숫자여야 합니다.");
         }
     }
