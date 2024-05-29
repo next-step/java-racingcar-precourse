@@ -1,5 +1,7 @@
 package model;
 
+import java.util.List;
+
 public class MaxNumber {
 
     private int maxNumber;
@@ -12,7 +14,10 @@ public class MaxNumber {
         return maxNumber;
     }
 
-    public void setMaxNumber(int maxNumber) {
-        this.maxNumber = maxNumber;
+    public void updateMaxNumber(List<Car> cars) {
+        for (Car car : cars) {
+            maxNumber = Math.max(maxNumber, car.getCount());
+        }
     }
+
 }

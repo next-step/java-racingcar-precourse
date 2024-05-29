@@ -17,7 +17,8 @@ public class GameService {
         OutputView.printDefault();
 
         do {
-            playOneTurn(cars.getCars(), maxNumber);
+            playOneTurn(cars.getCars());
+            maxNumber.updateMaxNumber(cars.getCars());
             OutputView.printResult(cars.getCars());
             trial -= 1;
         } while (trial > 0);
@@ -27,12 +28,11 @@ public class GameService {
     }
 
 
-    public void playOneTurn(List<Car> cars, MaxNumber maxNumber) {
+    public void playOneTurn(List<Car> cars) {
 
         for (Car car:cars) {
             int randomNumber = RandomGenerator.createRandomNumber();
             checkMoveOrStay(randomNumber, car);
-            maxNumber.setMaxNumber(Math.max(maxNumber.getMaxNumber(), car.getCount()));
         }
 
     }
