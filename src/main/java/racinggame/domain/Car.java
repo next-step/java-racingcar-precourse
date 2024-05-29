@@ -9,7 +9,6 @@ public class Car {
     private Random random = new Random();
 
     public Car(String name){
-        this.position = position;
         this.name = name;
     }
 
