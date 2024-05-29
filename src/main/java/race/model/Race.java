@@ -1,7 +1,7 @@
 package race.model;
 
-import java.util.List;
-import java.util.Random;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Race {
     private final List<Car> carList;
@@ -17,4 +17,13 @@ public class Race {
         }
     }
 
+    public List<Car> getWinnerList() {
+        return carList.stream()
+                .collect(Collectors.groupingBy(Car::getPosition))
+                .entrySet()
+                .stream()
+                .max(Comparator.comparingInt(Map.Entry::getKey))
+                .map(Map.Entry::getValue)
+                .orElse(new ArrayList<>());
+    }
 }
