@@ -18,5 +18,12 @@ public class CarController {
         return cars;
     }
 
-
+    public Car getCar(String name){
+        for(Car car : cars){
+            if(car.getName() == name){
+                return car;
+            }
+        }
+        return null;
+    }
 }
