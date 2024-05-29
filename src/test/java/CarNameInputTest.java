@@ -73,9 +73,8 @@ public class CarNameInputTest {
         assertThatThrownBy(
             () -> gameController.getCarNames("aaa,bbb,ccc,ddd,eee,fff,ggg,iii,hhh,kkk,lll")
         ).isInstanceOf(IllegalArgumentException.class);
-
-
     }
+
 
 
 }

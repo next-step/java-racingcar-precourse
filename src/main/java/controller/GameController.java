@@ -22,14 +22,43 @@ public class GameController {
     }
 
     public void startGame() {
-        String line1 = InputView.inputFirstLine();
-        List<String> carNames = getCarNames(line1);
-
-        String line2 = InputView.inputSecondLine();
-        int trials = getTrial(line2);
+        List<String> carNames = getFirstLine();
+        int trials = getSecondLine();
 
         Cars cars = createCars(carNames);
         gameService.playGame(cars, trials);
+    }
+
+    public List<String> getFirstLine() {
+        List<String> carNames;
+
+        while (true) {
+            try {
+                String line1 = InputView.inputFirstLine();
+                carNames = getCarNames(line1);
+                break;
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage() + '\n');
+            }
+        }
+
+        return carNames;
+    }
+
+    private int getSecondLine() {
+        int trials;
+
+        while (true) {
+            try {
+                String line2 = InputView.inputSecondLine();
+                trials = getTrial(line2);
+                break;
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage() + '\n');
+            }
+        }
+
+        return trials;
     }
 
     public List<String> getCarNames(String input) {
@@ -64,20 +93,19 @@ public class GameController {
         }
     }
 
-    public Cars createCars(List<String> names) {
+    public Cars createCars(List<String> carNames) {
         List<Car> cars = new ArrayList<>();
 
-        for (String name:names) {
+        for (String name:carNames) {
             cars.add(new Car(name));
         }
 
         return new Cars(cars);
     }
 
-
-    private void isValidCarNames(String s, List<String> cars) {
+    private void isValidCarNames(String s, List<String> carNames) {
         checkCarNameLength(s); //차 이름은 1~5자
-        checkDuplicatedName(s,cars); //차 이름 중복 불가
+        checkDuplicatedName(s,carNames); //차 이름 중복 불가
     }
 
     private void checkTrialBoundary(int trial) {
@@ -86,14 +114,14 @@ public class GameController {
         }
     }
 
-    private void checkCarsCount(List<String> cars) {
-        if (cars.size() < 2 || cars.size() > MAX_CARS) {
+    private void checkCarsCount(List<String> carNames) {
+        if (carNames.size() < 2 || carNames.size() > MAX_CARS) {
             throw new IllegalArgumentException("[ERROR] 입력 가능한 이름의 개수는 2~10개 입니다.");
         }
     }
 
-    private void checkDuplicatedName(String s, List<String> cars) {
-        if (cars.contains(s)) {
+    private void checkDuplicatedName(String s, List<String> carNames) {
+        if (carNames.contains(s)) {
             throw new IllegalArgumentException("[ERROR] 차 이름을 중복되게 입력할 수 없습니다.");
         }
     }
@@ -104,10 +132,9 @@ public class GameController {
         }
     }
 
-    private void checkCarNameLength(String s) {
-        if (s.isEmpty() || s.length() > MAX_LENGTH_NAME) {
+    private void checkCarNameLength(String carName) {
+        if (carName.isEmpty() || carName.length() > MAX_LENGTH_NAME) {
             throw new IllegalArgumentException("[ERROR] 잘못된 입력 양식입니다.");
         }
     }
-
 }
