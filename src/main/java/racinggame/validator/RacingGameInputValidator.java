@@ -6,7 +6,9 @@ public class RacingGameInputValidator implements InputValidator{
     // 사용자에게 입력받은 자동차 이름이 유효한지 검사
     @Override
     public void isValidateCarNames(String carNames) {
-        // 자동차의 이름은 , 로 구분
+        if (carNames.endsWith(",") || carNames.matches(".*,\\s*$")) {
+            throw new IllegalArgumentException("[ERROR] 자동차 이름은 쉼표로 끝나거나 쉼표 뒤에 공백이 올 수 없습니다.");
+        }
         String[] names = carNames.split(",");
         for (String name : names) {
             // 만약 , 뒤에 아무것도 오지 않았다면
