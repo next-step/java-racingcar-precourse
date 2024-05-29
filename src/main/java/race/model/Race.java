@@ -12,11 +12,12 @@ public class Race {
         this.random = random;
     }
 
-    public void proceedStep() {
+    public List<Car> proceedStep() {
         for (Car car : carList) {
             if (random.canMove())
                 car.moveForward();
         }
+        return carList;
     }
 
     public List<Car> getWinnerList() {
