@@ -12,7 +12,16 @@ public class OutputView {
         }
     }
 
-    public static void printWinner() {
-
+    public static void printWinner(List<Car> cars) {
+        int count = 1;
+        System.out.print("최종 우승자 : " );
+        for (Car car : cars) {
+            System.out.print(car.getName());
+            if (count < cars.size()) {
+                System.out.print(", ");
+                count++;
+            }
+        }
+        System.out.println();
     }
 }
