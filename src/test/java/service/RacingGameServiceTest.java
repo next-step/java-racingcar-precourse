@@ -1,6 +1,7 @@
 package service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
@@ -17,6 +18,7 @@ public class RacingGameServiceTest {
         racingGameService = new RacingGameService();
     }
 
+    // 사용자에게 입력받은 Car 의 이름들이 cars 리스트에 제대로 들어가는지 테스트
     @Test
     public void testInitCar(){
         String carNames = "전남대, 부산대, 경북대, 충남대, 강원대";
@@ -32,4 +34,16 @@ public class RacingGameServiceTest {
     }
 
 
+    @Test
+    public void testRace(){
+        String carNames = "전남대, 부산대, 경북대, 충남대, 강원대";
+        racingGameService.initCar(carNames);
+        racingGameService.race(5);
+
+        // race 를 5번 했을 경우 position 은 0 ~ 5 사이의 값을 가지게 되는지 테스트
+        List<Car> cars = racingGameService.getCars();
+        for(Car car : cars){
+            assertTrue(car.getPosition() >= 0 && car.getPosition() <= 5);
+        }
+    }
 }
