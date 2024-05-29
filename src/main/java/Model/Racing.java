@@ -25,4 +25,10 @@ public class Racing {
     public int getRounds() {
         return rounds;
     }
+
+    public void playRound() {
+        for (Car car : carList) {
+            car.move();
+        }
+    }
 }
