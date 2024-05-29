@@ -29,6 +29,19 @@ public class RacingCarVO {
     } //get a carname
 
 
+    public int FindError(String car) {
+        try {
+            if (car.length() > 5) {
+                throw new IllegalArgumentException(car + " is not allow");
+            }
+            return -1; // 올바른 입력이 들어오면 루프를 종료합니다.
+        } catch (IllegalArgumentException e) {
+            System.out.println("[ERROR] : Car name must be less than 5 words");
+        }
+        return 0;
+    } // find error. 
+
+
 
 
 
