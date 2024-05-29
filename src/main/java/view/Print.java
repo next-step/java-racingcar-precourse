@@ -1,5 +1,7 @@
 package view;
 
+import java.util.List;
+
 import model.Car;
 
 public class Print {
@@ -13,5 +15,13 @@ public class Print {
 
     public static void printCarMovement(Car car) {
         System.out.println(car.getName() + " : " + "-".repeat(car.getDistance()));
+    }
+
+    public static void printTotalCarMovement(List<Car> cars) {
+        cars.forEach(car -> printCarMovement(car));
+    }
+
+    public static void printExecutionResult() {
+        System.out.println("실행 결과");
     }
 }
