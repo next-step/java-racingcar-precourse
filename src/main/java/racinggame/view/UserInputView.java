@@ -26,4 +26,18 @@ public class UserInputView {
         }
     }
 
+    public int getNumOfAttempts(){
+        // 오류가 난 지점에서 다시 시작할 수 있도록 while 문 사용
+        while (true){
+            try{
+                System.out.println("시도할 횟수는 몇 회인가요?");
+                String trialNum = scanner.nextLine();
+                racingGameInputValidator.isValidateInputNum(trialNum);
+                return Integer.parseInt(trialNum);
+            } catch (IllegalArgumentException e){
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
 }
