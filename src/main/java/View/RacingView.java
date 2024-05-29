@@ -1,5 +1,9 @@
 package View;
 
+import Model.Car;
+
+import java.util.List;
+
 public class RacingView {
     private RacingView() {}
 
@@ -9,5 +13,15 @@ public class RacingView {
 
     public static void printRacingRoundMessage() {
         System.out.println("시도할 회수는 몇회인가요?");
+    }
+
+    public static void printRacingRoundResultMessage() {
+        System.out.println("실행 결과");
+    }
+
+    public static void printOneRoundResult(List<Car> carList) {
+        for (Car car : carList) {
+            System.out.println(car.getCarName() + " : " + "-".repeat(car.getPositon()));
+        }
     }
 }
