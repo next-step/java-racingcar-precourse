@@ -1,6 +1,7 @@
 package Model;
 
 public class RacingCarsVO {
+
     private String carName;
     private int move;
 
