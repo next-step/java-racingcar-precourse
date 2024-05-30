@@ -23,8 +23,4 @@ public class RacingCar {
     public int getPosition() {
         return position;
     }
-
-    public static boolean isValidName(String name) {
-        return name.length() <= MAX_NAME_LENGTH;
-    }
 }
