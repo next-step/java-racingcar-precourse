@@ -1,6 +1,7 @@
 package com.mini.caracing.model;
 
 import com.mini.caracing.util.GameUtil;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,6 +28,19 @@ public final class GameModel {
 
     public void updateOneCarDistance(Map.Entry<String, Integer> entry, int distance) {
         entry.setValue(entry.getValue() + distance);
+    }
+
+    public List<String> getWinnerList() {
+        List<String> winnerList = new ArrayList<>();
+        int maxDistance = GameUtil.getMaxDistance(carDistances);
+
+        for (Map.Entry<String, Integer> entry : carDistances.entrySet()) {
+            if (entry.getValue() == maxDistance) {
+                winnerList.add(entry.getKey());
+            }
+        }
+
+        return winnerList;
     }
 
     public LinkedHashMap<String, Integer> getCarDistances() {
