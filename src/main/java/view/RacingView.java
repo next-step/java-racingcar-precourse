@@ -1,6 +1,10 @@
 package view;
 
+import model.Car;
+
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class RacingView {
 
@@ -13,6 +17,15 @@ public class RacingView {
     public static int printInputTryNum(){
         System.out.println("시도할 회수는 몇회인가요?");
         return sc.nextInt();
+    }
+    public static void printResult(List<Car> winners){
+        System.out.print("최종 우승자 : ");
+        String winner = winners.stream()
+                .map(Car::getCarname)
+                .collect(Collectors.joining(","));
+        System.out.print(winner);
+
+
     }
 
 

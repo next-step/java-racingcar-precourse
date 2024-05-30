@@ -17,6 +17,9 @@ public class RacingController {
     public void startRacing(){
         inputCarName();
         inputTryNum();
+        for(int i = 0;i<tryNum;i++){
+            moveCarByRandNum(carlist);
+        }
     }
     public void addCarlist(String[] carNames){
         carlist = new ArrayList<>();
@@ -41,6 +44,23 @@ public class RacingController {
         for(int i =0;i<carlist.size();i++){
             cars.get(i).moveCar(randNum);
         }
+    }
+    public List<Car> getWinner(){
+        int maxMove = getMaxMove();
+        return carlist.stream()
+                .filter(car->car.getMove() == maxMove)
+                .toList();
+
+    }
+    public int getMaxMove(){
+        return carlist.stream()
+                .mapToInt(Car::getMove)
+                .max()
+                .orElse(0);
+    }
+
+    public List<Car> getCarlist(){
+        return carlist;
     }
 
 }
