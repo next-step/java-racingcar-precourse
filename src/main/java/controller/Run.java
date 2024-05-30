@@ -50,10 +50,12 @@ public class Run {
     public void run() {
         List<Car> cars = carNamesInput();
         Integer tryCount = tryCountInput();
+        System.out.println();
 
         for (int i = 0; i < tryCount; i++) {
             service.moveCars(cars, service.generatePercent(cars.size()));
             Print.printTotalCarMovement(cars);
+            System.out.println();
         }
 
         Print.printExecutionResult();
