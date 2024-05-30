@@ -1,2 +1,5 @@
-package Controller;public class Game {
+package Controller;
+
+public class Game {
+
 }

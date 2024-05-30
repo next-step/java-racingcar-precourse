@@ -1,2 +1,5 @@
-package Util;public class CheckNumberValidity {
+package Util;
+
+public class CheckNumberValidity {
+
 }

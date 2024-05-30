@@ -1,2 +1,5 @@
-package Controller;public class Application {
+package Controller;
+
+public class Application {
+
 }

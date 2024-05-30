@@ -1,2 +1,5 @@
-package Model;public class WinnerNumber {
+package Model;
+
+public class WinnerNumber {
+
 }

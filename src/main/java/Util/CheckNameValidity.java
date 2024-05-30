@@ -1,2 +1,5 @@
-package Util;public class CheckNameValidity {
+package Util;
+
+public class CheckNameValidity {
+
 }

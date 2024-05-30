@@ -1,2 +1,5 @@
-package Model;public class Player {
+package Model;
+
+public class Player {
+
 }

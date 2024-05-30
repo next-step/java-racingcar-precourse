@@ -1,2 +1,5 @@
-package Controller;public class MainGame {
+package Controller;
+
+public class MainGame {
+
 }

@@ -1,2 +1,5 @@
-package VIew;public class InputView {
+package VIew;
+
+public class InputView {
+
 }

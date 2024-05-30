@@ -1,2 +1,5 @@
-package Util;public class MoveOrNot {
+package Util;
+
+public class MoveOrNot {
+
 }
