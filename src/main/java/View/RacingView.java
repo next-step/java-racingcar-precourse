@@ -22,7 +22,6 @@ public class RacingView {
     public static void printOneRoundResult(List<Car> carList) {
         for (Car car : carList) {
             System.out.println(car.getCarName() + " : " + "-".repeat(car.getPositon()));
-            System.out.println();
         }
     }
 

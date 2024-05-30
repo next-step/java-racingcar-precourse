@@ -17,6 +17,7 @@ public class GameController {
 
         RacingView.printRacingRoundMessage();
         String rounds = scanner.nextLine();
+        System.out.println();
 
         Racing carRacing = new Racing(carNames, rounds);
 
@@ -24,7 +25,9 @@ public class GameController {
         for (int i=0; i<carRacing.getRounds(); i++) {
             carRacing.playRound();
             RacingView.printOneRoundResult(carRacing.getCarList());
+            System.out.println();
         }
 
+        RacingView.printWinners(carRacing.getWinners());
     }
 }
