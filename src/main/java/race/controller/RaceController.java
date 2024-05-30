@@ -26,29 +26,9 @@ public class RaceController {
     }
 
     public void startRace() {
-        boolean isInputValid = false;
-        do {
-            try {
-                initializeRace();
-                isInputValid = true;
-            }
-            catch (LengthLimitException e) {
-                outputView.outputPromptForErrorMessage(e.getMessage());
-            }
-        } while (!isInputValid);
 
-        isInputValid = false;
-
-        do {
-            try {
-                inputForTryCount();
-                isInputValid = true;
-            }
-            catch (InputMismatchException e) {
-                outputView.outputPromptForErrorMessage("[ERROR] 입력한 형식이 잘못 되었습니다. 숫자를 넣어주세요");
-            }
-        } while (!isInputValid);
-
+        initializeRace();
+        initializeTryCount();
         proceedStep();
         endRace();
     }
@@ -61,16 +41,45 @@ public class RaceController {
                 .toList();
     }
 
-    private void inputForTryCount() {
-        inputView.inputPromptForTryCount();
-        this.tryCount = scanner.nextInt();
-    }
+
 
     private List<String> splitStringByComma(String string) {
         return Arrays.asList(string.split("\\s*,\\s*"));
     }
 
     private void initializeRace() {
+        boolean isInputValid = false;
+        do {
+            try {
+                inputForRace();
+                isInputValid = true;
+            }
+            catch (LengthLimitException e) {
+                outputView.outputPromptForErrorMessage(e.getMessage());
+            }
+        } while (!isInputValid);
+    }
+
+    private void initializeTryCount() {
+        boolean isInputValid = false;
+
+        do {
+            try {
+                inputForTryCount();
+                isInputValid = true;
+            }
+            catch (InputMismatchException e) {
+                outputView.outputPromptForErrorMessage("[ERROR] 입력한 형식이 잘못 되었습니다. 숫자를 넣어주세요");
+            }
+        } while (!isInputValid);
+    }
+
+    private void inputForTryCount() {
+        inputView.inputPromptForTryCount();
+        this.tryCount = scanner.nextInt();
+    }
+
+    private void inputForRace() {
         inputView.inputPromptForCarName();
         this.race = new Race(inputForCarNameList(), new CustomRandom());
     }
