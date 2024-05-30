@@ -1,9 +1,11 @@
 package controller;
 
 import model.Car;
+import utils.InputValidation;
 import view.RacingView;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -15,6 +17,7 @@ public class RacingController {
         tryNum = 0;
     }
     public void startRacing(){
+
         inputCarName();
         inputTryNum();
         RacingView.printResultmessage();
@@ -35,13 +38,36 @@ public class RacingController {
     }
 
     public void inputCarName(){
-        String inputCars = RacingView.printInputCarName();
-        String[] carNames = inputCars.split(",");
-        addCarlist(carNames);
+        while(true){
+            try{
+                String inputCars = RacingView.printInputCarName();
+                String[] carNames = inputCars.split(",");
+
+                InputValidation.isValidInput(carNames);//유효성검사
+
+                addCarlist(carNames);
+                break;
+            }catch(IllegalArgumentException e){
+                System.out.println("[ERROR] " + e.getMessage());
+            }
+
+        }
+
 
     }
     public void inputTryNum(){
-        tryNum = RacingView.printInputTryNum();
+        while(true){
+            try{
+                String inputTryNum = RacingView.printInputTryNum();
+                InputValidation.isNumber(inputTryNum); //정수인지 확인
+                tryNum = Integer.parseInt(inputTryNum);
+                break;
+            }catch (IllegalArgumentException e){
+                System.out.println("[ERROR]"+e.getMessage());
+            }
+
+        }
+
     }
     public void moveCarByRandNum(List<Car> cars){
 
