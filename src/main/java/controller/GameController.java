@@ -6,19 +6,29 @@ import service.GameService;
 import validator.AttemptValidator;
 import validator.CarNamesValidator;
 import view.InputView;
+import view.OutputView;
 
 public class GameController {
 
     private final InputView inputView;
     private final GameService gameService;
+    private final OutputView outputView;
 
     public GameController() {
         this.inputView = new InputView();
         this.gameService = new GameService();
+        this.outputView = new OutputView();
     }
 
     public void play() {
-        gameService.play(obtainCarNames(), obtainAttempt());
+        gameService.init(obtainCarNames());
+        int attempt = obtainAttempt();
+
+        outputView.printResult();
+        while (attempt-- > 0) {
+            outputView.printRoundOutput(gameService.playRound());
+        }
+        outputView.printWinners(gameService.whosTheWinner());
     }
 
     private List<String> obtainCarNames() {
