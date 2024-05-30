@@ -10,6 +10,7 @@ import view.Print;
 public class Run {
 
     private Validation validation = new Validation();
+    private Service service = new Service();
 
     private List<Car> carNamesInput() {
         List<Car> cars = null;
@@ -46,4 +47,16 @@ public class Run {
         }
     }
 
+    public void run() {
+        List<Car> cars = carNamesInput();
+        Integer tryCount = tryCountInput();
+
+        for (int i = 0; i < tryCount; i++) {
+            service.moveCars(cars, service.generatePercent(cars.size()));
+            Print.printTotalCarMovement(cars);
+        }
+
+        Print.printExecutionResult();
+        Print.printWinner(service.getWinner(cars));
+    }
 }
