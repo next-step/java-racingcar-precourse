@@ -30,17 +30,13 @@ public class GameController {
             checkAttemptValidate = InputValidator.checkValidAttempt(attempt) && InputValidator.checkAttemptSize(attempt);
         }
 
-        race.setCars(
-            names.stream()
-                .map(name -> {
-                    Car car = new Car();
-                    car.setName(name);
-                    car.setPosition(0);
-                    return car;
-                })
-                .collect(Collectors.toList())
-        );
+        insertCarList(race, names);
+        changeState(attempt, race);
 
+        OutputView.printWinner(race.getWinners());
+    }
+
+    private static void changeState(String attempt, Race race) {
         for (int i = 0; i < Integer.parseInt(attempt); i++) {
             race.getCars().stream()
                 .forEach(car -> {
@@ -51,6 +47,18 @@ public class GameController {
                 });
             OutputView.printResult(race.getCars());
         }
-        OutputView.printWinner(race.getWinners());
+    }
+
+    private static void insertCarList(Race race, List<String> names) {
+        race.setCars(
+            names.stream()
+                .map(name -> {
+                    Car car = new Car();
+                    car.setName(name);
+                    car.setPosition(0);
+                    return car;
+                })
+                .collect(Collectors.toList())
+        );
     }
 }
