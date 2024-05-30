@@ -57,4 +57,8 @@ public final class GameController {
         }
     }
 
+    public void showWinner() {
+        List<String> winnerList = gameModel.getWinnerList();
+        gameView.displayWinner(winnerList);
+    }
 }
