@@ -1,5 +1,6 @@
 package View;
 
+import Model.RacingCarsVO;
 import java.util.Scanner;
 
 public class RacingViews {
@@ -24,4 +25,7 @@ public class RacingViews {
         System.out.println(result);
     }
 
+    public void displayWinners(String winners) {
+        System.out.println("최종 우승자 : " + winners);
+    }
 }
