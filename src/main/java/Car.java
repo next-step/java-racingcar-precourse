@@ -20,9 +20,9 @@ public class Car {
         }
     }
 
-    public void CarDup(List<Car> cars){
-        Map<Car, Integer> elementCount = new HashMap<>();
-        for(Car element : cars){
+    public static void CarDup(List<String> carNames){
+        Map<String, Integer> elementCount = new HashMap<>();
+        for(String element : carNames){
             if(elementCount.containsKey(element)){
                 throw new IllegalArgumentException("[ERROR] 자동차 이름은 중복될 수 없습니다.");
             }
