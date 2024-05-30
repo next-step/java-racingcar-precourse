@@ -32,4 +32,8 @@ public final class GameModel {
     public LinkedHashMap<String, Integer> getCarDistances() {
         return carDistances;
     }
+
+    public int getTotalMove() {
+        return totalMove;
+    }
 }
