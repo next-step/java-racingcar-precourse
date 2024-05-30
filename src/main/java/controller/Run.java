@@ -19,7 +19,7 @@ public class Run {
                 Print.printCarNameInputComment();
                 String[] carsNames = Input.CarNameInput();
                 validation.validationCarName(carsNames);
-                cars = Arrays.stream(carsNames).map(carName -> new Car(carName, 0)).toList();
+                cars = Arrays.stream(carsNames).map(carName -> new Car(carName)).toList();
                 break;
             } catch (IOException e) {
                 System.out.println(e.getMessage());
