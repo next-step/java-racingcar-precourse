@@ -27,23 +27,18 @@ public class GameService {
 
     }
 
-
     public void playOneTurn(Cars cars, MaxMoved maxMoved) {
 
         for (Car car : cars.getCars()) {
-            int randomNumber = RandomGenerator.createRandomNumber();
-            checkMoveOrStay(randomNumber, car);
+            checkMoveOrStay(car);
         }
 
         maxMoved.updateMaxNumber(cars.getCars());
     }
 
-    public void checkMoveOrStay(int i, Car a) {
-        if (i < 0 || i > 9) {
-            throw new IllegalArgumentException("게임 진행 도중 오류가 발생하였습니다.");
-        }
+    public void checkMoveOrStay(Car a) {
 
-        if (i >= THRESHOLD) {
+        if (RandomGenerator.createRandomNumber() >= THRESHOLD) {
             a.move();
         }
     }

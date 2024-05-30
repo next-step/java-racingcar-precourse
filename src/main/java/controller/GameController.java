@@ -1,9 +1,11 @@
 package controller;
 
+import static model.Car.*;
+import static model.Cars.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
-import model.Car;
 import model.Cars;
 import model.Trial;
 import service.GameService;
@@ -21,14 +23,13 @@ public class GameController {
     }
 
     public void startGame() {
-        List<String> carNames = getFirstLine();
-        Trial trial = getSecondLine();
+        Cars cars = createCars(getCarNames());
+        Trial trial = getTrial();
 
-        Cars cars = Cars.createCars(carNames);
         gameService.playGame(cars, trial);
     }
 
-    public List<String> getFirstLine() {
+    public List<String> getCarNames() {
         List<String> carNames;
 
         while (true) {
@@ -44,7 +45,7 @@ public class GameController {
         return carNames;
     }
 
-    private Trial getSecondLine() {
+    private Trial getTrial() {
         Trial trial;
 
         while (true) {
@@ -62,23 +63,26 @@ public class GameController {
 
     public List<String> parsingCarNames(String input) {
 
-        if (input.isEmpty() || input.length() > MAX_LENGTH_INPUT ) {
+        if (input.isEmpty() || input.length() > MAX_LENGTH_INPUT) {
             throw new IllegalArgumentException("[ERROR] 입력 길이가 맞지 않습니다.");
         }
 
         StringTokenizer st = new StringTokenizer(input, DEL);
-        List<String> cars = new ArrayList<>();
+        List<String> carNames = new ArrayList<>();
 
-        Car.checkContainsEmpty(input);
+        checkContainedEmpty(input);//입력 문자열 사이에 빈 문자열이 있는지 검사
+        parsing(st, carNames);
+        checkCarsCount(carNames); //최종적으로 파싱된 차 개수는 2~10개이여야 한다.
 
+        return carNames;
+    }
+
+    private void parsing(StringTokenizer st, List<String> carNames) {
         while (st.hasMoreTokens()) {
             String s = st.nextToken().trim(); //쉼표 양옆 공백을 제거
-            Car.isValidCarNames(s, cars); // 파싱 전 검사 작업, 도중 오류가 있으면 예외를 뱉고 종료
-            cars.add(s);
+            isValidCarNames(s, carNames); // 파싱 전 검사 작업, 도중 오류가 있으면 예외를 뱉고 종료
+            carNames.add(s);
         }
-
-        Car.checkCarsCount(cars); //차 입력 개수는 2~10개
-        return cars;
     }
 
 

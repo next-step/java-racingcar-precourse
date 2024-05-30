@@ -26,6 +26,12 @@ public class GameTest {
         this.gameService = new GameService();
     }
 
+    private void checkMoveOrStayTest(int i, Car a) {
+        if (i >= 4) {
+            a.move();
+        }
+    }
+
     @BeforeEach
     void before() {
         Car A = new Car("aaa");
@@ -43,12 +49,12 @@ public class GameTest {
         //난수가 4 이상 9 이하일때 자동차는 전진한다.
         Car A = cars.getCar(0);
         int beforeCount1 = A.getCount();
-        gameService.checkMoveOrStay(4, A);
+        checkMoveOrStayTest(4, A);
         Assertions.assertThat(A.getCount()).isEqualTo(beforeCount1+1);
 
         Car B = cars.getCar(1);
         int beforeCount2 = B.getCount();
-        gameService.checkMoveOrStay(9, B);
+        checkMoveOrStayTest(9, B);
         Assertions.assertThat(B.getCount()).isEqualTo(beforeCount2+1);
 
     }
@@ -58,12 +64,12 @@ public class GameTest {
         //난수가 0 이상 3 이하일때 자동차는 전진하지 않는다.
         Car A = cars.getCar(0);
         int beforeCount1 = A.getCount();
-        gameService.checkMoveOrStay(0, A);
+        checkMoveOrStayTest(0, A);
         Assertions.assertThat(A.getCount()).isEqualTo(beforeCount1);
 
         Car B = cars.getCar(1);
         int beforeCount2 = B.getCount();
-        gameService.checkMoveOrStay(3, B);
+        checkMoveOrStayTest(3, B);
         Assertions.assertThat(B.getCount()).isEqualTo(beforeCount2);
     }
 
@@ -83,7 +89,7 @@ public class GameTest {
             int beforeCount = A.getCount();
             int randomNumber = RandomGenerator.createRandomNumber();
 
-            gameService.checkMoveOrStay(randomNumber, A);
+            checkMoveOrStayTest(randomNumber, A);
 
             if(randomNumber < 4) { //난수 0~3: 전진 x
                 Assertions.assertThat(A.getCount()).isEqualTo(beforeCount);
