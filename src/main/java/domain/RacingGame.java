@@ -16,6 +16,9 @@ import util.RandomNumberGenerator;
 public class RacingGame {
 
     private static final int MIN_TRIAL_COUNT = 1;
+    private static final int RANDOM_MIN_NUMBER = 0;
+    private static final int RANDOM_MAX_NUMBER = 9;
+    private static final int RANDOM_THRESHOLD = 4;
     private static final String DELIMITER = ",";
     private static IOHandler ioHandler;
     private static final RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
@@ -97,7 +100,7 @@ public class RacingGame {
     }
 
     boolean isMoveForward() {
-        return randomNumberGenerator.generate(0, 9) >= 4;
+        return randomNumberGenerator.generate(RANDOM_MIN_NUMBER, RANDOM_MAX_NUMBER) >= RANDOM_THRESHOLD;
     }
 
     private void validateCarNameLengths(List<String> carNames) {
