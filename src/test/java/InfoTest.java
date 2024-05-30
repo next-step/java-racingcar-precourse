@@ -14,7 +14,7 @@ public class InfoTest {
     @BeforeEach
     void setUp(){
         info = new Info();
-        info.insert("test1,test2,test3,test4"  , 0);
+        info.insertNames("test1,test2,test3,test4");
     }
 
     @AfterEach
