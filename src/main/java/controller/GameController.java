@@ -1,6 +1,8 @@
 package controller;
 
 import static model.RaceCondition.IN_PROGRESS;
+import static util.Validator.validateAttemptCount;
+import static util.Validator.validateCarName;
 
 import java.util.Arrays;
 import java.util.List;
@@ -45,8 +47,8 @@ public class GameController {
 
     private List<String> getCarNames() {
         view.println(CAR_NAME_PROMPT);
-        String userInputStr = scanner.nextLine();
-        return getCarNamesFromList(userInputStr);
+        String userInput = validateCarName(scanner.nextLine());
+        return getCarNamesFromList(userInput);
     }
 
     private List<String> getCarNamesFromList(String userInputStr) {
@@ -57,7 +59,6 @@ public class GameController {
 
     private int getAttemptCount() {
         view.println(ATTEMPT_COUNT_PROMPT);
-        String userInputStr = scanner.nextLine();
-        return Integer.parseInt(userInputStr);
+        return validateAttemptCount(scanner.nextLine());
     }
 }
