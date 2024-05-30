@@ -9,17 +9,23 @@ import View.RacingView;
 import Model.Racing;
 
 public class GameController {
+    private List<String> carNames;
+    private String rounds;
+    private Racing carRacing;
+
     public void gameStart() {
         Scanner scanner = new Scanner(System.in);
 
         RacingView.printCarNameMessage();
-        List<String> carNames = Arrays.asList(scanner.nextLine().split(","));
+        carNames = Arrays.asList(scanner.nextLine().split(","));
 
         RacingView.printRacingRoundMessage();
-        String rounds = scanner.nextLine();
+        rounds = scanner.nextLine();
         System.out.println();
+    }
 
-        Racing carRacing = new Racing(carNames, rounds);
+    public void gamePlay() {
+        carRacing = new Racing(carNames, rounds);
 
         RacingView.printRacingRoundResultMessage();
         for (int i=0; i<carRacing.getRounds(); i++) {
@@ -27,7 +33,9 @@ public class GameController {
             RacingView.printOneRoundResult(carRacing.getCarList());
             System.out.println();
         }
+    }
 
+    public void gameResult() {
         RacingView.printWinners(carRacing.getWinners());
     }
 }
