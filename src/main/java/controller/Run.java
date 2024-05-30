@@ -2,7 +2,6 @@ package controller;
 
 import java.io.IOException;
 import java.util.List;
-
 import model.Car;
 import view.Print;
 
@@ -51,13 +50,13 @@ public class Run {
         Integer tryCount = tryCountInput();
         System.out.println();
 
+        Print.printExecutionResult();
         for (int i = 0; i < tryCount; i++) {
             service.moveCars(cars, service.generatePercent(cars.size()));
             Print.printTotalCarMovement(cars);
             System.out.println();
         }
 
-        Print.printExecutionResult();
         Print.printWinner(service.getWinner(cars));
     }
 }
