@@ -10,6 +10,10 @@ public class IOHandler {
         return scanner.nextLine();
     }
 
+    public int getIntInput() {
+        return scanner.nextInt();
+    }
+
     public void print(String message) {
         System.out.print(message);
     }

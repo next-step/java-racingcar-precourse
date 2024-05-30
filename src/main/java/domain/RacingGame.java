@@ -6,53 +6,53 @@ import static domain.GameMessage.ASK_GAME_COUNT;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import util.IOHandler;
 
 public class RacingGame {
 
+    static final int MIN_TRIAL_COUNT = 1;
+    static final String DELIMITER = ",";
     static final IOHandler ioHandler = new IOHandler();
     static final ArrayList<RacingCar> cars = new ArrayList<>();
-    static final String DELIMITER = ",";
+    static int trialCount;
 
-    public void start() {
-        ioHandler.println(ASK_CAR_NAME.getMessage());
-
-        generateCar();
-
-        askTrialCount();
+    public void run() {
+        generateCars();
+        trialCount = askTrialCount();
     }
 
-    private void generateCar() {
-        String carNames = askCarNames();
-
-        ArrayList<String> validatedCarNames = validateCarNames(carNames);
+    private void generateCars() {
+        List<String> carNames = askCarNames();
+        List<String> validatedCarNames = validateCarNames(carNames);
         createCars(validatedCarNames);
     }
 
-    private String askCarNames() {
-        return ioHandler.getStringInput();
+    private List<String> askCarNames() {
+        ioHandler.println(ASK_CAR_NAME.getMessage());
+        String carNamesInput = ioHandler.getStringInput();
+        return Arrays.asList(carNamesInput.split(DELIMITER));
     }
 
-    private ArrayList<String> validateCarNames(String carNames) {
-        String[] carNameArray = carNames.split(DELIMITER);
-        for (String name : carNameArray) {
-            if (name.length() > RacingCar.MAX_NAME_LENGTH) {
-                throw new IllegalArgumentException(INVALID_NAME_LENGTH.getMessage());
+    private List<String> validateCarNames(List<String> carNames) {
+        for (String name : carNames) {
+            if (name.trim().length() > RacingCar.MAX_NAME_LENGTH) {
+                throw new IllegalArgumentException(INVALID_NAME_LENGTH.getMessage() + ": " + name);
             }
         }
-
-        return new ArrayList<>(Arrays.asList(carNameArray));
+        return carNames;
     }
 
 
-    private void createCars(ArrayList<String> validCarNames) {
+    private void createCars(List<String> validCarNames) {
         for (String name : validCarNames) {
-            cars.add(new RacingCar(name));
+            cars.add(new RacingCar(name.trim()));
         }
     }
 
-    public void askTrialCount() {
-        ioHandler.print(ASK_GAME_COUNT.getMessage());
+    private int askTrialCount() {
+        ioHandler.println(ASK_GAME_COUNT.getMessage());
+        return ioHandler.getIntInput();
     }
 
 }
