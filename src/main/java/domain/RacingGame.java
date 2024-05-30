@@ -84,7 +84,7 @@ public class RacingGame {
         ioHandler.println("");
     }
 
-    private String getPositionUnits(int position) {
+    String getPositionUnits(int position) {
         return POSITION_UNIT.repeat(Math.max(0, position));
     }
 

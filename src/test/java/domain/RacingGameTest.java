@@ -95,4 +95,15 @@ class RacingGameTest {
         });
         assertTrue(exception.getMessage().contains(INVALID_TRIAL_COUNT.getMessage()));
     }
+
+    @Test
+    @DisplayName("자동차 위치를 입력하면 문자열 형태로 반환한다.")
+    public void testGetPositionUnits() throws Exception {
+        assertEquals("", racingGame.getPositionUnits(0));
+        assertEquals("-", racingGame.getPositionUnits(1));
+        assertEquals("--", racingGame.getPositionUnits(2));
+        assertEquals("---", racingGame.getPositionUnits(3));
+        assertEquals("----", racingGame.getPositionUnits(4));
+    }
+
 }
