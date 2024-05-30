@@ -1,25 +1,21 @@
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 import java.util.Scanner;
 
 public class RacingCarVO {
     private int try_num;
-    private int go_prob;
-    private int car_size;
     private String[] cars;
     Map<String , Integer> race = new HashMap<>();
 
 
     public RacingCarVO() {
         this.try_num = 0;
-        this.car_size = 0;
-        this.go_prob=4;
     }// constructor
 
 
-    public RacingCarVO(int try_num, int go_prob) {
+    public RacingCarVO(int try_num) {
         this.try_num = try_num;
-        this.go_prob = go_prob;
     }// constructor overloading
 
 
@@ -56,6 +52,24 @@ public class RacingCarVO {
         }
         return 1;
     } // find error.
+
+
+    public void Go(){
+        for (String car : cars){
+            int distance = race.get(car);
+            distance += GoOrStop();
+            race.put(car , distance);
+        }
+    }// Go and Stop and calculate distance
+
+    public int GoOrStop() {
+        Random rand = new Random();
+        int tmp = rand.nextInt(10);
+        if (tmp >=4) {
+            return 1;
+        }
+        return 0;
+    }// if tmp is more than 4 , go one step or stop
 
 
     public void PrintCar(){
