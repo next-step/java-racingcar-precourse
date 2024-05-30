@@ -48,4 +48,13 @@ public final class GameController {
         return Integer.parseInt(totalMoveInput);
     }
 
+    public void race() {
+        gameView.displayRaceStart();
+
+        for (int i = 0; i < gameModel.getTotalMove(); i++) {
+            gameModel.updateCarDistances();
+            gameView.displayCarDistances(gameModel.getCarDistances());
+        }
+    }
+
 }
