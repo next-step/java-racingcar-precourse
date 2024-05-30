@@ -1,6 +1,6 @@
-import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
+import java.util.Set;
 
 public class Car {
     private static final int MOVENUM = 4;
@@ -21,9 +21,9 @@ public class Car {
     }
 
     public static void CarDup(List<String> carNames){
-        Map<String, Integer> elementCount = new HashMap<>();
-        for(String element : carNames){
-            if(elementCount.containsKey(element)){
+        Set<String> carSet = new HashSet<>();
+        for(String car : carNames){
+            if(!carSet.add(car)){
                 throw new IllegalArgumentException("[ERROR] 자동차 이름은 중복될 수 없습니다.");
             }
         }
