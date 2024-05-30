@@ -8,14 +8,14 @@ public class Racing {
     private List<Car> carList;
     private int rounds;
 
-    public Racing(List<String> carNames, int rounds) {
+    public Racing(List<String> carNames, String rounds) {
         carList = new ArrayList<>();
         for(String carName : carNames) {
             carList.add(new Car(carName, 0));
         }
 
-        ErrorDetect.roundsTest(String.valueOf(rounds));
-        this.rounds = rounds;
+        ErrorDetect.roundsTest(rounds);
+        this.rounds = Integer.parseInt(rounds);
     }
 
     public List<Car> getCarList() {
@@ -31,4 +31,5 @@ public class Racing {
             car.move();
         }
     }
+
 }
