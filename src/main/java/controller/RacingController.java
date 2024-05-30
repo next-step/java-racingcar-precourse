@@ -36,9 +36,11 @@ public class RacingController {
     public void inputTryNum(){
         tryNum = RacingView.printInputTryNum();
     }
-    public void moveCarByRandNum(Car car){
+    public void moveCarByRandNum(List<Car> cars){
         int randNum = (int)(Math.random()*9);
-        car.moveCar(randNum);
+        for(int i =0;i<carlist.size();i++){
+            cars.get(i).moveCar(randNum);
+        }
     }
 
 }
