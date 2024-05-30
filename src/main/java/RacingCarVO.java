@@ -48,11 +48,11 @@ public class RacingCarVO {
     public int FindError(String car) {
         try {
             if (car.length() > 5) {
-                throw new IllegalArgumentException(car + " is not allow");
+                throw new IllegalArgumentException("car name must be less than 5 characters!");
             }
             return 0; // 올바른 입력이 들어올때
         } catch (IllegalArgumentException e) {
-            System.out.println("[ERROR] : Car name must be less than 5 words");
+            System.out.printf("[ERROR] : %s is more than 5 characters!\n" , car);
         }
         return 1;
     } // find error.
