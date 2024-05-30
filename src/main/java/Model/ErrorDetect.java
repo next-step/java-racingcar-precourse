@@ -25,7 +25,7 @@ public class ErrorDetect {
             }
         }
 
-        if (roundsInput.compareTo(intLimit) > 0) {
+        if (roundsInput.compareTo(intLimit) < 0) {
             throw new IllegalArgumentException("[ERROR] 라운드의 수가 유효 범위를 벗어났습니다.");
         }
 
