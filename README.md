@@ -25,13 +25,16 @@
 - [ ] 우승자가 여러 명일 경우 쉼표(,)를 이용하여 구분한다.
 
 ### 예외 처리
+
 **최소 예외처리 기준**
+
 - [x] 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`를 발생시키고, "[ERROR]"로 시작하는 에러 메시지를 출력 후 그 부분부터 입력을 다시 받는다.
 - [x] `Exception` 이 아닌 `IllegalArgumentException` , `IllegalStateException` 등과 같은 명확한 유형을 처리한다.
 
 **추가 예외처리**
-- [x] 자동차끼리 이름이 중복되는 경우 `IllegalArgumentException`를 발생시키고, "[ERROR]"로 시작하는 에러 메시지를 출력 후 그 부분부터 입력을 다시 받는다.
 
+- [x] 자동차끼리 이름이 중복되는 경우 `IllegalArgumentException`를 발생시키고, "[ERROR]"로 시작하는 에러 메시지를 출력 후 그 부분부터 입력을 다시 받는다.
+- [x] `RandomNumberGenerator` 클래스에서 난수 범위의 최소 값보다 최대 값이 작은 경우 `IllegalArgumentException`를 발생시킨다.
 
 ## 프로그래밍 요구사항
 
