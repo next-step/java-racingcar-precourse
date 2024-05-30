@@ -2,6 +2,8 @@ package domain;
 
 public class Car {
 
+    final static int MAX_NAME_LENGTH = 5;
+
     private String name;
     private int position;
 
@@ -20,5 +22,9 @@ public class Car {
 
     public int getPosition() {
         return position;
+    }
+
+    public static boolean isValidName(String name) {
+        return name.length() <= MAX_NAME_LENGTH;
     }
 }
