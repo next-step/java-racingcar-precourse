@@ -1,6 +1,7 @@
 package service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 import model.Car;
 import model.Cars;
 import utils.RandomNumberGenerator;
@@ -22,13 +23,13 @@ public class GameService {
         }
         outputView.printResult();
         while (attempt-- > 0) {
-            round();
+            playRound();
             outputView.printRoundOutput(cars.getCars());
         }
-        whosTheWinner();
+        outputView.printWinners(whosTheWinner());
     }
 
-    private void round() {
+    private void playRound() {
         for (Car car : cars.getCars()) {
             if (RandomNumberGenerator.generate() >= 4) {
                 car.forward();
@@ -36,6 +37,12 @@ public class GameService {
         }
     }
 
-    private void whosTheWinner() {
+    private List<Car> whosTheWinner() {
+        int max = cars.getCars().stream()
+                        .mapToInt(Car::getStep)
+                        .max().orElse(0);
+        return cars.getCars().stream()
+                        .filter(car -> car.getStep().equals(max))
+                        .collect(Collectors.toList());
     }
 }
