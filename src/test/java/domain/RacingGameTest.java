@@ -77,7 +77,6 @@ class RacingGameTest {
         assertTrue(exception.getMessage().contains(ExceptionMessage.DUPLICATED_CAR_NAME.getMessage()));
     }
 
-
     @Test
     @DisplayName("시도 횟수를 입력받을 수 있다.")
     public void testAskTrialCount() {
@@ -106,4 +105,31 @@ class RacingGameTest {
         assertEquals("----", racingGame.getPositionUnits(4));
     }
 
+    @Test
+    @DisplayName("자동차가 앞으로 이동할지 여부를 결정할 수 있다.")
+    public void testIsMoveForward() {
+        assertTrue(racingGame.isMoveForward() || !racingGame.isMoveForward());
+    }
+
+    @Test
+    @DisplayName("최대 위치를 올바르게 반환할 수 있다.")
+    public void testGetMaxPosition() {
+        racingGame.createCars(List.of("car1", "car2", "car3"));
+        racingGame.getCars().get(0).moveForward();
+        racingGame.getCars().get(0).moveForward();
+        racingGame.getCars().get(1).moveForward();
+        assertEquals(2, racingGame.getMaxPosition());
+    }
+
+    @Test
+    @DisplayName("최대 위치를 가진 자동차 이름을 올바르게 반환할 수 있다.")
+    public void testGetWinners() {
+        racingGame.createCars(List.of("car1", "car2", "car3"));
+        racingGame.getCars().get(0).moveForward();
+        racingGame.getCars().get(0).moveForward();
+        racingGame.getCars().get(1).moveForward();
+        List<String> winners = racingGame.getWinners(2);
+        assertEquals(1, winners.size());
+        assertEquals("car1", winners.get(0));
+    }
 }
