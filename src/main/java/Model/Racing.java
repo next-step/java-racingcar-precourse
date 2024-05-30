@@ -32,4 +32,20 @@ public class Racing {
         }
     }
 
+    public List<String> getWinners() {
+        int winnerPositon = 0;
+        List<String> winnerNames = new ArrayList<>();
+        for (Car car : carList) {
+            if (car.getPositon() > winnerPositon) {
+                winnerPositon = car.getPositon();;
+            }
+        }
+
+        for (Car car : carList) {
+            if (car.getPositon() == winnerPositon) {
+                winnerNames.add(car.getCarName());
+            }
+        }
+        return winnerNames;
+    }
 }
