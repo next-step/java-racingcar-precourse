@@ -5,6 +5,8 @@ public enum ExceptionMessage {
     DUPLICATED_CAR_NAME("중복된 이름이 존재합니다."),
     INVALID_TRIAL_COUNT("시도 횟수는 1 이상이어야 합니다.");
 
+    final static String ERROR_PREFIX = "[ERROR] ";
+
     private final String message;
 
     ExceptionMessage(String message) {
@@ -12,6 +14,6 @@ public enum ExceptionMessage {
     }
 
     public String getMessage() {
-        return message;
+        return ERROR_PREFIX + message;
     }
 }
