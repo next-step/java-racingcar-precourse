@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
+
     private final List<Car> cars;
 
     public Cars(List<Car> cars) {
@@ -21,7 +22,7 @@ public class Cars {
     public static Cars createCars(List<String> carNames) {
         List<Car> cars = new ArrayList<>();
 
-        for (String name:carNames) {
+        for (String name : carNames) {
             cars.add(new Car(name));
         }
 
