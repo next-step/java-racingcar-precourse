@@ -22,19 +22,27 @@ public class GameService {
 
     public List<Car> playRound() {
         for (Car car : cars.getCars()) {
-            if (RandomNumberGenerator.generate() >= 4) {
+            if (canMove(RandomNumberGenerator.generate())) {
                 car.forward();
             }
         }
         return cars.getCars();
     }
 
+    private boolean canMove(int number) {
+        return number >= 4;
+    }
+
     public List<Car> whosTheWinner() {
-        int max = cars.getCars().stream()
-                        .mapToInt(Car::getStep)
-                        .max().orElse(0);
+        int max = findMaxStep();
         return cars.getCars().stream()
                         .filter(car -> car.getStep().equals(max))
                         .collect(Collectors.toList());
+    }
+
+    private int findMaxStep() {
+        return cars.getCars().stream()
+                        .mapToInt(Car::getStep)
+                        .max().orElse(0);
     }
 }
