@@ -11,7 +11,7 @@
 2. Info 클래스
     - 상태정보: Car list, 이동 횟수
     - 기능
-        - insert() : 입력 문자열과 이동 횟수를 통해 초기화
+        - insertNames() : ','로 구분된 자동차 이름 문자열로 Car list 초기화
         - round() : 
           - list 내의 모든 Car에 대해 임의의 난수(0 ~ 9) 생성 후,<br>
           해당 난수가 4 이상이면 move() 호출<br>
@@ -30,3 +30,8 @@
 1. RaceController
     - 입력 값 유효성 판단
     - 전체 흐름 제어
+2. Validator
+    - InputValidator : 입력 이름 공백 및 길이 검사
+    - InputCountMissMatchValidator : 이동 횟수 입력 데이터 타입 검사
+    - InputCountValidator : 음수 입력 검사
+    - DuplicationValidator : 중복 이름 검사
