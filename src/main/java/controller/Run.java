@@ -9,11 +9,12 @@ public class Run {
 
     private Validation validation = new Validation();
     private Service service = new Service();
+    private Print print = new Print();
 
     private List<Car> carNamesInput() {
         while (true) {
             try {
-                Print.printCarNameInputComment();
+                print.printCarNameInputComment();
                 List<String> carsNames = Input.carNameInput();
                 validation.validationCarName(carsNames);
                 return carsNames.stream().map(carName -> new Car(carName)).toList();
@@ -28,7 +29,7 @@ public class Run {
     private Integer tryCountInput() {
         while (true) {
             try {
-                Print.printTryCountInputComment();
+                print.printTryCountInputComment();
                 String tryCount = Input.tryCountInput();
                 validation.validationTryCount(tryCount);
                 System.out.println();
@@ -47,11 +48,11 @@ public class Run {
         List<Car> cars = carNamesInput();
         Integer tryCount = tryCountInput();
 
-        Print.printExecutionResult();
+        print.printExecutionResult();
         for (int i = 0; i < tryCount; i++) {
             service.moveCars(cars, service.generatePercent(cars.size()));
-            Print.printTotalCarMovement(cars);
+            print.printTotalCarMovement(cars);
         }
-        Print.printWinner(service.getWinner(cars));
+        print.printWinner(service.getWinner(cars));
     }
 }
