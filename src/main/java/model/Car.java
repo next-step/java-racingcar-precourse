@@ -27,7 +27,10 @@ public class Car {
         this.move = move;
     }
 
-    public void moveCar(){
-        move += 1;
+    public void moveCar(int randNum){
+        if(randNum>=4){
+            move += 1;
+        }
+
     }
 }
