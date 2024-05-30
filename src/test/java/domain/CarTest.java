@@ -11,7 +11,7 @@ class CarTest {
     @DisplayName("각 자동차에 이름을 부여할 수 있다.")
     public void createCar() throws Exception {
         //given
-        Car car = new Car("stopmin");
+        RacingCar car = new RacingCar("stopmin");
 
         //when
         String name = car.getName();
@@ -24,7 +24,7 @@ class CarTest {
     @DisplayName("자동차가 전진하는지 확인한다.")
     public void moveForward() throws Exception {
         //given
-        Car car = new Car("stopmin");
+        RacingCar car = new RacingCar("stopmin");
 
         //when
         car.moveForward();
@@ -41,7 +41,7 @@ class CarTest {
         String name = "stopmin";
 
         //when
-        boolean isValid = Car.isValidName(name);
+        boolean isValid = RacingCar.isValidName(name);
 
         //then
         assertFalse(isValid);
@@ -54,7 +54,7 @@ class CarTest {
         String name = "min";
 
         //when
-        boolean isValid = Car.isValidName(name);
+        boolean isValid = RacingCar.isValidName(name);
 
         //then
         assertTrue(isValid);
