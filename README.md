@@ -1,31 +1,38 @@
 # java-racingcar-precourse
 
-## 패키지 구조
-src
-└── main
-├── java
-│   └── racinggame
-│       ├── Application.java                // 애플리케이션 시작점
-│       ├── controller                      // 컨트롤러 패키지
-│       │   └── RacingGame.java
-│       ├── domain                          // 도메인 패키지
-│       │   ├── Car.java
-│           └── User.java                   
-│       ├── validator                         // 검증 패키지
-│       │   └── InputValidator.java
-│       └── view                            // 뷰 패키지
-│           ├── InputView.java
-│           └── ResultView.java
-└── test                                    // 테스트 패키지
-└── java
-└── racinggame
-├── controller                  // 컨트롤러 테스트 패키지
-│   └── RacingGameTest.java
-├── domain                      // 도메인 테스트 패키지
-│   └── CarTest.java
-│   └── User.java   
-├── validator                     // 검증 테스트 패키지
-│   └── InputValidatorTest.java
-└── view                        // 뷰 테스트 패키지
-├── InputViewTest.java
-└── ResultViewTest.java
+## 프로젝트 개요
+카카오테크 캠퍼스 step1의 두 번째 미니과제이며, 간단한 자동차 경주 게임을 구현하였습니다. 사용자에게 자동차 이름과 시도 횟수를 입력 받고, 횟수만큼 자동차가 랜덤으로 전진하는 게임입니다.
+
+## 기능 목록
+
+### 1. 자동차 이름 입력 기능
+- 사용자는 쉼표(",")로 자동차 이름을 구분하여 입력합니다.
+- 자동차 이름은 5자 이하만 가능하며, 빈 문자열이 올 수 없습니다.
+- RacingGameInputValidator.isValidateCarNames 메서드를 이용하여 입력받은 문자열을 검증합니다.
+
+### 2. 이동 횟수 입력 기능
+- 사용자는 자동차 경주를 시도할 횟수를 입력합니다.
+- 시도 횟수는 양의 정수여야 합니다.
+- RacingGameInputValidator.isValidateInputNum 메서드를 이용하여 입력받은 숫자를 검증합니다.
+
+### 3. 자동차 이동 기능
+- 각 Car 객체는 0 ~ 9 사이의 난수를 생성하여 난수가 4 이상일 경우에 전진합니다.
+- Car.move 메서드를 이용하여 전진합니다.(canMove()에서 Car 객체가 전진할지 판단)
+
+### 4. 자동차 레이싱 기능
+- 사용자에게 입력 받은 횟수 동안 각 Car 객체가 전진하거나 정지합니다.
+- RacingGameService.race 메서드를 이용합니다.
+
+### 5. 우승자 선정 기능
+- position 이 가장 높은 자동차를 우승자로 선정합니다. 우승자는 다수일 수 있으며 쉼표(",")로 구분합니다.
+- RacingGameService.getWinners 메서드를 이용합니다.
+
+## 테스트
+- RacingGameInputValidatorTest - 입력값 검증 로직에 대한 단위 테스트
+- RacingGameServiceTest - 비즈니스 로직에 대한 단위 테스트
+
+## 실행 방법
+- Application 클래스의 main 메서드를 실행합니다.
+- 이후 사용자는 자동차의 이름을 쉼표(",")로 구분하여 입력합니다.
+- 마지막으로 레이싱 시도 횟수를 숫자로 입력합니다.
+- 최종 우승자를 확인합니다.
