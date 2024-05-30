@@ -4,6 +4,7 @@ import static domain.ExceptionMessage.INVALID_NAME_LENGTH;
 import static domain.ExceptionMessage.INVALID_TRIAL_COUNT;
 import static domain.GameMessage.ASK_CAR_NAME;
 import static domain.GameMessage.ASK_GAME_COUNT;
+import static domain.RacingCar.POSITION_UNIT;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -75,8 +76,12 @@ public class RacingGame {
             if (isMoveForward()) {
                 car.moveForward();
             }
-            ioHandler.println(car.getName() + " : " + car.getPosition());
+            ioHandler.println(car.getName() + " : " + getPositionUnits(car.getPosition()));
         }
+    }
+
+    private String getPositionUnits(int position) {
+        return POSITION_UNIT.repeat(Math.max(0, position));
     }
 
     void printWinners() {

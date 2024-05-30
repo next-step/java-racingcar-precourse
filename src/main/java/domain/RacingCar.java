@@ -3,6 +3,7 @@ package domain;
 public class RacingCar {
 
     final static int MAX_NAME_LENGTH = 5;
+    final static String POSITION_UNIT = "-";
 
     private String name;
     private int position;
