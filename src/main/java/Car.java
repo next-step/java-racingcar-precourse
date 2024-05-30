@@ -10,6 +10,12 @@ public class Car {
         this.name = name;
     }
 
+    public void move(int randomNum){
+        if(randomNum >= MOVENUM){
+            position++;
+        }
+    }
+
     public String getName() {
         return name;
     }
