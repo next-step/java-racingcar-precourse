@@ -1,5 +1,7 @@
 package com.mini.caracing.view;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public final class GameView {
@@ -20,6 +22,13 @@ public final class GameView {
 
     public void displayRaceStart() {
         System.out.println("\n실행 결과");
+    }
+
+    public void displayCarDistances(LinkedHashMap<String, Integer> carMoves) {
+        for (Map.Entry<String, Integer> entry : carMoves.entrySet()) {
+            displayOneDistance(entry.getKey(), entry.getValue());
+        }
+        System.out.println();
     }
 
     public void displayOneDistance(String carName, int move) {
