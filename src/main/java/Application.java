@@ -9,26 +9,22 @@ public class Application {
     static List<Integer> arr = new ArrayList<Integer>();
     static List<Integer> cardistance = new ArrayList<Integer>();
     static List<Integer> top = new ArrayList<Integer>();
+    static int a = 0;
 
     public static void main(String[] args) {
-        inputName();
-        if (vaildName() == false){ // validName 메서드 반환값이 false면 프로그램 종료
-            return;
-        }
+        validName();
         inputChance();
         makeNumber();
         for (int i = 0; i < nameArray.length; i++) { //각각의 자동차가 얼마나 전진했는지 저장할 리스트 요소 0으로 초기화
             cardistance.add(0);
         }
         System.out.println("실행 결과");
-        for (int i = 0; i < chance; i++) {
-            goStop();
-        }
+        result();
         winner();
         printTop();
     }
 
-    static void inputName(){
+    static void inputName() throws IllegalArgumentException{
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         Scanner scan = new Scanner(System.in);
         String name = scan.nextLine();
@@ -38,18 +34,15 @@ public class Application {
             nameList.add(nameArray[i]);
         }
         System.out.println(nameList); // 배열에 잘 들어갔는지 확인용도
-
-    }
-    static boolean vaildName(){ // 이름이 5자 이상이면 프로그램을 종료한다.
         for (int i = 0; i < nameArray.length; i++) {
             int nameLength = nameArray[i].length();
-            if (nameLength > 5) {
-                System.out.println("이름의 길이는 5자 이하로 만들어야 합니다.");
-                return false;
+            if (nameLength > 5) { // 이름이 5자 이상이면 IllegalArgumentException를 발생
+                throw new IllegalArgumentException();
             }
         }
-        return true;
+
     }
+
     static void inputChance(){
         System.out.println("시도할 횟수는 몇 회인가요?");
         Scanner scan = new Scanner(System.in);
@@ -93,17 +86,28 @@ public class Application {
     }
     static void printTop(){ // 최종적으로 정해진 우승자를 출력하는 메서드
         System.out.print("최종 우승자 : ");
-        if( top.size() > 1){ // 우승자가 여러명인 경우 ","를 구분자로 출력한다.
-            String[] topNameArray = new String[top.size()]; // 우승자 이름을 저장할 배열
-            for (int i = 0; i < top.size(); i++){ // 리스트로부터 이름을 받아 배열로 저장
-                topNameArray[i] = nameArray[top.get(i)];
-            }
-            String topName = String.join(",", topNameArray);//배열 요소들을 출력 할때 구분자 추가
-            System.out.println(topName);
+        // 우승자가 여러명인 경우 ","를 구분자로 출력한다.
+        String[] topNameArray = new String[top.size()]; // 우승자 이름을 저장할 배열
+        for (int i = 0; i < top.size(); i++){ // 리스트로부터 이름을 받아 배열로 저장
+            topNameArray[i] = nameArray[top.get(i)];
         }
-        else{
-            System.out.print(nameArray[top.get(0)]);// 우승자가 한명일때 그냥 출력
+        String topName = String.join(",", topNameArray);//배열 요소들을 출력 할때 구분자 추가
+        System.out.println(topName);
+    }
+    static void result(){ // 전진 결과를 출력할 메서드
+        for (int i = 0; i < chance; i++) { // 시도할 횟수만큼 goStop메서드 호출
+            goStop();
         }
     }
-
+    static void validName(){ // 자동차의 이름이 5자 이하 인지 판별하는 메서드
+        while (a == 0){
+            try {
+                inputName(); // 입력받은 자동차 이름이 모두 유효하면 반복문 탈출
+                a = 1;
+            }
+            catch (IllegalArgumentException e) { // IllegalArgumentException를 받으면 에러메세지 출력후 다시 이름 입력 받기
+                System.out.println("[ERROR] 이름의 길이는 5자 이하로 만들어야 합니다.");
+            }
+        }
+    }
 }
