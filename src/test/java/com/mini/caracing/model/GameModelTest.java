@@ -1,12 +1,11 @@
 package com.mini.caracing.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
-import com.mini.caracing.util.GameUtil;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -53,5 +52,28 @@ class GameModelTest {
         for (int distance : gameModel.getCarDistances().values()) {
             assertThat(distance).isEqualTo(moveDistance);
         }
+    }
+
+    @ParameterizedTest
+    @DisplayName("우승 차량 테스트")
+    @CsvSource({
+        "'car1,car2,car3', '5,3,5', 'car1,car3'",
+        "'carA,carB,carC', '2,4,4', 'carB,carC'",
+        "'Pobi,Woni,Jun', '6,6,6', 'Pobi,Woni,Jun'"
+    })
+    public void testGetWinnerList(String carNameInput, String moveDistance,
+        String winnerListInput) {
+        gameModel.initGameModel(Arrays.asList(carNameInput.split(",")), 3);
+        List<Integer> moveDistanceList = Arrays.stream(moveDistance.split(","))
+            .map(Integer::parseInt).collect(Collectors.toList());
+        List<String> winnerList = Arrays.asList(winnerListInput.split(","));
+
+        int idx = 0;
+        for (Map.Entry<String, Integer> entry : gameModel.getCarDistances().entrySet()) {
+            gameModel.updateOneCarDistance(entry,
+                moveDistanceList.get(idx++ % moveDistanceList.size()));
+        }
+
+        assertThat(winnerList).isEqualTo(gameModel.getWinnerList());
     }
 }
