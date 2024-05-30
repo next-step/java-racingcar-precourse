@@ -20,8 +20,8 @@ public class RacingViews {
         return sc.nextInt();
     }
 
-    public void displayResult(){
-        System.out.println("실행 결과");
+    public void displayResult(String result){
+        System.out.println(result);
     }
-    
+
 }
