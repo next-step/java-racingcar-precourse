@@ -2,6 +2,7 @@ package controller;
 
 import java.util.List;
 import parser.InputParser;
+import validator.AttemptValidator;
 import validator.CarNamesValidator;
 import view.InputView;
 
@@ -15,6 +16,7 @@ public class GameController {
 
     public void play() {
         obtainCarNames();
+        obtainAttempt();
     }
 
     private List<String> obtainCarNames() {
@@ -26,5 +28,16 @@ public class GameController {
             obtainCarNames();
         }
         return InputParser.obtainCarNames(input);
+    }
+
+    private int obtainAttempt() {
+        String input = inputView.obtainAttempt();
+        try {
+            AttemptValidator.validate(input);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            obtainAttempt();
+        }
+        return InputParser.obtainAttempt(input);
     }
 }
