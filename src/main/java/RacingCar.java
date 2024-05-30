@@ -4,6 +4,7 @@ public class RacingCar {
     String[] nameList;
     int[] stepList;
     int tryNum;
+    int maxNum=0;
 
     public RacingCar(){ }
     public void run(){
@@ -31,5 +32,24 @@ public class RacingCar {
         Scanner scanner = new Scanner(System.in);
         int num = scanner.nextInt();
         this.tryNum = num;
+    }
+
+    public void oneStep(){
+        for(int i=0;i<nameList.length;i++){
+            Random random = new Random();
+            int temp = random.nextInt(10);
+            if(temp>=4) stepList[i]+=1;
+            if(stepList[i]>this.maxNum)this.maxNum = stepList[i];
+            printOneStep(i);
+        }
+        System.out.println();
+    }
+
+    public void printOneStep(int i){
+        System.out.printf("%s : ",nameList[i]);
+        for(int j=0;j<stepList[i];j++){
+            System.out.print("-");
+        }
+        System.out.println();
     }
 }
