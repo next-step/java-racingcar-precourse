@@ -1,8 +1,10 @@
 package com.mini.caracing.view;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public final class GameView {
 
@@ -34,5 +36,9 @@ public final class GameView {
     public void displayOneDistance(String carName, int move) {
         System.out.print(carName + " : ");
         System.out.println("-".repeat(move));
+    }
+
+    public void displayWinner(List<String> winnerList) {
+        System.out.println("최종 우승자 : " + winnerList.stream().collect(Collectors.joining(", ")));
     }
 }
