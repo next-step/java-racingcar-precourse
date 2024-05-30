@@ -1,3 +1,5 @@
+import java.util.List;
+import org.assertj.core.api.ThrowableAssert;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -22,5 +24,12 @@ class CarTest {
 
         car.move(3);
         assertThat(car.getPosition()).isEqualTo(1);
+    }
+
+    @Test
+    @DisplayName("자동차 이름이 중복되었을 떄, 오류를 출력하는지 테스트")
+    void CarNameDup() {
+        List<String> carNames = List.of("aaa","aaa","bbb");
+        assertThatThrownBy(() -> Car.CarDup(carNames)).isInstanceOf(IllegalArgumentException.class);
     }
 }
