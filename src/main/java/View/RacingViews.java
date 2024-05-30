@@ -19,4 +19,9 @@ public class RacingViews {
         System.out.println("시도할 횟수는 몇 회인가요?");
         return sc.nextInt();
     }
+
+    public void displayResult(){
+        System.out.println("실행 결과");
+    }
+    
 }
