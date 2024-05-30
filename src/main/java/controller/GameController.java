@@ -2,6 +2,7 @@ package controller;
 
 import java.util.List;
 import parser.InputParser;
+import service.GameService;
 import validator.AttemptValidator;
 import validator.CarNamesValidator;
 import view.InputView;
@@ -9,14 +10,15 @@ import view.InputView;
 public class GameController {
 
     private final InputView inputView;
+    private final GameService gameService;
 
     public GameController() {
         this.inputView = new InputView();
+        this.gameService = new GameService();
     }
 
     public void play() {
-        obtainCarNames();
-        obtainAttempt();
+        gameService.play(obtainCarNames(), obtainAttempt());
     }
 
     private List<String> obtainCarNames() {
