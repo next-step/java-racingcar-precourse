@@ -23,7 +23,7 @@ public class RacingCarsVO {
     }
 
     public void setMove(int move) {
-        if(move >= 4){
+        if (move >= 4) {
             this.move++;
         }
     }

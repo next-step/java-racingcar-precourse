@@ -21,7 +21,7 @@ public class RacingViews {
         return sc.nextInt();
     }
 
-    public void displayResult(String result){
+    public void displayResult(String result) {
         System.out.println(result);
     }
 

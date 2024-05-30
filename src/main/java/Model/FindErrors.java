@@ -21,7 +21,7 @@ public class FindErrors {
     }
 
     public void validAttempts(int n) {
-        if(n <= 0){
+        if (n <= 0) {
             throw new IllegalArgumentException("[ERROR] 시도 횟수는 1 이상이어야 합니다.");
         }
     }

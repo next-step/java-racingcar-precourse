@@ -1,4 +1,3 @@
-
 import Controller.*;
 import Model.*;
 import View.*;
@@ -14,13 +13,13 @@ public class Application {
         String carNames = inputProcessing.getValidCarNames();
         String[] carNamesArray = carNames.split(",");
         RacingCarsVO[] cars = new RacingCarsVO[carNamesArray.length];
-        for(int i = 0; i < carNamesArray.length; i++){
+        for (int i = 0; i < carNamesArray.length; i++) {
             cars[i] = new RacingCarsVO(carNamesArray[i]);
         }
         int attempts = inputProcessing.getValidAttempts();
         movingCars.movingCar(cars, attempts);
         List<String> winners = winnerCalculator.calculateWinners(cars);
-        views.displayWinners(String.join(", ",winners));
+        views.displayWinners(String.join(", ", winners));
     }
 
 }
