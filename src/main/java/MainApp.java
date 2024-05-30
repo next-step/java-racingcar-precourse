@@ -1,5 +1,8 @@
+import controller.RacingController;
+
 public class MainApp {
     public static void main(String[] args) {
-        System.out.println("hello");
+        RacingController racing = new RacingController();
+        racing.startRacing();
     }
 }
