@@ -12,7 +12,8 @@ public class Input {
 
     public static List<String> carNameInput() throws IOException {
         String carNames = br.readLine();
-        return Arrays.stream(carNames.split(",")).map(String::trim).toList();
+        return Arrays.stream(carNames.split(",")).map(String::trim).filter(str -> !str.isEmpty())
+                .toList();
     }
 
     public static String tryCountInput() throws IOException {
