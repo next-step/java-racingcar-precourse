@@ -12,6 +12,7 @@ public class RacingCar {
         inputName();
         printTryNum();
         inputTryNum();
+        printResult();
     }
     public void printInputName(){
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
@@ -51,5 +52,29 @@ public class RacingCar {
             System.out.print("-");
         }
         System.out.println();
+    }
+
+    public void printResult(){
+        System.out.println("실행 결과");
+        for(int i=0;i<this.tryNum;i++) {
+            oneStep();
+        }
+        printWinner();
+    }
+
+    public void printWinner(){
+        List<String> maxNames = new ArrayList<>();
+        for(int j=0;j<nameList.length;j++){
+            if(stepList[j] == maxNum){
+                maxNames.add(nameList[j]);
+            }
+        }
+        System.out.print("최종 우승자 : ");
+        for (int i = 0; i < maxNames.size(); i++) {
+            System.out.print(maxNames.get(i));
+            if (i < maxNames.size() - 1) {
+                System.out.print(", ");
+            }
+        }
     }
 }
