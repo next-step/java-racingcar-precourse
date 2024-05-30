@@ -20,6 +20,7 @@ public class MovingCars {
                 car.setMove(move);
                 view.displayResult(car.toString());
             }
+            System.out.println();
         }
     }
 }
