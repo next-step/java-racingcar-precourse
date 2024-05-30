@@ -9,9 +9,9 @@ public class InputView {
 
         return sc.nextLine();
     }
-    public int inputCount(){
+    public String inputCount(){
         System.out.println("시도할 횟수는 몇회인가요?");
-        return sc.nextInt();
+        return sc.nextLine();
     }
 
     public void printError(String message){
