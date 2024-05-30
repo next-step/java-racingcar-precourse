@@ -15,9 +15,16 @@ public class Validation {
         }
     }
 
+    public void isCarNamesEmpty(List<String> carNames) {
+        if (carNames.isEmpty()) {
+            throw new IllegalArgumentException("[ERROR] 한 명 이상의 참가자가 필요합니다.");
+        }
+    }
+
     public void validationCarName(List<String> carNames) {
         carNames.stream().forEach(this::isCarNameLengthUnderFive);
         isCarNameSame(carNames);
+        isCarNamesEmpty(carNames);
     }
 
     public void isTryCountInteger(String tryCount) {
