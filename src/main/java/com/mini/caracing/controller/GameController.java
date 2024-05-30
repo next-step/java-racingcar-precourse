@@ -16,6 +16,15 @@ public final class GameController {
         this.gameView = gameView;
     }
 
+    public void play() {
+        List<String> carNameList = readCarNames();
+        int totalMove = readTotalMove();
+
+        gameModel.initGameModel(carNameList, totalMove);
+        race();
+        showWinner();
+    }
+
     public List<String> readCarNames() {
         String carNamesInput;
 
