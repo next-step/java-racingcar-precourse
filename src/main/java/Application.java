@@ -6,6 +6,8 @@ public class Application {
 
     public void start(){
         String[] carNames = InputView.getCarNames();
+        Car.CarDup(Arrays.asList(carNames));
+
         int attempts = InputView.getAttempts();
 
         Race race = new Race(Arrays.asList(carNames), attempts);
