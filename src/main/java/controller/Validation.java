@@ -3,10 +3,12 @@ package controller;
 import java.util.List;
 
 public class Validation {
-    public void isCarNameLengthUnderFive(String carName) {
-        if (carName.length() > 5) {
-            throw new IllegalArgumentException("[ERROR] 자동차 이름은 5자 이하여야 합니다.");
-        }
+    public void isCarNamesLengthUnderFive(List<String> carNames) {
+        carNames.stream().forEach(carName -> {
+            if (carName.length() > 5) {
+                throw new IllegalArgumentException("[ERROR] 자동차 이름은 5자 이하여야 합니다.");
+            }
+        });
     }
 
     public void isCarNameSame(List<String> carNames) {
@@ -22,7 +24,7 @@ public class Validation {
     }
 
     public void validationCarName(List<String> carNames) {
-        carNames.stream().forEach(this::isCarNameLengthUnderFive);
+        isCarNamesLengthUnderFive(carNames);
         isCarNameSame(carNames);
         isCarNamesEmpty(carNames);
     }
