@@ -97,7 +97,7 @@ public class GameTest {
     void printCars() {
 
         for (int i = 0; i<trial;i++) {
-            gameService.playOneTurn(cars.getCars());
+            gameService.playOneTurn(cars, new MaxMoved(0));
         }
         for (Car car: cars.getCars()) {
             System.out.println(car.getName() +"은 " + car.getCount() + "칸 이동하였다.");

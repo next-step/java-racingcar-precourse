@@ -3,39 +3,39 @@ package service;
 import java.util.List;
 import model.Car;
 import model.Cars;
-import model.MaxNumber;
+import model.MaxMoved;
 import model.Trial;
 import util.RandomGenerator;
 import view.OutputView;
 
 public class GameService {
-    public static final int THRESHOLD = 4;
 
+    public static final int THRESHOLD = 4;
 
     public void playGame(Cars cars, Trial trial) {
 
-        MaxNumber maxNumber = new MaxNumber(0);
+        MaxMoved maxMoved = new MaxMoved(0);
         OutputView.printDefault();
 
         do {
-            playOneTurn(cars.getCars());
-            maxNumber.updateMaxNumber(cars.getCars());
+            playOneTurn(cars, maxMoved);
             OutputView.printResult(cars.getCars());
             trial.endOneTrial();
         } while (trial.isContinued());
 
-        OutputView.printWinners(cars.getCars(), maxNumber.getMaxNumber());
+        OutputView.printWinners(cars.getCars(), maxMoved.getMaxNumber());
 
     }
 
 
-    public void playOneTurn(List<Car> cars) {
+    public void playOneTurn(Cars cars, MaxMoved maxMoved) {
 
-        for (Car car:cars) {
+        for (Car car : cars.getCars()) {
             int randomNumber = RandomGenerator.createRandomNumber();
             checkMoveOrStay(randomNumber, car);
         }
 
+        maxMoved.updateMaxNumber(cars.getCars());
     }
 
     public void checkMoveOrStay(int i, Car a) {
@@ -44,10 +44,9 @@ public class GameService {
         }
 
         if (i >= THRESHOLD) {
-            a.setCount(a.getCount() + 1);
+            a.move();
         }
     }
-
 
 
 }
