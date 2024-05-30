@@ -49,7 +49,7 @@ public class Car {
         }
     }
 
-    public static void checkContainsEmpty(String input) {
+    public static void checkContainedEmpty(String input) {
         if (input.startsWith(DEL) || input.endsWith(DEL) || input.contains(DEL + DEL)) {
             throw new IllegalArgumentException("[ERROR] 잘못된 입력 양식입니다.");
         }
