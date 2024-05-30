@@ -1,6 +1,6 @@
 package controller;
 
-import java.util.Arrays;
+import java.util.List;
 
 public class Validation {
     public void isCarNameLengthUnderFive(String carName) {
@@ -9,14 +9,14 @@ public class Validation {
         }
     }
 
-    public void isCarNameSame(String[] carNames) {
-        if (Arrays.stream(carNames).distinct().count() != carNames.length) {
+    public void isCarNameSame(List<String> carNames) {
+        if (carNames.stream().distinct().count() != carNames.size()) {
             throw new IllegalArgumentException("[ERROR] 자동차 이름은 중복되지 않아야 합니다.");
         }
     }
 
-    public void validationCarName(String[] carNames) {
-        Arrays.stream(carNames).forEach(this::isCarNameLengthUnderFive);
+    public void validationCarName(List<String> carNames) {
+        carNames.stream().forEach(this::isCarNameLengthUnderFive);
         isCarNameSame(carNames);
     }
 

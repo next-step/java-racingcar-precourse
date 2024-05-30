@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 
 import model.Car;
@@ -17,9 +16,9 @@ public class Run {
         while (true) {
             try {
                 Print.printCarNameInputComment();
-                String[] carsNames = Input.CarNameInput();
+                List<String> carsNames = Input.carNameInput();
                 validation.validationCarName(carsNames);
-                cars = Arrays.stream(carsNames).map(carName -> new Car(carName)).toList();
+                cars = carsNames.stream().map(carName -> new Car(carName)).toList();
                 break;
             } catch (IOException e) {
                 System.out.println(e.getMessage());
