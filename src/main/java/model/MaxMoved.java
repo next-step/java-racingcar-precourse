@@ -2,11 +2,11 @@ package model;
 
 import java.util.List;
 
-public class MaxNumber {
+public class MaxMoved {
 
     private int maxNumber;
 
-    public MaxNumber(int initNumber) {
+    public MaxMoved(int initNumber) {
         this.maxNumber = initNumber;
     }
 

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import model.Car;
 import model.Cars;
-import model.MaxNumber;
+import model.MaxMoved;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -110,19 +110,19 @@ public class GameTest {
         Car A = cars.getCar(0);
         Car B = cars.getCar(1);
         Car C = cars.getCar(2);
-        MaxNumber maxNumber = new MaxNumber(0);
+        MaxMoved maxMoved = new MaxMoved(0);
 
         A.setCount(4); B.setCount(3); C.setCount(2);
-        maxNumber.updateMaxNumber(cars.getCars());
-        OutputView.printWinners(cars.getCars(), maxNumber.getMaxNumber());
+        maxMoved.updateMaxNumber(cars.getCars());
+        OutputView.printWinners(cars.getCars(), maxMoved.getMaxNumber());
 
         A.setCount(4); B.setCount(4); C.setCount(3);
-        maxNumber.updateMaxNumber(cars.getCars());
-        OutputView.printWinners(cars.getCars(), maxNumber.getMaxNumber());
+        maxMoved.updateMaxNumber(cars.getCars());
+        OutputView.printWinners(cars.getCars(), maxMoved.getMaxNumber());
 
         A.setCount(4); B.setCount(4); C.setCount(4);
-        maxNumber.updateMaxNumber(cars.getCars());
-        OutputView.printWinners(cars.getCars(), maxNumber.getMaxNumber());
+        maxMoved.updateMaxNumber(cars.getCars());
+        OutputView.printWinners(cars.getCars(), maxMoved.getMaxNumber());
     }
 
 }
