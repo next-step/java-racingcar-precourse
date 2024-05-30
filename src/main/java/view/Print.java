@@ -1,7 +1,6 @@
 package view;
 
 import java.util.List;
-
 import model.Car;
 
 public class Print {
@@ -19,6 +18,7 @@ public class Print {
 
     public static void printTotalCarMovement(List<Car> cars) {
         cars.forEach(car -> printCarMovement(car));
+        System.out.println();
     }
 
     public static void printExecutionResult() {
@@ -26,6 +26,7 @@ public class Print {
     }
 
     public static void printWinner(List<Car> winners) {
-        System.out.println("최종 우승자: " + String.join(", ", winners.stream().map(Car::getName).toList()));
+        System.out.println(
+                "최종 우승자: " + String.join(", ", winners.stream().map(Car::getName).toList()));
     }
 }

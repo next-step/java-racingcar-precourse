@@ -11,21 +11,18 @@ public class Run {
     private Service service = new Service();
 
     private List<Car> carNamesInput() {
-        List<Car> cars = null;
         while (true) {
             try {
                 Print.printCarNameInputComment();
                 List<String> carsNames = Input.carNameInput();
                 validation.validationCarName(carsNames);
-                cars = carsNames.stream().map(carName -> new Car(carName)).toList();
-                break;
+                return carsNames.stream().map(carName -> new Car(carName)).toList();
             } catch (IOException e) {
                 System.out.println(e.getMessage());
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }
         }
-        return cars;
     }
 
     private Integer tryCountInput() {
@@ -34,6 +31,7 @@ public class Run {
                 Print.printTryCountInputComment();
                 String tryCount = Input.tryCountInput();
                 validation.validationTryCount(tryCount);
+                System.out.println();
                 return Integer.parseInt(tryCount);
             } catch (IOException e) {
                 System.out.println(e.getMessage());
@@ -48,15 +46,12 @@ public class Run {
     public void run() {
         List<Car> cars = carNamesInput();
         Integer tryCount = tryCountInput();
-        System.out.println();
 
         Print.printExecutionResult();
         for (int i = 0; i < tryCount; i++) {
             service.moveCars(cars, service.generatePercent(cars.size()));
             Print.printTotalCarMovement(cars);
-            System.out.println();
         }
-
         Print.printWinner(service.getWinner(cars));
     }
 }
