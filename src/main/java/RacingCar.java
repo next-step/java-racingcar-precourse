@@ -12,16 +12,11 @@ public class RacingCar {
         System.out.println("시도할 횟수는 몇회인가요?");
         Scanner scan = new Scanner(System.in);
         int try_num = scan.nextInt();
-       // get try_num
+        race.GetTryNum(try_num);
+        // get try_num and insert
 
-        race = new RacingCarVO(try_num);
-        //overloading
-
-
-
-
-
-
+        race.Try();
+        // print all car and distace
 
     }
 }

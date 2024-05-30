@@ -14,9 +14,9 @@ public class RacingCarVO {
     }// constructor
 
 
-    public RacingCarVO(int try_num) {
+    public void GetTryNum(int try_num) {
         this.try_num = try_num;
-    }// constructor overloading
+    }// get try_num
 
 
     public void GetCar() {
@@ -59,6 +59,7 @@ public class RacingCarVO {
             int distance = race.get(car);
             distance += GoOrStop();
             race.put(car , distance);
+            //System.out.println(car + " : " + race.get(car));
         }
     }// Go and Stop and calculate distance
 
@@ -71,13 +72,20 @@ public class RacingCarVO {
         return 0;
     }// if tmp is more than 4 , go one step or stop
 
+    public void Try(){
+        for (int i=0; i<try_num; i++){
+            Go();
+            PrintCar();
+        }
+    }
+
 
     public void PrintCar(){
         for (String car : cars ){
-            System.out.println(car + " " + race.get(car));
+            String road = "-".repeat(race.get(car));
+            System.out.println(car + " : " +road);
         }
-    }// print all cars
-
-
+        System.out.println(" ");
+    }// print all cars and road for distace
 
 }
