@@ -7,5 +7,18 @@ public class Car {
 
     public Car(String name) {
         this.name = name;
+        step = 0;
+    }
+    
+    public void forward() {
+        step++;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Integer getStep() {
+        return step;
     }
 }

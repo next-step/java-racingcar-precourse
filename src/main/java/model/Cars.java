@@ -14,4 +14,8 @@ public class Cars {
     public void add(Car car) {
         cars.add(car);
     }
+
+    public List<Car> getCars() {
+        return cars;
+    }
 }
