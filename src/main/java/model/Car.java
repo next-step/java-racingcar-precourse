@@ -9,9 +9,15 @@ public class Car {
         this.name = name;
         step = 0;
     }
-    
-    public void forward() {
-        step++;
+
+    public void moveOrNot(int number) {
+        if (canMove(number)) {
+            step++;
+        }
+    }
+
+    private boolean canMove(int number) {
+        return number >= 4;
     }
 
     public String getName() {

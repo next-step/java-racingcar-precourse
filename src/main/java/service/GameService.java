@@ -22,15 +22,9 @@ public class GameService {
 
     public List<Car> playRound() {
         for (Car car : cars.getCars()) {
-            if (canMove(RandomNumberGenerator.generate())) {
-                car.forward();
-            }
+            car.moveOrNot(RandomNumberGenerator.generate());
         }
         return cars.getCars();
-    }
-
-    private boolean canMove(int number) {
-        return number >= 4;
     }
 
     public List<Car> whosTheWinner() {
