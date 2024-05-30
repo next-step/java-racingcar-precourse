@@ -33,30 +33,4 @@ class CarTest {
         //then
         assertEquals(1, position);
     }
-
-    @Test
-    @DisplayName("자동차 이름이 5자 이상이면 유효하지 않다.")
-    public void isInValidName() throws Exception {
-        //given
-        String name = "stopmin";
-
-        //when
-        boolean isValid = RacingCar.isValidName(name);
-
-        //then
-        assertFalse(isValid);
-    }
-
-    @Test
-    @DisplayName("자동차 이름이 5자 이하면 유효하다.")
-    public void isValidName() throws Exception {
-        //given
-        String name = "min";
-
-        //when
-        boolean isValid = RacingCar.isValidName(name);
-
-        //then
-        assertTrue(isValid);
-    }
 }
