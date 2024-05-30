@@ -24,21 +24,26 @@ public class Race {
         if (canMove()) {
             moveCars();
             support.firePropertyChange("raceStatusUpdate", null, getRaceStatus());
-            return;
         }
-        raceCondition = FINISHED;
-        support.firePropertyChange("raceFinished", null, getWinnerList());
     }
 
     public boolean canMove() {
         return (attemptCount > 0) && (raceCondition == IN_PROGRESS);
     }
 
-    public void moveCars () {
+    private void moveCars() {
         attemptCount--;
+        if (attemptCount == 0) {
+            finishRace();
+        }
         for (Car car : carList) {
             car.move();
         }
+    }
+
+    private void finishRace() {
+        raceCondition = FINISHED;
+        support.firePropertyChange("raceFinished", null, getWinnerList());
     }
 
     public List<String> getRaceStatus() {
@@ -61,6 +66,10 @@ public class Race {
 
     public RaceCondition getRaceCondition() {
         return raceCondition;
+    }
+
+    public int getAttemptCount() {
+        return attemptCount;
     }
 
     public void addPropertyChangeListener(PropertyChangeListener pcl) {
