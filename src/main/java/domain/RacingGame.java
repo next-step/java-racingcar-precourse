@@ -22,7 +22,7 @@ public class RacingGame {
     private static final ArrayList<RacingCar> cars = new ArrayList<>();
     private static int trialCount;
 
-    RacingGame(IOHandler ioHandler) {
+    public RacingGame(IOHandler ioHandler) {
         RacingGame.ioHandler = ioHandler;
     }
 
