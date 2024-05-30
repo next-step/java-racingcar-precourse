@@ -28,4 +28,8 @@ public class RacingCarsVO {
         }
     }
 
+    @Override
+    public String toString() {
+        return carName + " : " + "-".repeat(move);
+    }
 }
