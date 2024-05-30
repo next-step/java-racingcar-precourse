@@ -57,7 +57,7 @@ public class Car {
 
     public static void checkCarNameLength(String carName) {
         if (carName.isEmpty() || carName.length() > MAX_LENGTH_NAME) {
-            throw new IllegalArgumentException("[ERROR] 잘못된 입력 양식입니다.");
+            throw new IllegalArgumentException("[ERROR] 자동차 이름은 5자 이하로 가능합니다.");
         }
     }
 
