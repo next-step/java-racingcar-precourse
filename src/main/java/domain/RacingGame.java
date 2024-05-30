@@ -4,6 +4,8 @@ import static domain.ExceptionMessage.INVALID_NAME_LENGTH;
 import static domain.ExceptionMessage.INVALID_TRIAL_COUNT;
 import static domain.GameMessage.ASK_CAR_NAME;
 import static domain.GameMessage.ASK_GAME_COUNT;
+import static domain.GameMessage.RESULT;
+import static domain.GameMessage.WINNER;
 import static domain.RacingCar.POSITION_UNIT;
 
 import java.util.ArrayList;
@@ -34,6 +36,7 @@ public class RacingGame {
         generateCars();
         setTrialCount();
 
+        ioHandler.println("\n" + RESULT.getMessage());
         while (trialCount-- > 0) {
             playOneRound();
         }
@@ -78,6 +81,7 @@ public class RacingGame {
             }
             ioHandler.println(car.getName() + " : " + getPositionUnits(car.getPosition()));
         }
+        ioHandler.println("");
     }
 
     private String getPositionUnits(int position) {
@@ -87,7 +91,7 @@ public class RacingGame {
     void printWinners() {
         int maxPosition = getMaxPosition();
         List<String> winners = getWinners(maxPosition);
-        ioHandler.println(String.join(", ", winners) + "가 최종 우승했습니다.");
+        ioHandler.println(WINNER.getMessage() + String.join(DELIMITER + " ", winners));
     }
 
     int getMaxPosition() {
