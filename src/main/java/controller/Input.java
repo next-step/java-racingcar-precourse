@@ -13,8 +13,7 @@ public class Input {
         return carNames.split(",");
     }
 
-    public static Integer tryCountInput() throws IOException {
-        Integer tryCount = Integer.parseInt(br.readLine());
-        return tryCount;
+    public static String tryCountInput() throws IOException {
+        return br.readLine();
     }
 }
