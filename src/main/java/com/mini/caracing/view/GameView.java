@@ -21,4 +21,9 @@ public final class GameView {
     public void displayRaceStart() {
         System.out.println("\n실행 결과");
     }
+
+    public void displayOneDistance(String carName, int move) {
+        System.out.print(carName + " : ");
+        System.out.println("-".repeat(move));
+    }
 }
