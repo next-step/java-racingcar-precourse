@@ -17,9 +17,13 @@ public class RacingController {
     public void startRacing(){
         inputCarName();
         inputTryNum();
+        RacingView.printResultmessage();
         for(int i = 0;i<tryNum;i++){
             moveCarByRandNum(carlist);
+            RacingView.moveStatus(carlist);
         }
+
+        RacingView.printResult(getWinner());
     }
     public void addCarlist(String[] carNames){
         carlist = new ArrayList<>();
@@ -40,8 +44,9 @@ public class RacingController {
         tryNum = RacingView.printInputTryNum();
     }
     public void moveCarByRandNum(List<Car> cars){
-        int randNum = (int)(Math.random()*9);
+
         for(int i =0;i<carlist.size();i++){
+            int randNum = (int)(Math.random()*9);
             cars.get(i).moveCar(randNum);
         }
     }
