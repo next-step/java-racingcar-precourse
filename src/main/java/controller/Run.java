@@ -9,7 +9,7 @@ import view.Print;
 
 public class Run {
 
-    private static Validation validation = new Validation();
+    private Validation validation = new Validation();
 
     private List<Car> carNamesInput() {
         List<Car> cars = null;
@@ -28,4 +28,22 @@ public class Run {
         }
         return cars;
     }
+
+    private Integer tryCountInput() {
+        while (true) {
+            try {
+                Print.printTryCountInputComment();
+                String tryCount = Input.tryCountInput();
+                validation.validationTryCount(tryCount);
+                return Integer.parseInt(tryCount);
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            } catch (NumberFormatException e) {
+                System.out.println(e.getMessage());
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
 }
