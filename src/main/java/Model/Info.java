@@ -11,13 +11,15 @@ public class Info {
     }
 
     //입력으로 주어진 자동차 이름 문자열을 ","로 구분하여 carList 에 삽입
-    public void insert(String input,int inputCount){
-        this.count = inputCount;
+    public void insertNames(String input){
         for(String s : input.split(",")){
             carList.add(new Car(s));
         }
     }
 
+    public void insertCount(int count){
+       this.count = count;
+    }
     //모든 자동차에 대해 0 ~ 9 사이의 난수 생성 후 해당 값이 4 이상일시 move() 호출
     public void round(){
         Random random = new Random();
@@ -50,6 +52,6 @@ public class Info {
 
     //남은 이동 횟수가 0이라면 레이스는 종료
     public boolean isFinish(){
-        return count == 0;
+        return count <= 0;
     }
 }
