@@ -45,9 +45,16 @@ public class RacingGame {
     }
 
     void generateCars() {
-        List<String> carNames = askCarNames();
-        List<String> validatedCarNames = validateCarNames(carNames);
-        createCars(validatedCarNames);
+        while (true) {
+            try {
+                List<String> carNames = askCarNames();
+                List<String> validatedCarNames = validateCarNames(carNames);
+                createCars(validatedCarNames);
+                break;
+            } catch (IllegalArgumentException e) {
+                ioHandler.println(e.getMessage());
+            }
+        }
     }
 
     List<String> askCarNames() {
@@ -69,9 +76,17 @@ public class RacingGame {
     }
 
     void setTrialCount() {
-        ioHandler.println(ASK_GAME_COUNT.getMessage());
-        trialCount = ioHandler.getIntInput();
-        validateTrialCount(trialCount);
+        while (true) {
+            try {
+                ioHandler.println(ASK_GAME_COUNT.getMessage());
+                trialCount = ioHandler.getIntInput();
+                validateTrialCount(trialCount);
+                break;
+            } catch (IllegalArgumentException e) {
+                ioHandler.println(e.getMessage());
+                setTrialCount();
+            }
+        }
     }
 
     void playOneRound() {
