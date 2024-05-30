@@ -18,6 +18,11 @@ public class RacingView {
         System.out.println("시도할 회수는 몇회인가요?");
         return sc.nextInt();
     }
+    public static void moveStatus(List<Car> carlist){
+        System.out.println("실행 결과");
+        carlist.forEach(car -> System.out.println(car.getCarname() + ":" + "-".repeat(car.getMove())));
+
+    }
     public static void printResult(List<Car> winners){
         System.out.print("최종 우승자 : ");
         String winner = winners.stream()
