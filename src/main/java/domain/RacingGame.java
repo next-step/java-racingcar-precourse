@@ -12,6 +12,7 @@ public class RacingGame {
 
     static final IOHandler ioHandler = new IOHandler();
     static final ArrayList<RacingCar> cars = new ArrayList<>();
+    static final String DELIMITER = ",";
 
     public void start() {
         ioHandler.println(ASK_CAR_NAME.getMessage());
@@ -33,13 +34,12 @@ public class RacingGame {
     }
 
     private ArrayList<String> validateCarNames(String carNames) {
-        String[] carNameArray = carNames.split(",");
+        String[] carNameArray = carNames.split(DELIMITER);
         for (String name : carNameArray) {
             if (name.length() > RacingCar.MAX_NAME_LENGTH) {
                 throw new IllegalArgumentException(INVALID_NAME_LENGTH.getMessage());
             }
         }
-
 
         return new ArrayList<>(Arrays.asList(carNameArray));
     }
