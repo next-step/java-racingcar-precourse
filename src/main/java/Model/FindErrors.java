@@ -7,7 +7,7 @@ public class FindErrors {
         String[] carNames = input.split(",");
         Set<String> uniqueNames = new HashSet<>();
         for(String name : carNames){
-            if(name.length() > 5 || name.contains(" ")){
+            if(name.length() > 5 ){
                 throw new IllegalArgumentException("[ERROR] 자동차의 이름은 5자 이하만 가능합니다.");
             }
             if(name.contains(" ")){
