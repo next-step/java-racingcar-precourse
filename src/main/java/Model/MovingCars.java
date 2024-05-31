@@ -1,6 +1,5 @@
-package Controller;
+package Model;
 
-import Model.RacingCarsVO;
 import View.RacingViews;
 import java.util.*;
 

@@ -1,6 +1,5 @@
-package Controller;
+package Model;
 
-import Model.RacingCarsVO;
 import java.util.*;
 
 public class WinnerCalculator {
