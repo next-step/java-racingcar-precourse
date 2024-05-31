@@ -11,12 +11,24 @@ import java.util.stream.Collectors;
 public class StartView {
     private static final String CAR_NAMES_NOTICE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
     public static final String CAR_NAMES_SEPARATOR = ",";
+    public static final String TRY_COUNT_NOTICE = "시도할 회수는 몇회인가요?";
 
     public List<String> readCarNames() {
         while (true) {
             try {
                 ConsoleWriter.printlnMessage(CAR_NAMES_NOTICE);
                 return validateCarNames(ConsoleReader.enterMessage());
+            } catch (ProException e) {
+                ConsoleWriter.printlnMessage(e.getMessage());
+            }
+        }
+    }
+
+    public int readTryCount() {
+        while (true) {
+            try {
+                ConsoleWriter.printlnMessage(TRY_COUNT_NOTICE);
+                return validateNumber(ConsoleReader.enterMessage());
             } catch (ProException e) {
                 ConsoleWriter.printlnMessage(e.getMessage());
             }
@@ -68,4 +80,15 @@ public class StartView {
         return carNames.size() != carNames.stream().distinct().count();
     }
 
+    private int validateNumber(String input) {
+        try {
+            int count = Integer.parseInt(input);
+            if (count < 1) {
+                throw ProException.from(ProMessage.INVALID_TRY_COUNT_ERROR);
+            }
+            return count;
+        } catch (NumberFormatException e) {
+            throw ProException.from(ProMessage.INVALID_TRY_COUNT_ERROR);
+        }
+    }
 }
