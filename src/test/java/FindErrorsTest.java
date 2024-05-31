@@ -32,4 +32,13 @@ public class FindErrorsTest {
         });
         assertEquals("[ERROR] 자동차의 이름에 중복이 있으면 안됩니다.", exception.getMessage());
     }
+
+    @Test
+    public void validCarNames(){
+        String input = "pobi,woni,jun";
+        assertDoesNotThrow(()-> {
+            findErrors.validCarNames(input);
+        });
+        assertEquals("pobi,woni,jun",input);
+    }
 }
