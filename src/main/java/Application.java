@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -14,7 +13,7 @@ public class Application {
         int tNum = tryNum();                // 전진 시도 횟수 입력
         System.out.println("\n실행 결과");
         for(int i=0; i<tNum; i++) {         // 전진 시도 결과 출력
-            racingResult();
+            racing();
         }
         printRacingResult();
     }
@@ -32,16 +31,19 @@ public class Application {
         Random rand = new Random();
         return rand.nextInt(10);
     }
-    public static void racingResult() {
-        for(Map.Entry<String, Integer> car : racingCar.entrySet()) {
-            System.out.print(car.getKey() + " : ");
-            racingCar.put(car.getKey(), car.getValue()+isForward());
-            for(int j=0; j<car.getValue(); j++) {
-                System.out.print("-");
-            }
-            System.out.println();
+    public static void racing() {
+        for(String car : racingCar.keySet()) {
+            System.out.print(car + " : " + processBar(car) + "\n");
         }
         System.out.println();
+    }
+    public static String processBar(String car) {
+        racingCar.put(car, racingCar.get(car)+isForward());
+        String bar = "";
+        for(int i=0; i<racingCar.get(car); i++) {
+            bar += "-";
+        }
+        return bar;
     }
     public static int isForward() {
         if(randNum() >= 4)
