@@ -23,6 +23,7 @@ public class RacingService {
 
     public int inputRacingCount() {
         String input = InputView.inputRacingCount();
+        Validator.validNumberFormat(input);
         Validator.validRacingCount(input);
         return Integer.parseInt(input);
     }

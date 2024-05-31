@@ -34,4 +34,13 @@ class ValidatorTest {
         assertThrows(IllegalArgumentException.class, () ->
                 Validator.validRacingCount(testStringCount));
     }
+
+    @Test
+    void testValidRacingCount3() {
+        // given
+        String testStringCount = "asdf";
+        // when // then
+        assertThrows(IllegalArgumentException.class, () ->
+                Validator.validNumberFormat(testStringCount));
+    }
 }

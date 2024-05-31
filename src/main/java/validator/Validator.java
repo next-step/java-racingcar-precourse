@@ -25,13 +25,20 @@ public class Validator {
      */
     public static void validRacingCount(String input) {
         long longValue = Long.parseLong(input);
-
         if (longValue < 0 || longValue > Integer.MAX_VALUE) {
             throw new IllegalArgumentException("[Error] 시도할 횟수는 "
                     + "0이상이고 "
                     + Integer.MAX_VALUE
                     + "보다 작아야 한다."
                     );
+        }
+    }
+
+    public static void validNumberFormat(String input) {
+        try {
+            Long.parseLong(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[Error] 시도할 횟수는 숫자이어야 한다.");
         }
     }
 }

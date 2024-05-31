@@ -23,7 +23,7 @@ class RacingServiceTest {
         assertArrayEquals(list, result);
     }
     @Test
-    void testInputRacingCount() {
+    void testInputRacingCount1() {
         // given
         String input = "12";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
@@ -34,5 +34,25 @@ class RacingServiceTest {
 
         // then
         assertEquals(count, result);
+    }
+
+    @Test
+    void testInputRacingCount2() {
+        // given
+        String input = "-1";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        // when // then
+        assertThrows(IllegalArgumentException.class, racingService::inputRacingCount);
+    }
+
+    @Test
+    void testInputRacingCount3() {
+        // given
+        String input = "asd";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        // when // then
+        assertThrows(IllegalArgumentException.class, racingService::inputRacingCount);
     }
 }
