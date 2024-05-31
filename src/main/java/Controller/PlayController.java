@@ -8,7 +8,7 @@ public class PlayController {
         RacingController racing = new RacingController();
         WinnerController winners = new WinnerController();
 
-        winners.getResult(racing.playRacing(name.getCarNames(), count.getTryCount()));
+        winners.getWinner(racing.playRacing(name.getCarNames(), count.getTryCount()));
 
     }
 }
