@@ -27,11 +27,18 @@ public class RacingService {
     }
 
     public String[] createCars() {
-        String input = InputView.inputCarList();
-        input = input.replaceAll(" ", "");
-        String[] carArray = input.split(",");
-        Validator.validNameLength(carArray);
-        return removeDuplicates(carArray);
+        while(true) {
+            try {
+                String input = InputView.inputCarList();
+                input = input.replaceAll(" ", "");
+                String[] carArray = input.split(",");
+                Validator.validNameLength(carArray);
+                Validator.validArrayExist(carArray);
+                return removeDuplicates(carArray);
+            } catch (IllegalArgumentException e) {
+                OutputView.outputMessage(e.getMessage());
+            }
+        }
     }
 
     public void announceWinner() {
@@ -48,10 +55,16 @@ public class RacingService {
     }
 
     public int inputRacingCount() {
-        String input = InputView.inputRacingCount();
-        Validator.validNumberFormat(input);
-        Validator.validRacingCount(input);
-        return Integer.parseInt(input);
+        while(true) {
+            try {
+                String input = InputView.inputRacingCount();
+                Validator.validNumberFormat(input);
+                Validator.validRacingCount(input);
+                return Integer.parseInt(input);
+            } catch (IllegalArgumentException e) {
+                OutputView.outputMessage(e.getMessage());
+            }
+        }
     }
 
     private String[] removeDuplicates(String[] array) {

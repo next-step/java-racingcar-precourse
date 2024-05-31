@@ -6,9 +6,18 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ValidatorTest {
     @Test
-    void testValidNameLength() {
+    void testValidNameLength1() {
         // given
         String[] testCars = {"pobi", "jun", "eclipse"};
+
+        // when // then
+        assertThrows(IllegalArgumentException.class, () ->
+                Validator.validNameLength(testCars));
+    }
+    @Test
+    void testValidNameLength2() {
+        // given
+        String[] testCars = {","};
 
         // when // then
         assertThrows(IllegalArgumentException.class, () ->
