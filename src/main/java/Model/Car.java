@@ -8,7 +8,7 @@ public class Car {
     //생성자로 변수 초기화
     public Car(String name, String nowStatus, int moveCount) {
         this.name = name;
-        this.nowStatus = nowStatus;
+        this.nowStatus = name + " : " +nowStatus;
         this.moveCount = moveCount;
     }
     //각 변수 getter
@@ -22,5 +22,10 @@ public class Car {
 
     public int getMoveCount() {
         return moveCount;
+    }
+
+    public void addCarMoveOnce(){
+        this.nowStatus += "-";
+        this.moveCount++;
     }
 }

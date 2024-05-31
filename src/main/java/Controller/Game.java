@@ -6,6 +6,8 @@ import Model.Winner;
 import Model.WinnerNumber;
 import Util.CheckNameValidity;
 import Util.CheckNumberValidity;
+import Util.MakeRandomNumber;
+import Util.MoveOrNot;
 import VIew.InputView;
 import VIew.OutputView;
 import java.io.IOException;
@@ -49,6 +51,14 @@ public class Game {
         while(!CheckNumberValidity.checkNumberValidity(numberOfAttempts)){
             OutputView.outputLine("다시~~~");
         }
-        Player player = new Player(Integer.parseInt(numberOfAttempts));
+        player = new Player(Integer.parseInt(numberOfAttempts));
     }
+
+    public void allCarMoveOrNot(){
+        for(int i = 0; i < cars.length; i++){
+            int randomNumber = MakeRandomNumber.makeRandomNumber();
+            MoveOrNot.checkMoveOrNot(randomNumber,cars[i]);
+        }
+    }
+
 }
