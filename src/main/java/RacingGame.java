@@ -13,7 +13,7 @@ public class RacingGame {
         Race race=new Race(carNames);
         for (int i=0;i<moveCount;i++){
             race.moveCars();
-            race.printProgress();
+            printProgress(race.getCars());
         }
 
         List<Car> winner=race.getWinner();
@@ -44,6 +44,13 @@ public class RacingGame {
             int moveCount=Integer.parseInt(scanner.nextLine());
             return moveCount;
         }
+    }
+
+    private static void printProgress(List<Car> cars){
+        for(Car car:cars){
+            System.out.println(car.getName()+" : "+"-".repeat(car.getPosition()));
+        }
+        System.out.println();
     }
 
     private static void printWinner(List<Car> winner){
