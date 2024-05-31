@@ -10,6 +10,7 @@ public class RacingCar {
     public void run(){
         printInputName();
         inputName();
+
         printTryNum();
         inputTryNum();
         printResult();
@@ -20,9 +21,27 @@ public class RacingCar {
 
     public void inputName(){
         Scanner scanner = new Scanner(System.in);
-        String text = scanner.nextLine();
-        this.nameList = text.split(",");
+        do{
+            String text = scanner.nextLine();
+            this.nameList = text.split(",");
+        }while(checkNameList());
         this.stepList = new int[this.nameList.length];
+    }
+    public boolean checkNameList(){
+        boolean isValid = true;
+        try{
+            for(String str : this.nameList)
+                checkName(str);
+        }catch(IllegalArgumentException e){
+            isValid = false;
+            System.out.println(e.getMessage());
+        }
+        return isValid;
+    }
+
+    public void checkName(String str){
+        if(str.length()>5 || str.isEmpty())
+            throw new IllegalArgumentException("[ERROR] 이름 길이가 적절하지 않습니다.");
     }
 
     public void printTryNum() {
