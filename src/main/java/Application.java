@@ -40,4 +40,15 @@ public class Application {
             return 1;
         return 0;
     }
+    public static void printRacingResult(String[] carList, int[] racingList) {
+        System.out.print("최종 우승자 :");
+        winnerLen(racingList);
+    }
+    public static int winnerLen(int[] racingList) {
+        int winnerLen = 0;
+        for(int i : racingList) {
+            Math.max(winnerLen, i);
+        }
+        return winnerLen;
+    }
 }
