@@ -37,7 +37,7 @@ public class Validation {
     }
 
     private void isTryCountInteger(String tryCount) {
-        Pattern pattern = Pattern.compile("^[0-9]\\d*$");
+        Pattern pattern = Pattern.compile("^-?\\d+$");
         if (!pattern.matcher(tryCount).matches()) {
             throw new NumberFormatException("[ERROR] 시도 횟수는 정수여야 합니다.");
         }
