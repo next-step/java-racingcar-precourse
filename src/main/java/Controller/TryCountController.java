@@ -10,6 +10,10 @@ public class TryCountController {
     Scanner sc = new Scanner(System.in);
     TryCountService count = new TryCountService();
 
+//    시도 횟수를 입력 받는다.
+//    문자열로 입력된 정수를 검증 후 int 정수로 반환한다.
+//    숫자 외 입력시 IllegalArgumentException를 반환한다.
+//    int범위를 넘어선 값에 대해서는 IllegalStateException를 반환한다.
     public int getTryCount() {
         while (true) {
             try {

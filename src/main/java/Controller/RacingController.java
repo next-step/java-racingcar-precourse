@@ -13,6 +13,9 @@ public class RacingController {
 
     RacingService racing = new RacingService();
 
+//    레이싱을 수행한다.
+//    랜덤닶을 받아 4이상이면 자동차가 한 칸 나아간다.
+//    레이싱을 수행한 List<Car>를 반환한다.
     public List<Car> playRacing(List<Car> cars, int N) {
         print.print("\n 실행결과");
         while (N-- > 0) {
