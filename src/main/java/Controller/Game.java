@@ -20,7 +20,7 @@ public class Game {
     private StringTokenizer carNames;
     private Player player;
     private Winner winner;
-    private int winnerNumber;
+    private WinnerNumber winnerNumber;
 
     public void separateName(String name) {
         beforeCheckCarNames = name.split(",");
@@ -55,9 +55,25 @@ public class Game {
     }
 
     public void allCarMoveOrNot(){
-        for(int i = 0; i < cars.length; i++){
+        for(Car car : cars){
             int randomNumber = MakeRandomNumber.makeRandomNumber();
-            MoveOrNot.checkMoveOrNot(randomNumber,cars[i]);
+            MoveOrNot.checkMoveOrNot(randomNumber, car);
+        }
+    }
+
+    public void findWinnerNumber(){
+        int maxMoveStatus = 0;
+        for(Car car : cars){
+            maxMoveStatus = Math.max(maxMoveStatus, car.getMoveCount());
+        }
+        winnerNumber = new WinnerNumber(maxMoveStatus);
+    }
+
+    public void addAllWinner(){
+        for(Car car : cars){
+            if(winnerNumber.getWinnerNumber() == car.getMoveCount()){
+                winner.addWinner(car.getName());
+            }
         }
     }
 
