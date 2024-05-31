@@ -62,6 +62,7 @@ public class Game {
     }
 
     public void findWinnerNumber(){
+        winner = new Winner();
         int maxMoveStatus = 0;
         for(Car car : cars){
             maxMoveStatus = Math.max(maxMoveStatus, car.getMoveCount());
@@ -85,7 +86,9 @@ public class Game {
     public void totalGame()throws IOException{
         makeCorrectCars();
         makeCorrectPlayer();
-        allCarMoveOrNot();
+        for(int i = 0; i < player.getTryNumber(); i++){
+            allCarMoveOrNot();
+        }
         makeAndPrintWinner();
     }
 }
