@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class RacingCarVO {
     private int try_num;
     private String[] cars;
+    private int winner=0;
     Map<String , Integer> race = new HashMap<>();
 
 
@@ -94,10 +95,23 @@ public class RacingCarVO {
         for (String car : cars ){
             if(max < race.get(car)) {
                 max = race.get(car);
+                winner++;
             }
         }
         return max;
     } // find winner distace
+
+
+    public void OnlyWinner() {
+        int max = GetWinner();
+        for (String car : cars ){
+            if(max != race.get(car)) {
+                race.remove(car);
+            }
+        }
+    } // remove exept winner
+
+
 
 
 

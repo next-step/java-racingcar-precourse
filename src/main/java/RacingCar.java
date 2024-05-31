@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class RacingCar {
+
     public static void main(String[] args) {
 
         RacingCarVO race = new RacingCarVO();
@@ -17,9 +18,6 @@ public class RacingCar {
 
         race.Try();
         // print all car and distace
-
-        race.GetWinner();
-
 
 
     }
