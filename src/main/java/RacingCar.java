@@ -18,5 +18,9 @@ public class RacingCar {
         race.Try();
         // print all car and distace
 
+        race.GetWinner();
+
+
+
     }
 }

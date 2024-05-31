@@ -88,4 +88,18 @@ public class RacingCarVO {
         System.out.println(" ");
     }// print all cars and road for distace
 
+
+    public int GetWinner(){
+        int max=race.get(cars[0]);
+        for (String car : cars ){
+            if(max < race.get(car)) {
+                max = race.get(car);
+            }
+        }
+        return max;
+    } // find winner distace
+
+
+
+
 }
