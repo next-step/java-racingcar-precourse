@@ -1,4 +1,7 @@
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
@@ -47,5 +50,15 @@ public class Application {
     }
     public static void printRacingResult() {
         System.out.print("최종 우승자 :");
+    }
+    public static List<String> winner() {
+        List<String> keySet = new ArrayList<>(racingCar.keySet());
+        Collections.sort(keySet, (o1, o2) -> racingCar.get(o2).compareTo(racingCar.get(o1)));
+
+        int winnerLength = racingCar.get(keySet.get(0));
+        int idx = 0;
+        while(racingCar.get(keySet.get(++idx)) == winnerLength) {}
+
+        return keySet.subList(0, idx);
     }
 }
