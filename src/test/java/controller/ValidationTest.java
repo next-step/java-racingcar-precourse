@@ -39,8 +39,22 @@ public class ValidationTest {
         assertTrue(validation.validationCarName(carNames) == isNotValidated);
     }
 
-    @Test
-    void testValidationTryCount() {
+    static Stream<Arguments> generateTryCount() {
+        return Stream.of(
+                Arguments.of("1234", true),
+                Arguments.of("5", true),
+                Arguments.of("aaaa", false), // 문자열이 입력된 케이스
+                Arguments.of("2147483648", false), // 정수의 최대 범위를 넘어간 케이스
+                Arguments.of("-1", false), // 음수가 입력된 케이스
+                Arguments.of("1.1", false), // 정수가 아닌 값이 입력된 케이스
+                Arguments.of("-1.1", false)); // 정수가 아닌 값이 입력된 케이스
+    }
 
+    @ParameterizedTest
+    @DisplayName("try count validation test")
+    @MethodSource("generateTryCount")
+    void testValidationTryCount(String tryCount, boolean isNotValidated) {
+        Validation validation = Validation.getInstance();
+        assertTrue(validation.validationTryCount(tryCount) == isNotValidated);
     }
 }
