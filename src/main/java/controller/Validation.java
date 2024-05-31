@@ -43,7 +43,14 @@ public class Validation {
         }
     }
 
+    private void isTryCountPositive(String tryCount) {
+        if (Integer.parseInt(tryCount) <= 0) {
+            throw new IllegalArgumentException("[ERROR] 시도 횟수는 0보다 커야 합니다.");
+        }
+    }
+
     private void isTryCountUnderMaximumInteger(String tryCount) {
+        // int MAX_VALUE = 2147483647
         if (tryCount.length() > 10 || Long.parseLong(tryCount) > Integer.MAX_VALUE) {
             throw new IllegalArgumentException("[ERROR] 시도 횟수는 최대 정수값을 초과할 수 없습니다.");
         }
@@ -53,6 +60,7 @@ public class Validation {
         try {
             isTryCountInteger(tryCount);
             isTryCountUnderMaximumInteger(tryCount);
+            isTryCountPositive(tryCount);
             return true;
         } catch (NumberFormatException e) {
             System.out.println(e.getMessage());
