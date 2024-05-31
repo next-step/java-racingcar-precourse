@@ -8,7 +8,7 @@ public class Run {
 
     private Validation validation = new Validation();
     private Service service = new Service();
-    private Print print = new Print();
+    private Print print = Print.getInstance();
 
     private List<Car> carNamesInput() {
         List<String> carsNames = null;
