@@ -59,4 +59,13 @@ public class FindErrorsTest {
         });
         assertEquals("[ERROR] 시도 횟수는 1 이상이어야 합니다.", exception.getMessage());
     }
+
+    @Test
+    public void validAttempts(){
+        int number = 5;
+        assertDoesNotThrow(()-> {
+            findErrors.validAttempts(number);
+        });
+        assertEquals(5,number);
+    }
 }
