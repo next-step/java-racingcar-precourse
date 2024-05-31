@@ -12,6 +12,21 @@ public class Car {
         this.moved = 0;
     }
 
+    public void move() {
+        if (canMove()) {
+            moved++;
+        }
+    }
+
+    private boolean canMove() {
+        int number = RandomNumberGenerator.generate(0, 9);
+        return number >= THRESHOLD;
+    }
+
+    public int moved() {
+        return moved;
+    }
+
     public String carName() {
         return carName.getValue();
     }
