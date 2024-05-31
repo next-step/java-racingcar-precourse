@@ -7,7 +7,7 @@ public class Application {
 
     public static void main(String[] args) {
         RacingViews views = new RacingViews();
-        InputProcessing inputProcessing = new InputProcessing();
+        InputProcessing inputProcessing = new InputProcessing(views, new FindErrors());
         MovingCars movingCars = new MovingCars(views, new Random());
         WinnerCalculator winnerCalculator = new WinnerCalculator();
         String carNames = inputProcessing.getValidCarNames();
