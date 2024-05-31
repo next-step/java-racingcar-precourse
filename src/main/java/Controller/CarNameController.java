@@ -7,11 +7,12 @@ import java.util.List;
 import java.util.Scanner;
 
 public class CarNameController {
+
     Print print = new Print();
     Scanner sc = new Scanner(System.in);
     CarNameService name = new CarNameService();
 
-    public List<Car> getCarNames(){
+    public List<Car> getCarNames() {
 
         while (true) {
             try {
