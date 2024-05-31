@@ -23,4 +23,13 @@ public class FindErrorsTest {
         });
         assertEquals("[ERROR] 자동차의 이름에 띄어쓰기가 있으면 안됩니다.", exception.getMessage());
     }
+
+    @Test
+    public void validCarNames_Duplicate() {
+        String input = "pobi,woni,woni";
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            findErrors.validCarNames(input);
+        });
+        assertEquals("[ERROR] 자동차의 이름에 중복이 있으면 안됩니다.", exception.getMessage());
+    }
 }
