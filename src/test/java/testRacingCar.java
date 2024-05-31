@@ -57,4 +57,14 @@ public class testRacingCar {
         racingCar.inputTryNum();
         assertEquals(3, racingCar.tryNum);
     }
+    @Test
+    public void testOneStep() {
+        RacingCar racingCar = new RacingCar();
+        racingCar.nameList = new String[]{"car1", "car2", "car3"};
+        racingCar.stepList = new int[]{0, 0, 0};
+        racingCar.oneStep();
+        assertTrue(racingCar.maxNum >= 0 && racingCar.maxNum <= 1);
+    }
+
+    
 }
