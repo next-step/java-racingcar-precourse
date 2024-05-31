@@ -9,6 +9,12 @@ public class Car {
         this.position=0;
     }
 
+    public void move(int randomValue){
+        if(randomValue >= 4){
+            position++;
+        }
+    }
+
     public String getName() {
         return name;
     }
