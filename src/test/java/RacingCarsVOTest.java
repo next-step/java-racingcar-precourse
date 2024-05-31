@@ -20,4 +20,12 @@ public class RacingCarsVOTest {
         car.setMove(4);
         assertEquals(1,car.getMove());
     }
+
+    @Test
+    @DisplayName("인자 값이 4미만이면 move가 그대로인지에 대한 테스트")
+    public void setMoveNotIncrease(){
+        RacingCarsVO car = new RacingCarsVO("kbm");
+        car.setMove(3);
+        assertEquals(0,car.getMove());
+    }
 }
