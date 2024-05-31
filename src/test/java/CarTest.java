@@ -1,6 +1,6 @@
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.assertj.core.api.Assert;
+import DTO.Car;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -14,7 +14,7 @@ class CarTest {
         Car car = new Car("test");
 //        when
 //        경계값
-//        updateNum의 입력으로 사용되는 값은 Util.generateRandomNumber에 의해 생성되므로 입력값 검증은 따로 하지 않는다.
+//        updateNum의 입력으로 사용되는 값은 Util.Util.generateRandomNumber에 의해 생성되므로 입력값 검증은 따로 하지 않는다.
         car.updateNum(3);
 //        then
         assertEquals(car.getNum(), 0);
@@ -28,7 +28,7 @@ class CarTest {
         Car car = new Car("test");
 //        when
 //        경계값
-//        updateNum의 입력으로 사용되는 값은 Util.generateRandomNumber에 의해 생성되므로 입력값 검증은 따로 하지 않는다.
+//        updateNum의 입력으로 사용되는 값은 Util.Util.generateRandomNumber에 의해 생성되므로 입력값 검증은 따로 하지 않는다.
         car.updateNum(4);
 //        then
         assertEquals(car.getNum(), 1);

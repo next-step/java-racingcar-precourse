@@ -1,3 +1,5 @@
+package View;
+
 public class Print {
 
     // 출력 지원
