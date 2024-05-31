@@ -20,6 +20,13 @@ public class Race {
         }
     }
 
+    public void printProgress(){
+        for(Car car:cars){
+            System.out.println(car.getName()+" : "+"-".repeat(car.getPosition()));
+        }
+        System.out.println();
+    }
+
     public List<Car> getCars() {
         return new ArrayList<>(cars);
     }
