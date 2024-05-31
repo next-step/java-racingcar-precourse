@@ -41,4 +41,13 @@ public class FindErrorsTest {
         });
         assertEquals("pobi,woni,jun",input);
     }
+
+    @Test
+    public void validAttempts_Zero(){
+        int number = 0;
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            findErrors.validAttempts(number);
+        });
+        assertEquals("[ERROR] 시도 횟수는 1 이상이어야 합니다.", exception.getMessage());
+    }
 }
