@@ -22,7 +22,7 @@ public class RacingGameView {
         }
     }
 
-    public int getMoveCount(Scanner scanner) {
+    public int getMoveCount() {
         while (true) {
             try {
                 System.out.println("시도할 회수는 몇회인가요?");
