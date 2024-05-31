@@ -8,14 +8,28 @@ public class RacingCarTest {
     @Test
     @DisplayName("입력받은 자동차가 아무것도 없을때")
     public void NoCar() {
-        // Given: 테스트를 위한 사전 조건 설정
-       String cars="";
-
-
-        // When: 실제 테스트하고자 하는 동작을 수행
-        int result = Baseball.find_same_number(error);
-
-        // Then: 기대하는 결과와 실제 결과를 비교
-        assertEquals(1, result);
+       String car="";
+       // 입력받은 자동차의 이름이 빈칸일때
+        RacingCarVO race = new RacingCarVO();
+        int result = race.ErrorList(car);
+        // 빈칸으로 입력된 자동차 이름이 ErrorList에 걸리는지
+        assertEquals(2, result);
+        // ErrorList에서 빈칸은 2라고 출력시킴
     }
+    @Test
+    @DisplayName("자동차 이름이 5글자를 넘어갈때")
+    public void OverFive() {
+        String car="abcdef";
+        // 입력받은 자동차의 이름이 5글자를 넘어갈때
+        RacingCarVO race = new RacingCarVO();
+        int result = race.ErrorList(car);
+        // 잘못된 자동차 이름이 ErrorList에 걸리는지
+        assertEquals(1, result);
+        // ErrorList에서 5글자 이상은 1라고 출력시킴
+    }
+
+
+
+
+
 }

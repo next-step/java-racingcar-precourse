@@ -7,8 +7,7 @@ public class RacingCar {
         // create object
         race.GetCar();
         race.AddCar();
-
-        //race.PrintCar();
+        // judge car name and add
 
         System.out.println("시도할 횟수는 몇회인가요?");
         Scanner scan = new Scanner(System.in);
@@ -23,10 +22,6 @@ public class RacingCar {
         // remove except winner
 
         race.PrintWinner();
-
-
-
-
-
+        // show all winners
     }
 }

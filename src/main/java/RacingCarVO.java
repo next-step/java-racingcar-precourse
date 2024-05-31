@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
@@ -8,7 +10,7 @@ public class RacingCarVO {
     private String[] cars;
     private int winner=0;
     Map<String , Integer> race = new HashMap<>();
-
+    // set member variable
 
     public RacingCarVO() {
         this.try_num = 0;
@@ -29,7 +31,8 @@ public class RacingCarVO {
             input = scan.nextLine();
             cars = input.split(",");
             for (String car : cars) {
-                tri += FindError(car);
+                tri += FindError1(car);
+                tri += FindError2(car);
             }
         } while (tri != 0);
     }// get carname
@@ -42,34 +45,63 @@ public class RacingCarVO {
     } //get a carname
 
 
-    public int ErrorList(String car){
-        if (car.length() >5){
+
+    public int ErrorList1(String car) {
+        if (car.length() > 5) {
             return 1;
         }
-        if (car.isEmpty()){
+        if (car.isEmpty()) {
             return 2;
         }
         return 0;
-    }// error list
+    } //error list1
 
 
-    public int FindError(String car) {
+    List Error_car = new ArrayList();
+    public int ErrorList2(String car){
+        if (car.contains(" ")){
+            return 3;
+        }
+        if (Error_car.contains(car)){
+            return 4;
+        }
+        Error_car.add(car);
+        return 0;
+    }// error list2
+
+
+    public int FindError1(String car) {
         try {
-            if (ErrorList(car) > 0) {
+            if (ErrorList1(car) > 0) {
                 throw new IllegalArgumentException("Car Name is no permmit");
             }
             return 0; // 올바른 입력이 들어올때
         } catch (IllegalArgumentException e) {
-            if (ErrorList(car) ==1) {
+            if (ErrorList1(car) ==1) {
                 System.out.printf("[ERROR] : %s is more than 5 characters!\n", car);
             }
-            if (ErrorList(car) ==2) {
+            if (ErrorList1(car) ==2) {
+                System.out.println("[ERROR] :You have to enter one more character!");
+            } Error_car.clear();
+        } return 1;
+    } // find error in error list1
+
+
+    public int FindError2(String car) {
+        try {
+            if (ErrorList2(car) > 0) {
+                throw new IllegalArgumentException("Car Name is no permmit");
+            }
+            return 0; // 올바른 입력이 들어올때
+        } catch (IllegalArgumentException e) {
+            if (ErrorList2(car) ==3) {
                 System.out.println("[ERROR] :Blank is not permmit!");
             }
-
-        }
-        return 1;
-    } // find error.
+            if (ErrorList2(car) ==4) {
+                System.out.println("[ERROR] :Duplicate is not permmit!");
+            } Error_car.clear();
+        } return 1;
+    } // find error in error list 2
 
 
     public void Go(){
@@ -77,9 +109,9 @@ public class RacingCarVO {
             int distance = race.get(car);
             distance += GoOrStop();
             race.put(car , distance);
-            //System.out.println(car + " : " + race.get(car));
         }
     }// Go and Stop and calculate distance
+
 
     public int GoOrStop() {
         Random rand = new Random();
@@ -90,12 +122,13 @@ public class RacingCarVO {
         return 0;
     }// if tmp is more than 4 , go one step or stop
 
+
     public void Try(){
         for (int i=0; i<try_num; i++){
             Go();
             PrintCar();
         }
-    }
+    } //shows the progress of the game
 
 
     public void PrintCar(){
@@ -138,7 +171,5 @@ public class RacingCarVO {
             }
             i--;
         }
-    }
-
-
+    }// show winner
 }
