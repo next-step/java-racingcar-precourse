@@ -1,3 +1,4 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class Application {
@@ -13,5 +14,9 @@ public class Application {
     public static int tryNum() {
         System.out.println("시도할 회수는 몇회인가요?");
         return input.nextInt();
+    }
+    public static int randNum() {
+        Random rand = new Random();
+        return rand.nextInt(10);
     }
 }
