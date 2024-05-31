@@ -7,7 +7,7 @@ import view.Print;
 public class Run {
 
     private Validation validation = new Validation();
-    private Service service = new Service();
+    private Service service = Service.getInstance();
     private Print print = Print.getInstance();
 
     private List<Car> carNamesInput() {
