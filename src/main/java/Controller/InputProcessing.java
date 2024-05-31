@@ -5,12 +5,17 @@ import Model.FindErrors;
 import java.util.InputMismatchException;
 
 public class InputProcessing {
+    private RacingViews racingViews;
+    private FindErrors findErrors;
+
+    public InputProcessing(RacingViews racingViews, FindErrors findErrors) {
+        this.racingViews = racingViews;
+        this.findErrors = findErrors;
+    }
 
     public String getValidCarNames() {
         while (true) {
             try {
-                RacingViews racingViews = new RacingViews();
-                FindErrors findErrors = new FindErrors();
                 String carNames = racingViews.getCarNames();
                 findErrors.validCarNames(carNames);
                 return carNames;
@@ -23,8 +28,6 @@ public class InputProcessing {
     public int getValidAttempts() {
         while (true) {
             try {
-                RacingViews racingViews = new RacingViews();
-                FindErrors findErrors = new FindErrors();
                 int attempts = racingViews.getAttempts();
                 findErrors.validAttempts(attempts);
                 return attempts;
