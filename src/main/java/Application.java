@@ -18,8 +18,7 @@ public class Application {
         }
         int attempts = inputProcessing.getValidAttempts();
         movingCars.movingCar(cars, attempts);
-        List<String> winners = winnerCalculator.calculateWinners(cars);
-        views.displayWinners(String.join(", ", winners));
+        views.displayWinners(winnerCalculator,cars);
     }
 
 }
