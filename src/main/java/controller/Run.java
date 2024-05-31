@@ -1,6 +1,5 @@
 package controller;
 
-import java.io.IOException;
 import java.util.List;
 import model.Car;
 import view.Print;
@@ -12,36 +11,26 @@ public class Run {
     private Print print = new Print();
 
     private List<Car> carNamesInput() {
-        while (true) {
-            try {
-                print.printCarNameInputComment();
-                List<String> carsNames = Input.carNameInput();
-                validation.validationCarName(carsNames);
-                return carsNames.stream().map(carName -> new Car(carName)).toList();
-            } catch (IOException e) {
-                System.out.println(e.getMessage());
-            } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
-            }
+        List<String> carsNames = null;
+        boolean flag = true;
+        while (flag) {
+            print.printCarNameInputComment();
+            carsNames = Input.carNameInput();
+            flag = !validation.validationCarName(carsNames);
         }
+        return carsNames.stream().map(carName -> new Car(carName)).toList();
     }
 
     private Integer tryCountInput() {
-        while (true) {
-            try {
-                print.printTryCountInputComment();
-                String tryCount = Input.tryCountInput();
-                validation.validationTryCount(tryCount);
-                System.out.println();
-                return Integer.parseInt(tryCount);
-            } catch (IOException e) {
-                System.out.println(e.getMessage());
-            } catch (NumberFormatException e) {
-                System.out.println(e.getMessage());
-            } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
-            }
+        String tryCount = null;
+        boolean flag = true;
+        while (flag) {
+            print.printTryCountInputComment();
+            tryCount = Input.tryCountInput();
+            flag = !validation.validationTryCount(tryCount);
         }
+        System.out.println();
+        return Integer.parseInt(tryCount);
     }
 
     public void run() {

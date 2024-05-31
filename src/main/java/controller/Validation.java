@@ -23,10 +23,16 @@ public class Validation {
         }
     }
 
-    public void validationCarName(List<String> carNames) {
-        isCarNamesLengthUnderFive(carNames);
-        isCarNameSame(carNames);
-        isCarNamesEmpty(carNames);
+    public boolean validationCarName(List<String> carNames) {
+        try {
+            isCarNamesLengthUnderFive(carNames);
+            isCarNameSame(carNames);
+            isCarNamesEmpty(carNames);
+            return true;
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
     }
 
     private void isTryCountPositiveInteger(String tryCount) {
@@ -43,8 +49,17 @@ public class Validation {
         }
     }
 
-    public void validationTryCount(String tryCount) {
-        isTryCountPositiveInteger(tryCount);
-        isTryCountUnderMaximumInteger(tryCount);
+    public boolean validationTryCount(String tryCount) {
+        try {
+            isTryCountPositiveInteger(tryCount);
+            isTryCountUnderMaximumInteger(tryCount);
+            return true;
+        } catch (NumberFormatException e) {
+            System.out.println(e.getMessage());
+            return false;
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
     }
 }
