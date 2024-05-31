@@ -10,7 +10,7 @@ public class Run {
     private Service service = Service.getInstance();
     private Print print = Print.getInstance();
 
-    private List<Car> carNamesInput() {
+    private List<Car> getCarsWithValidation() {
         List<String> carsNames = null;
         boolean flag = true;
         while (flag) {
@@ -21,7 +21,7 @@ public class Run {
         return carsNames.stream().map(carName -> new Car(carName)).toList();
     }
 
-    private Integer tryCountInput() {
+    private Integer getTryCountWithValidation() {
         String tryCount = null;
         boolean flag = true;
         while (flag) {
@@ -34,8 +34,8 @@ public class Run {
     }
 
     public void run() {
-        List<Car> cars = carNamesInput();
-        Integer tryCount = tryCountInput();
+        List<Car> cars = getCarsWithValidation();
+        Integer tryCount = getTryCountWithValidation();
 
         print.printExecutionResult();
         for (int i = 0; i < tryCount; i++) {
