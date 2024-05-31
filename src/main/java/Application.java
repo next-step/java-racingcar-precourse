@@ -5,10 +5,11 @@ public class Application {
     static Scanner input = new Scanner(System.in);
     public static void main(String[] args) {
         String[] car = namingCar();         // 경주 자동차 이름 입력
+        int[] racing = new int[car.length]; // 자동차별 전진 상황 기록 리스트
         int tNum = tryNum();                // 전진 시도 횟수 입력
         System.out.println("\n실행 결과");
         for(int i=0; i<tNum; i++) {         // 전진 시도 결과 출력
-            racingResult(car);
+            racingResult(car, racing);
         }
     }
     public static String[] namingCar() {
@@ -23,11 +24,20 @@ public class Application {
         Random rand = new Random();
         return rand.nextInt(10);
     }
-    public static void racingResult(String[] carList) {
-        for(String car: carList) {
-            System.out.print(car + " : ");
+    public static void racingResult(String[] carList, int[] racingList) {
+        for(int i=0; i<carList.length; i++) {
+            System.out.print(carList[i] + " : ");
+            racingList[i] += isForward();
+            for(int j=0; j<racingList[i]; j++) {
+                System.out.print("_");
+            }
             System.out.println();
         }
         System.out.println();
+    }
+    public static int isForward() {
+        if(randNum() >= 4)
+            return 1;
+        return 0;
     }
 }
