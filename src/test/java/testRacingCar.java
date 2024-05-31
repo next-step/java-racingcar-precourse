@@ -1,0 +1,36 @@
+import org.junit.jupiter.api.Test;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+public class testRacingCar {
+    @Test
+    public void testCheckNameValid() {
+        RacingCar racingCar = new RacingCar();
+        assertDoesNotThrow(() -> racingCar.checkName("abc"));
+    }
+
+    @Test
+    public void testCheckNameInvalid() {
+        RacingCar racingCar = new RacingCar();
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> racingCar.checkName("abcdef"));
+        assertEquals("[ERROR] 이름 길이가 적절하지 않습니다.", exception.getMessage());
+
+        exception = assertThrows(IllegalArgumentException.class, () -> racingCar.checkName(""));
+        assertEquals("[ERROR] 이름 길이가 적절하지 않습니다.", exception.getMessage());
+    }
+
+    @Test
+    public void testInputName() {
+        RacingCar racingCar = new RacingCar();
+        String input = "car1,car2,car3\n";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        racingCar.inputName();
+        assertArrayEquals(new String[]{"car1", "car2", "car3"}, racingCar.nameList);
+    }
+
+    
+}
