@@ -14,6 +14,7 @@ public class Race {
 
     public void startRace() {
         Random random = new Random();
+        System.out.println("\n실행 결과");
         for (int i = 0; i < tryCount; i++) {
             for (Car car : cars) {
                 car.move(random.nextInt(10));
