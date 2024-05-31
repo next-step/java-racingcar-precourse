@@ -29,8 +29,7 @@
 MVC모델
 
 Controller
-- MainGame: Application의 run메소드만 실행
-- Application: game을 실행하는 클래스
+- MainGame: Game클래스의 totalGame메소드 실행
 - Game: 실질적인 게임을 구성하는 클래스
 
 Model
