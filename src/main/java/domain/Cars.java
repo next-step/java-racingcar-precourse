@@ -17,6 +17,27 @@ public class Cars {
                 .collect(Collectors.toList());
     }
 
+    public void moveCars() {
+        for (Car car : cars) {
+            car.move();
+        }
+    }
+
+    public List<String> selectWinners() {
+        int maxMoved = getMaxMoved();
+        return cars.stream()
+                .filter(car -> car.moved() == maxMoved)
+                .map(Car::carName)
+                .collect(Collectors.toList());
+    }
+
+    private int getMaxMoved() {
+        return cars.stream()
+                .mapToInt(Car::moved)
+                .max()
+                .orElseThrow(IllegalStateException::new);
+    }
+
     public int size() {
         return cars.size();
     }
