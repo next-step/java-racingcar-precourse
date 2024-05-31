@@ -42,14 +42,31 @@ public class RacingCarVO {
     } //get a carname
 
 
+    public int ErrorList(String car){
+        if (car.length() >5){
+            return 1;
+        }
+        if (car.isEmpty()){
+            return 2;
+        }
+        return 0;
+    }// error list
+
+
     public int FindError(String car) {
         try {
-            if (car.length() > 5) {
-                throw new IllegalArgumentException("car name must be less than 5 characters!");
+            if (ErrorList(car) > 0) {
+                throw new IllegalArgumentException("Car Name is no permmit");
             }
             return 0; // 올바른 입력이 들어올때
         } catch (IllegalArgumentException e) {
-            System.out.printf("[ERROR] : %s is more than 5 characters!\n" , car);
+            if (ErrorList(car) ==1) {
+                System.out.printf("[ERROR] : %s is more than 5 characters!\n", car);
+            }
+            if (ErrorList(car) ==2) {
+                System.out.println("[ERROR] :Blank is not permmit!");
+            }
+
         }
         return 1;
     } // find error.
@@ -64,7 +81,6 @@ public class RacingCarVO {
         }
     }// Go and Stop and calculate distance
 
-
     public int GoOrStop() {
         Random rand = new Random();
         int tmp = rand.nextInt(10);
@@ -74,14 +90,12 @@ public class RacingCarVO {
         return 0;
     }// if tmp is more than 4 , go one step or stop
 
-
-
     public void Try(){
         for (int i=0; i<try_num; i++){
             Go();
             PrintCar();
         }
-    }// determine go or not and print
+    }
 
 
     public void PrintCar(){
@@ -114,7 +128,6 @@ public class RacingCarVO {
         }
     } // remove except winner
 
-
     public void PrintWinner() {
         int i= race.size();
         System.out.print("최종 우승자 : ");
@@ -125,5 +138,7 @@ public class RacingCarVO {
             }
             i--;
         }
-    }// print winners
+    }
+
+
 }
