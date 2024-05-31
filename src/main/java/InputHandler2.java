@@ -17,9 +17,7 @@ public class InputHandler2 {
                 System.out.println("[ERROR] 숫자를 입력해 주세요.");
             } catch (IllegalStateException e) {//오류가 있을때
                 System.out.println(e.getMessage());
-            }
-        }
-    }
+            }}}
 
 
     //0 이하 일때 오류 발생

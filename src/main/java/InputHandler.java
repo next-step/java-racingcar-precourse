@@ -12,12 +12,12 @@ public class InputHandler {
                 String[] splitNames = names.split(",");//,으로 나눠서 배열에 저장
                 validateNames(splitNames);////5글자 초과 또는 공백 오류 잡기
                 return createRacers(splitNames);//Racer 모아놓은 벡터 만드는 함수 호출
-
             } catch (IllegalArgumentException e) {//오류 발생시
                 System.out.println(e.getMessage());
-            }
-        }
-    }
+            }}}
+
+
+
 
     //5글자 초과 또는 공백 포함 시 오류 발생
     void validateNames(String[] splitNames) {
