@@ -29,15 +29,15 @@ public class Validation {
         isCarNamesEmpty(carNames);
     }
 
-    private void isTryCountInteger(String tryCount) {
+    private void isTryCountPositiveInteger(String tryCount) {
         tryCount.chars().forEach(c -> {
             if (!Character.isDigit(c)) {
-                throw new NumberFormatException("[ERROR] 시도 횟수는 숫자여야 합니다.");
+                throw new NumberFormatException("[ERROR] 시도 횟수는 양의 정수여야 합니다.");
             }
         });
     }
 
     public void validationTryCount(String tryCount) {
-        isTryCountInteger(tryCount);
+        isTryCountPositiveInteger(tryCount);
     }
 }
