@@ -34,12 +34,10 @@ public class Game {
     }
 
     public void makeCorrectCars()throws IOException{
-        String names = InputCarsName();
-        separateName(names);
-        while(!makeCars()){
-            names = InputCarsName();
+        do {
+            String names = InputView.inputName();
             separateName(names);
-        }
+        }while (makeCars());
     }
 
 }
