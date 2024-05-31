@@ -32,5 +32,29 @@ public class testRacingCar {
         assertArrayEquals(new String[]{"car1", "car2", "car3"}, racingCar.nameList);
     }
 
-    
+    @Test
+    public void testCheckNumValid() {
+        RacingCar racingCar = new RacingCar();
+        assertDoesNotThrow(() -> racingCar.checkNum(5));
+    }
+
+    @Test
+    public void testCheckNumInvalid() {
+        RacingCar racingCar = new RacingCar();
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> racingCar.checkNum(0));
+        assertEquals("[ERROR] 0보다 큰 숫자를 입력해 주세요.", exception.getMessage());
+
+        exception = assertThrows(IllegalArgumentException.class, () -> racingCar.checkNum(-1));
+        assertEquals("[ERROR] 0보다 큰 숫자를 입력해 주세요.", exception.getMessage());
+    }
+    @Test
+    public void testInputTryNum() {
+        RacingCar racingCar = new RacingCar();
+        String input = "3\n";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        racingCar.inputTryNum();
+        assertEquals(3, racingCar.tryNum);
+    }
 }
