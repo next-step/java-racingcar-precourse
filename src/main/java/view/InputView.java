@@ -8,12 +8,12 @@ public class InputView {
     private static final Scanner scanner = new Scanner(System.in);
 
     public static String inputCarList() {
-        System.out.println(INPUT_CARLIST_MESSAGE);
+        OutputView.outputMessage(INPUT_CARLIST_MESSAGE);
         return scanner.nextLine();
     }
 
     public static String inputRacingCount() {
-        System.out.println(INPUT_RACING_COUNT_MESSAGE);
+        OutputView.outputMessage(INPUT_RACING_COUNT_MESSAGE);
         return scanner.nextLine();
     }
 }

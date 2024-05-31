@@ -1,5 +1,7 @@
 package model;
 
+import view.OutputView;
+
 public class Car {
     private static final int MOVE_FORWARD_STANDARD = 4;
     private String name;
@@ -13,6 +15,7 @@ public class Car {
         if (number >= MOVE_FORWARD_STANDARD) {
             position++;
         }
+        generateResultMessage();
     }
 
     public String getName() {
@@ -29,5 +32,12 @@ public class Car {
 
     public void setPosition(int position) {
         this.position = position;
+    }
+    private void generateResultMessage() {
+        StringBuilder message = new StringBuilder(name + " : ");
+        for (int i = 0; i < position; i++) {
+            message.append("-");
+        }
+        OutputView.outputMessage(String.valueOf(message));
     }
 }
