@@ -66,5 +66,14 @@ public class testRacingCar {
         assertTrue(racingCar.maxNum >= 0 && racingCar.maxNum <= 1);
     }
 
-    
+    @Test
+    public void testPrintWinner() {
+        RacingCar racingCar = new RacingCar();
+        racingCar.nameList = new String[]{"car1", "car2", "car3"};
+        racingCar.stepList = new int[]{3, 5, 5};
+        racingCar.maxNum = 5;
+
+        racingCar.printWinner();
+        // This test just ensures no exception occurs during execution.
+    }
 }
