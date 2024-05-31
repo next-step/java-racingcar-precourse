@@ -1,6 +1,8 @@
 package View;
 
 import Model.RacingCarsVO;
+import Model.WinnerCalculator;
+import java.util.List;
 import java.util.Scanner;
 
 public class RacingViews {
@@ -25,7 +27,8 @@ public class RacingViews {
         System.out.println(result);
     }
 
-    public void displayWinners(String winners) {
-        System.out.println("최종 우승자 : " + winners);
+    public void displayWinners( WinnerCalculator winnerCalculator, RacingCarsVO[] cars) {
+        List<String> winners = winnerCalculator.calculateWinners(cars);
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
     }
 }
