@@ -64,6 +64,7 @@ public class RacingCarVO {
         }
     }// Go and Stop and calculate distance
 
+
     public int GoOrStop() {
         Random rand = new Random();
         int tmp = rand.nextInt(10);
@@ -73,12 +74,14 @@ public class RacingCarVO {
         return 0;
     }// if tmp is more than 4 , go one step or stop
 
+
+
     public void Try(){
         for (int i=0; i<try_num; i++){
             Go();
             PrintCar();
         }
-    }
+    }// determine go or not and print
 
 
     public void PrintCar(){
@@ -109,11 +112,18 @@ public class RacingCarVO {
                 race.remove(car);
             }
         }
-    } // remove exept winner
+    } // remove except winner
 
 
-
-
-
-
+    public void PrintWinner() {
+        int i= race.size();
+        System.out.print("최종 우승자 : ");
+        for (String winner : race.keySet()){
+            System.out.print(winner+" ");
+            if (i >1 ){
+                System.out.print(",");
+            }
+            i--;
+        }
+    }// print winners
 }
