@@ -34,6 +34,19 @@ public class RacingService {
         return removeDuplicates(carArray);
     }
 
+    public void announceWinner() {
+        List<Car> cars = race.getCarList();
+        int winnerPosition = cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
+        List<String> winners = cars.stream()
+                .filter(car -> car.getPosition() == winnerPosition)
+                .map(Car::getName)
+                .toList();
+        OutputView.outputMessage(generateResultMessage(winners));
+    }
+
     public int inputRacingCount() {
         String input = InputView.inputRacingCount();
         Validator.validNumberFormat(input);
@@ -46,4 +59,14 @@ public class RacingService {
         return set.toArray(new String[0]);
     }
 
+    private String generateResultMessage(List<String> winners) {
+        StringBuilder message = new StringBuilder("최종 우승자 : ");
+        for (String winner : winners) {
+            message.append(winner);
+            message.append(", ");
+        }
+        int idx = message.length();
+        message.delete(idx - 2, idx);
+        return message.toString();
+    }
 }

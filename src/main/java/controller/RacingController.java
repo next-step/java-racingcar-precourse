@@ -8,6 +8,6 @@ public class RacingController {
 
     public void racingController() {
         racingService.raceStart();
-
+        racingService.announceWinner();
     }
 }
