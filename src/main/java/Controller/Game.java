@@ -18,22 +18,28 @@ public class Game {
     private Winner winner;
     private int winnerNumber;
 
-    public String InputCarsName() throws IOException {
-        return InputView.inputName();
-    }
-
     public void separateName(String name) {
         beforeCheckCarNames = name.split(",");
     }
 
-    public boolean makeCars(String[] carNames) {
-        cars = new Car[carNames.length];
+    public boolean makeCars() {
+        cars = new Car[beforeCheckCarNames.length];
         for (int i = 0; i < cars.length; i++) {
-            if (!CheckNameValidity.checkNameValidity(carNames[i])) {
+            if (!CheckNameValidity.checkNameValidity(beforeCheckCarNames[i])) {
                 return false;
             }
-            cars[i] = new Car(carNames[i], "", 0);
+            cars[i] = new Car(beforeCheckCarNames[i], "", 0);
         }
         return true;
     }
+
+    public void makeCorrectCars()throws IOException{
+        String names = InputCarsName();
+        separateName(names);
+        while(!makeCars()){
+            names = InputCarsName();
+            separateName(names);
+        }
+    }
+
 }
