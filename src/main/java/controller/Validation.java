@@ -4,6 +4,17 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class Validation {
+    private static Validation instance = new Validation();
+
+    private Validation() {}
+
+    public static Validation getInstance() {
+        if (instance == null) {
+            instance = new Validation();
+        }
+        return instance;
+    }
+
     private void isCarNamesLengthUnderFive(List<String> carNames) {
         carNames.stream().forEach(carName -> {
             if (carName.length() > 5) {

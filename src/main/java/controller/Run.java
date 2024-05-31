@@ -6,7 +6,7 @@ import view.Print;
 
 public class Run {
 
-    private Validation validation = new Validation();
+    private Validation validation = Validation.getInstance();
     private Service service = Service.getInstance();
     private Print print = Print.getInstance();
 
