@@ -1,12 +1,10 @@
 package test.java.Model;
 
-import Model.Car;
-import Model.RandomNumber;
-import org.junit.Test;
-import org.junit.jupiter.api.DisplayName;
+import Model.*;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.Assert.assertEquals;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class RacingCarTest {
     @Test

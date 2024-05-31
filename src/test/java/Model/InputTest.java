@@ -2,13 +2,13 @@ package test.java.Model;
 
 import Controller.ValidateInput;
 import Model.Car;
-import org.junit.Test;
+
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.junit.Assert.*;
 
 public class InputTest {
     @Test
