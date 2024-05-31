@@ -4,7 +4,7 @@ public class PlayController {
 
     public static void play() {
         CarNameController name = new CarNameController();
-        TryController count = new TryController();
+        TryCountController count = new TryCountController();
         RacingController racing = new RacingController();
         WinnerController winners = new WinnerController();
 
