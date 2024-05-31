@@ -50,6 +50,12 @@ public class Application {
     }
     public static void printRacingResult() {
         System.out.print("최종 우승자 :");
+
+        List<String> winningCars = new ArrayList<>(winner());
+        System.out.print(" " + winningCars.get(0));
+        for(int i=1; i<winningCars.size(); i++) {
+            System.out.print(", " + winningCars.get(i));
+        }
     }
     public static List<String> winner() {
         List<String> keySet = new ArrayList<>(racingCar.keySet());
