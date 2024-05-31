@@ -10,7 +10,6 @@ public class RacingCar {
     public void run(){
         printInputName();
         inputName();
-
         printTryNum();
         inputTryNum();
         printResult();
@@ -24,9 +23,10 @@ public class RacingCar {
         do{
             String text = scanner.nextLine();
             this.nameList = text.split(",");
-        }while(checkNameList());
+        }while(!checkNameList());
         this.stepList = new int[this.nameList.length];
     }
+
     public boolean checkNameList(){
         boolean isValid = true;
         try{
@@ -49,9 +49,26 @@ public class RacingCar {
     }
 
     public void inputTryNum(){
+        boolean isValid=true;
+        int num=0;
         Scanner scanner = new Scanner(System.in);
-        int num = scanner.nextInt();
+        do{
+            try{
+                num = scanner.nextInt();
+                checkNum(num);
+            }catch(InputMismatchException e){
+                isValid=false;
+                System.out.println("[ERROR] 숫자를 입력해 주세요.");
+            }catch(IllegalArgumentException e){
+                isValid = false;
+                System.out.println(e.getMessage());
+            }
+        }while(!isValid);
         this.tryNum = num;
+    }
+
+    public void checkNum(int num){
+        if(num<=0) throw new IllegalArgumentException("[ERROR] 0보다 큰 숫자를 입력해 주세요.");
     }
 
     public void oneStep(){
