@@ -1,16 +1,19 @@
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Application {
     static Scanner input = new Scanner(System.in);
+    static HashMap<String, Integer> racingCar = new HashMap<>();  // Key: 자동차 이름, value: 전진 횟수
     public static void main(String[] args) {
         String[] car = namingCar();         // 경주 자동차 이름 입력
-        int[] racing = new int[car.length]; // 자동차별 전진 상황 기록 리스트
         int tNum = tryNum();                // 전진 시도 횟수 입력
         System.out.println("\n실행 결과");
         for(int i=0; i<tNum; i++) {         // 전진 시도 결과 출력
-            racingResult(car, racing);
+            racingResult();
         }
+        printRacingResult();
     }
     public static String[] namingCar() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
@@ -24,11 +27,11 @@ public class Application {
         Random rand = new Random();
         return rand.nextInt(10);
     }
-    public static void racingResult(String[] carList, int[] racingList) {
-        for(int i=0; i<carList.length; i++) {
-            System.out.print(carList[i] + " : ");
-            racingList[i] += isForward();
-            for(int j=0; j<racingList[i]; j++) {
+    public static void racingResult() {
+        for(Map.Entry<String, Integer> car : racingCar.entrySet()) {
+            System.out.print(car.getKey() + " : ");
+            racingCar.put(car.getKey(), car.getValue()+isForward());
+            for(int j=0; j<car.getValue(); j++) {
                 System.out.print("_");
             }
             System.out.println();
@@ -40,15 +43,7 @@ public class Application {
             return 1;
         return 0;
     }
-    public static void printRacingResult(String[] carList, int[] racingList) {
+    public static void printRacingResult() {
         System.out.print("최종 우승자 :");
-        winnerLen(racingList);
-    }
-    public static int winnerLen(int[] racingList) {
-        int winnerLen = 0;
-        for(int i : racingList) {
-            Math.max(winnerLen, i);
-        }
-        return winnerLen;
     }
 }
