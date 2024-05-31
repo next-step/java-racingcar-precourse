@@ -1,6 +1,7 @@
 package controller;
 
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class Validation {
     private void isCarNamesLengthUnderFive(List<String> carNames) {
@@ -35,12 +36,11 @@ public class Validation {
         }
     }
 
-    private void isTryCountPositiveInteger(String tryCount) {
-        tryCount.chars().forEach(c -> {
-            if (!Character.isDigit(c)) {
-                throw new NumberFormatException("[ERROR] 시도 횟수는 양의 정수여야 합니다.");
-            }
-        });
+    private void isTryCountInteger(String tryCount) {
+        Pattern pattern = Pattern.compile("^[0-9]\\d*$");
+        if (!pattern.matcher(tryCount).matches()) {
+            throw new NumberFormatException("[ERROR] 시도 횟수는 정수여야 합니다.");
+        }
     }
 
     private void isTryCountUnderMaximumInteger(String tryCount) {
@@ -51,7 +51,7 @@ public class Validation {
 
     public boolean validationTryCount(String tryCount) {
         try {
-            isTryCountPositiveInteger(tryCount);
+            isTryCountInteger(tryCount);
             isTryCountUnderMaximumInteger(tryCount);
             return true;
         } catch (NumberFormatException e) {
