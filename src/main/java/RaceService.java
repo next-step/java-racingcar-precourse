@@ -19,4 +19,9 @@ class RaceService {
             System.out.println();
         }
     }
+
+    //위너 계산할 때 레이서 백터 전달하는 함수
+    public Vector<Racer> getRacers() {
+        return racers;
+    }
 }
