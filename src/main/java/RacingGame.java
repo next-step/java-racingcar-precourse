@@ -1,6 +1,7 @@
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class RacingGame {
     public static void main(String[] args) {
@@ -14,6 +15,9 @@ public class RacingGame {
             race.moveCars();
             race.printProgress();
         }
+
+        List<Car> winner=race.getWinner();
+        printWinner(winner);
     }
 
     private static List<String> getCarNames(Scanner scanner) {
@@ -40,6 +44,13 @@ public class RacingGame {
             int moveCount=Integer.parseInt(scanner.nextLine());
             return moveCount;
         }
+    }
+
+    private static void printWinner(List<Car> winner){
+        String winnerName=winner.stream()
+                .map(Car::getName)
+                .collect(Collectors.joining(", "));
+        System.out.println("최종 우승자: "+winnerName);
     }
 
 
