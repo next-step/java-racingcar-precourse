@@ -17,4 +17,15 @@ public class MovingCarsTest {
         movingCars = new MovingCars(racingViews,new CustomRandom(5));
     }
 
+    @Test
+    @DisplayName("movingCar의 실행 후 움직였는지 확인")
+    public void movingCarTest(){
+        RacingCarsVO car1 = new RacingCarsVO("kbm");
+        RacingCarsVO car2 = new RacingCarsVO("mbk");
+        RacingCarsVO[] cars = new RacingCarsVO[]{car1, car2};
+        movingCars.movingCar(cars, 3);
+        assertEquals(3, car1.getMove());
+        assertEquals(3, car2.getMove());
+    }
+
 }
