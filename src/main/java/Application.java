@@ -37,7 +37,7 @@ public class Application {
             System.out.print(car.getKey() + " : ");
             racingCar.put(car.getKey(), car.getValue()+isForward());
             for(int j=0; j<car.getValue(); j++) {
-                System.out.print("_");
+                System.out.print("-");
             }
             System.out.println();
         }
