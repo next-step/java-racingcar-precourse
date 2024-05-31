@@ -18,6 +18,11 @@ public class Winner {
         //첫번째 이후 우승자라면 ", 우승자" 를 더함
         addNotFirstWinner(winnerCar);
     }
+
+    public String getWinner() {
+        return winner;
+    }
+
     //단순하게 우승자 더하기
     public void addFirstWinner(String winnerCar) {
         winner += winnerCar;

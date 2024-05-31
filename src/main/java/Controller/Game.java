@@ -76,5 +76,16 @@ public class Game {
             }
         }
     }
+    public void makeAndPrintWinner()throws IOException{
+        findWinnerNumber();;
+        addAllWinner();
+        OutputView.outputGameWinner(winner.getWinner());
+    }
 
+    public void totalGame()throws IOException{
+        makeCorrectCars();
+        makeCorrectPlayer();
+        allCarMoveOrNot();
+        makeAndPrintWinner();
+    }
 }
