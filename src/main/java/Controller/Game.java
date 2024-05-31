@@ -37,57 +37,67 @@ public class Game {
         return true;
     }
 
-    private void makeCorrectCars()throws IOException{
+    private void makeCorrectCars() throws IOException {
         do {
             OutputView.outputInputCarNameMessage();
             String names = InputView.inputName();
             separateName(names);
-        }while (makeCars());
+        } while (!makeCars());
     }
 
-    private void makeCorrectPlayer()throws IOException{
+    private void makeCorrectPlayer() throws IOException {
         OutputView.outputLine("시도할 회수는 몇회인가요?");
         String numberOfAttempts = InputView.inputNumberOfAttempts();
-        while(!CheckNumberValidity.checkNumberValidity(numberOfAttempts)){
+        while (!CheckNumberValidity.checkNumberValidity(numberOfAttempts)) {
             OutputView.outputLine("다시~~~");
         }
         player = new Player(Integer.parseInt(numberOfAttempts));
     }
 
-    private void allCarMoveOrNot(){
-        for(Car car : cars){
+    private void allCarMoveOrNot() {
+        for (Car car : cars) {
             int randomNumber = MakeRandomNumber.makeRandomNumber();
             MoveOrNot.checkMoveOrNot(randomNumber, car);
         }
     }
 
-    private void findWinnerNumber(){
+    private void printAllCarNowStatus()throws IOException{
+        for(Car car : cars){
+            OutputView.outputLine(car.getNowStatus());
+        }
+        OutputView.outputLine("");
+    }
+
+    private void findWinnerNumber() {
         winner = new Winner();
         int maxMoveStatus = 0;
-        for(Car car : cars){
+        for (Car car : cars) {
             maxMoveStatus = Math.max(maxMoveStatus, car.getMoveCount());
         }
         winnerNumber = new WinnerNumber(maxMoveStatus);
     }
 
-    private void addAllWinner(){
-        for(Car car : cars){
-            if(winnerNumber.getWinnerNumber() == car.getMoveCount()){
+    private void addAllWinner() {
+        for (Car car : cars) {
+            if (winnerNumber.getWinnerNumber() == car.getMoveCount()) {
                 winner.addWinner(car.getName());
             }
         }
     }
-    private void makeAndPrintWinner()throws IOException{
-        findWinnerNumber();;
+
+    private void makeAndPrintWinner() throws IOException {
+        findWinnerNumber();
         addAllWinner();
         OutputView.outputGameWinner(winner.getWinner());
     }
 
-    public void totalGame()throws IOException{
+    public void totalGame() throws IOException {
         makeCorrectCars();
         makeCorrectPlayer();
-        for(int i = 0; i < player.getTryNumber(); i++){
+        OutputView.outputGameResultMessage();
+        for (int i = 0; i < player.getTryNumber(); i++) {
             allCarMoveOrNot();
+            printAllCarNowStatus();
         }
         makeAndPrintWinner();
     }
