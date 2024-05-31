@@ -58,7 +58,7 @@ public class RacingCarVO {
 
 
     List Error_car = new ArrayList();
-    public int ErrorList2(String car){
+    public int ErrorList2(String car , List Error_car){
         if (car.contains(" ")){
             return 3;
         }
@@ -89,15 +89,15 @@ public class RacingCarVO {
 
     public int FindError2(String car) {
         try {
-            if (ErrorList2(car) > 0) {
+            if (ErrorList2(car , Error_car) > 0) {
                 throw new IllegalArgumentException("Car Name is no permmit");
             }
             return 0; // 올바른 입력이 들어올때
         } catch (IllegalArgumentException e) {
-            if (ErrorList2(car) ==3) {
+            if (ErrorList2(car , Error_car) ==3) {
                 System.out.println("[ERROR] :Blank is not permmit!");
             }
-            if (ErrorList2(car) ==4) {
+            if (ErrorList2(car , Error_car) ==4) {
                 System.out.println("[ERROR] :Duplicate is not permmit!");
             } Error_car.clear();
         } return 1;
