@@ -12,7 +12,7 @@ public class RacingGameController {
         List<String> carNames = view.getCarNames();
         int moveCount = view.getMoveCount();
 
-        Race race = new Race(carNames);
+        race = new Race(carNames);
         for (int i = 0; i < moveCount; i++) {
             race.moveCars();
             view.printProgress(race.getCars());
