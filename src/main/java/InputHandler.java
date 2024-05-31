@@ -1,13 +1,10 @@
 import java.util.*;
 
 public class InputHandler {
-    private Scanner scanner;
 
-    public InputHandler(Scanner scanner) {
-        this.scanner = scanner;
-    }
 
     public Vector<Racer> getRacersFromUser() {
+        Scanner scanner= new Scanner(System.in);
         while (true) {//while 문으로 오류가 발생하지 않을때까지 반복 실행 => 오류가 없으면 return 해서 반복문 종료
             try {
                 System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
