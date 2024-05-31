@@ -15,6 +15,11 @@ public class Game {
         return InputView.inputName();
     }
 
+    public StringTokenizer separateName(String name) {
+        return new StringTokenizer(name, ",");
+    }
+
+    
 
 
 }
