@@ -2,11 +2,20 @@ package service;
 
 import view.InputView;
 
+import java.util.Arrays;
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 public class RacingService {
 
     public String[] createCars() {
         String input = InputView.inputCarList();
         input = input.replaceAll(" ", "");
-        return input.split(",");
+        String[] carArray = input.split(",");
+        return removeDuplicates(carArray);
+    }
+    private String[] removeDuplicates(String[] array) {
+        Set<String> set = new LinkedHashSet<>(Arrays.asList(array));
+        return set.toArray(new String[0]);
     }
 }

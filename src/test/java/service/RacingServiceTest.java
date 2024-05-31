@@ -12,7 +12,7 @@ class RacingServiceTest {
     @Test
     void testCreateCars() {
         // given
-        String input = "pobi, woni,jun";
+        String input = "pobi, woni,jun, pobi";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
 
         // when
