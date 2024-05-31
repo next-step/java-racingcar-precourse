@@ -9,6 +9,8 @@ import java.util.Set;
 
 public class RacingService {
     public void raceStart() {
+        String[] cars = createCars();
+        int racingCount = inputRacingCount();
     }
 
     public String[] createCars() {
@@ -18,6 +20,13 @@ public class RacingService {
         Validator.validNameLength(carArray);
         return removeDuplicates(carArray);
     }
+
+    public int inputRacingCount() {
+        String input = InputView.inputRacingCount();
+        Validator.validRacingCount(input);
+        return Integer.parseInt(input);
+    }
+
     private String[] removeDuplicates(String[] array) {
         Set<String> set = new LinkedHashSet<>(Arrays.asList(array));
         return set.toArray(new String[0]);

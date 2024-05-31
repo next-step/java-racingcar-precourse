@@ -14,12 +14,25 @@ class RacingServiceTest {
         // given
         String input = "pobi, woni,jun, pobi";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
+        String[] result = {"pobi", "woni", "jun"};
 
         // when
         String[] list = racingService.createCars();
-        String[] result = {"pobi", "woni", "jun"};
 
         // then
         assertArrayEquals(list, result);
+    }
+    @Test
+    void testInputRacingCount() {
+        // given
+        String input = "12";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        int result = 12;
+
+        // when
+        int count = racingService.inputRacingCount();
+
+        // then
+        assertEquals(count, result);
     }
 }
