@@ -13,4 +13,12 @@ public class CarTest {
         Car car = new Car(carName);
         assertTrue(car.getDistance() == 0);
     }
+
+    @ParameterizedTest
+    @DisplayName("name of car is same as input")
+    @ValueSource(strings = {"pobi", "crong", "honux"})
+    void testCarInitialName(String carName) {
+        Car car = new Car(carName);
+        assertTrue(car.getName().equals(carName));
+    }
 }
