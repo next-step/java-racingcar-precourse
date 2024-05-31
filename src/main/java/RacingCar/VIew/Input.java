@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import static Controller.ValidateInput.validTryCount;
-import static Controller.ValidateInput.validaCar;
+import static Controller.ValidateInput.validCar;
 
 public class Input {
     public static List<Car> inputCars() {
@@ -19,7 +19,7 @@ public class Input {
 
         List<Car> carList = new ArrayList<>();
         for (int i = 0; i < carNames.length; i++) {
-            validaCar(carNames[i], carList);
+            validCar(carNames[i], carList);
             carList.add(new Car(carNames[i]));
         }
 

@@ -5,7 +5,10 @@ import Model.Car;
 import java.util.List;
 
 public class ValidateInput {
-    public static void validaCar(String input, List<Car> carList) {
+    public static void validCar(String input, List<Car> carList) {
+        if (input == null) {
+            throw new IllegalArgumentException("[ERROR] 이름을 입력해주세요!");
+        }
         if (input.length() > 5) {
             throw new IllegalArgumentException("[ERROR] 5자 이하의 이름을 입력해주세요!");
         }
@@ -22,6 +25,10 @@ public class ValidateInput {
     }
 
     public static void validTryCount(String tryCountStr) {
+        if (tryCountStr == null) {
+            throw new IllegalArgumentException("[ERROR] 정수값을 입력해야합니다!");
+        }
+
         try {
             int tryCount = Integer.parseInt(tryCountStr);
             if (tryCount < 1) {
