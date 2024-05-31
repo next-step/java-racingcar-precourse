@@ -10,12 +10,7 @@ public class Application {
         InputProcessing inputProcessing = new InputProcessing(views, new FindErrors());
         MovingCars movingCars = new MovingCars(views, new Random());
         WinnerCalculator winnerCalculator = new WinnerCalculator();
-        String carNames = inputProcessing.getValidCarNames();
-        String[] carNamesArray = carNames.split(",");
-        RacingCarsVO[] cars = new RacingCarsVO[carNamesArray.length];
-        for (int i = 0; i < carNamesArray.length; i++) {
-            cars[i] = new RacingCarsVO(carNamesArray[i]);
-        }
+        RacingCarsVO[] cars = inputProcessing.initializeCars();
         int attempts = inputProcessing.getValidAttempts();
         movingCars.movingCar(cars, attempts);
         views.displayWinners(winnerCalculator,cars);
