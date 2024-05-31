@@ -38,6 +38,8 @@ public class Run {
                 System.out.println(e.getMessage());
             } catch (NumberFormatException e) {
                 System.out.println(e.getMessage());
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
             }
         }
     }

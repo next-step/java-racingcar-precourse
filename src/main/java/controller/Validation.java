@@ -37,7 +37,14 @@ public class Validation {
         });
     }
 
+    private void isTryCountUnderMaximumInteger(String tryCount) {
+        if (tryCount.length() > 10 || Long.parseLong(tryCount) > Integer.MAX_VALUE) {
+            throw new IllegalArgumentException("[ERROR] 시도 횟수는 최대 정수값을 초과할 수 없습니다.");
+        }
+    }
+
     public void validationTryCount(String tryCount) {
         isTryCountPositiveInteger(tryCount);
+        isTryCountUnderMaximumInteger(tryCount);
     }
 }
