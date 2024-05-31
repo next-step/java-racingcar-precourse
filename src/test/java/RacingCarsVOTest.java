@@ -13,4 +13,11 @@ public class RacingCarsVOTest {
         assertEquals(0,car.getMove());
     }
 
+    @Test
+    @DisplayName("인자 값이 4이상이면 move가 증가하는지에 대한 테스트")
+    public void setMoveIncrease(){
+        RacingCarsVO car = new RacingCarsVO("kbm");
+        car.setMove(4);
+        assertEquals(1,car.getMove());
+    }
 }
