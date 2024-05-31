@@ -8,5 +8,6 @@ public class App {
                 new StartView(),
                 new EndView()
         );
+        racingcarController.startGame();
     }
 }

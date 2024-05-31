@@ -1,3 +1,4 @@
+
 package view;
 
 import domain.CarName;
@@ -17,6 +18,7 @@ public class StartView {
         while (true) {
             try {
                 ConsoleWriter.printlnMessage(CAR_NAMES_NOTICE);
+                return validateCarNames(ConsoleReader.enterMessage());
             } catch (ProException e) {
                 ConsoleWriter.printlnMessage(e.getMessage());
             }
@@ -27,6 +29,7 @@ public class StartView {
         while (true) {
             try {
                 ConsoleWriter.printlnMessage(TRY_COUNT_NOTICE);
+                return validateNumber(ConsoleReader.enterMessage());
             } catch (ProException e) {
                 ConsoleWriter.printlnMessage(e.getMessage());
             }
@@ -55,4 +58,38 @@ public class StartView {
         throw ProException.from(ProMessage.TRY_NUMBER_ERROR);
     }
 
+
+    private List<String> validateCarNames(String input) {
+        List<String> carNames = Arrays.stream(input.split(CAR_NAMES_SEPARATOR)).map(String::trim).filter(name -> !name.isEmpty()).collect(Collectors.toList());
+
+        if (carNames.isEmpty()) {
+            throw ProException.from(ProMessage.BLANK_INPUT_ERROR);
+        }
+
+        for (String carName : carNames) {
+            new CarName(carName); // 유효성 검사를 위해 CarName 객체 생성
+        }
+
+        if (hasDuplicatedCarNames(carNames)) {
+            throw ProException.from(ProMessage.DUPLICATED_CAR_ERROR);
+        }
+
+        return carNames;
+    }
+
+    private boolean hasDuplicatedCarNames(List<String> carNames) {
+        return carNames.size() != carNames.stream().distinct().count();
+    }
+
+    private int validateNumber(String input) {
+        try {
+            int count = Integer.parseInt(input);
+            if (count < 1) {
+                throw ProException.from(ProMessage.INVALID_TRY_COUNT_ERROR);
+            }
+            return count;
+        } catch (NumberFormatException e) {
+            throw ProException.from(ProMessage.INVALID_TRY_COUNT_ERROR);
+        }
+    }
 }
