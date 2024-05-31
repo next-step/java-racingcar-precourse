@@ -50,4 +50,13 @@ public class FindErrorsTest {
         });
         assertEquals("[ERROR] 시도 횟수는 1 이상이어야 합니다.", exception.getMessage());
     }
+
+    @Test
+    public void validAttempts_Neg() {
+        int number = -20;
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            findErrors.validAttempts(number);
+        });
+        assertEquals("[ERROR] 시도 횟수는 1 이상이어야 합니다.", exception.getMessage());
+    }
 }
