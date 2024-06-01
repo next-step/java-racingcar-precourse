@@ -8,4 +8,10 @@ public class RacingView {
 
         return scanner.nextLine();
     }
+
+    public String readTryCount() {
+        System.out.println("시도할 회수는 몇회인가요?");
+
+        return scanner.nextLine();
+    }
 }

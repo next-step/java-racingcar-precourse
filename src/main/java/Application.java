@@ -4,5 +4,7 @@ public class Application {
         String carNames = racingView.readCarNames();
         System.out.println(carNames);
 
+        String tryCount = racingView.readTryCount();
+        System.out.println(tryCount);
     }
 }
