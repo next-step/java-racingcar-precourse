@@ -33,6 +33,7 @@ public class Game {
             }
         }
         raceForCnt(gameCnt);
+        output.winnerOutput(winnerFind());
     }
 
     private void createCars(String carNameInput) {
@@ -52,5 +53,21 @@ public class Game {
             }
             output.resultOutput(racingCars);
         }
+    }
+
+    private List<Car> winnerFind() {
+        List<Car> winner = new ArrayList<>();
+        int winnerDistance = 0;
+        for (Car car : racingCars) {
+            if (car.getDistance() > winnerDistance) {
+                winnerDistance = car.getDistance();
+            }
+        }
+        for (Car car : racingCars) {
+            if (car.getDistance() == winnerDistance) {
+                winner.add(car);
+            }
+        }
+        return winner;
     }
 }
