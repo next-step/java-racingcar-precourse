@@ -6,10 +6,11 @@ public class RacingController {
     public static void carVerify(String[] carList) {
         if(carList.length <= 1)
             throw new IllegalStateException();
-        for(int i=0; i<carList.length; i++) {
-            if(carList[i].length() > 5)
+
+        for(int i=0; i<carList.length; i++)
+            if(carList[i].length() > 5 || carList[i].isEmpty())
                 throw new IllegalArgumentException();
-        }
+
         createList(carList);
     }
     public static int tryNumVerify(String n) {
