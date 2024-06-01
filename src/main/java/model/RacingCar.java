@@ -5,6 +5,11 @@ public class RacingCar {
     private int currentScore;
     private int totalScore;
 
+    public RacingCar(int currentScore, int totalScore) {
+        this.currentScore = currentScore;
+        this.totalScore = totalScore;
+    }
+
     public int getCurrentScore() {
         return currentScore;
     }
