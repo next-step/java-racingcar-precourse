@@ -4,10 +4,16 @@ public class RacingInputHandler {
 
         for (int i = 0; i < cars.length; i++) {
             cars[i] = cars[i].trim();
-            if (cars[i].length() > 5 || cars[i].length() <= 0) {
+
+            if (cars[i].length() > 5) {
                 throw new IllegalArgumentException(cars[i] + " - 자동차의 이름이 5자를 초과함.");
             }
+
+            if (cars[i].length() <= 0) {
+                throw new IllegalArgumentException("유효하지 않은 자동차 이름이 포함되어 있음.");
+            }
         }
+
         return cars;
     }
 
