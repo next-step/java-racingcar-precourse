@@ -1,3 +1,8 @@
+import Controller.InputHandler;
+import Model.Car;
+import Model.Race;
+import View.ResultHandler;
+
 import java.util.List;
 
 public class Application {
