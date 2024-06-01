@@ -29,7 +29,7 @@ public class JUnit5Test {
 
     @Test
     @DisplayName("순위별로 차량이 올바르게 정렬 되는가?")
-    void testForward() {
+    void testLanking() {
         for(int i=0; i<RacingGame.racingCar.size()-1; i++) {
             assertTrue(RacingGame.racingCar.get(i).getPosition().length() >= RacingGame.racingCar.get(i+1).getPosition().length());
         }
