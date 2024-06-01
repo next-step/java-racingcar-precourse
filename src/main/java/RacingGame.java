@@ -8,6 +8,7 @@ public class RacingGame {
         RacingMonitor.enterRacingCars();         // 경주 자동차 이름 입력
         int n = RacingMonitor.enterTryNum();    // 전진 시도 횟수 입력
         RacingMonitor.startRace(n);     // 경주 시작
+        lineUp();   // 경주 순위 정렬
         RacingMonitor.printRacingResult();  // 경주 결과 출력
     }
     public static int randNum() {

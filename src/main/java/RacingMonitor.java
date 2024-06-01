@@ -41,7 +41,6 @@ public class RacingMonitor {
         System.out.println();
     }
     public static void printRacingResult() {
-        RacingGame.lineUp();
         System.out.print("최종 우승자 :");
         System.out.print(" " + RacingGame.racingCar.get(0).getName());
         for(int i=1; i<=RacingGame.winner(); i++) {
