@@ -20,6 +20,8 @@ public class RacingController {
         createList(carList);
     }
     public static int tryNumVerify(String n) {
+        if(n.isBlank())
+            throw new IllegalStateException();
         int number = Integer.parseInt(n);
         if(number < 1) {
             throw new IllegalArgumentException();
