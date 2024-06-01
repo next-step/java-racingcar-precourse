@@ -1,5 +1,7 @@
 package util;
 
+import domain.Car;
+
 public class ConsoleMessagePrinter {
 
     private ConsoleMessagePrinter() {}
@@ -18,5 +20,13 @@ public class ConsoleMessagePrinter {
 
     public static void printErrorMessage(String errorMessage) {
         System.out.println("[ERROR] " + errorMessage);
+    }
+
+    public static void printExecutionResultMessage() {
+        System.out.println("실행 결과");
+    }
+
+    public static void printCarPresentStatus(Car car) {
+        System.out.printf("%s : %s%n", car.getName(), car.getStatus());
     }
 }
