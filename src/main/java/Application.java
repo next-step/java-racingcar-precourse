@@ -25,8 +25,8 @@ public class Application {
                 carVerify(input);
                 createList(input);
                 return;
-            } catch (IllegalArgumentException e){
-                System.out.println("[ERROR] 경주를 하려면 2대 이상의 자동차를 입력해야 합니다.");
+            } catch (IllegalStateException e){
+                System.out.println("[ERROR] 경주를 시작하려면 2대 이상의 자동차를 입력해야 합니다.");
             }
         }
     }
