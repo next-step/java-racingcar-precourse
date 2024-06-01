@@ -59,10 +59,13 @@ public class Application {
             System.out.print(", " + winningCars.get(i));
         }
     }
-    public static List<String> winner() {
+    public static List<String> lineUp() {
         List<String> keySet = new ArrayList<>(racingCar.keySet());
         Collections.sort(keySet, (o1, o2) -> racingCar.get(o2).compareTo(racingCar.get(o1)));
-
+        return keySet;
+    }
+    public static List<String> winner() {
+        List<String> keySet = new ArrayList<>(lineUp());
         int winnerLength = racingCar.get(keySet.get(0));
         int idx = 0;
         while(racingCar.get(keySet.get(++idx)) == winnerLength) {}
