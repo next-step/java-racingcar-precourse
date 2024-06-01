@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class Application {
     static Scanner scanner = new Scanner(System.in);
-    static HashMap<String, Integer> racingCar = new HashMap<>();  // Key: 자동차 이름, value: 전진 횟수
+    static ArrayList<Car> racingCar = new ArrayList<>();  // Key: 자동차 이름, value: 전진 횟수
     public static void main(String[] args) {
         initCar();         // 경주 자동차 이름 입력
         int tNum = tryNum();                // 전진 시도 횟수 입력
@@ -41,7 +41,7 @@ public class Application {
     }
     public static void createList(String[] carList) {
         for(String car: carList)
-            racingCar.put(car, 0);
+            racingCar.add(new Car(car));
     }
     public static int tryNum() {
         while(true) {
@@ -68,44 +68,31 @@ public class Application {
         return rand.nextInt(10);
     }
     public static void racing() {
-        for(String car : racingCar.keySet()) {
-            System.out.print(car + " : " + processBar(car) + "\n");
+        for(Car car : racingCar) {
+            isForward(car);
+            System.out.print(car.getName() + " : " + car.getPosition() + "\n");
         }
         System.out.println();
     }
-    public static String processBar(String car) {
-        racingCar.put(car, racingCar.get(car)+isForward());
-        String bar = "";
-        for(int i=0; i<racingCar.get(car); i++) {
-            bar += "-";
-        }
-        return bar;
-    }
-    public static int isForward() {
+    public static void isForward(Car car) {
         if(randNum() >= 4)
-            return 1;
-        return 0;
+            car.forward();
     }
     public static void printRacingResult() {
+        lineUp();
         System.out.print("최종 우승자 :");
-
-        List<String> winningCars = new ArrayList<>(winner());
-        System.out.print(" " + winningCars.get(0));
-        for(int i=1; i<winningCars.size(); i++) {
-            System.out.print(", " + winningCars.get(i));
+        System.out.print(" " + racingCar.get(0).getName());
+        for(int i=1; i<=winner(); i++) {
+            System.out.print(", " + racingCar.get(i).getName());
         }
     }
-    public static List<String> lineUp() {
-        List<String> keySet = new ArrayList<>(racingCar.keySet());
-        Collections.sort(keySet, (o1, o2) -> racingCar.get(o2).compareTo(racingCar.get(o1)));
-        return keySet;
+    public static void lineUp() {
+        Collections.sort(racingCar, (o1, o2) -> o2.getPosition().length() - o1.getPosition().length());
     }
-    public static List<String> winner() {
-        List<String> keySet = new ArrayList<>(lineUp());
-        int winnerLength = racingCar.get(keySet.get(0));
-        int idx = 0;
-        while(racingCar.get(keySet.get(++idx)) == winnerLength) {}
-
-        return keySet.subList(0, idx);
+    public static int winner() {
+        int winnerLength = racingCar.get(0).getPosition().length();
+        int idx = -1;
+        while(racingCar.get(++idx).getPosition().length() == winnerLength) {}
+        return idx-1;
     }
 }
