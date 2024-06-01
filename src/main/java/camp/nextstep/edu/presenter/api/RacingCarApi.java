@@ -21,6 +21,12 @@ public class RacingCarApi {
         racingCarService.registerCars(cars);
     }
 
+    public void startRacing(Request request) {
+        int racingCount = parseRacingCount(request);
+        RacingResult result = racingCarService.runCarRacing(racingCount);
+        System.out.println("실행 결과");
+        System.out.println(result);
+    }
 
     public List<Car> parseRacingCars(Request request) {
         List<String> racingCars = List.of(request.getContent().split(","));
@@ -35,4 +41,11 @@ public class RacingCarApi {
         return racingCars.stream().map(Car::new).toList();
     }
 
+    public int parseRacingCount(Request request) {
+        int racingCount = Integer.parseInt(request.getContent());
+        if (racingCount < 1) {
+            throw new IllegalArgumentException(ERROR_PREFIX + "레이싱 횟수는 1 이상이어야 합니다.");
+        }
+        return racingCount;
+    }
 }

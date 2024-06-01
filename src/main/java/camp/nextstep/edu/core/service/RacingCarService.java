@@ -21,6 +21,15 @@ public class RacingCarService {
         racingCarRepository.save(cars);
     }
 
+    public RacingResult runCarRacing(int round) {
+        List<RacingLog> racingLogs = new LinkedList<>();
+        for (int i = 0; i < round; i++) {
+            racingCarRepository.findAll().forEach(this::randomMove);
+            racingLogs.add(RacingLog.of(racingCarRepository.findAll()));
+        }
+        return new RacingResult(List.of(), List.of());
+    }
+
     public void randomMove(Car car) {
         int randomNumber = secureRandom.nextInt(10);
         if (randomNumber >= 4) {
