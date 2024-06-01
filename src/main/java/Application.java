@@ -1,2 +1,7 @@
-package PACKAGE_NAME;public class Application {
+import controller.RacingGameController;
+
+public class Application {
+    public static void main(String[] args) {
+        RacingGameController.run();
+    }
 }
