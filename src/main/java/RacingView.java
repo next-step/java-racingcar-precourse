@@ -23,4 +23,11 @@ public class RacingView {
     public void printRaceResult() {
         System.out.println(raceResult);
     }
+
+    public void addRaceResult(CarProgress[] carProgresses) {
+        for (CarProgress carProgress : carProgresses) {
+            raceResult += (carProgress.toString() + "\n");
+        }
+        raceResult += "\n";
+    }
 }

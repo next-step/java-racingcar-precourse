@@ -7,6 +7,9 @@ public class RacingController {
     }
 
     public void startRace() {
+        CarProgress[] carProgresses = model.getCarProgresses();
+        view.addRaceResult(carProgresses);
+
         view.printRaceResult();
     }
 

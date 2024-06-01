@@ -6,4 +6,10 @@ public class CarProgress {
         this.carName = carName;
         this.progress = 0;
     }
+
+    @Override
+    public String toString() {
+        return carName + " : "
+                + "-".repeat(progress);
+    }
 }
