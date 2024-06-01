@@ -1,4 +1,5 @@
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -43,5 +44,10 @@ public class AssertJTest {
         RacingGame.lineUp();
         Assertions.assertThat(RacingGame.winner()).isEqualTo(0);
         Assertions.assertThat(RacingGame.racingCar.get(RacingGame.winner()).getName()).isEqualTo(winner.getName());
+    }
+
+    @AfterEach
+    void clean() {
+        RacingGame.racingCar.clear();
     }
 }
