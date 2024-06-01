@@ -1,7 +1,5 @@
 package util;
 
-import domain.Car;
-
 import java.util.List;
 
 public class ConsoleMessagePrinter {
@@ -28,8 +26,8 @@ public class ConsoleMessagePrinter {
         System.out.println("실행 결과");
     }
 
-    public static void printCarPresentStatus(Car car) {
-        System.out.printf("%s : %s%n", car.getName(), car.getStatus());
+    public static void printCarStatus(String carName, String carStatus) {
+        System.out.printf("%s : %s%n", carName, carStatus);
     }
 
     public static void printWinnerList(List<String> winnerList) {

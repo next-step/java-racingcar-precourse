@@ -89,7 +89,7 @@ public class GameManager {
 
     private void printCarList() {
         for (Car car : carList) {
-            ConsoleMessagePrinter.printCarPresentStatus(car);
+            ConsoleMessagePrinter.printCarStatus(car.getName(), car.getStatus());
         }
         ConsoleMessagePrinter.printLineBreak();
     }
