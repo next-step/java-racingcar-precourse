@@ -18,10 +18,22 @@ public class Application {
         printRacingResult();
     }
     public static void initCar() {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String[] input = scanner.nextLine().split(",");
-        for(String car: input)
-            racingCar.put(car, 0);
+        while(true) {
+            System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+            try {
+                String[] input = scanner.nextLine().split(",");
+                carVerify(input);
+                for(String car: input)
+                    racingCar.put(car, 0);
+                return;
+            } catch (IllegalArgumentException e){
+                System.out.println("[ERROR] 경주를 하려면 2대 이상의 자동차를 입력해야 합니다.");
+            }
+        }
+    }
+    public static void carVerify(String[] carList) {
+        if(carList.length <= 1)
+            throw new IllegalArgumentException();
     }
     public static int tryNum() {
         while(true) {
@@ -32,7 +44,7 @@ public class Application {
             } catch (NumberFormatException e) {
                 System.out.println("[ERROR] 정수만 입력이 가능합니다.");
             } catch (IllegalArgumentException e) {
-                System.out.println("[ERROR] 0보다 큰 양수인 정수를 입력하세요.");
+                System.out.println("[ERROR] 1 ~ 2,147,483,647사이의 정수를 입력하세요.");
             }
         }
     }
