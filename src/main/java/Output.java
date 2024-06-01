@@ -25,4 +25,8 @@ public class Output {
         }
         System.out.println(cars.get(cars.size() - 1).getName());
     }
+
+    public void errorOutput(String error) {
+        System.out.println(error);
+    }
 }
