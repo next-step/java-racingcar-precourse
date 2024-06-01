@@ -28,10 +28,18 @@ public class Application {
             try {
                 System.out.println("시도할 회수는 몇회인가요?");
                 int n = Integer.parseInt(scanner.nextLine());
+                isPositive(n);
                 return n;
             } catch (NumberFormatException e) {
                 System.out.println("[ERROR] 정수만 입력이 가능합니다.");
+            } catch (IllegalArgumentException e) {
+                System.out.println("[ERROR] 0보다 큰 양수인 정수를 입력하세요.");
             }
+        }
+    }
+    public static void isPositive(int n) {
+        if(n < 1) {
+            throw new IllegalArgumentException();
         }
     }
     public static int randNum() {
