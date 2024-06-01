@@ -10,4 +10,8 @@ public class Racing {
 
         this.leftTries = tryCount;
     }
+
+    public CarProgress[] getCarProgresses() {
+        return carProgresses;
+    }
 }
