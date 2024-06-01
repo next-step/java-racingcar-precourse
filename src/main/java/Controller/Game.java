@@ -37,7 +37,23 @@ public class Game {
             }
             cars[i] = new Car(beforeCheckCarNames[i], "", 0);
         }
-        return true;
+        return isCarsOverOne();
+    }
+
+    private void makeErrorIsCarsOne(){
+        if(cars.length == 1){
+            throw new IllegalStateException("[Error] 자동차 1대로는 경주를 진행할 수 없습니다.");
+        }
+    }
+
+    private boolean isCarsOverOne()throws IOException{
+        try {
+            makeErrorIsCarsOne();
+            return true;
+        }catch (IllegalStateException illegalStateException){
+            OutputView.outputLine(("[Error] 자동차 1대로는 경주를 진행할 수 없습니다. 다시 입력 해주세요"));
+            return false;
+        }
     }
 
     private void makeCorrectCars() throws IOException {
