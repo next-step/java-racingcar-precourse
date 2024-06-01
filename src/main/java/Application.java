@@ -73,12 +73,12 @@ public class Application {
     }
     static void winner(){ // 우승자를 가려내는 메서드
         int max = 0; // 거리의 최댓값을 저장할 변수 max 선언
-        for (int i = 0; i < arr.size(); i++){ // 최댓값 구하기
+        for (int i = 0; i < cardistance.size(); i++){ // 최댓값 구하기
             if (cardistance.get(i) > max){
                 max = cardistance.get(i);
             }
         }
-        for (int i = 0; i < arr.size(); i++){
+        for (int i = 0; i < cardistance.size(); i++){
             if (cardistance.get(i) == max){
                 top.add(i);
             }
