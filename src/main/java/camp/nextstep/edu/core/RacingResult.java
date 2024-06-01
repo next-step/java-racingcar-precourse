@@ -1,15 +1,19 @@
 package camp.nextstep.edu.core;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class RacingResult {
-    private final List<RacingLog> racingLogs;
-    private final List<Car> winners;
+public record RacingResult(List<RacingLog> racingLogs, List<Car> winners) {
 
-    public RacingResult(List<RacingLog> racingLogs, List<Car> winners) {
-        this.racingLogs = racingLogs;
-        this.winners = winners;
+    @Override
+    public List<RacingLog> racingLogs() {
+        return new ArrayList<>(racingLogs);
+    }
+
+    @Override
+    public List<Car> winners() {
+        return new ArrayList<>(winners);
     }
 
     @Override
@@ -21,8 +25,8 @@ public class RacingResult {
                 .orElse("")
                 + "\n\n최종 우승자: "
                 + winners
-                    .stream()
-                    .map(Car::getName)
-                    .collect(Collectors.joining(", "));
+                .stream()
+                .map(Car::getName)
+                .collect(Collectors.joining(", "));
     }
 }
