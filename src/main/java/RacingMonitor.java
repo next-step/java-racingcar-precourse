@@ -21,6 +21,8 @@ public class RacingMonitor {
             try {
                 int n = RacingController.tryNumVerify(scanner.nextLine());
                 return n;
+            } catch (IllegalStateException e) {
+                System.out.println("[ERROR] 1 ~ 2,147,483,647사이의 정수를 입력하세요.");
             } catch (NumberFormatException e) {
                 System.out.println("[ERROR] int형 정수만 입력이 가능합니다.");
             } catch (IllegalArgumentException e) {
