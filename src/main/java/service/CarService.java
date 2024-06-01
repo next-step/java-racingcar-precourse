@@ -10,7 +10,7 @@ public class CarService {
     List<Car> cars = new ArrayList<>();
 
     public void createCars(CarName carName) {
-        cars = carName.nameList().stream()
+        cars = carName.getNameList().stream()
                 .map(Car::new)
                 .toList();
     }
