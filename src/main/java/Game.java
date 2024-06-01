@@ -32,6 +32,7 @@ public class Game {
                 output.errorOutput(e.getMessage());
             }
         }
+        raceForCnt(gameCnt);
     }
 
     private void createCars(String carNameInput) {
@@ -42,5 +43,14 @@ public class Game {
 
     private int createCnt(String tryCntInput) {
         return Integer.parseInt(tryCntInput);
+    }
+
+    private void raceForCnt(int cnt) {
+        for (int i = 0; i < cnt; i++) {
+            for (Car car : racingCars) {
+                rule.randomAdvanceOrStop(car);
+            }
+            output.resultOutput(racingCars);
+        }
     }
 }
