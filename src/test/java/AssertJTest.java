@@ -24,4 +24,11 @@ public class AssertJTest {
         for(int i=0; i<1000; i++)
             Assertions.assertThat(RacingGame.randNum()).isBetween(0, 9);
     }
+
+    @Test
+    @DisplayName("순위별로 차량이 올바르게 정렬 되는가?")
+    void testLanking() {
+        for(int i=0; i<RacingGame.racingCar.size()-1; i++)
+            Assertions.assertThat(RacingGame.racingCar.get(i).getPosition().length()).isGreaterThanOrEqualTo(RacingGame.racingCar.get(i+1).getPosition().length());
+    }
 }
