@@ -9,9 +9,10 @@ public class ResultView {
         System.out.println();
     }
 
-    public static void printWinners(List<Car> winners){
-        String result = String.join(", ", winners.stream().map(Car::getName).toArray(String[]::new));
-        System.out.println("최종 우승자 : "+ result);
+    public static void printWinners(List<Car> winners) {
+        String result = String.join(", ",
+            winners.stream().map(Car::getName).toArray(String[]::new));
+        System.out.println("최종 우승자 : " + result);
     }
 
 }

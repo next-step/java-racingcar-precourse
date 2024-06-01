@@ -14,11 +14,11 @@ public class Race {
         this.attempts = attempts;
     }
 
-    public List<Car> getWinners(){
+    public List<Car> getWinners() {
         int maxPosition = cars.stream().mapToInt(Car::getPosition).max().orElse(0);
         List<Car> winners = new ArrayList<>();
-        for(Car car : cars){
-            if(car.getPosition() == maxPosition){
+        for (Car car : cars) {
+            if (car.getPosition() == maxPosition) {
                 winners.add(car);
             }
         }
