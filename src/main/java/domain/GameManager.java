@@ -1,3 +1,5 @@
+package domain;
+
 import domain.Car;
 import util.*;
 
