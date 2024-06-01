@@ -18,6 +18,7 @@ public class GameManager {
 
     public void run() {
         initGameSettings();
+        ConsoleMessagePrinter.printLineBreak();
         ConsoleMessagePrinter.printExecutionResultMessage();
         for (int i = 0; i < attemptNumber; i++) {
             takeOneStepForward();
