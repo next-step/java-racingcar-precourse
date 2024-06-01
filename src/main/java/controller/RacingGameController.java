@@ -7,7 +7,7 @@ public class RacingGameController {
 
     RacingGameView view = new RacingGameView();
 
-    public void run(){
+    public void run() {
         RacingGameModel model = new RacingGameModel(view.getCarNames());
         int attemptCount = view.getAttemptCount();
         view.displayRaceResult();

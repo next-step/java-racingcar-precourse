@@ -12,12 +12,11 @@ public class Car {
         return name;
     }
 
-
-
     public int getRaceDistance() {
         return raceDistance;
     }
-    public void forward(){
+
+    public void forward() {
         ++raceDistance;
     }
 }
