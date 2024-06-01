@@ -2,46 +2,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
-    private Input input = new Input();
-    private Output output = new Output();
-    private Rule rule = new Rule();
+    // 입력 처리 담당
+    private InputProcessor inputProcessor = new InputProcessor();
+
+    // 자동차 경주 담당
+    private RaceProcessor raceProcessor = new RaceProcessor();
+
+    // 출력 처리 담당
+    private OutputProcessor outputProcessor = new OutputProcessor();
     private List<Car> racingCars = new ArrayList<>();
     private int gameCnt;
 
     public void start() {
-        carNameProcess();
-        cntProcess();
-        raceForCnt(gameCnt);
-        output.winnerOutput(winnerFind());
-    }
-
-    private void carNameProcess() {
-        output.carNameOutput();
-        while (true) {
-            try {
-                String carNameInput = input.carNameInput();
-                rule.carNameIsNull(carNameInput);
-                rule.carNameIsOverSize(carNameInput);
-                createCars(carNameInput);
-                break;
-            } catch (IllegalArgumentException e) {
-                output.errorOutput(e.getMessage());
-            }
-        }
-    }
-
-    private void cntProcess() {
-        output.tryCntOutput();
-        while (true) {
-            try {
-                String tryCntInput = input.tryCntInput();
-                rule.tryCntInputValid(tryCntInput);
-                gameCnt = createCnt(tryCntInput);
-                break;
-            } catch (IllegalArgumentException e) {
-                output.errorOutput(e.getMessage());
-            }
-        }
+        createCars(inputProcessor.processCarNames());
+        setGameCnt(inputProcessor.processGameCount());
+        raceProcessor.raceForCnt(racingCars, gameCnt);
+        outputProcessor.processWinnerName(findWinners());
     }
 
     private void createCars(String carNameInput) {
@@ -50,32 +26,22 @@ public class Game {
         }
     }
 
-    private int createCnt(String tryCntInput) {
-        return Integer.parseInt(tryCntInput);
+    private void setGameCnt(int cnt) {
+        gameCnt = cnt;
     }
 
-    private void raceForCnt(int cnt) {
-        for (int i = 0; i < cnt; i++) {
-            for (Car car : racingCars) {
-                rule.randomAdvanceOrStop(car);
-            }
-            output.resultOutput(racingCars);
-        }
-    }
+    private List<Car> findWinners() {
+        List<Car> winners = new ArrayList<>();
+        int maxDistance = racingCars.stream()
+                .mapToInt(Car::getDistance)
+                .max()
+                .orElse(0);
 
-    private List<Car> winnerFind() {
-        List<Car> winner = new ArrayList<>();
-        int winnerDistance = 0;
         for (Car car : racingCars) {
-            if (car.getDistance() > winnerDistance) {
-                winnerDistance = car.getDistance();
+            if (car.getDistance() == maxDistance) {
+                winners.add(car);
             }
         }
-        for (Car car : racingCars) {
-            if (car.getDistance() == winnerDistance) {
-                winner.add(car);
-            }
-        }
-        return winner;
+        return winners;
     }
 }
