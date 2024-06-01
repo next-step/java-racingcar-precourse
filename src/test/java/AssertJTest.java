@@ -1,3 +1,5 @@
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -17,6 +19,12 @@ public class AssertJTest {
         for(int i=0; i<10; i++)
             RacingGame.racing();
         RacingGame.lineUp();
+    }
+
+    @Test
+    @DisplayName("자동차 이름의 중복을 확인하는가?")
+    void testCarNameDuplicate() {
+        assertThatThrownBy(() -> RacingController.carVerify(new String[]{"c1", "c1"})).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
