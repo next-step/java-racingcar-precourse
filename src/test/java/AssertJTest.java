@@ -47,6 +47,13 @@ public class AssertJTest {
     }
 
     @Test
+    @DisplayName("전진 시도 횟수가 올바르게 입력되는지 확인하는가?")
+    void testTryNumRange() {
+        assertThatThrownBy(() -> RacingController.tryNumVerify("-1")).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> RacingController.tryNumVerify("2147483648")).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
     @DisplayName("randNum() 메서드가 0~9 사이 값을 반환하는가?")
     void testRandomNumRange() {
         for(int i=0; i<1000; i++)
