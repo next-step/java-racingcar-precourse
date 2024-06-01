@@ -16,6 +16,11 @@ public class RacingController {
         view.printRaceResult();
     }
 
+    public void judge() {
+        String[] winners = model.judgeWinners();
+        view.printWinners(winners);
+    }
+
     private String[] readCars() {
         String[] cars;
 
@@ -47,5 +52,4 @@ public class RacingController {
 
         return tryCount;
     }
-
 }

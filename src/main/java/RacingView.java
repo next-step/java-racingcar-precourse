@@ -30,4 +30,11 @@ public class RacingView {
         }
         raceResult += "\n";
     }
+
+    public void printWinners(String[] winners) {
+        String winnerMsg = "최종 우승자 : ";
+        winnerMsg += String.join(", ", winners);
+
+        System.out.println(winnerMsg);
+    }
 }
