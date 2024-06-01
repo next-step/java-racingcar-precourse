@@ -4,13 +4,11 @@ public class RacingController {
             RacingGame.racingCar.add(new Car(car));
     }
     public static void carVerify(String[] carList) {
-        if(carList.length <= 1)
+        if (carList.length <= 1)
             throw new IllegalStateException();
-
-        for(int i=0; i<carList.length; i++)
-            if(carList[i].length() > 5 || carList[i].isEmpty())
+        for (String c : carList)
+            if (c.length() > 5 || c.isEmpty())
                 throw new IllegalArgumentException();
-
         createList(carList);
     }
     public static int tryNumVerify(String n) {
