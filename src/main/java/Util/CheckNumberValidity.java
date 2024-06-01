@@ -1,5 +1,8 @@
 package Util;
 
+import VIew.OutputView;
+import java.io.IOException;
+
 public class CheckNumberValidity {
 
     private CheckNumberValidity() {
@@ -7,7 +10,23 @@ public class CheckNumberValidity {
     }
 
     //int자료형으로 변환 할 수 있는지와 1이상인 자연수인지 확인하는 메소드
-    public static boolean checkNumberValidity(String number) {
+    public static boolean checkNumberValidity(String number)throws IOException {
+       try {
+           makeErrorIfNumberIsFalse(number);
+           return true;
+       }catch (IllegalArgumentException illegalArgumentException){
+           OutputView.outputLine("[Error]올바른 숫자가 아닙니다.");
+           return false;
+       }
+    }
+
+    private static void  makeErrorIfNumberIsFalse(String number) {
+        if(checkTotalValidity(number)){
+            throw new IllegalArgumentException("[Error]올바른 숫자가 아닙니다.");
+        }
+    }
+
+    private static boolean checkTotalValidity(String number) {
         if (!checkNumberIsInt(number)) { //int형이 아닌경우
             return false;
         }
