@@ -16,4 +16,13 @@ public class Output {
             System.out.println(car.getName() + " : " + "-".repeat(car.getDistance()));
         }
     }
+
+    public void winnerOutput(List<Car> cars) {
+        System.out.println();
+        System.out.print("최종 우승자 : ");
+        for (int i = 0; i < cars.size() - 1; i++) {
+            System.out.print(cars.get(i).getName() + ", ");
+        }
+        System.out.println(cars.get(cars.size() - 1).getName());
+    }
 }
