@@ -24,7 +24,14 @@ public class RacingCarApi {
 
     public List<Car> parseRacingCars(Request request) {
         List<String> racingCars = List.of(request.getContent().split(","));
-
+        if (racingCars.size() < 2) {
+            throw new IllegalArgumentException(ERROR_PREFIX + "자동차는 2대 이상이어야 합니다.");
+        }
+        for (String racingCar : racingCars) {
+            if (racingCar.length() > 5) {
+                throw new IllegalArgumentException(ERROR_PREFIX + "자동차 이름은 5자 이하여야 합니다.");
+            }
+        }
         return racingCars.stream().map(Car::new).toList();
     }
 
