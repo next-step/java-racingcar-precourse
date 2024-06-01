@@ -35,6 +35,12 @@ public class JUnit5Test {
     }
 
     @Test
+    @DisplayName("자동차 이름이 입력되지 않는 경우를 확인하는가?")
+    void testEnterCarName() {
+        assertThrows(IllegalStateException.class, () -> RacingController.carVerify("".split(",")));
+    }
+
+    @Test
     @DisplayName("randNum() 메서드가 0~9 사이 값을 반환하는가?")
     void testRandNumRange() {
         int num = RacingGame.randNum();
