@@ -24,8 +24,15 @@ public class Application {
             racingCar.put(car, 0);
     }
     public static int tryNum() {
-        System.out.println("시도할 회수는 몇회인가요?");
-        return scanner.nextInt();
+        while(true) {
+            try {
+                System.out.println("시도할 회수는 몇회인가요?");
+                int n = Integer.parseInt(scanner.nextLine());
+                return n;
+            } catch (NumberFormatException e) {
+                System.out.println("[ERROR] 정수만 입력이 가능합니다.");
+            }
+        }
     }
     public static int randNum() {
         Random rand = new Random();
