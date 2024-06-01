@@ -72,6 +72,11 @@ public class racingcarTest {
 
         assertEquals(1, Application.cardistance.get(0));
         assertEquals(0, Application.cardistance.get(1));
+        // 기대되는 출력 값
+        String expectedOutput = "car1 : "+"_".repeat(Application.cardistance.get(0))+"\ncar2 : "+"_".repeat(Application.cardistance.get(1))+"\n";
+
+        // 실제 출력과 비교
+        assertEquals(expectedOutput, outContent.toString());
     }
     @Test
     void testWinner() {
@@ -101,7 +106,4 @@ public class racingcarTest {
         // 출력 값 확인
         assertEquals("최종 우승자 : car2,car3\r\n", outContent.toString());
     }
-
-
-
 }

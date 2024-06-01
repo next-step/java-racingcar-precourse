@@ -67,9 +67,8 @@ public class Application {
             }
         }
         for (int i = 0; i < carchance.size(); i++) { // cardistance의 값만큼 "_" 반복 출력해 거리 출력
-            System.out.println(nameList.get(i)+" : "+ "_".repeat(cardistance.get(i)));
+            System.out.print(nameList.get(i)+" : "+ "_".repeat(cardistance.get(i))+"\n");
         }
-        System.out.println("\n");
         arr.clear(); // 생성되었던 난수 초기화
         makeNumber(); // 한 턴이 지날 때마다 난수 새로 생성
     }
@@ -98,6 +97,7 @@ public class Application {
     }
     static void result(){ // 전진 결과를 출력할 메서드
         for (int i = 0; i < chance; i++) { // 시도할 횟수만큼 goStop메서드 호출
+            System.out.println("\n");
             goStop();
         }
     }
