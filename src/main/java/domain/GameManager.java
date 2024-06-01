@@ -35,56 +35,9 @@ public class GameManager {
         ConsoleMessagePrinter.printWinnerList(winnerList);
     }
 
-    private List<String> findWinnerNames() {
-        List<String> winnerList = new ArrayList<>();
-        int winnerAdvanceNumber = carList.stream()
-                .max(Comparator.comparingInt(Car::getAdvanceNumber))
-                .get()
-                .getAdvanceNumber();
-        for (Car car : carList) {
-            if (car.getAdvanceNumber() == winnerAdvanceNumber) {
-                winnerList.add(car.getName());
-            }
-        }
-        return winnerList;
-    }
-
-    private void printCarList() {
-        for (Car car : carList) {
-            ConsoleMessagePrinter.printCarPresentStatus(car);
-        }
-        ConsoleMessagePrinter.printLineBreak();
-    }
-
-    private void takeOneStepForward() {
-        int randomNumber;
-        for (Car car : carList) {
-            randomNumber = RandomNumberGenerator.generateRandomNumber();
-            if (randomNumber >= FORWARD_STANDARD) {
-                car.advance();
-            }
-        }
-    }
-
     private void initGameSettings() {
         setCarList();
         setAttemptNumber();
-    }
-
-    private void setAttemptNumber() {
-        String userInput = null;
-        inputValidator = new AttemptNumberValidator();
-        while (userInput == null) {
-            ConsoleMessagePrinter.printAttemptNumberInputMessage();
-            try {
-                userInput = InputHandler.getInput();
-                inputValidator.checkInputValue(userInput);
-            } catch (IllegalArgumentException exception) {
-                ConsoleMessagePrinter.printErrorMessage(exception.getMessage());
-                userInput = null;
-            }
-        }
-        attemptNumber = Integer.parseInt(userInput);
     }
 
     private void setCarList() {
@@ -106,5 +59,52 @@ public class GameManager {
         for (String carName : carNameList) {
             carList.add(new Car(carName));
         }
+    }
+
+    private void setAttemptNumber() {
+        String userInput = null;
+        inputValidator = new AttemptNumberValidator();
+        while (userInput == null) {
+            ConsoleMessagePrinter.printAttemptNumberInputMessage();
+            try {
+                userInput = InputHandler.getInput();
+                inputValidator.checkInputValue(userInput);
+            } catch (IllegalArgumentException exception) {
+                ConsoleMessagePrinter.printErrorMessage(exception.getMessage());
+                userInput = null;
+            }
+        }
+        attemptNumber = Integer.parseInt(userInput);
+    }
+
+    private void takeOneStepForward() {
+        int randomNumber;
+        for (Car car : carList) {
+            randomNumber = RandomNumberGenerator.generateRandomNumber();
+            if (randomNumber >= FORWARD_STANDARD) {
+                car.advance();
+            }
+        }
+    }
+
+    private void printCarList() {
+        for (Car car : carList) {
+            ConsoleMessagePrinter.printCarPresentStatus(car);
+        }
+        ConsoleMessagePrinter.printLineBreak();
+    }
+
+    private List<String> findWinnerNames() {
+        List<String> winnerList = new ArrayList<>();
+        int winnerAdvanceNumber = carList.stream()
+                .max(Comparator.comparingInt(Car::getAdvanceNumber))
+                .get()
+                .getAdvanceNumber();
+        for (Car car : carList) {
+            if (car.getAdvanceNumber() == winnerAdvanceNumber) {
+                winnerList.add(car.getName());
+            }
+        }
+        return winnerList;
     }
 }
