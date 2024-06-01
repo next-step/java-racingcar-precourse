@@ -28,4 +28,12 @@ public class RacingMonitor {
             }
         }
     }
+    public static void printRacingResult() {
+        RacingGame.lineUp();
+        System.out.print("최종 우승자 :");
+        System.out.print(" " + RacingGame.racingCar.get(0).getName());
+        for(int i=1; i<=RacingGame.winner(); i++) {
+            System.out.print(", " + RacingGame.racingCar.get(i).getName());
+        }
+    }
 }

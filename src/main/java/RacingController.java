@@ -12,7 +12,7 @@ public class RacingController {
     }
     public static void createList(String[] carList) {
         for(String car: carList)
-            Application.racingCar.add(new Car(car));
+            RacingGame.racingCar.add(new Car(car));
     }
     public static int verify(String n) {
         int number = Integer.parseInt(n);
