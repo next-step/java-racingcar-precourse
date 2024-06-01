@@ -59,6 +59,22 @@ public class racingcarTest {
         assertEquals(1, Application.cardistance.get(0));
         assertEquals(0, Application.cardistance.get(1));
     }
+    @Test
+    void testWinner() {
+        // 우승자 결정 로직 테스트
+        Application.nameArray = new String[] {"car1", "car2", "car3"};
+        Application.cardistance.add(3);
+        Application.cardistance.add(5);
+        Application.cardistance.add(5);
+        Application.winner();
+        List<Integer> expectedTop = new ArrayList<Integer>();
+        expectedTop.add(1);
+        expectedTop.add(2);
+        System.out.println(expectedTop);
+        assertEquals(expectedTop.get(0), Application.top.get(0));
+        assertEquals(expectedTop.get(1), Application.top.get(1));
+    }
+
 
 
 }
