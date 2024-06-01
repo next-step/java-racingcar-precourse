@@ -8,4 +8,12 @@ public class Output {
     public void tryCntOutput() {
         System.out.println("시도할 회수는 몇회인가요?");
     }
+
+    public void resultOutput(List<Car> cars) {
+        System.out.println();
+        System.out.println("실행 결과");
+        for (Car car : cars) {
+            System.out.println(car.getName() + " : " + "-".repeat(car.getDistance()));
+        }
+    }
 }
