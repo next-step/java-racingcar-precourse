@@ -5,8 +5,8 @@ import java.util.Random;
 public class Application {
     static ArrayList<Car> racingCar = new ArrayList<>();  // Key: 자동차 이름, value: 전진 횟수
     public static void main(String[] args) {
-        RacingController.initCar();         // 경주 자동차 이름 입력
-        int tNum = RacingController.tryNum();                // 전진 시도 횟수 입력
+        RacingMonitor.enterRacingCars();         // 경주 자동차 이름 입력
+        int tNum = RacingMonitor.enterTryNum();                // 전진 시도 횟수 입력
         System.out.println("\n실행 결과");
         for(int i=0; i<tNum; i++) {         // 전진 시도 결과 출력
             racing();
