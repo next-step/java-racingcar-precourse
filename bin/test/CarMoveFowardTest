@@ -1,0 +1,26 @@
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+
+public class CarMoveFowardTest {
+
+    Car c;
+    @BeforeEach
+    void setUp(){
+        c = new Car("abc");
+    }
+
+    @Test
+    @DisplayName("move foward test")
+    public void moveFowardTest(){
+        
+        int num1 = 2;
+        int num2 = 7;
+        c.movingForward(num1);
+        c.movingForward(num2);
+
+        assertThat(c.getProgress()).isEqualTo(1);
+    }
+}
