@@ -19,6 +19,10 @@ public class Car {
         return name;
     }
 
+    public int getAdvanceNumber() {
+        return advanceNumber;
+    }
+
     public String getStatus() {
         return "-".repeat(advanceNumber);
     }
