@@ -1,6 +1,7 @@
 package Util;
 
 import VIew.OutputView;
+
 import java.io.IOException;
 
 public class CheckNumberValidity {

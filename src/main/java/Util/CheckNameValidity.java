@@ -1,7 +1,9 @@
 package Util;
 
 import VIew.OutputView;
+
 import java.io.IOException;
+
 import java.util.HashMap;
 import java.util.regex.Pattern;
 
@@ -19,7 +21,6 @@ public class CheckNameValidity {
             OutputView.outputLine("[Error]: 올바른 이름의 입력이 아닙니다. 다시 입력하세요");
             return false;
         }
-
     }
     // 올바르지 않으면 에러 발생
     private static void makeErrorIfFalse(String name){
