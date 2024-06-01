@@ -14,4 +14,8 @@ public class RacingView {
 
         return scanner.nextLine();
     }
+
+    public void printError(Exception e) {
+        System.out.println("[ERROR] " + e.getMessage());
+    }
 }
