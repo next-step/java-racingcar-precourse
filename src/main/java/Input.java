@@ -6,4 +6,8 @@ public class Input {
     public String carNameInput() {
         return scanner.nextLine();
     }
+
+    public String tryCntInput() {
+        return scanner.nextLine();
+    }
 }
