@@ -25,10 +25,9 @@ public class Application {
     }
     public static int tryNum() {
         while(true) {
+            System.out.println("시도할 회수는 몇회인가요?");
             try {
-                System.out.println("시도할 회수는 몇회인가요?");
-                int n = Integer.parseInt(scanner.nextLine());
-                isPositive(n);
+                int n = verify(scanner.nextLine());
                 return n;
             } catch (NumberFormatException e) {
                 System.out.println("[ERROR] 정수만 입력이 가능합니다.");
@@ -37,10 +36,12 @@ public class Application {
             }
         }
     }
-    public static void isPositive(int n) {
-        if(n < 1) {
+    public static int verify(String n) {
+        int number = Integer.parseInt(n);
+        if(number < 1) {
             throw new IllegalArgumentException();
         }
+        return number;
     }
     public static int randNum() {
         Random rand = new Random();
