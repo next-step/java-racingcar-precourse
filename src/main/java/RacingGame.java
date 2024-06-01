@@ -4,5 +4,4 @@ public class RacingGame {
         RacingGameController controller=new RacingGameController(view);
         controller.startGame();
     }
-
 }
