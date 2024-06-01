@@ -3,7 +3,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -95,6 +97,22 @@ public class RacingCarTest {
         String [] array2 ={"woni" , "pobi" , "jun"};
         assertArrayEquals(cars, array2);
         // GetCar에서 저장된 배열이랑 , array2랑 같은지 비교
+    }
+    @Test
+    @DisplayName("Race에 저장된 value(차가 움직인 거리)를 기준으로 가장 큰값은 얼마인가?")
+    public void WinnerDistance() {
+        String [] cars = {"a","b","c","d"};
+        Map<String , Integer> car = new HashMap<>();
+        car.put("a" , 5);
+        car.put("b" , 3);
+        car.put("c" , 2);
+        car.put("d" , 4);
+        // race와 cars에다가 값 저장
+        RacingCarVO race = new RacingCarVO();
+        int winner = race.GetWinner(cars , car);
+        // 이동거리중 최대값을 구해서 winner에 저장
+        assertEquals(5, winner );
+        // 실제 출력 값과 예상 출력 값 비교
     }
 
 

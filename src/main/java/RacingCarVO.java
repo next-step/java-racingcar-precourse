@@ -166,6 +166,18 @@ public class RacingCarVO {
         return max;
     } // find winner distace
 
+    public int GetWinner(String[] cars ,Map<String, Integer> race ){
+        int max=race.get(cars[0]);
+        int winner=0;
+        for (String car : cars ){
+            if(max < race.get(car)) {
+                max = race.get(car);
+                winner++;
+            }
+        }
+        return max;
+    } // overloading GetWinner
+
 
     public void OnlyWinner() {
         int max = GetWinner();
