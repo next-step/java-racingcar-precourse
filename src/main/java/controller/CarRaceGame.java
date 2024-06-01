@@ -2,6 +2,7 @@ package controller;
 
 import io.Input;
 import io.Output;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -37,11 +38,24 @@ public class CarRaceGame {
         }
 
         output.printResultMessage();
-        Map<String, String> result = drive(carList);
-        output.printResult(result);
+        while (number > 0) {
+            Map<String, String> result = drive(carList);
+            output.printResult(result);
+            number--;
+        }
+
+        output.printWinner(decideWinner(carList));
     }
 
     private Map<String, String> drive(List<Car> carList) {
         return carList.stream().collect(Collectors.toMap(Car::getName, Car::drive));
+    }
+
+    private List<Car> decideWinner(List<Car> carList) {
+        int longestDistance = carList.stream()
+                                .mapToInt(car -> car.getState().length()).max().orElse(0);
+
+        return carList.stream().filter(car -> car.getState().length() == longestDistance)
+                .collect(Collectors.toList());
     }
 }

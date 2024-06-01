@@ -1,7 +1,10 @@
 package io;
 
 
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+import model.Car;
 
 public class Output {
 
@@ -25,5 +28,11 @@ public class Output {
     public void printResult(Map<String, String> result) {
         result.forEach((name, state) -> System.out.println(name + " : " + state));
         System.out.println();
+    }
+
+    public void printWinner(List<Car> carList) {
+        System.out.print("최종 우승자 : ");
+        String winners = carList.stream().map(Car::getName).collect(Collectors.joining(", "));
+        System.out.println(winners);
     }
 }
