@@ -4,7 +4,9 @@ import java.util.Set;
 public class IsValidInput {
 
     public void isValidNames(String inputName){
+
         String[] names = inputName.split(",");
+        
         for(String name: names){
             if ((name.length()) > 5){
                 throw new IllegalArgumentException("name is too long");
