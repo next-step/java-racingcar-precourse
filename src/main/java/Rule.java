@@ -14,4 +14,13 @@ public class Rule {
             throw new IllegalArgumentException("[ERROR] 자동자 이름이 비어있습니다.");
         }
     }
+
+    public void carNameIsOverSize(String input) throws IllegalArgumentException {
+        String[] split = input.split(",");
+        for (String s : split) {
+            if (s.length() > 6) {
+                throw new IllegalArgumentException("[ERROR] 자동차 이름은 5자 이하만 가능합니다.");
+            }
+        }
+    }
 }
