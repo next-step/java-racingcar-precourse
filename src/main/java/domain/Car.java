@@ -14,6 +14,11 @@ public class Car {
     public int getDistance(){
         return this.distance;
     }
+    public StringBuilder roundResult() {
+        StringBuilder roundResult = new StringBuilder(this.name + " : ");
+        roundResult.append("-".repeat(this.distance));
+        return roundResult;
+    }
 
 
 }

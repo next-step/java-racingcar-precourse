@@ -1,9 +1,11 @@
 package controller;
 
-public class RacingController {
-    public RacingController(){
+import domain.Racing;
 
+public class RacingController {
+    private final Racing racing;
+    public RacingController(){
+        racing=new Racing();
     }
-    public void
 
 }
