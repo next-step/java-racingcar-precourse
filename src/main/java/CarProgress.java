@@ -16,4 +16,8 @@ public class CarProgress {
     public void move() {
         progress++;
     }
+
+    public int getProgress() {
+        return progress;
+    }
 }
