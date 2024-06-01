@@ -32,7 +32,8 @@ public class JUnit5Test {
         RacingGame.racingCar.add(new Car("c4"));
         RacingGame.racingCar.add(new Car("c5"));
         RacingGame.racingCar.add(new Car("c6"));
-        RacingMonitor.startRace(10);
+        for(int i=0; i<10; i++)
+            RacingGame.racing();
         RacingGame.lineUp();
         for(int i=0; i<RacingGame.racingCar.size()-1; i++) {
             assertTrue(RacingGame.racingCar.get(i).getPosition().length() >= RacingGame.racingCar.get(i+1).getPosition().length());
