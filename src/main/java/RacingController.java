@@ -6,8 +6,9 @@ public class RacingController {
         this.model = setRacing();
     }
 
-    private Racing setRacing() {
+    private String[] readCars() {
         String[] cars;
+
         while (true) {
             try {
                 String carNames = view.readCarNames();
@@ -18,18 +19,27 @@ public class RacingController {
             }
         }
 
-        int num;
+        return cars;
+    }
+
+    private int readTryCnt() {
+        int tryCount;
+
         while (true) {
             try {
-                String tryCount = view.readTryCount();
-                num = RacingInputHandler.tryCntToInt(tryCount);
+                String num = view.readTryCount();
+                tryCount = RacingInputHandler.tryCntToInt(num);
                 break;
             } catch (IllegalArgumentException e) {
                 view.printError(e);
             }
         }
 
-        return new Racing(cars, num);
+        return tryCount;
+    }
+
+    private Racing setRacing() {
+        return new Racing(readCars(), readTryCnt());
     }
 
 }
