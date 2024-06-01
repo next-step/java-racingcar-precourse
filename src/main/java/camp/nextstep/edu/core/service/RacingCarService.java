@@ -27,7 +27,18 @@ public class RacingCarService {
             racingCarRepository.findAll().forEach(this::randomMove);
             racingLogs.add(RacingLog.of(racingCarRepository.findAll()));
         }
-        return new RacingResult(List.of(), List.of());
+        return new RacingResult(racingLogs, getWinners());
+    }
+
+    public List<Car> getWinners() {
+        List<Car> cars = racingCarRepository.findAll();
+        int maxPosition = cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
+        return cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .toList();
     }
 
     public void randomMove(Car car) {
