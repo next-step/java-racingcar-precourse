@@ -10,8 +10,12 @@ public class Application {
     static List<Integer> cardistance = new ArrayList<Integer>();
     static List<Integer> top = new ArrayList<Integer>();
     static int a = 0;
+    static String name;
 
     public static void main(String[] args) {
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        Scanner scan = new Scanner(System.in);
+        name = scan.nextLine();
         validName();
         inputChance();
         makeNumber();
@@ -25,9 +29,7 @@ public class Application {
     }
 
     static void inputName() throws IllegalArgumentException{
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        Scanner scan = new Scanner(System.in);
-        String name = scan.nextLine();
+
         nameArray = name.split(",");
         nameList = new ArrayList<String>();
         for (int i = 0; i < nameArray.length; i++) {
@@ -107,6 +109,10 @@ public class Application {
             }
             catch (IllegalArgumentException e) { // IllegalArgumentException를 받으면 에러메세지 출력후 다시 이름 입력 받기
                 System.out.println("[ERROR] 이름의 길이는 5자 이하로 만들어야 합니다.");
+                System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+                Scanner scan = new Scanner(System.in);
+                name = scan.nextLine();
+                nameArray = name.split(",");
             }
         }
     }

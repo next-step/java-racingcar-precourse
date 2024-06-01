@@ -34,6 +34,13 @@ public class racingcarTest {
         System.setOut(originalOut);
     }
 
+    @Test
+    void testInputName_ValidName() {
+        // 유효한 이름 테스트
+        Application.name = "car1, car2";
+        assertDoesNotThrow(() -> Application.inputName());
+    }
+
 
     @Test
     void testMakeNumber() {
