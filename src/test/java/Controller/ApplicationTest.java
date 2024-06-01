@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import Util.CheckNameValidity;
+import Util.CheckNumberValidity;
 import java.io.IOException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -23,7 +24,7 @@ class ApplicationTest {
 
     @Test
     @DisplayName("올바른 이름의 입력이 이루어지는지 테스트")
-    void 자동차이름입력테스트()throws IOException{
+    void 자동차이름입력_테스트()throws IOException{
         // 올바른 입력
         String correctName = "pobi";
         assertThat(CheckNameValidity.checkNameValidity(correctName)).isEqualTo(true);
@@ -43,5 +44,28 @@ class ApplicationTest {
         game = new Game();
         game.separateName(incorrectSameName);
         assertThat(game.makeCars()).isEqualTo(false);
+    }
+
+    @Test
+    @DisplayName("올바른 자동차 경주 시도횟수 입력이 이루어지는지 테스트")
+    void 올바른_자동차경주_시도횟수_테스트()throws IOException{
+        // 올바른 입력
+        String correctNumber = "1";
+        assertThat(CheckNumberValidity.checkNumberValidity(correctNumber)).isEqualTo(true);
+        // 음수일떄
+        String incorrectNumber1 = "-1";
+        assertThat(CheckNumberValidity.checkNumberValidity(incorrectNumber1)).isEqualTo(false);
+        // 0일때
+        String incorrectNumber2 = "0";
+        assertThat(CheckNumberValidity.checkNumberValidity(incorrectNumber2)).isEqualTo(false);
+        // int 범위를 넘는경우
+        String incorrectNumber3 = "3000000000"; // 30억
+        assertThat(CheckNumberValidity.checkNumberValidity(incorrectNumber3)).isEqualTo(false);
+        // 소수일때
+        String incorrectNumber4 = "1.2";
+        assertThat(CheckNumberValidity.checkNumberValidity(incorrectNumber4)).isEqualTo(false);
+        //숫자가 아닐때
+        String incorrectNumber5 = "a";
+        assertThat(CheckNumberValidity.checkNumberValidity(incorrectNumber5)).isEqualTo(false);
     }
 }
