@@ -9,6 +9,9 @@ public class Application {
         Race race = new Race(carNames);
         race.start(trialCount);
 
+        List<Car> winners = race.getWinners();
+        ResultHandler.printWinners(winners);
+
     }
 
 
