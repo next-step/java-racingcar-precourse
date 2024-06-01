@@ -11,7 +11,7 @@ public class RacingMonitor {
             } catch (IllegalStateException e){
                 System.out.println("[ERROR] 경주를 시작하려면 2대 이상의 자동차를 입력해야 합니다.");
             } catch (IllegalArgumentException e){
-                System.out.println("[ERROR] 자동차 이름은 1자이상 5자이하여야 합니다.");
+                System.out.println("[ERROR] 자동차 이름은 중복이 없어야 하며 동시에 1자이상 5자이하여야 합니다.");
             }
         }
     }
