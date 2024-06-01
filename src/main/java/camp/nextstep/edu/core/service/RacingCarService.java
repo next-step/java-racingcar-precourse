@@ -14,4 +14,7 @@ public class RacingCarService {
         this.racingCarRepository = racingCarRepository;
     }
 
+    public void registerCars(List<Car> cars) {
+        racingCarRepository.save(cars);
+    }
 }

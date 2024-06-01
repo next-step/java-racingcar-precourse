@@ -16,4 +16,16 @@ public class RacingCarApi {
         this.racingCarService = racingCarService;
     }
 
+    public void registerRacingCars(Request request) {
+        List<Car> cars = parseRacingCars(request);
+        racingCarService.registerCars(cars);
+    }
+
+
+    public List<Car> parseRacingCars(Request request) {
+        List<String> racingCars = List.of(request.getContent().split(","));
+
+        return racingCars.stream().map(Car::new).toList();
+    }
+
 }
