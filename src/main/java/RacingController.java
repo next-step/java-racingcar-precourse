@@ -8,7 +8,10 @@ public class RacingController {
 
     public void startRace() {
         CarProgress[] carProgresses = model.getCarProgresses();
-        view.addRaceResult(carProgresses);
+
+        while (model.nextMove()){
+            view.addRaceResult(carProgresses);
+        }
 
         view.printRaceResult();
     }

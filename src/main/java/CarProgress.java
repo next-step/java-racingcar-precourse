@@ -12,4 +12,8 @@ public class CarProgress {
         return carName + " : "
                 + "-".repeat(progress);
     }
+
+    public void move() {
+        progress++;
+    }
 }
