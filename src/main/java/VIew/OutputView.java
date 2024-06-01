@@ -34,7 +34,7 @@ public class OutputView {
 
     // 최종 우승자 문구 및 우승자 출력
     public static void outputGameWinner(String winners) throws IOException {
-        bw.write("최종 우승자 : " + winners);
+        bw.write("최종 우승자 : " + winners + "\n");
         bw.flush();
     }
 }

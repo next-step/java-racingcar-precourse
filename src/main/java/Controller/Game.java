@@ -30,6 +30,14 @@ public class Game {
         return cars;
     }
 
+    public void setWinner(Winner winner) {
+        this.winner = winner;
+    }
+
+    public void setCars(Car[] cars){
+        this.cars = cars;
+    }
+
     public String[] getBeforeCheckCarNames() {
         return beforeCheckCarNames;
     }

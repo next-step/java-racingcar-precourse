@@ -3,9 +3,14 @@ package Controller;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import Model.Car;
+
 import Util.CheckNameValidity;
 import Util.CheckNumberValidity;
+import Util.MoveOrNot;
+
 import java.io.IOException;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -67,5 +72,52 @@ class ApplicationTest {
         //숫자가 아닐때
         String incorrectNumber5 = "a";
         assertThat(CheckNumberValidity.checkNumberValidity(incorrectNumber5)).isEqualTo(false);
+    }
+    @Test
+    @DisplayName("0 ~ 3정지 일때 4 ~ 9일때 전진하는지 테스트")
+    void 전진정지테스트()throws IOException{
+        //0일때
+        int num1 = 0;
+        Car car1 = new Car("car","",0);
+        MoveOrNot.checkMoveOrNot(num1,car1);
+        assertThat(car1.getNowStatus()).isEqualTo("car : ");
+        //3일때
+        int num2 = 3;
+        Car car2 = new Car("car","",0);
+        MoveOrNot.checkMoveOrNot(num2,car2);
+        assertThat(car2.getNowStatus()).isEqualTo("car : ");
+        //4일때
+        int num3 = 4;
+        Car car3 = new Car("car","",0);
+        MoveOrNot.checkMoveOrNot(num3,car3);
+        assertThat(car3.getNowStatus()).isEqualTo("car : -");
+        //9일때
+        int num4 = 9;
+        Car car4 = new Car("car","",0);
+        MoveOrNot.checkMoveOrNot(num4,car4);
+        assertThat(car4.getNowStatus()).isEqualTo("car : -");
+    }
+
+    @Test
+    @DisplayName("우승자가 1명일때와 2명이상일때 테스트")
+    void 우승자테스트()throws IOException {
+        // 우승자가 1명일때
+        Game game1 = new Game();
+        Car[] cars1 = new Car[3];
+        cars1[0] = new Car("one","---",1);
+        cars1[1] = new Car("two","--",2);
+        cars1[2] = new Car("three","-",3);
+        game1.setCars(cars1);
+        game1.makeAndPrintWinner();
+        assertThat(game1.getWinner().getWinner()).isEqualTo("three");
+        //우승자가 2명이상일때
+        Game game2 = new Game();
+        Car[] cars2 = new Car[3];
+        cars2[0] = new Car("one","---",1);
+        cars2[1] = new Car("two","--",3);
+        cars2[2] = new Car("three","-",3);
+        game2.setCars(cars2);
+        game2.makeAndPrintWinner();
+        assertThat(game2.getWinner().getWinner()).isEqualTo("two, three");
     }
 }
