@@ -14,8 +14,12 @@ public class Game {
     private int gameCnt;
 
     public void start() {
-        createCars(inputProcessor.processCarNames());
-        setGameCnt(inputProcessor.processGameCount());
+        String carNames = inputProcessor.processCarNames();
+        createCars(carNames);
+
+        int count = inputProcessor.processGameCount();
+        setGameCnt(count);
+
         raceProcessor.raceForCnt(racingCars, gameCnt);
         outputProcessor.processWinnerName(findWinners());
     }
