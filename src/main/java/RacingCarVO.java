@@ -199,4 +199,18 @@ public class RacingCarVO {
             i--;
         }
     }// show winner
+
+    public String PrintWinner(Map<String, Integer> race ) {
+        int i= race.size();
+        String result="";
+        System.out.print("최종 우승자 : ");
+        for (String winner : race.keySet()){
+            result += winner+" ";
+            if (i >1 ){
+                result += ",";
+            }
+            i--;
+        }
+        return result;
+    }// overloading PirntWinner
 }

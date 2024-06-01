@@ -114,6 +114,35 @@ public class RacingCarTest {
         assertEquals(5, winner );
         // 실제 출력 값과 예상 출력 값 비교
     }
+    @Test
+    @DisplayName("승자가 1명일때는 쉽표가 출력되서는 안된다.")
+    public void OneWinner() {
+        Map<String , Integer> car = new HashMap<>();
+        car.put("a" , 5);
+        // car에다가 승자 1명 입력
+        RacingCarVO race = new RacingCarVO();
+        String execute = race.PrintWinner(car);
+        String expect = "a ";
+        // 승자가 1명이면 쉼표가 나오지 않아야한다.
+        assertEquals(execute , expect );
+        // 실제 출력 값과 예상 출력 값 비교
+    }
+    @Test
+    @DisplayName("승자가 여러명일때는 쉽표가 출력되서는 안된다.")
+    public void ManyWinner() {
+        Map<String , Integer> car = new HashMap<>();
+        car.put("a" , 5);
+        car.put("b" , 5);
+        car.put("c" , 5);
+        // car에다가 승자 3명 입력
+        RacingCarVO race = new RacingCarVO();
+        String execute = race.PrintWinner(car);
+        String expect = "a ,b ,c ";
+        // 승자가 3명이면 쉼표가 2개나와야 한다.
+        assertEquals(execute , expect );
+        // 실제 출력 값과 예상 출력 값 비교
+    }
+
 
 
 
