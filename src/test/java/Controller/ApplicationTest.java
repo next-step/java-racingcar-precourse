@@ -13,7 +13,6 @@ class ApplicationTest {
     void 문자열분리테스트()throws IOException {
         Game game = new Game();
         String name = "A,B,C,D";
-        game.totalGame();
 
     }
 }

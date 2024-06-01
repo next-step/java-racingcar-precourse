@@ -26,6 +26,30 @@ public class Game {
     private Winner winner;
     private WinnerNumber winnerNumber;
 
+    public Car[] getCars() {
+        return cars;
+    }
+
+    public String[] getBeforeCheckCarNames() {
+        return beforeCheckCarNames;
+    }
+
+    public StringTokenizer getCarNames() {
+        return carNames;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public Winner getWinner() {
+        return winner;
+    }
+
+    public WinnerNumber getWinnerNumber() {
+        return winnerNumber;
+    }
+
     // 입력받은 이름들 분리하여 배열에 저장
     public void separateName(String name) {
         beforeCheckCarNames = name.split(",");
