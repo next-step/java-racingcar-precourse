@@ -15,24 +15,13 @@ import VIew.OutputView;
 
 import java.io.IOException;
 
-import java.util.StringTokenizer;
-
 public class Game {
 
     private Car[] cars;
     private String[] beforeCheckCarNames;
-    private StringTokenizer carNames;
     private Player player;
     private Winner winner;
     private WinnerNumber winnerNumber;
-
-    public Car[] getCars() {
-        return cars;
-    }
-
-    public void setWinner(Winner winner) {
-        this.winner = winner;
-    }
 
     public void setCars(Car[] cars){
         this.cars = cars;
@@ -42,20 +31,8 @@ public class Game {
         return beforeCheckCarNames;
     }
 
-    public StringTokenizer getCarNames() {
-        return carNames;
-    }
-
-    public Player getPlayer() {
-        return player;
-    }
-
     public Winner getWinner() {
         return winner;
-    }
-
-    public WinnerNumber getWinnerNumber() {
-        return winnerNumber;
     }
 
     // 입력받은 이름들 분리하여 배열에 저장
@@ -63,7 +40,7 @@ public class Game {
         beforeCheckCarNames = name.split(",");
     }
 
-    // beforeCheckCarNames에 있는 자동차들을 객체로 생성 => 올바르지 않은 값이 있다면 false 리턴
+    // beforeCheckCarNames 에 있는 자동차들을 객체로 생성 => 올바르지 않은 값이 있다면 false 리턴
     public boolean makeCars() throws IOException {
         cars = new Car[beforeCheckCarNames.length];
         for (int i = 0; i < cars.length; i++) {
@@ -76,14 +53,14 @@ public class Game {
     }
 
     // 한대일 경우 에러 발생
-    public void makeErrorIsCarsOne() {
+    private void makeErrorIsCarsOne() {
         if (cars.length == 1) {
             throw new IllegalStateException("[Error] 자동차 1대로는 경주를 진행할 수 없습니다.");
         }
     }
 
     // 두대 이상인지 리턴하는 메소드
-    public boolean isCarsOverOne() throws IOException {
+    private boolean isCarsOverOne() throws IOException {
         try {
             makeErrorIsCarsOne();
             return true;
@@ -94,7 +71,7 @@ public class Game {
     }
 
     // 올바르게 입력을 받는 메소드
-    public void makeCorrectCars() throws IOException {
+    private void makeCorrectCars() throws IOException {
         do {
             OutputView.outputInputCarNameMessage();
             String names = InputView.inputName();
@@ -103,7 +80,7 @@ public class Game {
     }
 
     // 올바른 횟수를 입력 받는 메소드
-    public void makeCorrectPlayer() throws IOException {
+    private void makeCorrectPlayer() throws IOException {
         OutputView.outputLine("시도할 회수는 몇회인가요?");
         String numberOfAttempts;
         while (!CheckNumberValidity.checkNumberValidity(
@@ -114,7 +91,7 @@ public class Game {
     }
 
     // 모든 자동차들에 대해서 전지할지 정지할지 정하는 메소드
-    public void allCarMoveOrNot() {
+    private void allCarMoveOrNot() {
         for (Car car : cars) {
             int randomNumber = MakeRandomNumber.makeRandomNumber();
             MoveOrNot.checkMoveOrNot(randomNumber, car);
@@ -122,7 +99,7 @@ public class Game {
     }
 
     // 모든 자동차들의 현재 전진상황을 출력하는 메소드
-    public void printAllCarNowStatus() throws IOException {
+    private void printAllCarNowStatus() throws IOException {
         for (Car car : cars) {
             OutputView.outputLine(car.getNowStatus());
         }
@@ -130,7 +107,7 @@ public class Game {
     }
 
     // 모든 자동차들을 검사해 가장 많이 전진한 자동차를 찾아 winnerNumber 에 저장
-    public void findWinnerNumber() {
+    private void findWinnerNumber() {
         winner = new Winner();
         int maxMoveStatus = 0;
         for (Car car : cars) {
@@ -140,7 +117,7 @@ public class Game {
     }
 
     // 모든 우승자들을 더함
-    public void addAllWinner() {
+    private void addAllWinner() {
         for (Car car : cars) {
             if (winnerNumber.getWinnerNumber() == car.getMoveCount()) {
                 winner.addWinner(car.getName());
