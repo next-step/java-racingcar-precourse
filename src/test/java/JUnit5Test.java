@@ -1,3 +1,4 @@
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.AfterEach;
@@ -33,6 +34,19 @@ public class JUnit5Test {
         for(int i=0; i<RacingGame.racingCar.size()-1; i++) {
             assertTrue(RacingGame.racingCar.get(i).getPosition().length() >= RacingGame.racingCar.get(i+1).getPosition().length());
         }
+    }
+
+    @Test
+    @DisplayName("우승 차량이 올바르게 선정 되는가?")
+    void testResult() {
+        Car winner = new Car("1st");
+        RacingGame.racingCar.add(winner);
+        RacingGame.racingCar.add(new Car("c7"));
+        for(int i=0; i<11; i++)
+            winner.forward();
+        RacingGame.lineUp();
+        assertEquals(0, RacingGame.winner());
+        assertEquals(winner.getName(), RacingGame.racingCar.get(RacingGame.winner()).getName());
     }
 
     @AfterEach
