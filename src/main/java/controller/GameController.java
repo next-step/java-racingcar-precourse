@@ -26,6 +26,8 @@ public class GameController {
             carService.moveCars();
             resultView.printCars(carService.getCars());
         }
+
+        resultView.printWinner(carService.getWinnerName());
     }
 
     private MoveCount receiveMoveCount() {

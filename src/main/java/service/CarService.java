@@ -22,4 +22,16 @@ public class CarService {
     public List<Car> getCars() {
         return cars;
     }
+
+    public List<String> getWinnerName() {
+        int maxDistance = cars.stream()
+                .mapToInt(Car::getDistance)
+                .max()
+                .orElseThrow();
+
+        return cars.stream()
+                .filter(car -> car.getDistance().equals(maxDistance))
+                .map(Car::getName)
+                .toList();
+    }
 }
