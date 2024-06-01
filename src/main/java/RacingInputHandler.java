@@ -4,7 +4,7 @@ public class RacingInputHandler {
 
         for (int i = 0; i < cars.length; i++) {
             cars[i] = cars[i].trim();
-            if (cars[i].length() > 5) {
+            if (cars[i].length() > 5 || cars[i].length() <= 0) {
                 throw new IllegalArgumentException(cars[i] + " - 자동차의 이름이 5자를 초과함.");
             }
         }
