@@ -23,7 +23,6 @@ public class Application {
             try {
                 String[] input = scanner.nextLine().split(",");
                 carVerify(input);
-                createList(input);
                 return;
             } catch (IllegalStateException e){
                 System.out.println("[ERROR] 경주를 시작하려면 2대 이상의 자동차를 입력해야 합니다.");
@@ -33,6 +32,7 @@ public class Application {
     public static void carVerify(String[] carList) {
         if(carList.length <= 1)
             throw new IllegalStateException();
+        createList(carList);
     }
     public static void createList(String[] carList) {
         for(String car: carList)
