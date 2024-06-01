@@ -75,14 +75,19 @@ public class GameManager {
     }
 
     private void setCarList() {
-        String userInput = null;
+        String userInput;
         inputValidator = new CarNameValidator();
-        while (userInput == null) {
+        while (carList.isEmpty()) {
             ConsoleMessagePrinter.printCarNameInputMessage();
             userInput = getUserInput();
-            if (userInput != null) {
-                initCarList(StringSplitter.splitString(userInput));
+            List<String> carNameList = StringSplitter.splitString(userInput);
+            try {
+                ((CarNameValidator) inputValidator).checkCarNameList(carNameList);
+            } catch (IllegalArgumentException exception) {
+                ConsoleMessagePrinter.printErrorMessage(exception.getMessage());
+                continue;
             }
+            initCarList(carNameList);
         }
     }
 
