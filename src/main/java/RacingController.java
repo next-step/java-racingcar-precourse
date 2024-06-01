@@ -6,6 +6,10 @@ public class RacingController {
         this.model = new Racing(readCars(), readTryCnt());
     }
 
+    public void startRace() {
+        view.printRaceResult();
+    }
+
     private String[] readCars() {
         String[] cars;
 
