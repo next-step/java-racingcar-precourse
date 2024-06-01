@@ -3,7 +3,7 @@ public class RacingController {
     private Racing model;
 
     public RacingController() {
-        this.model = setRacing();
+        this.model = new Racing(readCars(), readTryCnt());
     }
 
     private String[] readCars() {
@@ -36,10 +36,6 @@ public class RacingController {
         }
 
         return tryCount;
-    }
-
-    private Racing setRacing() {
-        return new Racing(readCars(), readTryCnt());
     }
 
 }
