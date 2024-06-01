@@ -9,4 +9,8 @@ public class Game {
             racingCars.add(new Car(carName));
         }
     }
+
+    private int createCnt(String tryCntInput) {
+        return Integer.parseInt(tryCntInput);
+    }
 }
