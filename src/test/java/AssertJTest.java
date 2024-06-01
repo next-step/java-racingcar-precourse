@@ -41,6 +41,12 @@ public class AssertJTest {
     }
 
     @Test
+    @DisplayName("전진 시도 횟수를 입력하지 않는 경우가 존재하는가?")
+    void testEnterTryNum() {
+        assertThatThrownBy(() -> RacingController.tryNumVerify("")).isInstanceOf(IllegalStateException.class);
+    }
+
+    @Test
     @DisplayName("randNum() 메서드가 0~9 사이 값을 반환하는가?")
     void testRandomNumRange() {
         for(int i=0; i<1000; i++)
