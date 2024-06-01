@@ -10,17 +10,9 @@ public class RacingGame {
         RacingMonitor.startRace(n);     // 경주 시작
         RacingMonitor.printRacingResult();  // 경주 결과 출력
     }
-    public static void racing() {
-        for(Car car : racingCar)
-            isForward(car);
-    }
     public static int randNum() {
         Random rand = new Random();
         return rand.nextInt(10);
-    }
-    public static void isForward(Car car) {
-        if(randNum() >= 4)
-            car.forward();
     }
     public static void lineUp() {
         Collections.sort(racingCar, (o1, o2) -> o2.getPosition().length() - o1.getPosition().length());
