@@ -28,6 +28,12 @@ public class RacingMonitor {
             }
         }
     }
+    public static void startRace(int num){
+        System.out.println("\n실행 결과");
+        for(int i=0; i<num; i++) {         // 전진 시도 결과 출력
+            RacingGame.racing();
+        }
+    }
     public static void printRacingResult() {
         RacingGame.lineUp();
         System.out.print("최종 우승자 :");

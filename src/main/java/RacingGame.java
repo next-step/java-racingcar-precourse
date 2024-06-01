@@ -6,12 +6,9 @@ public class RacingGame {
     static ArrayList<Car> racingCar = new ArrayList<>();  // Key: 자동차 이름, value: 전진 횟수
     public static void playRacingGame() {
         RacingMonitor.enterRacingCars();         // 경주 자동차 이름 입력
-        int tNum = RacingMonitor.enterTryNum();                // 전진 시도 횟수 입력
-        System.out.println("\n실행 결과");
-        for(int i=0; i<tNum; i++) {         // 전진 시도 결과 출력
-            racing();
-        }
-        RacingMonitor.printRacingResult();
+        int n = RacingMonitor.enterTryNum();    // 전진 시도 횟수 입력
+        RacingMonitor.startRace(n);     // 경주 시작
+        RacingMonitor.printRacingResult();  // 경주 결과 출력
     }
     public static void racing() {
         for(Car car : racingCar) {
