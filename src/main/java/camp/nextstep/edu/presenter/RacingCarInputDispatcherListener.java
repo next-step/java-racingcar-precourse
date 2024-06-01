@@ -16,6 +16,8 @@ public class RacingCarInputDispatcherListener {
         Scanner scanner = new Scanner(System.in);
         while (!registerRacingCars(scanner)) {
         }
+        while (!startRacing(scanner)) {
+        }
         scanner.close();
     }
 
@@ -31,4 +33,15 @@ public class RacingCarInputDispatcherListener {
         }
     }
 
+    private boolean startRacing(Scanner scanner) {
+        System.out.println("시도할 회수는 몇 회 인가요?");
+        try {
+            String input = scanner.nextLine();
+            racingCarApi.startRacing(Request.of(input));
+            return true;
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
