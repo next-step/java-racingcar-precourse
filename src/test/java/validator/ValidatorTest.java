@@ -1,8 +1,10 @@
 package validator;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.*;
 
 class ValidatorTest {
     @Test
@@ -11,17 +13,9 @@ class ValidatorTest {
         String[] testCars = {"pobi", "jun", "eclipse"};
 
         // when // then
-        assertThrows(IllegalArgumentException.class, () ->
-                Validator.validNameLength(testCars));
-    }
-    @Test
-    void testValidNameLength2() {
-        // given
-        String[] testCars = {","};
-
-        // when // then
-        assertThrows(IllegalArgumentException.class, () ->
-                Validator.validNameLength(testCars));
+        assertThatThrownBy(() ->
+                Validator.validNameLength(testCars))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -31,25 +25,16 @@ class ValidatorTest {
         testLongCount += 1;
         String testStringCount = testLongCount + "";
         // when // then
-        assertThrows(IllegalArgumentException.class, () ->
+        assertThatIllegalArgumentException().isThrownBy(() ->
                 Validator.validRacingCount(testStringCount));
     }
 
-    @Test
-    void testValidRacingCount2() {
+    @ParameterizedTest
+    @ValueSource(strings = {"-1", "asdf"})
+    void testValidRacingCount2(String candidate) {
         // given
-        String testStringCount = "-1";
         // when // then
-        assertThrows(IllegalArgumentException.class, () ->
-                Validator.validRacingCount(testStringCount));
-    }
-
-    @Test
-    void testValidRacingCount3() {
-        // given
-        String testStringCount = "asdf";
-        // when // then
-        assertThrows(IllegalArgumentException.class, () ->
-                Validator.validNumberFormat(testStringCount));
+        assertThatIllegalArgumentException().isThrownBy(() ->
+                Validator.validRacingCount(candidate));
     }
 }

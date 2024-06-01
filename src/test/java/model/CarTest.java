@@ -2,7 +2,7 @@ package model;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.*;
 
 class CarTest {
     @Test
@@ -15,7 +15,7 @@ class CarTest {
         car.moveForward(number);
 
         // then
-        assertEquals(car.getPosition(), 1);
+        assertThat(car.getPosition()).isEqualTo(1);
     }
     @Test
     void testMoveForward2() {
@@ -27,6 +27,6 @@ class CarTest {
         car.moveForward(number);
 
         // then
-        assertEquals(car.getPosition(), 0);
+        assertThat(car.getPosition()).isEqualTo(0);
     }
 }

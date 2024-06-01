@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.*;
 
 class RaceTest {
     private final Race race = new Race();
@@ -20,7 +20,7 @@ class RaceTest {
 
         // then
         for (int i = 0; i < carList.size(); i++) {
-            assertEquals(names[i], carList.get(i).getName());
+            assertThat(names[i]).isEqualTo(carList.get(i).getName());
         }
     }
 
@@ -51,8 +51,6 @@ class RaceTest {
             race.moveEachCar(car);
         }
 
-        String[] tet = {"rew"};
-
         // then
         System.out.println(car.getPosition());
     }
@@ -65,7 +63,7 @@ class RaceTest {
         // when // then
         for (int i = 0; i < count; i++) {
             int temp = race.generateRandomNumber();
-            assertTrue(temp >= 0 && temp < 10);
+            assertThat(temp >= 0 && temp < 10).isTrue();
         }
     }
 }
