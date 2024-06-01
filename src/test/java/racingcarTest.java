@@ -44,5 +44,21 @@ public class racingcarTest {
         Application.arr.forEach(num -> assertTrue(num >= 0 && num < 10));
     }
 
+    @Test
+    void testGoStop() {
+        // 전진 로직 테스트
+        Application.nameArray = new String[] {"car1", "car2"};
+        Application.nameList = new ArrayList<>(List.of(Application.nameArray));
+        Application.cardistance.add(0);
+        Application.cardistance.add(0);
+
+        // 사전 정의된 난수 리스트를 사용
+        Application.arr = new ArrayList<>(List.of(4, 3));
+        Application.goStop();
+
+        assertEquals(1, Application.cardistance.get(0));
+        assertEquals(0, Application.cardistance.get(1));
+    }
+
 
 }
