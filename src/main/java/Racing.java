@@ -34,4 +34,44 @@ public class Racing {
 
         return true;
     }
+
+    public String[] judgeWinners() {
+        int maxProgress = computeMaxProgress();
+
+        int cntOfWinners = cntCarsOn(maxProgress);
+        String[] winners = new String[cntOfWinners];
+
+        int i = 0;
+        for (CarProgress car : carProgresses) {
+            if (car.getProgress() == maxProgress) {
+                winners[i++] = car.getCarName();
+            }
+        }
+
+        return winners;
+    }
+
+    private int computeMaxProgress() {
+        int maxProgress = 0;
+
+        for (CarProgress car : carProgresses) {
+            if (car.getProgress() > maxProgress) {
+                maxProgress = car.getProgress();
+            }
+        }
+
+        return maxProgress;
+    }
+
+    private int cntCarsOn(int progress) {
+        int cnt = 0;
+
+        for (CarProgress car : carProgresses) {
+            if (car.getProgress() == progress) {
+                cnt++;
+            }
+        }
+
+        return cnt;
+    }
 }
