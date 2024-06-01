@@ -9,12 +9,14 @@ public class AttemptNumberValidator implements InputValidator {
     public void checkInputValue(String input) {
         int attemptNumber = ATTEMPT_NUMBER_MINIMUM;
 
+        // 숫자가 아닌 값이면 예외 발생
         try {
             attemptNumber = Integer.parseInt(input);
         } catch (NumberFormatException exception) {
             raiseIllegalArgumentException(ATTEMPT_NUMBER_ERROR_MESSAGE);
             return;
         }
+        // 0 이상의 정수가 아닌 숫자면 예외 발생
         if (attemptNumber < ATTEMPT_NUMBER_MINIMUM) {
             raiseIllegalArgumentException(ATTEMPT_NUMBER_ERROR_MESSAGE);
         }
