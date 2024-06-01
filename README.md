@@ -44,9 +44,9 @@ View
 - OutputView: 출력에 관한 메소드
 
 Util
-- MoveOrNot: 0 ~ 3 사이면 정지, 4 ~ 9사이면 전진을 판단
+- MoveOrNot: 4 ~ 9사이면 전진하여 Car 클래스의 전진상태 및 전진 횟수를 변경
 - CheckNumberValidity: 입력받은 횟수가 자연수인지, 큰수인지 유효성 판단
-- CheckNameValidity: 자동차의 이름 유효성 검사하는 클래스(이름이 5자 이하)
+- CheckNameValidity: 자동차의 이름 유효성 검사하는 클래스(이름이 5자 이하, 영어로만 구성)
 - MakeRandomNumber: 랜덤한 0 ~ 9사이의 정수 생성하는 클래스
 
 
