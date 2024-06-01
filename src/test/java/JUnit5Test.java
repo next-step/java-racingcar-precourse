@@ -22,6 +22,12 @@ public class JUnit5Test {
     }
 
     @Test
+    @DisplayName("자동차 이름의 중복을 확인하는가?")
+    void testCarNameDuplicate() {
+        assertThrows(IllegalArgumentException.class, () -> RacingController.carVerify(new String[]{"c1", "c1"}));
+    }
+
+    @Test
     @DisplayName("randNum() 메서드가 0~9 사이 값을 반환하는가?")
     void testRandNumRange() {
         int num = RacingGame.randNum();
