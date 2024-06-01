@@ -52,7 +52,7 @@ public class Game {
         OutputView.outputLine("시도할 회수는 몇회인가요?");
         String numberOfAttempts;
         while (!CheckNumberValidity.checkNumberValidity(numberOfAttempts = InputView.inputNumberOfAttempts())) {
-            OutputView.outputLine("다시~~~");
+            OutputView.outputLine("시도할 회수는 몇회인가요?");
         }
         player = new Player(Integer.parseInt(numberOfAttempts));
     }

@@ -15,13 +15,13 @@ public class CheckNumberValidity {
            makeErrorIfNumberIsFalse(number);
            return true;
        }catch (IllegalArgumentException illegalArgumentException){
-           OutputView.outputLine("[Error]올바른 숫자가 아닙니다.");
+           OutputView.outputLine("[Error]올바른 숫자가 아닙니다. 다시 입력하세요");
            return false;
        }
     }
 
     private static void  makeErrorIfNumberIsFalse(String number) {
-        if(checkTotalValidity(number)){
+        if(!checkTotalValidity(number)){
             throw new IllegalArgumentException("[Error]올바른 숫자가 아닙니다.");
         }
     }
