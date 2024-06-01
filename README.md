@@ -29,6 +29,7 @@
 MVC모델
 
 Controller
+- Application: 게임실행 main 클래스
 - MainGame: Game클래스의 totalGame메소드 실행
 - Game: 실질적인 게임을 구성하는 클래스
 
