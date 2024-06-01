@@ -35,6 +35,12 @@ public class AssertJTest {
     }
 
     @Test
+    @DisplayName("자동차 이름이 입력되지 않는 경우를 확인하는가?")
+    void testEnterCarName() {
+        assertThatThrownBy(() -> RacingController.carVerify("".split(","))).isInstanceOf(IllegalStateException.class);
+    }
+
+    @Test
     @DisplayName("randNum() 메서드가 0~9 사이 값을 반환하는가?")
     void testRandomNumRange() {
         for(int i=0; i<1000; i++)
