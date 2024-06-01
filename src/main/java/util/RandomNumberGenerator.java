@@ -10,7 +10,7 @@ public class RandomNumberGenerator {
     private RandomNumberGenerator() {}
 
     public static Random getInstance() {
-        if (randomGenerator != null) {
+        if (randomGenerator == null) {
             randomGenerator = new Random();
         }
         return randomGenerator;
