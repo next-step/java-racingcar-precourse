@@ -10,7 +10,7 @@ public class Rule {
     }
 
     public void carNameIsNull(String input) throws IllegalArgumentException {
-        if (input == null) {
+        if (input == null || input == "") {
             throw new IllegalArgumentException("[ERROR] 자동자 이름이 비어있습니다.");
         }
     }
