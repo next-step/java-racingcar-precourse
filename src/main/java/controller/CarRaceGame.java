@@ -2,7 +2,6 @@ package controller;
 
 import io.Input;
 import io.Output;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -13,29 +12,9 @@ public class CarRaceGame {
     private static final Input input = new Input();
     private static final Output output = new Output();
 
-    private static List<Car> carList;
-
     public void play() {
-        boolean validInput = false;
-        int number = 0;
-
-        while (!validInput) {
-            try {
-                carList = input.inputCars();
-                validInput = true;
-            } catch (IllegalArgumentException e) {
-                output.printCarNameErrorMessage();
-            }
-        }
-        validInput = false;
-        while (!validInput) {
-            try {
-                number = input.inputNumber();
-                validInput = true;
-            } catch (IllegalArgumentException e) {
-                output.printNumberFormatErrorMessage();
-            }
-        }
+        List<Car> carList = inputCars();
+        int number = inputNumber();
 
         output.printResultMessage();
         while (number > 0) {
@@ -47,11 +26,37 @@ public class CarRaceGame {
         output.printWinner(decideWinner(carList));
     }
 
-    private Map<String, String> drive(List<Car> carList) {
+    private static List<Car> inputCars() {
+        List<Car> CarList;
+
+        while (true) {
+            try {
+                CarList = input.inputCars();
+                return CarList;
+            } catch (IllegalArgumentException e) {
+                output.printCarNameErrorMessage();
+            }
+        }
+    }
+
+    private static int inputNumber() {
+        int number;
+
+        while (true) {
+            try {
+                number = input.inputNumber();
+                return number;
+            } catch (IllegalArgumentException e) {
+                output.printNumberFormatErrorMessage();
+            }
+        }
+    }
+
+    private static Map<String, String> drive(List<Car> carList) {
         return carList.stream().collect(Collectors.toMap(Car::getName, Car::drive));
     }
 
-    private List<Car> decideWinner(List<Car> carList) {
+    private static List<Car> decideWinner(List<Car> carList) {
         int longestDistance = carList.stream()
                                 .mapToInt(car -> car.getState().length()).max().orElse(0);
 
