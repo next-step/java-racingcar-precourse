@@ -1,6 +1,6 @@
 public class RacingInputHandler {
     public static String[] splitCarNames(String carNames) throws IllegalArgumentException {
-        String[] cars = carNames.split(",");;
+        String[] cars = carNames.split(",");
 
         for (int i = 0; i < cars.length; i++) {
             cars[i] = cars[i].trim();
