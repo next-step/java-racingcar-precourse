@@ -29,7 +29,7 @@ public class RacingCarApi {
     }
 
     public List<Car> parseRacingCars(Request request) {
-        List<String> racingCars = List.of(request.getContent().split(","));
+        List<String> racingCars = List.of(request.content().split(","));
         if (racingCars.size() < 2) {
             throw new IllegalArgumentException(ERROR_PREFIX + "자동차는 2대 이상이어야 합니다.");
         }
@@ -42,7 +42,7 @@ public class RacingCarApi {
     }
 
     public int parseRacingCount(Request request) {
-        int racingCount = Integer.parseInt(request.getContent());
+        int racingCount = Integer.parseInt(request.content());
         if (racingCount < 1) {
             throw new IllegalArgumentException(ERROR_PREFIX + "레이싱 횟수는 1 이상이어야 합니다.");
         }
