@@ -74,6 +74,19 @@ public class racingcarTest {
         assertEquals(expectedTop.get(0), Application.top.get(0));
         assertEquals(expectedTop.get(1), Application.top.get(1));
     }
+    @Test
+    void testPrintTop() {
+        // 최종 우승자 출력 테스트
+        Application.nameArray = new String[] {"car1", "car2", "car3"};
+        Application.top.add(1);
+        Application.top.add(2);
+
+        // 메서드 호출
+        Application.printTop();
+
+        // 출력 값 확인
+        assertEquals("최종 우승자 : car2,car3\r\n", outContent.toString());
+    }
 
 
 
