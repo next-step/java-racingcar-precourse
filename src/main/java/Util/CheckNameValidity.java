@@ -1,5 +1,7 @@
 package Util;
 
+import VIew.OutputView;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.regex.Pattern;
 
@@ -9,7 +11,24 @@ public class CheckNameValidity {
 
     }
 
-    public static boolean checkNameValidity(String name) {
+    public static boolean checkNameValidity(String name)throws IOException {
+        try {
+            makeErrorIfFalse(name);
+            return true;
+        }catch (IllegalArgumentException illegalArgumentException){
+            OutputView.outputLine("[Error]: 올바른 이름의 입력이 아닙니다. 다시 입력하세요");
+            return false;
+        }
+
+    }
+
+    private static void makeErrorIfFalse(String name){
+        if(!checkTotalNameValidity(name)){
+            throw new IllegalArgumentException("[Error]: 올바른 입력이 아닙니다.");
+        }
+    }
+
+    private static boolean checkTotalNameValidity(String name){
         if(checkNameLength(name)) {// 길이가 6이상
             return false;
         }
@@ -45,6 +64,4 @@ public class CheckNameValidity {
         sameNameHashMap.put(name,true);
         return false;
     }
-
-
 }
