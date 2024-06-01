@@ -41,6 +41,13 @@ public class racingcarTest {
         assertDoesNotThrow(() -> Application.inputName());
     }
 
+    @Test
+    void testInputName_InvalidName() {
+        // 5자 이상인 이름 테스트
+        Application.name = "car12345, car2";
+        assertThrows(IllegalArgumentException.class, () -> Application.inputName());
+    }
+
 
     @Test
     void testMakeNumber() {
