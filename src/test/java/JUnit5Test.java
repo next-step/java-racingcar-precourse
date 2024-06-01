@@ -28,6 +28,13 @@ public class JUnit5Test {
     }
 
     @Test
+    @DisplayName("자동차 이름이 1~5자 사이인지 확인하는가?")
+    void testCarNameLength() {
+        assertThrows(IllegalArgumentException.class, () -> RacingController.carVerify("a,,abc".split(",")));
+        assertThrows(IllegalArgumentException.class, () -> RacingController.carVerify("a,ab,abc,abcd,abcde,abcdef".split(",")));
+    }
+
+    @Test
     @DisplayName("randNum() 메서드가 0~9 사이 값을 반환하는가?")
     void testRandNumRange() {
         int num = RacingGame.randNum();
