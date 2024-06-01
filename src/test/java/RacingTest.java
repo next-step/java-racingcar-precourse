@@ -6,6 +6,21 @@ import org.junit.jupiter.params.provider.CsvSource;
 import java.util.Arrays;
 
 public class RacingTest {
+    @DisplayName("nextMove test")
+    @ParameterizedTest(name = "남은 시도 횟수가 {0} 일 때, {1}이 반환되는가")
+    @CsvSource({
+            "5, true",
+            "0, false",
+            "1, true"
+    })
+    public void nextMoveTest(int leftTryCnt, boolean expected) {
+        String[] carNames = {"aa", "bb", "cc"};
+
+        Racing model = new Racing(carNames, leftTryCnt);
+
+        Assertions.assertThat(model.nextMove())
+                .isEqualTo(expected);
+    }
 
     @DisplayName("judgeWinner test")
     @ParameterizedTest(name = "{3}")
@@ -16,9 +31,7 @@ public class RacingTest {
     })
     public void judgeWinnerTest(String carNamesStr, String progressesStr, String expectedWinnersStr, String testName) {
         String[] carNames = carNamesStr.split(",");
-        int[] progresses = Arrays.stream(progressesStr.split(","))
-                .mapToInt(Integer::parseInt)
-                .toArray();
+        int[] progresses = toIntArray(progressesStr);
         String[] expectedWinners = expectedWinnersStr.split(",");
 
         Racing model = new Racing(carNames, 5);
@@ -32,5 +45,11 @@ public class RacingTest {
 
         Assertions.assertThat(model.judgeWinners())
                 .isEqualTo(expectedWinners);
+    }
+
+    private int[] toIntArray(String commaDelimeted) {
+        return Arrays.stream(commaDelimeted.split(","))
+                .mapToInt(Integer::parseInt)
+                .toArray();
     }
 }
