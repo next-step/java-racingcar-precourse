@@ -1,6 +1,7 @@
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
+import java.util.Random;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -20,5 +21,21 @@ public class JUnit5Test {
     void testRandNumRange() {
         int num = RacingGame.randNum();
         assertTrue(num >= 0 && num <= 9);
+    }
+
+    @Test
+    @DisplayName("순위별로 차량이 올바르게 정렬 되는가?")
+    void testForward() {
+        RacingGame.racingCar.add(new Car("c1"));
+        RacingGame.racingCar.add(new Car("c2"));
+        RacingGame.racingCar.add(new Car("c3"));
+        RacingGame.racingCar.add(new Car("c4"));
+        RacingGame.racingCar.add(new Car("c5"));
+        RacingGame.racingCar.add(new Car("c6"));
+        RacingMonitor.startRace(10);
+        RacingGame.lineUp();
+        for(int i=0; i<RacingGame.racingCar.size()-1; i++) {
+            assertTrue(RacingGame.racingCar.get(i).getPosition().length() >= RacingGame.racingCar.get(i+1).getPosition().length());
+        }
     }
 }
