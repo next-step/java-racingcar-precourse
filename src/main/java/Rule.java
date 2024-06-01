@@ -23,4 +23,12 @@ public class Rule {
             }
         }
     }
+
+    public void tryCntInputValid(String input) throws IllegalArgumentException {
+        for (char c : input.toCharArray()) {
+            if (!Character.isDigit(c)) {
+                throw new IllegalArgumentException("[ERROR] 횟수는 숫자만 가능합니다.");
+            }
+        }
+    }
 }
