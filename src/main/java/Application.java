@@ -6,6 +6,8 @@ public class Application {
         List<String> carNames = inputHandler.getCarNames();
         int trialCount = inputHandler.getTrialCount();
 
-
+       
     }
+
+
 }

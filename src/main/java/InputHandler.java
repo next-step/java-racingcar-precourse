@@ -10,13 +10,29 @@ public class InputHandler {
     }
 
     public List<String> getCarNames() {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String input = scanner.nextLine();
-        return Arrays.asList(input.split(","));
+        while (true) {
+            try {
+                System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+                String input = scanner.nextLine();
+                List<String> carNames = Arrays.asList(input.split(","));
+                InputValidator.validateCarNames(carNames);
+                return carNames;
+            } catch (IllegalArgumentException e) {
+                System.out.println("[ERROR] " + e.getMessage());
+            }
+        }
     }
 
     public int getTrialCount() {
-        System.out.println("시도할 회수는 몇회인가요?");
-        return Integer.parseInt(scanner.nextLine());
+        while (true) {
+            try {
+                System.out.println("시도할 회수는 몇회인가요?");
+                int trialCount = Integer.parseInt(scanner.nextLine());
+                InputValidator.validateTrialCount(trialCount);
+                return trialCount;
+            } catch (IllegalArgumentException e) {
+                System.out.println("[ERROR] " + e.getMessage());
+            }
+        }
     }
 }
