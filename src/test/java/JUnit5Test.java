@@ -1,14 +1,12 @@
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class JUnit5Test {
-
-    private ArrayList<Car> carList = new ArrayList<>();
-
     @BeforeEach
     void setUp() {
         RacingGame.racingCar.add(new Car("c1"));
@@ -26,7 +24,8 @@ public class JUnit5Test {
     @DisplayName("randNum() 메서드가 0~9 사이 값을 반환하는가?")
     void testRandNumRange() {
         int num = RacingGame.randNum();
-        assertTrue(num >= 0 && num <= 9);
+        for(int i=0; i<1000; i++)
+            assertTrue(num >= 0 && num <= 9);
     }
 
     @Test
@@ -35,5 +34,10 @@ public class JUnit5Test {
         for(int i=0; i<RacingGame.racingCar.size()-1; i++) {
             assertTrue(RacingGame.racingCar.get(i).getPosition().length() >= RacingGame.racingCar.get(i+1).getPosition().length());
         }
+    }
+
+    @AfterEach
+    void clean() {
+        RacingGame.racingCar.clear();
     }
 }
