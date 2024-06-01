@@ -1,10 +1,10 @@
 import java.util.Random;
 
 public class Racing {
-    private CarProgress[] carProgresses;
+    private final CarProgress[] carProgresses;
     private int leftTries;
 
-    private Random random = new Random();
+    private final Random random = new Random();
 
     public Racing(String[] carNames, int tryCount) {
         this.carProgresses = new CarProgress[carNames.length];

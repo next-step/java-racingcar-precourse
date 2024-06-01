@@ -1,6 +1,6 @@
 public class RacingController {
-    private RacingView view = new RacingView();;
-    private Racing model;
+    private final RacingView view = new RacingView();;
+    private final Racing model;
 
     public RacingController() {
         this.model = new Racing(readCars(), readTryCnt());

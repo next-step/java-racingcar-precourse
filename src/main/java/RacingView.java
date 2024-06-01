@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class RacingView {
-    private Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner = new Scanner(System.in);
     private String raceResult = "\n실행 결과\n";
 
     public String readCarNames() {

@@ -1,5 +1,5 @@
 public class CarProgress {
-    private String carName;
+    private final String carName;
     private int progress;
 
     public CarProgress(String carName) {
