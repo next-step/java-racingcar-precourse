@@ -76,18 +76,22 @@ public class GameManager {
         inputValidator = new AttemptNumberValidator();
         while (userInput == null) {
             ConsoleMessagePrinter.printAttemptNumberInputMessage();
-            userInput = getUserInput();
+            try {
+                userInput = InputHandler.getInput();
+                inputValidator.checkInputValue(userInput);
+            } catch (IllegalArgumentException exception) {
+                ConsoleMessagePrinter.printErrorMessage(exception.getMessage());
+                userInput = null;
+            }
         }
         attemptNumber = Integer.parseInt(userInput);
     }
 
     private void setCarList() {
-        String userInput;
         inputValidator = new CarNameValidator();
         while (carList.isEmpty()) {
             ConsoleMessagePrinter.printCarNameInputMessage();
-            userInput = getUserInput();
-            List<String> carNameList = StringSplitter.splitString(userInput);
+            List<String> carNameList = StringSplitter.splitString(InputHandler.getInput());
             try {
                 ((CarNameValidator) inputValidator).checkCarNameList(carNameList);
             } catch (IllegalArgumentException exception) {
@@ -102,16 +106,5 @@ public class GameManager {
         for (String carName : carNameList) {
             carList.add(new Car(carName));
         }
-    }
-
-    private String getUserInput() {
-        String userInput = null;
-        try {
-            userInput = InputHandler.getInput();
-            inputValidator.checkInputValue(userInput);
-        } catch (IllegalArgumentException exception) {
-            ConsoleMessagePrinter.printErrorMessage(exception.getMessage());
-        }
-        return userInput;
     }
 }
