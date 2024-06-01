@@ -32,7 +32,7 @@ public class Application {
     }
     public static void carVerify(String[] carList) {
         if(carList.length <= 1)
-            throw new IllegalArgumentException();
+            throw new IllegalStateException();
     }
     public static void createList(String[] carList) {
         for(String car: carList)
