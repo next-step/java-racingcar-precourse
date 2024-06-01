@@ -38,6 +38,21 @@ public class RacingCarVO {
     }// get carname
 
 
+    public String[] GetCar(String input){
+        int tri = 0;
+        do {
+            tri = 0;
+            cars = input.split(",");
+            for (String car : cars) {
+                tri += FindError1(car);
+                tri += FindError2(car);
+            }
+        } while (tri != 0);
+        return cars;
+    } // create overloading method for test code
+
+
+
     public void AddCar() {
         for (String car : cars) {
             race.put(car,0);

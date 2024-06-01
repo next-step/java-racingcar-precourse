@@ -1,4 +1,6 @@
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,6 +68,37 @@ public class RacingCarTest {
         assertEquals(0, result);
         // ErrorList에서 정상은 1이라고 출력시킴
     }
+    @Test
+    @DisplayName("난수에 따라 전진인지 정지인지 판별")
+    public void GoOrStop() {
+        boolean go =false;
+        int temp=1000;
+        // 일단 go에 false를 넣고 정지라고 가정한다.
+        RacingCarVO race = new RacingCarVO();
+        for (int i=0; i<temp; i++){
+            if(race.GoOrStop()==1){
+                go = true;
+            }
+        }
+        // 1000번의 표본을 가지고 4이상의 난수가 나온적이 있으면 GoOrStop에서 1이 반환됨
+        assertTrue(go, "4이상이면 1반환");
+        // 1이 반환된적이 있으면 go를 true로 변환
+    }
+    @Test
+    @DisplayName("자동차 이름을 ,로 잘 구별했는가?")
+    public void Seperate() {
+        String input = "woni,pobi,jun";
+        // input 이라고 사용자에게 입력받고 그걸  , 구분해서 cars에다가 저장할계획이다.
+        RacingCarVO race = new RacingCarVO();
+        String[] cars=race.GetCar(input);
+        // cars 에다가 ,로 구분해서 자동차 이름을 집어 넣음
+        String [] array2 ={"woni" , "pobi" , "jun"};
+        assertArrayEquals(cars, array2);
+        // GetCar에서 저장된 배열이랑 , array2랑 같은지 비교
+    }
+
+
+
 
 
 
