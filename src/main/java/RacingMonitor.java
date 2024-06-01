@@ -32,7 +32,13 @@ public class RacingMonitor {
         System.out.println("\n실행 결과");
         for(int i=0; i<num; i++) {         // 전진 시도 결과 출력
             RacingGame.racing();
+            printPosition();
         }
+    }
+    public static void printPosition() {
+        for(Car c : RacingGame.racingCar)
+            System.out.println(c.getName() + " : " + c.getPosition());
+        System.out.println();
     }
     public static void printRacingResult() {
         RacingGame.lineUp();

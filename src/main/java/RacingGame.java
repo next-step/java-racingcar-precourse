@@ -11,11 +11,8 @@ public class RacingGame {
         RacingMonitor.printRacingResult();  // 경주 결과 출력
     }
     public static void racing() {
-        for(Car car : racingCar) {
+        for(Car car : racingCar)
             isForward(car);
-            System.out.print(car.getName() + " : " + car.getPosition() + "\n");
-        }
-        System.out.println();
     }
     public static int randNum() {
         Random rand = new Random();
