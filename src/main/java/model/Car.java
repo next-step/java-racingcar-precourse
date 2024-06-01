@@ -1,7 +1,6 @@
 package model;
 
 public class Car {
-
     private String carname;
     private int move;
 
@@ -9,7 +8,6 @@ public class Car {
         this.carname = carname;
         this.move = 0;
     }
-
     public String getCarname() {
         return carname;
     }
@@ -17,7 +15,6 @@ public class Car {
     public void setCarname(String carname) {
         this.carname = carname;
     }
-
 
     public int getMove() {
         return move;
@@ -31,6 +28,5 @@ public class Car {
         if(randNum>=4){
             move += 1;
         }
-
     }
 }

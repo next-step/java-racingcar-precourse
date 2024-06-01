@@ -7,7 +7,6 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class RacingView {
-
     private static Scanner sc = new Scanner(System.in);
 
     public static String printInputCarName(){
@@ -22,11 +21,9 @@ public class RacingView {
         System.out.println("실행 결과");
     }
     public static void moveStatus(List<Car> carlist){
-
         carlist.forEach(car -> System.out.println(car.getCarname() + ":" + "-".repeat(car.getMove())));
         System.out.println();
         System.out.println();
-
     }
     public static void printResult(List<Car> winners){
         System.out.print("최종 우승자 : ");
@@ -34,8 +31,6 @@ public class RacingView {
                 .map(Car::getCarname)
                 .collect(Collectors.joining(","));
         System.out.print(winner);
-
-
     }
 
 

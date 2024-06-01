@@ -17,7 +17,6 @@ public class RacingController {
         tryNum = 0;
     }
     public void startRacing(){
-
         inputCarName();
         inputTryNum();
         RacingView.printResultmessage();
@@ -25,7 +24,6 @@ public class RacingController {
             moveCarByRandNum(carlist);
             RacingView.moveStatus(carlist);
         }
-
         RacingView.printResult(getWinner());
     }
     public void addCarlist(String[] carNames){
@@ -34,7 +32,6 @@ public class RacingController {
             Car car = new Car(carname);
             carlist.add(car);
         }
-
     }
 
     public void inputCarName(){
@@ -42,18 +39,13 @@ public class RacingController {
             try{
                 String inputCars = RacingView.printInputCarName();
                 String[] carNames = inputCars.split(",");
-
                 InputValidation.isValidInput(carNames);//유효성검사
-
                 addCarlist(carNames);
                 break;
             }catch(IllegalArgumentException e){
                 System.out.println("[ERROR] " + e.getMessage());
             }
-
         }
-
-
     }
     public void inputTryNum(){
         while(true){
@@ -65,12 +57,9 @@ public class RacingController {
             }catch (IllegalArgumentException e){
                 System.out.println("[ERROR]"+e.getMessage());
             }
-
         }
-
     }
     public void moveCarByRandNum(List<Car> cars){
-
         for(int i =0;i<carlist.size();i++){
             int randNum = (int)(Math.random()*9);
             cars.get(i).moveCar(randNum);
@@ -81,7 +70,6 @@ public class RacingController {
         return carlist.stream()
                 .filter(car->car.getMove() == maxMove)
                 .toList();
-
     }
     public int getMaxMove(){
         return carlist.stream()
