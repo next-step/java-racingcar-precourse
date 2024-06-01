@@ -20,4 +20,8 @@ public class CarProgress {
     public int getProgress() {
         return progress;
     }
+
+    public String getCarName() {
+        return carName;
+    }
 }
