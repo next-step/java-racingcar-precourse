@@ -1,11 +1,13 @@
 public class Racing {
-    private String[] cars;
-    private int[] moveStatus;
+    private CarProgress[] carProgresses;
     private int leftTries;
 
-    public Racing(String[] cars, int tryCount) {
-        this.cars = cars;
-        this.moveStatus = new int[cars.length];
+    public Racing(String[] carNames, int tryCount) {
+        this.carProgresses = new CarProgress[carNames.length];
+        for (int i = 0; i < carNames.length; i++) {
+            carProgresses[i] = new CarProgress(carNames[i]);
+        }
+
         this.leftTries = tryCount;
     }
 }
