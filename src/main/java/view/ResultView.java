@@ -15,5 +15,11 @@ public class ResultView {
 
     public void printCars(List<Car> cars) {
         cars.forEach(System.out::println);
+        System.out.println();
+    }
+
+    public void printWinner(List<String> winnerName) {
+        System.out.print(WINNER_MESSAGE);
+        System.out.println(String.join(", ", winnerName));
     }
 }
