@@ -26,12 +26,4 @@ public class RacingController {
         }
         return number;
     }
-    public static void racing() {
-        for(Car car : RacingGame.racingCar)
-            isForward(car);
-    }
-    public static void isForward(Car car) {
-        if(RacingGame.randNum() >= 4)
-            car.forward();
-    }
 }

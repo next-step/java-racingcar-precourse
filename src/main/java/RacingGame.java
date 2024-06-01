@@ -23,4 +23,12 @@ public class RacingGame {
         while(racingCar.get(++idx).getPosition().length() == winnerLength) {}
         return idx-1;
     }
+    public static void racing() {
+        for(Car car : racingCar)
+            isForward(car);
+    }
+    public static void isForward(Car car) {
+        if(randNum() >= 4)
+            car.forward();
+    }
 }

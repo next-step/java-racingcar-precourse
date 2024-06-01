@@ -31,7 +31,7 @@ public class RacingMonitor {
     public static void startRace(int num){
         System.out.println("\n실행 결과");
         for(int i=0; i<num; i++) {         // 전진 시도 결과 출력
-            RacingController.racing();
+            RacingGame.racing();
             printPosition();
         }
     }
