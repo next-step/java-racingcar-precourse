@@ -9,6 +9,13 @@ public class Game {
     private int gameCnt;
 
     public void start() {
+        carNameProcess();
+        cntProcess();
+        raceForCnt(gameCnt);
+        output.winnerOutput(winnerFind());
+    }
+
+    private void carNameProcess() {
         output.carNameOutput();
         while (true) {
             try {
@@ -21,6 +28,9 @@ public class Game {
                 output.errorOutput(e.getMessage());
             }
         }
+    }
+
+    private void cntProcess() {
         output.tryCntOutput();
         while (true) {
             try {
@@ -32,8 +42,6 @@ public class Game {
                 output.errorOutput(e.getMessage());
             }
         }
-        raceForCnt(gameCnt);
-        output.winnerOutput(winnerFind());
     }
 
     private void createCars(String carNameInput) {
