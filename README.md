@@ -4,7 +4,6 @@
 [2. 자동차 경주 룰](#자동차-경주-룰)<br>
 [3. 구현 기능](#구현-기능)<br>
 [4. 코드 제한조건](#코드-제한-기능)<br>
-[5. 기능 목록](#기능-목록)<br>
 ## 코드 소개
 - 자동차 경주를 java 코드로 구현한 것이다.
 ## 자동차 경주 룰
@@ -38,33 +37,3 @@
 - else 예약어 금지 (switch/case도 X)
 - 도메인 로직 단위 테스트 구현. 단, UI(System.out, System.in, Scanner)로직은 제외
     - 핵심 로직을 구현하는 코드와 UI를 담당하는 로직을 분리해 구현
-## 기능 목록
-### Car.java
-- Car 객체를 설계해 놓은 클래스
-  - **String name**: 자동차의 이름
-  - **String position**: 자동차의 위치(경주 중 위치)
-  - **getName()**: 자동차 이름 반환
-  - **getPosition()**: 현재 자동차 위치 반환(전진 횟수만큼 "-"되어 있음)
-  - **forward()**: 자동차가 전진에 성공함
-### Application.java
-- 자동차 경주를 시작하는 Main 클래스
-### RacingGame.java
-- 자동차 경주에 대한 Model 클래스
-  - playRacingGame(): 경주를 진행하는 메서드
-  - randNum(): 경주에서 전진의 기준이 되는 난수를 생성하는 메서드
-  - lineUp(): 경주 결과에 따라 배열을 정렬하는 메서드
-  - winner(): 우승 차량을 선정하는 메서드
-  - racing(): 경주중인 자동차의 전진 시도를 진행하는 메서드
-  - isForward(): 경주에서 전진을 시도하는 메서드  
-### RacingMonitor.java
-- 자동차 경주에 대한 View 클래스
-  - enterRacingCars(): 자동차 경주에 참여할 자동차를 입력하는 메서드
-  - enterTryNum(): 자동차 경주에서 전진을 시도해 볼 수 있는 횟수를 입력받는 메서드
-  - startRace(): 경주가 시작되면 진행 상황을 출력하는 메서드
-  - printPosition(): 전진 시도 차시별로 진행 상황을 출력하는 메서드
-  - printRacingResult(): 최종 우승한 자동차를 출력하는 메서드
-### RacingController.java
-- 자동차 경주에 대한 Controller 클래스
-  - createList(): 자동차 경주에 참가하는 자동차 리스트를 생성하는 메서드
-  - carVerify(): 사용자가 경주에 참가하는 자동차의 이름을 올바르게 입력했는지 확인하는 메서드
-  - tryNumVerify(): 사용자가 경주에서 전진 시도의 횟수를 올바르게 입력하였는지 확인하는 메서드
