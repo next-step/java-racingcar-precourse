@@ -7,12 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CarService {
+
     List<Car> cars = new ArrayList<>();
 
     public void createCars(CarName carName) {
         cars = carName.getNameList().stream()
-                .map(Car::new)
-                .toList();
+            .map(Car::new)
+            .toList();
     }
 
     public void moveCars() {
@@ -25,13 +26,13 @@ public class CarService {
 
     public List<String> getWinnerName() {
         int maxDistance = cars.stream()
-                .mapToInt(Car::getDistance)
-                .max()
-                .orElseThrow();
+            .mapToInt(Car::getDistance)
+            .max()
+            .orElseThrow();
 
         return cars.stream()
-                .filter(car -> car.getDistance().equals(maxDistance))
-                .map(Car::getName)
-                .toList();
+            .filter(car -> car.getDistance().equals(maxDistance))
+            .map(Car::getName)
+            .toList();
     }
 }

@@ -3,6 +3,7 @@ package dto;
 import java.util.List;
 
 public class CarName {
+
     private final List<String> nameList;
 
     public CarName(String carNames) {

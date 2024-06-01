@@ -1,8 +1,9 @@
 package dto;
 
 public record MoveCount(
-        int count
+    int count
 ) {
+
     public MoveCount(String count) {
         this(validateCount(count));
     }

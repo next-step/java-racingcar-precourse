@@ -5,6 +5,7 @@ import domain.Car;
 import java.util.List;
 
 public class ResultView {
+
     private final String RESULT_MESSAGE = "실행 결과";
     private final String WINNER_MESSAGE = "최종 우승자 : ";
 

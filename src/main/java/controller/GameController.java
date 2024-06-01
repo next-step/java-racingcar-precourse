@@ -9,6 +9,7 @@ import view.UserInputView;
 import java.util.Scanner;
 
 public class GameController {
+
     private final UserInputView userInputView = new UserInputView();
     private final ResultView resultView = new ResultView();
     private final Scanner scanner = new Scanner(System.in);
@@ -18,11 +19,10 @@ public class GameController {
         CarName carName = receiveCarName();
         carService.createCars(carName);
 
-
         MoveCount moveCount = receiveMoveCount();
         resultView.printResultMessage();
 
-        for(int i = 0; i < moveCount.count(); i++){
+        for (int i = 0; i < moveCount.count(); i++) {
             carService.moveCars();
             resultView.printCars(carService.getCars());
         }
@@ -32,7 +32,7 @@ public class GameController {
 
     private MoveCount receiveMoveCount() {
         MoveCount moveCount;
-        while(true) {
+        while (true) {
             try {
                 userInputView.printAlertMoveCount();
                 moveCount = new MoveCount(scanner.nextLine());
@@ -44,9 +44,9 @@ public class GameController {
         return moveCount;
     }
 
-    private CarName receiveCarName () {
+    private CarName receiveCarName() {
         CarName carName;
-        while(true) {
+        while (true) {
             try {
                 userInputView.printAlertCarName();
                 carName = new CarName(scanner.nextLine());
