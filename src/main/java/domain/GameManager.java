@@ -1,7 +1,12 @@
 package domain;
 
-import domain.Car;
-import util.*;
+import util.AttemptNumberValidator;
+import util.CarNameValidator;
+import util.ConsoleMessagePrinter;
+import util.InputHandler;
+import util.InputValidator;
+import util.RandomNumberGenerator;
+import util.StringSplitter;
 
 import java.util.ArrayList;
 import java.util.Comparator;
