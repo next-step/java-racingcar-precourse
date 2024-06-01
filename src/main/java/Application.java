@@ -21,8 +21,7 @@ public class Application {
         while(true) {
             System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
             try {
-                String[] input = scanner.nextLine().split(",");
-                carVerify(input);
+                carVerify(scanner.nextLine().split(","));
                 return;
             } catch (IllegalStateException e){
                 System.out.println("[ERROR] 경주를 시작하려면 2대 이상의 자동차를 입력해야 합니다.");
