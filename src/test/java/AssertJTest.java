@@ -1,4 +1,7 @@
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 public class AssertJTest {
 
@@ -13,5 +16,12 @@ public class AssertJTest {
         for(int i=0; i<10; i++)
             RacingGame.racing();
         RacingGame.lineUp();
+    }
+
+    @Test
+    @DisplayName("randNum() 메서드가 0~9 사이 값을 반환하는가?")
+    void testRandomNumRange() {
+        for(int i=0; i<1000; i++)
+            Assertions.assertThat(RacingGame.randNum()).isBetween(0, 9);
     }
 }
