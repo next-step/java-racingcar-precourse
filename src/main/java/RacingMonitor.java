@@ -19,7 +19,7 @@ public class RacingMonitor {
         while(true) {
             System.out.println("시도할 회수는 몇회인가요?");
             try {
-                int n = RacingController.verify(scanner.nextLine());
+                int n = RacingController.tryNumVerify(scanner.nextLine());
                 return n;
             } catch (NumberFormatException e) {
                 System.out.println("[ERROR] int형 정수만 입력이 가능합니다.");

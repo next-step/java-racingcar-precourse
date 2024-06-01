@@ -1,6 +1,8 @@
-import java.util.Scanner;
-
 public class RacingController {
+    public static void createList(String[] carList) {
+        for(String car: carList)
+            RacingGame.racingCar.add(new Car(car));
+    }
     public static void carVerify(String[] carList) {
         if(carList.length <= 1)
             throw new IllegalStateException();
@@ -10,11 +12,7 @@ public class RacingController {
         }
         createList(carList);
     }
-    public static void createList(String[] carList) {
-        for(String car: carList)
-            RacingGame.racingCar.add(new Car(car));
-    }
-    public static int verify(String n) {
+    public static int tryNumVerify(String n) {
         int number = Integer.parseInt(n);
         if(number < 1) {
             throw new IllegalArgumentException();
