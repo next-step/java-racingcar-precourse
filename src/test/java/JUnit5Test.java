@@ -47,6 +47,13 @@ public class JUnit5Test {
     }
 
     @Test
+    @DisplayName("전진 시도 횟수가 올바르게 입력되는지 확인하는가?")
+    void testTryNumRange() {
+        assertThrows(IllegalArgumentException.class, () -> RacingController.tryNumVerify("-1"));
+        assertThrows(IllegalArgumentException.class, () -> RacingController.tryNumVerify("2147483648"));
+    }
+
+    @Test
     @DisplayName("randNum() 메서드가 0~9 사이 값을 반환하는가?")
     void testRandNumRange() {
         int num = RacingGame.randNum();
