@@ -6,6 +6,7 @@ public class Application {
         System.out.println(cars);
 
         String tryCount = racingView.readTryCount();
-        System.out.println(tryCount);
+        int num = RacingInputHandler.tryCntToInt(tryCount);
+        System.out.println(num);
     }
 }
