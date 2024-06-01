@@ -37,7 +37,6 @@ public class RacingGameView {
         }
     }
 
-
     public void displayRaceResult() {
         System.out.println();
         System.out.println("실행 결과");
@@ -67,8 +66,10 @@ public class RacingGameView {
     }
 
     public void isValidateCarNameInput(String input) {
-
         String[] splitInput = input.split(",");
+        if (splitInput.length <= 1) {
+            throw new IllegalArgumentException("[ERROR] 2개 이상의 자동차 이름을 입력해 주세요.");
+        }
         for (String carName : splitInput) {
             if (carName.length() > 5) {
                 throw new IllegalArgumentException("[ERROR] 이름은 5자 이하만 가능합니다.");
@@ -81,6 +82,9 @@ public class RacingGameView {
             if (!('0' <= input.charAt(i) && input.charAt(i) <= '9')) {
                 throw new IllegalArgumentException("[ERROR] 숫자만 입력 가능합니다.");
             }
+        }
+        if (Integer.parseInt(input) == 0) {
+            throw new IllegalArgumentException("[ERROR] 1이상의 숫자들만 입력 가능합니다.");
         }
     }
 }
