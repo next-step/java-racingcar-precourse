@@ -19,10 +19,9 @@ public class RacingMonitor {
         while(true) {
             System.out.println("시도할 회수는 몇회인가요?");
             try {
-                int n = RacingController.tryNumVerify(scanner.nextLine());
-                return n;
+                return RacingController.tryNumVerify(scanner.nextLine());
             } catch (IllegalStateException e) {
-                System.out.println("[ERROR] 1 ~ 2,147,483,647사이의 정수를 입력하세요.");
+                System.out.println("[ERROR] 경주에서 전진을 시도할 횟수를 입력하세요.");
             } catch (NumberFormatException e) {
                 System.out.println("[ERROR] int형 정수만 입력이 가능합니다.");
             } catch (IllegalArgumentException e) {
