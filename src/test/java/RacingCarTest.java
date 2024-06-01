@@ -55,6 +55,17 @@ public class RacingCarTest {
         assertEquals(4, result);
         // ErrorList에서 중복은 4라고 출력시킴
     }
+    @Test
+    @DisplayName("정상적인 자동차 이름 입력시")
+    public void CorrectCar() {
+        String car="abc";
+        // 입력받은 자동차의 이름이 올바를 때
+        RacingCarVO race = new RacingCarVO();
+        int result = race.ErrorList1(car);
+        // 에러리스트를 거쳐도 오류라고 인식되지 않음
+        assertEquals(0, result);
+        // ErrorList에서 정상은 1이라고 출력시킴
+    }
 
 
 
