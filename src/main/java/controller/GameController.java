@@ -12,8 +12,8 @@ public class GameController {
         String[] carNamesArray = getCarNames(InputView.getFirstInput());
         int n = InputView.getSecondInput();
         List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carNamesArray.length; i++) {
-            Car car = new Car(carNamesArray[i]);
+        for (String s : carNamesArray) {
+            Car car = new Car(s);
             cars.add(car);
         }
         playGame(n, cars);
