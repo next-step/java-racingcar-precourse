@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarTest {
+    //Test: 자동차 이름 입력 및 유효성 검사 테스트
     @Test
     // 공백 Test
     void carNameShouldNotBeEmpty() {
@@ -28,6 +29,13 @@ public class CarTest {
         assertThatThrownBy(() -> new Car("car "))
             .isInstanceOf(IllegalArgumentException.class)
             .hasMessageContaining("공백이 포함될 수 없습니다.");
+    }
+    //Test: 자동차 이동 로직 테스트
+    @Test
+    void carShouldMoveWhenRandomNumberIsGreaterThanOrEqualToFour() {
+        Car car = new Car("Car");
+        car.move(4);
+        assertThat(car.getPosition()).isEqualTo(1);
     }
 
 }
