@@ -2,31 +2,20 @@ package model;
 
 public class RacingCar {
 
-    private int currentScore;
-    private int totalScore;
+    private int position;
     private final String carName;
 
-    public RacingCar(int currentScore, int totalScore, String carName) {
-        this.currentScore = currentScore;
-        this.totalScore = totalScore;
+    public RacingCar(int position, String carName) {
+        this.position = position;
         this.carName = carName;
     }
 
-
-    public int getCurrentScore() {
-        return currentScore;
+    public void setPosition(int position) {
+        this.position = position;
     }
 
-    public void setCurrentScore(int currentScore) {
-        this.currentScore = currentScore;
-    }
-
-    public int getTotalScore() {
-        return totalScore;
-    }
-
-    public void setTotalScore(int totalScore) {
-        this.totalScore = totalScore;
+    public int getPosition() {
+        return position;
     }
 
     public String getCarName() {
