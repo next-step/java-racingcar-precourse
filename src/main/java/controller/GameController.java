@@ -14,7 +14,8 @@ public class GameController {
 
     public void startGame() {
 //        사용자로부터 자동차 이름 입력 받기
-        this.racingCars = gameService.getCarNames();
+        getCarsName();
+
 ////        사용자로부터 시도 횟수 입력 받기
 //        this.numRounds = gameService.getRounds();
 //        while (numRounds > 0) {
@@ -26,6 +27,20 @@ public class GameController {
 //        List<String> winners = gameService.determineWinner();
 ////        우승자 출력
 //        gameView.displaywinner(winners);
+    }
+
+    private void getCarsName() {
+        boolean isValidCarNameFlag = false;
+        String[] inputCarNames = new String[0];
+        while (!isValidCarNameFlag) {
+            inputCarNames = gameView.inputCarNames();
+            try {
+                isValidCarNameFlag = gameService.validateCarNames(inputCarNames);
+            } catch (IllegalArgumentException e) {
+                System.out.println("[Error]" + e.getMessage());
+            }
+        }
+        racingCars = gameService.createCarList(inputCarNames);
     }
 
 //    private void playGameByRound() {
