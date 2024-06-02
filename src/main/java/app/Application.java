@@ -8,7 +8,8 @@ import view.Input;
 
 public class Application {
     public static void main(String[] args) {
-        Input.getCarNames();
+        PrepareRace prepareRace = new PrepareRace();
+        List<String> carNames = prepareRace.prepareCar();
 
     }
 }
