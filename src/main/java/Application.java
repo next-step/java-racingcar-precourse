@@ -59,4 +59,20 @@ public class Application {
             throw new IllegalStateException("[ERROR] 자동차 이름은 중복될 수 없습니다.");
         }
     }
+    private static int getTryCount(Scanner sc) {
+        System.out.println("시도할 회수는 몇 회인가요?");
+        while (true) {
+            while (!sc.hasNextInt()) {
+                System.out.println("[ERROR] 숫자를 입력해 주세요.");
+                sc.next(); // discard invalid input
+            }
+            int tryCount = sc.nextInt();
+            if(tryCount >0){
+                return tryCount;
+            }
+            else{
+                System.out.println("[ERROR] 양수를 입력해 주세요.");
+            }
+        }
+    }
 }
