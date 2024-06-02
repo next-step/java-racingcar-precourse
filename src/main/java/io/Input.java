@@ -2,6 +2,8 @@ package io;
 
 import java.util.Scanner;
 
+import utils.InputValidator;
+
 public class Input {
     
     private static final Scanner scanner = new Scanner(System.in);
@@ -12,6 +14,7 @@ public class Input {
             try {
                 System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분");
                 carNames = scanner.nextLine().split(",");
+                InputValidator.validateCarNames(carNames);
                 break;
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
