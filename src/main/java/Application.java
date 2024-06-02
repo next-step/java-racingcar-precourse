@@ -49,7 +49,9 @@ public class Application {
     }
 
     private static void checkNameEmpty(String name) {
-
+        if (name.contains(" ")) {
+            throw new IllegalArgumentException("[ERROR] 자동차 이름에는 공백이 포함될 수 없습니다.");
+        }
     }
 
     private static void checkDuplicateName(Set<String> carNameSet, String name) {
