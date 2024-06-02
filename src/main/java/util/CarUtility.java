@@ -9,11 +9,8 @@ public class CarUtility {
         .toArray(String[]::new);
   }
 
-  public int carMovement() {
+  public boolean carMovement() {
     int randomNum = (int) (Math.random() * 10);
-    if (randomNum >= 4) {
-      return 1;
-    }
-    return 0;
+    return randomNum >= 4;
   }
 }
