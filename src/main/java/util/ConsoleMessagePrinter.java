@@ -30,7 +30,7 @@ public class ConsoleMessagePrinter {
         System.out.printf("%s : %s%n", carName, carStatus);
     }
 
-    public static void printWinnerList(List<String> winnerList) {
-        System.out.print("최종 우승자 : " + String.join(", ", winnerList));
+    public static void printWinnerNameList(List<String> winnerNameList) {
+        System.out.print("최종 우승자 : " + String.join(", ", winnerNameList));
     }
 }

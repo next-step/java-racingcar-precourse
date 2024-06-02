@@ -31,7 +31,7 @@ public class GameManager {
     }
 
     private void findAndPrintWinnerList() {
-        ConsoleMessagePrinter.printWinnerList(findWinnerNameList());
+        ConsoleMessagePrinter.printWinnerNameList(findWinnerNameList());
     }
 
     private void runGameLogic() {
