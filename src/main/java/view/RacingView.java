@@ -8,6 +8,10 @@ import java.util.List;
 import java.util.Scanner;
 
 public class RacingView {
+    private final Scanner sc;
+    public RacingView(){
+        sc=new Scanner(System.in);
+    }
 
     public void startRacing(){
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
@@ -15,12 +19,10 @@ public class RacingView {
     public String inputNames()  {
         Scanner sc=new Scanner(System.in);
         String s=sc.nextLine();
-        sc.close();
         return s;
     }
     public int inputNumber(){
         boolean isNum=false;
-        Scanner sc=new Scanner(System.in);
         String s="";
         while(!isNum) {
             s = sc.nextLine();
