@@ -23,7 +23,7 @@ public class GameManager {
         this.carList = new ArrayList<>();
     }
 
-    public void setInputValidator(InputValidator inputValidator) {
+    private void setInputValidator(InputValidator inputValidator) {
         this.inputValidator = inputValidator;
     }
 
