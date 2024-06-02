@@ -30,8 +30,14 @@ public class GameManager {
         findAndPrintWinnerNameList();
     }
 
-    private void findAndPrintWinnerNameList() {
-        ConsoleMessagePrinter.printWinnerNameList(findWinnerNameList());
+    private void initGameSettings() {
+        setCarList();
+        setAttemptNumber();
+    }
+
+    private void printGameExecutionMessage() {
+        ConsoleMessagePrinter.printLineBreak();
+        ConsoleMessagePrinter.printExecutionResultMessage();
     }
 
     private void runGameLogic() {
@@ -41,14 +47,8 @@ public class GameManager {
         }
     }
 
-    private void printGameExecutionMessage() {
-        ConsoleMessagePrinter.printLineBreak();
-        ConsoleMessagePrinter.printExecutionResultMessage();
-    }
-
-    private void initGameSettings() {
-        setCarList();
-        setAttemptNumber();
+    private void findAndPrintWinnerNameList() {
+        ConsoleMessagePrinter.printWinnerNameList(findWinnerNameList());
     }
 
     private void setCarList() {
