@@ -1,7 +1,8 @@
 package Controller;
 
 import java.util.Arrays;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import java.util.Scanner;
 
@@ -10,7 +11,7 @@ import Model.Racing;
 import Model.ErrorDetect;
 
 public class GameController {
-    private List<String> carNames;
+    private Set<String> carNames;
     private String rounds;
     private Racing carRacing;
     private Scanner scanner = new Scanner(System.in);
@@ -21,7 +22,8 @@ public class GameController {
         while (state == 0) {
             try {
                 RacingView.printCarNameMessage();
-                carNames = Arrays.asList(scanner.nextLine().split(","));
+                carNames = new HashSet<>();
+                carNames.addAll(Arrays.asList(scanner.nextLine().split(",")));
                 carNames.stream().forEach(carName -> ErrorDetect.carNameTest(carName));
                 state = 1;
             }catch (IllegalArgumentException e) {
@@ -38,7 +40,6 @@ public class GameController {
                 RacingView.printRacingRoundMessage();
                 rounds = scanner.nextLine();
                 rounds.chars().forEach(temp -> ErrorDetect.roundsIsValid((char)temp));
-                System.out.println(rounds);
                 ErrorDetect.roundIsInt(rounds);
                 state = 1;
             }catch (IllegalArgumentException e) {

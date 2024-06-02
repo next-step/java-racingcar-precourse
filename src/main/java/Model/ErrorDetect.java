@@ -20,9 +20,11 @@ public class ErrorDetect {
     }
 
     public static void roundIsInt(String roundsInput) {
-        String intLimit = "2147483648";
+        int intLimit = 0;
 
-        if (roundsInput.compareTo(intLimit) < 0) {
+        try {
+            intLimit = Integer.parseInt(roundsInput);
+        }catch (NumberFormatException e) {
             throw new IllegalArgumentException("[ERROR] 라운드의 수가 유효 범위를 벗어났습니다.");
         }
     }
