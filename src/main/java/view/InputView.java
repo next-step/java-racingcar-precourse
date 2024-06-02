@@ -9,13 +9,18 @@ import util.CarUtility;
 public class InputView {
 
   private final Scanner scanner;
+  private final ValidateInput validateInput;
 
   public InputView(Scanner scanner) {
     this.scanner = scanner;
+    validateInput = new ValidateInput();
   }
 
   public void InputInit() {
-    ValidateInput validateInput = new ValidateInput();
+    CarInput();
+  }
+
+  public void CarInput() {
     String[] carNames;
     boolean carInputState;
     CarUtility carUtility = new CarUtility();
