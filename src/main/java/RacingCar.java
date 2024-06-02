@@ -51,13 +51,14 @@ public class RacingCar {
     public void inputTryNum(){
         boolean isValid=true;
         int num=0;
-        Scanner scanner = new Scanner(System.in);
         do{
             try{
+                Scanner scanner = new Scanner(System.in);
                 num = scanner.nextInt();
                 checkNum(num);
+                isValid = true;
             }catch(InputMismatchException e){
-                isValid=false;
+                isValid = false;
                 System.out.println("[ERROR] 숫자를 입력해 주세요.");
             }catch(IllegalArgumentException e){
                 isValid = false;
