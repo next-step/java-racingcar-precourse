@@ -25,6 +25,14 @@ public class RaceCars {
                 .orElse(0);
     }
 
+    public List<Car> getWinners(){
+        int winnerPosition = getWinnerPosition();
+
+        return cars.stream()
+                .filter(c -> c.getPosition() == winnerPosition)
+                .collect(Collectors.toList());
+    }
+
     public List<Car> getCars() {
         return cars;
     }
