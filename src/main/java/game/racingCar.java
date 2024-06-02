@@ -12,14 +12,34 @@ public class racingCar {
             try {
                 System.out.println("경주할 자동차 이름을 입력하세요. (이름은 쉼표(,) 기준으로 구분)");
                 String input = scanner.nextLine();
-                String [] carNames; // carNames를 split해서 저장할 메서드 구현
+                String[] carNames = parseCarNames(input);
+
+                for(String name : carNames) {
+                    carPositions.put(name.trim(), 0);
+                }
 
                 System.out.println("시도할 횟수는 몇회인가요?");
-                // 시도 횟수가 1 이상이며, 자연수가 아닌 값이 들어오지 않게 하는 IllegalArgumentException을 넣은 메서드 구현.
+                attempts = parseAttempts(scanner.nextLine());
+
+                break;
             } catch (IllegalArgumentException e) {
                 System.out.println("[ERROR] " + e.getMessage());
             }
         }
-        
+
+        Random random = new Random();
+        for(int i=0; i<attempts; i++) {
+            for(String name : carPositions.keySet()) {
+                if(random.nextInt(10) >= 4) carPositions.put(name, carPositions.get(name) + 1);
+            }
+            printCarPositions(carPositions);
+        }
+        printWinners(carPositions);
     }
+
+    private static String[] parseCarNames(String input) { String[] carNames = input.split(","); return carNames;}
+    private static int parseAttempts(String input) {int attempts = 0; return attempts;}
+    private static void printCarPositions(Map<String, Integer> carPositions) {}
+    private static void printWinners(Map<String, Integer> carPositions) {}
+
 }
