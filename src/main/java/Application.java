@@ -1,12 +1,11 @@
 import static java.lang.Integer.parseInt;
 
 import java.io.*;
-import java.util.HashMap;
 import java.util.Vector;
 
 public class Application {
 
-    public static void main(String[] args) throws IOException{
+    public static void main(String[] args) throws IOException {
         Vector<Car> cars = new Vector<Car>();
         boolean carnamevalid = false;
         boolean attemptcountvalid = false;
@@ -17,11 +16,11 @@ public class Application {
             try {
                 InputHandler.CarNameInput(cars);
                 carnamevalid = InputValidator.validateCarName(cars); //유효성 검사
-            } catch (IllegalArgumentException e){
+            } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }
 
-        }while(!carnamevalid);
+        } while (!carnamevalid);
 
         do {
             try {
@@ -30,11 +29,11 @@ public class Application {
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }
-        }while(!attemptcountvalid);
+        } while (!attemptcountvalid);
 
         //전진하기
-        for(int i = 0; i < attemptnumber; i++) {
-            AdvanceFoward.advanceFoward(cars, attemptnumber);
+        for (int i = 0; i < attemptnumber; i++) {
+            AdvanceFoward.advanceFoward(cars);
             OutputHandler.fowardOutput(cars);
         }
 
