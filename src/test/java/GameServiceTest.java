@@ -136,4 +136,23 @@ public class GameServiceTest {
         // then
         assertEquals(7, maxPosition);
     }
+
+    @Test
+    @DisplayName("우승자 판단 테스트")
+    void determineWinnerTest() {
+        // given
+        List<RacingCar> racingCars = new ArrayList<>();
+        racingCars.add(new RacingCar(3, "Car1"));
+        racingCars.add(new RacingCar(7, "Car2"));
+        racingCars.add(new RacingCar(2, "Car3"));
+        racingCars.add(new RacingCar(7, "Car4"));
+
+        // when
+        List<String> winners = gameService.determineWinner(racingCars, 7);
+
+        // then
+        assertEquals(2, winners.size());
+        assertEquals("Car2", winners.get(0));
+        assertEquals("Car4", winners.get(1));
+    }
 }
