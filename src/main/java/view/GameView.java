@@ -4,12 +4,10 @@ import java.util.Scanner;
 
 public class GameView {
 
-    public String[] inputCarNames() {
+    public String inputCarNames() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("경주할 자동차 이름을 입력하세요. (이름은 쉼표(,)로 구분)");
-        String userInput = scanner.nextLine();
-        //todo 로직 구현은 서비스에서
-        return userInput.split(",");
+        return scanner.nextLine();
     }
 
     public void outputException(IllegalArgumentException e) {

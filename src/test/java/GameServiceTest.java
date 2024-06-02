@@ -16,7 +16,7 @@ public class GameServiceTest {
     @DisplayName("유효한 자동차 입력 테스트")
     void validCarNameTest() {
         // given
-        String[] validCarNames = {"car1", "car2", "car3"};
+        String validCarNames = "car1,car2,car3";
 
         // when
         boolean isValid = gameService.validateCarNames(validCarNames);
@@ -29,7 +29,7 @@ public class GameServiceTest {
     @DisplayName("유효하지 않은 자동차 입력 테스트")
     void invalidCarNameTest() {
         // given
-        String[] invalidCarNames = {"carName1", "carName2", "carName3"};
+        String invalidCarNames = "carName1,carName2,carName3";
 
         // when, then
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
@@ -43,7 +43,7 @@ public class GameServiceTest {
     @DisplayName("자동차 리스트 생성 테스트")
     void testCreateCarList() {
         // given
-        String[] carNames = {"car1", "car2", "car3"};
+        String carNames = "car1,car2,car3";
 
         // when
         List<RacingCar> carList = gameService.createCarList(carNames);

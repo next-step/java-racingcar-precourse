@@ -45,7 +45,7 @@ public class GameController {
 
     private void getCarsName() {
         boolean isValidCarNameFlag = false;
-        String[] inputCarNames = new String[0];
+        String inputCarNames = null;
         while (!isValidCarNameFlag) {
             inputCarNames = gameView.inputCarNames();
             try {
