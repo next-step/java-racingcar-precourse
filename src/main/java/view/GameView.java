@@ -30,7 +30,7 @@ public class GameView {
         }
     }
 
-    public void displaywinner(List<String> winners) {
+    public void displayWinner(List<String> winners) {
         System.out.printf("최종 우승자 : %s", String.join(", ", winners));
     }
 }

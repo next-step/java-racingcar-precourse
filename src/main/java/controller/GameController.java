@@ -31,7 +31,7 @@ public class GameController {
 //        우승자 판단
         List<String> winners = gameService.determineWinner(racingCars, maxPosition);
 //        우승자 출력
-        gameView.displaywinner(winners);
+        gameView.displayWinner(winners);
     }
 
     private void getRounds() {
