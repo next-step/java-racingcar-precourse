@@ -6,10 +6,7 @@ public class AdvanceFoward {
         for(int i = 0; i < attemptnumber; i++) {
             for(int j = 0; j < cars.size(); j++) {
                 Random random = new Random();
-                int random_number = random.nextInt() % 10;
-                if(random_number >= 4) {
-                    cars.elementAt(j).increaseNumber();
-                }
+                cars.stream().filter(c -> random.nextInt() % 10 >= 4).forEach(c -> c.increaseNumber());
             }
             OutputHandler.fowardOutput(cars);
         }
