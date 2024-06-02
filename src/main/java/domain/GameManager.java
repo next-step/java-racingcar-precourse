@@ -102,13 +102,15 @@ public class GameManager {
     }
 
     private void takeOneStepForward() {
-        int randomNumber;
         for (Car car : carList) {
-            randomNumber = RandomNumberGenerator.generateRandomNumber();
-            if (randomNumber >= FORWARD_STANDARD) {
+            if (isCarMovingForward()) {
                 car.advance();
             }
         }
+    }
+
+    private boolean isCarMovingForward() {
+        return RandomNumberGenerator.generateRandomNumber() >= FORWARD_STANDARD;
     }
 
     private void printCarList() {
