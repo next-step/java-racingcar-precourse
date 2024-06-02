@@ -38,7 +38,13 @@ class RaceTest {
     }
 
     private static class PredictableRandom extends Random {
+        private int index = 0;
+        private final int[] values = {5, 5, 5, 5, 5}; // 항상 전진하도록
 
+        @Override
+        public int nextInt(int bound) {
+            return values[index++ % values.length];
+        }
     }
     //단독 우승자 발생 경우 test
     @Test
