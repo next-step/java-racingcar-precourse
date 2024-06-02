@@ -26,4 +26,8 @@ public class Car {
     public void setNumber(int number) {
         this.number = number;
     }
+
+    public void increaseNumber() {
+        number++;
+    }
 }
