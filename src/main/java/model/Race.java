@@ -4,9 +4,8 @@ import java.util.ArrayList;
 import observer.Observer;
 import observer.Subject;
 import service.CarServiceInterface;
-import service.RaceServiceInterface;
 
-public class Race implements Subject, RaceServiceInterface {
+public class Race implements Subject, RaceModelInterface {
     private final int numberOfRounds;
     private ArrayList<CarServiceInterface> cars;
     private ArrayList<Observer> observers;
