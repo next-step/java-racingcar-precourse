@@ -15,5 +15,11 @@ public class RacingGame {
         System.out.println("시도할 회수는 몇회인가요?");
         tryCount = scanner.nextInt();
     }
-
+    private void makeRace(){
+        for (int i = 0; i < tryCount; i++) {
+            for (Car car : carList){
+                car.makeMove();
+            }
+        }
+    }
 }
