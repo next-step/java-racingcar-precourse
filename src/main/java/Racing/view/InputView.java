@@ -20,13 +20,13 @@ public class InputView {
     private int tryModel;
 
     //자동차 이름 입력
-    public void printCarNameInput(){
+    public void printCarNameInput() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        try{
+        try {
             List<String> list = getInput();
             ie.inputValidation(list);
-            carNameModel=list;
-        }catch (IllegalArgumentException | IOException ie){
+            carNameModel = list;
+        } catch (IllegalArgumentException | IOException ie) {
             System.out.println(ie.getMessage());
             printCarNameInput();
         }
@@ -35,14 +35,14 @@ public class InputView {
     }
 
     //시도횟수 입력
-    public void printTryInput(){
+    public void printTryInput() {
         System.out.println("시도할 회수는 몇회인가요?");
-        try{
+        try {
             String s = getTry();
             ie.isNumber(s);
             tryModel = Integer.parseInt(s);
 
-        }catch (IllegalArgumentException | IOException ie){
+        } catch (IllegalArgumentException | IOException ie) {
             System.out.println(ie.getMessage());
             printTryInput();
         }
@@ -55,21 +55,17 @@ public class InputView {
         return new ArrayList<>(Arrays.stream(input.split(",")).toList());
     }
 
-    public String getTry() throws IOException{
+    public String getTry() throws IOException {
         return br.readLine();
     }
 
-    public List<String> getCarNameModel(){
+    public List<String> getCarNameModel() {
         return carNameModel;
     }
 
-    public int getTryModel(){
+    public int getTryModel() {
         return tryModel;
     }
-
-
-
-
 
 
 }
