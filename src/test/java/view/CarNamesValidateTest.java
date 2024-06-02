@@ -9,7 +9,7 @@ import util.CarUtility;
 public class CarNamesValidateTest {
 
   @Test
-  @DisplayName("자동차 이름들이 제대로 생성된 케이스")
+  @DisplayName("자동차 이름들이 제대로 입력된 케이스")
   void carNames_correctCase() {
     // given
     String correctCase = "abc,def,ghi";
