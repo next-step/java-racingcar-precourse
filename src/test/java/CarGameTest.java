@@ -23,4 +23,32 @@ public class CarGameTest {
         int[] result = CarGame.runRace(carList, gameCount);
         assertEquals(2, result.length);
     }
+
+    @Test
+    public void testDetermineWinners() {
+        ArrayList<String> carList = new ArrayList<>();
+        carList.add("car1");
+        carList.add("car2");
+        int[] forwardMovementCountArray = {3, 5};
+
+        ArrayList<String> winners = CarGame.determineWinners(carList, forwardMovementCountArray);
+        assertEquals(1, winners.size());
+        assertEquals("car2", winners.get(0));
+    }
+
+    @Test
+    public void testGetMaxForwardMovement() {
+        int[] forwardMovementCountArray = {3, 5, 2};
+        int max = CarGame.getMaxForwardMovement(forwardMovementCountArray);
+        assertEquals(5, max);
+    }
+
+    @Test
+    public void testPrintWinners() {
+        ArrayList<String> winners = new ArrayList<>();
+        winners.add("car1");
+        winners.add("car2");
+
+        CarGame.printWinners(winners);
+    }
 }
