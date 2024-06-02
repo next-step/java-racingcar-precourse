@@ -72,6 +72,16 @@ public class RacingCarGame {
         }
         System.out.println();
     }
+    public void racingStart(){
+        System.out.println("실행 결과");
+        int n = carList.size();
+        for(int i=0; i<tryNum; i++){
+            for (int j=0; j<n; j++) {
+                randomMove(j);
+            }
+            printResult();
+        }
+    }
 }
 
 
