@@ -1,16 +1,20 @@
 package view;
 
 import domain.Car;
+import java.awt.Checkbox;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
 import java.util.Scanner;
+import utils.Checker;
 
 public class RacingView {
     private final Scanner sc;
+    private final Checker checker;
     public RacingView(){
         sc=new Scanner(System.in);
+        checker=new Checker();
     }
 
     public void startRacing(){
@@ -26,15 +30,16 @@ public class RacingView {
         String s="";
         while(!isNum) {
             s = sc.nextLine();
-            if (isNumberic(s)){
-                isNum=true;
+            try{
+                isNum=checker.isNumeric(s);
+            }
+            catch(IllegalArgumentException e){
+                System.out.println(e.getMessage());
             }
         }
         return Integer.parseInt(s);
     }
-    public static boolean isNumberic(String str) {
-        return str.chars().allMatch(Character::isDigit);
-    }
+
     public StringBuilder createWinnerResult(List<Car> winners) {
         StringBuilder winnerResult = new StringBuilder();
         winnerResult.append("최종 우승자 : ");
