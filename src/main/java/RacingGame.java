@@ -2,8 +2,14 @@ import java.util.*;
 public class RacingGame {
     Scanner scanner = new Scanner(System.in);
     private List<Car> carList;
-    private List<String> winners = new ArrayList<>();
+    private List<String> winList = new ArrayList<>();
     private int tryCount;
+    public void gameStart() {
+        makeCarList();
+        makeCount();
+        makeRace();
+        getWinners();
+    }
     private void makeCarList() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String[] carNames = scanner.nextLine().split(",");
@@ -31,9 +37,9 @@ public class RacingGame {
                 .getPosition();
         for (Car car : carList) {
             if (car.getPosition() == maxPosition) {
-                winners.add(car.getName());
+                winList.add(car.getName());
             }
         }
-        System.out.println("최종 우승자 : " + String.join(", ", winners));
+        System.out.println("최종 우승자 : " + String.join(", ", winList));
     }
 }
