@@ -29,7 +29,6 @@ public class RacingController {
         System.out.println(view.createWinnerResult(getWinner()).toString());
     }
     public boolean input(){
-        boolean can=true;
         try{
             String names=view.inputNames();
             List<String> carNames=checker.checkCarName(names);
@@ -37,13 +36,13 @@ public class RacingController {
         }
         catch(IllegalArgumentException e){
             System.out.println(e.getMessage());
-            can=false;
+            return false;
         }
-        return can;
+        return true;
     }
     public void round(){
         racing.round();
-        racing.createRoundResult();
+        System.out.println(racing.createRoundResult().toString());
     }
     public List<Car> getWinner(){
         int num=racing.findWinnerDistance(racing.getCarList());

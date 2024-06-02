@@ -17,12 +17,12 @@ public class RacingView {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
     }
     public String inputNames()  {
-        Scanner sc=new Scanner(System.in);
         String s=sc.nextLine();
         return s;
     }
     public int inputNumber(){
         boolean isNum=false;
+        System.out.println("시도할 횟수는 몇 회인가요?");
         String s="";
         while(!isNum) {
             s = sc.nextLine();
