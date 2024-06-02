@@ -44,5 +44,28 @@ public class CarGame {
         System.out.println();
     }
 
+    public static ArrayList<String> determineWinners(ArrayList<String> carList, int[] forwardMovementCountArray) {
+        int max = getMaxForwardMovement(forwardMovementCountArray);
+        return getWinners(carList, forwardMovementCountArray, max);
+    }
 
+    private static ArrayList<String> getWinners(ArrayList<String> carList, int[] forwardMovementCountArray, int max) {
+        ArrayList<String> winners = new ArrayList<>();
+        for (int k = 0; k < carList.size(); k++) {
+            if (forwardMovementCountArray[k] == max) {
+                winners.add(carList.get(k));
+            }
+        }
+        return winners;
+    }
+
+    public static int getMaxForwardMovement(int[] forwardMovementCountArray) {
+        int max = -1;
+        for (int movementCount : forwardMovementCountArray) {
+            if (movementCount > max) {
+                max = movementCount;
+            }
+        }
+        return max;
+    }
 }
