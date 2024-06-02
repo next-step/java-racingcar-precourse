@@ -22,4 +22,19 @@ public class Input {
         }
         return carNames;
     }
+
+    public static int getMoves() {
+        String moves;
+        
+        while (true) {
+            try {
+                System.out.println("시도할 회수는 몇회인가요?");
+                moves = scanner.nextLine();
+                break;
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+        return Integer.parseInt(moves);
+    }
 }
