@@ -25,14 +25,17 @@ public class GameManager {
 
     public void run() {
         initGameSettings();
-        ConsoleMessagePrinter.printLineBreak();
-        ConsoleMessagePrinter.printExecutionResultMessage();
+        printGameExecutionMessage();
         for (int i = 0; i < attemptNumber; i++) {
             takeOneStepForward();
             printCarList();
         }
-        List<String> winnerList = findWinnerNames();
-        ConsoleMessagePrinter.printWinnerList(winnerList);
+        ConsoleMessagePrinter.printWinnerList(findWinnerNames());
+    }
+
+    private void printGameExecutionMessage() {
+        ConsoleMessagePrinter.printLineBreak();
+        ConsoleMessagePrinter.printExecutionResultMessage();
     }
 
     private void initGameSettings() {
@@ -41,18 +44,31 @@ public class GameManager {
     }
 
     private void setCarList() {
-        inputValidator = new CarNameValidator();
-        while (carList.isEmpty()) {
-            ConsoleMessagePrinter.printCarNameInputMessage();
-            List<String> carNameList = StringSplitter.splitString(InputHandler.getInput());
-            try {
-                ((CarNameValidator) inputValidator).checkCarNameList(carNameList);
-            } catch (IllegalArgumentException exception) {
-                ConsoleMessagePrinter.printErrorMessage(exception.getMessage());
-                continue;
-            }
-            initCarList(carNameList);
+        List<String> carNameList = null;
+        while (carNameList == null) {
+            carNameList = getCarNameList();
         }
+        initCarList(carNameList);
+    }
+
+    private List<String> getCarNameList() {
+        ConsoleMessagePrinter.printCarNameInputMessage();
+        List<String> carNameList = StringSplitter.splitString(InputHandler.getInput());
+        if (isCarNameListCorrect(carNameList)) {
+            return carNameList;
+        }
+        return null;
+    }
+
+    private boolean isCarNameListCorrect(List<String> carNameList) {
+        inputValidator = new CarNameValidator();
+        try {
+            ((CarNameValidator) inputValidator).checkCarNameList(carNameList);
+        } catch (IllegalArgumentException exception) {
+            ConsoleMessagePrinter.printErrorMessage(exception.getMessage());
+            return false;
+        }
+        return true;
     }
 
     private void initCarList(List<String> carNameList) {
