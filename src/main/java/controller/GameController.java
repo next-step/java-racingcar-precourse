@@ -35,7 +35,7 @@ public class GameController {
         findWinner(n, cars);
     }
 
-    private static void findWinner(int n, List<Car> cars) {
+    private static void findWinner(List<Car> cars) {
         ArrayList<Integer> distances = new ArrayList<>();
         cars.forEach(car -> {
             distances.add(car.getDistance());
