@@ -9,7 +9,7 @@ import model.RacingCar;
 public class GameService {
 
     public boolean validateCarNames(String inputCarNames) {
-        if(inputCarNames.isEmpty()){
+        if (inputCarNames.isEmpty()) {
             throw new IllegalArgumentException("자동차 이름을 입력해 주세요.");
         }
         String[] carNames = inputCarNames.split(",");

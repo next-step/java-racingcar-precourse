@@ -12,28 +12,38 @@ public class GameController {
     private List<RacingCar> racingCars;
     private int numRounds;
 
+    /**
+     * 자동차 경주 게임 메서드
+     */
     public void startGame() {
-//        사용자로부터 자동차 이름 입력 받기
-        getCarsName();
-//        사용자로부터 시도 횟수 입력 받기
-        getRounds();
+        setUpGame();
         while (numRounds > 0) {
-//            라운드별 게임 진행
             playGameByRound();
             numRounds--;
         }
         getGameResult();
     }
 
+    /**
+     * 자동차 경주 게임 준비 메서드
+     */
+    private void setUpGame() {
+        getCarsName();
+        getRounds();
+    }
+
+    /**
+     * 자동차 경주 게임 결과 처리 메서드
+     */
     private void getGameResult() {
-//        최고 점수 판단
         int maxPosition = gameService.getMaxPosition(racingCars);
-//        우승자 판단
         List<String> winners = gameService.determineWinner(racingCars, maxPosition);
-//        우승자 출력
         gameView.displayWinner(winners);
     }
 
+    /**
+     * 시도 횟수 입력 처리 메서드
+     */
     private void getRounds() {
         boolean isValidRoundsFlag = false;
         int inputRounds = 0;
@@ -48,6 +58,9 @@ public class GameController {
         numRounds = inputRounds;
     }
 
+    /**
+     * 자동차 이름 입력 처리 메서드
+     */
     private void getCarsName() {
         boolean isValidCarNameFlag = false;
         String inputCarNames = null;
@@ -62,14 +75,14 @@ public class GameController {
         racingCars = gameService.createCarList(inputCarNames);
     }
 
+    /**
+     * 라운드별 게임 진행 처리 메서드
+     */
     private void playGameByRound() {
         for (RacingCar racingCar : racingCars) {
-//            자동차별 0에서 9사이 무작위 난수 생성
             int randomNum = gameService.generateCarRandomNum(racingCar);
-//            난수값이 4 이상인 경우 전진
             gameService.determineCarMove(randomNum, racingCar);
         }
-//            UI 표기
         gameView.displayCurrentRound(racingCars);
     }
 }
