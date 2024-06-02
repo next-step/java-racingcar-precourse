@@ -36,7 +36,8 @@ class RaceTest {
         String winners = race.findWinners();
         assertThat(winners).isEqualTo("a, c");
     }
-
+    
+    // 자동차 전진성 파악 + 우승자 결정 파악
     private static class PredictableRandom extends Random {
         private int index = 0;
         private final int[] values = {5, 5, 5, 5, 5}; // 항상 전진하도록
