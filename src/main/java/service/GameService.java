@@ -2,6 +2,7 @@ package service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import model.RacingCar;
 
 public class GameService {
@@ -32,5 +33,16 @@ public class GameService {
             throw new IllegalArgumentException("시도 횟수는 0보다 커야합니다.");
         }
         return true;
+    }
+
+    public int generateCarRandomNum(RacingCar racingCar) {
+        Random random = new Random();
+        return random.nextInt(10);
+    }
+
+    public void determineCarMove(int randomNum, RacingCar racingCar) {
+        if (randomNum >= 4) {
+            racingCar.setPosition(racingCar.getPosition() + 1);
+        }
     }
 }

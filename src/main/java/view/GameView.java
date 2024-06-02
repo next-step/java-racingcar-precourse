@@ -1,6 +1,8 @@
 package view;
 
+import java.util.List;
 import java.util.Scanner;
+import model.RacingCar;
 
 public class GameView {
 
@@ -18,5 +20,13 @@ public class GameView {
         Scanner scanner = new Scanner(System.in);
         System.out.println("시도할 회수는 몇회인가요?");
         return scanner.nextInt();
+    }
+
+    public void displayCurrentRound(List<RacingCar> racingCars) {
+        System.out.println("실행 결과");
+        for (RacingCar racingCar : racingCars) {
+            System.out.printf("%s : ", racingCar.getCarName());
+            System.out.println("-".repeat(racingCar.getPosition()));
+        }
     }
 }
