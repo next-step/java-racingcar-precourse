@@ -15,4 +15,14 @@ public class OutputView {
 
         System.out.println(info);
     }
+
+    public void printWinner(List<Car> winners){
+        StringBuilder info = new StringBuilder("최종 우승자 : ");
+        for(Car car : winners){
+            info.append(car.getName());
+            info.append(", ");
+        }
+
+        System.out.println(info.substring(0, info.length() - 2));
+    }
 }
