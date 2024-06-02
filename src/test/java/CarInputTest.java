@@ -33,4 +33,9 @@ public class CarInputTest {
         assertEquals("car1", carList.get(0));
         assertEquals("car2", carList.get(1));
     }
+
+    @Test
+    public void testValidateCarName() {
+        assertThrows(IllegalArgumentException.class, () -> CarInput.validateCarName("carnameTooLong"));
+    }
 }
