@@ -5,7 +5,14 @@ public class RacingGame {
     private List<String> winList = new ArrayList<>();
     private int tryCount;
     public void gameStart() {
-        makeCarList();
+        while (true) {
+            try {
+                makeCarList();
+                break;
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
         makeCount();
         makeRace();
         getWinners();
