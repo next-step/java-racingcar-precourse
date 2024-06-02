@@ -54,4 +54,68 @@ public class GameServiceTest {
         assertEquals("car2", carList.get(1).getCarName());
         assertEquals("car3", carList.get(2).getCarName());
     }
+
+    @Test
+    @DisplayName("유효한 시도 횟수 테스트")
+    void validRoundsTest() {
+        //given
+        int inputRounds = 3;
+
+        //when, then
+        assertTrue(gameService.validateRounds(inputRounds));
+    }
+
+    @Test
+    @DisplayName("유효하지 않은 시도 횟수 테스트")
+    void invalidRoundsTest() {
+        //given
+        int inputRounds = -1;
+
+        //when, then
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            gameService.validateRounds(inputRounds);
+        });
+        assertEquals("시도 횟수는 0보다 커야합니다.", exception.getMessage());
+    }
+
+    @Test
+    @DisplayName("난수 생성 범위 테스트")
+    void generateCarRandomNumTest() {
+        //given
+        RacingCar car = new RacingCar(0, "testCar");
+
+        //when
+        int randomNumber = gameService.generateCarRandomNum(car);
+
+        //then
+        assertTrue(randomNumber >= 0 && randomNumber <= 9);
+    }
+
+    @Test
+    @DisplayName("자동차 이동 테스트 - 난수값이 4 이상")
+    void determineCarMoveTest() {
+        //given
+        int randomNum = 6;
+        RacingCar car = new RacingCar(0, "testCar");
+
+        //when
+        gameService.determineCarMove(randomNum, car);
+
+        //then
+        assertEquals(1, car.getPosition());
+    }
+
+    @Test
+    @DisplayName("자동차 이동 테스트 - 난수값이 4 미만")
+    void determineCarStopTest() {
+        //given
+        int randomNum = 3;
+        RacingCar car = new RacingCar(0, "testCar");
+
+        //when
+        gameService.determineCarMove(randomNum, car);
+
+        //then
+        assertEquals(0, car.getPosition());
+    }
 }
