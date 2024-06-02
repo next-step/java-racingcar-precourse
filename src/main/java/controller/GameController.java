@@ -15,7 +15,6 @@ public class GameController {
     public void startGame() {
 //        사용자로부터 자동차 이름 입력 받기
         getCarsName();
-
 //        사용자로부터 시도 횟수 입력 받기
         getRounds();
         while (numRounds > 0) {
@@ -25,8 +24,8 @@ public class GameController {
         }
 //        최고 점수 판단
         int maxPosition = gameService.getMaxPosition(racingCars);
-////        우승자 판단
-//        List<String> winners = gameService.determineWinner(racingCars);
+//        우승자 판단
+        List<String> winners = gameService.determineWinner(racingCars, maxPosition);
 ////        우승자 출력
 //        gameView.displaywinner(winners);
     }

@@ -58,4 +58,16 @@ public class GameService {
 
         return maxPosition;
     }
+
+    public List<String> determineWinner(List<RacingCar> racingCars, int maxPosition) {
+        List<String> winners = new ArrayList<>();
+
+        for (RacingCar car : racingCars) {
+            if (car.getPosition() == maxPosition) {
+                winners.add(car.getCarName());
+            }
+        }
+
+        return winners;
+    }
 }
