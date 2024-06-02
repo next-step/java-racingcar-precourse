@@ -35,8 +35,16 @@ public class GameManager {
     }
 
     private void initGameSettings() {
+        initCarList();
+        initAttemptNumber();
+    }
+
+    private void initCarList() {
         setInputValidator(new CarNameValidator());
         setCarList();
+    }
+
+    private void initAttemptNumber() {
         setInputValidator(new AttemptNumberValidator());
         setAttemptNumber();
     }
@@ -62,7 +70,7 @@ public class GameManager {
         while (carNameList == null) {
             carNameList = getCarNameList();
         }
-        initCarList(carNameList);
+        buildCarList(carNameList);
     }
 
     private List<String> getCarNameList() {
@@ -84,7 +92,7 @@ public class GameManager {
         return true;
     }
 
-    private void initCarList(List<String> carNameList) {
+    private void buildCarList(List<String> carNameList) {
         for (String carName : carNameList) {
             carList.add(new Car(carName));
         }
