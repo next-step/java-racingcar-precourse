@@ -10,5 +10,11 @@ public class CarTest {
             .isInstanceOf(IllegalArgumentException.class)
             .hasMessageContaining("1자 이상 5자 이하만 가능합니다.");
     }
-    
+    @Test
+    void carNameShouldNotBeLongerThanFiveCharacters() {
+        assertThatThrownBy(() -> new Car("abcdef"))
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessageContaining("1자 이상 5자 이하만 가능합니다.");
+    }
+
 }
