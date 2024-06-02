@@ -2,8 +2,6 @@ package race;
 
 import java.util.ArrayList;
 import java.util.List;
-import view.Input;
-import validator.CarNameValidator;
 import view.Output;
 
 public class Race {
@@ -24,6 +22,7 @@ public class Race {
      * 자동차 경주 게임을 진행한다.
      */
     public void run() {
+        Output.printResult();
         for (int i = 0; i < number; i++) {
             for (Car c : cars) {
                 c.tryMove();
@@ -33,10 +32,16 @@ public class Race {
         }
     }
 
+    public ArrayList<String> getWinners() {
+        cars.sort((c1, c2) -> c2.getMoveCount() - c1.getMoveCount());
+        int winnerMoveCount = cars.get(0).getMoveCount();
+        for (Car car : cars) {
+            if (car.getMoveCount() < winnerMoveCount) {
+                break;
+            }
+            winners.add(car.getName());
+        }
 
-
-
-
-
-
+        return winners;
+    }
 }
