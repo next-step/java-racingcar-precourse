@@ -2,6 +2,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.ArrayList;
 import java.util.List;
 import model.RacingCar;
 import org.junit.jupiter.api.DisplayName;
@@ -117,5 +118,22 @@ public class GameServiceTest {
 
         //then
         assertEquals(0, car.getPosition());
+    }
+
+    @Test
+    @DisplayName("최고 점수 찾기 테스트")
+    void getMaxPositionTest() {
+        // given
+        List<RacingCar> racingCars = new ArrayList<>();
+        racingCars.add(new RacingCar(3, "Car1"));
+        racingCars.add(new RacingCar(1, "Car2"));
+        racingCars.add(new RacingCar(5, "Car3"));
+        racingCars.add(new RacingCar(7, "Car4"));
+
+        // when
+        int maxPosition = gameService.getMaxPosition(racingCars);
+
+        // then
+        assertEquals(7, maxPosition);
     }
 }
