@@ -6,13 +6,13 @@ public class Application {
         int rounds = InputHandler.getRounds();
         Race race = new Race(carNames, rounds);
         race.start();
-        printRaceResult(race.getWinners());
+        printRaceResult(race.getWinners(), race.getRaceHistory());
     }
 
-    private static void printRaceResult(List<Car> winners) {
+    private static void printRaceResult(List<Car> winners, List<StringBuilder> raceHistory) {
         System.out.println("실행 결과");
-        for (Car car : winners) {
-            System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
+        for (StringBuilder roundResult : raceHistory) {
+            System.out.println(roundResult);
         }
         System.out.println("최종 우승자: " + getWinnerNames(winners));
     }
