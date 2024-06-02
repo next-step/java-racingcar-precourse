@@ -1,4 +1,4 @@
-version 1.0
+version 1.1
 # java-racingcar-precourse 
 ### interface Observer
 * update() : void
@@ -17,7 +17,7 @@ version 1.0
 * getNumberOfCars() : int
 * getNumberOfRounds() : int
 * setNumberOfRounds() : void
-* getCars() : List<CarServiceInterface>
+* getCars() : List\<CarServiceInterface>
 ---
 ### interface CarServiceInterface
 * move() : void
@@ -42,8 +42,10 @@ version 1.0
 * setRound(int) : void
 ---
 ### class CarServiceTest
+* tests
 ---
 ### class RaceServiceTest
+* tests
 ---
 ### class Car - model
 * name : String
@@ -53,14 +55,13 @@ version 1.0
 * setProgress() : void
 ---
 ### class Race : Subject, RaceServiceInterface - model
-* numberOfCars : int
 * numberOfRounds : int
-* cars : List<CarServiceInterface>
-* observers : List<Observer>
+* cars : List\<CarServiceInterface>
+* observers : List\<Observer>
 * getNumberOfCars() : int
 * getNumberOfRounds() : int
 * setNumberOfRounds() : void
-* getCars() : List<CarServiceInterface>
+* getCars() : List\<CarServiceInterface>
 * addObserver(Observer) : void
 * removeObserver(Observer) : void
 * notifyObservers() : void
