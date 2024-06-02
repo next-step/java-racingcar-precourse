@@ -27,8 +27,8 @@ public class ValidateInput {
 
   public boolean playCountValidate(String playCount) {
     try {
-      if (!playCount.matches("\\d+")) {
-        throw new IllegalArgumentException("[ERROR] 시도할 회수는 0 이상의 정수만 가능합니다.");
+      if (!playCount.matches("[1-9]\\d*")) {
+        throw new IllegalArgumentException("[ERROR] 시도할 회수는 양의 정수만 가능합니다.");
       }
     } catch (IllegalArgumentException e) {
       System.out.println(e.getMessage());
