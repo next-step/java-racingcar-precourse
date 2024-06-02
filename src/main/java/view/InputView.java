@@ -2,20 +2,19 @@ package view;
 
 import controller.ValidateInput;
 import java.util.Scanner;
+import model.CarDTO;
 import model.GameStatusDTO;
 import util.CarUtility;
 
 public class InputView {
 
   private final Scanner scanner;
-  private final GameStatusDTO gameStatusDTO;
   private final ValidateInput validateInput;
   private final CarUtility carUtility;
 
   public InputView(Scanner scanner) {
     this.scanner = scanner;
     validateInput = new ValidateInput();
-    gameStatusDTO = new GameStatusDTO();
     carUtility = new CarUtility();
   }
 
@@ -33,7 +32,8 @@ public class InputView {
       carInputState = validateInput.carNamesValidate(carNames);
     } while (!carInputState);
     for (String carName : carNames) {
-      gameStatusDTO.addCar(carName);
+      CarDTO car = new CarDTO(carName);
+      GameStatusDTO.cars.add(car);
     }
   }
 
@@ -45,6 +45,6 @@ public class InputView {
       playCount = scanner.nextLine();
       playCountInputState = validateInput.playCountValidate(playCount);
     } while (!playCountInputState);
-    gameStatusDTO.setPlayCount(Integer.parseInt(playCount));
+    GameStatusDTO.playCount = Integer.parseInt(playCount);
   }
 }
