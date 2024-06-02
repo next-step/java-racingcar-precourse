@@ -34,7 +34,7 @@ public class Checker {
             throw new IllegalArgumentException("[ERROR]잘못된 숫자를 입력, 다시 입력해 주세요");
         }
         if(Integer.parseInt(str)<1){
-            throw new IllegalArgumentException("[ERROR]0이하의 숫자를 입력, 다시 입력해 주세요");
+            throw new IllegalArgumentException("[ERROR]잘못된 숫자를 입력, 다시 입력해 주세요");
         }
         return true;
     }
