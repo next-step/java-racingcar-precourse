@@ -23,4 +23,7 @@ public class Car {
         }
         return visualPosition;
     }
+    public String getName(){
+        return name;
+    }
 }
