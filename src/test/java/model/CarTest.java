@@ -1,4 +1,5 @@
-import model.CarDTO;
+package model;
+
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -23,7 +24,9 @@ public class CarTest {
     CarDTO car = new CarDTO("abc");
     //when
     car.move(true);
+    car.move(false);
     car.move(true);
+    car.move(false);
     car.move(true);
     //then
     Assertions.assertThat(car.getDistance()).isEqualTo(3);
