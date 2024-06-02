@@ -24,5 +24,18 @@ public class Race {
         }
     }
 
-    
+    public List<String> getWinners() {
+        List<String> winners = new ArrayList<>();
+        int winnerPosition = cars.stream().mapToInt(Car::getPosition).max().orElse(0);
+
+        for (Car car :  cars) {
+            if (car.getPosition() == winnerPosition) {
+                winners.add(car.getName());
+            }
+        }
+
+        return winners;
+    }
+
+
 }
