@@ -34,7 +34,7 @@ class AttemptNumberValidatorTest {
 
     @Test
     @DisplayName("올바른 형식의 숫자 확인 테스트")
-    void checkInputValue() {
+    void checkInputValueWithCorrectNumber() {
         String correctNumberStr = "5";
         Assertions.assertDoesNotThrow(() -> {
             attemptNumberValidator.checkInputValue(correctNumberStr);
