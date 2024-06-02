@@ -20,8 +20,8 @@ RacingGame 클래스
 RacingGameController 클래스
 게임을 실행하여 자동차 이름과 라운드 수를 입력받고 경주를 진행하는 기능
 
-InputView 클래스
+Input 클래스
 사용자로부터 자동차 이름들과 라운드 수를 입력받는 기능
 
-OutputView 클래스
+Output 클래스
 역할: 게임의 진행 상태와 최종 우승자를 출력하는 기능
