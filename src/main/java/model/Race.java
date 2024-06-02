@@ -33,6 +33,11 @@ public class Race implements Subject, RaceModelInterface {
     }
 
     @Override
+    public void addCar(CarServiceInterface carServiceInterface) {
+
+    }
+
+    @Override
     public ArrayList<CarServiceInterface> getCars() {
         return cars;
     }
