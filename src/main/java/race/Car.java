@@ -7,7 +7,6 @@ public class Car {
     public Car(String name) {
         this.name = name;
         moveCount = 0;
-        random = -1;
     }
 
     public int getMoveCount() {
