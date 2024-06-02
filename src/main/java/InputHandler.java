@@ -11,19 +11,25 @@ public class InputHandler {
 
         while (!validInput) {
             try {
-                System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-                String input = scanner.nextLine();
-                String[] names = input.split(",");
-                for (String name : names) {
-                    validateName(name);
-                    carNames.add(name.trim());
-                }
+                carNames = getValidCarNames();
                 validInput = true;
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }
         }
 
+        return carNames;
+    }
+
+    private static List<String> getValidCarNames() {
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        String input = scanner.nextLine();
+        String[] names = input.split(",");
+        List<String> carNames = new ArrayList<>();
+        for (String name : names) {
+            validateName(name);
+            carNames.add(name.trim());
+        }
         return carNames;
     }
 
@@ -39,9 +45,7 @@ public class InputHandler {
 
         while (!validInput) {
             try {
-                System.out.println("시도할 회수는 몇회인가요?");
-                rounds = Integer.parseInt(scanner.nextLine());
-                validateRounds(rounds);
+                rounds = getValidRounds();
                 validInput = true;
             } catch (NumberFormatException e) {
                 System.out.println("[ERROR] 유효한 숫자를 입력하세요.");
@@ -50,6 +54,13 @@ public class InputHandler {
             }
         }
 
+        return rounds;
+    }
+
+    private static int getValidRounds() {
+        System.out.println("시도할 회수는 몇회인가요?");
+        int rounds = Integer.parseInt(scanner.nextLine());
+        validateRounds(rounds);
         return rounds;
     }
 
