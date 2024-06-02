@@ -6,15 +6,24 @@ public class RacingGameController {
             String carNamesInput = Input.getCarNames();
             racingGame.initializeCars(carNamesInput);
 
+            run2();
+
+        } catch (IllegalArgumentException | IllegalStateException e) {
+            System.out.println("[ERROR] " + e.getMessage());
+            run();
+        }
+
+    }
+    public void run2(){
+        try {
             String roundsInput = Input.getRounds();
             racingGame.setRounds(roundsInput);
 
             racingGame.race();
-            Output.printRaceStatus(racingGame.getCars());
             Output.printWinners(racingGame.getWinners());
         } catch (IllegalArgumentException | IllegalStateException e) {
             System.out.println("[ERROR] " + e.getMessage());
-            run();
+            run2();
         }
     }
 
