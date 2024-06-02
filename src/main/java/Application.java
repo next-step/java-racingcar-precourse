@@ -64,6 +64,34 @@ public class Application {
     }
 }
 
+class Car {
+    private final String name;
+    private int position = 0;
+    private final Random random = new Random();
+
+    public Car(String name) {
+        if (name.length() > 5) {
+            throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.");
+        }
+        this.name = name;
+    }
+
+    public void move() {
+        if (random.nextInt(10) >= 4) {
+            position++;
+        }
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+}
+
+
 
 
 
