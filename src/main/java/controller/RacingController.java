@@ -1,14 +1,8 @@
 package controller;
 
-import model.Car;
 import model.Race;
 import utils.InputValidation;
 import view.RacingView;
-
-import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.List;
-import java.util.Scanner;
 
 public class RacingController {
     public void startRacing(){
@@ -47,6 +41,4 @@ public class RacingController {
             }
         }
     }
-
-
 }
