@@ -3,6 +3,7 @@ package models;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.Result;
 import utils.RandomGenerator;
 
 public class Race {
@@ -19,6 +20,7 @@ public class Race {
             for (Car car : cars) {
                 car.move(RandomGenerator.generateRandomNumber());
             }
+            Result.printRoundResult(cars);
         }
     }
 
