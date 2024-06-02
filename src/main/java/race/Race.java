@@ -8,15 +8,20 @@ import validator.CarNameValidator;
 public class Race {
     private ArrayList<Car> cars;
     private int number;
+    private ArrayList<String> winners;
 
     public Race(List<String> carNames, int number) {
         this.number = number;
-        this.cars = new ArrayList<>(carNames.size());
+        winners = new ArrayList<>();
+        cars = new ArrayList<>(carNames.size());
         for (String carName : carNames) {
             cars.add(new Car(carName));
         }
     }
 
+    /**
+     * 자동차 경주 게임을 진행한다.
+     */
     public void run() {
         for (int i = 0; i < number; i++) {
             for (Car c : cars) {
