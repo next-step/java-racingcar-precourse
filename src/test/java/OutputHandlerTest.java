@@ -7,6 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class OutputHandlerTest {
+
     @Test
     @DisplayName("출력 형식이 올바른지")
     public void testFowardOutputOneWinner() {

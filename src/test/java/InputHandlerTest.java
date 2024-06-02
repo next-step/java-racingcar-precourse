@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
 public class InputHandlerTest {
+
     @Test
     @DisplayName("연달아서 입력할 때")
     public void testCarNameInputNoGap() throws IOException {

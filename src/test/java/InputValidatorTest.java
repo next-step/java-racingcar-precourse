@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
 public class InputValidatorTest {
+
     @Test
     @DisplayName("유효한 이름일 때")
     public void testValidateCarNameWithValidNames() {
