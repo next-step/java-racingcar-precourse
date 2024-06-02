@@ -9,20 +9,34 @@ import java.util.List;
 
 public class ResultService {
 
-    public List<String> result(Cars cars){
-        List<String> winner = new ArrayList<>();
-        int maxScore = 0;
-        for(Car car : cars.getCars()){
-            if(maxScore < car.getDistanceBar().length()) maxScore=car.getDistanceBar().length();
-        }
-
-        for(Car car : cars.getCars()){
-            if(maxScore==car.getDistanceBar().length()) winner.add(car.getName());
-        }
+    public List<String> result(Cars cars) {
+        List<String> winner;
+        int maxScore = getMaxScore(cars);
+        winner = getWinner(cars, maxScore);
 
         return winner;
     }
 
+    public int getMaxScore(Cars cars) {
+        int maxScore = 0;
+        for (Car car : cars.getCars()) {
+            if (maxScore < car.getDistanceBar().length()) {
+                maxScore = car.getDistanceBar().length();
+            }
+        }
+        return maxScore;
+    }
+
+    public List<String> getWinner(Cars cars, int maxScore) {
+        List<String> winner = new ArrayList<>();
+        for (Car car : cars.getCars()) {
+            if (maxScore == car.getDistanceBar().length()) {
+                winner.add(car.getName());
+            }
+        }
+
+        return winner;
+    }
 
 
 }
