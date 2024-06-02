@@ -77,8 +77,11 @@ public class racingCar {
 
         for(Map.Entry<String, Integer> entry: carPositions.entrySet()) {
             if(entry.getValue() == maxPosition) {
-                if (winners.length() > 0) winners.append(", ");
-            } winners.append(entry.getKey());
+                if (winners.length() > 0) {
+                    winners.append(", ");
+                }
+                winners.append(entry.getKey());
+            }
         }
         System.out.println("최종 우승자: " + winners.toString());
     }
