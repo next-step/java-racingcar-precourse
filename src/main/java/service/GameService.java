@@ -54,16 +54,10 @@ public class GameService {
     }
 
     public int getMaxPosition(List<RacingCar> racingCars) {
-        int maxPosition = 0;
-
-        for (RacingCar car : racingCars) {
-            int position = car.getPosition();
-            if (position > maxPosition) {
-                maxPosition = position;
-            }
-        }
-
-        return maxPosition;
+        return racingCars.stream()
+            .mapToInt(RacingCar::getPosition)
+            .max()
+            .orElse(0);
     }
 
     public List<String> determineWinner(List<RacingCar> racingCars, int maxPosition) {
