@@ -55,6 +55,8 @@ public class Application {
     }
 
     private static void checkDuplicateName(Set<String> carNameSet, String name) {
-
+        if (!carNameSet.add(name)) {
+            throw new IllegalStateException("[ERROR] 자동차 이름은 중복될 수 없습니다.");
+        }
     }
 }
