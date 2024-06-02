@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Random;
+
 public class CarDTO {
     private final String name;
 
@@ -10,4 +12,10 @@ public class CarDTO {
     public String getName() {
         return name;
     }
+
+    public int getRandomNumber() {
+        Random random = new Random();
+        return random.nextInt(0, 9);
+    }
+
 }
