@@ -43,4 +43,22 @@ public class InputValidatorTest {
         assertTrue(actualMessage.contains(expectedMessage));
         assertEquals(0, cars.size()); // cars should be cleared
     }
+
+    @Test
+    @DisplayName("시도 횟수가 양수인 경우")
+    public void testValidateAttemptCountPositive() {
+        int number = 5;
+        assertTrue(InputValidator.validateAttemptCount(number));
+    }
+
+    @Test
+    @DisplayName("시도 횟수가 음수인 경우")
+    public void testValidateAttemptCountNegative() {
+        int number = -3;
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            InputValidator.validateAttemptCount(number);
+        });
+
+        assertEquals("[ERROR] : 시도할 횟수는 양수만 가능합니다.", exception.getMessage());
+    }
 }
