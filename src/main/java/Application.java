@@ -33,7 +33,10 @@ public class Application {
         }while(!attemptcountvalid);
 
         //전진하기
-        AdvanceFoward.advanceFoward(cars, attemptnumber);
+        for(int i = 0; i < attemptnumber; i++) {
+            AdvanceFoward.advanceFoward(cars, attemptnumber);
+            OutputHandler.fowardOutput(cars);
+        }
 
         //우승자 출력
         OutputHandler.winnerOutput(cars);
