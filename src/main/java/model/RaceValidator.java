@@ -12,7 +12,7 @@ public class RaceValidator {
         String[] names = carsName.split(SPLIT_CHARACTER);
         Set<String> checkDuplication = new HashSet<>();
         for (String carName : names) {
-            if (carName.length() > MAX_NAME_LENGTH || carName.isEmpty()){
+            if (carName.length() > MAX_NAME_LENGTH || carName.isBlank()){
                 throw new IllegalArgumentException("자동차 이름은 1 ~ 5자 입니다.");
             }
             checkDuplication.add(carName);
