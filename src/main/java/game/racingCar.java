@@ -37,7 +37,17 @@ public class racingCar {
         printWinners(carPositions);
     }
 
-    private static String[] parseCarNames(String input) { String[] carNames = input.split(","); return carNames;}
+    private static String[] parseCarNames(String input) {
+        if(input == null || input.trim().isEmpty()) {
+            throw new IllegalArgumentException("자동차 이름을 입력하세요.");
+        }
+
+        String[] carNames = input.split(",");
+        for(String name:carNames) {
+            if(name.trim().isEmpty()) throw new IllegalArgumentException("자동차 이름이 비어있을 수 없습니다.");
+        }
+        return carNames;
+    }
     private static int parseAttempts(String input) {int attempts = 0; return attempts;}
     private static void printCarPositions(Map<String, Integer> carPositions) {}
     private static void printWinners(Map<String, Integer> carPositions) {}
