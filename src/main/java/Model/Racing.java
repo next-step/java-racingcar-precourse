@@ -12,6 +12,8 @@ public class Racing {
         for(String carName : carNames) {
             carList.add(new Car(carName, 0));
         }
+
+        this.rounds = Integer.parseInt(rounds);
     }
 
     public List<Car> getCarList() {

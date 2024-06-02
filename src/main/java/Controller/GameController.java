@@ -16,15 +16,35 @@ public class GameController {
     private Scanner scanner = new Scanner(System.in);
 
     public void getCarNames() {
-        RacingView.printCarNameMessage();
-        carNames = Arrays.asList(scanner.nextLine().split(","));
-    }
+        int state = 0;
+
+        while (state == 0) {
+            try {
+                RacingView.printCarNameMessage();
+                carNames = Arrays.asList(scanner.nextLine().split(","));
+                carNames.stream().forEach(carName -> ErrorDetect.carNameTest(carName));
+                state = 1;
+            }catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage() + "\n");
+            }
+        }
+}
 
     public void getRounds() {
-        RacingView.printRacingRoundMessage();
-        rounds = scanner.nextLine();
-        ErrorDetect.roundsTest(rounds);
-        System.out.println();
+        int state = 0;
+
+        while (state == 0) {
+            try {
+                RacingView.printRacingRoundMessage();
+                rounds = scanner.nextLine();
+                rounds.chars().forEach(temp -> ErrorDetect.roundsIsValid((char)temp));
+                System.out.println(rounds);
+                ErrorDetect.roundIsInt(rounds);
+                state = 1;
+            }catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage() + "\n");
+            }
+        }
     }
 
     public void gamePlay() {
