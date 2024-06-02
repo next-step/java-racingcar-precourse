@@ -71,6 +71,16 @@ public class racingCar {
         System.out.println();
     }
 
-    private static void printWinners(Map<String, Integer> carPositions) {}
+    private static void printWinners(Map<String, Integer> carPositions) {
+        int maxPosition = carPositions.values().stream().max(Integer::compare).orElse(0);
+        StringBuilder winners = new StringBuilder();
+
+        for(Map.Entry<String, Integer> entry: carPositions.entrySet()) {
+            if(entry.getValue() == maxPosition) {
+                if (winners.length() > 0) winners.append(", ");
+            } winners.append(entry.getKey());
+        }
+        System.out.println("최종 우승자: " + winners.toString());
+    }
 
 }
