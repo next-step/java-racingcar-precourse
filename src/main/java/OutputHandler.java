@@ -18,16 +18,13 @@ public class OutputHandler {
     public static void winnerOutput(Vector<Car> cars) {
         StringBuilder sb = new StringBuilder();
         System.out.print("최종 우승자 : ");
-        Optional<Integer> maxNumberOptional = cars.stream()
-            .map(Car::getNumber)
-            .max(Comparator.naturalOrder());
+        Optional<Integer> maxNumberOptional = cars.stream().map(Car::getNumber).max(Comparator.naturalOrder());
         int maxNumber = maxNumberOptional.orElseThrow(() -> new NoSuchElementException("No value present"));
         for(int i = 0; i < cars.size(); i++) {
             if(maxNumber == cars.elementAt(i).getNumber()) {
                 sb.append(cars.elementAt(i).getName() + ", ");
             }
         }
-
         sb.delete(sb.length() - 2, sb.length());
         System.out.println(sb);
     }
