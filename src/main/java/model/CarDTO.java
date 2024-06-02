@@ -2,7 +2,7 @@ package model;
 
 public class CarDTO {
 
-  private String name;
+  private final String name;
   private int distance;
 
   public CarDTO(String name) {
@@ -12,10 +12,6 @@ public class CarDTO {
 
   public String getName() {
     return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
   }
 
   public int getDistance() {
