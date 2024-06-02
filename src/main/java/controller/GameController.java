@@ -1,8 +1,8 @@
 package controller;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import model.*;
+import util.MaxValueFinder;
 import util.RandomGenerator;
 import view.*;
 
@@ -32,16 +32,11 @@ public class GameController {
             });
             System.out.println();
         }
-        findWinner(n, cars);
+        findWinner(cars);
     }
 
     private static void findWinner(List<Car> cars) {
-        ArrayList<Integer> distances = new ArrayList<>();
-        cars.forEach(car -> {
-            distances.add(car.getDistance());
-        });
-        distances.sort(Comparator.reverseOrder());
-        int maxDistance = distances.get(0);
+        int maxDistance = MaxValueFinder.getMaxDistance(cars);
         ArrayList<String> winners = new ArrayList<>();
         cars.forEach(car -> {
             if (car.getDistance() == maxDistance) {
