@@ -19,6 +19,11 @@ public class Car {
         roundResult.append("-".repeat(this.distance));
         return roundResult;
     }
+    public StringBuilder createWinner() {
+        StringBuilder winner = new StringBuilder();
+        winner.append(this.name).append(", ");
+        return winner;
+    }
 
 
 }

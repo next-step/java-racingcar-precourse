@@ -33,8 +33,13 @@ public class RacingView {
     public static boolean isNumberic(String str) {
         return str.chars().allMatch(Character::isDigit);
     }
-    public void printWinners(List<Car> winners){
-
+    public StringBuilder createWinnerResult(List<Car> winners) {
+        StringBuilder winnerResult = new StringBuilder();
+        for (Car car : winners) {
+            winnerResult.append(car.createWinner());
+        }
+        winnerResult.deleteCharAt(winnerResult.length() - 2);
+        return winnerResult;
     }
 
 }
