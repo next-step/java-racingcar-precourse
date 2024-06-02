@@ -35,6 +35,7 @@ public class RacingView {
     }
     public StringBuilder createWinnerResult(List<Car> winners) {
         StringBuilder winnerResult = new StringBuilder();
+        winnerResult.append("최종 우승자 : ");
         for (Car car : winners) {
             winnerResult.append(car.createWinner());
         }

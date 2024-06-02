@@ -28,8 +28,7 @@ public class RacingController {
         for(int i=0; i<n; i++){
             round();
         }
-
-
+        System.out.println(view.createWinnerResult(getWinner()).toString());
     }
     public boolean input(){
         boolean can=true;
