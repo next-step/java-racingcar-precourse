@@ -37,5 +37,11 @@ public class CarTest {
         car.move(4);
         assertThat(car.getPosition()).isEqualTo(1);
     }
+    @Test
+    void carShouldNotMoveWhenRandomNumberIsLessThanFour() {
+        Car car = new Car("Car");
+        car.move(3);
+        assertThat(car.getPosition()).isEqualTo(0);
+    }
 
 }
