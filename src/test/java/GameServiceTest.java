@@ -27,8 +27,8 @@ public class GameServiceTest {
     }
 
     @Test
-    @DisplayName("유효하지 않은 자동차 입력 테스트")
-    void invalidCarNameTest() {
+    @DisplayName("유효하지 않은 자동차 입력 테스트 - 5자 이상의 자동차명")
+    void over5DigitCarNameTest() {
         // given
         String invalidCarNames = "carName1,carName2,carName3";
 
@@ -38,6 +38,34 @@ public class GameServiceTest {
         });
 
         assertEquals("자동차 이름은 5자 이하만 가능합니다.", exception.getMessage());
+    }
+
+    @Test
+    @DisplayName("유효하지 않은 자동차 입력 테스트 - 자동차명 입력 없음")
+    void emptyCarNameInputTest() {
+        // given
+        String invalidCarNames = "";
+
+        // when, then
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            gameService.validateCarNames(invalidCarNames);
+        });
+
+        assertEquals("자동차 이름을 입력해 주세요.", exception.getMessage());
+    }
+
+    @Test
+    @DisplayName("유효하지 않은 자동차 입력 테스트 - 공백의 자동차명 입력")
+    void emptyCarNameTest() {
+        // given
+        String invalidCarNames = "car1,,car2";
+
+        // when, then
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            gameService.validateCarNames(invalidCarNames);
+        });
+
+        assertEquals("자동차 이름은 비워둘 수 없습니다.", exception.getMessage());
     }
 
     @Test
