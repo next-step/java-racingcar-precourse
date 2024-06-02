@@ -26,8 +26,8 @@ public class Input {
     }
 
 
-    public static int getNumber() {
+    public static String getNumberAsString() {
         System.out.println(ENTER_TRY_NUMBER);
-        return scanner.nextInt();
+        return scanner.nextLine();
     }
 }
