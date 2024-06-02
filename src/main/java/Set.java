@@ -27,7 +27,7 @@ public class Set {
         return cars;
     }
 
-    private static void validateCarName(String[] names){
+    public static void validateCarName(String[] names){
         for (String name : names) {
             validateCarName(name.trim());
 
@@ -35,7 +35,7 @@ public class Set {
     }
 
 
-    private static void validateCarName(String name) {
+    public static void validateCarName(String name) {
 
         if (name.length() < 1) {
             throw new IllegalArgumentException("[ERROR] 자동차 이름은 1자 이상만 가능합니다.");
@@ -66,7 +66,7 @@ public class Set {
         }
     }
 
-    private static void validateAttempt(int attempt){
+    public static void validateAttempt(int attempt){
 
         if (attempt < 1) {
             throw new IllegalArgumentException("[ERROR] 시도 횟수는 1 이상이어야 한다.");
