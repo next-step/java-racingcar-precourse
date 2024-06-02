@@ -12,6 +12,13 @@ public class RaceCars {
         cars = new ArrayList<>();
     }
 
+    public void addCars(String[] carsName){
+        for (String car : carsName) {
+            cars.add(new Car(car));
+        }
+    }
+
+
     public List<Car> getCars() {
         return cars;
     }
