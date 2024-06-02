@@ -28,6 +28,7 @@ public class OutputView {
             }
             System.out.println();
         }
+        System.out.println();
     }
 
     public void printWinner(ArrayList<Car> winners){
