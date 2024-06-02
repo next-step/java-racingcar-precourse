@@ -19,6 +19,7 @@ public class RacingGame {
         for (int i = 0; i < tryCount; i++) {
             for (Car car : carList){
                 car.makeMove();
+                System.out.println(car.getPosition());
             }
         }
     }

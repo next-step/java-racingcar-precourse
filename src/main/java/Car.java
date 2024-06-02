@@ -16,4 +16,11 @@ public class Car {
             position++;
         }
     }
+    public String getPosition() {
+        String visualPosition = "";
+        for(int i = 0; i < position;i++){
+            visualPosition = visualPosition + "-";
+        }
+        return visualPosition;
+    }
 }
