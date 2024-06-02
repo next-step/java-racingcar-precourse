@@ -24,4 +24,16 @@ public class ValidateInput {
     }
     return true;
   }
+
+  public boolean playCountValidate(String playCount) {
+    try {
+      if (!playCount.matches("\\d+")) {
+        throw new IllegalArgumentException("[ERROR] 시도할 회수는 0 이상의 정수만 가능합니다.");
+      }
+    } catch (IllegalArgumentException e) {
+      System.out.println(e.getMessage());
+      return false;
+    }
+    return true;
+  }
 }
