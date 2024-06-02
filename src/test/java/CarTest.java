@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarTest {
     @Test
+    // 공백 Test
     void carNameShouldNotBeEmpty() {
         assertThatThrownBy(() -> new Car(""))
             .isInstanceOf(IllegalArgumentException.class)
