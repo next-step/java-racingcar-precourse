@@ -3,6 +3,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.Vector;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -45,6 +47,18 @@ public class InputHandlerTest {
 
         // Reset System.in to its original state
         System.setIn(System.in);
+    }
+
+    @Test
+    @DisplayName("시도할 횟수 입력 테스트")
+    public void testAttemptCountInputPositive() throws IOException {
+        String input = "5\n";
+        InputStream in = new ByteArrayInputStream(input.getBytes(StandardCharsets.UTF_8));
+        System.setIn(in);
+
+        int result = InputHandler.attemptCountInput();
+
+        assertEquals(5, result);
     }
 
 }
