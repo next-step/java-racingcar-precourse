@@ -40,4 +40,16 @@ class RaceTest {
     private static class PredictableRandom extends Random {
 
     }
+    //단독 우승자 발생 경우 test
+    @Test
+    void testFindWinnersWithMultipleWinners() {
+        Car[] cars = race.getCars();
+        cars[0].move(4); // a자동차 이동 1회
+        cars[0].move(4); // a자동차 이동 2회
+        cars[1].move(4); // b자동차 이동 1회
+        cars[2].move(4); // c자동차 이동 1회
+
+        String winners = race.findWinners();
+        assertThat(winners).isEqualTo("a");
+    }
 }
