@@ -86,19 +86,31 @@ public class GameManager {
     }
 
     private void setAttemptNumber() {
-        String userInput = null;
-        inputValidator = new AttemptNumberValidator();
-        while (userInput == null) {
-            ConsoleMessagePrinter.printAttemptNumberInputMessage();
-            try {
-                userInput = InputHandler.getInput();
-                inputValidator.checkInputValue(userInput);
-            } catch (IllegalArgumentException exception) {
-                ConsoleMessagePrinter.printErrorMessage(exception.getMessage());
-                userInput = null;
-            }
+        String attemptNumberString = null;
+        while (attemptNumberString == null) {
+            attemptNumberString = getAttemptNumberString();
         }
-        attemptNumber = Integer.parseInt(userInput);
+        attemptNumber = Integer.parseInt(attemptNumberString);
+    }
+
+    private String getAttemptNumberString() {
+        ConsoleMessagePrinter.printAttemptNumberInputMessage();
+        String attemptNumberString = InputHandler.getInput();
+        if (isAttemptNumberCorrect(attemptNumberString)) {
+            return attemptNumberString;
+        }
+        return null;
+    }
+
+    private boolean isAttemptNumberCorrect(String attemptNumberString) {
+        inputValidator = new AttemptNumberValidator();
+        try {
+            inputValidator.checkInputValue(attemptNumberString);
+        } catch (IllegalArgumentException exception) {
+            ConsoleMessagePrinter.printErrorMessage(exception.getMessage());
+            return false;
+        }
+        return true;
     }
 
     private void takeOneStepForward() {
