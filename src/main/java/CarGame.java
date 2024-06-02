@@ -68,4 +68,15 @@ public class CarGame {
         }
         return max;
     }
+
+    public static void printWinners(ArrayList<String> winners) {
+        System.out.print("최종 우승자 : ");
+        for (int k = 0; k < winners.size(); k++) {
+            System.out.print(winners.get(k));
+            if (k != winners.size() - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println();
+    }
 }
