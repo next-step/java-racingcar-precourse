@@ -23,11 +23,13 @@ public class RacingGame {
         tryCount = scanner.nextInt();
     }
     private void makeRace(){
+        System.out.println("실행 결과");
         for (int i = 0; i < tryCount; i++) {
             for (Car car : carList){
                 car.makeMove();
                 System.out.println(car.getName() + ": " + car.makePosition());
             }
+            System.out.println();
         }
     }
     private void getWinners() {
