@@ -31,7 +31,7 @@ public class GameManager {
     }
 
     private void findAndPrintWinnerList() {
-        ConsoleMessagePrinter.printWinnerList(findWinnerNames());
+        ConsoleMessagePrinter.printWinnerList(findWinnerNameList());
     }
 
     private void runGameLogic() {
@@ -118,17 +118,21 @@ public class GameManager {
         ConsoleMessagePrinter.printLineBreak();
     }
 
-    private List<String> findWinnerNames() {
-        List<String> winnerList = new ArrayList<>();
-        int winnerAdvanceNumber = carList.stream()
+    private List<String> findWinnerNameList() {
+        List<String> winnerNameList = new ArrayList<>();
+        int winnerAdvanceNumber = getMaxAdvanceNumber();
+        for (Car car : carList) {
+            if (car.getAdvanceNumber() == winnerAdvanceNumber) {
+                winnerNameList.add(car.getName());
+            }
+        }
+        return winnerNameList;
+    }
+
+    private int getMaxAdvanceNumber() {
+        return carList.stream()
                 .max(Comparator.comparingInt(Car::getAdvanceNumber))
                 .get()
                 .getAdvanceNumber();
-        for (Car car : carList) {
-            if (car.getAdvanceNumber() == winnerAdvanceNumber) {
-                winnerList.add(car.getName());
-            }
-        }
-        return winnerList;
     }
 }
