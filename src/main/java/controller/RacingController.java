@@ -22,11 +22,25 @@ public class RacingController {
         while(!can){
             can=input();
         }
-        int n=view.inputNumber();
+        int n=inputNumber();
         for(int i=0; i<n; i++){
             round();
         }
         System.out.println(view.createWinnerResult(getWinner()).toString());
+    }
+    public int inputNumber(){
+        boolean can=false;
+        int n=0;
+        while(!can){
+            try {
+                n=view.inputNumber();
+                can=true;
+            }
+            catch(IllegalArgumentException e){
+                System.out.println(e.getMessage());
+            }
+        }
+        return n;
     }
     public boolean input(){
         try{
