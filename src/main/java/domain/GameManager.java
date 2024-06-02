@@ -26,11 +26,19 @@ public class GameManager {
     public void run() {
         initGameSettings();
         printGameExecutionMessage();
+        runGameLogic();
+        findAndPrintWinnerList();
+    }
+
+    private void findAndPrintWinnerList() {
+        ConsoleMessagePrinter.printWinnerList(findWinnerNames());
+    }
+
+    private void runGameLogic() {
         for (int i = 0; i < attemptNumber; i++) {
             takeOneStepForward();
             printCarList();
         }
-        ConsoleMessagePrinter.printWinnerList(findWinnerNames());
     }
 
     private void printGameExecutionMessage() {
