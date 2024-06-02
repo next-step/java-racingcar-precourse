@@ -23,6 +23,10 @@ public class GameManager {
         this.carList = new ArrayList<>();
     }
 
+    public void setInputValidator(InputValidator inputValidator) {
+        this.inputValidator = inputValidator;
+    }
+
     public void run() {
         initGameSettings();
         printGameExecutionMessage();
@@ -69,7 +73,7 @@ public class GameManager {
     }
 
     private boolean isCarNameListCorrect(List<String> carNameList) {
-        inputValidator = new CarNameValidator();
+        setInputValidator(new CarNameValidator());
         try {
             ((CarNameValidator) inputValidator).checkCarNameList(carNameList);
         } catch (IllegalArgumentException exception) {
@@ -103,7 +107,7 @@ public class GameManager {
     }
 
     private boolean isAttemptNumberCorrect(String attemptNumberString) {
-        inputValidator = new AttemptNumberValidator();
+        setInputValidator(new AttemptNumberValidator());
         try {
             inputValidator.checkInputValue(attemptNumberString);
         } catch (IllegalArgumentException exception) {
