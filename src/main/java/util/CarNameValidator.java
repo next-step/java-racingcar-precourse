@@ -9,20 +9,21 @@ public class CarNameValidator implements InputValidator {
     private static final String DUPLICATE_CAR_NAME_ERROR_MESSAGE = "중복된 자동차 이름이 있습니다";
 
     @Override
-    public void checkInputValue(String input) {
-        // 자동차 이름의 길이가 최대 길이보다 초과하면 예외 발생
-        if (input.length() > CAR_NAME_MAX_LENGTH) {
-            raiseIllegalArgumentException(CAR_NAME_ERROR_MESSAGE);
-        }
-    }
-
-    public void checkCarNameList(List<String> carNameList) throws IllegalArgumentException {
+    public void checkInputValue(Object input) {
+        List<String> carNameList = (List<String>) input;
         for (String carName : carNameList) {
-            checkInputValue(carName);
+            checkCarName(carName);
         }
         // 중복된 자동차 이름이 있는 경우 예외 발생
         if (carNameList.size() != carNameList.stream().distinct().count()) {
             raiseIllegalArgumentException(DUPLICATE_CAR_NAME_ERROR_MESSAGE);
+        }
+    }
+
+    public void checkCarName(String carName) {
+        // 자동차 이름의 길이가 최대 길이보다 초과하면 예외 발생
+        if (carName.length() > CAR_NAME_MAX_LENGTH) {
+            raiseIllegalArgumentException(CAR_NAME_ERROR_MESSAGE);
         }
     }
 }

@@ -35,7 +35,9 @@ public class GameManager {
     }
 
     private void initGameSettings() {
+        setInputValidator(new CarNameValidator());
         setCarList();
+        setInputValidator(new AttemptNumberValidator());
         setAttemptNumber();
     }
 
@@ -66,16 +68,15 @@ public class GameManager {
     private List<String> getCarNameList() {
         ConsoleMessagePrinter.printCarNameInputMessage();
         List<String> carNameList = StringSplitter.splitString(InputHandler.getInput());
-        if (isCarNameListCorrect(carNameList)) {
+        if (isInputValueCorrect(carNameList)) {
             return carNameList;
         }
         return null;
     }
 
-    private boolean isCarNameListCorrect(List<String> carNameList) {
-        setInputValidator(new CarNameValidator());
+    private boolean isInputValueCorrect(Object inputValue) {
         try {
-            ((CarNameValidator) inputValidator).checkCarNameList(carNameList);
+            inputValidator.checkInputValue(inputValue);
         } catch (IllegalArgumentException exception) {
             ConsoleMessagePrinter.printErrorMessage(exception.getMessage());
             return false;
@@ -100,21 +101,10 @@ public class GameManager {
     private String getAttemptNumberString() {
         ConsoleMessagePrinter.printAttemptNumberInputMessage();
         String attemptNumberString = InputHandler.getInput();
-        if (isAttemptNumberCorrect(attemptNumberString)) {
+        if (isInputValueCorrect(attemptNumberString)) {
             return attemptNumberString;
         }
         return null;
-    }
-
-    private boolean isAttemptNumberCorrect(String attemptNumberString) {
-        setInputValidator(new AttemptNumberValidator());
-        try {
-            inputValidator.checkInputValue(attemptNumberString);
-        } catch (IllegalArgumentException exception) {
-            ConsoleMessagePrinter.printErrorMessage(exception.getMessage());
-            return false;
-        }
-        return true;
     }
 
     private void takeOneStepForward() {
