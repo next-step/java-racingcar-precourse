@@ -46,7 +46,7 @@ class ApplicationTest {
         // 자동차 1대 일때
         String incorrectNameJustOneCar = "pobi";
         game = new Game();
-        game.separateName(incorrectSameName);
+        game.separateName(incorrectNameJustOneCar);
         assertThat(game.makeCars()).isEqualTo(false);
     }
 
