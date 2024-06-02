@@ -29,4 +29,8 @@ public class GameView {
             System.out.println("-".repeat(racingCar.getPosition()));
         }
     }
+
+    public void displaywinner(List<String> winners) {
+        System.out.printf("최종 우승자 : %s", String.join(", ", winners));
+    }
 }
