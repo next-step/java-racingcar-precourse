@@ -6,7 +6,8 @@ public class RacingCarGame {
     private int tryNum = 0;
     private Random rand = new Random();
 
-
+    public RacingCarGame() {
+    }
     public void errorMessage(){
         throw new IllegalArgumentException("[ERROR] 잘못된 값을 입력했습니다. 다시 입력해주세요.");
     }
