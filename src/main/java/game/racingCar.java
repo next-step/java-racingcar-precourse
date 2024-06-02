@@ -48,7 +48,18 @@ public class racingCar {
         }
         return carNames;
     }
-    private static int parseAttempts(String input) {int attempts = 0; return attempts;}
+    private static int parseAttempts(String input) {
+        try {
+            int attempts = Integer.parseInt(input);
+            if(attempts <= 0) {
+                throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.");
+            }
+            return attempts;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("시도 횟수는 정수여야 합니다.");
+        }
+    }
+
     private static void printCarPositions(Map<String, Integer> carPositions) {}
     private static void printWinners(Map<String, Integer> carPositions) {}
 
