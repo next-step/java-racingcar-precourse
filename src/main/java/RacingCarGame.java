@@ -82,6 +82,20 @@ public class RacingCarGame {
             printResult();
         }
     }
+
+    public List<String> findWinner(){
+        int n = carList.size();
+        List<String> winners = new ArrayList<>();
+        Collections.sort(carList);
+        Integer max = carList.get(0).getNow();
+        winners.add(carList.get(0).getName());
+        for(int i=1; i<n; i++){
+            if(carList.get(i).now == max){
+                winners.add(carList.get(i).getName());
+            }
+        }
+        return winners;
+    }
 }
 
 
