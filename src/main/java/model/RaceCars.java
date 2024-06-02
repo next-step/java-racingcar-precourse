@@ -18,6 +18,12 @@ public class RaceCars {
         }
     }
 
+    public int getWinnerPosition(){
+        return cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
+    }
 
     public List<Car> getCars() {
         return cars;
