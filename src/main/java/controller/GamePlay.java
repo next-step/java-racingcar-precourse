@@ -6,22 +6,23 @@ import java.util.StringJoiner;
 import model.CarDTO;
 import model.GameStatusDTO;
 import util.CarUtility;
+import view.OutputView;
 
 public class GamePlay {
 
   private final CarUtility carUtility;
-  private List<CarDTO> cars;
+  private final OutputView outputView;
   private int playCount;
   private boolean winnerExists;
 
 
   public GamePlay() {
     carUtility = new CarUtility();
+    outputView = new OutputView();
   }
 
   public void init() {
-    System.out.println("실행 결과");
-    cars = GameStatusDTO.cars;
+    outputView.initPrintCarsStatus();
     playCount = GameStatusDTO.playCount;
     winnerExists = GameStatusDTO.winnerExists;
   }
@@ -30,15 +31,16 @@ public class GamePlay {
     checkWinner();
     if (!winnerExists) {
       runCars();
-      printCarsStatus();
+      outputView.printCarsStatus();
       play();
       return;
     }
-    printWinners();
+    setWinners();
+    outputView.printWinners();
   }
 
   public void checkWinner() {
-    for (CarDTO car : cars) {
+    for (CarDTO car : GameStatusDTO.cars) {
       if (car.getDistance() == playCount) {
         winnerExists = true;
         return;
@@ -48,28 +50,20 @@ public class GamePlay {
 
   public void runCars() {
     List<CarDTO> updatedCars = new ArrayList<>();
-    for (CarDTO car : cars) {
-      car.setDistance(car.getDistance() + carUtility.carMovement());
+    for (CarDTO car : GameStatusDTO.cars) {
+      car.move(carUtility.carMovement());
       updatedCars.add(car);
     }
-    cars = updatedCars;
+    GameStatusDTO.cars = updatedCars;
   }
 
-  public void printCarsStatus() {
-    for (CarDTO car : cars) {
-      System.out.println(car);
-    }
-    System.out.println();
-  }
-
-  public void printWinners() {
-    StringJoiner joiner = new StringJoiner(", ");
-    System.out.print("최종 우승자 : ");
-    for (CarDTO car : cars) {
+  public void setWinners() {
+    List<String> winners = new ArrayList<>();
+    for (CarDTO car : GameStatusDTO.cars) {
       if (car.getDistance() == playCount) {
-        joiner.add(car.getName());
+        winners.add(car.getName());
       }
     }
-    System.out.print(joiner);
+    GameStatusDTO.winners = winners;
   }
 }
