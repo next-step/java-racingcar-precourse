@@ -27,10 +27,10 @@ public class GameManager {
         initGameSettings();
         printGameExecutionMessage();
         runGameLogic();
-        findAndPrintWinnerList();
+        findAndPrintWinnerNameList();
     }
 
-    private void findAndPrintWinnerList() {
+    private void findAndPrintWinnerNameList() {
         ConsoleMessagePrinter.printWinnerNameList(findWinnerNameList());
     }
 
