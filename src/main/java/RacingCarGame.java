@@ -59,6 +59,19 @@ public class RacingCarGame {
             carList.get(index).move();
         }
     }
+
+    public void printResult(){
+        int num = 0;
+        for (RacingCar racingCar : carList) {
+            num = racingCar.getNow();
+            System.out.print(racingCar.getName() + " : ");
+            for (int i=0; i<num; i++) {
+                System.out.print("-");
+            }
+            System.out.println();
+        }
+        System.out.println();
+    }
 }
 
 
