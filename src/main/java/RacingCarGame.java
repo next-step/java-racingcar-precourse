@@ -96,6 +96,16 @@ public class RacingCarGame {
         }
         return winners;
     }
+
+    public void printWinner(List<String> winners){
+        System.out.print("최종 우승자 : ");
+        int n = winners.size();
+        System.out.print(winners.get(0));
+        for(int i=1; i<n; i++){
+            System.out.print(", ");
+            System.out.print(winners.get(i));
+        }
+    }
 }
 
 
