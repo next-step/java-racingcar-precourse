@@ -7,15 +7,15 @@ class RacingGame {
 
     public void initializeCars(String input) {
         String[] carNames = input.split(",");
-        List<Car> carList = new ArrayList<>();
+        List<Car> cars = new ArrayList<>();
         for (String name : carNames) {
             name = name.trim();
             if (name.length() > 5 || name.isEmpty()) {
-                throw new IllegalArgumentException("자동차 이름은 1자 이상, 5자 이하만 가능합니다.");
+                throw new IllegalArgumentException("차 이름은 1자 이상, 5자 이하만 가능합니다.");
             }
-            carList.add(new Car(name));
+            cars.add(new Car(name));
         }
-        this.cars = carList;
+        this.cars = cars;
     }
 
     public void setRounds(String input) {
@@ -26,7 +26,7 @@ class RacingGame {
             }
             this.rounds = rounds;
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자를 입력해주세요.");
+            throw new IllegalArgumentException("숫자만 가능합니다.");
         }
     }
 
@@ -35,6 +35,7 @@ class RacingGame {
             for (Car car : cars) {
                 car.move();
             }
+            Output.printRaceStatus(cars);
         }
     }
 
@@ -44,6 +45,7 @@ class RacingGame {
 
     public List<String> getWinners() {
         int maxDistance = cars.stream().mapToInt(Car::getPosition).max().orElse(0);
+
         return cars.stream()
             .filter(car -> car.getPosition() == maxDistance)
             .map(Car::getName)
