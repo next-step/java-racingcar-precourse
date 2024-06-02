@@ -11,6 +11,12 @@ public class Racing {
         carRepository=new CarRepository();
         random=new Random();
     }
+    public void makeCars(List<String> names){
+        for(String name:names) {
+            Car car=new Car(name);
+            carRepository.addCar(car);
+        }
+    }
     public void round(){
         List<Car> cars=carRepository.getCars();
         for(Car car:cars){
