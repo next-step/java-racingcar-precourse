@@ -18,8 +18,10 @@ public class CarDTO {
     return distance;
   }
 
-  public void setDistance(int distance) {
-    this.distance = distance;
+  public void move(boolean value) {
+    if (value) {
+      this.distance++;
+    }
   }
 
   @Override
