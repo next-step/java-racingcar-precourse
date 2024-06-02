@@ -22,6 +22,10 @@ public class GameController {
             playGameByRound();
             numRounds--;
         }
+        getGameResult();
+    }
+
+    private void getGameResult() {
 //        최고 점수 판단
         int maxPosition = gameService.getMaxPosition(racingCars);
 //        우승자 판단
