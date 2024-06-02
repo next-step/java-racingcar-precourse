@@ -4,6 +4,7 @@ public class RacingCarGame {
     private List<RacingCar> carList = new ArrayList<>();
     private Scanner scanner = new Scanner(System.in);
     private int tryNum = 0;
+    private Random rand = new Random();
 
 
     public void errorMessage(){
@@ -52,7 +53,12 @@ public class RacingCarGame {
         return true;
     }
 
-
+    public void randomMove(int index){
+        int randNum = rand.nextInt(9);
+        if(randNum >= 4){
+            carList.get(index).move();
+        }
+    }
 }
 
 
