@@ -10,7 +10,6 @@ public class Car {
 
     public Car(String name) {
         validateCarNames(name);
-        validateCarNamelength(name);
         this.name = name;
     }
 
@@ -31,15 +30,13 @@ public class Car {
         distance++;
     }
 
-    private void validateCarNamelength(String name) {
-        if  (name == null) {
-            throw new IllegalArgumentException("[ERROR]name in empty");
-        }
-    }
 
     private void validateCarNames(String name) {
+        if  (name == null) {
+            throw new IllegalArgumentException("[ERROR]name is empty");
+        }
         if (name.length() < 1 || name.length() > 5) {
-            throw new IllegalArgumentException("[ERROR]name length must be between 1 and 5: ");
+            throw new IllegalArgumentException("[ERROR]name length must be between 1 and 5 ");
         }
 
     }
