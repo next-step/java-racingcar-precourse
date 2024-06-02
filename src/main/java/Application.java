@@ -91,6 +91,38 @@ class Car {
     }
 }
 
+class RacingGame {
+    private final List<Car> cars;
+    private final int tryCount;
+
+    public RacingGame(String carNames, int tryCount) {
+        this.cars = new ArrayList<>();
+        this.tryCount = tryCount;
+
+        for (String name : carNames.split(",")) {
+            cars.add(new Car(name));
+        }
+    }
+
+    public void startRace() {
+        for (int i = 0; i < tryCount; i++) {
+            for (Car car : cars) {
+                car.move();
+            }
+            // 각 시도 후에 결과를 출력합니다.
+            Application.printRoundResult(cars);
+        }
+    }
+
+    public List<Car> getCars() {
+        return cars;
+    }
+
+    public int getTryCount() {
+        return tryCount;
+    }
+}
+
 
 
 
