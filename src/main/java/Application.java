@@ -23,9 +23,12 @@ public class Application {
             attemptcountvalid = InputValidator.validateAttemptCount(attemptnumber); //유효성 검사
         }while(!attemptcountvalid);
 
-
         //전진하기
+        AdvanceFoward.advanceFoward(cars);
+
         //우승자 선정
+
+
         //우승자 출력
 
     }
