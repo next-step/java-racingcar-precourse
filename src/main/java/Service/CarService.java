@@ -3,6 +3,7 @@ package Service;
 import Model.Car;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 
 public class CarService {
     private ArrayList<Car> cars;
@@ -42,16 +43,17 @@ public class CarService {
 
     public ArrayList<Car> getWinner(){
         ArrayList<Car> winners = new ArrayList<>();
-        Collections.sort(cars, (a,b) -> b.getDistance() - a.getDistance());
 
-        int winnerDistance = cars.get(cars.size()-1).getDistance();
-        for(int i = cars.size()-1; i >= 0; i--){
-            Car car = cars.get(i);
-            if(car.getDistance() == winnerDistance){
+        int maxDistance = cars.stream()
+            .max(Comparator.comparing(Car::getDistance))
+            .orElse(null)
+            .getDistance();
+
+        for(Car car: cars){
+            if(car.getDistance() == maxDistance){
                 winners.add(car);
             }
         }
-
         return winners;
     }
 }
