@@ -3,6 +3,8 @@ import java.util.*;
 public class RacingCarGame {
     private List<RacingCar> carList = new ArrayList<>();
     private Scanner scanner = new Scanner(System.in);
+    private int tryNum = 0;
+
 
     public void errorMessage(){
         throw new IllegalArgumentException("[ERROR] 잘못된 값을 입력했습니다. 다시 입력해주세요.");
@@ -36,6 +38,20 @@ public class RacingCarGame {
         }
         return state;
     }
+    public boolean setTryNum(){
+        System.out.println("시도할 회수는 몇회인가요?");
+        String line = scanner.nextLine();
+        try {
+            if(!(line != null && line.matches("[0-9]+"))) errorMessage();
+        }
+        catch (IllegalArgumentException e){
+            System.out.println(e.getMessage());
+            return false;
+        }
+        tryNum = Integer.parseInt(line);
+        return true;
+    }
+
 
 }
 
