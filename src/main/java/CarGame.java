@@ -15,6 +15,7 @@ public class CarGame {
 
         for (int i = 0; i < gameCount; i++) {
             advanceCars(carList, forwardMovementCountArray, random);
+            printRaceStatus(carList, forwardMovementCountArray);
         }
 
         return forwardMovementCountArray;
@@ -28,6 +29,20 @@ public class CarGame {
         }
     }
 
+    private static void printRaceStatus(ArrayList<String> carList, int[] forwardMovementCountArray) {
+        for (int z = 0; z < carList.size(); z++) {
+            printCarStatus(carList.get(z), forwardMovementCountArray[z]);
+        }
+        System.out.println();
+    }
+
+    private static void printCarStatus(String car, int count) {
+        System.out.printf("%s : ", car);
+        for (int j = 0; j < count; j++) {
+            System.out.printf("-");
+        }
+        System.out.println();
+    }
 
 
 }
