@@ -3,7 +3,6 @@ import view.InputView;
 
 public class Application {
 
-
   public static void main(String[] args) {
     Scanner scanner = new Scanner(System.in);
     InputView inputView = new InputView(scanner);
