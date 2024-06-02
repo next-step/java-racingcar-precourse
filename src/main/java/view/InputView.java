@@ -6,7 +6,7 @@ public class InputView {
     public static String InputCar(){
         String carname;
         Scanner scanner = new Scanner(System.in);
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분");
+        System.out.println("Enter the names of the cars you want to race. (The names are separated by commas (,).");
         carname = scanner.nextLine();
         return carname;
     }
@@ -14,7 +14,7 @@ public class InputView {
     public static int InputNumber(){
         int number;
         Scanner scanner = new Scanner(System.in);
-        System.out.println("시도할 회수는 몇회인가요?");
+        System.out.println("How many times to try?");
         number = scanner.nextInt();
         return number;
     }
