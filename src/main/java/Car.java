@@ -16,7 +16,7 @@ public class Car {
             position++;
         }
     }
-    public String getPosition() {
+    public String makePosition() {
         String visualPosition = "";
         for(int i = 0; i < position;i++){
             visualPosition = visualPosition + "-";
@@ -26,4 +26,8 @@ public class Car {
     public String getName(){
         return name;
     }
+    public int getPosition(){
+        return position;
+    }
+
 }
