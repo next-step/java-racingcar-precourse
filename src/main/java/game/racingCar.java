@@ -60,7 +60,17 @@ public class racingCar {
         }
     }
 
-    private static void printCarPositions(Map<String, Integer> carPositions) {}
+    private static void printCarPositions(Map<String, Integer> carPositions) {
+        for(Map.Entry<String, Integer> entry:carPositions.entrySet()) {
+            System.out.print(entry.getKey() + " : ");
+            for(int i=0; i<entry.getValue(); i++) {
+                System.out.print("-");
+            }
+            System.out.println();
+        }
+        System.out.println();
+    }
+
     private static void printWinners(Map<String, Integer> carPositions) {}
 
 }
