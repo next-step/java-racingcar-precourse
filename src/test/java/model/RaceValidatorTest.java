@@ -17,6 +17,7 @@ class RaceValidatorTest {
         String testInput1 = "a,b,c";
         String testInput2 = "a,a,c";
         String testInput3 = "abcdef,b,c";
+        String testInput4 = "a, ,c";
 
         //when
         String[] getTest1 = raceValidator.checkSplitCarsName(testInput1);
@@ -31,6 +32,10 @@ class RaceValidatorTest {
 
 
         assertThatThrownBy(() -> raceValidator.checkSplitCarsName(testInput3))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("자동차 이름은 1 ~ 5자 입니다.");
+
+        assertThatThrownBy(() -> raceValidator.checkSplitCarsName(testInput4))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차 이름은 1 ~ 5자 입니다.");
     }
