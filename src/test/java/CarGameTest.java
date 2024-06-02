@@ -12,4 +12,15 @@ public class CarGameTest {
 
         assertEquals(5, gameCount);
     }
+
+    @Test
+    public void testRunRace() {
+        ArrayList<String> carList = new ArrayList<>();
+        carList.add("car1");
+        carList.add("car2");
+        int gameCount = 5;
+
+        int[] result = CarGame.runRace(carList, gameCount);
+        assertEquals(2, result.length);
+    }
 }
