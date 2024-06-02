@@ -1,4 +1,4 @@
-package game;
+package Application;
 import java.util.*;
 import java.lang.*;
 
@@ -8,51 +8,51 @@ public class racingCar {
         Map<String, Integer> carPositions = new HashMap<>();
         int attempts = 0;
 
-        while(true) {
-            try {
+        while(true) { // depth: 1
+            try { // depth: 2
                 System.out.println("경주할 자동차 이름을 입력하세요. (이름은 쉼표(,) 기준으로 구분)");
                 String input = scanner.nextLine();
                 String[] carNames = parseCarNames(input);
 
-                for(String name : carNames) {
-                    carPositions.put(name.trim(), 0);
+                for(String name : carNames) { // depth: 3
+                    carPositions.put(name.trim(), 0); // depth: 4
                 }
 
                 System.out.println("시도할 횟수는 몇회인가요?");
                 attempts = parseAttempts(scanner.nextLine());
 
                 break;
-            } catch (IllegalArgumentException e) {
-                System.out.println("[ERROR] " + e.getMessage());
+            } catch (IllegalArgumentException e) { // depth: 2
+                System.out.println("[ERROR] " + e.getMessage()); // depth: 3
             }
         }
 
         Random random = new Random();
-        for(int i=0; i<attempts; i++) {
-            for(String name : carPositions.keySet()) {
-                if(random.nextInt(10) >= 4) carPositions.put(name, carPositions.get(name) + 1);
+        for(int i=0; i<attempts; i++) { // depth: 1
+            for(String name : carPositions.keySet()) { // depth: 2
+                if(random.nextInt(10) >= 4) carPositions.put(name, carPositions.get(name) + 1); // depth: 3
             }
             printCarPositions(carPositions);
         }
         printWinners(carPositions);
     }
 
-    private static String[] parseCarNames(String input) {
-        if(input == null || input.trim().isEmpty()) {
-            throw new IllegalArgumentException("자동차 이름을 입력하세요.");
+    private static String[] parseCarNames(String input) { // depth: 1
+        if(input == null || input.trim().isEmpty()) { // depth: 2
+            throw new IllegalArgumentException("자동차 이름을 입력하세요."); // depth: 2
         }
 
         String[] carNames = input.split(",");
-        for(String name:carNames) {
-            if(name.trim().isEmpty()) throw new IllegalArgumentException("자동차 이름이 비어있을 수 없습니다.");
+        for(String name:carNames) { // depth: 2
+            if(name.trim().isEmpty()) throw new IllegalArgumentException("자동차 이름이 비어있을 수 없습니다."); // depth: 3
         }
         return carNames;
     }
-    private static int parseAttempts(String input) {
-        try {
+    private static int parseAttempts(String input) { // depth: 1
+        try { // depth: 2
             int attempts = Integer.parseInt(input);
-            if(attempts <= 0) {
-                throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.");
+            if(attempts <= 0) { // depth: 3
+                throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다."); // depth: 4
             }
             return attempts;
         } catch (NumberFormatException e) {
