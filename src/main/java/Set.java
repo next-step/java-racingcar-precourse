@@ -43,7 +43,7 @@ public class Set {
         if (name.length() > 5) {
             throw new IllegalArgumentException("[ERROR] 자동차 이름은 5자 이하만 가능합니다.");
         }
-        
+
     }
 
 
@@ -51,10 +51,26 @@ public class Set {
         int attempt;
         Scanner sc = new Scanner(System.in);
 
-        System.out.println();
-        System.out.println("시도할 회수는 몇회인가요?");
-        attempt = sc.nextInt();
-        return attempt;
+        while (true){
+            System.out.println();
+            System.out.println("시도할 회수는 몇회인가요?");
+            attempt = sc.nextInt();
+
+            try {
+                validateAttempt(attempt);
+                return attempt;
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+
+            }
+        }
+    }
+
+    private static void validateAttempt(int attempt){
+
+        if (attempt < 1) {
+            throw new IllegalArgumentException("[ERROR] 시도 횟수는 1 이상이어야 한다.");
+        }
     }
 
 }
