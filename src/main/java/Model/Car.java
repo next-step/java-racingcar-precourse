@@ -7,7 +7,6 @@ public class Car {
     private int positon;
 
     public Car(String carName, int positon) {
-        ErrorDetect.carNameTest(carName);
         this.carName = carName;
         this.positon = positon;
     }

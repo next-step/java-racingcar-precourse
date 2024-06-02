@@ -12,9 +12,6 @@ public class Racing {
         for(String carName : carNames) {
             carList.add(new Car(carName, 0));
         }
-
-        ErrorDetect.roundsTest(rounds);
-        this.rounds = Integer.parseInt(rounds);
     }
 
     public List<Car> getCarList() {
@@ -23,6 +20,10 @@ public class Racing {
 
     public int getRounds() {
         return rounds;
+    }
+
+    public void setRounds(String rounds) {
+        this.rounds = Integer.parseInt(rounds);
     }
 
     public void playRound() {

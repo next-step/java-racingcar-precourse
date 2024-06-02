@@ -7,20 +7,23 @@ import java.util.Scanner;
 
 import View.RacingView;
 import Model.Racing;
+import Model.ErrorDetect;
 
 public class GameController {
     private List<String> carNames;
     private String rounds;
     private Racing carRacing;
+    private Scanner scanner = new Scanner(System.in);
 
-    public void gameStart() {
-        Scanner scanner = new Scanner(System.in);
-
+    public void getCarNames() {
         RacingView.printCarNameMessage();
         carNames = Arrays.asList(scanner.nextLine().split(","));
+    }
 
+    public void getRounds() {
         RacingView.printRacingRoundMessage();
         rounds = scanner.nextLine();
+        ErrorDetect.roundsTest(rounds);
         System.out.println();
     }
 
