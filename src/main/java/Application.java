@@ -42,6 +42,9 @@ public class Application {
     }
 
     private static void checkNameEnglish(String name) {
+        if (!name.matches("[a-zA-Z]+")) {
+            throw new IllegalArgumentException("[ERROR] 자동차 이름은 영문자만 가능합니다.");
+        }
 
     }
 
