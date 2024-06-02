@@ -42,4 +42,9 @@ public class PrepareRace {
         }
         return carNames;
     }
+
+    public int prepareNumber() {
+        int number = 0;
+        return Input.getNumber();
+    }
 }

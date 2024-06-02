@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 import static view.Prompt.ENTER_CAR_NAMES;
+import static view.Prompt.ENTER_TRY_NUMBER;
 
 public class Input {
 
@@ -25,5 +26,8 @@ public class Input {
     }
 
 
-
+    public static int getNumber() {
+        System.out.println(ENTER_TRY_NUMBER);
+        return scanner.nextInt();
+    }
 }
