@@ -20,7 +20,7 @@ public class CarNameValidator implements InputValidator {
         }
     }
 
-    public void checkCarName(String carName) {
+    private void checkCarName(String carName) {
         // 자동차 이름의 길이가 최대 길이보다 초과하면 예외 발생
         if (carName.length() > CAR_NAME_MAX_LENGTH) {
             raiseIllegalArgumentException(CAR_NAME_ERROR_MESSAGE);
