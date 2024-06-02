@@ -30,6 +30,7 @@ public class Input {
             try {
                 System.out.println("시도할 회수는 몇회인가요?");
                 moves = scanner.nextLine();
+                InputValidator.validateMoves(moves);
                 break;
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());

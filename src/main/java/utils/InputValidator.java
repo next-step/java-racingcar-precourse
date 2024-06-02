@@ -11,4 +11,15 @@ public class InputValidator {
             }
         }
     }
+
+    public static void validateMoves(String moves) {
+        try {
+            int moveCount = Integer.parseInt(moves);
+            if (moveCount <= 0) {
+                throw new IllegalArgumentException("[ERROR] 시도 횟수는 1회 이상이어야 합니다.");
+            }
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR] 시도 횟수는 숫자여야 합니다.");
+        }
+    }
 }
