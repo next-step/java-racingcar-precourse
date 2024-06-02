@@ -23,3 +23,10 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+/*
+아래 설정을 추가해 주지 않으면 제 pc에서는 실행이 되지 않아서 추가했습니다.
+ */
+tasks.withType(JavaCompile){
+    options.encoding = "UTF-8"
+}
