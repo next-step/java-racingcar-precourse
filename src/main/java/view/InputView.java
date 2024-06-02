@@ -1,19 +1,22 @@
 package view;
 
 import controller.ValidateInput;
-import java.util.Arrays;
 import java.util.Scanner;
-import model.CarsDTO;
+import javax.smartcardio.Card;
+import model.CarDTO;
+import model.GameStatusDTO;
 import util.CarUtility;
 
 public class InputView {
 
   private final Scanner scanner;
+  private final GameStatusDTO gameStatusDTO;
   private final ValidateInput validateInput;
 
   public InputView(Scanner scanner) {
     this.scanner = scanner;
     validateInput = new ValidateInput();
+    gameStatusDTO = new GameStatusDTO();
   }
 
   public void InputInit() {
@@ -29,6 +32,12 @@ public class InputView {
       carNames = carUtility.carNamesSplit(scanner.nextLine());
       carInputState = validateInput.carNamesValidate(carNames);
     } while (!carInputState);
-    CarsDTO carsDTO = new CarsDTO(carNames);
+    for (String carName : carNames) {
+      gameStatusDTO.addCar(carName);
+    }
+  }
+
+  public void PlayCountInput() {
+
   }
 }
