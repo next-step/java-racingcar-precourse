@@ -1,5 +1,6 @@
 package controller;
 
+import domain.Car;
 import domain.Racing;
 import java.io.IOException;
 import java.nio.channels.ScatteringByteChannel;
@@ -25,9 +26,9 @@ public class RacingController {
         }
         int n=view.inputNumber();
         for(int i=0; i<n; i++){
-            racing.round();
-            racing.createRoundResult();
+            round();
         }
+
 
     }
     public boolean input(){
@@ -42,6 +43,14 @@ public class RacingController {
             can=false;
         }
         return can;
+    }
+    public void round(){
+        racing.round();
+        racing.createRoundResult();
+    }
+    public List<Car> getWinner(){
+        int num=racing.findWinnerDistance(racing.getCarList());
+        return racing.winnerCars(racing.getCarList(),num);
     }
 
 

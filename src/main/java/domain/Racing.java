@@ -45,6 +45,9 @@ public class Racing {
                 .filter(car -> car.getDistance() == winnerScore)
                 .toList();
     }
+    public List<Car> getCarList(){
+        return carRepository.getCars();
+    }
 
 
 

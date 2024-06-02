@@ -1,8 +1,10 @@
 package view;
 
+import domain.Car;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.List;
 import java.util.Scanner;
 
 public class RacingView {
@@ -31,4 +33,8 @@ public class RacingView {
     public static boolean isNumberic(String str) {
         return str.chars().allMatch(Character::isDigit);
     }
+    public void printWinners(List<Car> winners){
+
+    }
+
 }
