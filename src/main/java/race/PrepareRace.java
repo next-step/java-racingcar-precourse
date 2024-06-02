@@ -3,6 +3,7 @@ package race;
 import java.util.ArrayList;
 import java.util.List;
 import validator.CarNameValidator;
+import validator.NumberValidator;
 import view.Input;
 import view.Output;
 
@@ -26,25 +27,37 @@ public class PrepareRace {
 
     public ArrayList<String>  prepareCar() {
         ArrayList<String> carNames = null;
-        boolean valid = false;
+        boolean isValid = false;
         CarNameValidator carNameValidator = new CarNameValidator();
 
-        while (!valid) {
+        while (!isValid) {
             try {
                 carNames = Input.getCarNames();
                 carNames = (ArrayList<String>) processName(carNames);
-                valid = true;
+                isValid = true;
                 carNameValidator.test(carNames);
             } catch (IllegalArgumentException e) {
                 Output.printException(e.getMessage());
-                valid = false;
+                isValid = false;
             }
         }
         return carNames;
     }
 
     public int prepareNumber() {
-        int number = 0;
-        return Input.getNumber();
+        String numberString = null;
+        boolean isValid = false;
+        NumberValidator numberValidator = new NumberValidator();
+        while (!isValid) {
+            numberString = Input.getNumberAsString();
+            try {
+                isValid = true;
+                numberValidator.test(numberString);
+            } catch (IllegalArgumentException e) {
+                Output.printException(e.getMessage());
+                isValid = false;
+            }
+        }
+        return Integer.parseInt(numberString);
     }
 }
