@@ -3,6 +3,7 @@ package service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 import model.RacingCar;
 
 public class GameService {
@@ -60,14 +61,9 @@ public class GameService {
     }
 
     public List<String> determineWinner(List<RacingCar> racingCars, int maxPosition) {
-        List<String> winners = new ArrayList<>();
-
-        for (RacingCar car : racingCars) {
-            if (car.getPosition() == maxPosition) {
-                winners.add(car.getCarName());
-            }
-        }
-
-        return winners;
+        return racingCars.stream()
+            .filter(racingCar -> racingCar.getPosition() == maxPosition)
+            .map(RacingCar::getCarName)
+            .collect(Collectors.toList());
     }
 }
