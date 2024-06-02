@@ -4,6 +4,7 @@ import java.util.List;
 public class Race {
     private final List<Car> cars;
     private final int rounds;
+    private final List<StringBuilder> raceHistory;
 
     public Race(List<String> carNames, int rounds) {
         this.cars = new ArrayList<>();
@@ -11,13 +12,17 @@ public class Race {
             cars.add(new Car(name));
         }
         this.rounds = rounds;
+        this.raceHistory = new ArrayList<>();
     }
 
     public void start() {
         for (int i = 0; i < rounds; i++) {
+            StringBuilder roundResult = new StringBuilder();
             for (Car car : cars) {
                 car.move();
+                roundResult.append(car.getName()).append(" : ").append("-".repeat(car.getPosition())).append("\n");
             }
+            raceHistory.add(roundResult);
         }
     }
 
@@ -30,5 +35,9 @@ public class Race {
             }
         }
         return winners;
+    }
+
+    public List<StringBuilder> getRaceHistory() {
+        return raceHistory;
     }
 }
