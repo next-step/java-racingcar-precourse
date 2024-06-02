@@ -21,6 +21,17 @@ public class Race {
     public Car[] getCars() {
         return cars;
     }
+    public String findWinners() {
+        int maxPosition = Arrays.stream(cars)
+            .mapToInt(Car::getPosition)
+            .max()
+            .orElse(0);
+
+        return Arrays.stream(cars)
+            .filter(car -> car.getPosition() == maxPosition)
+            .map(Car::getName)
+            .collect(Collectors.joining(", "));
+    }
 
 
 }
