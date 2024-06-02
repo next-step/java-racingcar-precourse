@@ -23,8 +23,10 @@ public class GameController {
             playGameByRound();
             numRounds--;
         }
+//        최고점수 판단
+        int maxPosition = gameService.getMaxPosition(racingCars);
 ////        우승자 판단
-//        List<String> winners = gameService.determineWinner();
+//        List<String> winners = gameService.determineWinner(racingCars);
 ////        우승자 출력
 //        gameView.displaywinner(winners);
     }

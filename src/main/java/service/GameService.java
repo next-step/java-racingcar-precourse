@@ -45,4 +45,17 @@ public class GameService {
             racingCar.setPosition(racingCar.getPosition() + 1);
         }
     }
+
+    public int getMaxPosition(List<RacingCar> racingCars) {
+        int maxPosition = 0;
+
+        for (RacingCar car : racingCars) {
+            int position = car.getPosition();
+            if (position > maxPosition) {
+                maxPosition = position;
+            }
+        }
+
+        return maxPosition;
+    }
 }
