@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import java.util.Set;
+import java.util.HashSet;
 
 public class Application {
     public static void main(String[] args) {
@@ -25,6 +27,29 @@ public class Application {
     }
 
     private static void checkCarNames(String[] carNames) {
-        // 유효성 검사 부분은 이후 커밋에서 추가
+        Set<String> carNameSet = new HashSet<>();
+        for (String name : carNames) {
+            checkNameLength(name);
+            checkNameEnglish(name);
+            checkNameEmpty(name);
+            checkDuplicateName(carNameSet, name);
+        }
+    }
+    private static void checkNameLength(String name) {
+        if (name.length() > 5 || name.length() == 0) {
+            throw new IllegalArgumentException("[ERROR] 자동차 이름은 1자 이상 5자 이하만 가능합니다.");
+        }
+    }
+
+    private static void checkNameEnglish(String name) {
+
+    }
+
+    private static void checkNameEmpty(String name) {
+
+    }
+
+    private static void checkDuplicateName(Set<String> carNameSet, String name) {
+
     }
 }
