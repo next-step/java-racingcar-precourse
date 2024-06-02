@@ -19,8 +19,16 @@ public class RacingGame {
         }
     }
     private void makeCount() {
-        System.out.println("시도할 회수는 몇회인가요?");
-        tryCount = scanner.nextInt();
+        while (true) {
+            System.out.println("시도할 회수는 몇회인가요?");
+            try {
+                String input = scanner.nextLine();
+                tryCount = Integer.parseInt(input);
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("[ERROR] 숫자를 입력해야 합니다.");
+            }
+        }
     }
     private void makeRace(){
         System.out.println("실행 결과");
