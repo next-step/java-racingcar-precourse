@@ -40,11 +40,19 @@ public class InputValidation {
         }
 
     }
+    public static void containsInvalidDelimiter(String input) {
+        for (char c : input.toCharArray()) {
+            if (!Character.isLetterOrDigit(c) && c != ',') {
+                throw new IllegalArgumentException("자동차 이름의 구분은 쉼표로해야합니다");
+            }
+        }
+    }
     public static void isValidInput(String[] cars){
         isLowerFive(cars);
         isContainBlank(cars);
         isDuplicate(cars);
 
     }
+
 
 }

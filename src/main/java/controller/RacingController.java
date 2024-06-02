@@ -20,6 +20,7 @@ public class RacingController {
         while(true){
             try{
                 String inputCars = RacingView.printInputCarName();
+                InputValidation.containsInvalidDelimiter(inputCars);
                 String[] carNames = inputCars.split(",");
                 InputValidation.isValidInput(carNames);//유효성검사
                 Race race = new Race(carNames);
