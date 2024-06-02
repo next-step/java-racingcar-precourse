@@ -26,4 +26,10 @@ public class GameService {
         return carList;
     }
 
+    public boolean validateRounds(int inputRounds) {
+        if (inputRounds <= 0) {
+            throw new IllegalArgumentException("시도 횟수는 0보다 커야합니다.");
+        }
+        return true;
+    }
 }
