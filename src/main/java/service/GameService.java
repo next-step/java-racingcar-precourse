@@ -7,9 +7,8 @@ import model.RacingCar;
 
 public class GameService {
 
-    Scanner scanner = new Scanner(System.in);
-
     public List<RacingCar> getCarNames() {
+        Scanner scanner = new Scanner(System.in);
         String[] carNames = new String[0];
         boolean isVallidCarNamesFlag = false;
 
@@ -39,8 +38,8 @@ public class GameService {
     }
 
     private boolean isValidCarNames(String[] carNames) {
-        for(String carName : carNames){
-            if(carName.length()>5){
+        for (String carName : carNames) {
+            if (carName.length() > 5) {
                 throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
             }
         }
