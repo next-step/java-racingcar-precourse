@@ -23,5 +23,11 @@ public class CarTest {
             .isInstanceOf(IllegalArgumentException.class)
             .hasMessageContaining("영문자만 가능합니다.");
     }
+    @Test
+    void carNameShouldNotContainSpaces() {
+        assertThatThrownBy(() -> new Car("car "))
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessageContaining("공백이 포함될 수 없습니다.");
+    }
 
 }
