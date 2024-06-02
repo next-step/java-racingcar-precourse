@@ -12,5 +12,6 @@ public class Application {
         List<String> carNames = prepareRace.prepareCar();
         int number = prepareRace.prepareNumber();
         Race race = new Race(carNames, number);
+        race.run();
     }
 }

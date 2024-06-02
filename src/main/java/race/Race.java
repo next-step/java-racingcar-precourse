@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import view.Input;
 import validator.CarNameValidator;
+import view.Output;
 
 public class Race {
     private ArrayList<Car> cars;
@@ -27,6 +28,15 @@ public class Race {
             for (Car c : cars) {
                 c.tryMove();
             }
+
+            Output.printRaceState(cars);
         }
     }
+
+
+
+
+
+
+
 }
