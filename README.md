@@ -5,3 +5,4 @@
 4. InputView Class 정의
 5. Race Class 정의
 6. ResultView Class 정의
+7. RaceTest Class 정의
