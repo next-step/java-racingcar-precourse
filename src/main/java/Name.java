@@ -56,4 +56,7 @@ public class Name {
             throw new IllegalArgumentException("[ERROR] 숫자를 입력하세요.");
         }
     }
+    public void printGame(){
+        System.out.println("실행결과");
+    }
 }

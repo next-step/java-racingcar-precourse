@@ -4,5 +4,6 @@ public class Game {
         Name n = new Name();
         n.inputNames();
         n.inputNum();
+        n.printGame();
     }
 }
