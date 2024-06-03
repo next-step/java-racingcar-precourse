@@ -24,7 +24,17 @@ public class InputView {
     }
 
     public int readRound(){
-        return scanner.nextInt();
+        int input;
+        while(true){
+            input = scanner.nextInt();
+            try{
+                validator.isRoundRangeValid(input);
+                break;
+            }catch(IllegalArgumentException e){
+                System.out.println("[ERROR] Round는 1 이상이어야 합니다.");
+            }
+        }
+        return input;
     }
 
     ArrayList<String> extractCarName(String input) throws IllegalArgumentException{
