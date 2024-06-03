@@ -7,7 +7,11 @@ public class Name {
     String[] NAME;
     int[] NAME_COUNT;
     int NUM;
+    String[] RACE;
+    int[] RACE_COUNT;
+    int MAX;
     public Name(){
+        MAX=0;
     }
     public void namesSplit(String NAMES){
         for(int i=0;i<NAMES.length();i++){
@@ -19,6 +23,10 @@ public class Name {
     }
     public void countNames(){
         NAME_COUNT=new int[NAME.length];
+        RACE=new String[NAME.length];
+        RACE_COUNT=new int[NAME.length];
+        Arrays.fill(RACE, "");
+        Arrays.fill(RACE_COUNT, 0);
         for(int i=0;i<NAME_COUNT.length;i++){
             NAME_COUNT[i]=NAME[i].length();
             if(NAME_COUNT[i]>5) {
@@ -58,5 +66,24 @@ public class Name {
     }
     public void printGame(){
         System.out.println("실행결과");
+        for(int i=0;i<NUM;i++){
+            getRandom();
+            for(int j=0;j<NAME.length;j++){
+                System.out.println(NAME[j]+" : "+RACE[j]);
+            }
+            System.out.println();
+        }
+    }
+    public void getRandom(){
+        for(int i=0;i<RACE.length;i++){
+            Random random = new Random();
+            int r=random.nextInt(10);
+            if(r>=4){
+                RACE[i]+="-";
+                RACE_COUNT[i]+=1;
+            }
+            if(MAX<RACE_COUNT[i])
+                MAX=RACE_COUNT[i];
+        }
     }
 }
