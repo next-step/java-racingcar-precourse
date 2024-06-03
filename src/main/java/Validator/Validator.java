@@ -19,7 +19,7 @@ public class Validator {
     }
 
     public void isCarNameRangeValid(String carName){
-        if(!carName.matches("[a-zA-z_0-9]")){
+        if(!carName.matches("[a-zA-Z0-9_]*")){
             throw new IllegalArgumentException("[ERROR] 자동차 이름으로 사용할 수 없는 단어가 입력되었습니다.");
         }
     }
