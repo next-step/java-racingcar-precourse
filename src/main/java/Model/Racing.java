@@ -40,7 +40,7 @@ public class Racing {
         List<String> winnerNames = new ArrayList<>();
         for (Car car : carList) {
             if (car.getPositon() > winnerPositon) {
-                winnerPositon = car.getPositon();;
+                winnerPositon = car.getPositon();
             }
         }
 
