@@ -1,6 +1,5 @@
 package katecam.racingcar.config;
 
-import katecam.RacingCarView;
 import katecam.racingcar.adaptor.in.RacingCarController;
 import katecam.racingcar.adaptor.out.InMemoryGameAdaptor;
 import katecam.racingcar.application.port.in.command.GameInitializationUseCase;
@@ -19,7 +18,6 @@ public class AppConfig {
     private static GameTurnPlayUseCase gameTurnPlayUseCase;
     private static GameStatusQuery gameStatusQuery;
     private static RacingCarController racingCarController;
-    private static RacingCarView racingCarView;
 
     static {
         InMemoryGameAdaptor inMemoryGameAdaptor = new InMemoryGameAdaptor();
@@ -33,14 +31,9 @@ public class AppConfig {
                 gameTurnPlayUseCase,
                 gameStatusQuery
         );
-        racingCarView = new RacingCarView();
     }
 
     public static RacingCarController getRacingCarController() {
         return racingCarController;
-    }
-
-    public static RacingCarView getRacingCarView() {
-        return racingCarView;
     }
 }

@@ -5,7 +5,7 @@ import katecam.racingcar.config.AppConfig;
 
 public class Application {
     private static final RacingCarController racingCarController = AppConfig.getRacingCarController();
-    private static final RacingCarView racingCarView = AppConfig.getRacingCarView();
+    private static final RacingCarView racingCarView = new RacingCarView();
 
     public static void main(String[] args) {
         boolean valid = false;
