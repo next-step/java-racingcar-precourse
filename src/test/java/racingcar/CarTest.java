@@ -11,9 +11,17 @@ public class CarTest {
         Car car = new Car("mjack");
         assertThat(car.getName()).isEqualTo("mjack");
     }
+
     @Test
     public void invalidNameException() {
         assertThatThrownBy(() -> new Car("longname"))
             .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    public void moveTest() {
+        Car car = new Car("pobi");
+        car.move(4);
+        assertThat(car.getPosition()).isEqualTo(1);
     }
 }
