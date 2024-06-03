@@ -31,17 +31,21 @@ public class InputManager {
             try {
                 System.out.println("시도할 회수는 몇회인가요?");
                 String input = scanner.nextLine();
-                int attempts = Integer.parseInt(input);
-                validateGetAttempts(attempts);
-                return attempts;
+                return getValidateAttempts(input);
             } catch (IllegalArgumentException e) {
                 System.out.println("[ERROR] " + e.getMessage());
             }
         }
     }
 
-    private void validateGetAttempts(int attempts) {
-        if (attempts <= 0) {
+    private int getValidateAttempts(String input) {
+        try {
+            int attempts = Integer.parseInt(input);
+            if (attempts <= 0) {
+                throw new IllegalArgumentException("이동 횟수는 1 이상의 정수여야 합니다.");
+            }
+            return attempts;
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException("이동 횟수는 1 이상의 정수여야 합니다.");
         }
     }
