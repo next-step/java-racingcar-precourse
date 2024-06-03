@@ -17,7 +17,7 @@ public class RacingInputHandler {
         return cars;
     }
 
-    public static int tryCntToInt(String tryCnt) {
+    public static int tryCntToInt(String tryCnt) throws IllegalArgumentException {
         tryCnt = tryCnt.trim();
 
         if (!tryCnt.matches("[0-9]+")) {
