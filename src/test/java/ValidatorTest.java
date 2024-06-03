@@ -1,17 +1,21 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import util.Validator;
 
 public class ValidatorTest {
 
     @Test
+    @DisplayName("")
     public void testValidateArrayExistence_ValidArray() {
         String[] carArray = {"Car1", "Car2"};
         Validator.validateArrayExistence(carArray);
     }
 
     @Test
+    @DisplayName("")
     public void testValidateArrayExistence_EmptyArray() {
         String[] carArray = {};
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
@@ -21,12 +25,14 @@ public class ValidatorTest {
     }
 
     @Test
+    @DisplayName("")
     public void testValidateNameLength_ValidNames() {
         String[] carArray = {"Car", "Auto"};
         Validator.validateNameLength(carArray);
     }
 
     @Test
+    @DisplayName("")
     public void testValidateNameLength_NameTooLong() {
         String[] carArray = {"Car1", "Automobile"};
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
@@ -36,6 +42,7 @@ public class ValidatorTest {
     }
 
     @Test
+    @DisplayName("")
     public void testValidateNameLength_NameTooShort() {
         String[] carArray = {"", "Car2"};
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
@@ -45,12 +52,14 @@ public class ValidatorTest {
     }
 
     @Test
+    @DisplayName("")
     public void testValidateNumberFormat_ValidNumber() {
         int result = Validator.validateNumberFormat("123");
         assertEquals(123, result);
     }
 
     @Test
+    @DisplayName("")
     public void testValidateNumberFormat_InvalidNumber() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
             Validator.validateNumberFormat("abc");
