@@ -9,8 +9,10 @@ public class Name {
     int NUM;
     String[] RACE;
     int[] RACE_COUNT;
+    String WINNER;
     int MAX;
     public Name(){
+        WINNER="";
         MAX=0;
     }
     public void namesSplit(String NAMES){
@@ -73,6 +75,7 @@ public class Name {
             }
             System.out.println();
         }
+        getWinner();
     }
     public void getRandom(){
         for(int i=0;i<RACE.length;i++){
@@ -85,5 +88,16 @@ public class Name {
             if(MAX<RACE_COUNT[i])
                 MAX=RACE_COUNT[i];
         }
+    }
+    public void getWinner(){
+        for(int i=0;i<RACE.length;i++){
+            if(MAX==RACE_COUNT[i]&&!WINNER.isEmpty()){
+                WINNER+=", "+NAME[i];
+            }
+            if(MAX==RACE_COUNT[i]&& WINNER.isEmpty()){
+                WINNER+=NAME[i];
+            }
+        }
+        System.out.println("최종 우승자 : "+WINNER);
     }
 }
