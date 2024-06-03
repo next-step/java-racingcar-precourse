@@ -10,17 +10,11 @@ public class InputView {
     Validator validator = new Validator();
 
     public ArrayList<String> readCarName(){
-        ArrayList<String> carNames = new ArrayList<>();
+        ArrayList<String> carNames;
         while(true){
-            carNames.clear();
             String input = scanner.nextLine();
             try{
-                input = input.replace(", ", ",");
-                for(String carName : input.split(",")){
-                    validator.isCarNameValid(carName);
-                    System.out.println(carName);
-                    carNames.add(carName);
-                }
+                carNames = extractCarName(input);
                 break;
             } catch(IllegalArgumentException e){
                 System.out.println("[ERROR] 자동차 이름이 잘못되었습니다.");
@@ -31,5 +25,16 @@ public class InputView {
 
     public int readRound(){
         return scanner.nextInt();
+    }
+
+    ArrayList<String> extractCarName(String input) throws IllegalArgumentException{
+        ArrayList<String> carNames = new ArrayList<>();
+        input = input.replace(", ", ",");
+        for(String carName : input.split(",")){
+            validator.isCarNameValid(carName);
+            System.out.println(carName);
+            carNames.add(carName);
+        }
+        return carNames;
     }
 }
