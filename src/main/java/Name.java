@@ -22,6 +22,8 @@ public class Name {
             if(i!=0&&NAMES.charAt(i-1)==','&&NAMES.charAt(i)==',')
                 throw new IllegalArgumentException("[ERROR] 이름을 정확하게 입력하세요.");
         }
+        if(NAMES.charAt(NAMES.length()-1)==',')
+            throw new IllegalArgumentException("[ERROR] 이름을 정확하게 입력하세요.");
     }
     public void countNames(){
         NAME_COUNT=new int[NAME.length];
