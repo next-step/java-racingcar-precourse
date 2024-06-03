@@ -5,7 +5,7 @@ public class RacingView {
     private String raceResult = "\n실행 결과\n";
 
     public String readCarNames() {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 5자 미만, 쉽표(,) 기준으로 구분)");
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 5자 이하, 쉽표(,) 기준으로 구분)");
 
         return scanner.nextLine();
     }
