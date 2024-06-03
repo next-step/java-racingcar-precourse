@@ -16,6 +16,7 @@ public class GameManager {
         int attempts = inputManager.getAttempts(scanner);
 
         // 경주 진행
+        System.out.println("\n실행 결과");
         for (int i = 0; i < attempts; i++) {
             race.moveCars(cars);
             race.printCars(cars);
