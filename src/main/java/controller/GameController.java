@@ -7,9 +7,8 @@ import util.RandomGenerator;
 import view.*;
 
 public class GameController {
-
     public static void startGame() {
-        String[] carNamesArray = getCarNames(InputView.getFirstInput());
+        String[] carNamesArray = createCars();
         int n = InputView.getSecondInput();
         List<Car> cars = new ArrayList<>();
         for (String s : carNamesArray) {
@@ -47,16 +46,34 @@ public class GameController {
         OutputView.printWinner(resultMessage);
     }
 
-    public static String[] getCarNames(String input) {
-        String[] result = input.replaceAll("\\s+", "").split(",");
-        return result;
+    public static String[] createCars() {
+        while(true) {
+            try {
+                String input = InputView.getFirstInput();
+                String[] carArray = input.replaceAll("\\s+", "").split(",");
+                validateNameLength(carArray);
+                validateArrayExistence(carArray);
+                return carArray;
+            } catch (IllegalArgumentException e) {
+                OutputView.printErrorMessage(e.getMessage());
+            }
+        }
     }
 
-    public static boolean checkCarNameLength(String name) {
-        int length = name.length();
-        if (length < 1 || length > 5) {
-            return false;
+    private static void validateArrayExistence(String[] carArray) {
+        if (carArray.length == 0) {
+            throw new IllegalArgumentException("[Error] 1개 이상의 자동자를 입력해야 합니다.");
         }
-        return true;
+    }
+
+    private static void validateNameLength(String[] carArray) {
+        for (String name: carArray) {
+            if (name.length() > 5) {
+                throw new IllegalArgumentException("[ERROR] 자동자의 이름은 5자 이하이어야 합니다.");
+            }
+            if (name.length() < 1) {
+                throw new IllegalArgumentException("[ERROR] 자동자의 이름은 1자 이상이어야 합니다.");
+            }
+        }
     }
 }

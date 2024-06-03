@@ -8,4 +8,8 @@ public class OutputView {
     public static void printWinner(String winners) {
         System.out.println("최종 우승자 : " +  winners);
     }
+
+    public static void printErrorMessage(String message) {
+        System.out.println(message);
+    }
 }
