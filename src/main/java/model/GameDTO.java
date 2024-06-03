@@ -10,7 +10,7 @@ public class GameDTO {
 
     private List<CarDTO> cars;
 
-    public GameDTO(int iteration, List<CarDTO> cars) {
+    public GameDTO(List<CarDTO> cars,int iteration) {
         this.iteration = iteration;
         this.cars = cars;
     }

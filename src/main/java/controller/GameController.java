@@ -7,11 +7,12 @@ import view.InputView;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
 public class GameController {
     private GameDTO gameDTO;
 
     public GameController() {
-        this.gameDTO = new GameDTO(InputView.inputGameIteration(), generateCarDTOS(InputView.inputCarName()));
+        this.gameDTO = new GameDTO(generateCarDTOS(InputView.inputCarName()), InputView.inputGameIteration());
     }
 
 
