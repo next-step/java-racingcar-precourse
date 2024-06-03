@@ -18,4 +18,10 @@ public class Validator {
             throw new IllegalArgumentException("[ERROR] 자동차 이름으로 사용할 수 없는 단어가 입력되었습니다.");
         }
     }
+
+    public void isRoundRangeValid(int Round){
+        if(Round < 1){
+            throw new IllegalArgumentException("[ERROR] Round는 1 이상이어야 합니다.");
+        }
+    }
 }
