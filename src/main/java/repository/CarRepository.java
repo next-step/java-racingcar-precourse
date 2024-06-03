@@ -9,11 +9,12 @@ import java.util.Map;
 public class CarRepository {
   private int id = 0;
   private final Map<Integer,Car> cars = new HashMap<>();
-  public void save(Car car){
-    cars.put(id,car);
-    id += 1;
-  }
   public List<Car> findAll() {
     return new ArrayList<>(cars.values());
+  }
+  public void saveCars(List<String> names){
+    for(String name:names){
+      cars.put(id,new Car(name));
+    }
   }
 }
