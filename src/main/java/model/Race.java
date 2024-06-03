@@ -6,6 +6,7 @@ import observer.Subject;
 import service.CarServiceInterface;
 
 public class Race implements Subject, RaceModelInterface {
+
     private final int numberOfRounds;
     private ArrayList<CarServiceInterface> cars;
     private ArrayList<Observer> observers;
@@ -23,7 +24,7 @@ public class Race implements Subject, RaceModelInterface {
     }
 
     @Override
-    public int getNumberOfCars()  {
+    public int getNumberOfCars() {
         return cars.size();
     }
 
@@ -54,6 +55,8 @@ public class Race implements Subject, RaceModelInterface {
 
     @Override
     public void notifyObservers() {
-        for (Observer observer : observers) observer.update();
+        for (Observer observer : observers) {
+            observer.update();
+        }
     }
 }

@@ -5,6 +5,7 @@ import observer.Observer;
 import service.RaceServiceInterface;
 
 public class RaceView implements Observer, RaceViewInterface {
+
     private RaceServiceInterface raceServiceInterface;
     private RaceControllerInterface raceControllerInterface;
 

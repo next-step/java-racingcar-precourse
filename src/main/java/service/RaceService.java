@@ -6,6 +6,7 @@ import observer.Observer;
 import observer.Subject;
 
 public class RaceService implements Subject, RaceServiceInterface {
+
     private RaceModelInterface race;
 
     @Override

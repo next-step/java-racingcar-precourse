@@ -5,6 +5,7 @@ import service.RaceServiceInterface;
 import view.RaceViewInterface;
 
 public class RaceController implements RaceControllerInterface {
+
     private RaceServiceInterface race;
     private RaceViewInterface view;
 
