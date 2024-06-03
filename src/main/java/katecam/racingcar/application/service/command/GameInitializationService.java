@@ -2,19 +2,19 @@ package katecam.racingcar.application.service.command;
 
 import katecam.racingcar.application.dto.command.GameInitializationReq;
 import katecam.racingcar.application.port.in.command.GameInitializationUseCase;
-import katecam.racingcar.application.port.out.GameRepository;
+import katecam.racingcar.application.port.out.GameLoadPort;
 import katecam.racingcar.domain.Game;
 
 public class GameInitializationService implements GameInitializationUseCase {
-    private final GameRepository gameRepository;
+    private final GameLoadPort gameLoadPort;
 
-    public GameInitializationService(GameRepository gameRepository) {
-        this.gameRepository = gameRepository;
+    public GameInitializationService(GameLoadPort gameLoadPort) {
+        this.gameLoadPort = gameLoadPort;
     }
 
     @Override
     public void initialize(GameInitializationReq req) {
         Game game = new Game(req.carNames(), req.numberToAttempt());
-        gameRepository.save(game);
+        gameLoadPort.save(game);
     }
 }

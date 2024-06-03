@@ -1,9 +1,10 @@
 package katecam.racingcar.adaptor.out;
 
-import katecam.racingcar.application.port.out.GameRepository;
+import katecam.racingcar.application.port.out.GameLoadPort;
+import katecam.racingcar.application.port.out.GameRecordPort;
 import katecam.racingcar.domain.Game;
 
-public class InMemoryGameRepository implements GameRepository {
+public class InMemoryGameAdaptor implements GameLoadPort, GameRecordPort {
     private Game game;
     @Override
     public void save(Game game) {

@@ -6,27 +6,27 @@ import katecam.racingcar.application.dto.query.CarPositionRes;
 import katecam.racingcar.application.dto.query.GameTotalResultRes;
 import katecam.racingcar.application.dto.query.GameTurnResultRes;
 import katecam.racingcar.application.port.in.query.GameStatusQuery;
-import katecam.racingcar.application.port.out.GameRepository;
+import katecam.racingcar.application.port.out.GameLoadPort;
+import katecam.racingcar.application.port.out.GameRecordPort;
 import katecam.racingcar.domain.Car;
 import katecam.racingcar.domain.Game;
 
-//TODO: 매번 게임 가져오는거 좀 그런데
 public class GameStatusQueryService implements GameStatusQuery {
-    private final GameRepository gameRepository;
+    private final GameRecordPort gameRecordPort;
 
-    public GameStatusQueryService(GameRepository gameRepository) {
-        this.gameRepository = gameRepository;
+    public GameStatusQueryService(GameRecordPort gameRecordPort) {
+        this.gameRecordPort = gameRecordPort;
     }
 
     @Override
     public boolean isEnded() {
-        Game game = gameRepository.getOrThrow();
+        Game game = gameRecordPort.getOrThrow();
         return game.isEnded();
     }
 
     @Override
     public GameTurnResultRes getTurnResult() {
-        Game game = gameRepository.getOrThrow();
+        Game game = gameRecordPort.getOrThrow();
         List<CarPositionRes> carPositions= game.getCars().stream()
                  .map(car->new CarPositionRes(car.getName(), car.getPosition()))
                  .toList();
@@ -35,7 +35,7 @@ public class GameStatusQueryService implements GameStatusQuery {
 
     @Override
     public GameTotalResultRes getTotalResult() {
-        Game game = gameRepository.getOrThrow();
+        Game game = gameRecordPort.getOrThrow();
         List<String> winnerNames = game.getWinners().stream()
                 .map(Car::getName)
                 .toList();

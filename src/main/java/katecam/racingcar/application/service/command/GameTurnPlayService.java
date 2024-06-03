@@ -1,18 +1,20 @@
 package katecam.racingcar.application.service.command;
 
 import katecam.racingcar.application.port.in.command.GameTurnPlayUseCase;
-import katecam.racingcar.application.port.out.GameRepository;
+import katecam.racingcar.application.port.out.GameLoadPort;
+import katecam.racingcar.application.port.out.GameRecordPort;
 import katecam.racingcar.domain.Game;
 
 public class GameTurnPlayService implements GameTurnPlayUseCase {
-    private final GameRepository gameRepository;
+    private final GameRecordPort gameRecordPort;
 
-    public GameTurnPlayService(GameRepository gameRepository) {
-        this.gameRepository = gameRepository;
+    public GameTurnPlayService(GameRecordPort gameRecordPort) {
+        this.gameRecordPort = gameRecordPort;
     }
+
     @Override
     public void playTurn() {
-        Game game = gameRepository.getOrThrow();
+        Game game = gameRecordPort.getOrThrow();
         game.playTurn();
     }
 }
