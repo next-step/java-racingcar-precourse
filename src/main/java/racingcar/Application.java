@@ -25,5 +25,10 @@ public class Application {
                 System.out.println("[ERROR] " + e.getMessage());
             }
         }
+
+        Race race = new Race(carNames, tryCount);
+        race.start();
+
+        System.out.println(race.getWinners());
     }
 }
