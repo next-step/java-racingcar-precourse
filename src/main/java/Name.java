@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class Name {
     String[] NAME;
     int[] NAME_COUNT;
+    int NUM;
     public Name(){
     }
     public void namesSplit(String NAMES){
@@ -36,6 +37,23 @@ public class Name {
         }catch(IllegalArgumentException e) {
             System.out.println("[ERROR] 이름을 정확하게 입력하세요.");
             inputNames();
+        }
+    }
+    public void inputNum(){
+        System.out.println("시도할 회수는 몇회인가요?");
+        try{
+            inputNumCheck();
+        }catch(IllegalArgumentException e){
+            System.out.println("[ERROR] 숫자를 입력하세요.");
+            inputNum();
+        }
+    }
+    public void inputNumCheck(){
+        try{
+            Scanner sc=new Scanner(System.in);
+            NUM=sc.nextInt();
+        }catch(InputMismatchException e){
+            throw new IllegalArgumentException("[ERROR] 숫자를 입력하세요.");
         }
     }
 }
