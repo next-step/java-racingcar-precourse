@@ -7,5 +7,9 @@ public class Validator {
         }
     }
 
-
+    public void hasCarNameSpace(String carName){
+        if(carName.contains(" ")){
+            throw new IllegalArgumentException("[ERROR] 자동차 이름은 공백을 포함할 수 없습니다.");
+        }
+    }
 }
