@@ -4,3 +4,4 @@
 3. CarTest Class 정의
 4. InputView Class 정의
 5. Race Class 정의
+6. ResultView Class 정의

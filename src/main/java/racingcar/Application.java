@@ -4,6 +4,7 @@ public class Application {
     public static void main(String[] args) {
         // 사용자에게 입력을 받는 부분
         InputView inputView = new InputView();
+        ResultView resultView = new ResultView();
 
         String[] carNames = null;
         int tryCount = 0;
@@ -26,9 +27,9 @@ public class Application {
             }
         }
 
-        Race race = new Race(carNames, tryCount);
+        Race race = new Race(carNames, tryCount, resultView);
         race.start();
 
-        System.out.println(race.getWinners());
+        resultView.printWinners(race.getWinners());
     }
 }
