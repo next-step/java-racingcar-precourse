@@ -1,5 +1,6 @@
+package src;
+
 import java.util.Random;
-import java.util.random.*;
 
 public class RaceGame {
 
@@ -35,7 +36,7 @@ public class RaceGame {
 
     private int randomNum() {
         Random random = new Random();
-        return random.nextInt(MAX_RANDOM_NUMBER-MIN_RANDOM_NUMBER + 1) + MIN_RANDOM_NUMBER;
+        return random.nextInt(MAX_RANDOM_NUMBER-MIN_RANDOM_NUMBER) + MIN_RANDOM_NUMBER;
     }
 
     private void selectWinner() {

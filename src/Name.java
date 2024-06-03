@@ -1,3 +1,4 @@
+package src;
 
 public class Name {
     final static String DEFAULT_NAME = "";

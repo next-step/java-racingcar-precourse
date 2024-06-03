@@ -1,3 +1,4 @@
+package src;
 
 public class Position {
     final static int DEFAULT_POSITION = 0;

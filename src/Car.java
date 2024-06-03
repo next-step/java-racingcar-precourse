@@ -1,3 +1,5 @@
+package src;
+
 public class Car {
     private Name name = new Name();
     private Position position = new Position();
