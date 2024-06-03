@@ -9,7 +9,7 @@ import view.*;
 public class GameController {
     public static void startGame() {
         String[] carNamesArray = createCars();
-        int n = InputView.getSecondInput();
+        int n = getRacingCount();
         List<Car> cars = new ArrayList<>();
         for (String s : carNamesArray) {
             Car car = new Car(s);
@@ -17,6 +17,8 @@ public class GameController {
         }
         playGame(n, cars);
     }
+
+
 
     public static void playGame(int n, List<Car> cars) {
         System.out.println("실행 결과");
@@ -62,7 +64,7 @@ public class GameController {
 
     private static void validateArrayExistence(String[] carArray) {
         if (carArray.length == 0) {
-            throw new IllegalArgumentException("[Error] 1개 이상의 자동자를 입력해야 합니다.");
+            throw new IllegalArgumentException("[ERROR] 1개 이상의 자동자를 입력해야 합니다.");
         }
     }
 
@@ -74,6 +76,26 @@ public class GameController {
             if (name.length() < 1) {
                 throw new IllegalArgumentException("[ERROR] 자동자의 이름은 1자 이상이어야 합니다.");
             }
+        }
+    }
+
+    private static int getRacingCount() {
+        while (true) {
+            try {
+                String input = InputView.getSecondInput();
+                int n = validateNumberFormat(input);
+                return n;
+            } catch (IllegalArgumentException e) {
+                OutputView.printErrorMessage(e.getMessage());
+            }
+        }
+    }
+
+    private static int validateNumberFormat(String input) {
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR] 시도할 횟수는 숫자로 입력해야 합니다.");
         }
     }
 }
