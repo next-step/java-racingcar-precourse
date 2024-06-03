@@ -15,5 +15,6 @@ public class Race {
         for (Car car : cars) {
             System.out.println(car.getName() + ": " + car.getPositionAsString());
         }
+        System.out.println();
     }
 }
