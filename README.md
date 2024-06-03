@@ -38,7 +38,7 @@
 - boolean accel() : randomly accel
 
 # InputView
-- String readCarName() : read CarName from Player
+- ArrayList<String> readCarName() : read CarName from Player
 - int readRound() : read Rounds from Player
 
 # OutputView
