@@ -27,8 +27,4 @@ public class Car {
     public String getProgressLine() {
         return progressLine;
     }
-
-    public void setDistance(int distance) {
-        this.distance = distance;
-    }
 }
