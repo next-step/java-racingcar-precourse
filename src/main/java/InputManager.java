@@ -35,7 +35,7 @@ public class InputManager {
                 int attempts = Integer.parseInt(input);
                 validateGetAttempts(attempts);
                 return attempts;
-            } catch (NumberFormatException | IllegalArgumentException e) {
+            } catch (IllegalArgumentException e) {
                 System.out.println("[ERROR] " + e.getMessage());
             }
         }
