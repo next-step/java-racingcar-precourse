@@ -20,4 +20,22 @@ public class OutputView {
         System.out.println(ASK_TRY_COUNT_MESSAGE);
     }
 
+    public void printResultMessage (){
+        System.out.println("실행 결과");
+    }
+    public void printDistance(List<Car> cars) {
+        for (Car car : cars) {
+            String distance = String.join("", Collections.nCopies(car.getDistance(), DISTANCE));
+            System.out.println(car.getName()+": " + distance);
+        }
+        System.out.println();
+    }
+
+    public void printFinalWinner(List<Car> winnerCars) {
+        System.out.print(FINAL_WINNER);
+        for (Car winner : winnerCars) {
+            System.out.print(winner.getName()+ " "); // @Todo 쉼표 추가
+        }
+    }
+
 }
