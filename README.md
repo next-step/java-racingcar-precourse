@@ -47,4 +47,10 @@
 - void printCarDistance() : print distance of Cars
 - void printWinner() : print Winner
 - void printExeResult() : print "실행 결과"
+
 # Validator
+- void isCarNameValid() : 자동차 이름이 valid한지 확인
+- void isCarNameLengthValid() : 자동차이름의 길이가 5이하인지 확인
+- void hasCarNameSpace() : 자동차이름에 공백이 있는지 확인
+- void isCarNameRangeValid() : 자동차이름이 a-zA-Z0-9_로 이루어져있는지 확인
+- void isRoundRangeValid() : Round가 1보다 큰지 확인
