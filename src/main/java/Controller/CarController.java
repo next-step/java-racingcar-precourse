@@ -3,6 +3,7 @@ package Controller;
 import Service.CarService;
 import View.InputView;
 import View.OutputView;
+import java.util.ArrayList;
 
 public class CarController {
     private CarService carService;
@@ -15,8 +16,8 @@ public class CarController {
         this.outputView = new OutputView();
     }
 
-    public void setCars(String carNames){
-        for(String carName : carNames.split(",")){
+    public void setCars(ArrayList<String> carNames){
+        for(String carName : carNames){
             carService.addCar(carName);
         }
     }
