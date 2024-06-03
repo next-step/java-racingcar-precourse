@@ -15,7 +15,8 @@ public class GameDTO {
         this.cars = cars;
     }
 
-    public boolean checkMovements(int randomNumber) {
+
+    private boolean checkMovements(int randomNumber) {
         return randomNumber >= 4;
     }
 
