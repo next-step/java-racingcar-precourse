@@ -1,6 +1,7 @@
 package controller;
 
 import model.CarFactory;
+import model.GameService;
 import view.InputView;
 import view.OutputView;
 import vo.Car;
@@ -13,6 +14,7 @@ public class GameController {
     private final static InputView inputView = new InputView();
     private final static CarFactory carFactory = new CarFactory();
     private final static Validation validation = new Validation();
+    private final static GameService gameService = new GameService();
 
     public void run() {
         startGame();
@@ -27,9 +29,13 @@ public class GameController {
         // Game logic
         outputView.printResultMessage();
         for (int i = 0; i < tryCount; i++) {
+            gameService.moveCars(cars);
             outputView.printDistance(cars);
         }
 
+        // OutputView 출력 결과
+        List<Car> winnerCars = gameService.getCarWithMaxDistance(cars);
+        outputView.printFinalWinner(winnerCars);
     }
 
     private List<String> getValidCarName() {
