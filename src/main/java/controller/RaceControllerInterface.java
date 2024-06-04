@@ -1,6 +1,6 @@
 package controller;
 
-import service.CarServiceInterface;
+import service.RaceServiceInterface;
 
 public interface RaceControllerInterface {
 
@@ -10,7 +10,7 @@ public interface RaceControllerInterface {
 
     public void end();
 
-    public void addCar(CarServiceInterface carServiceInterface);
+    public void addCars(RaceServiceInterface raceServiceInterface);
 
     public void setRound(int numberOfRound);
 }
