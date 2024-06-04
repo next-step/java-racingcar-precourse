@@ -11,5 +11,5 @@ public interface RaceModelInterface {
 
     public ArrayList<CarServiceInterface> getCars();
 
-    public void addCar(CarServiceInterface carServiceInterface);
+    public void addCars(String[] cars);
 }
