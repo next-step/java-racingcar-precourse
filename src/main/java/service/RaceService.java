@@ -25,7 +25,7 @@ public class RaceService implements Subject, RaceServiceInterface {
     }
 
     @Override
-    public void addCar(CarServiceInterface carServiceInterface) {
+    public void addCars(String[] cars) {
 
     }
 
