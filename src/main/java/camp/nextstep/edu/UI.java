@@ -7,6 +7,7 @@ public class UI {
 
     private final Scanner scanner;
     private String[] carNames;
+    private int repeatCount;
 
     public UI(Scanner scanner) {
         this.scanner = scanner;
@@ -39,5 +40,24 @@ public class UI {
 
     private boolean carNameLengthCheck(String s) {
         return !s.isEmpty() && s.length() <= 5;
+    }
+
+    public void inputRepeatCount() {
+        System.out.println("시도할 회수는 몇회인가요?");
+        while (true) {
+            int tryCount = scanner.nextInt();
+            try {
+                this.repeatCount = checkRepeatCount(tryCount);
+                break;
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+    private int checkRepeatCount(int n) throws IllegalArgumentException {
+        if (n <= 0) {
+            throw new IllegalArgumentException("[ERROR] 시도 횟 수는 0 이상 " + Integer.MAX_VALUE + " 이하 입니다.");
+        }
+        return n;
     }
 }
