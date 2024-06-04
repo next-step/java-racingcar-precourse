@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.Arrays;
+import java.util.stream.Collectors;
 import service.CarServiceInterface;
 import service.RaceServiceInterface;
 import view.RaceViewInterface;
@@ -25,8 +27,13 @@ public class RaceController implements RaceControllerInterface {
     }
 
     @Override
-    public void addCar(CarServiceInterface carServiceInterface) {
-
+    public void addCars(String[] cars) {
+        try {
+            race.addCars(cars);
+        } catch (IllegalArgumentException e) {
+            view.printCarsErrorMessage(e.getMessage());
+            view.userCarsInput();
+        }
     }
 
     @Override
