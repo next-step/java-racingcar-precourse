@@ -3,9 +3,10 @@ package model;
 import java.util.ArrayList;
 import observer.Observer;
 import observer.Subject;
+import observer.SubjectModel;
 import service.CarServiceInterface;
 
-public class Race implements Subject, RaceModelInterface {
+public class Race implements SubjectModel, RaceModelInterface {
 
     private final int numberOfRounds;
     private ArrayList<CarServiceInterface> cars;
@@ -34,29 +35,12 @@ public class Race implements Subject, RaceModelInterface {
     }
 
     @Override
-    public void addCar(CarServiceInterface carServiceInterface) {
-
-    }
-
-    @Override
     public ArrayList<CarServiceInterface> getCars() {
         return cars;
     }
 
     @Override
-    public void addObserver(Observer observer) {
-        observers.add(observer);
-    }
-
-    @Override
-    public void removeObserver(Observer observer) {
-        observers.remove(observer);
-    }
-
-    @Override
-    public void notifyObservers() {
-        for (Observer observer : observers) {
-            observer.update();
-        }
+    public ArrayList<Observer> getObservers() {
+        return observers;
     }
 }
