@@ -6,11 +6,28 @@ public class GameService {
     private ArrayList<Car> cars = new ArrayList<>();
     private int tryCount;
     private ArrayList<String> winCarsName = new ArrayList<>();
+    private RandomGenerator randomGenerator = new RandomGenerator();
 
     public GameService(int tryCount, String[] carNames) {
         this.tryCount = tryCount;
         for (String carName : carNames) {
-            cars.add(new Car(carName));
+            Car newCar = new Car(carName);
+            System.out.println("car: " + newCar);
+            cars.add(newCar);
+        }
+    }
+
+    public void gameStart() {
+        System.out.println("asdfasdf");
+        for (int i = 0; i < tryCount; i++) {
+            for (Car car : cars) {
+                int n = randomGenerator.makeRandNum();
+                if(n >= 4){
+                    car.move(); // distance += 1
+                }
+                car.showDistance();
+            }
+            System.out.println();
         }
     }
 
