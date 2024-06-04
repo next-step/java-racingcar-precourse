@@ -10,6 +10,4 @@ public interface RaceModelInterface {
     public int getNumberOfRounds();
 
     public ArrayList<CarServiceInterface> getCars();
-
-    public void addCars(String[] cars);
 }
