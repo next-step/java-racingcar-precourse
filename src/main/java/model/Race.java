@@ -18,12 +18,6 @@ public class Race implements SubjectModel, RaceModelInterface {
         observers = null;
     }
 
-    public Race(int numberOfRounds) {
-        this.numberOfRounds = numberOfRounds;
-        cars = new ArrayList<>();
-        observers = new ArrayList<>();
-    }
-
     @Override
     public int getNumberOfCars() {
         return cars.size();
