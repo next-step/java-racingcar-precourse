@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class GameController {
 
     private Scanner scanner;
-    private ArrayList<String> carList = new ArrayList<>();
+    private ArrayList<String> carNamesList = new ArrayList<>();
     private int tryCount;
 
     public GameController() {
@@ -16,7 +16,7 @@ public class GameController {
         String names = scanner.nextLine();
         String[] carNames = names.split(",");
         for (String carName : carNames) {
-            carList.add(carName.trim());
+            carNamesList.add(carName);
         }
 
         System.out.println("Enter count for try");
@@ -25,7 +25,7 @@ public class GameController {
     }
 
     public ArrayList<String> getCarList() {
-        return carList;
+        return carNamesList;
     }
 
     public int getTryCount() {
