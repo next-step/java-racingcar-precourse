@@ -18,7 +18,6 @@ public class GameService {
     }
 
     public void gameStart() {
-        System.out.println("asdfasdf");
         for (int i = 0; i < tryCount; i++) {
             for (Car car : cars) {
                 int n = randomGenerator.makeRandNum();
@@ -28,6 +27,25 @@ public class GameService {
                 car.showDistance();
             }
             System.out.println();
+        }
+        showResult();
+    }
+
+    public void showResult() {
+        int maxDistance = cars.get(0).getDistance();
+        for (Car car : cars) {
+            if(car.getDistance() > maxDistance){
+                maxDistance = car.getDistance();
+            }
+        }
+        for (Car car : cars) {
+            if (car.getDistance() == maxDistance) {
+                winCarsName.add(car.getName());
+            }
+        }
+        System.out.print("final winner: ");
+        for (String name : winCarsName) {
+            System.out.print(name + " ");
         }
     }
 
