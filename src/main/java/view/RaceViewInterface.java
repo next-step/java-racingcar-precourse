@@ -11,4 +11,8 @@ public interface RaceViewInterface {
     public void printProcess();
 
     public void printResult();
+
+    public void printCarsErrorMessage(String msg);
+
+    public void printRoundsErrorMessage(String msg);
 }
