@@ -21,6 +21,7 @@ MVC 패턴을 사용해 구현(Model, View, Controller, Service)
     - 누적 전진 상태
 - 메서드
     - getter, setter, 생성자
+    - 전진 상태 업데이트 메서드 - 반환값 X, 누적 전진 상태 업데이트
 
 ## **Controller**
 
@@ -47,7 +48,6 @@ MVC 패턴을 사용해 구현(Model, View, Controller, Service)
     - getter, setter(이거 대신에 상태 업데이트 메서드 사용), 생성자(참가 자동차 담은 배열, 시도 횟수를 필드에 저장함)
     - 랜덤 값 선택 메서드 - 랜덤 값 반환
     - 랜덤 값 유효성(4이상) 검증 메서드 - T/F 반환
-    - 전진 상태 업데이트 메서드 - 반환값 X, 누적 전진 상태 업데이트
     - 게임 시작 메서드(for 문으로 게임 돌림)
 
 ## View
