@@ -50,4 +50,14 @@ public class RaceView implements Observer, RaceViewInterface {
     public void printResult() {
 
     }
+
+    @Override
+    public void printCarsErrorMessage(String msg) {
+
+    }
+
+    @Override
+    public void printRoundsErrorMessage(String msg) {
+
+    }
 }
