@@ -2,9 +2,70 @@
 
 ## 기능 목록
 
+Getter, Setter 생략
+
+### 1. model 패키지
+
+#### Car 클래스
+
+* 필드: `String name`, `int position`
+* 메서드
+  * `public Car(String name)`: 생성자 메서드
+    * 에러처리: 자동차 이름이 5자 이하가 아닌 경우 `IllegalArgumentException` 발생
+  * `public void move()`: 무작위 값이 4 이상일 경우 전진
+  * `public void resetPosition()`: `position`값을 초기화하는 메서드
 
 
 
+### 2. view 패키지
+
+#### GameView 클래스
+
+* 메서드
+  * `public List<String> getCarNames()`: 자동차 이름 입력받아서 `Utils.parseCarNames`를 통해 자동차 이름 리스트 반환
+  * `public int getNumberOfMoves()`: 이동 횟수 입력받는 메서드
+    * 에러처리: 숫자가 아닌 경우 `IllegalArgumentException` 발생
+  * `public void printRaceStart()`: 게임 시작을 위한 출력문
+  * `public void printCarPostion(List<Car> cars)`: 게임 진행 중 차의 위치를 출력하는 메서드
+  * `public void printWinners(List<Car> winners)`: 우승자를 출력하는 메서드
+
+
+
+### 3. controller 패키지
+
+#### GameController 클래스
+
+* 필드: `List<Car> cars`,  `GameView view`, `GameService service`, `int numberOfMoves`
+* 메서드
+  * `public GameController(GameView view, GameService service)`: 생성자
+  * `public void initializeGame()`: 게임 초기화 메서드
+  * `public void startGame()`: 게임 시작 메서드
+  * `public void playGame()`: 게임 진행 메서드
+  * `public void printResult()`: 게임 결과 출력 메서드
+
+
+
+### 4. service 패키지
+
+#### GameService 클래스
+
+* 메서드
+  * `public void moveCars(List<Car> cars)`: 자동차들을 전진시키는 메서드
+  * `public List<Car> findWinners(List<Car> cars)`: 자동차들 중 우승자를 찾는 메서드
+    * 에러처리: 우승자가 없는 경우 `IllegalStateException` 발생
+
+
+
+### 5. util 패키지
+
+#### Utils 클래스
+
+* 메서드
+  * `public static int generateRandomNumber()`: 0에서 9 사이의 무작위 값을 생성하는 메서드
+  * `public static List<String> parseCarNames(String input)`: 입력된 문자열을 파싱해서 자동차 이름의 List를 반환하는 메서드
+    * 에러처리
+      * 자동차 이름이 쉼표(,)로 구문되어있지 않은 경우 `IllegalArgumentException` 발생
+      * 기타 잘못된 input인 경우 `IllegalArgumentException` 발생
 
 
 
