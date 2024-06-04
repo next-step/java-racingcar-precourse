@@ -18,4 +18,8 @@ public class Car {
         return this.name;
     }
 
+    private boolean canIRace() {
+        int num = (int) (Math.random() * 10);
+        return num >= 4;
+    }
 }
