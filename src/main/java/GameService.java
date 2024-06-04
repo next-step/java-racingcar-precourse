@@ -19,16 +19,20 @@ public class GameService {
 
     public void gameStart() {
         for (int i = 0; i < tryCount; i++) {
-            for (Car car : cars) {
-                int n = randomGenerator.makeRandNum();
-                if(n >= 4){
-                    car.move(); // distance += 1
-                }
-                car.showDistance();
-            }
-            System.out.println();
+            carRace(); // if rand num >= 4: move
         }
         showResult();
+    }
+
+    public void carRace() {
+        for (Car car : cars) {
+            int n = randomGenerator.makeRandNum();
+            if(n >= 4){
+                car.move(); // distance += 1
+            }
+            car.showDistance();
+        }
+        System.out.println();
     }
 
     public void showResult() {
@@ -48,18 +52,5 @@ public class GameService {
             System.out.print(name + " ");
         }
     }
-
-    public ArrayList<Car> getCars() {
-        return cars;
-    }
-
-    public int getTryCount() {
-        return tryCount;
-    }
-
-    public ArrayList<String> getWinCarsName() {
-        return winCarsName;
-    }
-
 
 }
