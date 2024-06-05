@@ -40,7 +40,7 @@ class CarTest {
 
     @Test
     @DisplayName("move over 4 test")
-    void moveTest() throws Exception {
+    void moveOver4Test() throws Exception {
         // given
         Car car = new Car("test", new TestRandomNumberGenerator(6));
         int expectedPosition = 1;
@@ -77,6 +77,24 @@ class CarTest {
 
         // when
         car.move();
+        int result = car.getPosition();
+
+        // then
+        assertThat(result).isEqualTo(expectedPosition);
+    }
+
+    @Test
+    @DisplayName("resetPosition test")
+    void resetPositionTest() throws Exception {
+        // given
+        Car car = new Car("test", new TestRandomNumberGenerator(7));
+        car.move();
+        car.move();
+        car.move();     // now its position is 3
+        int expectedPosition = 0;
+
+        // when
+        car.resetPosition();
         int result = car.getPosition();
 
         // then

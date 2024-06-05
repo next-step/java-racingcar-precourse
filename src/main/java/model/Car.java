@@ -29,6 +29,10 @@ public class Car {
         }
     }
 
+    public void resetPosition() {
+        position = 0;
+    }
+
     public String getName() { return name; }
 
     public int getPosition() { return position; }
