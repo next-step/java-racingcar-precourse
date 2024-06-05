@@ -29,6 +29,11 @@ public class RaceService implements Subject, RaceServiceInterface {
 
     }
 
+    @Override
+    public void setNumberOfRounds(int numberOfRounds) {
+        race.setNumberOfRounds(numberOfRounds);
+    }
+
     public boolean roundValidation() {
         return true;
     }
