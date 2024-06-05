@@ -10,15 +10,32 @@ public class GameController {
     }
 
     public String[] inputCarNames(){
-        System.out.println("Enter the names of the cars to race (names should be separated by commas)");
-        String names = scanner.nextLine();
-        String[] carNames = names.split(",");
+        String[] carNames;
+        while(true){
+            System.out.println("Enter the names of the cars to race (names should be separated by commas)");
+            String names = scanner.nextLine();
+            carNames = names.split(",");
 
-        for (int i = 0; i < carNames.length; i++) {
-            carNames[i] = carNames[i].trim();
+            for (int i = 0; i < carNames.length; i++) {
+                carNames[i] = carNames[i].trim();
+            }
+            try {
+                checkNameLength(carNames);
+                break;
+            } catch (IllegalArgumentException e) {
+                System.out.println("[ERROR] The name of the car must be within 5 characters. please type again");
+            }
+
         }
-
         return carNames;
+    }
+
+    private void checkNameLength(String[] carNames) { // if wrong length of car name: throws IllegalArgumentException
+        for (String carName : carNames) {
+            if(carName.length() > 5){
+                throw new IllegalArgumentException();
+            }
+        }
     }
 
     public int inputTryCount() {
@@ -29,12 +46,5 @@ public class GameController {
         return tryCount;
     }
 
-    public ArrayList<String> getCarList() {
-        return carNamesList;
-    }
-
-    public int getTryCount() {
-        return tryCount;
-    }
 
 }
