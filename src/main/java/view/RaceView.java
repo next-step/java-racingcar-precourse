@@ -19,7 +19,7 @@ public class RaceView implements Observer, RaceViewInterface {
 
     @Override
     public void update() {
-
+        printProgress();
     }
 
     // 자동차 이름을 입력받는 메서드
