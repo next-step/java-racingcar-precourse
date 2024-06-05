@@ -33,15 +33,24 @@ public class RaceController implements RaceControllerInterface {
             // 생성 시도
             race.addCars(cars);
         } catch (IllegalArgumentException e) {
-            // 5글자를 넘은 경우, error 메시지를 출력하고,
+            // 5글자를 넘은 경우, error 메시지를 출력하고
             view.printCarsErrorMessage(e.getMessage());
             // 다시 view에 입력을 요청
             view.userCarsInput();
         }
     }
 
+    // view에서 입력으로 들어온 횟수를 저장하도록 race에 전달
     @Override
     public void setRound(int numberOfRound) {
-
+        // 전달 시도
+        try {
+            race.setNumberOfRounds(numberOfRound);
+        } catch (IllegalArgumentException e) {
+            // 숫자가 아니거나 숫자가 너무 큰 경우, error 메시지를 출력하고
+            view.printRoundsErrorMessage(e.getMessage());
+            // 다시 view에 입력을 요청
+            view.userRoundsInput();
+        }
     }
 }
