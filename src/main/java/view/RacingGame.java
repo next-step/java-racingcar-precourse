@@ -48,9 +48,9 @@ public class RacingGame {
             for (String name : carNameStringArray) {
                 System.out.print(name + " : ");
                 printPlayerResultForRound(i, raceResult.get(name));
-                System.out.println("");
+                System.out.println();
             }
-            System.out.println("");
+            System.out.println();
         }
     }
 
@@ -97,7 +97,7 @@ public class RacingGame {
     }
 
     private void checkCarNamePolicy(String[] carNameSplitStringArray) throws IllegalArgumentException {
-        if (carNameSplitStringArray.length == 1 && carNameSplitStringArray[0] == "")
+        if (carNameSplitStringArray.length == 1 && carNameSplitStringArray[0].equals(""))
             throw new IllegalArgumentException(CAR_NAME_EMPTY_EXCEPTION_MESSAGE.toString());
         if(Arrays.stream(carNameSplitStringArray).anyMatch(s -> s.length() > CAR_NAME_MAX_LENGTH))
             throw new IllegalArgumentException(CAR_NAME_LENGTH_EXCEPTION_MESSAGE.toString());
