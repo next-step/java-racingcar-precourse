@@ -9,7 +9,7 @@ public interface RaceModelInterface {
 
     public int getNumberOfRounds();
 
-    public void setNumberOfRounds(String numberOfRounds);
+    public void setNumberOfRounds(int numberOfRounds);
 
     public ArrayList<CarServiceInterface> getCars();
 }
