@@ -20,8 +20,4 @@ public class CarService implements CarServiceInterface {
     public void move() {
 
     }
-
-    public boolean nameValidation() {
-        return true;
-    }
 }
