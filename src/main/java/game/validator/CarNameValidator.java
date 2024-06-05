@@ -32,7 +32,13 @@ public class CarNameValidator {
     }
 
     private void validateDuplication(String input) {
+        String[] names = input.split(NAME_DELIMITER);
+        long originalCount = names.length;
+        long uniqueCount = Arrays.stream(names).distinct().count();
 
+        if (originalCount != uniqueCount) {
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATE_NAME_FOUND.getMessage());
+        }
     }
 
 }
