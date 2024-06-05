@@ -1,8 +1,10 @@
 package view;
 
 import controller.RaceControllerInterface;
+import java.util.ArrayList;
 import java.util.Scanner;
 import observer.Observer;
+import service.CarServiceInterface;
 import service.RaceServiceInterface;
 
 public class RaceView implements Observer, RaceViewInterface {
@@ -50,9 +52,14 @@ public class RaceView implements Observer, RaceViewInterface {
         raceControllerInterface.setRound(userInput);
     }
 
+    // 한 번 진행의 결과를 보여주는 메서드
     @Override
     public void printProgress() {
-
+        // raceService를 통해 차 목록을 받아와서
+        RaceServiceInterface raceService = raceServiceInterface;
+        ArrayList<CarServiceInterface> carList = raceService.getCars();
+        // stream을 이용하여 양식에 맞게 출력
+        carList.stream().forEach(car -> System.out.println(car.getName() + " : " + car.getProgress()));
     }
 
     @Override
