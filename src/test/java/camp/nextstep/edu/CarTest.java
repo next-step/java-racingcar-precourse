@@ -29,4 +29,10 @@ public class CarTest {
         assertThat(num).isLessThan(10);
     }
 
+    @Test
+    public void racingProgressStatusTest() {
+        String progressStatus = car.racingProgressStatus();
+        assertThat(progressStatus).startsWith(name);
+        assertThat(progressStatus).doesNotStartWith(name + "append");
+    }
 }

@@ -28,4 +28,7 @@ public class Car {
             racingResult.add("-");
         }
     }
+    public String racingProgressStatus() {
+        return name + " : " + String.join("", racingResult);
+    }
 }
