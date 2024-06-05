@@ -87,7 +87,7 @@ public class RacingGame {
         while (true) {
             try {
                 System.out.println(CAR_NAME_INPUT_MESSAGE);
-                String[] carNameSplitStringArray = scanner.nextLine().split(",");
+                String[] carNameSplitStringArray = scanner.nextLine().trim().split(",");
                 checkCarNamePolicy(carNameSplitStringArray);
                 return carNameSplitStringArray;
             } catch (IllegalArgumentException e) {
