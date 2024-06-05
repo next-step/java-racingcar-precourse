@@ -60,6 +60,7 @@ public class RaceView implements Observer, RaceViewInterface {
         ArrayList<CarServiceInterface> carList = raceService.getCars();
         // stream을 이용하여 양식에 맞게 출력
         carList.stream().forEach(car -> System.out.println(car.getName() + " : " + car.getProgress()));
+        System.out.println();
     }
 
     @Override
