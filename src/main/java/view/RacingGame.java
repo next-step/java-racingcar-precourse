@@ -3,6 +3,7 @@ package view;
 import controller.RacingGameController;
 import dto.RacingRequest;
 import dto.RacingResponse;
+import view.message.Message;
 
 import java.util.Arrays;
 import java.util.List;
@@ -31,17 +32,34 @@ public class RacingGame {
 
         RacingResponse racingResponse = racingGameController.playGame(RacingRequest.of(carNameStringArray, trialNumber));
 
-        printRaceResult(racingResponse.getRaceResult());
+        printRaceResult(carNameStringArray, trialNumber, racingResponse.getRaceResult());
         printWinner(racingResponse.getWinner());
     }
 
     private void printWinner(List<String> winner) {
-    }
-
-    private void printRaceResult(List<Map<String, List<Integer>>> raceResult) {
 
     }
 
+    private void printRaceResult(String[] carNameStringArray, int trialNumber, Map<String, List<Integer>> raceResult) {
+        System.out.println("\n"+Message.EXECUTION_RESULT_MESSAGE);
+
+        for (int i = 0; i < trialNumber; i++) {
+            for (String name : carNameStringArray) {
+                System.out.print(name + " : ");
+                printPlayerResultForRound(i, raceResult.get(name));
+                System.out.println("");
+            }
+            System.out.println("");
+        }
+    }
+
+    private void printPlayerResultForRound(int round, List<Integer> raceResult) {
+        for (int i = 0; i <= round; i++) {
+            if (raceResult.contains(i)) {
+                System.out.print("-");
+            }
+        }
+    }
 
 
     private int getTrialNumberWithInputString() {

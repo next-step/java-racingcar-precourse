@@ -27,11 +27,8 @@ public class RacingGameController {
         racingGameService.race(player, request.getTrialNumber());
         List<Car> winnerCar = racingGameService.decideWinner(player);
 
-        List<Map<String, List<Integer>>> raceResult = player.stream().map(car -> {
-            Map<String, List<Integer>> map = new HashMap<>();
-            map.put(car.getName(), car.getMoveRound());
-            return map;
-        }).toList();
+        Map<String, List<Integer>> raceResult = new HashMap<>();
+        player.stream().forEach(car ->  raceResult.put(car.getName(), car.getMoveRound()));
 
         List<String> winnerName = winnerCar.stream().map(Car::getName).toList();
 

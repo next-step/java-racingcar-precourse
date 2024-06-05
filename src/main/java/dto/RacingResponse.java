@@ -5,14 +5,14 @@ import java.util.Map;
 
 public class RacingResponse {
 
-    List<Map<String, List<Integer>>> raceResult;
+    Map<String, List<Integer>> raceResult;
     List<String> winner;
 
-    public List<Map<String, List<Integer>>> getRaceResult() {
+    public Map<String, List<Integer>> getRaceResult() {
         return raceResult;
     }
 
-    public void setRaceResult(List<Map<String, List<Integer>>> raceResult) {
+    public void setRaceResult(Map<String, List<Integer>> raceResult) {
         this.raceResult = raceResult;
     }
 
@@ -24,12 +24,12 @@ public class RacingResponse {
         this.winner = winner;
     }
 
-    protected RacingResponse(List<Map<String, List<Integer>>> raceResult, List<String> winner) {
+    protected RacingResponse(Map<String, List<Integer>> raceResult, List<String> winner) {
         this.raceResult = raceResult;
         this.winner = winner;
     }
 
-    public static RacingResponse of(List<Map<String, List<Integer>>> raceResult, List<String> winner) {
+    public static RacingResponse of(Map<String, List<Integer>> raceResult, List<String> winner) {
         return new RacingResponse(raceResult, winner);
     }
 }
