@@ -14,6 +14,10 @@ public class GameModel {
         repeatCount = 0;
     }
 
+    public ArrayList<Car> getCars() {
+        return cars;
+    }
+
     public int getCarsCount() {
         return carsCount;
     }
