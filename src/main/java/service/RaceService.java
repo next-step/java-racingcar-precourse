@@ -39,13 +39,13 @@ public class RaceService implements Subject, RaceServiceInterface {
         ArrayList<CarServiceInterface> carList = race.getCars();
 
         // cars의 원소 중에 길이가 5 이상인 것이 있다면 예외를 반환
-        boolean isWrongArgument = Arrays.stream(cars).anyMatch(car -> car.length() > 5);
+        boolean isWrongArgument = Arrays.stream(cars).anyMatch(carName -> carName.length() > 5);
         if (isWrongArgument) {
             throw new IllegalArgumentException();
         }
 
         // 그렇지 않다면 차 목록을 추가
-        List<CarService> tempList = Arrays.stream(cars).map(car -> new CarService(car, 0))
+        List<CarService> tempList = Arrays.stream(cars).map(carName -> new CarService(carName, 0))
             .collect(Collectors.toList());
         carList.addAll(tempList);
     }
