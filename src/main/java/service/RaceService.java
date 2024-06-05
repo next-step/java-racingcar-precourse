@@ -56,9 +56,41 @@ public class RaceService implements Subject, RaceServiceInterface {
         carList.addAll(tempList);
     }
 
+    // 우승자의 진행도를 반환하는 메서드
+    private int getWinnersProgress() {
+        // 차들의 정보를 가져와서
+        ArrayList<CarServiceInterface> carList = race.getCars();
+
+        // 진행도의 최댓값을 구한다.
+        int winnersProgress = 0;
+        for (CarServiceInterface car : carList) {
+            winnersProgress = Math.max(winnersProgress, car.getProgress());
+        }
+
+        return winnersProgress;
+    }
+
+    // 우승자의 목록을 문자열로 나열한다.
     @Override
     public String getWinners() {
-        return null;
+        // 문자열을 빠르게 붙이기 위해 StringBuilder를 사용
+        StringBuilder sb = new StringBuilder();
+        // 차들의 정보를 가져오고
+        ArrayList<CarServiceInterface> carList = race.getCars();
+        // 우승자의 진행도를 가져온다.
+        int winnersProgress = getWinnersProgress();
+
+        // 우승자 목록을 stream으로 가져온다.
+        List<CarServiceInterface> winners = carList.stream().filter(car -> car.getProgress() == winnersProgress).collect(Collectors.toList());
+
+        // 우승자들의 정보를 String으로 변환한다.
+        for (int i = 0; i < winners.size()-1; i++) {
+            CarServiceInterface winner = winners.get(i);
+            sb.append(winner.getName()).append(',').append(' ');
+        }
+        sb.append(winners.get(winners.size()-1));
+
+        return sb.toString();
     }
 
     @Override
