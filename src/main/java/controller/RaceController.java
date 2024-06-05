@@ -46,13 +46,16 @@ public class RaceController implements RaceControllerInterface {
         // 전달 시도
         try {
             race.setNumberOfRounds(numberOfRound);
-        } catch (IllegalArgumentException e) {
-            // 숫자가 아니거나 숫자가 너무 큰 경우, error 메시지를 출력하고
-            view.printRoundsErrorMessage();
+        } catch (NumberFormatException e) {
+            // 숫자가 아닌 경우, error 메시지를 출력
+            view.printRoundsFormatErrorMessage();
             // 다시 view에 입력을 요청
             view.userRoundsInput();
-        } catch (NumberFormatException e) {
-            view.p
+        } catch (IllegalArgumentException e) {
+            // 숫자가 너무 큰 경우, error 메시지를 출력
+            view.printRoundsArgumentErrorMessage();
+            // 다시 view에 입력을 요청
+            view.userRoundsInput();
         }
     }
 }
