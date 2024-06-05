@@ -10,6 +10,8 @@ public interface RaceServiceInterface {
 
     public ArrayList<CarServiceInterface> getCars();
 
+    public String getWinners();
+
     public void addCars(String[] cars);
 
     public void setNumberOfRounds(String rounds);
