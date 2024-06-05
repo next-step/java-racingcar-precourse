@@ -13,4 +13,12 @@ public class RacingRequest {
     public static RacingRequest of(String[] carNameStringArray, int trialNumber) {
         return new RacingRequest(carNameStringArray, trialNumber);
     }
+
+    public String[] getCarNameStringArray() {
+        return carNameStringArray;
+    }
+
+    public int getTrialNumber() {
+        return trialNumber;
+    }
 }

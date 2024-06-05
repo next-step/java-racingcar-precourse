@@ -10,6 +10,7 @@
 
 ### Controller
 1. 자동차 Object 생성 기능 구현
+2. RacingRequest, RacingResponse 매핑 기능 구현
 
 ### Model
 1. 자동차 경주 기능 구현

@@ -1,6 +1,6 @@
 package view;
 
-import controller.RacingCarController;
+import controller.RacingGameController;
 import dto.RacingRequest;
 import dto.RacingResponse;
 
@@ -15,11 +15,11 @@ import static view.message.Message.*;
 public class RacingGame {
 
     public Scanner scanner;
-    public RacingCarController racingCarController;
+    public RacingGameController racingGameController;
 
     public void init() {
         this.scanner = new Scanner(System.in);
-        this.racingCarController = new RacingCarController();
+        this.racingGameController = new RacingGameController();
     }
 
     public void start() {
@@ -29,7 +29,7 @@ public class RacingGame {
         String[] carNameStringArray = getCarListWithInputString();
         int trialNumber = getTrialNumberWithInputString();
 
-        RacingResponse racingResponse = racingCarController.race(RacingRequest.of(carNameStringArray, trialNumber));
+        RacingResponse racingResponse = racingGameController.playGame(RacingRequest.of(carNameStringArray, trialNumber));
 
         printRaceResult(racingResponse.getRaceResult());
         printWinner(racingResponse.getWinner());

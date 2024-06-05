@@ -23,4 +23,13 @@ public class RacingResponse {
     public void setWinner(List<String> winner) {
         this.winner = winner;
     }
+
+    protected RacingResponse(List<Map<String, Integer>> raceResult, List<String> winner) {
+        this.raceResult = raceResult;
+        this.winner = winner;
+    }
+
+    public static RacingResponse of(List<Map<String, Integer>> raceResult, List<String> winner) {
+        return new RacingResponse(raceResult, winner);
+    }
 }
