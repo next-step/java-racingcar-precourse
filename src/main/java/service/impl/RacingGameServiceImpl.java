@@ -17,8 +17,9 @@ public class RacingGameServiceImpl implements RacingGameService {
     }
 
     @Override
-    public List<Car> decideWinner(List<Car> player) {
-        return null;
+    public List<Car> decideWinner(List<Car> cars) {
+        int maxMoveCount = cars.stream().mapToInt(car -> car.getMoveCount()).max().getAsInt();
+        return cars.stream().filter(car -> car.getMoveCount() == maxMoveCount).toList();
     }
 
     private void tryMove(Car car, int round) {

@@ -29,4 +29,8 @@ public class Car {
     public void move(int round) {
         this.moveRound.add(round);
     }
+
+    public int getMoveCount() {
+        return this.moveRound.size();
+    }
 }
