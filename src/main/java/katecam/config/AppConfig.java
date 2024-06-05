@@ -5,15 +5,15 @@ import katecam.racingcar.adaptor.out.InMemoryGameAdaptor;
 import katecam.racingcar.application.port.in.command.GameInitializationUseCase;
 import katecam.racingcar.application.port.in.command.GameTurnPlayUseCase;
 import katecam.racingcar.application.port.in.query.GameStatusQuery;
-import katecam.racingcar.application.port.out.GameLoadPort;
 import katecam.racingcar.application.port.out.GameRecordPort;
+import katecam.racingcar.application.port.out.GameLoadPort;
 import katecam.racingcar.application.service.command.GameInitializationService;
 import katecam.racingcar.application.service.command.GameTurnPlayService;
 import katecam.racingcar.application.service.query.GameStatusQueryService;
 
 public class AppConfig {
-    private static GameRecordPort gameRecordPort;
     private static GameLoadPort gameLoadPort;
+    private static GameRecordPort gameRecordPort;
     private static GameInitializationUseCase gameInitializationUseCase;
     private static GameTurnPlayUseCase gameTurnPlayUseCase;
     private static GameStatusQuery gameStatusQuery;
@@ -21,11 +21,11 @@ public class AppConfig {
 
     static {
         InMemoryGameAdaptor inMemoryGameAdaptor = new InMemoryGameAdaptor();
-        gameLoadPort = inMemoryGameAdaptor;
         gameRecordPort = inMemoryGameAdaptor;
-        gameInitializationUseCase = new GameInitializationService(gameLoadPort);
-        gameTurnPlayUseCase = new GameTurnPlayService(gameRecordPort);
-        gameStatusQuery = new GameStatusQueryService(gameRecordPort);
+        gameLoadPort = inMemoryGameAdaptor;
+        gameInitializationUseCase = new GameInitializationService(gameRecordPort);
+        gameTurnPlayUseCase = new GameTurnPlayService(gameLoadPort);
+        gameStatusQuery = new GameStatusQueryService(gameLoadPort);
         racingCarController = new RacingCarController(
                 gameInitializationUseCase,
                 gameTurnPlayUseCase,

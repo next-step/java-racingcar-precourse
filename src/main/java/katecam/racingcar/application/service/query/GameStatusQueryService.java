@@ -6,26 +6,26 @@ import katecam.racingcar.application.dto.query.CarPositionRes;
 import katecam.racingcar.application.dto.query.GameTotalResultRes;
 import katecam.racingcar.application.dto.query.GameTurnResultRes;
 import katecam.racingcar.application.port.in.query.GameStatusQuery;
-import katecam.racingcar.application.port.out.GameRecordPort;
+import katecam.racingcar.application.port.out.GameLoadPort;
 import katecam.racingcar.domain.Car;
 import katecam.racingcar.domain.Game;
 
 public class GameStatusQueryService implements GameStatusQuery {
-    private final GameRecordPort gameRecordPort;
+    private final GameLoadPort gameLoadPort;
 
-    public GameStatusQueryService(GameRecordPort gameRecordPort) {
-        this.gameRecordPort = gameRecordPort;
+    public GameStatusQueryService(GameLoadPort gameLoadPort) {
+        this.gameLoadPort = gameLoadPort;
     }
 
     @Override
     public boolean isEnded() {
-        Game game = gameRecordPort.getOrThrow();
+        Game game = gameLoadPort.getOrThrow();
         return game.isEnded();
     }
 
     @Override
     public GameTurnResultRes getTurnResult() {
-        Game game = gameRecordPort.getOrThrow();
+        Game game = gameLoadPort.getOrThrow();
         List<CarPositionRes> carPositions= game.getCars().stream()
                  .map(car->new CarPositionRes(car.getName(), car.getPosition()))
                  .toList();
@@ -34,7 +34,7 @@ public class GameStatusQueryService implements GameStatusQuery {
 
     @Override
     public GameTotalResultRes getTotalResult() {
-        Game game = gameRecordPort.getOrThrow();
+        Game game = gameLoadPort.getOrThrow();
         List<String> winnerNames = game.getWinners().stream()
                 .map(Car::getName)
                 .toList();
