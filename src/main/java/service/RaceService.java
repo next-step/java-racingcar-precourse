@@ -51,6 +51,11 @@ public class RaceService implements Subject, RaceServiceInterface {
     }
 
     @Override
+    public String getWinners() {
+        return null;
+    }
+
+    @Override
     public void setNumberOfRounds(String rounds)
         throws IllegalArgumentException, NumberFormatException {
         // 수가 아닌 경우
