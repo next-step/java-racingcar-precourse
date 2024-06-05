@@ -6,13 +6,12 @@ import java.util.Arrays;
 import java.util.List;
 
 public class GameDTO {
+    private List<CarDTO> cars;
     private final int iteration;
 
-    private List<CarDTO> cars;
-
-    public GameDTO(int iteration, List<CarDTO> cars) {
-        this.iteration = iteration;
+    public GameDTO(List<CarDTO> cars, int iteration) {
         this.cars = cars;
+        this.iteration = iteration;
     }
 
 
