@@ -1,28 +1,32 @@
 package domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Car {
 
     private String name;
-    private int moveCount;
+    private List<Integer> moveRound;
 
     public static Car from(String name) {
-        return new Car(name, 0);
+        return new Car(name, new ArrayList<>());
     }
 
-    protected Car(String name, int moveCount) {
+
+    protected Car(String name, List<Integer> moveRound) {
         this.name = name;
-        this.moveCount = moveCount;
-    }
-
-    public void move() {
-        this.moveCount++;
+        this.moveRound = moveRound;
     }
 
     public String getName() {
         return name;
     }
 
-    public int getMoveCount() {
-        return moveCount;
+    public List<Integer> getMoveRound() {
+        return moveRound;
+    }
+
+    public void move(int round) {
+        this.moveRound.add(round);
     }
 }

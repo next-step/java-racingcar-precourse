@@ -27,13 +27,14 @@ public class RacingGameController {
         racingGameService.race(player, request.getTrialNumber());
         List<Car> winnerCar = racingGameService.decideWinner(player);
 
-        List<Map<String, Integer>> raceResult = player.stream().map(car -> {
-            Map<String, Integer> map = new HashMap<>();
-            map.put(car.getName(), car.getMoveCount());
+        List<Map<String, List<Integer>>> raceResult = player.stream().map(car -> {
+            Map<String, List<Integer>> map = new HashMap<>();
+            map.put(car.getName(), car.getMoveRound());
             return map;
         }).toList();
 
         List<String> winnerName = winnerCar.stream().map(Car::getName).toList();
+
         return RacingResponse.of(raceResult, winnerName);
     }
 }

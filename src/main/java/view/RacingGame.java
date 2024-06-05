@@ -38,7 +38,7 @@ public class RacingGame {
     private void printWinner(List<String> winner) {
     }
 
-    private void printRaceResult(List<Map<String, Integer>> raceResult) {
+    private void printRaceResult(List<Map<String, List<Integer>>> raceResult) {
 
     }
 
