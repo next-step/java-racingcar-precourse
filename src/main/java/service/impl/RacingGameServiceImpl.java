@@ -23,8 +23,12 @@ public class RacingGameServiceImpl implements RacingGameService {
     }
 
     private void tryMove(Car car, int round) {
-        if (Math.floor(Math.random() * 10) >= 4) {
+        if (matchesRandomCondition()) {
             car.move(round);
         }
+    }
+
+    private boolean matchesRandomCondition() {
+        return Math.floor(Math.random() * 10) >= 4;
     }
 }
