@@ -28,8 +28,8 @@ public class RacingGame {
 
         init();
 
-        String[] carNameStringArray = getCarListWithInputString();
-        int trialNumber = getTrialNumberWithInputString();
+        String[] carNameStringArray = getCarNameStringArrayWithScanner();
+        int trialNumber = getTrialNumberWithScanner();
 
         RacingResponse racingResponse = racingGameController.playGame(RacingRequest.of(carNameStringArray, trialNumber));
 
@@ -63,13 +63,12 @@ public class RacingGame {
     }
 
 
-    private int getTrialNumberWithInputString() {
+    private int getTrialNumberWithScanner() {
         while (true) {
             try {
                 System.out.println(TRIAL_INPUT_MESSAGE);
                 int trialNumber = Integer.parseInt(scanner.nextLine());
-                if (trialNumber < 1)
-                    throw new IllegalArgumentException(INVALID_TRIAL_NUMBER_EXCEPTION_MESSAGE.toString());
+                checkTrialNumberPolicy(trialNumber);
                 return trialNumber;
             } catch (NumberFormatException e) {
                 System.out.println(INVALID_TRIAL_NUMBER_EXCEPTION_MESSAGE);
@@ -79,20 +78,29 @@ public class RacingGame {
         }
     }
 
-    private String[] getCarListWithInputString() {
+    private void checkTrialNumberPolicy(int trialNumber) throws IllegalArgumentException {
+        if (trialNumber < 1)
+            throw new IllegalArgumentException(INVALID_TRIAL_NUMBER_EXCEPTION_MESSAGE.toString());
+    }
+
+    private String[] getCarNameStringArrayWithScanner() {
         while (true) {
             try {
                 System.out.println(CAR_NAME_INPUT_MESSAGE);
                 String[] carNameSplitStringArray = scanner.nextLine().split(",");
-                if(Arrays.stream(carNameSplitStringArray).anyMatch(s -> s.length() > CAR_NAME_MAX_LENGTH))
-                    throw new IllegalArgumentException(CAR_NAME_LENGTH_EXCEPTION_MESSAGE.toString());
-                if (Arrays.stream(carNameSplitStringArray).distinct().count() != carNameSplitStringArray.length)
-                    throw new IllegalArgumentException(CAR_NAME_DUPLICATE_EXCEPTION_MESSAGE.toString());
+                checkCarNamePolicy(carNameSplitStringArray);
                 return carNameSplitStringArray;
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }
         }
+    }
+
+    private void checkCarNamePolicy(String[] carNameSplitStringArray) throws IllegalArgumentException {
+        if(Arrays.stream(carNameSplitStringArray).anyMatch(s -> s.length() > CAR_NAME_MAX_LENGTH))
+            throw new IllegalArgumentException(CAR_NAME_LENGTH_EXCEPTION_MESSAGE.toString());
+        if (Arrays.stream(carNameSplitStringArray).distinct().count() != carNameSplitStringArray.length)
+            throw new IllegalArgumentException(CAR_NAME_DUPLICATE_EXCEPTION_MESSAGE.toString());
     }
 
 
