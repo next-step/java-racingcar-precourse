@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class GameController {
@@ -20,8 +21,8 @@ public class GameController {
                 carNames[i] = carNames[i].trim();
             }
             try {
-                checkNameLength(carNames);
-                break;
+                checkNameLength(carNames);// if wrong: throws IllegalArgumentException
+                break; // correct
             } catch (IllegalArgumentException e) {
                 System.out.println("[ERROR] The name of the car must be within 5 characters. please type again");
             }
@@ -30,7 +31,7 @@ public class GameController {
         return carNames;
     }
 
-    private void checkNameLength(String[] carNames) { // if wrong length of car name: throws IllegalArgumentException
+    private void checkNameLength(String[] carNames) {
         for (String carName : carNames) {
             if(carName.length() > 5){
                 throw new IllegalArgumentException();
@@ -39,11 +40,32 @@ public class GameController {
     }
 
     public int inputTryCount() {
-        System.out.println("Enter count for try");
-        int tryCount = scanner.nextInt();
+        int tryCount = 0;
+        while (true) {
+            try {
+                System.out.println("Enter count for try");
+                tryCount = scanner.nextInt();
+                checkTryCountValue(tryCount);
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("wrong value type, please type again");
+                scanner.nextLine();  // make input buffer empty
+            } catch (IllegalArgumentException e) {
+                System.out.println("wrong value, value should be more than 0, please type again");
+            }
+        }
         System.out.println("tryCount = " + tryCount);
 
         return tryCount;
+    }
+
+    private void checkTryCountValue(int tryCount) {
+        if (tryCount <= 0) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void checkTryCountType(int tryCount) {
     }
 
 
