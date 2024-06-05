@@ -1,4 +1,4 @@
-package katecam.racingcar.config;
+package katecam.config;
 
 import katecam.racingcar.adaptor.in.RacingCarController;
 import katecam.racingcar.adaptor.out.InMemoryGameAdaptor;

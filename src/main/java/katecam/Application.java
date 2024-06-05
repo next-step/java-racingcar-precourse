@@ -1,7 +1,7 @@
 package katecam;
 
 import katecam.racingcar.adaptor.in.RacingCarController;
-import katecam.racingcar.config.AppConfig;
+import katecam.config.AppConfig;
 
 public class Application {
     private static final RacingCarController racingCarController = AppConfig.getRacingCarController();
