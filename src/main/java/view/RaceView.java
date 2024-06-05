@@ -74,7 +74,7 @@ public class RaceView implements Observer, RaceViewInterface {
     }
 
     @Override
-    public void printCarsErrorMessage(String msg) {
+    public void printCarsErrorMessage() {
 
     }
 
