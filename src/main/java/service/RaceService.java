@@ -2,6 +2,7 @@ package service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 import model.Race;
@@ -37,6 +38,10 @@ public class RaceService implements Subject, RaceServiceInterface {
     @Override
     public void addCars(String[] cars) throws IllegalArgumentException {
         ArrayList<CarServiceInterface> carList = race.getCars();
+
+        if (cars.length == 0) {
+            throw new IllegalArgumentException();
+        }
 
         // cars의 원소 중에 길이가 5 이상인 것이 있다면 예외를 반환
         boolean isWrongArgument = Arrays.stream(cars).anyMatch(carName -> carName.length() > 5);
