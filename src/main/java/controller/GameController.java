@@ -5,18 +5,17 @@ import model.GameDTO;
 import view.InputView;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class GameController {
     private GameDTO gameDTO;
 
     public GameController() {
-        this.gameDTO = new GameDTO(generateCarDTOS(InputView.inputCarName()), InputView.inputGameIteration());
+        this.gameDTO = new GameDTO(generateCarDTOList(InputView.inputCarName()), InputView.inputGameIteration());
     }
 
 
-    private List<CarDTO> generateCarDTOS(String[] carNames) {
+    private List<CarDTO> generateCarDTOList(String[] carNames) {
         List<CarDTO> carDTOArrayList = new ArrayList<>();
         for (String carName : carNames) {
             carDTOArrayList.add(new CarDTO(carName));
