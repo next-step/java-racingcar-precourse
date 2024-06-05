@@ -4,9 +4,13 @@ import controller.RacingCarController;
 import dto.RacingRequest;
 import dto.RacingResponse;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+
+import static view.message.ErrorMessage.*;
+import static view.message.Message.*;
 
 public class RacingGame {
 
@@ -45,7 +49,19 @@ public class RacingGame {
     }
 
     private String[] getCarListWithInputString() {
-        return null;
+        while (true) {
+            try {
+                System.out.println(CAR_NAME_INPUT_MESSAGE.toString());
+                String[] carNameSplitStringArray = scanner.nextLine().split(",");
+                if(Arrays.stream(carNameSplitStringArray).anyMatch(s -> s.length() > 5))
+                    throw new IllegalArgumentException(CAR_NAME_LENGTH_EXCEPTION_MESSAGE.toString());
+                if (Arrays.stream(carNameSplitStringArray).distinct().count() != carNameSplitStringArray.length)
+                    throw new IllegalArgumentException(CAR_NAME_DUPLICATE_EXCEPTION_MESSAGE.toString());
+                return carNameSplitStringArray;
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
     }
 
 
