@@ -45,7 +45,19 @@ public class RacingGame {
 
 
     private int getTrialNumberWithInputString() {
-        return 0;
+        while (true) {
+            try {
+                System.out.println(TRIAL_INPUT_MESSAGE.toString());
+                int trialNumber = Integer.parseInt(scanner.nextLine());
+                if (trialNumber < 1)
+                    throw new IllegalArgumentException(INVALID_TRIAL_NUMBER_EXCEPTION_MESSAGE.toString());
+                return trialNumber;
+            } catch (NumberFormatException e) {
+                System.out.println(INVALID_TRIAL_NUMBER_EXCEPTION_MESSAGE.toString());
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
     }
 
     private String[] getCarListWithInputString() {
