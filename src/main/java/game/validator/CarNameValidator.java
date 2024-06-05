@@ -1,10 +1,14 @@
 package game.validator;
 
-import java.util.StringTokenizer;
-
 public class CarNameValidator {
 
+    private static final CarNameValidator instance = new CarNameValidator();
+
     private CarNameValidator() {
+    }
+
+    public static CarNameValidator getInstance() {
+        return instance;
     }
 
     public void validate(String input) {
