@@ -1,5 +1,8 @@
 package camp.nextstep.edu;
 
+import camp.nextstep.edu.bak.Car;
+
+import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Stream;
 
@@ -54,10 +57,30 @@ public class UI {
             }
         }
     }
+
     private int checkRepeatCount(int n) throws IllegalArgumentException {
         if (n <= 0) {
             throw new IllegalArgumentException("[ERROR] 시도 횟 수는 0 이상 " + Integer.MAX_VALUE + " 이하 입니다.");
         }
         return n;
+    }
+
+    public void run() {
+        List<Car> carList = prepareRacingCar(this.carNames);
+        race(carList, this.repeatCount);
+        printWinner(carList);
+    }
+
+    private List<Car> prepareRacingCar(String[] carNames) {
+        //TODO: 입력 받은 정보를 사용하여 경주에 사용할 차량목록 생성
+        return null;
+    }
+
+    private void race(final List<Car> carList, int raceCount) {
+        //TODO: raceCount 에 맞게 루프를 돌면서 경기를 진행 한다.
+    }
+
+    private void printWinner(List<Car> carList) {
+        // TODO: 경기에 우승한 차량을 stdout에 출력
     }
 }
