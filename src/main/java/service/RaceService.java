@@ -27,7 +27,7 @@ public class RaceService implements Subject, RaceServiceInterface {
 
     @Override
     public ArrayList<CarServiceInterface> getCars() {
-        return null;
+        return race.getCars();
     }
 
     @Override
@@ -36,7 +36,8 @@ public class RaceService implements Subject, RaceServiceInterface {
     }
 
     @Override
-    public void setNumberOfRounds(String rounds) throws IllegalArgumentException, NumberFormatException {
+    public void setNumberOfRounds(String rounds)
+        throws IllegalArgumentException, NumberFormatException {
         // 수가 아닌 경우
         int numberOfRounds = Integer.parseInt(rounds);
 
