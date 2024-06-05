@@ -10,6 +10,8 @@ import service.impl.RacingGameServiceImpl;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.*;
+
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class RacingGameServiceTest {
 
@@ -20,7 +22,23 @@ public class RacingGameServiceTest {
         racingGameService = new RacingGameServiceImpl();
     }
 
-    @Test()
+    @Test
+    public void race_whenTrialNumberIsZero_thenCarCanHaveZeroInMoveRound() {
+        //given
+        Car testCar1 = Car.from("testCar1");
+        ArrayList<Car> carList = new ArrayList<>();
+        carList.add(testCar1);
+
+        //when
+        racingGameService.race(carList, 0);
+
+        //then
+        if (carList.get(0).getMoveRound().size() == 1) {
+            assertThat(carList.get(0).getMoveRound().get(0)).isEqualTo(Integer.valueOf(0));
+        }
+    }
+
+    @Test
     public void decideWinner_whenAllCarHasSameMoveCount_thenReturnAllCar() {
         //given
         Car testCar1 = Car.from("testCar1");
@@ -36,10 +54,10 @@ public class RacingGameServiceTest {
         List<Car> winner = racingGameService.decideWinner(player);
 
         //then
-        Assertions.assertThat(winner.size()).isEqualTo(3);
+        assertThat(winner.size()).isEqualTo(3);
     }
 
-    @Test()
+    @Test
     public void decideWinner_whenOneCarHasMaxMoveCount_thenReturnOneCar() {
         //given
         Car testCar1 = Car.from("testCar1");
@@ -57,6 +75,6 @@ public class RacingGameServiceTest {
         List<Car> winner = racingGameService.decideWinner(player);
 
         //then
-        Assertions.assertThat(winner.size()).isEqualTo(1);
+        assertThat(winner.size()).isEqualTo(1);
     }
 }
