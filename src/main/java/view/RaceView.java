@@ -34,7 +34,7 @@ public class RaceView implements Observer, RaceViewInterface {
     @Override
     public void userRoundsInput() {
         // 안내문 출력
-        System.out.println("시도할 횟수는 몇 회인가요?");
+        System.out.println("시도할 횟수는 몇 회인가요? (100회 이하만 가능합니다.)");
 
         // 유저의 입력을 받기
         Scanner sc = new Scanner(System.in);
