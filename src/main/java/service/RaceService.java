@@ -1,6 +1,9 @@
 package service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 import model.Race;
 import model.RaceModelInterface;
 import observer.Observer;
@@ -30,9 +33,21 @@ public class RaceService implements Subject, RaceServiceInterface {
         return race.getCars();
     }
 
+    // controller가 넘겨준 차 목록을 추가하는 메서드
     @Override
-    public void addCars(String[] cars) {
+    public void addCars(String[] cars) throws IllegalArgumentException {
+        ArrayList<CarServiceInterface> carList = race.getCars();
 
+        // cars의 원소 중에 길이가 5 이상인 것이 있다면 예외를 반환
+        boolean isWrongArgument = Arrays.stream(cars).anyMatch(car -> car.length() > 5);
+        if (isWrongArgument) {
+            throw new IllegalArgumentException();
+        }
+
+        // 그렇지 않다면 차 목록을 추가
+        List<CarService> tempList = Arrays.stream(cars).map(car -> new CarService(car, 0))
+            .collect(Collectors.toList());
+        carList.addAll(tempList);
     }
 
     @Override
