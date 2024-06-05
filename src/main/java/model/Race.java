@@ -2,13 +2,12 @@ package model;
 
 import java.util.ArrayList;
 import observer.Observer;
-import observer.Subject;
 import observer.SubjectModel;
 import service.CarServiceInterface;
 
 public class Race implements SubjectModel, RaceModelInterface {
 
-    private final int numberOfRounds;
+    private int numberOfRounds;
     private ArrayList<CarServiceInterface> cars;
     private ArrayList<Observer> observers;
 
@@ -31,6 +30,11 @@ public class Race implements SubjectModel, RaceModelInterface {
     @Override
     public ArrayList<CarServiceInterface> getCars() {
         return cars;
+    }
+
+    @Override
+    public void setNumberOfRounds(int numberOfRounds) {
+        this.numberOfRounds = numberOfRounds;
     }
 
     @Override
