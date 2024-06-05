@@ -97,10 +97,13 @@ public class RacingGame {
     }
 
     private void checkCarNamePolicy(String[] carNameSplitStringArray) throws IllegalArgumentException {
+        if (carNameSplitStringArray.length == 1 && carNameSplitStringArray[0] == "")
+            throw new IllegalArgumentException(CAR_NAME_EMPTY_EXCEPTION_MESSAGE.toString());
         if(Arrays.stream(carNameSplitStringArray).anyMatch(s -> s.length() > CAR_NAME_MAX_LENGTH))
             throw new IllegalArgumentException(CAR_NAME_LENGTH_EXCEPTION_MESSAGE.toString());
-        if (Arrays.stream(carNameSplitStringArray).distinct().count() != carNameSplitStringArray.length)
+        if (Arrays.stream(carNameSplitStringArray).distinct().count() != carNameSplitStringArray.length) {
             throw new IllegalArgumentException(CAR_NAME_DUPLICATE_EXCEPTION_MESSAGE.toString());
+        }
     }
 
 
