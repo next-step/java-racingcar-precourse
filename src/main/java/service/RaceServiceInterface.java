@@ -11,4 +11,6 @@ public interface RaceServiceInterface {
     public ArrayList<CarServiceInterface> getCars();
 
     public void addCars(String[] cars);
+
+    public void setNumberOfRounds(int numberOfRounds);
 }
