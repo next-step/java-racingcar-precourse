@@ -2,7 +2,7 @@ package util;
 
 import java.util.Random;
 
-public class RandomNumberGenerator implements ITestRandomNumberGenerator {
+public class DefaultRandomNumberGenerator implements IRandomNumberGenerator {
     private static final Random random = new Random();
 
     /**

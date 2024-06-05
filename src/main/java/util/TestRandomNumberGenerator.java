@@ -1,6 +1,6 @@
 package util;
 
-public class TestRandomNumberGenerator implements ITestRandomNumberGenerator{
+public class TestRandomNumberGenerator implements IRandomNumberGenerator {
     private int fixedNumber;
 
     public TestRandomNumberGenerator(int fixedNumber) {
