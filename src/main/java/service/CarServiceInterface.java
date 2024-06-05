@@ -2,5 +2,9 @@ package service;
 
 public interface CarServiceInterface {
 
-    public void move();
+    public String getName();
+
+    public int getProgress();
+
+    public void moveOrNot();
 }
