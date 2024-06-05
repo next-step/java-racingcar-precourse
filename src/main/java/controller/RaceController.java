@@ -38,7 +38,7 @@ public class RaceController implements RaceControllerInterface {
             race.addCars(cars);
         } catch (IllegalArgumentException e) {
             // 5글자를 넘은 경우, error 메시지를 출력하고
-            view.printCarsErrorMessage(e.getMessage());
+            view.printCarsErrorMessage();
             // 다시 view에 입력을 요청
             view.userCarsInput();
         }

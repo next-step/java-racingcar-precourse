@@ -9,6 +9,7 @@ import service.RaceServiceInterface;
 
 public class RaceView implements Observer, RaceViewInterface {
 
+    // View가 참조할 Service와 Controller. 조작은 절대 금지.
     private RaceServiceInterface raceServiceInterface;
     private RaceControllerInterface raceControllerInterface;
 
@@ -19,8 +20,10 @@ public class RaceView implements Observer, RaceViewInterface {
         this.raceControllerInterface = raceControllerInterface;
     }
 
+    // 옵저버 패턴에서 옵저버가 갖는 메서드
     @Override
     public void update() {
+        // update가 발생했으면 즉시 출력
         printProgress();
     }
 
@@ -39,6 +42,7 @@ public class RaceView implements Observer, RaceViewInterface {
         raceControllerInterface.addCars(cars);
     }
 
+    // 사용자의 횟수를 입력받는 메서드
     @Override
     public void userRoundsInput() {
         // 안내문 출력
@@ -63,6 +67,7 @@ public class RaceView implements Observer, RaceViewInterface {
         System.out.println();
     }
 
+    // 전체 과정을 담당하는 메서드
     @Override
     public void printProcess() {
 
