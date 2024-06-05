@@ -10,6 +10,13 @@ public class RaceView implements Observer, RaceViewInterface {
     private RaceServiceInterface raceServiceInterface;
     private RaceControllerInterface raceControllerInterface;
 
+    // 생성자
+    public RaceView(RaceServiceInterface raceServiceInterface,
+        RaceControllerInterface raceControllerInterface) {
+        this.raceServiceInterface = raceServiceInterface;
+        this.raceControllerInterface = raceControllerInterface;
+    }
+
     @Override
     public void update() {
 
