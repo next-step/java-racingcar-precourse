@@ -64,10 +64,6 @@ public class RaceService implements Subject, RaceServiceInterface {
         race.setNumberOfRounds(numberOfRounds);
     }
 
-    public boolean roundValidation() {
-        return true;
-    }
-
     @Override
     public void addObserver(Observer observer) {
 
