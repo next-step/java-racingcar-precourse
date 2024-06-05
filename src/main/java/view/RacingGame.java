@@ -37,7 +37,7 @@ public class RacingGame {
     }
 
     private void printWinner(List<String> winner) {
-
+        System.out.print(WINNER_MESSAGE + " : " + String.join(", ", winner));
     }
 
     private void printRaceResult(String[] carNameStringArray, int trialNumber, Map<String, List<Integer>> raceResult) {
