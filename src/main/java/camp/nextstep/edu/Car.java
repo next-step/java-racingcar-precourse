@@ -22,4 +22,10 @@ public class Car {
         int num = (int) (Math.random() * 10);
         return num >= 4;
     }
+
+    public void race() {
+        if (canIRace()) {
+            racingResult.add("-");
+        }
+    }
 }
