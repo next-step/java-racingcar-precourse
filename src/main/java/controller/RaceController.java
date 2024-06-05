@@ -13,7 +13,8 @@ public class RaceController implements RaceControllerInterface {
 
     @Override
     public void init() {
-
+        view.userCarsInput();
+        view.userRoundsInput();
     }
 
     @Override
