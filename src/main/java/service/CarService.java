@@ -17,7 +17,17 @@ public class CarService implements CarServiceInterface {
     }
 
     @Override
-    public void move() {
+    public String getName() {
+        return null;
+    }
+
+    @Override
+    public int getProgress() {
+        return 0;
+    }
+
+    @Override
+    public void moveOrNot() {
 
     }
 }
