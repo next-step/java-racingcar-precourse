@@ -23,6 +23,12 @@ public class Car {
         this.randomNumberGenerator = randomNumberGenerator;
     }
 
+    public void move() {
+        if(randomNumberGenerator.generate() >= 4) {
+            position++;
+        }
+    }
+
     public String getName() { return name; }
 
     public int getPosition() { return position; }

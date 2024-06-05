@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import util.TestRandomNumberGenerator;
 
 class CarTest {
     @Test
@@ -35,5 +36,50 @@ class CarTest {
         assertThrows(IllegalArgumentException.class, () -> {
             Car car = new Car(input);
         }, "[ERROR] 자동차의 이름은 5자 이하만 가능합니다.");
+    }
+
+    @Test
+    @DisplayName("move over 4 test")
+    void moveTest() throws Exception {
+        // given
+        Car car = new Car("test", new TestRandomNumberGenerator(6));
+        int expectedPosition = 1;
+
+        // when
+        car.move();
+        int result = car.getPosition();
+
+        // then
+        assertThat(result).isEqualTo(expectedPosition);
+    }
+
+    @Test
+    @DisplayName("move under 4 test")
+    void moveUnder4Test() throws Exception {
+        // given
+        Car car = new Car("test", new TestRandomNumberGenerator(2));
+        int expectedPosition = 0;
+
+        // when
+        car.move();
+        int result = car.getPosition();
+
+        // then
+        assertThat(result).isEqualTo(expectedPosition);
+    }
+
+    @Test
+    @DisplayName("move equals 4 test")
+    void moveEquals4Test() throws Exception {
+        // given
+        Car car = new Car("test", new TestRandomNumberGenerator(4));
+        int expectedPosition = 1;
+
+        // when
+        car.move();
+        int result = car.getPosition();
+
+        // then
+        assertThat(result).isEqualTo(expectedPosition);
     }
 }
