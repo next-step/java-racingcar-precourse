@@ -1,6 +1,7 @@
 package service;
 
 import java.util.ArrayList;
+import model.Race;
 import model.RaceModelInterface;
 import observer.Observer;
 import observer.Subject;
@@ -8,6 +9,11 @@ import observer.Subject;
 public class RaceService implements Subject, RaceServiceInterface {
 
     private RaceModelInterface race;
+
+    // 생성자
+    public RaceService() {
+        race = new Race();
+    }
 
     @Override
     public int getNumberOfCars() {
