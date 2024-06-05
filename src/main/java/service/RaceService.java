@@ -22,7 +22,7 @@ public class RaceService implements Subject, RaceServiceInterface {
 
     @Override
     public int getNumberOfRounds() {
-        return 0;
+        return race.getNumberOfRounds();
     }
 
     @Override
