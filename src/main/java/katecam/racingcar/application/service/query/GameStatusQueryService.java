@@ -6,7 +6,6 @@ import katecam.racingcar.application.dto.query.CarPositionRes;
 import katecam.racingcar.application.dto.query.GameTotalResultRes;
 import katecam.racingcar.application.dto.query.GameTurnResultRes;
 import katecam.racingcar.application.port.in.query.GameStatusQuery;
-import katecam.racingcar.application.port.out.GameLoadPort;
 import katecam.racingcar.application.port.out.GameRecordPort;
 import katecam.racingcar.domain.Car;
 import katecam.racingcar.domain.Game;
