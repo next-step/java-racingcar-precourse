@@ -39,6 +39,7 @@ public class RaceService implements Subject, RaceServiceInterface {
     public void addCars(String[] cars) throws IllegalArgumentException {
         ArrayList<CarServiceInterface> carList = race.getCars();
 
+        // 빈 입력이 들어온 경우도 예외를 반환
         if (cars.length == 0) {
             throw new IllegalArgumentException();
         }
