@@ -1,8 +1,5 @@
 package controller;
 
-import java.util.Arrays;
-import java.util.stream.Collectors;
-import service.CarServiceInterface;
 import service.RaceServiceInterface;
 import view.RaceViewInterface;
 
@@ -10,6 +7,12 @@ public class RaceController implements RaceControllerInterface {
 
     private RaceServiceInterface race;
     private RaceViewInterface view;
+
+    // 생성자
+    public RaceController(RaceServiceInterface race, RaceViewInterface view) {
+        this.race = race;
+        this.view = view;
+    }
 
     @Override
     public void init() {

@@ -1,7 +1,6 @@
 package view;
 
 import controller.RaceControllerInterface;
-import java.util.Arrays;
 import java.util.Scanner;
 import observer.Observer;
 import service.RaceServiceInterface;
