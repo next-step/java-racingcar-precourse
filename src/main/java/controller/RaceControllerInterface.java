@@ -12,5 +12,5 @@ public interface RaceControllerInterface {
 
     public void addCars(String[] cars);
 
-    public void setRound(int numberOfRound);
+    public void setRound(String numberOfRound);
 }
