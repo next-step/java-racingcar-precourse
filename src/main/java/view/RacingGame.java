@@ -17,6 +17,7 @@ public class RacingGame {
 
     public Scanner scanner;
     public RacingGameController racingGameController;
+    private final int CAR_NAME_MAX_LENGTH = 5;
 
     public void init() {
         this.scanner = new Scanner(System.in);
@@ -65,13 +66,13 @@ public class RacingGame {
     private int getTrialNumberWithInputString() {
         while (true) {
             try {
-                System.out.println(TRIAL_INPUT_MESSAGE.toString());
+                System.out.println(TRIAL_INPUT_MESSAGE);
                 int trialNumber = Integer.parseInt(scanner.nextLine());
                 if (trialNumber < 1)
                     throw new IllegalArgumentException(INVALID_TRIAL_NUMBER_EXCEPTION_MESSAGE.toString());
                 return trialNumber;
             } catch (NumberFormatException e) {
-                System.out.println(INVALID_TRIAL_NUMBER_EXCEPTION_MESSAGE.toString());
+                System.out.println(INVALID_TRIAL_NUMBER_EXCEPTION_MESSAGE);
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }
@@ -81,9 +82,9 @@ public class RacingGame {
     private String[] getCarListWithInputString() {
         while (true) {
             try {
-                System.out.println(CAR_NAME_INPUT_MESSAGE.toString());
+                System.out.println(CAR_NAME_INPUT_MESSAGE);
                 String[] carNameSplitStringArray = scanner.nextLine().split(",");
-                if(Arrays.stream(carNameSplitStringArray).anyMatch(s -> s.length() > 5))
+                if(Arrays.stream(carNameSplitStringArray).anyMatch(s -> s.length() > CAR_NAME_MAX_LENGTH))
                     throw new IllegalArgumentException(CAR_NAME_LENGTH_EXCEPTION_MESSAGE.toString());
                 if (Arrays.stream(carNameSplitStringArray).distinct().count() != carNameSplitStringArray.length)
                     throw new IllegalArgumentException(CAR_NAME_DUPLICATE_EXCEPTION_MESSAGE.toString());
