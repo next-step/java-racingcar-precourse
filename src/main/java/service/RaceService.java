@@ -30,7 +30,15 @@ public class RaceService implements Subject, RaceServiceInterface {
     }
 
     @Override
-    public void setNumberOfRounds(int numberOfRounds) {
+    public void setNumberOfRounds(String rounds) throws IllegalArgumentException, NumberFormatException {
+        // 수가 아닌 경우
+        int numberOfRounds = Integer.parseInt(rounds);
+
+        // 100보다 큰 입력이 들어온 경우
+        if (numberOfRounds > 100) {
+            throw new IllegalArgumentException();
+        }
+
         race.setNumberOfRounds(numberOfRounds);
     }
 
