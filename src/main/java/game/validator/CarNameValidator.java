@@ -8,13 +8,8 @@ public class CarNameValidator {
     }
 
     public void validate(String input) {
-        validateDelimiter(input);
         validateNameLength(input);
         validateDuplication(input);
-    }
-
-    private void validateDelimiter(String input) {
-
     }
 
     private void validateNameLength(String input) {
