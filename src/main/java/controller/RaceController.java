@@ -42,7 +42,7 @@ public class RaceController implements RaceControllerInterface {
 
     // view에서 입력으로 들어온 횟수를 저장하도록 race에 전달
     @Override
-    public void setRound(int numberOfRound) {
+    public void setRound(String numberOfRound) {
         // 전달 시도
         try {
             race.setNumberOfRounds(numberOfRound);
