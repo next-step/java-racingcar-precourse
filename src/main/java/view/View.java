@@ -13,12 +13,10 @@ public class View {
         return scanner.nextLine();
     }
 
-    public int requestRepeatCount() {
+    public String requestRepeatCount() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("시도할 회수는 몇회인가요?");
-        int repeatCount = scanner.nextInt();
-        scanner.nextLine();
-        return repeatCount;
+        return scanner.nextLine();
     }
 
     public void printResultText() {
