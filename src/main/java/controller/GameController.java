@@ -15,6 +15,7 @@ public class GameController {
 
     public GameController() {
         this.gameDTO = new GameDTO(generateCarDTOList(InputView.inputCarName()), InputView.inputGameIteration());
+        InputView.closeScanner();
     }
 
 
@@ -26,9 +27,9 @@ public class GameController {
         return carDTOArrayList;
     }
 
-    public List<Boolean> getCarsMoveResults() {
-        return this.gameDTO.getCarsMovements();
-    }
+    // public List<Boolean> getCarsMoveResults() {
+    //     return this.gameDTO.getCarsMovements();
+    // }
 
     public Map<String, Integer> recordsCarMovements() {
         List<Boolean> carsMovements = this.gameDTO.getCarsMovements();
@@ -45,12 +46,6 @@ public class GameController {
     private void checkMovements(List<Boolean> carsMovements, int i, List<String> carNames) {
         if (carsMovements.get(i)) { // if car moved
             this.gameDTO.addMovements(carNames.get(i));
-        }
-    }
-
-    private void addDash(List<Boolean> movements, int i, List<String> results) {
-        if (movements.get(i)) {
-            results.set(i, results.get(i) + "-");
         }
     }
 
