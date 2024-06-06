@@ -12,22 +12,28 @@ public class NameValidity {
     private NameValidity() {
 
     }
+
+    public static void resetSameNameHashMap() {
+        sameNameHashMap = new HashMap<>();
+    }
+    //자동차들의 이름 입력 유효성 검사
     public static boolean checkNamesValidity(String names)throws IOException {
         try {
             makeErrorIfNamesIsFalse(names);
             return true;
         }catch (IllegalStateException illegalStateException){
             OutputView.outputLine("[Error]: 올바른 이름의 입력이 아닙니다. 다시 입력하세요");
-            sameNameHashMap = new HashMap<>();
-            return false;
+            resetSameNameHashMap();
+        return false;
         }
     }
-
+    //자동차들의 이름을 입력 받을때 올바르지 않으면 오류 발생
     private static void makeErrorIfNamesIsFalse(String names){
         if(checkCarsInputIsIncorrect(names)){
             throw new IllegalStateException("[Error]: 올바른 입력이 아닙니다.");
         }
     }
+    //입력이 없을 때와 ,으로 끝나는 경우 검사
     private static boolean checkCarsInputIsIncorrect(String names){
         if(checkCarsInputIsEmpty(names)){
             return true;
@@ -37,11 +43,11 @@ public class NameValidity {
         }
         return false;
     }
-
+    //입력이 안주어 질때
     private static boolean checkCarsInputIsEmpty(String names){
         return names.isEmpty();
     }
-
+    // 입력 받은 차들의 이름끝이 ,로 끝나면 true 아니면 false
     private static boolean checkCarsInputEndIsWrong(String names){
         return names.charAt(names.length()-1) == ',';
     }
@@ -53,7 +59,7 @@ public class NameValidity {
             return true;
         }catch (IllegalArgumentException illegalArgumentException){
             OutputView.outputLine("[Error]: 올바른 이름의 입력이 아닙니다. 다시 입력하세요");
-            sameNameHashMap = new HashMap<>();
+            resetSameNameHashMap();
             return false;
         }
     }
@@ -95,7 +101,7 @@ public class NameValidity {
     // 중복이면 true 아니면 false
     private static boolean checkSameName(String name){
         if(sameNameHashMap.containsKey(name)){
-            sameNameHashMap = new HashMap<>();//중복일때 초기화하지 않으면 다음 입력시에도 영향을 줄수 있어 초기화
+            resetSameNameHashMap();//중복일때 초기화하지 않으면 다음 입력시에도 영향을 줄수 있어 초기화
             return true;
         }
         sameNameHashMap.put(name,true);

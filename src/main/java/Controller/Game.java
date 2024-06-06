@@ -55,6 +55,7 @@ public class Game {
     // 한대일 경우 에러 발생
     private void makeErrorIsCarsOne() {
         if (cars.length == 1) {
+            NameValidity.resetSameNameHashMap();
             throw new IllegalStateException("[Error] 자동차 1대로는 경주를 진행할 수 없습니다.");
         }
     }
