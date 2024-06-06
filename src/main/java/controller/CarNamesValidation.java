@@ -4,7 +4,7 @@ import java.util.regex.Pattern;
 import java.util.Set;
 import java.util.HashSet;
 
-public class Validation {
+public class CarNamesValidation {
     private static final int MAX_NUMBER_OF_CAR_NAMES = 5;
 
     public static boolean isWithin5Chars(String carName) {
