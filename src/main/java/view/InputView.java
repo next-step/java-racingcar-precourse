@@ -1,5 +1,6 @@
 package view;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class InputView {
@@ -13,27 +14,29 @@ public class InputView {
         System.out.println("시도할 회수는 몇회인가요?");
     }
 
-    public static String[] inputCarName() {
+    public static List<String> inputCarName() {
         while (true) {
-            String[] splitedCarNames = inputName();
+            printCarInputQuestion();
+            List<String> splitedCarNames = inputName();
             if (splitedCarNames != null) return splitedCarNames;
         }
     }
 
-    private static String[] inputName() {
+    private static List<String> inputName() {
         try {
-            String[] splitedCarNames = scanner.nextLine()
-                    .split(",");
+
+            List<String> splitedCarNames =
+                    List.of(scanner.nextLine()
+                            .split(","));
             validateSplitedCarName(splitedCarNames);
             return splitedCarNames;
         } catch (IllegalArgumentException e) {
             System.out.println("[ERROR] " + e.getMessage());
-            printCarInputQuestion();
         }
         return null;
     }
 
-    private static void validateSplitedCarName(String[] splitCarNmae) {
+    private static void validateSplitedCarName(List<String> splitCarNmae) {
         for (String s : splitCarNmae) {
             validateCarName(s);
         }
@@ -46,6 +49,7 @@ public class InputView {
     }
 
     public static int inputGameIteration() {
+        printIterationInputQuestion();
         Scanner scanner = new Scanner(System.in);
         return scanner.nextInt();
     }
