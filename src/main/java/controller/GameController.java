@@ -6,6 +6,9 @@ import view.InputView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.OptionalInt;
+import java.util.stream.Collectors;
 
 public class GameController {
     private GameDTO gameDTO;
@@ -27,19 +30,22 @@ public class GameController {
         return this.gameDTO.getCarsMovements();
     }
 
-    public List<String> displayCarsMovements() {
+    public Map<String, Integer> recordsCarMovements() {
         List<Boolean> carsMovements = this.gameDTO.getCarsMovements();
         List<String> carNames = this.gameDTO.getCarNames();
-        if (carNames.size() == carsMovements.size()) {
-            List<String> results = new ArrayList<>(carNames.size());
+        // gameDTO에서 Map을 가져와서 해당 결과를 불러와야 한다.
+        if (carsMovements.size() == carNames.size()) {
             for (int i = 0; i < carNames.size(); i++) {
-                // results[i] = carNames.get(i) + " : ";
-                results.add(carNames.get(i) + " : ");
-                addDash(carsMovements, i, results);
+                checkMovements(carsMovements, i, carNames);
             }
-            return results;
         }
-        return null;
+        return this.gameDTO.getRecords();
+    }
+
+    private void checkMovements(List<Boolean> carsMovements, int i, List<String> carNames) {
+        if (carsMovements.get(i)) { // if car moved
+            this.gameDTO.addMovements(carNames.get(i));
+        }
     }
 
     private void addDash(List<Boolean> movements, int i, List<String> results) {
@@ -48,8 +54,29 @@ public class GameController {
         }
     }
 
+    public int getGameIteration() {
+        return this.gameDTO.getIteration();
+    }
 
-    public void play() {
+    public List<String> getWinner() {
+        Map<String, Integer> records = this.gameDTO.getRecords();
+        OptionalInt maxOpt = records.values()
+                .stream()
+                .mapToInt(Integer::intValue)
+                .max();
+        if (maxOpt.isPresent()) {
+            return filterWinner(maxOpt, records);
+        }
+        return null;
+    }
+
+    private List<String> filterWinner(OptionalInt maxOpt, Map<String, Integer> records) {
+        int maxValue = maxOpt.getAsInt();
+        return records.entrySet()
+                .stream()
+                .filter(x -> x.getValue() == maxValue)
+                .map(Map.Entry::getKey)
+                .toList();
     }
 
 }
