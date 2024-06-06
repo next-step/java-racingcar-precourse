@@ -4,9 +4,9 @@ import VIew.OutputView;
 
 import java.io.IOException;
 
-public class CheckNumberValidity {
+public class NumberValidity {
 
-    private CheckNumberValidity() {
+    private NumberValidity() {
 
     }
 

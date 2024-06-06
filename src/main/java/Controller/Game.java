@@ -5,10 +5,10 @@ import Model.Player;
 import Model.Winner;
 import Model.WinnerNumber;
 
-import Util.CheckNameValidity;
-import Util.CheckNumberValidity;
-import Util.MakeRandomNumber;
-import Util.MoveOrNot;
+import Util.NameValidity;
+import Util.NumberValidity;
+import Util.RandomNumber;
+import Util.CarMovement;
 
 import VIew.InputView;
 import VIew.OutputView;
@@ -44,7 +44,7 @@ public class Game {
     public boolean makeCars() throws IOException {
         cars = new Car[beforeCheckCarNames.length];
         for (int i = 0; i < cars.length; i++) {
-            if (!CheckNameValidity.checkNameValidity(beforeCheckCarNames[i])) {
+            if (!NameValidity.checkNameValidity(beforeCheckCarNames[i])) {
                 return false;
             }
             cars[i] = new Car(beforeCheckCarNames[i], "", 0);
@@ -83,7 +83,7 @@ public class Game {
     private void makeCorrectPlayer() throws IOException {
         OutputView.outputLine("시도할 회수는 몇회인가요?");
         String numberOfAttempts;
-        while (!CheckNumberValidity.checkNumberValidity(
+        while (!NumberValidity.checkNumberValidity(
             numberOfAttempts = InputView.inputNumberOfAttempts())) {
             OutputView.outputLine("시도할 회수는 몇회인가요?");
         }
@@ -91,10 +91,10 @@ public class Game {
     }
 
     // 모든 자동차들에 대해서 전지할지 정지할지 정하는 메소드
-    private void allCarMoveOrNot() {
+    private void decideAllCarMoveOrNot() {
         for (Car car : cars) {
-            int randomNumber = MakeRandomNumber.makeRandomNumber();
-            MoveOrNot.checkMoveOrNot(randomNumber, car);
+            int randomNumber = RandomNumber.makeRandomNumber();
+            CarMovement.checkMoveOrNot(randomNumber, car);
         }
     }
 
@@ -133,12 +133,12 @@ public class Game {
     }
 
     // 종합적인 게임
-    public void totalGame() throws IOException {
+    public void startGame() throws IOException {
         makeCorrectCars();
         makeCorrectPlayer();
         OutputView.outputGameResultMessage();
         for (int i = 0; i < player.getTryNumber(); i++) {
-            allCarMoveOrNot();
+            decideAllCarMoveOrNot();
             printAllCarNowStatus();
         }
         makeAndPrintWinner();

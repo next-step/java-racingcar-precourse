@@ -7,9 +7,9 @@ import org.junit.jupiter.api.Test;
 
 import Model.Car;
 
-import Util.CheckNameValidity;
-import Util.CheckNumberValidity;
-import Util.MoveOrNot;
+import Util.NameValidity;
+import Util.NumberValidity;
+import Util.CarMovement;
 
 import java.io.IOException;
 
@@ -31,13 +31,13 @@ class ApplicationTest {
     void 자동차이름입력_테스트()throws IOException{
         // 올바른 입력
         String correctName = "pobi";
-        assertThat(CheckNameValidity.checkNameValidity(correctName)).isEqualTo(true);
+        assertThat(NameValidity.checkNameValidity(correctName)).isEqualTo(true);
         // 공백 포함
         String incorrectNameBlank = "po bi";
-        assertThat(CheckNameValidity.checkNameValidity(incorrectNameBlank)).isEqualTo(false);
+        assertThat(NameValidity.checkNameValidity(incorrectNameBlank)).isEqualTo(false);
         // 영어로 이루어져있지 않음
         String incorrectNameNotEnglish = "4비";
-        assertThat(CheckNameValidity.checkNameValidity(incorrectNameNotEnglish)).isEqualTo(false);
+        assertThat(NameValidity.checkNameValidity(incorrectNameNotEnglish)).isEqualTo(false);
         // 이름 중복
         String incorrectSameName = "same,same";
         Game game = new Game();
@@ -55,22 +55,22 @@ class ApplicationTest {
     void 올바른_자동차경주_시도횟수_테스트()throws IOException{
         // 올바른 입력
         String correctNumber = "1";
-        assertThat(CheckNumberValidity.checkNumberValidity(correctNumber)).isEqualTo(true);
+        assertThat(NumberValidity.checkNumberValidity(correctNumber)).isEqualTo(true);
         // 음수일떄
         String incorrectNumber1 = "-1";
-        assertThat(CheckNumberValidity.checkNumberValidity(incorrectNumber1)).isEqualTo(false);
+        assertThat(NumberValidity.checkNumberValidity(incorrectNumber1)).isEqualTo(false);
         // 0일때
         String incorrectNumber2 = "0";
-        assertThat(CheckNumberValidity.checkNumberValidity(incorrectNumber2)).isEqualTo(false);
+        assertThat(NumberValidity.checkNumberValidity(incorrectNumber2)).isEqualTo(false);
         // int 범위를 넘는경우
         String incorrectNumber3 = "3000000000"; // 30억
-        assertThat(CheckNumberValidity.checkNumberValidity(incorrectNumber3)).isEqualTo(false);
+        assertThat(NumberValidity.checkNumberValidity(incorrectNumber3)).isEqualTo(false);
         // 소수일때
         String incorrectNumber4 = "1.2";
-        assertThat(CheckNumberValidity.checkNumberValidity(incorrectNumber4)).isEqualTo(false);
+        assertThat(NumberValidity.checkNumberValidity(incorrectNumber4)).isEqualTo(false);
         //숫자가 아닐때
         String incorrectNumber5 = "a";
-        assertThat(CheckNumberValidity.checkNumberValidity(incorrectNumber5)).isEqualTo(false);
+        assertThat(NumberValidity.checkNumberValidity(incorrectNumber5)).isEqualTo(false);
     }
     @Test
     @DisplayName("0 ~ 3정지 일때 4 ~ 9일때 전진하는지 테스트")
@@ -78,22 +78,22 @@ class ApplicationTest {
         //0일때
         int num1 = 0;
         Car car1 = new Car("car","",0);
-        MoveOrNot.checkMoveOrNot(num1,car1);
+        CarMovement.checkMoveOrNot(num1,car1);
         assertThat(car1.getNowStatus()).isEqualTo("car : ");
         //3일때
         int num2 = 3;
         Car car2 = new Car("car","",0);
-        MoveOrNot.checkMoveOrNot(num2,car2);
+        CarMovement.checkMoveOrNot(num2,car2);
         assertThat(car2.getNowStatus()).isEqualTo("car : ");
         //4일때
         int num3 = 4;
         Car car3 = new Car("car","",0);
-        MoveOrNot.checkMoveOrNot(num3,car3);
+        CarMovement.checkMoveOrNot(num3,car3);
         assertThat(car3.getNowStatus()).isEqualTo("car : -");
         //9일때
         int num4 = 9;
         Car car4 = new Car("car","",0);
-        MoveOrNot.checkMoveOrNot(num4,car4);
+        CarMovement.checkMoveOrNot(num4,car4);
         assertThat(car4.getNowStatus()).isEqualTo("car : -");
     }
 

@@ -7,9 +7,9 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.regex.Pattern;
 
-public class CheckNameValidity {
+public class NameValidity {
     private static HashMap<String, Boolean> sameNameHashMap = new HashMap<>();
-    private CheckNameValidity() {
+    private NameValidity() {
 
     }
     // 올바른 입력인지 확인해 아니면 에러 메세지 출력
