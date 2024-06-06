@@ -2,6 +2,7 @@ package view;
 
 import java.util.List;
 import java.util.Scanner;
+import model.Car;
 import util.CarNamesParser;
 
 public class GameView {
@@ -12,6 +13,22 @@ public class GameView {
 
         List<String> carNames = CarNamesParser.parse(input);
         return carNames;
+    }
+
+    public void printCarPosition(List<Car> cars) {
+        for(Car car : cars) {
+            System.out.print(car.getName() + " : ");
+            System.out.println(convertPosition(car));
+        }
+        System.out.println();
+    }
+
+    private String convertPosition(Car car) {
+        String convertedPosition = "";
+        for(int i = 0; i < car.getPosition(); i++) {
+            convertedPosition = convertedPosition + "-";
+        }
+        return convertedPosition;
     }
 
 }
