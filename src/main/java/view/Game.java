@@ -16,7 +16,6 @@ public class Game {
         while (true) {
             String[] carNames = Input.scanCarNames();
             try {
-                Validation.checkCarNames(carNames);
                 this.gameController.setCars(carNames);
                 break;
             } catch (IllegalArgumentException e) {
