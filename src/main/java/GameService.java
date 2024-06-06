@@ -37,19 +37,15 @@ public class GameService {
     public void showResult() {
         int maxDistance = cars.get(0).getDistance();
         for (Car car : cars) {
-            if(car.getDistance() > maxDistance){
-                maxDistance = car.getDistance();
-            }
+            if(car.getDistance() > maxDistance){ maxDistance = car.getDistance(); }
         }
         for (Car car : cars) {
-            if (car.getDistance() == maxDistance) {
-                winCarsName.add(car.getName());
-            }
+            if (car.getDistance() == maxDistance) { winCarsName.add(car.getName()); }
         }
         System.out.print("final winner: ");
-        for (String name : winCarsName) {
-            System.out.print(name + " ");
+        for (int i = 0; i < winCarsName.size(); i++) {
+            if(i != winCarsName.size()-1) System.out.print(winCarsName.get(i) + ", ");
+            if(i == winCarsName.size()-1) System.out.print(winCarsName.get(i));
         }
     }
-
 }
