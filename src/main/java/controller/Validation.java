@@ -5,6 +5,7 @@ import java.util.Set;
 import java.util.HashSet;
 
 public class Validation {
+    private static final int MAX_NUMBER_OF_CAR_NAMES = 5;
 
     public static boolean isWithin5Chars(String carName) {
         if (carName.length() <= 5) {
@@ -24,6 +25,13 @@ public class Validation {
             if (!set.add(element)) {
                 return true;
             }
+        }
+        return false;
+    }
+
+    public static boolean isWithinMax(String[] carNames) {
+        if (carNames.length <= MAX_NUMBER_OF_CAR_NAMES) {
+            return true;
         }
         return false;
     }
