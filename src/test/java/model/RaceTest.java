@@ -1,6 +1,7 @@
 package model;
 
 import org.junit.jupiter.api.Test;
+import util.RandomUtil;
 
 import java.util.List;
 
@@ -62,7 +63,7 @@ class RaceTest {
 
         // when // then
         for (int i = 0; i < count; i++) {
-            int temp = race.generateRandomNumber();
+            int temp = RandomUtil.generateRandomNumber();
             assertThat(temp >= 0 && temp < 10).isTrue();
         }
     }

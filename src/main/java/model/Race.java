@@ -1,5 +1,7 @@
 package model;
 
+import util.RandomUtil;
+
 import java.util.*;
 
 public class Race {
@@ -21,12 +23,8 @@ public class Race {
     }
 
     public void moveEachCar(Car car) {
-        int randomNumber = generateRandomNumber();
+        int randomNumber = RandomUtil.generateRandomNumber();
         car.moveForward(randomNumber);
-    }
-    public int generateRandomNumber() {
-        Random random = new Random();
-        return random.nextInt(10);
     }
 
     public List<Car> getCarList() {
