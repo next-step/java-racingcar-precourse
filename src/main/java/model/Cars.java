@@ -1,11 +1,10 @@
 package model;
 
 import java.util.HashMap;
-import java.util.Map;
 
 public class Cars {
 
-    private Map<String, String> cars = new HashMap<>();
+    private HashMap<String, String> cars = new HashMap<>();
 
     public void setCars(String[] carNames) {
         for (String carName : carNames) {
@@ -18,7 +17,7 @@ public class Cars {
         this.cars.put(carName, curDist + "-");
     }
 
-    public Map<String, String> getCars() {
+    public HashMap<String, String> getCars() {
         return this.cars;
     }
 }

@@ -3,6 +3,8 @@ package controller;
 import view.Input;
 import view.Output;
 import model.Cars;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class Game {
 
@@ -21,6 +23,8 @@ public class Game {
             addCarsDistance();
             output.printResult(cars.getCars());
         }
+
+        output.printWinners(getWinners());
     }
 
     public void carNamesProcess() {
@@ -58,5 +62,16 @@ public class Game {
                 this.cars.addDistance(carName);
             }
         }
+    }
+
+    public String[] getWinners() {
+        ArrayList<String> winners = new ArrayList<>();
+        String maxDistance = Collections.max(this.cars.getCars().values());
+        for (String carName : this.cars.getCars().keySet()) {
+            if (this.cars.getCars().get(carName).equals(maxDistance)) {
+                winners.add(carName);
+            }
+        }
+        return winners.stream().toArray(String[]::new);
     }
 }

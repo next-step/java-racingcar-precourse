@@ -1,7 +1,6 @@
 package controller;
 
 import java.util.regex.Pattern;
-import java.util.Set;
 import java.util.HashSet;
 
 public class Validation {
@@ -42,7 +41,7 @@ class CarNamesValidation {
     }
 
     static boolean isDuplication(String[] carNames) {
-        Set<String> set = new HashSet<>();
+        HashSet<String> set = new HashSet<>();
 
         for (String element : carNames) {
             if (!set.add(element)) {

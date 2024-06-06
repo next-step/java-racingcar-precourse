@@ -1,6 +1,6 @@
 package view;
 
-import java.util.Map;
+import java.util.HashMap;
 
 public class Output {
 
@@ -16,7 +16,7 @@ public class Output {
         System.out.println("\n실행 결과");
     }
 
-    public void printResult(Map<String, String> cars) {
+    public void printResult(HashMap<String, String> cars) {
         for (String carName : cars.keySet()) {
             System.out.println(carName + " : " + cars.get(carName));
         }
@@ -24,7 +24,7 @@ public class Output {
     }
 
     public void printWinners(String[] winners) {
-        System.out.print("최종 우승자 : ");
+        System.out.print("\n최종 우승자 : ");
         for (int i = 0; i < winners.length; i++) {
             System.out.print(winners[i]);
             if (i < winners.length - 1) {
