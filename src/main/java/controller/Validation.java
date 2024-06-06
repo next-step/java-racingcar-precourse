@@ -20,6 +20,13 @@ public class Validation {
         }
         return true;
     }
+
+    public static boolean checkNumber(String number) {
+        if (NumberValidation.isDigit(number) && NumberValidation.isWithinMax(number)) {
+            return true;
+        }
+        return false;
+    }
 }
 
 class CarNamesValidation {
