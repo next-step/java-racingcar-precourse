@@ -1,7 +1,7 @@
 package config;
 
 import controller.RacingCarController;
-import domain.service.RacingCarService;
+import domain.RacingCarService;
 import repository.RacingCarRepository;
 import repository.RacingCarRepositoryImpl;
 

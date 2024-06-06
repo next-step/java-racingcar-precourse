@@ -1,6 +1,6 @@
 package controller;
 
-import domain.service.RacingCarService;
+import domain.RacingCarService;
 
 public class RacingCarController {
 
