@@ -12,4 +12,11 @@ public class NumberValidation {
             return false;
         }
     }
+
+    public static boolean isWithinMax(String number) {
+        if (Integer.parseInt(number) <= MAX_NUMBER) {
+            return true;
+        }
+        return false;
+    }
 }
