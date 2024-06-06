@@ -73,10 +73,13 @@ public class Game {
     // 올바르게 입력을 받는 메소드
     private void makeCorrectCars() throws IOException {
         do {
+            beforeCheckCarNames = null;
             OutputView.outputInputCarNameMessage();
             String names = InputView.inputName();
-            separateName(names);
-        } while (!makeCars());
+            if(NameValidity.checkNamesValidity(names)){
+                separateName(names);
+            }
+        } while (beforeCheckCarNames == null || !makeCars());
     }
 
     // 올바른 횟수를 입력 받는 메소드

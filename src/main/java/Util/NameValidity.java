@@ -12,18 +12,53 @@ public class NameValidity {
     private NameValidity() {
 
     }
+    public static boolean checkNamesValidity(String names)throws IOException {
+        try {
+            makeErrorIfNamesIsFalse(names);
+            return true;
+        }catch (IllegalStateException illegalStateException){
+            OutputView.outputLine("[Error]: 올바른 이름의 입력이 아닙니다. 다시 입력하세요");
+            sameNameHashMap = new HashMap<>();
+            return false;
+        }
+    }
+
+    private static void makeErrorIfNamesIsFalse(String names){
+        if(checkCarsInputIsIncorrect(names)){
+            throw new IllegalStateException("[Error]: 올바른 입력이 아닙니다.");
+        }
+    }
+    private static boolean checkCarsInputIsIncorrect(String names){
+        if(checkCarsInputIsEmpty(names)){
+            return true;
+        }
+        if(checkCarsInputEndIsWrong(names)){
+            return true;
+        }
+        return false;
+    }
+
+    private static boolean checkCarsInputIsEmpty(String names){
+        return names.isEmpty();
+    }
+
+    private static boolean checkCarsInputEndIsWrong(String names){
+        return names.charAt(names.length()-1) == ',';
+    }
+
     // 올바른 입력인지 확인해 아니면 에러 메세지 출력
     public static boolean checkNameValidity(String name)throws IOException {
         try {
-            makeErrorIfFalse(name);
+            makeErrorIfNameIsFalse(name);
             return true;
         }catch (IllegalArgumentException illegalArgumentException){
             OutputView.outputLine("[Error]: 올바른 이름의 입력이 아닙니다. 다시 입력하세요");
+            sameNameHashMap = new HashMap<>();
             return false;
         }
     }
     // 올바르지 않으면 에러 발생
-    private static void makeErrorIfFalse(String name){
+    private static void makeErrorIfNameIsFalse(String name){
         if(!checkTotalNameValidity(name)){
             throw new IllegalArgumentException("[Error]: 올바른 입력이 아닙니다.");
         }
@@ -44,6 +79,7 @@ public class NameValidity {
         }
         return true;
     }
+
     // 5자리를 넘는지 검사
     private static boolean checkNameLength(String name) {
         return name.length() > 5;
@@ -52,9 +88,9 @@ public class NameValidity {
     private static boolean checkOnlyEnglish(String name) {
         return Pattern.matches("^[a-zA-z]*$",name);
     }
-    // 공백을 포함하면 true 아니면 false 또는 null이면 true
+    // 공백, null, "" 인지 검사
     private static boolean checkBlankAndNull(String name) {
-        return name == null || name.contains(" ");
+        return name.contains(" ") || name.isEmpty();
     }
     // 중복이면 true 아니면 false
     private static boolean checkSameName(String name){
