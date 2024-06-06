@@ -15,6 +15,12 @@ public class GameView {
         return carNames;
     }
 
+    public int getNumberOfMoves() {
+        int numberOfMoves = scanner.nextInt();
+        scanner.nextLine();  // 버퍼 비우기
+        return numberOfMoves;
+    }
+
     public void printCarPosition(List<Car> cars) {
         for(Car car : cars) {
             System.out.print(car.getName() + " : ");
