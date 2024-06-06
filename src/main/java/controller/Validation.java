@@ -7,7 +7,7 @@ import java.util.HashSet;
 public class Validation {
 
     public static void checkCarNames(String[] carNames) {
-        if (!CarNamesValidation.isWithinMax(carNames) ||
+        if (!CarNamesValidation.isWithinRange(carNames) ||
             CarNamesValidation.isDuplication(carNames)) {
             throw new IllegalArgumentException();
         }
@@ -20,7 +20,7 @@ public class Validation {
     }
 
     public static void checkNumber(String number) {
-        if (!NumberValidation.isDigit(number) || !NumberValidation.isWithinMax(number)) {
+        if (!NumberValidation.isDigit(number) || !NumberValidation.isWithinRange(number)) {
             throw new IllegalArgumentException();
         }
     }
@@ -52,8 +52,8 @@ class CarNamesValidation {
         return false;
     }
 
-    static boolean isWithinMax(String[] carNames) {
-        if (carNames.length <= MAX_NUMBER_OF_CAR_NAMES) {
+    static boolean isWithinRange(String[] carNames) {
+        if (carNames.length > 0 && carNames.length <= MAX_NUMBER_OF_CAR_NAMES) {
             return true;
         }
         return false;
@@ -73,8 +73,8 @@ class NumberValidation {
         }
     }
 
-    static boolean isWithinMax(String number) {
-        if (Integer.parseInt(number) <= MAX_NUMBER) {
+    static boolean isWithinRange(String number) {
+        if (Integer.parseInt(number) > 0 && Integer.parseInt(number) <= MAX_NUMBER) {
             return true;
         }
         return false;
