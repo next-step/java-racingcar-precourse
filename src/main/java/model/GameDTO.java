@@ -27,5 +27,13 @@ public class GameDTO {
         return carsMovements;
     }
 
+    public List<String> getCarNames() {
+        List<String> carNameList = new ArrayList<>();
+        for (CarDTO car : cars) {
+            carNameList.add(car.getName());
+        }
+        return carNameList;
+    }
+
 
 }
