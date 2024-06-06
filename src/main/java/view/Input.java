@@ -4,14 +4,14 @@ import java.util.Scanner;
 
 public class Input {
 
-    private static Scanner scanner = new Scanner(System.in);
+    private Scanner scanner = new Scanner(System.in);
 
-    public static String[] scanCarNames() {
+    public String[] scanCarNames() {
         String input = scanner.nextLine();
         return input.split(",");
     }
 
-    public static String scanNumber() {
+    public String scanNumber() {
         return scanner.nextLine();
     }
 }
