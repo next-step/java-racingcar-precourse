@@ -13,6 +13,11 @@ public class Cars {
         }
     }
 
+    public void addDistance(String carName) {
+        String curDist = this.cars.get(carName);
+        this.cars.put(carName, curDist+"-");
+    }
+
     public Map<String, String> getCars() {
         return this.cars;
     }
