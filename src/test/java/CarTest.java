@@ -15,7 +15,9 @@ public class CarTest {
     @Test
     @DisplayName("car move test")
     void carMoveValid() {
+        // when
         car.move();
+        // then
         Assertions.assertThat(car.getDistance()).isEqualTo(1);
     }
 }
