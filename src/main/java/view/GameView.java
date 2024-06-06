@@ -18,17 +18,21 @@ public class GameView {
     public int getNumberOfMoves() {
         while(true) {
             try {
-                try {
-                    int numberOfMoves = scanner.nextInt();
-                    scanner.nextLine();  // 버퍼 비우기
-                    return numberOfMoves;
-                } catch (Exception e) {
-                    scanner.nextLine();  // 잘못된 버퍼 비우기
-                    throw new IllegalArgumentException("[ERROR] 정수만 입력할 수 있습니다.");
-                }
+                return readNumberOfMoves();
             } catch(IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }
+        }
+    }
+
+    private int readNumberOfMoves() {
+        try {
+            int numberOfMoves = scanner.nextInt();
+            scanner.nextLine();  // 버퍼 비우기
+            return numberOfMoves;
+        } catch (Exception e) {
+            scanner.nextLine();  // 잘못된 버퍼 비우기
+            throw new IllegalArgumentException("[ERROR] 정수만 입력할 수 있습니다.");
         }
     }
 
