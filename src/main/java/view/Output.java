@@ -20,6 +20,16 @@ public class Output {
         System.out.println();
     }
 
+    public static void printWinners(String[] winners) {
+        System.out.print("최종 우승자 : ");
+        for (int i = 0; i < winners.length; i++) {
+            System.out.print(winners[i]);
+            if (i < winners.length - 1) {
+                System.out.print(", ");
+            }
+        }
+    }
+
     public static void printException() {
         System.out.println("[ERROR] 잘못된 입력입니다. 다시 입력해 주세요.");
     }
