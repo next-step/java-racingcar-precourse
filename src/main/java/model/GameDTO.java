@@ -1,19 +1,20 @@
 package model;
 
-import java.sql.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class GameDTO {
     private List<CarDTO> cars;
     private final int iteration;
+    private Map<String, Integer> records;
 
     public GameDTO(List<CarDTO> cars, int iteration) {
         this.cars = cars;
         this.iteration = iteration;
+        this.records = new LinkedHashMap<>();
+        for (CarDTO car : cars) {
+            records.put(car.getName(), 0);
+        }
     }
-
 
     private boolean checkMovements(int randomNumber) {
         return randomNumber >= 4;
@@ -35,5 +36,16 @@ public class GameDTO {
         return carNameList;
     }
 
+    public int getIteration() {
+        return this.iteration;
+    }
 
+
+    public Map<String, Integer> getRecords() {
+        return records;
+    }
+
+    public void addMovements(String carName) {
+        this.records.replace(carName, this.records.get(carName) + 1);
+    }
 }

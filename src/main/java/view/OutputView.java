@@ -3,9 +3,29 @@ package view;
 import controller.GameController;
 import model.GameDTO;
 
+import java.util.Map;
+
 public class OutputView {
-    // TODO: Controller를 통해 GameDTO의 정보를 받아와서 사용자에게 출력해야 한다.
     public static void printResult(GameController gameController) {
-        // gameController.displayCarsMovements(gameController.)
+        int gameIteration = gameController.getGameIteration();
+        for (int i = 0; i < gameIteration; i++) {
+            Map<String, Integer> gameRecords = gameController.recordsCarMovements();
+            for (String name : gameRecords.keySet()) {
+                System.out.print(name + " : ");
+                printDash(name, gameRecords);
+            }
+            System.out.println();
+        }
+        System.out.println("최종 우승자 : " + gameController.getWinner());
     }
+
+    private static void printDash(String name, Map<String, Integer> gameRecords) {
+        int dashNumber = gameRecords.get(name);
+        for (int j = 0; j < dashNumber; j++) {
+            System.out.print("-");
+        }
+        System.out.println();
+    }
+
+
 }

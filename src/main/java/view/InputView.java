@@ -24,10 +24,8 @@ public class InputView {
 
     private static List<String> inputName() {
         try {
-
-            List<String> splitedCarNames =
-                    List.of(scanner.nextLine()
-                            .split(","));
+            List<String> splitedCarNames = List.of(scanner.nextLine()
+                    .split(","));
             validateSplitedCarName(splitedCarNames);
             return splitedCarNames;
         } catch (IllegalArgumentException e) {
