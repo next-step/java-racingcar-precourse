@@ -12,7 +12,6 @@ public class GameService {
         this.tryCount = tryCount;
         for (String carName : carNames) {
             Car newCar = new Car(carName);
-            System.out.println("car: " + newCar);
             cars.add(newCar);
         }
     }

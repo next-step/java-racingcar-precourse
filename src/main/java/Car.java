@@ -11,6 +11,13 @@ public class Car {
     public void move(){
         this.distance += 1;
     }
+    public void showDistance() {
+        System.out.print(this.name + " : ");
+        for (int i = 0; i < this.distance; i++) {
+            System.out.print("-");
+        }
+        System.out.println();
+    }
 
     public String getName() {
         return name;
@@ -20,12 +27,12 @@ public class Car {
         return distance;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setDistance(int distance) {
-        this.distance = distance;
+    @Override
+    public String toString() {
+        return "Car{" +
+                "name='" + name + '\'' +
+                ", distance=" + distance +
+                '}';
     }
 }
 
