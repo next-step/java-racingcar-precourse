@@ -4,28 +4,25 @@ import java.util.regex.Pattern;
 import java.util.Set;
 import java.util.HashSet;
 
-
 public class Validation {
 
-    public static boolean checkCarNames(String[] carNames) {
+    public static void checkCarNames(String[] carNames) {
         if (!CarNamesValidation.isWithinMax(carNames) ||
             CarNamesValidation.isDuplication(carNames)) {
-            return false;
+            throw new IllegalArgumentException();
         }
         for (String carName : carNames) {
             if (!CarNamesValidation.isEnglish(carName) ||
                 !CarNamesValidation.isWithin5Chars(carName)) {
-                return false;
+                throw new IllegalArgumentException();
             }
         }
-        return true;
     }
 
-    public static boolean checkNumber(String number) {
-        if (NumberValidation.isDigit(number) && NumberValidation.isWithinMax(number)) {
-            return true;
+    public static void checkNumber(String number) {
+        if (!NumberValidation.isDigit(number) || !NumberValidation.isWithinMax(number)) {
+            throw new IllegalArgumentException();
         }
-        return false;
     }
 }
 
