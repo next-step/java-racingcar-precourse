@@ -10,7 +10,13 @@ public class Game {
 
     public void start() {
         carNamesProcess();
+
         numberProcess();
+
+        Output.printResultProgress();
+        for(int i=0; i<number; i++) {
+            Output.printResult(this.gameController.addCarsDistance());
+        }
     }
 
     public void carNamesProcess() {
