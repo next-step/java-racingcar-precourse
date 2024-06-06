@@ -1,4 +1,4 @@
-package Model;
+package racingcar.model;
 
 public class Car {
     private static final int MINIMUM_NUM = 4;
