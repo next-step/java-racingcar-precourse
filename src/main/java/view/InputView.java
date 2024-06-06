@@ -62,7 +62,10 @@ public class InputView {
 
     public static int inputGameIteration() {
         printIterationInputQuestion();
-        Scanner scanner = new Scanner(System.in);
+        while (!scanner.hasNextInt()) {
+            System.out.println("[ERROR] 숫자를 입력해주세요.");
+            scanner.next();
+        }
         return scanner.nextInt();
     }
 
