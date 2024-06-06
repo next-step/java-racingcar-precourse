@@ -25,7 +25,6 @@ Getter, Setter 생략
   * `public List<String> getCarNames()`: 자동차 이름 입력받아서 `Utils.parseCarNames`를 통해 자동차 이름 리스트 반환
   * `public int getNumberOfMoves()`: 이동 횟수 입력받는 메서드
     * 에러처리: 숫자가 아닌 경우 `IllegalArgumentException` 발생
-  * `public void printRaceStart()`: 게임 시작을 위한 출력문
   * `public void printCarPostion(List<Car> cars)`: 게임 진행 중 차의 위치를 출력하는 메서드
   * `public void printWinners(List<Car> winners)`: 우승자를 출력하는 메서드
 
@@ -53,19 +52,21 @@ Getter, Setter 생략
   * `public void moveCars(List<Car> cars)`: 자동차들을 전진시키는 메서드
   * `public List<Car> findWinners(List<Car> cars)`: 자동차들 중 우승자를 찾는 메서드
     * 에러처리: 우승자가 없는 경우 `IllegalStateException` 발생
+  * `public List<Car> createCarObject(List<String> carNames)`: 자동차 이름 리스트로 `Car` 객체를 생성하는 메서드
 
 
 
 ### 5. util 패키지
 
-#### Utils 클래스
+#### RandomNumberGenerator 클래스
 
 * 메서드
-  * `public static int generateRandomNumber()`: 0에서 9 사이의 무작위 값을 생성하는 메서드
-  * `public static List<String> parseCarNames(String input)`: 입력된 문자열을 파싱해서 자동차 이름의 List를 반환하는 메서드
-    * 에러처리
-      * 자동차 이름이 쉼표(,)로 구문되어있지 않은 경우 `IllegalArgumentException` 발생
-      * 기타 잘못된 input인 경우 `IllegalArgumentException` 발생
+  * `public int generate()`: 0에서 9 사이의 무작위 값을 생성하는 메서드
+
+#### CarNamesParser 클래스
+
+* `public static List<String> parse(String input)`: 입력된 문자열을 파싱해서 자동차 이름의 List를 반환하는 메서드
+  * 에러처리: 잘못된 input인 경우 `IllegalArgumentException` 발생
 
 
 
