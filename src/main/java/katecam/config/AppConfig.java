@@ -1,7 +1,7 @@
 package katecam.config;
 
-import katecam.racingcar.adaptor.in.RacingCarController;
-import katecam.racingcar.adaptor.out.InMemoryGameAdaptor;
+import katecam.racingcar.adapter.in.RacingCarController;
+import katecam.racingcar.adapter.out.InMemoryGameAdaptor;
 import katecam.racingcar.application.port.in.command.GameInitializationUseCase;
 import katecam.racingcar.application.port.in.command.GameTurnPlayUseCase;
 import katecam.racingcar.application.port.in.query.GameStatusQuery;

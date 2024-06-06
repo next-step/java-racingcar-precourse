@@ -1,4 +1,4 @@
-package katecam.racingcar.adaptor.in;
+package katecam.racingcar.adapter.in;
 
 import java.util.List;
 import katecam.racingcar.application.dto.command.GameInitializationReq;

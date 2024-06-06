@@ -1,4 +1,4 @@
-package katecam.racingcar.adaptor.out;
+package katecam.racingcar.adapter.out;
 
 import katecam.racingcar.application.port.out.GameRecordPort;
 import katecam.racingcar.application.port.out.GameLoadPort;

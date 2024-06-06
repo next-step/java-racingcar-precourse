@@ -1,6 +1,6 @@
 package katecam;
 
-import katecam.racingcar.adaptor.in.RacingCarController;
+import katecam.racingcar.adapter.in.RacingCarController;
 import katecam.config.AppConfig;
 
 public class Application {
