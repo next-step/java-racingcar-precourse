@@ -36,7 +36,7 @@ public class NameValidity {
         if(!checkOnlyEnglish(name)){// 영어가 아닌 문자 포함
             return false;
         }
-        if(checkBlank(name)){ // 공백 포함
+        if(checkBlankAndNull(name)){ // 공백 포함
             return false;
         }
         if(checkSameName(name)){
@@ -52,9 +52,9 @@ public class NameValidity {
     private static boolean checkOnlyEnglish(String name) {
         return Pattern.matches("^[a-zA-z]*$",name);
     }
-    // 공백을 포함하면 true 아니면 false
-    private static boolean checkBlank(String name) {
-        return name.contains(" ");
+    // 공백을 포함하면 true 아니면 false 또는 null이면 true
+    private static boolean checkBlankAndNull(String name) {
+        return name == null || name.contains(" ");
     }
     // 중복이면 true 아니면 false
     private static boolean checkSameName(String name){
