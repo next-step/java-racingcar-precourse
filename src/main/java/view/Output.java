@@ -12,8 +12,11 @@ public class Output {
         System.out.println("시도할 횟수는 몇회인가요?");
     }
 
+    public static void printResultProgress() {
+        System.out.println("\n실행 결과");
+    }
+
     public static void printResult(Map<String, String> cars) {
-        System.out.println("실행 결과");
         for (String carName : cars.keySet()) {
             System.out.println(carName + " : " + cars.get(carName));
         }
