@@ -10,4 +10,8 @@ public class Input {
         String input = scanner.nextLine();
         return input.split(",");
     }
+
+    public static String inputNumber() {
+        return scanner.nextLine();
+    }
 }
