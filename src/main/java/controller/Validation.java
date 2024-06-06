@@ -8,7 +8,17 @@ import java.util.HashSet;
 public class Validation {
 
     public static boolean checkCarNames(String[] carNames) {
-        return false;
+        if (!CarNamesValidation.isWithinMax(carNames) ||
+            CarNamesValidation.isDuplication(carNames)) {
+            return false;
+        }
+        for (String carName : carNames) {
+            if (!CarNamesValidation.isEnglish(carName) ||
+                !CarNamesValidation.isWithin5Chars(carName)) {
+                return false;
+            }
+        }
+        return true;
     }
 }
 
