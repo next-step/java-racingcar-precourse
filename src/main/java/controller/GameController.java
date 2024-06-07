@@ -13,9 +13,8 @@ import java.util.stream.Collectors;
 public class GameController {
     private GameDTO gameDTO;
 
-    public GameController() {
-        this.gameDTO = new GameDTO(generateCarDTOList(InputView.inputCarName()), InputView.inputGameIteration());
-        InputView.closeScanner();
+    public GameController(List<String> carNames, int iteration) {
+        this.gameDTO = new GameDTO(generateCarDTOList(carNames), iteration);
     }
 
 
