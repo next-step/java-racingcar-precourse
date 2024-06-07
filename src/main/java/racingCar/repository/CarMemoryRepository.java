@@ -2,10 +2,7 @@ package racingCar.repository;
 
 import racingCar.domain.CarDTO;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class CarMemoryRepository implements CarRepository {
     private final Map<String, CarDTO> carDTOMap = new HashMap<>();
@@ -32,6 +29,20 @@ public class CarMemoryRepository implements CarRepository {
     @Override
     public List<CarDTO> findAll() {
         return new ArrayList<CarDTO>(carDTOMap.values());
+    }
+
+    /**
+     * map에 저장된 객체 중, pos값이 가장 큰 객체를 하나 반환
+     * @return pos가 가장 큰 객체
+     */
+    @Override
+    public Optional<CarDTO> findOneMaxPos() {
+        return Optional.ofNullable(
+                Collections.max(
+                        carDTOMap.values(),
+                        Comparator.comparing(CarDTO::getPos)
+                )
+        );
     }
 
     /**
