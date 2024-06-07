@@ -2,6 +2,7 @@ package model;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
 
@@ -12,6 +13,7 @@ public class Cars {
     public Cars(String[] carNames) {
         validateCarCount(carNames);
         validateDuplicateCarName(carNames);
+        cars = convertToCarList(carNames);
     }
 
     private void validateCarCount(String[] carNames) {
@@ -30,5 +32,11 @@ public class Cars {
         return (int) Arrays.stream(carNames)
             .distinct()
             .count();
+    }
+
+    private List<Car> convertToCarList(String[] carNames) {
+        return Arrays.stream(carNames)
+            .map(Car::new)
+            .collect(Collectors.toList());
     }
 }
