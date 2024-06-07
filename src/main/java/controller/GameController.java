@@ -25,7 +25,7 @@ public class GameController {
     /**
      * 사용자 기본 입력을 받는 게임 초기화 메서드
      */
-    public void initializeGame() {
+    private void initializeGame() {
         List<String> carNames = getValidCarNames();
         cars = service.createCarObject(carNames);
         numberOfMoves = view.getNumberOfMoves();
@@ -51,7 +51,7 @@ public class GameController {
     /**
      * 게임 진행 메서드
      */
-    public void playGame() {
+    private void playGame() {
         view.printResultMessage();
         for(int i = 0; i < numberOfMoves; i++) {
             service.moveCars(cars);
@@ -62,7 +62,7 @@ public class GameController {
     /**
      * 게임의 결과(최종 우승자)를 출력하는 메서드
      */
-    public void printResult() {
+    private void printResult() {
         view.printWinners(service.findWinners(cars));
     }
 
