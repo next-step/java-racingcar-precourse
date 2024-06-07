@@ -1,6 +1,8 @@
 package view;
 
+import exception.ExceptionHandler;
 import model.RacingCar;
+import util.InputValidator;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -15,11 +17,18 @@ public class UserInputView {
 
     public ArrayList<RacingCar> getRacingCars() {
         System.out.println(GET_CAR_NAME_MSG);
-        String carNames = scanner.nextLine();
+        String carNameInput = scanner.nextLine();
 
-        //TODO: 입력에 대한 예외처리
+        String[] carNames  = carNameInput.split(DELIMITER);
 
-        return returnRacingCars(carNames.split(DELIMITER));
+        try {
+            if(InputValidator.validateCarName(carNames))
+                return returnRacingCars(carNames);
+        }catch(IllegalArgumentException | IllegalStateException e){
+            ExceptionHandler.showErrorMsg(e);
+            return getRacingCars();
+        }
+        return null;
     }
 
     private ArrayList<RacingCar> returnRacingCars(String[] carNames) {
@@ -32,11 +41,17 @@ public class UserInputView {
 
     public int getAttemptNumber() {
         System.out.println(GET_ATTEMPT_NUM_MSG);
+        int attemptNum = Integer.parseInt(scanner.nextLine());
 
-        //TODO: 입력에 대한 예외처리
+        try{
+            if(InputValidator.validateAttemptNum(attemptNum))
+                return attemptNum;
+        } catch (IllegalArgumentException e){
+            ExceptionHandler.showErrorMsg(e);
+            return getAttemptNumber();
+        }
 
-        return Integer.parseInt(scanner.nextLine());
+        return 0;
     }
-
 
 }
