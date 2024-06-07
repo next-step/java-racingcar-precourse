@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Random;
 
 public class Race {
@@ -31,4 +32,12 @@ public class Race {
             System.out.println(car.getName() + car.toString());
         }
     }
+
+    public int findMaxDistance(Car[] cars) {
+        return Arrays.stream(cars)
+            .mapToInt(Car::getDistance)
+            .max()
+            .orElse(Integer.MIN_VALUE);
+    }
+
 }
