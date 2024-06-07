@@ -12,8 +12,7 @@ public class CarService implements CarServiceInterface {
         car = new Car(name, progress);
     }
 
-    public void goForward() {
-
+    private void goForward() {
     }
 
     @Override
@@ -28,6 +27,13 @@ public class CarService implements CarServiceInterface {
 
     @Override
     public void moveOrNot() {
+        // 랜덤 변수를 생성한 후
+        int randomNumber = (int) (Math.random() * 10);
 
+        // 만약 4 이상이라면
+        if (randomNumber > 3) {
+            // 앞으로 전진한다.
+            goForward();
+        }
     }
 }
