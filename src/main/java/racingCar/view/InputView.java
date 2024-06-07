@@ -27,8 +27,6 @@ public class InputView {
                 System.out.println(e.getMessage());
             }
         }
-        scanner.close();
-
         return carNames;
     }
 
@@ -51,8 +49,6 @@ public class InputView {
                 System.out.println(e.getMessage());
             }
         }
-        scanner.close();
-
         return tryNum;
     }
 }
