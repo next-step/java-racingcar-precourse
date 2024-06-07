@@ -93,17 +93,24 @@ public class RaceService implements Subject, RaceServiceInterface {
         race.setNumberOfRounds(numberOfRounds);
     }
 
+    // 차들의 정보가 바뀐 후에 실행되는 메서드. 단일 책임 + 확장을 위해 메서드를 분리
     private void carsChanged() {
+        // 옵저버들에게 알림
         notifyObservers();
     }
 
     // cars를 하나씩 출발시키는 작업을 n번 반복하는 메서드
     @Override
     public void startRace() {
+        // 필요한 변수들
         int numberOfRounds = race.getNumberOfRounds();
+        List<CarServiceInterface> cars = race.getCars();
 
+        // 횟수만큼 반복
         for (int i = 0; i < numberOfRounds; i++) {
-
+            // 모든 차들에 대해 경주 시작
+            cars.stream().forEach(car -> car.moveOrNot());
+            // 차들의 변경이 일어났으므로 이를 처리하는 메서드를 호출
             carsChanged();
         }
     }
