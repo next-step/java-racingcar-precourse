@@ -31,6 +31,6 @@ public class CarMemoryRepository implements CarRepository {
      */
     @Override
     public List<CarDTO> findAll() {
+        return new ArrayList<CarDTO>(carDTOMap.values());
     }
-
 }
