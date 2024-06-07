@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.List;
 import observer.Observer;
 import observer.SubjectModel;
 import service.CarServiceInterface;
@@ -8,8 +9,8 @@ import service.CarServiceInterface;
 public class Race implements SubjectModel, RaceModelInterface {
 
     private int numberOfRounds;
-    private ArrayList<CarServiceInterface> cars;
-    private ArrayList<Observer> observers;
+    private List<CarServiceInterface> cars;
+    private List<Observer> observers;
 
     public Race() {
         this.numberOfRounds = 0;
@@ -28,7 +29,7 @@ public class Race implements SubjectModel, RaceModelInterface {
     }
 
     @Override
-    public ArrayList<CarServiceInterface> getCars() {
+    public List<CarServiceInterface> getCars() {
         return cars;
     }
 
@@ -38,7 +39,7 @@ public class Race implements SubjectModel, RaceModelInterface {
     }
 
     @Override
-    public ArrayList<Observer> getObservers() {
+    public List<Observer> getObservers() {
         return observers;
     }
 }
