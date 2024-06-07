@@ -20,4 +20,9 @@ public class Input {
             cars[i] = new Car(names[i], 0);
         }
     }
+
+    public int numOfPlayers(String str) {
+        String[] names = str.split(",");
+        return names.length;
+    }
 }
