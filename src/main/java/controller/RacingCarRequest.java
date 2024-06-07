@@ -20,9 +20,5 @@ public class RacingCarRequest {
 
     public record RacingRoundRequest(int round) {
 
-        public static RacingCarCommand.Racing from() {
-
-            return null;
-        }
     }
 }
