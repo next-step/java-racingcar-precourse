@@ -1,6 +1,13 @@
+import config.RacingCarConfig;
+import controller.RacingCarFrontController;
+
 public class application {
 
     public static void main(String[] args) {
-        System.out.println("Hello, World!");
+
+        RacingCarFrontController racingCarFrontController = new RacingCarFrontController(
+            RacingCarConfig.getRacingCarController());
+
+        racingCarFrontController.run();
     }
 }
