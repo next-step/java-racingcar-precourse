@@ -1,6 +1,5 @@
 package service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public interface RaceServiceInterface {
@@ -9,7 +8,7 @@ public interface RaceServiceInterface {
 
     public int getNumberOfRounds();
 
-    public ArrayList<CarServiceInterface> getCars();
+    public List<CarServiceInterface> getCars();
 
     public List<CarServiceInterface> getWinners();
 
