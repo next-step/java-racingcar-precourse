@@ -4,6 +4,7 @@ package camp.nextstep.edu;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class UI {
@@ -78,7 +79,15 @@ public class UI {
     }
 
     public void race(final List<Car> carList, int raceCount) {
-        //TODO: raceCount 에 맞게 루프를 돌면서 경기를 진행 한다.
+        System.out.println("실행 결과");
+        IntStream.range(0, raceCount)
+                .forEach(count -> {
+                    for (Car c : carList) {
+                        c.race();
+                        System.out.println(c.racingProgressStatus());
+                    }
+                    System.out.println();
+                });
     }
 
     public void printWinner(List<Car> carList) {

@@ -75,4 +75,28 @@ public class UITest {
             ).map(Arguments::of);
         }
     }
+
+    @ParameterizedTest
+    @ArgumentsSource(RaceArgumentsProvider.class)
+    public void raceTest(List<Car> carNames, int raceCount) {
+        ui.race(carNames, raceCount);
+    }
+
+    public static class RaceArgumentsProvider implements ArgumentsProvider {
+        @Override
+        public Stream<? extends Arguments> provideArguments(ExtensionContext context) {
+            Object [][] data = {
+                    {
+                        List.of(new Car("a-0"), new Car("a-1"), new Car("a-2")), 1
+                    },
+                    {
+                            List.of(new Car("b-0"), new Car("b-1"), new Car("b-2")), 5
+                    },
+                    {
+                            List.of(new Car("c-0"), new Car("c-1"), new Car("c-2")), 10
+                    },
+            };
+            return Stream.of(data).map(Arguments::of);
+        }
+    }
 }
