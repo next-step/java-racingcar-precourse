@@ -1,6 +1,7 @@
 package controller;
 
 import model.Cars;
+import model.Round;
 import view.InputView;
 
 public class RaceController {
@@ -13,5 +14,6 @@ public class RaceController {
 
     public void run() {
         Cars cars = new Cars(inputView.inputCarNames());
+        Round round = new Round(inputView.inputRound());
     }
 }
