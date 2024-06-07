@@ -13,4 +13,6 @@ public interface RaceServiceInterface {
     public void addCars(String[] cars);
 
     public void setNumberOfRounds(String rounds);
+
+    public void startRace();
 }
