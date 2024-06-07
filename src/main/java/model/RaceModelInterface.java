@@ -11,5 +11,5 @@ public interface RaceModelInterface {
 
     public void setNumberOfRounds(int numberOfRounds);
 
-    public ArrayList<CarServiceInterface> getCars();
+    public List<CarServiceInterface> getCars();
 }
