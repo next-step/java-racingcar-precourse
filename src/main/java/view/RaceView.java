@@ -77,7 +77,7 @@ public class RaceView implements Observer, RaceViewInterface {
     // 결과를 출력하는 메서드
     @Override
     public void printResult() {
-        // view의 인터페이스를 통해 service가 값 참조
+        // service 인터페이스를 통해 값 참조
         List<CarServiceInterface> winners = raceServiceInterface.getWinners();
         // 문자열을 빠르게 붙이기 위해 StringBuilder를 사용
         StringBuilder stringBuilder = new StringBuilder();

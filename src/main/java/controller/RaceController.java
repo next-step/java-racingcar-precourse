@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.List;
+import service.CarServiceInterface;
 import service.RaceServiceInterface;
 import view.RaceViewInterface;
 
@@ -25,9 +27,10 @@ public class RaceController implements RaceControllerInterface {
 
     }
 
+    // 마무리 단계에서 호출하는 메서드
     @Override
     public void end() {
-
+        view.printResult();
     }
 
     // view에서 입력으로 들어온 차를 생성하도록 race에 전달
