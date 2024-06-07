@@ -18,7 +18,7 @@ public class CarService implements CarServiceInterface {
 
     @Override
     public String getName() {
-        return null;
+        return car.getName();
     }
 
     @Override
