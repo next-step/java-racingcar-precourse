@@ -16,6 +16,13 @@ public class RacingCarFrontController {
         this.inputView = inputView;
     }
 
+    public void run() {
+        try (InputView inputView = new InputView()) {
+            executeWithRetry(this::createRacingCars, inputView);
+            executeWithRetry(this::playRacing, inputView);
+        }
+    }
+    
     private boolean createRacingCars(InputView inputView) {
         try {
             String input = inputView.enterCarNames();
@@ -48,12 +55,6 @@ public class RacingCarFrontController {
         }
     }
 
-    public void run() {
-        try (InputView inputView = new InputView()) {
-            executeWithRetry(this::createRacingCars, inputView);
-            executeWithRetry(this::playRacing, inputView);
-        }
-    }
 
     @FunctionalInterface
     private interface InputTask {
