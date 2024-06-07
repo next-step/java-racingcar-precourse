@@ -31,6 +31,7 @@ public class RacingGameController {
      * @param tryNum 반복 라운드 횟수
      */
     private void raceStart(int tryNum) {
+        OutputView.printGameResultMessage();
         for(int round = 0; round < tryNum; round++) {
             carService.playRound();                                 // play round
             OutputView.printGameResult(carService.getAllCars());    // print round result
