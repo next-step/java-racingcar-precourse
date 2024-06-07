@@ -1,6 +1,6 @@
 package controller;
 
-import controller.RacingCarRequest.CreateCarRequest;
+import domain.RacingCarModel;
 import domain.RacingCarService;
 
 public class RacingCarController {
@@ -15,7 +15,12 @@ public class RacingCarController {
         racingCarService.createRacingCar(createCarRequest.toCommand());
     }
 
-    public void startRacing(RacingCarRequest.RacingRoundRequest racingRoundRequest) {
-
+    public RacingCarResponse.ResultGameResponse playRacing(
+        RacingCarRequest.RacingRoundRequest racingRoundRequest) {
+        int racingRound = racingRoundRequest.round();
+        racingCarService.playRacing(racingRound);
+        RacingCarModel.GameResult gameResult = racingCarService.getGameResult();
+        return RacingCarResponse.ResultGameResponse.from(gameResult);
     }
+
 }
