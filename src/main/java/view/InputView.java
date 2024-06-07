@@ -22,10 +22,6 @@ public class InputView {
     }
 
     private void validateCarNames(String[] carNames){
-        if(carNames.length == 0) {
-            throw new IllegalArgumentException("[Error]자동차 이름을 입력하지 않았습니다.");
-        }
-
         for(String name : carNames){
             if(name.length() > 5 || name.length() == 0){
                 throw new IllegalArgumentException("[Error] 자동차 이름은 1~5자 사이만 가능합니다.");
