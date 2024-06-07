@@ -2,7 +2,6 @@ package racingcar.service;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.entity.RacingCar;
 
 import java.util.List;
 
@@ -13,7 +12,7 @@ class RacingCarExecutorTest {
     @DisplayName("정상 실행")
     @Test
     void success() {
-        var executor = new RacingCarExecutor(List.of(new RacingCar("foo"), new RacingCar("bar")));
+        var executor = new RacingCarExecutor(new String[] {"foo", "bar"});
         assertThat(executor.getWinner())
                 .hasSize(2)
                 .extracting("name", "location")
@@ -37,5 +36,25 @@ class RacingCarExecutorTest {
         })
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("racing car list is empty");
+    }
+
+    @DisplayName("경주차량이 비어있음")
+    @Test
+    void failed2() {
+        assertThatThrownBy(() -> {
+            var executor = new RacingCarExecutor(new String[] {""});
+        })
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("wrong car name");
+    }
+
+    @DisplayName("경주차량이 비어있음")
+    @Test
+    void failed3() {
+        assertThatThrownBy(() -> {
+            var executor = new RacingCarExecutor(new String[] {" "});
+        })
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("wrong car name");
     }
 }

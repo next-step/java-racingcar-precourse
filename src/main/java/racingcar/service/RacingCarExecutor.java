@@ -3,10 +3,17 @@ package racingcar.service;
 import racingcar.dto.RacingCarDto;
 import racingcar.entity.RacingCar;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class RacingCarExecutor {
     private final List<RacingCar> racingCars;
+
+    public RacingCarExecutor(String[] carNames) {
+        this(Arrays.stream(carNames)
+                .map(RacingCar::new)
+                .toList());
+    }
 
     public RacingCarExecutor(List<RacingCar> racingCars) {
         this.racingCars = racingCars;
