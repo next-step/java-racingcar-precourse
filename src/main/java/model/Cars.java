@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,6 +15,15 @@ public class Cars {
         validateCarCount(carNames);
         validateDuplicateCarName(carNames);
         cars = convertToCarList(carNames);
+    }
+
+    public CarStates moveCars(CarMoveRule carMoveRule) {
+        List<CarState> carStates = new ArrayList<>();
+        for (Car car : cars) {
+            CarState carState = car.moveOrStay(carMoveRule);
+            carStates.add(carState);
+        }
+        return new CarStates(carStates);
     }
 
     private void validateCarCount(String[] carNames) {

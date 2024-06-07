@@ -8,4 +8,11 @@ public class Car {
     public Car(String carName) {
         this.carName = new CarName(carName);
     }
+
+    public CarState moveOrStay(CarMoveRule carMoveRule) {
+        if (carMoveRule.canMove()) {
+            position++;
+        }
+        return new CarState(carName.getCarName(), position);
+    }
 }
