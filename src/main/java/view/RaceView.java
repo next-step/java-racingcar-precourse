@@ -99,7 +99,7 @@ public class RaceView implements Observer, RaceViewInterface {
 
     @Override
     public void printRoundsArgumentErrorMessage() {
-
+        System.out.println("[ERROR] 횟수는 100 이하여야 합니다.");
     }
 
     @Override
