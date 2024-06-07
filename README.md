@@ -9,6 +9,9 @@
 - Car 클래스 구현 - 레이스 기능 구현
 - Car 클래스 구현 - 레이스 진행상태 반환 기능 구현
 - UI 클래스 구현 - 레이스 실행(run) 기능 구현
+- UI 클래스 구현 - prepareRacingCar 기능 구현
+- UI 클래스 구현 - race 기능 구현
+- UI 클래스 구현 - printWinner 기능 구현
 - Application 클래스 구현 - main 함수 구현
 
 ## 과제 진행 요구 사항
