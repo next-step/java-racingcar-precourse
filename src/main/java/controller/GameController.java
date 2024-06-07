@@ -48,4 +48,14 @@ public class GameController {
         }
     }
 
+    /**
+     * 게임 진행 메서드
+     */
+    public void playGame() {
+        view.printResultMessage();
+        for(int i = 0; i < numberOfMoves; i++) {
+            service.moveCars(cars);
+            view.printCarPosition(cars);
+        }
+    }
 }
