@@ -93,6 +93,21 @@ public class RaceService implements Subject, RaceServiceInterface {
         race.setNumberOfRounds(numberOfRounds);
     }
 
+    private void carsChanged() {
+        notifyObservers();
+    }
+
+    // cars를 하나씩 출발시키는 작업을 n번 반복하는 메서드
+    @Override
+    public void startRace() {
+        int numberOfRounds = race.getNumberOfRounds();
+
+        for (int i = 0; i < numberOfRounds; i++) {
+
+            carsChanged();
+        }
+    }
+
     // observer를 추가하는 메서드
     @Override
     public void addObserver(Observer observer) {
