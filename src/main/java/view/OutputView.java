@@ -11,7 +11,7 @@ public class OutputView {
             Map<String, Integer> gameRecords = gameController.recordsCarMovements();
             printNameAndMovements(gameRecords);
         }
-        System.out.println("최종 우승자 : " + gameController.getWinner());
+        System.out.print("최종 우승자 : " +  String.join(", ", gameController.getWinner()));
     }
 
     private static void printNameAndMovements(Map<String, Integer> gameRecords) {
