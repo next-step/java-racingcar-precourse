@@ -3,8 +3,6 @@ package controller;
 import view.Input;
 import view.Output;
 import model.Cars;
-import java.util.ArrayList;
-import java.util.Collections;
 
 public class Game {
 
@@ -25,7 +23,7 @@ public class Game {
             output.printResult(cars.getCars());
         }
 
-        output.printWinners(getWinners());
+        output.printWinners(cars.getWinners());
     }
 
     /**
@@ -74,21 +72,5 @@ public class Game {
                 cars.addDistance(carName);
             }
         }
-    }
-
-    /**
-     * 우승자들을 뽑아내는 함수
-     *
-     * @return 우승자 이름들
-     */
-    public String[] getWinners() {
-        ArrayList<String> winners = new ArrayList<>();
-        String maxDistance = Collections.max(cars.getCars().values());
-        for (String carName : cars.getCars().keySet()) {
-            if (cars.getCars().get(carName).equals(maxDistance)) {
-                winners.add(carName);
-            }
-        }
-        return winners.stream().toArray(String[]::new);
     }
 }

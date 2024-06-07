@@ -1,6 +1,8 @@
 package model;
 
 import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class Cars {
 
@@ -19,5 +21,21 @@ public class Cars {
 
     public HashMap<String, String> getCars() {
         return cars;
+    }
+
+    /**
+     * 우승자들을 뽑아내는 함수
+     *
+     * @return 우승자 이름들
+     */
+    public String[] getWinners() {
+        ArrayList<String> winners = new ArrayList<>();
+        String maxDistance = Collections.max(cars.values());
+        for (String carName : cars.keySet()) {
+            if (cars.get(carName).equals(maxDistance)) {
+                winners.add(carName);
+            }
+        }
+        return winners.stream().toArray(String[]::new);
     }
 }
