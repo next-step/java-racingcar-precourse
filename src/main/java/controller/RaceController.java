@@ -1,7 +1,5 @@
 package controller;
 
-import java.util.List;
-import service.CarServiceInterface;
 import service.RaceServiceInterface;
 import view.RaceViewInterface;
 
@@ -16,15 +14,18 @@ public class RaceController implements RaceControllerInterface {
         this.view = view;
     }
 
+    // 시작 단계에서 호출하는 메서드
     @Override
     public void init() {
         view.userCarsInput();
         view.userRoundsInput();
     }
 
+    // 중간 단계에서 호출하는 메서드
     @Override
     public void play() {
-
+        view.printProcess();
+        race.startRace();
     }
 
     // 마무리 단계에서 호출하는 메서드
