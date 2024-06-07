@@ -29,10 +29,10 @@ public class InputView {
     }
 
     private void validateNumber(String round) {
-        for (char c : round.toCharArray()) {
-            if (!Character.isDigit(c)) {
-                throw new IllegalArgumentException("[ERROR] 반복 횟수는 숫자만 입력할 수 있습니다.");
-            }
+        try {
+            Integer.parseInt(round);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR] 반복 횟수는 숫자만 입력할 수 있습니다.");
         }
     }
 }
