@@ -1,8 +1,5 @@
 package view;
 
-import java.util.List;
-import service.CarServiceInterface;
-
 public interface RaceViewInterface {
 
     public void userCarsInput();
