@@ -40,4 +40,11 @@ public class Race {
             .orElse(Integer.MIN_VALUE);
     }
 
+    public String[] returnWinner(Car[] cars) {
+        int max = findMaxDistance(cars);
+        return Arrays.stream(cars)
+            .filter(obj -> obj.getDistance() == max)
+            .map(Car::getName)
+            .toArray(String[]::new);
+    }
 }
