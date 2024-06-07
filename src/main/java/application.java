@@ -5,8 +5,7 @@ public class application {
 
     public static void main(String[] args) {
 
-        RacingCarFrontController racingCarFrontController = new RacingCarFrontController(
-            RacingCarConfig.getRacingCarController());
+        RacingCarFrontController racingCarFrontController = RacingCarConfig.getRacingCarFrontController();
 
         racingCarFrontController.run();
     }
