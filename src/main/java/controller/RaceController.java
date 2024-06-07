@@ -28,7 +28,7 @@ public class RaceController {
 
         RacingGame racingGame = new RacingGame(cars, round, carMoveRule);
         RaceResult raceResult = racingGame.race();
-
+        
         outputView.printRaceResult(raceResult);
         outputView.printWinners(raceResult.getWinners());
     }

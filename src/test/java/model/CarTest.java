@@ -1,5 +1,6 @@
 package model;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.Test;
@@ -46,5 +47,33 @@ public class CarTest {
         assertThatThrownBy(() -> new Car(carName))
             .isInstanceOf(IllegalArgumentException.class)
             .hasMessage("[ERROR] 자동차의 이름은 영문으로만 이루어질 수 있습니다.");
+    }
+
+    @Test
+    void 조건이_만족되면_이동() {
+        // given
+        Car car = new Car("test");
+        CarMoveRule alwaysMoveRule = () -> true;
+
+        // when
+        CarState carState = car.moveOrStay(alwaysMoveRule);
+
+        // then
+        int expectedPosition = 1;
+        assertThat(carState.getPosition()).isEqualTo(expectedPosition);
+    }
+
+    @Test
+    void 조건이_만족되지_않으면_이동x() {
+        // given
+        Car car = new Car("test");
+        CarMoveRule neverMoveRule = () -> false;
+
+        // when
+        CarState carState = car.moveOrStay(neverMoveRule);
+
+        // then
+        int expected = 0;
+        assertThat(carState.getPosition()).isEqualTo(expected);
     }
 }
