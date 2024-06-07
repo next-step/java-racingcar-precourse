@@ -22,7 +22,7 @@ public class RacingCarFrontController {
             executeWithRetry(this::playRacing, inputView);
         }
     }
-    
+
     private boolean createRacingCars(InputView inputView) {
         try {
             String input = inputView.enterCarNames();
@@ -37,9 +37,8 @@ public class RacingCarFrontController {
     private boolean playRacing(InputView inputView) {
         try {
             String input = inputView.enterTryCount();
-            int racingRound = Integer.parseInt(input);
             RacingCarResponse.ResultGameResponse gameResult = racingCarController.playRacing(
-                new RacingCarRequest.RacingRoundRequest(racingRound));
+                new RacingCarRequest.RacingRoundRequest(input));
             outputView.printGameResult(gameResult.gameResult());
             return true;
         } catch (IllegalArgumentException e) {
