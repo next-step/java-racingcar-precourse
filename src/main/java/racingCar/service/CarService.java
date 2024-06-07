@@ -98,4 +98,12 @@ public class CarService {
                 .orElseThrow(NullPointerException::new)
                 .getPos();
     }
+
+    /**
+     * Repository의 전체 객체 리스트를 controller에게 반환하기 위한 용도의 메서드
+     * @return Car instance list
+     */
+    public List<CarDTO> getAllCars() {
+        return carRepository.findAll();
+    }
 }
