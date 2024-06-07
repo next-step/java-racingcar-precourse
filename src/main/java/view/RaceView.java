@@ -104,6 +104,6 @@ public class RaceView implements Observer, RaceViewInterface {
 
     @Override
     public void printRoundsFormatErrorMessage() {
-
+        System.out.println("[ERROR] 횟수는 수로 입력해야 합니다.");
     }
 }
