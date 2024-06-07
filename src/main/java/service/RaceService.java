@@ -100,7 +100,8 @@ public class RaceService implements Subject, RaceServiceInterface {
 
     @Override
     public void addObserver(Observer observer) {
-
+        List<Observer> observers = race.getObservers();
+        observers.add(observer);
     }
 
     @Override
