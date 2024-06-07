@@ -112,6 +112,7 @@ public class RaceService implements Subject, RaceServiceInterface {
 
     @Override
     public void notifyObservers() {
-
+        List<Observer> observers = race.getObservers();
+        observers.stream().forEach(observer -> observer.update());
     }
 }
