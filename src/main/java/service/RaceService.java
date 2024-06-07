@@ -70,31 +70,22 @@ public class RaceService implements Subject, RaceServiceInterface {
         return winnersProgress;
     }
 
-    // 우승자의 목록을 문자열로 나열한다.
+    // 우승자의 목록을 반환한다.
     @Override
-    public String getWinners() {
-        // 문자열을 빠르게 붙이기 위해 StringBuilder를 사용
-        StringBuilder sb = new StringBuilder();
+    public List<CarServiceInterface> getWinners() {
         // 차들의 정보를 가져오고
         ArrayList<CarServiceInterface> carList = race.getCars();
         // 우승자의 진행도를 가져온다.
         int winnersProgress = getWinnersProgress();
 
-        // 우승자 목록을 stream으로 가져온다.
+        // 우승자의 진행도를 바탕으로 우승자 목록을 stream으로 가져온다.
         List<CarServiceInterface> winners = carList.stream()
             .filter(car -> car.getProgress() == winnersProgress).collect(Collectors.toList());
 
-        // 우승자들의 정보를 String으로 변환한다.
-        for (int i = 0; i < winners.size() - 1; i++) {
-            CarServiceInterface winner = winners.get(i);
-            sb.append(winner.getName()).append(',').append(' ');
-        }
-        sb.append(winners.get(winners.size() - 1));
-
-        return sb.toString();
+        return winners;
     }
 
-    // controller에게 받은 round 정보를 설정하는 메서드 
+    // controller에게 받은 round 정보를 설정하는 메서드
     @Override
     public void setNumberOfRounds(String rounds)
         throws IllegalArgumentException {
