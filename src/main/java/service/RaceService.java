@@ -81,21 +81,23 @@ public class RaceService implements Subject, RaceServiceInterface {
         int winnersProgress = getWinnersProgress();
 
         // 우승자 목록을 stream으로 가져온다.
-        List<CarServiceInterface> winners = carList.stream().filter(car -> car.getProgress() == winnersProgress).collect(Collectors.toList());
+        List<CarServiceInterface> winners = carList.stream()
+            .filter(car -> car.getProgress() == winnersProgress).collect(Collectors.toList());
 
         // 우승자들의 정보를 String으로 변환한다.
-        for (int i = 0; i < winners.size()-1; i++) {
+        for (int i = 0; i < winners.size() - 1; i++) {
             CarServiceInterface winner = winners.get(i);
             sb.append(winner.getName()).append(',').append(' ');
         }
-        sb.append(winners.get(winners.size()-1));
+        sb.append(winners.get(winners.size() - 1));
 
         return sb.toString();
     }
 
+    // controller에게 받은 round 정보를 설정하는 메서드 
     @Override
     public void setNumberOfRounds(String rounds)
-        throws IllegalArgumentException, NumberFormatException {
+        throws IllegalArgumentException {
         // 수가 아닌 경우
         int numberOfRounds = Integer.parseInt(rounds);
 
