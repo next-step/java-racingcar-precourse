@@ -33,4 +33,11 @@ public class CarMemoryRepository implements CarRepository {
     public List<CarDTO> findAll() {
         return new ArrayList<CarDTO>(carDTOMap.values());
     }
+
+    /**
+     * Test 용도로 사용되는 map의 모든 객체들을 삭제하는 메서드
+     */
+    public void clearCarDTOMap() {
+        carDTOMap.clear();
+    }
 }
