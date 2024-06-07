@@ -11,7 +11,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class InputViewTest {
 
@@ -22,8 +21,6 @@ class InputViewTest {
         PrintStream originalOut = System.out;
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
-
-        // 첫 번째 입력은 5자를 초과하고, 두 번째 입력은 유효합니다.
         String input = "car123456\n" + "car1,car2,car3\n";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
 
@@ -31,15 +28,9 @@ class InputViewTest {
         List<String> carNames = InputView.inputCarName();
 
         // then
-        assertThat(outContent.toString()).isEqualTo(
-                "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n" +
-                        "[ERROR] 자동차의 이름은 5자를 초과할 수 없습니다.\n" +
-                        "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"
-        );
+        assertThat(outContent.toString()).isEqualTo("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n[ERROR] 자동차의 이름은 5자를 초과할 수 없습니다.\n경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n");
         assertThat(carNames).isEqualTo(Arrays.asList("car1", "car2", "car3"));
-
         System.setOut(originalOut);
-
     }
 
     @Test
@@ -50,7 +41,6 @@ class InputViewTest {
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
 
-        // 첫 번째 입력은 5자를 초과하고, 두 번째 입력은 유효합니다.
         String input = "\n" + "car1,car2,car3\n";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
 
@@ -58,22 +48,15 @@ class InputViewTest {
         List<String> carNames = InputView.inputCarName();
 
         // then
-        assertThat(outContent.toString()).isEqualTo(
-                "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n" +
-                        "[ERROR] 공백은 허용 되지 않습니다.\n" +
-                        "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"
-        );
+        assertThat(outContent.toString()).isEqualTo("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n[ERROR] 공백은 허용 되지 않습니다.\n경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n");
         assertThat(carNames).isEqualTo(Arrays.asList("car1", "car2", "car3"));
-
         System.setOut(originalOut);
-
     }
 
     @Test
     @DisplayName("차량 입력 중에 공백을 strip할 수 있는지 테스트")
     public void testInputCarNameWhenTheInputHasTheSpace() throws Exception {
         // given
-        // 첫 번째 입력은 5자를 초과하고, 두 번째 입력은 유효합니다.
         String input = "car4, car5, car6\n";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
 
