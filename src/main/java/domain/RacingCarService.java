@@ -1,5 +1,6 @@
 package domain;
 
+import domain.RacingCarCommand;
 import repository.RacingCarRepository;
 
 public class RacingCarService {
@@ -9,4 +10,10 @@ public class RacingCarService {
     public RacingCarService(RacingCarRepository racingCarRepository) {
         this.racingCarRepository = racingCarRepository;
     }
+
+    public void createRacingCar(RacingCarCommand.Create create) {
+        RacingCar.create(create).forEach(racingCarRepository::save);
+    }
+
+    
 }
