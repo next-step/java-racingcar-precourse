@@ -57,9 +57,9 @@ public class Main {
         int trials = Integer.parseInt(scanner.nextLine());
         if (trials > 0) {
           return trials;
-        } else {
-          System.out.println("[ERROR] Number of trials must be greater than 0.");
         }
+        System.out.println("[ERROR] Number of trials must be greater than 0.");
+
       } catch (NumberFormatException e) {
         System.out.println("[ERROR] Number of trials must be a valid integer.");
       }
