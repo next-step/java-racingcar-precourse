@@ -7,7 +7,7 @@ public class GameDTO {
     private final int iteration;
     private Map<String, Integer> records;
 
-    public GameDTO(List<CarDTO> cars, int iteration) {
+    public GameDTO(@NotNull List<CarDTO> cars,@NotNull int iteration) {
         this.cars = cars;
         this.iteration = iteration;
         this.records = new LinkedHashMap<>();
