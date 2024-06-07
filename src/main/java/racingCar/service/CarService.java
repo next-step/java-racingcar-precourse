@@ -70,7 +70,6 @@ public class CarService {
      */
     private int generateRandomNumber() {
         Random random = new Random();
-        random.setSeed(System.currentTimeMillis());             // seed 설정
         return random.nextInt(RANDOM_NUM_UPPER_BOUND);
     }
 
