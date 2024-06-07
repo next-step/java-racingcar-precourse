@@ -36,4 +36,12 @@ class CarServiceTest {
         carDTOList.get(1).increasePos();
         Assertions.assertThat(carService.getWinner().size()).isEqualTo(2);
     }
+
+    @Test
+    @DisplayName("Repository의 모든 Car 객체 리스트 반환 테스트")
+    void getAllCars() {
+        String inputNames = "car1,car2,car3,car4";
+        carService.saveCars(inputNames);
+        Assertions.assertThat(carService.getAllCars().size()).isEqualTo(4);
+    }
 }
