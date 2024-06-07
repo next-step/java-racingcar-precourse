@@ -1,5 +1,3 @@
-
-
 public class Main {
 
     public static void main(String[] args) {
@@ -12,6 +10,7 @@ public class Main {
 
         System.out.println("실행결과 : ");
         doRacing(n, cars);
+        checkWinner(cars);
     }
 
     public static void doRacing(int n, Car[] cars) {
@@ -23,4 +22,17 @@ public class Main {
         }
     }
 
+    public static void checkWinner(Car[] cars) {
+        Race r = new Race();
+        String[] winners = r.returnWinner(cars);
+
+        System.out.print("최종 우승자 : ");
+        for(int i=0; i<winners.length; i++) {
+            if (i == winners.length - 1) {
+                System.out.println(winners[i]);
+                break;
+            }
+            System.out.print(winners[i] + ", ");
+        }
+    }
 }
