@@ -84,4 +84,43 @@ public class ValidationTest {
         assertThatThrownBy(() -> Validation.checkCarNames(carNames))
             .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("시도 횟수가 정수가 아닌 경우 예외 발생")
+    @Test
+    public void numberTest1() {
+        // given
+        String number = "a";
+
+        // when
+
+        // then
+        assertThatThrownBy(() -> Validation.checkNumber(number))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("시도 횟수가 1 보다 작은 경우 예외 발생")
+    @Test
+    public void numberTest2() {
+        // given
+        String number = "0";
+
+        // when
+
+        // then
+        assertThatThrownBy(() -> Validation.checkNumber(number))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("시도 횟수가 MAX 보다 큰 경우 예외 발생") // MAX = 10
+    @Test
+    public void numberTest3() {
+        // given
+        String number = "11";
+
+        // when
+
+        // then
+        assertThatThrownBy(() -> Validation.checkNumber(number))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
 }
