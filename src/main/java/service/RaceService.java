@@ -106,7 +106,8 @@ public class RaceService implements Subject, RaceServiceInterface {
 
     @Override
     public void removeObserver(Observer observer) {
-
+        List<Observer> observers = race.getObservers();
+        observers.remove(observer);
     }
 
     @Override
