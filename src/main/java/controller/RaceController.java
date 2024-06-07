@@ -1,5 +1,6 @@
 package controller;
 
+import model.Cars;
 import view.InputView;
 
 public class RaceController {
