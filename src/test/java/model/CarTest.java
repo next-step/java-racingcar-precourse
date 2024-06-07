@@ -59,8 +59,8 @@ public class CarTest {
         CarState carState = car.moveOrStay(alwaysMoveRule);
 
         // then
-        int expectedPosition = 1;
-        assertThat(carState.getPosition()).isEqualTo(expectedPosition);
+        int expected = 1;
+        assertThat(carState.getPosition()).isEqualTo(expected);
     }
 
     @Test

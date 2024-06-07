@@ -19,7 +19,7 @@ public class RoundTest {
     }
 
     @Test
-    void 매시도마다_1씩_감소하고_횟수가_0_이되면_종료() {
+    void 매시도마다_1씩_감소하고_횟수가_0이되면_False_반환() {
         // given
         Round round = new Round(3);
 
@@ -27,7 +27,7 @@ public class RoundTest {
         round.finishOneRound();
         round.finishOneRound();
         round.finishOneRound();
-        
+
         // then
         assertThat(round.isInProgress()).isFalse();
     }
