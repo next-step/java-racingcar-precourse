@@ -65,4 +65,13 @@ public class GameController {
     public void printResult() {
         view.printWinners(service.findWinners(cars));
     }
+
+    /**
+     * main에서 호출하기 위한 게임 시작 메서드
+     */
+    public void startGame() {
+        initializeGame();
+        playGame();
+        printResult();
+    }
 }
