@@ -11,18 +11,13 @@ public class RacingCarCommand {
     public record Create(List<String> name) {
 
         public static RacingCarCommand.Create from(List<String> names) {
-            // 유효한 이름인지 검사합니다.
+            // foreach로 유효한 이름인지 검사합니다.
+            names.forEach(Validator::validateName);
+
+            // 중복된 이름이 있는지 검사합니다.
+            Validator.validateDuplicateName(names);
             return new RacingCarCommand.Create(names);
         }
     }
-
-    public record Racing(int round) {
-
-        public static RacingCarCommand.Racing from(int round) {
-
-            return new RacingCarCommand.Racing(round);
-        }
-    }
-
 
 }
