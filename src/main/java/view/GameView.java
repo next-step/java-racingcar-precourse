@@ -104,4 +104,8 @@ public class GameView {
     public void printError(String message) {
         System.out.println(message);
     }
+
+    public void printResultMessage() {
+        System.out.println("\n실행 결과");
+    }
 }
