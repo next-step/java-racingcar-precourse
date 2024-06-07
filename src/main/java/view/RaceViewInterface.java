@@ -13,7 +13,7 @@ public interface RaceViewInterface {
 
     public void printProcess();
 
-    public void printResult(List<CarServiceInterface> winners);
+    public void printResult();
 
     public void printCarsErrorMessage();
 
