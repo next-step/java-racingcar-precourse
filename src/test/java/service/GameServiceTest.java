@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import model.Car;
 import org.junit.jupiter.api.DisplayName;
@@ -66,5 +67,28 @@ class GameServiceTest {
 
         // then
         assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    @DisplayName("createCarObject test")
+    void createCarObjectTest() throws Exception {
+        // given
+        GameService service = new GameService();
+        List<String> names = Arrays.asList("pobi", "woni", "jun");
+        List<Car> expected = new ArrayList<>();
+        Car pobi = new Car("pobi");
+        Car woni = new Car("woni");
+        Car jun = new Car("jun");
+
+        expected.add(pobi);
+        expected.add(woni);
+        expected.add(jun);
+
+        // when
+        List<Car> result = service.createCarObject(names);
+
+        // then
+        assertThat(result).hasSize(expected.size());
+        assertThat(result).extracting(Car::getName).containsExactly("pobi", "woni", "jun");
     }
 }

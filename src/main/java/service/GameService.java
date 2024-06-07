@@ -50,4 +50,17 @@ public class GameService {
         return max;
     }
 
+    /**
+     * 자동차 이름 리스트를 입력받아 자동차 객체 리스트를 반환하는 메서드
+     * 
+     * @param carNames 자동차 이름들 리스트
+     * @return cars 자동차 객체 리스트
+     */
+    public List<Car> createCarObject(List<String> carNames) {
+        List<Car> cars = new ArrayList<>();
+        for(String carName : carNames) {
+            cars.add(new Car(carName));
+        }
+        return cars;
+    }
 }
