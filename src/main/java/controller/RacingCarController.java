@@ -17,8 +17,7 @@ public class RacingCarController {
 
     public RacingCarResponse.ResultGameResponse playRacing(
         RacingCarRequest.RacingRoundRequest racingRoundRequest) {
-        int racingRound = racingRoundRequest.round();
-        racingCarService.playRacing(racingRound);
+        racingCarService.playRacing(racingRoundRequest.toCommand());
         RacingCarModel.GameResult gameResult = racingCarService.getGameResult();
         return RacingCarResponse.ResultGameResponse.from(gameResult);
     }
