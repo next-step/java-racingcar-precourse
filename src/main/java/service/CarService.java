@@ -23,7 +23,7 @@ public class CarService implements CarServiceInterface {
 
     @Override
     public int getProgress() {
-        return 0;
+        return car.getProgress();
     }
 
     @Override
