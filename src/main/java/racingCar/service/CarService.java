@@ -5,8 +5,11 @@ import racingCar.repository.CarRepository;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 public class CarService {
+    private static final int RANDOM_NUM_UPPER_BOUND = 10;
+    private static final int FORWARD_NUM_LOWER_BOUND = 4;
     private final CarRepository carRepository;
 
     /**
@@ -38,5 +41,38 @@ public class CarService {
                 carNames.replaceAll("\\s+","")  // 공백 제거
                 .split(",")
         );
+    }
+
+    /**
+     * 경주의 각 라운드를 수행하는 메서드
+     * 난수를 생성하고 전진하거나 정지한다
+     */
+    public void playRound() {
+        List<CarDTO> carDTOList = carRepository.findAll();       // 모든 객체를 가져옴
+        for(CarDTO car : carDTOList) {
+            int randomNum = generateRandomNumber();             // 난수 생성
+            if(canForward(randomNum)) {                         // 만약 전진이 가능하다면 자동차의 position을 1 더함
+                car.increasePos();
+            }
+        }
+    }
+
+    /**
+     * 자동차가 전진할 수 있는지 판단하는 메서드
+     * @param randomNum 생성된 난수
+     * @return 난수가 하한 값보다 크거나 같다면 true 반환
+     */
+    private boolean canForward(int randomNum) {
+        return randomNum >= FORWARD_NUM_LOWER_BOUND;
+    }
+
+    /**
+     * 범위 내의 정수 난수를 생성하여 반환하는 메서드
+     * @return 0 이상 상한 값 미만의 난수를 반환
+     */
+    private int generateRandomNumber() {
+        Random random = new Random();
+        random.setSeed(System.currentTimeMillis());             // seed 설정
+        return random.nextInt(RANDOM_NUM_UPPER_BOUND);
     }
 }
