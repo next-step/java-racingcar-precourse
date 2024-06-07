@@ -1,7 +1,9 @@
 package model;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -14,5 +16,19 @@ public class RoundTest {
         assertThatThrownBy(() -> new Round(round))
             .isInstanceOf(IllegalArgumentException.class)
             .hasMessage("[ERROR] 시도 횟수는 최소 1 이상이어야 합니다.");
+    }
+
+    @Test
+    void 매시도마다_1씩_감소하고_횟수가_0_이되면_종료() {
+        // given
+        Round round = new Round(3);
+
+        // when
+        round.finishOneRound();
+        round.finishOneRound();
+        round.finishOneRound();
+        
+        // then
+        assertThat(round.isInProgress()).isFalse();
     }
 }
