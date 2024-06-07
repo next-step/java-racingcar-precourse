@@ -2,6 +2,7 @@ package view;
 
 import controller.RaceControllerInterface;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import observer.Observer;
 import service.CarServiceInterface;
@@ -73,9 +74,20 @@ public class RaceView implements Observer, RaceViewInterface {
 
     }
 
+    // 결과를 출력하는 메서드
     @Override
-    public void printResult() {
+    public void printResult(List<CarServiceInterface> winners) {
+        // 문자열을 빠르게 붙이기 위해 StringBuilder를 사용
+        StringBuilder stringBuilder = new StringBuilder();
 
+        // 우승자들의 정보를 String으로 변환한다.
+        for (int i = 0; i < winners.size() - 1; i++) {
+            CarServiceInterface winner = winners.get(i);
+            stringBuilder.append(winner.getName()).append(',').append(' ');
+        }
+        stringBuilder.append(winners.get(winners.size() - 1));
+
+        System.out.println("최종 우승자 : " + stringBuilder);
     }
 
     @Override
