@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.function.Supplier;
 import model.Cars;
 import model.Round;
 import view.InputView;
@@ -13,7 +14,17 @@ public class RaceController {
     }
 
     public void run() {
-        Cars cars = new Cars(inputView.inputCarNames());
-        Round round = new Round(inputView.inputRound());
+        Cars cars = retryUntilCorrectValue(() -> new Cars(inputView.inputCarNames()));
+        Round round = retryUntilCorrectValue(() -> new Round(inputView.inputRound()));
+    }
+
+    private <T> T retryUntilCorrectValue(Supplier<T> supplier) {
+        while (true) {
+            try {
+                return supplier.get();
+            } catch (IllegalArgumentException e) {
+                
+            }
+        }
     }
 }
