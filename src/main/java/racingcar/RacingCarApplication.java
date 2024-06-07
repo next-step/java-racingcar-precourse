@@ -3,6 +3,7 @@ package racingcar;
 import racingcar.dto.RacingCarDto;
 import racingcar.service.RacingCarExecutor;
 
+import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
@@ -16,7 +17,8 @@ public class RacingCarApplication {
         int times = Integer.parseInt(scan.nextLine());
 
         System.out.println("\n실행 결과");
-        run0(executor, times);
+        var result = executor.execute(times);
+        printRacingCarResult(result);
 
         System.out.printf("최종 우승자 : %s", executor.getWinner().stream()
                 .map(RacingCarDto::getName)
@@ -39,13 +41,14 @@ public class RacingCarApplication {
         return result;
     }
 
-    private void run0(RacingCarExecutor executor, int times) {
-        for (int i = 0; i < times; i++) {
-            executor.execute().forEach(racingCar -> {
+    private void printRacingCarResult(List<List<RacingCarDto>> result) {
+        result.forEach(racing -> {
+            racing.forEach(racingCar -> {
                 System.out.printf("%s : %s\n",
                         racingCar.getName(), "-".repeat(racingCar.getLocation()));
             });
             System.out.println();
-        }
+        });
+
     }
 }

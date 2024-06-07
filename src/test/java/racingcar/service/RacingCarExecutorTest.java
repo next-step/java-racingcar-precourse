@@ -18,9 +18,7 @@ class RacingCarExecutorTest {
                 .extracting("name", "location")
                 .contains(tuple("foo", 0), tuple("bar", 0));
 
-        for (int i=0; i<5; i++) {
-            executor.execute();
-        }
+        executor.execute(5);
 
         assertThat(executor.getWinner())
                 .hasSizeGreaterThanOrEqualTo(1)
