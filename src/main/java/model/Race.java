@@ -3,10 +3,9 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 import observer.Observer;
-import observer.SubjectModel;
 import service.CarServiceInterface;
 
-public class Race implements SubjectModel, RaceModelInterface {
+public class Race implements RaceModelInterface {
 
     private int numberOfRounds;
     private List<CarServiceInterface> cars;
