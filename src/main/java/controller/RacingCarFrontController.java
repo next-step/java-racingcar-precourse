@@ -1,62 +1,63 @@
 package controller;
 
-import java.util.Scanner;
+import view.InputView;
+import view.OutputView;
 
 public class RacingCarFrontController {
 
     private final RacingCarController racingCarController;
+    private final OutputView outputView;
+    private final InputView inputView;
 
-    public RacingCarFrontController(RacingCarController racingCarController) {
+    public RacingCarFrontController(RacingCarController racingCarController,
+        OutputView outputView, InputView inputView) {
         this.racingCarController = racingCarController;
+        this.outputView = outputView;
+        this.inputView = inputView;
     }
 
-    private boolean CreateRacingCars(Scanner scanner) {
-        // TODO input view 구현
-        System.out.println("자동차 이름을 입력하세요. (이름은 쉼표(,) 기준으로 구분)");
+    private boolean createRacingCars(InputView inputView) {
         try {
-            String input = scanner.nextLine();
+            String input = inputView.enterCarNames();
             racingCarController.createRacingCar(new RacingCarRequest.CreateCarRequest(input));
             return true;
         } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            CreateRacingCars(scanner);
+            outputView.printErrorMessage(e.getMessage());
             return false;
         }
     }
 
-    private boolean playRacing(Scanner scanner) {
-        // TODO input view 구현
-        System.out.println("시도할 회수는 몇회인가요?");
+    private boolean playRacing(InputView inputView) {
         try {
-            int input = scanner.nextInt();
+            String input = inputView.enterTryCount();
+            int racingRound = Integer.parseInt(input);
             RacingCarResponse.ResultGameResponse gameResult = racingCarController.playRacing(
-                new RacingCarRequest.RacingRoundRequest(input));
-            System.out.println(gameResult.gameResult());
+                new RacingCarRequest.RacingRoundRequest(racingRound));
+            outputView.printGameResult(gameResult.gameResult());
             return true;
         } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            playRacing(scanner);
+            outputView.printErrorMessage(e.getMessage());
             return false;
         }
     }
 
-    private void executeWithRetry(InputTask task, Scanner scanner) {
+    private void executeWithRetry(InputTask task, InputView inputView) {
         boolean success = false;
         while (!success) {
-            success = task.execute(scanner);
+            success = task.execute(inputView);
         }
     }
 
     public void run() {
-        Scanner scanner = new Scanner(System.in);
-        executeWithRetry(this::CreateRacingCars, scanner);
-        executeWithRetry(this::playRacing, scanner);
-        scanner.close();
+        try (InputView inputView = new InputView()) {
+            executeWithRetry(this::createRacingCars, inputView);
+            executeWithRetry(this::playRacing, inputView);
+        }
     }
 
     @FunctionalInterface
     private interface InputTask {
 
-        boolean execute(Scanner scanner);
+        boolean execute(InputView inputView);
     }
 }
