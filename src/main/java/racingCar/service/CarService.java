@@ -3,9 +3,7 @@ package racingCar.service;
 import racingCar.domain.CarDTO;
 import racingCar.repository.CarRepository;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class CarService {
     private static final int RANDOM_NUM_UPPER_BOUND = 10;
@@ -74,5 +72,30 @@ public class CarService {
         Random random = new Random();
         random.setSeed(System.currentTimeMillis());             // seed 설정
         return random.nextInt(RANDOM_NUM_UPPER_BOUND);
+    }
+
+    /**
+     * 최종 우승자를 리스트로 반환하는 메서드
+     * @return 최종 우승자가 저장된 List
+     */
+    public List<CarDTO> getWinner() {
+        int maxPos = getMaxPos();
+
+        List<CarDTO> carDTOList = carRepository.findAll();      // 모든 객체 리스트
+        return carDTOList
+                .stream()
+                .filter(carDTO -> carDTO.getPos() == maxPos)    // pos가 가장 큰 객체들을 선택하여 반환
+                .toList();
+    }
+
+    /**
+     * 객체 중 가장 큰 pos의 값을 반환
+     * @return max pos
+     */
+    private int getMaxPos() {
+        return carRepository
+                .findOneMaxPos()
+                .orElseThrow(NullPointerException::new)
+                .getPos();
     }
 }
