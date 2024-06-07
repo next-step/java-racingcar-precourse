@@ -14,8 +14,8 @@ public class Race implements SubjectModel, RaceModelInterface {
 
     public Race() {
         this.numberOfRounds = 0;
-        cars = null;
-        observers = null;
+        cars = new ArrayList<>();
+        observers = new ArrayList<>();
     }
 
     @Override
