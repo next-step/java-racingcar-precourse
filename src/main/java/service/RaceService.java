@@ -98,18 +98,21 @@ public class RaceService implements Subject, RaceServiceInterface {
         race.setNumberOfRounds(numberOfRounds);
     }
 
+    // observer를 추가하는 메서드
     @Override
     public void addObserver(Observer observer) {
         List<Observer> observers = race.getObservers();
         observers.add(observer);
     }
 
+    // observer를 삭제하는 메서드
     @Override
     public void removeObserver(Observer observer) {
         List<Observer> observers = race.getObservers();
         observers.remove(observer);
     }
 
+    // observer들을 update하는 메서드
     @Override
     public void notifyObservers() {
         List<Observer> observers = race.getObservers();
