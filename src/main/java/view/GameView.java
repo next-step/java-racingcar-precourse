@@ -37,7 +37,7 @@ public class GameView {
             try {
                 return readNumberOfMoves();
             } catch(IllegalArgumentException e) {
-                System.out.println(e.getMessage());
+                printError(e.getMessage());
             }
         }
     }
@@ -99,5 +99,9 @@ public class GameView {
                 System.out.print(", ");
             }
         }
+    }
+
+    public void printError(String message) {
+        System.out.println(message);
     }
 }
