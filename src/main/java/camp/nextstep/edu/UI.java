@@ -75,6 +75,7 @@ public class UI {
 
     public List<Car> prepareRacingCar(String[] carNames) {
         return Stream.of(carNames)
+                .map(String::trim)
                 .map(Car::new)
                 .collect(Collectors.toList());
     }
