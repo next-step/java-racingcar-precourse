@@ -6,8 +6,6 @@ public interface RaceServiceInterface {
 
     public int getNumberOfCars();
 
-    public int getNumberOfRounds();
-
     public List<CarServiceInterface> getCars();
 
     public List<CarServiceInterface> getWinners();
