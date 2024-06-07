@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 public class OutputView {
 
     private static final String PROCESS_RESULT = "실행 결과";
+    private static final String ERROR_PREFIX = "[Error]";
 
 
     public void printGameResult(GameResult gameResult) {
@@ -54,6 +55,6 @@ public class OutputView {
 
 
     public void printErrorMessage(String errorMessage) {
-        System.out.println("Error: " + errorMessage);
+        System.out.println(ERROR_PREFIX + errorMessage);
     }
 }
