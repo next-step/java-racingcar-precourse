@@ -58,4 +58,11 @@ public class GameController {
             view.printCarPosition(cars);
         }
     }
+
+    /**
+     * 게임의 결과(최종 우승자)를 출력하는 메서드
+     */
+    public void printResult() {
+        view.printWinners(service.findWinners(cars));
+    }
 }
