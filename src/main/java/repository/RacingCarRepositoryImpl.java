@@ -1,15 +1,21 @@
 package repository;
 
 import domain.RacingCar;
+import domain.RacingCarRound;
+import java.util.ArrayList;
 import java.util.List;
 
 public class RacingCarRepositoryImpl implements RacingCarRepository {
 
-    List<RacingCar> racingCarMemory;
+    private List<RacingCar> racingCarMemory = new ArrayList<>();
 
     @Override
-    public List<RacingCar> save(RacingCar racingCar) {
+    public void save(RacingCar racingCar) {
         racingCarMemory.add(racingCar);
+    }
+
+    @Override
+    public List<RacingCar> findAll() {
         return racingCarMemory;
     }
 }

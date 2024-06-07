@@ -5,5 +5,7 @@ import java.util.List;
 
 public interface RacingCarRepository {
 
-    List<RacingCar> save(RacingCar racingCar);
+    void save(RacingCar racingCar);
+
+    List<RacingCar> findAll();
 }
