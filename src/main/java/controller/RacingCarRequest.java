@@ -18,7 +18,10 @@ public class RacingCarRequest {
         }
     }
 
-    public record RacingRoundRequest(int round) {
+    public record RacingRoundRequest(String round) {
 
+        public RacingCarCommand.RacingRound toCommand() {
+            return RacingCarCommand.RacingRound.from(round);
+        }
     }
 }

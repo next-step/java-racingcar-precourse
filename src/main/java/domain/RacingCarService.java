@@ -24,9 +24,10 @@ public class RacingCarService {
     /**
      * round 수 만큼 RacingCar를 이동시킨다. round가 끝날때 마다 round별 RacingCar를 저장한다.
      */
-    public void playRacing(int racingRound) {
+    public void playRacing(RacingCarCommand.RacingRound racingRound) {
         List<RacingCar> racingCars = racingCarRepository.findAll();
-        IntStream.range(0, racingRound)
+        int roundNumber = Integer.parseInt(racingRound.round());
+        IntStream.range(0, roundNumber)
             .forEach(round -> {
                 racingCars.forEach(RacingCar::move);
                 racingCarRoundRepository.save(RacingCarRound.create(round, racingCars));
