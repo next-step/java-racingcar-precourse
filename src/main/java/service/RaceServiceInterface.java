@@ -1,6 +1,7 @@
 package service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public interface RaceServiceInterface {
 
@@ -10,7 +11,7 @@ public interface RaceServiceInterface {
 
     public ArrayList<CarServiceInterface> getCars();
 
-    public String getWinners();
+    public List<CarServiceInterface> getWinners();
 
     public void addCars(String[] cars);
 
