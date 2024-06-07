@@ -1,5 +1,8 @@
 package view;
 
+import java.util.List;
+import service.CarServiceInterface;
+
 public interface RaceViewInterface {
 
     public void userCarsInput();
@@ -10,7 +13,7 @@ public interface RaceViewInterface {
 
     public void printProcess();
 
-    public void printResult();
+    public void printResult(List<CarServiceInterface> winners);
 
     public void printCarsErrorMessage();
 
