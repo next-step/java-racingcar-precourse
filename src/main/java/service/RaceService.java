@@ -1,6 +1,5 @@
 package service;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -36,7 +35,7 @@ public class RaceService implements Subject, RaceServiceInterface {
     // controller가 넘겨준 차 목록을 추가하는 메서드
     @Override
     public void addCars(String[] cars) throws IllegalArgumentException {
-        ArrayList<CarServiceInterface> carList = race.getCars();
+        List<CarServiceInterface> carList = race.getCars();
 
         // 빈 입력이 들어온 경우도 예외를 반환
         if (cars.length == 0) {
@@ -58,7 +57,7 @@ public class RaceService implements Subject, RaceServiceInterface {
     // 우승자의 진행도를 반환하는 메서드
     private int getWinnersProgress() {
         // 차들의 정보를 가져와서
-        ArrayList<CarServiceInterface> carList = race.getCars();
+        List<CarServiceInterface> carList = race.getCars();
 
         // 진행도의 최댓값을 구한다.
         int winnersProgress = 0;
@@ -73,7 +72,7 @@ public class RaceService implements Subject, RaceServiceInterface {
     @Override
     public List<CarServiceInterface> getWinners() {
         // 차들의 정보를 가져오고
-        ArrayList<CarServiceInterface> carList = race.getCars();
+        List<CarServiceInterface> carList = race.getCars();
         // 우승자의 진행도를 가져온다.
         int winnersProgress = getWinnersProgress();
 
