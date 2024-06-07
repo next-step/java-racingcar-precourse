@@ -19,18 +19,21 @@ public class Game {
 
     public void playGame() {
         outputView.printHead();
+        playRounds();
+    }
+
+    private void playRounds() {
         for (int i = 0; i < numberOfAttempts; i++) {
-            playCar();
+            cars.forEach(this::moveCarAndPrintDistance);
+            System.out.println();
         }
     }
 
-    private void playCar() {
-        for (Car car : cars) {
-            if (random.nextInt(10) >= 4) {
-                car.move();
-            }
-            outputView.printDistance(car);
+    private void moveCarAndPrintDistance(Car car) {
+        if (random.nextInt(10) >= 4) {
+            car.move();
         }
+        outputView.printDistance(car);
     }
 
     public List<Car> getWinners() {
