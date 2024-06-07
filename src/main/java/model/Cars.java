@@ -8,16 +8,16 @@ public class Cars {
 
     public void setCars(String[] carNames) {
         for (String carName : carNames) {
-            this.cars.put(carName, "");
+            cars.put(carName, "");
         }
     }
 
     public void addDistance(String carName) {
-        String curDist = this.cars.get(carName);
-        this.cars.put(carName, curDist + "-");
+        String curDist = cars.get(carName);
+        cars.put(carName, curDist + "-");
     }
 
     public HashMap<String, String> getCars() {
-        return this.cars;
+        return cars;
     }
 }
