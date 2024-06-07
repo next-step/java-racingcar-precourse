@@ -6,11 +6,24 @@ public class RacingCar {
 
     private final String name;
 
-    private Long position;
+    private int position;
 
     private RacingCar(String name) {
         this.name = name;
-        this.position = 0L;
+        this.position = 0;
+    }
+
+    private RacingCar(RacingCar racingCar) {
+        this.name = racingCar.name;
+        this.position = racingCar.position;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getPosition() {
+        return position;
     }
 
     /**
@@ -36,6 +49,10 @@ public class RacingCar {
      */
     private boolean isForward() {
         return Math.floor(Math.random() * 10) >= 4;
+    }
+
+    public RacingCar copy() {
+        return new RacingCar(this);
     }
 
 }
