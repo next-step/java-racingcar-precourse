@@ -20,4 +20,16 @@ public class RacingCarCommand {
         }
     }
 
+    public record RacingRound(String round) {
+
+        public static RacingCarCommand.RacingRound from(String round) {
+            // round가 숫자인지 검사합니다.
+            Validator.validateNumber(round);
+
+            // 레이싱 횟수가 0보다 큰지 검사합니다.
+            Validator.validateRacingCount(Integer.parseInt(round));
+            return new RacingCarCommand.RacingRound(round);
+        }
+    }
+
 }
