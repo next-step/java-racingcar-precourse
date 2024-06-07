@@ -13,6 +13,7 @@ public class CarService implements CarServiceInterface {
     }
 
     private void goForward() {
+        car.setProgress(car.getProgress() + 1);
     }
 
     @Override
