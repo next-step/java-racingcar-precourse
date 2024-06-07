@@ -2,7 +2,6 @@ package service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 import model.Race;
@@ -30,7 +29,7 @@ public class RaceService implements Subject, RaceServiceInterface {
     }
 
     @Override
-    public ArrayList<CarServiceInterface> getCars() {
+    public List<CarServiceInterface> getCars() {
         return race.getCars();
     }
 
