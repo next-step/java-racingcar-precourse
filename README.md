@@ -47,3 +47,30 @@ jun : -----
 
 ## 💡구현 기능 목록
 
+### model
+자동차와 관련된 데이터 및 로직
+- RacingCar
+
+### view
+사용자에게 보여지는 출력
+- UserInputView
+- RacingGameView
+
+### controller
+사용자의 입력을 받아 Service를 업데이트, View를 통해 출력
+- RacingGameController
+
+### service
+비지니스 로직 처리
+- RacingGameService
+
+### exception
+예외 처리
+- ExceptionHandler
+- ErrorMsg
+
+### util
+- RandomNumberGenerator
+- InputValidator
+
+
