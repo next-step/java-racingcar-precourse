@@ -49,7 +49,7 @@ public class InputView {
     private static void validateCarNameNull(String s) {
         if (s.isEmpty()) {
             // System.out.println(s);
-            throw new IllegalArgumentException("공백은 허용 되지 않습니다.");
+            throw new NoSuchElementException("공백은 허용 되지 않습니다.");
         }
     }
 

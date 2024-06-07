@@ -1,22 +1,25 @@
 package view;
 
 import controller.GameController;
-import model.GameDTO;
 
 import java.util.Map;
 
 public class OutputView {
-    public static void printResult(GameController gameController) {
+    public static void printGame(GameController gameController) {
         int gameIteration = gameController.getGameIteration();
         for (int i = 0; i < gameIteration; i++) {
             Map<String, Integer> gameRecords = gameController.recordsCarMovements();
-            for (String name : gameRecords.keySet()) {
-                System.out.print(name + " : ");
-                printDash(name, gameRecords);
-            }
-            System.out.println();
+            printNameAndMovements(gameRecords);
         }
         System.out.println("최종 우승자 : " + gameController.getWinner());
+    }
+
+    private static void printNameAndMovements(Map<String, Integer> gameRecords) {
+        for (String name : gameRecords.keySet()) {
+            System.out.print(name + " : ");
+            printDash(name, gameRecords);
+        }
+        System.out.println();
     }
 
     private static void printDash(String name, Map<String, Integer> gameRecords) {
