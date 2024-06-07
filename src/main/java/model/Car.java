@@ -1,7 +1,7 @@
 package model;
 
-import util.IRandomNumberGenerator;
 import util.DefaultRandomNumberGenerator;
+import util.IRandomNumberGenerator;
 
 /**
  * 자동차 객체 클래스
