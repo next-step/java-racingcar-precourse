@@ -1,5 +1,7 @@
 package domain;
 
+import java.util.List;
+
 public class RacingCar {
 
     private final String name;
@@ -11,8 +13,10 @@ public class RacingCar {
         this.position = 0L;
     }
 
-    public static RacingCar create(RacingCarCommand.Create create) {
-        return new RacingCar(create.name());
+    public static List<RacingCar> create(RacingCarCommand.Create create) {
+        return create.name().stream()
+            .map(RacingCar::new)
+            .toList();
     }
 
 
