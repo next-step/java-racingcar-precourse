@@ -18,7 +18,7 @@ public class Game {
 
         numberProcess();
 
-        // 시도 횟수만큼 자동차를 전진하고 결과 출력
+        // 시도 횟수만큼 자동차를 전진하며 결과 출력
         output.printResultProgress();
         for (int i = 0; i < number; i++) {
             addCarsDistance();

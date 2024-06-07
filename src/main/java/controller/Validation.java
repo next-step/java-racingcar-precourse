@@ -48,7 +48,7 @@ class CarNamesValidation {
      * @return 5자 이하면 true, 그렇지 않으면 false
      */
     static boolean isWithin5Chars(String carName) {
-        if (carName.length() <= 5) {
+        if (!carName.equals("") && carName.length() <= 5) {
             return true;
         }
         return false;
@@ -88,7 +88,7 @@ class CarNamesValidation {
      * @return 유효 범위 내의 개수이면 true, 그렇지 않으면 false
      */
     static boolean isWithinRange(String[] carNames) {
-        if (carNames.length > 0 && carNames.length <= MAX_NUMBER_OF_CAR_NAMES) {
+        if (carNames.length >= 1 && carNames.length <= MAX_NUMBER_OF_CAR_NAMES) {
             return true;
         }
         return false;
@@ -100,10 +100,10 @@ class NumberValidation {
     private static final int MAX_NUMBER = 10;
 
     /**
-     * 시도 횟수가 숫자인지 판별하는 함수
+     * 시도 횟수가 정수인지 판별하는 함수
      *
      * @param number - 사용자가 입력한 시도 횟수
-     * @return 숫자이면 true, 그렇지 않으면 false
+     * @return 정수이면 true, 그렇지 않으면 false
      */
     static boolean isDigit(String number) {
         try {
@@ -121,7 +121,7 @@ class NumberValidation {
      * @return 유효 범위 내의 횟수이면 true, 그렇지 않으면 false
      */
     static boolean isWithinRange(String number) {
-        if (Integer.parseInt(number) > 0 && Integer.parseInt(number) <= MAX_NUMBER) {
+        if (Integer.parseInt(number) >= 1 && Integer.parseInt(number) <= MAX_NUMBER) {
             return true;
         }
         return false;
