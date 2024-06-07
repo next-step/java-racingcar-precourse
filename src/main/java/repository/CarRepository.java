@@ -17,7 +17,7 @@ public class CarRepository {
 
     public void saveCars(List<String> names) {
         for (String name : names) {
-            cars.put(id, new Car(name));
+            cars.put(id++, new Car(name));
         }
     }
 }
