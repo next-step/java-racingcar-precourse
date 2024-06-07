@@ -1,7 +1,7 @@
 package observer;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public interface SubjectModel {
-    public ArrayList<Observer> getObservers();
+    public List<Observer> getObservers();
 }
