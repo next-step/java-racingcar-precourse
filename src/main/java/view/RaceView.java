@@ -94,7 +94,7 @@ public class RaceView implements Observer, RaceViewInterface {
 
     @Override
     public void printCarsErrorMessage() {
-
+        System.out.println("[ERROR] 입력한 차의 이름이 올바르지 않습니다. 차의 이름은 5자 이하만 가능합니다.");
     }
 
     @Override
