@@ -28,6 +28,8 @@ public class RaceController {
 
         RacingGame racingGame = new RacingGame(cars, round, carMoveRule);
         RaceResult raceResult = racingGame.race();
+
+        outputView.printRaceResult(raceResult);
     }
 
     private <T> T retryUntilCorrectValue(Supplier<T> supplier) {

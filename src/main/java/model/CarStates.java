@@ -9,4 +9,8 @@ public class CarStates {
     public CarStates(List<CarState> carStates) {
         this.carStates = carStates;
     }
+
+    public List<CarState> getCarStates() {
+        return carStates;
+    }
 }

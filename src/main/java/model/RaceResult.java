@@ -9,4 +9,8 @@ public class RaceResult {
     public RaceResult(List<CarStates> raceResult) {
         this.raceResult = raceResult;
     }
+
+    public List<CarStates> getRaceResult() {
+        return raceResult;
+    }
 }
