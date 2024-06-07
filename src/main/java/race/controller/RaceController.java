@@ -1,6 +1,7 @@
 package race.controller;
 
 import race.exception.LengthLimitException;
+import race.handler.InputHandler;
 import race.model.Car;
 import race.model.CustomRandom;
 import race.model.Race;
@@ -15,6 +16,7 @@ import java.util.Scanner;
 public class RaceController {
     private final InputView inputView;
     private final OutputView outputView;
+    private final InputHandler inputHandler;
     private final Scanner scanner;
     private Race race;
     private int tryCount;
@@ -22,29 +24,15 @@ public class RaceController {
     public RaceController() {
         this.inputView = InputView.getInstance();
         this.outputView = OutputView.getInstance();
+        this.inputHandler = InputHandler.getInstance();
         this.scanner = new Scanner(System.in);
     }
 
     public void startRace() {
-
         initializeRace();
         initializeTryCount();
         proceedStep();
         endRace();
-    }
-
-    private List<Car> inputForCarNameList() {
-        List<String> carNameList = splitStringByComma(scanner.nextLine());
-
-        return carNameList.stream()
-                .map(Car::new)
-                .toList();
-    }
-
-
-
-    private List<String> splitStringByComma(String string) {
-        return Arrays.asList(string.split("\\s*,\\s*"));
     }
 
     private void initializeRace() {
@@ -81,7 +69,7 @@ public class RaceController {
 
     private void inputForRace() {
         inputView.inputPromptForCarName();
-        this.race = new Race(inputForCarNameList(), new CustomRandom());
+        this.race = new Race(inputHandler.inputForCarNameList(scanner.nextLine()), new CustomRandom());
     }
 
     private void proceedStep() {
