@@ -10,6 +10,11 @@ public class RaceResult {
         this.raceResult = raceResult;
     }
 
+    public List<String> getWinners() {
+        CarStates finalCarStates = raceResult.get(raceResult.size() - 1);
+        return finalCarStates.getFrontRunnerNames();
+    }
+
     public List<CarStates> getRaceResult() {
         return raceResult;
     }

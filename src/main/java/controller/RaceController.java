@@ -30,6 +30,7 @@ public class RaceController {
         RaceResult raceResult = racingGame.race();
 
         outputView.printRaceResult(raceResult);
+        outputView.printWinners(raceResult.getWinners());
     }
 
     private <T> T retryUntilCorrectValue(Supplier<T> supplier) {
