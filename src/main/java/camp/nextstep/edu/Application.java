@@ -9,5 +9,6 @@ public class Application {
         ui.inputCarNames();
         ui.inputRepeatCount();
         ui.run();
+        ui.destroy();
     }
 }

@@ -101,4 +101,8 @@ public class UI {
                 .collect(Collectors.joining(", "));
         System.out.println("최종 우승자 : " + winners);
     }
+
+    public void destroy() {
+        this.scanner.close();
+    }
 }

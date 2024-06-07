@@ -13,6 +13,7 @@
 - UI 클래스 구현 - race 기능 구현
 - UI 클래스 구현 - printWinner 기능 구현
 - Application 클래스 구현 - main 함수 구현
+- UI 클래스 구현 - UI destroy 함수 구현
 
 ## 과제 진행 요구 사항
 - 기능을 구현하기 전 README.md에 구현할 기능 목록을 정리해 추가한다.
