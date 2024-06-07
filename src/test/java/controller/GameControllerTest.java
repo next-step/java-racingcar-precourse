@@ -12,8 +12,6 @@ class GameControllerTest {
     @DisplayName("우승자동차 선정 테스트")
     public void testGetWinner() throws Exception{
         // given
-        GameController gameController = new GameController();
-
 
         // when
 
