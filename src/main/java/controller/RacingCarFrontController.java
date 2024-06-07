@@ -1,6 +1,5 @@
 package controller;
 
-import controller.RacingCarRequest;
 import java.util.Scanner;
 
 public class RacingCarFrontController {
@@ -25,16 +24,18 @@ public class RacingCarFrontController {
         }
     }
 
-    private boolean ChooseRacingCount(Scanner scanner) {
+    private boolean playRacing(Scanner scanner) {
         // TODO input view 구현
         System.out.println("시도할 회수는 몇회인가요?");
         try {
             int input = scanner.nextInt();
-            racingCarController.startRacing(new RacingCarRequest.RacingRoundRequest(input));
+            RacingCarResponse.ResultGameResponse gameResult = racingCarController.playRacing(
+                new RacingCarRequest.RacingRoundRequest(input));
+            System.out.println(gameResult.gameResult());
             return true;
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
-            ChooseRacingCount(scanner);
+            playRacing(scanner);
             return false;
         }
     }
@@ -49,7 +50,7 @@ public class RacingCarFrontController {
     public void run() {
         Scanner scanner = new Scanner(System.in);
         executeWithRetry(this::CreateRacingCars, scanner);
-        executeWithRetry(this::ChooseRacingCount, scanner);
+        executeWithRetry(this::playRacing, scanner);
         scanner.close();
     }
 
