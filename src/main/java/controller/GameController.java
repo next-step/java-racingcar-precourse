@@ -15,7 +15,6 @@ public class GameController {
 
     public GameController(List<String> carNames, int iteration) {
         this.gameDTO = new GameDTO(generateCarDTOList(carNames), iteration);
-        InputView.closeScanner();
     }
 
 
