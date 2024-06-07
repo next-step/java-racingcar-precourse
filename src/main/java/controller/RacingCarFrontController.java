@@ -7,13 +7,11 @@ public class RacingCarFrontController {
 
     private final RacingCarController racingCarController;
     private final OutputView outputView;
-    private final InputView inputView;
 
     public RacingCarFrontController(RacingCarController racingCarController,
-        OutputView outputView, InputView inputView) {
+        OutputView outputView) {
         this.racingCarController = racingCarController;
         this.outputView = outputView;
-        this.inputView = inputView;
     }
 
     public void run() {

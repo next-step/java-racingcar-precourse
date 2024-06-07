@@ -15,7 +15,6 @@ import view.OutputView;
  */
 public class RacingCarConfig {
 
-    private static final InputView inputView = new InputView();
     private static final OutputView outputView = new OutputView();
 
     private static final RacingCarRepository racingCarRepository = new RacingCarRepositoryImpl();
@@ -27,7 +26,7 @@ public class RacingCarConfig {
     private static final RacingCarController racingCarController = new RacingCarController(
         racingCarService);
     private static final RacingCarFrontController racingCarFrontController = new RacingCarFrontController(
-        racingCarController, outputView, inputView);
+        racingCarController, outputView);
 
     public static RacingCarFrontController getRacingCarFrontController() {
         return racingCarFrontController;
