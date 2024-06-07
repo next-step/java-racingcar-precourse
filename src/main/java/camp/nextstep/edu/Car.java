@@ -31,4 +31,8 @@ public class Car {
     public String racingProgressStatus() {
         return name + " : " + String.join("", racingResult);
     }
+
+    public int recordPosition() {
+        return racingResult.size();
+    }
 }

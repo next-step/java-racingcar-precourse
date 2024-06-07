@@ -82,6 +82,13 @@ public class UITest {
         ui.race(carNames, raceCount);
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(RaceArgumentsProvider.class)
+    public void printWinnerTest(List<Car> carNames, int raceCount) {
+        ui.race(carNames, raceCount);
+        ui.printWinner(carNames);
+    }
+
     public static class RaceArgumentsProvider implements ArgumentsProvider {
         @Override
         public Stream<? extends Arguments> provideArguments(ExtensionContext context) {

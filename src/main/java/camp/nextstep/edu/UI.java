@@ -1,6 +1,7 @@
 package camp.nextstep.edu;
 
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
@@ -91,6 +92,13 @@ public class UI {
     }
 
     public void printWinner(List<Car> carList) {
-        // TODO: 경기에 우승한 차량을 stdout에 출력
+        int maxCarPosition = carList.stream()
+                .max(Comparator.comparingInt(Car::recordPosition))
+                .orElse(new Car("empty"))
+                .recordPosition();
+        String winners = carList.stream().filter(c -> c.recordPosition() == maxCarPosition)
+                .map(Car::getName)
+                .collect(Collectors.joining(", "));
+        System.out.println("최종 우승자 : " + winners);
     }
 }
