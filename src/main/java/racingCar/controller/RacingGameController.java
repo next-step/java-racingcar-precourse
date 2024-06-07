@@ -20,9 +20,9 @@ public class RacingGameController {
      */
     public void race() {
         String carNames = InputView.inputCarName();             // user input
-        int tryNum = InputView.inputTryNum();                   // user input
+        String tryNum = InputView.inputTryNum();                // user input
         carService.saveCars(carNames);                          // Generate Car instances and save to repository
-        raceStart(tryNum);                                      // start racing game
+        raceStart(Integer.parseInt(tryNum));                    // start racing game
         OutputView.printFinalWinner(carService.getWinner());    // print winner
     }
 

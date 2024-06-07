@@ -35,14 +35,14 @@ public class InputView {
      * 잘못된 값 입력 시 다시 입력 받는다.
      * @return 시도할 횟수
      */
-    public static int inputTryNum() {
-        int tryNum;
+    public static String inputTryNum() {
+        String tryNum;
         Scanner scanner = new Scanner(System.in);
 
         while(true) {
             try {
                 System.out.println(INPUT_TRY_NUM_MSG);
-                tryNum = scanner.nextInt();
+                tryNum = scanner.nextLine();
                 InputValidator.validateInputTryNum(tryNum);
                 break;
             } catch (IllegalArgumentException e) {
