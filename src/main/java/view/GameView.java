@@ -32,6 +32,7 @@ public class GameView {
      * @throws IllegalArgumentException 정수 외 다른 입력을 받을시 예외 발생
      */
     public int getNumberOfMoves() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
         while(true) {
             try {
                 return readNumberOfMoves();
