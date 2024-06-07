@@ -56,4 +56,13 @@ public class Validator {
             throw new IllegalArgumentException("레이싱 횟수는 0보다 커야합니다.");
         }
     }
+
+    /**
+     * 숫자로만 이루어져 있는지 검사합니다.
+     */
+    public static void validateNumber(String round) {
+        if (!round.matches("^[0-9]*$")) {
+            throw new IllegalArgumentException("숫자로만 이루어져 있어야 합니다.");
+        }
+    }
 }
