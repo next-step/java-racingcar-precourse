@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class GameInputView {
@@ -29,5 +27,13 @@ public class GameInputView {
 
         scanner.close();
         return carNames;
+    }
+
+    public int inputPlayCount() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("시도할 회수는 몇회인가요?");
+        String playCountString = scanner.nextLine();
+
+        return Integer.parseInt(playCountString);
     }
 }
