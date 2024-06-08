@@ -40,4 +40,16 @@ public class RaceServiceTest {
         Assertions.assertThatThrownBy(() -> raceService.addCars(carsErrorName))
             .isInstanceOf(IllegalArgumentException.class);
     }
+
+    // addCars를 통해 아무 입력도 넣지 않았을 때 예외 처리가 되는지 확인
+    @Test
+    void addCarsEmptyErrorTest() {
+        // 객체와 삽입할 배열을 준비
+        RaceServiceInterface raceService = new RaceService();
+        String[] empty = {};
+
+        // 잘못된 경우에 대한 테스트 (빈 입력)
+        Assertions.assertThatThrownBy(() -> raceService.addCars(empty))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
 }
