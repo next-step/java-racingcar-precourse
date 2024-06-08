@@ -10,7 +10,7 @@ import utils.ErrorConstants;
 
 public class InputValidator {
 
-    private static final String COMMA_SEPARATED_REGEX = "^[^,]+(,[^,]+)*$\n";
+    private static final String COMMA_SEPARATED_REGEX = "^(?:[가-힣a-zA-Z0-9]+,)*[가-힣a-zA-Z0-9]+$" ;
 
     private static void inputIsBlank(String input) {
         if (input.isBlank()) {
@@ -47,9 +47,9 @@ public class InputValidator {
         return result;
     }
 
-    private static void isOver5Words(List<String> inputList) {
+    private static void isOverWords(List<String> inputList) {
         List<String> longStrings = inputList.stream()
-                .filter(str -> str.length() > 5)
+                .filter(str -> str.length() > Constants.MAX_WORD)
                 .collect(Collectors.toList());
 
         if (!longStrings.isEmpty()) {
@@ -66,7 +66,7 @@ public class InputValidator {
 
     public static List<String> validateCarName(String input) {
         List<String> cars = validateCommaSeparatedStrings(input);
-        isOver5Words(cars);
+        isOverWords(cars);
         isDuplicate(cars);
         return cars;
     }
