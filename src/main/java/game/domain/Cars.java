@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Objects;
 import java.util.Random;
-import java.util.stream.Collectors;
 
 public class Cars {
 
@@ -28,7 +27,7 @@ public class Cars {
     public Cars findWinners() {
         int maxPosition = getMaxPosition();
         List<Car> winners = carList.stream()
-            .filter(car -> car.getPosition() == maxPosition)
+            .filter(car -> car.isWinner(maxPosition))
             .toList();
         return new Cars(winners);
     }
@@ -72,11 +71,11 @@ public class Cars {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("Cars = ");
         carList.forEach(car ->
-                stringBuilder.append("(")
-                    .append(car.getName())
-                    .append(", position: ")
-                    .append(car.getPosition())
-                    .append(")"));
+            stringBuilder.append("(")
+                .append(car.getName())
+                .append(", position: ")
+                .append(car.getPosition())
+                .append(")"));
         return stringBuilder.toString();
     }
 }
