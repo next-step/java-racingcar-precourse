@@ -10,7 +10,7 @@ public class Car {
         if (carName.length() > 5) {
             throw new IllegalArgumentException(OVER_FIVE_WORDS + carName);
         }
-        this.carName = carName;gitg
+        this.carName = carName;
         this.position = 0;
     }
 
