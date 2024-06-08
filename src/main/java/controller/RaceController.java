@@ -1,0 +1,26 @@
+package controller;
+
+import java.util.List;
+
+public class RaceController {
+    private final RaceInputController inputController;
+
+    public RaceController() {
+        this.inputController = new RaceInputController();
+    }
+
+    public void run() {
+        try {
+            List<String> carNames = inputController.getUserInputForCarNames();
+            int rounds = inputController.getUserInputForRaceCount();
+
+            Race race = new Race(carNames, rounds);
+            RaceResult result = race.start();
+
+            OutputView.printRaceStatus(result.getCars());
+            OutputView.printWinners(result.getWinners());
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}

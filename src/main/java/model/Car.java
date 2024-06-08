@@ -1,4 +1,4 @@
-package domain;
+package model;
 
 public class Car {
     private final String carName;
@@ -14,5 +14,13 @@ public class Car {
         if (randomNumber >= 4) {
             position++;
         }
+    }
+
+    public int getPosition() {
+        return this.position;
+    }
+
+    public String getCarName() {
+        return this.carName;
     }
 }

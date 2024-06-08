@@ -26,7 +26,6 @@ public class RaceInputController {
     public int getUserInputForRaceCount() {
         while (true) {
             try {
-                sc.nextLine();
                 InputView.printCountInput();
                 final String input = sc.nextLine();
                 return InputValidator.validateRaceCount(input);
