@@ -3,7 +3,6 @@ package game.domain;
 import game.config.constant.Rule;
 import game.validator.CarNameValidator;
 import java.util.Objects;
-import java.util.Random;
 
 public class Car {
 
@@ -28,23 +27,11 @@ public class Car {
         return position;
     }
 
-    public int move() {
-        if(canMove()) {
-            this.position++;
-        }
-        return this.position;
-    }
-
     public int move(int randomValue) {
         if(canMove(randomValue)) {
             this.position++;
         }
         return this.position;
-    }
-
-    private boolean canMove() {
-        Random random = new Random();
-        return random.nextInt(Rule.MAX_RANDOM_VALUE + 1) >= Rule.MOVEMENT_THRESHOLD;
     }
 
     private boolean canMove(int randomValue) {
