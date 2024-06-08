@@ -13,10 +13,18 @@ public class Input {
         return input;
     }
 
-    public int inputMatch() {
+    public int inputMatch() throws IllegalArgumentException{
         System.out.println("시도할 회수는 몇회인가요?");
         Scanner sc = new Scanner(System.in);
-        return sc.nextInt();
+        int number;
+        try {
+            String input = sc.nextLine();
+            number = Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR] 시도할 회수는 정수로 입력해주십시오.");
+        }
+
+        return number;
     }
 
     public void createCarArray(String str, Car[] cars) {
