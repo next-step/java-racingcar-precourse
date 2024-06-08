@@ -10,7 +10,7 @@ public class RaceServiceTest {
 
     // addCars를 통해 삽입이 잘 됐는지 확인
     @Test
-    void addCarsNumberTest() {
+    void addCarsTest() {
         // 객체와 삽입할 배열을 준비
         RaceServiceInterface raceService = new RaceService();
         String[] carsName = {"jih", "hyu", "abc", "xyz"};
