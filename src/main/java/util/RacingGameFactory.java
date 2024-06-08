@@ -4,6 +4,7 @@ import model.Car;
 import service.RacingGame;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -13,13 +14,20 @@ public class RacingGameFactory {
     private int validRoundNum;
 
     public int prepareRacingCar(String carNameInput) throws IllegalArgumentException {
-        String[] carnames = carNameInput.trim().split(",");
+        String[] carNames = Arrays.stream(carNameInput.split(","))
+                .map(String::trim)
+                .toArray(String[]::new);
+
         List<String> vaildCarNames = new ArrayList<>();
 
         int i = 1;
-        for (String carname : carnames) {
+        for (String carname : carNames) {
             vaildCarNames.add(isValid(carname,i));
             i ++;
+        }
+
+        if(vaildCarNames.size() <= 1){
+            throw new IllegalArgumentException("참가 자동차수는 하나보다는 커야함");
         }
         this.vaildCarNames = vaildCarNames;
 

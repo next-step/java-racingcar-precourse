@@ -12,6 +12,7 @@ class RacingGameFactoryTest {
         assertDoesNotThrow(() -> factory.prepareRacingCar("Car1,Car2,Car3"));
     }
 
+
     @Test
     void prepareRacingCar_EmptyName() {
         RacingGameFactory factory = new RacingGameFactory();
@@ -37,6 +38,14 @@ class RacingGameFactoryTest {
             factory.prepareRacingCar("Car123456,Car2,Car3");
         });
         assertTrue(thrown.getMessage().contains("5자를 넘어감"));
+    }
+    @Test
+    void prepareRacingCar_vaildCarNum() {
+        RacingGameFactory factory = new RacingGameFactory();
+        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> {
+            factory.prepareRacingCar("Car1");
+        });
+        assertTrue(thrown.getMessage().contains("참가 자동차수는 하나보다는 커야함"));
     }
 
     @Test
