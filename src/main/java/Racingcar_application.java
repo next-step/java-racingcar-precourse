@@ -1,6 +1,5 @@
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.*;
 
@@ -20,9 +19,17 @@ public class Racingcar_application {
             raceMap.put(st.nextToken(), "");
         }
 
-        for(String s : raceMap.keySet()){
-            System.out.println(s + " : " + raceMap.get(s));
+        for(int i=0; i<cnt; i++) {
+            printRacing(raceMap);
         }
 
     }
+
+    private static void printRacing(Map<String, String> raceMap) {
+        for(String s : raceMap.keySet()){
+            System.out.println(s + " : " + raceMap.get(s));
+        }
+        System.out.println("");
+    }
+
 }
