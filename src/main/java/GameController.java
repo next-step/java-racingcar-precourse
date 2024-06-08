@@ -2,8 +2,8 @@ public class GameController {
 
     private Car[] carList;
     private int playCount;
-    private GameInputView gameInputView;
-    private GameOutputView gameOutputView;
+    private final GameInputView gameInputView;
+    private final GameOutputView gameOutputView;
 
     public GameController() {
         gameInputView = new GameInputView();
@@ -46,5 +46,6 @@ public class GameController {
         }
 
         gameOutputView.printWinner(carList, winnerMoveCount);
+        gameInputView.close();
     }
 }
