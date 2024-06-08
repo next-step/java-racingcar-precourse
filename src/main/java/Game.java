@@ -64,7 +64,11 @@ public class Game {
         return winnerList;
     }
 
-
-
-
+    public void printWinners(List<Car> cars) {
+        System.out.print("최종 우승자 : ");
+        for (int i = 0; i < (cars.size() - 1); i++) {
+            System.out.print(cars.get(i).getName() + ", ");
+        }
+        System.out.println(cars.get(cars.size() - 1).getName());
+    }
 }
