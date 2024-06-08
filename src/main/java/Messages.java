@@ -6,4 +6,5 @@ public class Messages {
 
     public static final String CAR_NAME_EMPTY_ERR = "자동차 이름은 비어있을 수 없습니다.";
     public static final String CAR_NAME_DUPLICATE_ERR = "자동차 이름은 중복될 수 없습니다.";
+    public static final String REPEAT_NUMBER_VALUE_ERR = "시도 횟수는 1 이상이어야 합니다.";
 }
