@@ -14,7 +14,7 @@ public class InputView {
 
     public String[] inputCarNames() throws IOException {
         System.out.println("경주할 자동차의 이름들을 입력하시오. (자동차이름 사이는 쉼표(,)로 구분");
-        System.out.println("ex) Alpha,Bravo,Charlie");
+        System.out.println("또한 자동차 이름은 1~5자 사이만 가능합니다. ex)Bravo: 가능 | Charlie: 불가능");
         String inputLine = br.readLine();
         String[] carNames = inputLine.split(",");
         validateCarNames(carNames);
