@@ -1,6 +1,6 @@
 package model;
 
-import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -11,9 +11,12 @@ public class CarManager {
 
     private RandomMaker rm;
 
+    private int fastCount;
+
     public CarManager() {
         this.carSet = new HashSet<Car>();
         this.rm = new RandomMaker();
+        this.fastCount = 0;
     }
 
     /**
@@ -33,6 +36,10 @@ public class CarManager {
     public void race(){
         for(Car c : carSet){
             c.doExcel(rm.getRandomValue());
+
+            if(fastCount<=c.getPosition()){ //가장빠른 차 업데이트
+                fastCount = c.getPosition();
+            }
         }
     }
 
@@ -47,6 +54,21 @@ public class CarManager {
             logMap.put(c.getName(),c.getPosition());
         }
         return logMap;
+    }
+
+    /**
+     * 가장 빠른 차 이름들을 반환한다.
+     * @return not null
+     */
+    public Set<String> getFastCarName(){
+        Set<String> logSet = new HashSet<>();
+
+        for(Car c : carSet){
+            if(c.getPosition()==fastCount){
+                logSet.add(c.getName());
+            }
+        }
+        return logSet;
     }
 
 }
