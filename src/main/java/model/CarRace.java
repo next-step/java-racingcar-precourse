@@ -11,9 +11,8 @@ public class CarRace {
     private int raceCount;
 
 
-    public CarRace(String[] carNames, int raceCount){
+    public CarRace(String[] carNames){
         this.carList = Arrays.stream(carNames).map(Car::new).toList();
-        this.raceCount = raceCount;
     }
 
     public List<Car> getCarList(){
