@@ -38,6 +38,10 @@ public class Car {
         return randomValue >= Rule.MOVEMENT_THRESHOLD;
     }
 
+    public boolean isWinner(int maxPosition) {
+        return position == maxPosition;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
