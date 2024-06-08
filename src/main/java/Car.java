@@ -29,7 +29,7 @@ public class Car {
         this.moveCount = moveCount;
     }
 
-    public int generateNumber() {
+    private int generateNumber() {
         return (int) (Math.random() * 10);
     }
 
