@@ -15,4 +15,18 @@ public class RacingGameUtil {
     }
 
 
+    public static int setRounds (String inputValue ) throws IllegalArgumentException{
+        if (inputValue == null || inputValue.isEmpty()) {
+            throw new IllegalArgumentException("라운드 횟수가 빈 값이다.");
+        }
+        if (!inputValue.matches("\\d+")) {
+            throw new IllegalArgumentException("라운드 횟수는 정수여야합니다.");
+        }
+        int rounds = Integer.parseInt(inputValue);
+        if (rounds < 1 || rounds > 12) {
+            throw new IllegalArgumentException("라운드 횟수는 1~12 사이의 값이어야합니다.");
+        }
+        return rounds;
+    }
+
 }
