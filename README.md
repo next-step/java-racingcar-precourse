@@ -90,6 +90,13 @@ throw -> IllegalArgumentException
 ### function
 
 - void : setExcelCondition(int)
+position이 증가하는 조건을 변경
+
+- void : doExcel(int)
+position을 증가시킨다.
+
+- void : getPosition()
+현재 위치를 반환한다.
 
 ## RandomMaker.class
 
