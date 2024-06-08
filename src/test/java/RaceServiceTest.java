@@ -28,4 +28,16 @@ public class RaceServiceTest {
         // 삽입한 배열이 리스트에 잘 들어갔는지 확인
         Assertions.assertThat(isEqual).isTrue();
     }
+
+    // addCars를 통해 5자 초과의 차 이름을 넣었을 때 예외 처리가 되는지 확인
+    @Test
+    void addCarsNameErrorTest() {
+        // 객체와 삽입할 배열을 준비
+        RaceServiceInterface raceService = new RaceService();
+        String[] carsErrorName = {"abcdef", "abcd"};
+
+        // 잘못된 경우에 대한 테스트 (5자 이상)
+        Assertions.assertThatThrownBy(() -> raceService.addCars(carsErrorName))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
 }
