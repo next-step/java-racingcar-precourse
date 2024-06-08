@@ -10,11 +10,10 @@ public class Car {
         this.name = name;
     }
 
-    private int move(int position){
+    public void move(){
         if(randomNum >= MINIMUM_NUM){
             position++;
         }
-        return position;
     }
 
     public int getPosition(){
