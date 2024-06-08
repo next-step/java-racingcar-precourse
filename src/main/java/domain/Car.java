@@ -1,12 +1,16 @@
 package domain;
 
+import static utils.ErrorConstants.OVER_FIVE_WORDS;
+
 public class Car {
     private final String carName;
     private int position;
 
     public Car(String carName) {
-        // 차 이름 검증 필요
-        this.carName = carName;
+        if (carName.length() > 5) {
+            throw new IllegalArgumentException(OVER_FIVE_WORDS + carName);
+        }
+        this.carName = carName;gitg
         this.position = 0;
     }
 
