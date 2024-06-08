@@ -6,6 +6,7 @@ public class Main {
     public static void main(String[] args) {
         List<Car> cars = getCarNames();
         int trialCount = getTrialCount();
+        race(cars, trialCount);
     }
 
     private static List<Car> getCarNames() {
@@ -57,6 +58,19 @@ public class Main {
     public static void validateTrialCount(int count) {
         if (count <= 0) {
             throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.");
+        }
+    }
+
+    public static void race(List<Car> cars, int trialCount) {
+        System.out.println("실행 결과");
+        for (int i = 0; i < trialCount; i++) {
+            for (Car car : cars) {
+                car.move();
+            }
+            for (Car car : cars) {
+                System.out.println(car);
+            }
+            System.out.println();
         }
     }
 
