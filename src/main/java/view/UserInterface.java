@@ -4,7 +4,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Scanner;
 
-public class userInterface {
+public class UserInterface {
+    Scanner scanner = new Scanner(System.in);
 
     public int explain() {
 
@@ -16,16 +17,11 @@ public class userInterface {
 
     public String enterCarName() {
 
-        Scanner scanner = new Scanner(System.in);
-
         // 사용자에게 자동차 이름 입력받기
         System.out.println("먼저 당신은 준비시킬 자동차를 입력해야합니다! 자동차는 공백을 입력해서는 안되고, ','로 구분해서 입력할 수 있습니다.");
         System.out.println("ex _ 붕붕이,씽씽이");
         System.out.print("입력: ");
         String carNamesInput = scanner.nextLine();
-
-
-        scanner.close();
 
         return carNamesInput;
 
@@ -47,16 +43,13 @@ public class userInterface {
     }
 
     public String enterNumberOfRounds() {
-        Scanner scanner = new Scanner(System.in);
+
 
         // 사용자에게 자동차 이름 입력받기
         System.out.println("좋아요! 이제 라운드를 몇번 진행할건가요?");
         System.out.println("입력값은 1~12 사이의 숫자입니다. 문자를 포함해서는 안됩니다~! ;) ");
         System.out.print("입력: ");
         String roundInput = scanner.nextLine();
-
-
-        scanner.close();
 
         System.out.println();
         return roundInput;
@@ -83,7 +76,7 @@ public class userInterface {
         return 0;
     }
 
-    public int printingElapsedGames(List<String> winningCars) {
+    public int printWinners(List<String> winningCars) {
 
         String result = String.join(" ", winningCars);
 
