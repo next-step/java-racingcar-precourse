@@ -11,7 +11,22 @@ public class InputController {
     public InputController() {
         this.sc = new Scanner(System.in);
     }
-    public Set<String> inputCarName() throws IllegalArgumentException {
+    public Set<String> inputCarName() {
+
+        while (true) {
+            try {
+                return readSc();
+
+            } catch(IllegalArgumentException e){
+                System.out.println(e.getMessage());
+            }
+
+        }
+    }
+    public int inputRaceCount() {
+
+    }
+    private Set<String> readSc(){
 
         Set<String> carNames = new HashSet<>();
 
@@ -26,11 +41,8 @@ public class InputController {
         }
 
         return carNames;
-    }
-    public int inputRaceCount() throws IllegalArgumentException {
 
     }
-
     private void nameLengthCheck(String s){
         if(s.length()>5){
             throw new IllegalArgumentException("[ERROR] : 자동차 이름은 5자 이하입니다.");
@@ -38,7 +50,11 @@ public class InputController {
     }
 
     private void nameDuplicateCheck(Set<String> names,String s){
-
+        for(String carName : names){
+            if(carName.equals(s)){
+                throw new IllegalArgumentException("[ERROR] : 자동차 이름이 중복됩니다.");
+            }
+        }
     }
 
 
