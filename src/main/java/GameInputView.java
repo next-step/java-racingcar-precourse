@@ -1,6 +1,11 @@
 import java.util.Scanner;
 
 public class GameInputView {
+    private final Scanner scanner;
+
+    public GameInputView() {
+        scanner = new Scanner(System.in);
+    }
 
     private void validatorInputCarNameList(String[] carNames) {
         for (String car : carNames) {
@@ -11,7 +16,6 @@ public class GameInputView {
     }
 
     public String[] inputCarNames() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String[] carNames = scanner.nextLine().split(",");
 
@@ -25,7 +29,6 @@ public class GameInputView {
             }
         }
 
-        scanner.close();
         return carNames;
     }
 
@@ -40,7 +43,6 @@ public class GameInputView {
     }
 
     public int inputPlayCount() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("시도할 회수는 몇회인가요?");
         String playCountString = scanner.nextLine();
 
@@ -55,5 +57,9 @@ public class GameInputView {
         }
 
         return Integer.parseInt(playCountString);
+    }
+
+    public void close() {
+        scanner.close();
     }
 }
