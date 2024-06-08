@@ -1,5 +1,5 @@
 public class Main {
-    private static String players;
+
     private static int n;
     private static Car[] cars;
 
@@ -40,6 +40,7 @@ public class Main {
 
     public static void inputValue() throws IllegalArgumentException{
         Input i = new Input();
+        String players;
         try {
             players = i.inputPlayer();
             n = i.inputMatch();
