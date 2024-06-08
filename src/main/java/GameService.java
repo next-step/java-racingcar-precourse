@@ -17,6 +17,8 @@ public class GameService {
     }
 
     public void gameStart() {
+        System.out.println();
+        System.out.println("실행 결과");
         for (int i = 0; i < tryCount; i++) {
             carRace(); // if rand num >= 4: move
         }
@@ -42,7 +44,7 @@ public class GameService {
         for (Car car : cars) {
             if (car.getDistance() == maxDistance) { winCarsName.add(car.getName()); }
         }
-        System.out.print("final winner: ");
+        System.out.print("최종 우승자 : ");
         for (int i = 0; i < winCarsName.size(); i++) {
             if(i != winCarsName.size()-1) System.out.print(winCarsName.get(i) + ", ");
             if(i == winCarsName.size()-1) System.out.print(winCarsName.get(i));

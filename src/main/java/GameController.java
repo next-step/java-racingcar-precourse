@@ -13,7 +13,7 @@ public class GameController {
     public String[] inputCarNames(){
         String[] carNames;
         while(true){
-            System.out.println("Enter the names of the cars to race (names should be separated by commas)");
+            System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
             String names = scanner.nextLine();
             carNames = names.split(",");
 
@@ -22,7 +22,7 @@ public class GameController {
                 checkNameLength(carNames);// if wrong: throws IllegalArgumentException
                 return carNames; // correct
             } catch (IllegalArgumentException e) {
-                System.out.println("[ERROR] The name of the car must be within 5 characters. please type again");
+                System.out.println("[ERROR] 자동차의 이름은 5자 이하만 가능합니다. 다시 입력하세요");
             }
         }
     }
@@ -39,15 +39,15 @@ public class GameController {
         int tryCount = 0;
         while (true) {
             try {
-                System.out.println("Enter count for try");
+                System.out.println("시도할 횟수는 몇회인가요?");
                 tryCount = scanner.nextInt();
                 checkTryCountValue(tryCount);
                 return tryCount;
             } catch (InputMismatchException e) {
-                System.out.println("wrong value type, please type again");
+                System.out.println("잘못된 값 타입입니다. 다시 입력하세요.");
                 scanner.nextLine();  // make input buffer empty
             } catch (IllegalArgumentException e) {
-                System.out.println("wrong value, value should be more than 0, please type again");
+                System.out.println("잘못된 값입니다. 값은 0보다 커야합니다. 다시 입력하세요.");
             }
         }
     }
