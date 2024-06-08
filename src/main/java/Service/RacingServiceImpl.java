@@ -2,6 +2,7 @@ package Service;
 
 import Model.Car;
 import Utils.RandomUtil;
+import Utils.SystemMessage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,16 +16,21 @@ public class RacingServiceImpl implements RacingService {
         return instance;
     }
 
-    private List<Car> cars = new ArrayList<>();
+    private List<Car> cars;
     private int time;
 
     @Override
-    public void setRace(String names, int time) throws IllegalArgumentException {
+    public void setRace(String names, String time) throws IllegalArgumentException {
+        cars = new ArrayList<>();
         // 자동차 이름 정보를 바탕으로 자동차 배열 생성
         for (String name : names.split(",")){
             cars.add(new Car(name));
         }
-        this.time = time;
+        try{
+            this.time = Integer.parseInt(time);
+        } catch (NumberFormatException e){
+            throw new IllegalArgumentException(SystemMessage.NOT_A_NUMBER);
+        }
     }
 
     @Override

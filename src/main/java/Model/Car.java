@@ -1,5 +1,7 @@
 package Model;
 
+import Utils.SystemMessage;
+
 public class Car {
     private String name;
     private int cnt;
@@ -33,9 +35,9 @@ public class Car {
 
     public void validateName() throws IllegalArgumentException{
         if (name.length() > 5) {
-            throw new IllegalArgumentException("[ERROR] NAME IS TOO LONG");
+            throw new IllegalArgumentException(SystemMessage.CAR_NAME_OVER_SIZE_ERROR);
         } else if (name.isEmpty()) {
-            throw new IllegalArgumentException("[ERROR] NAME IS NULL");
+            throw new IllegalArgumentException(SystemMessage.CAR_NAME_NULL_ERROR);
         }
     }
 }
