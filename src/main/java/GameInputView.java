@@ -29,10 +29,30 @@ public class GameInputView {
         return carNames;
     }
 
+    private void validatorInputPlayCountString(String playCountString) {
+        if (!playCountString.matches("^\\d+$")) {
+            throw new IllegalArgumentException();
+        }
+
+        if (Integer.parseInt(playCountString) == 0) {
+            throw new IllegalArgumentException();
+        }
+    }
+
     public int inputPlayCount() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("시도할 회수는 몇회인가요?");
         String playCountString = scanner.nextLine();
+
+        while (true) {
+            try {
+                validatorInputPlayCountString(playCountString);
+                break;
+            } catch (IllegalArgumentException e) {
+                System.out.println("[ERROR] 0을 제외한 정수를 입력해주세요.");
+                playCountString = scanner.nextLine();
+            }
+        }
 
         return Integer.parseInt(playCountString);
     }
