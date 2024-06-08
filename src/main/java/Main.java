@@ -1,16 +1,10 @@
 public class Main {
+    private static String players;
+    private static int n;
+    private static Car[] cars;
 
     public static void main(String[] args) {
-        Input i = new Input();
-        String players = i.inputPlayer();
-        int n = i.inputMatch();
 
-        Car[] cars = new Car[i.numOfPlayers(players)];
-        i.createCarArray(players, cars);
-
-        System.out.println("실행결과 : ");
-        doRacing(n, cars);
-        checkWinner(cars);
     }
 
     public static void doRacing(int n, Car[] cars) {
@@ -34,5 +28,18 @@ public class Main {
             }
             System.out.print(winners[i] + ", ");
         }
+    }
+
+    public static void inputValue() throws IllegalArgumentException{
+        Input i = new Input();
+        try {
+            players = i.inputPlayer();
+            n = i.inputMatch();
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException(e.getMessage());
+        }
+
+        cars = new Car[i.numOfPlayers(players)];
+        i.createCarArray(players, cars);
     }
 }

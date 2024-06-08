@@ -26,7 +26,7 @@ public class Car {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for(int i=0; i < this.distance; i++) {
+        for (int i = 0; i < this.distance; i++) {
             sb.append("-");
         }
         return sb.toString();
