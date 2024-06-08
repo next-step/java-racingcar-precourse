@@ -2,7 +2,12 @@ import java.util.Random;
 
 public class Car {
     private String name;
-    private int state =0;
+    private int state;
+
+    public Car(String carName) {
+        this.name= carName;
+        this.state = 0;
+    }
 
     public void move() {
 
