@@ -9,4 +9,10 @@ public class Car {
         this.carName = carName;
         this.position = 0;
     }
+
+    public void moveCar(){
+        int randomNumber = (int) (Math.random() * 10);
+        if (randomNumber>=4)
+            position++;
+    }
 }
