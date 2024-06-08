@@ -4,8 +4,10 @@ import game.config.constant.Rule;
 import game.exception.constant.ErrorMessage;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Objects;
 import java.util.Random;
 import java.util.stream.Collectors;
 
@@ -40,5 +42,28 @@ public class Cars {
 
     public List<Car> getCarList() {
         return Collections.unmodifiableList(carList);
+    }
+
+    /**
+     * 리스트의 순서와 상관없이 내부 원소만 비교하여 동등성을 판단합니다
+     *
+     * @param o 비교할 Cars 인스턴스
+     * @return 동등여부
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Cars cars = (Cars) o;
+        return new HashSet<>(carList).equals(new HashSet<>(cars.getCarList()));
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(carList);
     }
 }
