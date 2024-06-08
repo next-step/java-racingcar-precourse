@@ -12,12 +12,12 @@ import org.junit.jupiter.params.provider.MethodSource;
 class CarsTest {
 
     @ParameterizedTest(name = "{0}의 경주 결과 승자는 {1}입니다")
-    @MethodSource("getCarList")
+    @MethodSource("getCarListAndWinner")
     void findWinner(Cars cars, Cars winners) {
         assertThat(cars.findWinners()).isEqualTo(winners);
     }
 
-    private static Stream<Arguments> getCarList() {
+    private static Stream<Arguments> getCarListAndWinner() {
         List<Car> carList = new ArrayList<>();
         carList.add(new Car("enzo", 5));
         carList.add(new Car("gusto", 5));
