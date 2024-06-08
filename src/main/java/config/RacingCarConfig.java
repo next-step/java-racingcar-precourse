@@ -11,7 +11,7 @@ import view.InputView;
 import view.OutputView;
 
 /**
- * RacingCarConfig Repository, Service, Controller를 생성하고 연결하는 클래스
+ * RacingCarConfig Repository, Service, Controller, view 에 대한 의존성 주입을 담당하는 클래스
  */
 public class RacingCarConfig {
 

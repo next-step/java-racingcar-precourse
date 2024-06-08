@@ -17,6 +17,9 @@ public class RacingCarService {
         this.racingCarRoundRepository = racingCarRoundRepository;
     }
 
+    /**
+     * RacingCar를 생성 및 저장한다.
+     */
     public void createRacingCar(RacingCarCommand.Create create) {
         RacingCar.create(create).forEach(racingCarRepository::save);
     }
@@ -34,6 +37,9 @@ public class RacingCarService {
             });
     }
 
+    /**
+     * RacingCarRound를 조회하여 GameResult를 반환한다.
+     */
     public RacingCarModel.GameResult getGameResult() {
         List<RacingCarRound> racingCarRounds = racingCarRoundRepository.findAll();
         return RacingCarModel.GameResult.from(racingCarRounds);
