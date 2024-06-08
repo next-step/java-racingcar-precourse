@@ -11,7 +11,7 @@ public class GameInputView {
     private void validatorInputCarNameList(String[] carNames) {
         for (String car : carNames) {
             if ((car.isEmpty()) || (car.length() > 5)) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("[ERROR] 자동차 이름을 쉼표로 구분해주시고, 각 이름의 길이는 5자 이하로 작성해주세요.");
             }
         }
     }
@@ -25,7 +25,7 @@ public class GameInputView {
                 validatorInputCarNameList(carNames);
                 break;
             } catch (IllegalArgumentException e) {
-                System.out.println("[ERROR] 자동차 이름을 쉼표로 구분해주시고, 각 이름의 길이는 5자 이하로 작성해주세요.");
+                System.out.println(e.getMessage());
                 carNames = scanner.nextLine().split(",");
             }
         }
@@ -35,11 +35,11 @@ public class GameInputView {
 
     private void validatorInputPlayCountString(String playCountString) {
         if (!playCountString.matches("^\\d+$")) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 0을 제외한 정수를 입력해주세요.");
         }
 
         if (Integer.parseInt(playCountString) == 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 0을 제외한 정수를 입력해주세요.");
         }
     }
 
@@ -52,7 +52,7 @@ public class GameInputView {
                 validatorInputPlayCountString(playCountString);
                 break;
             } catch (IllegalArgumentException e) {
-                System.out.println("[ERROR] 0을 제외한 정수를 입력해주세요.");
+                System.out.println(e.getMessage());
                 playCountString = scanner.nextLine();
             }
         }
