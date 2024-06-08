@@ -7,13 +7,13 @@ public class CarTest {
 
     private Car car;
     @BeforeEach
-    @DisplayName("initialization")
+    @DisplayName("초기화")
     void setUp() {
         car = new Car("testCar");
     }
 
     @Test
-    @DisplayName("car move test")
+    @DisplayName("자동차가 정상적으로 전진하는지")
     void carMoveValid() {
         // when
         car.move();

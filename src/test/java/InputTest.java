@@ -13,13 +13,13 @@ public class InputTest {
     GameController gameController;
 
     @BeforeEach
-    @DisplayName("initialization")
+    @DisplayName("초기화")
     void setUp() {
         gameController = new GameController();
     }
 
     @Test
-    @DisplayName("car names length validation")
+    @DisplayName("자동차 이름의 길이가 옳바른지")
     void inputCarNamesLengthValid() {
         // given
         String names = "honda, mizda  , genesis,kia";
@@ -31,7 +31,7 @@ public class InputTest {
         });
     }
     @Test
-    @DisplayName("car names length validation")
+    @DisplayName("자동차 이름 옳바르게 구분되었는지")
     void inputCarNamesSplitValid() {
         // given
         String names = "honda,mizda  , kia  ";
@@ -44,7 +44,7 @@ public class InputTest {
     }
 
     @Test
-    @DisplayName("car race try count validation")
+    @DisplayName("경주 시도 횟수 옳바르게 입력되었는지")
     void inputTryCountValid() {
         // given
         int tryCount;
