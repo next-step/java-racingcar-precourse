@@ -66,4 +66,17 @@ public class Cars {
     public int hashCode() {
         return Objects.hash(carList);
     }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Cars = ");
+        carList.forEach(car ->
+                stringBuilder.append("(")
+                    .append(car.getName())
+                    .append(", position: ")
+                    .append(car.getPosition())
+                    .append(")"));
+        return stringBuilder.toString();
+    }
 }
