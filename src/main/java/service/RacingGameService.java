@@ -19,7 +19,7 @@ public class RacingGameService {
             moveCar(racingCars);
             carRacingView.displayRacingCars(racingCars);
         }
-        carRacingView.displayWinners(winners(racingCars));
+        carRacingView.displayWinners(findWinners(racingCars));
     }
 
     private void moveCar(ArrayList<RacingCar> racingCars){
@@ -29,7 +29,7 @@ public class RacingGameService {
         }
     }
 
-    private String[] winners(ArrayList<RacingCar> racingCars) {
+    private String[] findWinners(ArrayList<RacingCar> racingCars) {
 
         int maxPosition = racingCars.stream()
                 .mapToInt(RacingCar::getPosition)
