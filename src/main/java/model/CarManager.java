@@ -2,6 +2,7 @@ package model;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 public class CarManager {
@@ -24,4 +25,14 @@ public class CarManager {
             throw new IllegalArgumentException("car 이름이 중복됩니다.");
         };
     }
+
+    /**
+     * 레이스를 실행한다.
+     */
+    public void race(){
+        for(Car c : carSet){
+            c.doExcel(rm.getRandomValue());
+        }
+    }
+
 }

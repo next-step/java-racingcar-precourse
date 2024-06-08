@@ -67,8 +67,10 @@ throw -> IllegalArgumentException
 - void : addCar(string)
 새로운 자동차를 추가한다.
 
-- Set : getCarList()
-자동차 리스트를 반환한다.
+~~- Set : getCarSet()
+자동차 리스트를 반환한다.~~
+자동차 객체에 대한 직접적인 접근은 좋지 못한 방법이라고 생각됨
+
 
 - void : race()
 레이스를 실행한다.
