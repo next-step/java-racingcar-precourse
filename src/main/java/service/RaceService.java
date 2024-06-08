@@ -8,20 +8,23 @@ import model.RaceModelInterface;
 import observer.Observer;
 import observer.Subject;
 
+// model과 service를 분리해서 service는 구체적인 로직만 갖도록 함.
 public class RaceService implements Subject, RaceServiceInterface {
 
     private RaceModelInterface race;
 
-    // 생성자:
+    // 생성자
     public RaceService() {
         race = new Race();
     }
 
+    // model의 getter
     @Override
     public int getNumberOfCars() {
         return race.getNumberOfCars();
     }
 
+    // model의 getter
     @Override
     public List<CarServiceInterface> getCars() {
         return race.getCars();
@@ -63,7 +66,7 @@ public class RaceService implements Subject, RaceServiceInterface {
         return winnersProgress;
     }
 
-    // 우승자의 목록을 반환한다.
+    // 우승자의 목록을 반환하는 메서드
     @Override
     public List<CarServiceInterface> getWinners() {
         // 차들의 정보를 가져오고
@@ -93,9 +96,10 @@ public class RaceService implements Subject, RaceServiceInterface {
         race.setNumberOfRounds(numberOfRounds);
     }
 
-    // 차들의 정보가 바뀐 후에 실행되는 메서드. 단일 책임 + 확장을 위해 메서드를 분리
+    // 차들의 정보가 바뀐 후에 실행되는 메서드.
     private void carsChanged() {
         // 옵저버들에게 알림
+        // 지금은 하나의 역할만 수행하지만, 단일 책임 + 확장을 위해 메서드를 분리
         notifyObservers();
     }
 

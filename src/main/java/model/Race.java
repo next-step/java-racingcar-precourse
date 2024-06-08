@@ -5,6 +5,7 @@ import java.util.List;
 import observer.Observer;
 import service.CarServiceInterface;
 
+// model과 service를 분리해서 model은 getter, setter, 변수만 갖도록 함.
 public class Race implements RaceModelInterface {
 
     private int numberOfRounds;

@@ -1,5 +1,6 @@
 package model;
 
+// model과 service를 분리해서 model은 getter, setter, 변수만 갖도록 함.
 public class Car implements CarModelInterface {
 
     private final String name;

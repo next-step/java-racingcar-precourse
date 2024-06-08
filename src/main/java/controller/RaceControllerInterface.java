@@ -1,7 +1,5 @@
 package controller;
 
-import service.RaceServiceInterface;
-
 public interface RaceControllerInterface {
 
     public void init();
