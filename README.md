@@ -6,6 +6,7 @@
 - Domain
 - Repository
 - Validator
+- Utils
 
 ## 기능 명세
 - [X] View: 자동차 이름을 입력 기능
