@@ -19,6 +19,14 @@ public class Car {
         }
     }
 
+    public void printState() {
+        System.out.printf("%s : ",this.getName());
+        for (int i=0; i<state; i++) {
+            System.out.print("-");
+        }
+        System.out.println();
+    }
+
     public String getName() {
         return name;
     }
