@@ -4,7 +4,15 @@ public class Main {
     private static Car[] cars;
 
     public static void main(String[] args) {
-
+        try {
+            inputValue();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return;
+        }
+        System.out.println("실행결과 : ");
+        doRacing(n, cars);
+        checkWinner(cars);
     }
 
     public static void doRacing(int n, Car[] cars) {
