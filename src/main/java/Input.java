@@ -1,10 +1,15 @@
 import java.util.Scanner;
 
 public class Input {
-    public String inputPlayer() {
+    public String inputPlayer() throws IllegalArgumentException{
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         Scanner sc = new Scanner(System.in);
-        return sc.nextLine();
+
+        String input = sc.nextLine();
+        if (! countName(input)) {
+            throw new IllegalArgumentException("[ERROR] 이름은 5자 이하만 가능합니다.");
+        }
+        return input;
     }
 
     public int inputMatch() {
@@ -26,7 +31,13 @@ public class Input {
         return names.length;
     }
 
-    public long countComma(String str) {
-        return str.chars().filter(ch -> ch == ',').count();
+    public boolean countName(String str) {
+        String[] players = str.split(",");
+        for(String player : players) {
+            if (player.length() > 5) {
+                return false;
+            }
+        }
+        return true;
     }
 }
