@@ -25,4 +25,8 @@ public class Input {
         String[] names = str.split(",");
         return names.length;
     }
+
+    public long countComma(String str) {
+        return str.chars().filter(ch -> ch == ',').count();
+    }
 }
