@@ -42,6 +42,28 @@ public class Game {
         return Cars;
     }
 
+    public List<Car> findWinners(List<Car> cars) {
+
+        int winnerState= cars.get(0).getState();
+
+        for (Car car : cars) {
+            int carState = car.getState();
+            if (carState > winnerState) {
+                winnerState = carState;
+            }
+        }
+
+        List<Car> winnerList= new ArrayList<>();
+
+        for (Car car : cars) {
+            int carState = car.getState();
+            if (carState == winnerState) {
+                winnerList.add(car);
+            }
+        }
+        return winnerList;
+    }
+
 
 
 
