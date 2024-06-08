@@ -13,7 +13,7 @@ class CarTest {
     @ParameterizedTest(name = "{0}은 난수 {1} 일 때 전진합니다")
     @MethodSource("getMovableCar")
     void movableCar(Car car, int movementValue) {
-        assertThat(car.getPosition()).isEqualTo(0);
+        assertThat(car.getPosition()).isZero();
         assertThat(car.move(movementValue)).isEqualTo(1);
     }
 
