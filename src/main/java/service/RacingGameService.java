@@ -10,11 +10,10 @@ import java.util.List;
 public class RacingGameService {
 
     private final CarRacingView carRacingView = new CarRacingView();
-    private static final String RESULT_MSG = "실행 결과";
+    private static final String RESULT_MSG = "\n실행 결과";
 
     public void playRacingGame(ArrayList<RacingCar> racingCars, int attempt){
         System.out.println(RESULT_MSG);
-        System.out.println();
 
         for(int i = 0; i < attempt; i++){
             moveCar(racingCars);
