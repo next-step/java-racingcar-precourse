@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -33,6 +34,19 @@ public class CarManager {
         for(Car c : carSet){
             c.doExcel(rm.getRandomValue());
         }
+    }
+
+    /**
+     * 마지막 레이스의 결과를 얻는다.
+     * @return 자동차이름 : 위치
+     */
+    public Map<String,Integer> getRaceLog(){
+        Map<String,Integer> logMap = new HashMap<>();
+
+        for(Car c : carSet){
+            logMap.put(c.getName(),c.getPosition());
+        }
+        return logMap;
     }
 
 }
