@@ -20,8 +20,8 @@ class CarTest {
     @ParameterizedTest(name = "{0}은 난수 {1} 일 때 전진하지 않습니다")
     @MethodSource("getUnmovableCar")
     void unmovableCar(Car car, int movementValue) {
-        assertThat(car.getPosition()).isEqualTo(0);
-        assertThat(car.move(movementValue)).isEqualTo(0);
+        assertThat(car.getPosition()).isZero();
+        assertThat(car.move(movementValue)).isZero();
     }
 
     static Stream<Arguments> getMovableCar() {
