@@ -4,7 +4,7 @@ public class CheckInput {
     public static boolean checkCarName(List<String> carNames) {
         for (String carName : carNames) {
             int carLength = carName.length();
-            if ((carLength < 0) || (carLength > 5)) {
+            if ((carLength < 1) || (carLength > 5)) {
                 CheckInput.isWrongValue();
                 return false;
             }
