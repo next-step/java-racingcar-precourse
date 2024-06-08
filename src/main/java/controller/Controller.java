@@ -42,26 +42,40 @@ public class Controller {
     }
 
     private int prepareRacingCar() {
-        while (true) {
+        int numberOfAttempts = 0;
+        while (numberOfAttempts < 3) {
             String carNameInput = userInterface.enterCarName();
             int result = executeWithErrorHandling(() -> racingGameFactory.prepareRacingCar(carNameInput));
             if (result == 0) {
                 break;
             }
-            System.out.println("잘못된 입력입니다. 다시 시도해 주세요.");
+            numberOfAttempts ++;
+            System.out.println("잘못된 입력입니다. 다시 시도해 주세요. 기회는 " + (3 - numberOfAttempts) + "번 남았습니다.");
+        }
+
+        if (numberOfAttempts == 4){
+            return -1;
         }
         return 0;
     }
 
     private int prepareRoundOfNum() {
-        while (true) {
+        int numberOfAttempts = 0;
+        while (numberOfAttempts < 3) {
             String roundInput = userInterface.enterNumberOfRounds();
             int result = executeWithErrorHandling(() -> racingGameFactory.prepareRound(roundInput));
             if (result == 0) {
                 break;
             }
-            System.out.println("잘못된 입력입니다. 다시 시도해 주세요.");
+            numberOfAttempts ++;
+            System.out.println("잘못된 입력입니다. 다시 시도해 주세요. 기회는 " + (3 - numberOfAttempts) + "번 남았습니다.");
+
         }
+
+        if (numberOfAttempts == 4){
+            return -1;
+        }
+
         return 0;
     }
 
