@@ -12,4 +12,9 @@ public class CheckInput {
         return true;
     }
 
+    public static void isWrongValue() {
+        throw new IllegalArgumentException("[ERROR] 잘못된 값을 입력했습니다. 다시 입력하세요.");
+
+    }
+
 }
