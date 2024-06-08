@@ -2,9 +2,11 @@ public class GameController {
     private Car[] carList;
     private int playCount;
     private GameInputView gameInputView;
+    private GameOutputView gameOutputView;
 
     public GameController() {
         gameInputView = new GameInputView();
+        gameOutputView = new GameOutputView();
     }
 
     public void gameSetting() {
@@ -18,5 +20,16 @@ public class GameController {
         }
 
         this.playCount = playCount;
+    }
+
+    public void gamePlay() {
+        System.out.println("실행 결과");
+        for (int i=0; i<playCount; i++) {
+            for (Car car : carList) {
+                car.move();
+            }
+
+            gameOutputView.printPlayResult(carList);
+        }
     }
 }
