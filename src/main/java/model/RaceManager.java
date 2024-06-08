@@ -19,6 +19,9 @@ public class RaceManager {
         raceNum = 0;
     }
 
+    /**
+     * 레이스를 위한 사용자 입력
+     */
     public void raceSetup(){
         Set<String> cars = inControl.inputCarName();
 
@@ -28,5 +31,17 @@ public class RaceManager {
 
         raceNum = inControl.inputRaceCount();
 
+    }
+
+    /**
+     * 레이스 진행과 결과 출력
+     */
+    public void doRace(){
+        for(int i=0;i<raceNum;i++){
+            cm.race();
+            outControl.printRaceLog(cm.getRaceLog());
+        }
+
+        outControl.printRaceWinner(cm.getFastCarName());
     }
 }
