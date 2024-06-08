@@ -261,4 +261,18 @@ pobi : ----- woni : ---- jun : -----
 | string : int | judgeTheWinner | 게임 dto / string : int?? | 자동차중 가장 많이 간 자동차를 반환한다. |
 
 
+## 사용할 에러 종류
+```text
+먼저 필요한 에러를 알아보자! 
+<자동차 추상 클래스에서>
+1. 자동차의 이름이 아예 없는 경우 -> NullPointerException("이름 비어있음")
+2. 자동차의 이름이 공백인 경우 ->  IllegalArgumentException("이름이 공백임")
+3. 자동차의 이름에 공백이 포함된 경우 -> IllegalArgumentException("이름에 공백이 있음")
+4. 자동차의 이름이 5자이상인 경우 -> IllegalArgumentException("이름이 5자 이상임")
 
+
+<게임 셋팅 util 클래스>
+1. 라운드 횟수가 빈 경우 -> NullPointerException("라운드 횟수가 비어있음")
+2. 라운드 횟수가 숫자가 아닌 경우 ->  NumberFormatException("라운드횟수가 숫자가 아님")
+
+```
