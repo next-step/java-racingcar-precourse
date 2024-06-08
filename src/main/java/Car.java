@@ -13,7 +13,31 @@ public class Car {
         moveCount = 0;
     }
 
+    public String getCarName() {
+        return carName;
+    }
+
+    public void setCarName(String carName) {
+        this.carName = carName;
+    }
+
+    public int getMoveCount() {
+        return moveCount;
+    }
+
+    public void setMoveCount(int moveCount) {
+        this.moveCount = moveCount;
+    }
+
     public int generateNumber() {
-        return (int)(Math.random() * 10);
+        return (int) (Math.random() * 10);
+    }
+
+    public void move() {
+        int number = generateNumber();
+
+        if (number >= 4) {
+            moveCount++;
+        }
     }
 }
