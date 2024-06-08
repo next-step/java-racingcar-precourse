@@ -9,7 +9,15 @@ public abstract class Car implements Transportation {
     private int distance;
     private int distanceUnit;
 
-    Car(String carname,DistanceUnit distanceUnit) {
+    public String getCarname() {
+        return carname;
+    }
+
+    public int getDistance() {
+        return distance;
+    }
+
+    protected Car(String carname, DistanceUnit distanceUnit) {
         this.carname = carname;
         this.distance = 0;
         this.distanceUnit = distanceUnit.ordinal();
@@ -24,7 +32,7 @@ public abstract class Car implements Transportation {
         return result;
     }
 
-    public int useRandomValues() {
+    private int useRandomValues() {
         Random random = new Random();
         int randomInt = random.nextInt(10);
         return randomInt;
