@@ -4,37 +4,30 @@ import java.util.Scanner;
 
 public class GameInputView {
 
-    private boolean validatorInputCarNameList(String[] carNames) {
+    private void validatorInputCarNameList(String[] carNames) {
         for (String car : carNames) {
-            if (car.length() > 5) {
-                return false;
+            if ((car.isEmpty()) || (car.length() > 5)) {
+                throw new IllegalArgumentException();
             }
         }
-
-        return true;
     }
 
-    public List<String> inputCarNameList() {
+    public String[] inputCarNames() {
         Scanner scanner = new Scanner(System.in);
-        List<String> carNameList = new ArrayList<String>();
-
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String[] carNames = scanner.nextLine().split(",");
 
-        boolean isValidCarNames = validatorInputCarNameList(carNames);
-
-        while (!isValidCarNames) {
-            System.out.println("자동차 이름을 쉼표로 구분해주시고, 각 이름의 길이는 5자 이하로 작성해주세요.");
-            carNames = scanner.nextLine().split(",");
-            isValidCarNames = validatorInputCarNameList(carNames);
+        while (true) {
+            try {
+                validatorInputCarNameList(carNames);
+                break;
+            } catch (IllegalArgumentException e) {
+                System.out.println("[ERROR] 자동차 이름을 쉼표로 구분해주시고, 각 이름의 길이는 5자 이하로 작성해주세요.");
+                carNames = scanner.nextLine().split(",");
+            }
         }
 
         scanner.close();
-
-        for (String car : carNames) {
-            carNameList.add(car.trim());
-        }
-
-        return carNameList;
+        return carNames;
     }
 }
