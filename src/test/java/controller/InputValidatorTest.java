@@ -58,4 +58,54 @@ public class InputValidatorTest {
         assertThat(result).containsExactly("car1", "car2", "car3");
     }
 
+    @Test
+    @DisplayName("레이스 카운트 입력 시 빈 문자열 입력 시 IllegalArgumentException 발생")
+    void inputIsBlank_shouldThrowException_whenInputIsBlank() {
+        // given
+        String input = "" ;
+
+        // when & then
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> InputValidator.validateRaceCount(input))
+                .withMessage(ErrorConstants.OVER_INTEGER);
+    }
+
+    @Test
+    @DisplayName("레이스 카운트 입력 시 숫자 형식이 아닌 입력 시 IllegalArgumentException 발생")
+    void isInteger_shouldThrowException_whenInputIsNotInteger() {
+        // given
+        String input = "abc" ;
+
+        // when & then
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> InputValidator.validateRaceCount(input))
+                .withMessage(ErrorConstants.OVER_INTEGER);
+    }
+
+    @Test
+    @DisplayName("레이스 카운트 입력 시 숫자가 범위를 벗어날 경우 IllegalArgumentException 발생")
+    void isNumberInRange_shouldThrowException_whenNumberOutOfRange() {
+        // given
+        String input = "0" ;
+
+        // when & then
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> InputValidator.validateRaceCount(input))
+                .withMessage(ErrorConstants.OVER_RANGE);
+    }
+
+    @Test
+    @DisplayName("유효한 레이스 카운트 입력 시 성공적으로 정수 반환")
+    void validateRaceCount_shouldReturnInteger_whenInputIsValid() {
+        // given
+        String input = "5" ; // 유효한 범위 내 숫자
+
+        // when
+        int result = InputValidator.validateRaceCount(input);
+
+        // then
+        assertThat(result).isEqualTo(5);
+    }
+
+
 }

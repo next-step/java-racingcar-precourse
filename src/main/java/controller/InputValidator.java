@@ -12,14 +12,7 @@ public class InputValidator {
 
     private static final String COMMA_SEPARATED_REGEX = "^(?:[가-힣a-zA-Z0-9]+,)*[가-힣a-zA-Z0-9]+$" ;
 
-    private static void inputIsBlank(String input) {
-        if (input.isBlank()) {
-            throw new IllegalArgumentException(ErrorConstants.BLANK);
-        }
-    }
-
     private static int isInteger(String input) {
-        inputIsBlank(input);
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
