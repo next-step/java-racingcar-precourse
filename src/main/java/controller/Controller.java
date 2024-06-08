@@ -1,8 +1,7 @@
 package controller;
 
 import service.RacingGame;
-import util.GameServiceFactory;
-import util.RacingGameUtil;
+import util.RacingGameFactory;
 import view.UserInterface;
 
 import java.util.ArrayList;
@@ -12,33 +11,46 @@ import java.util.Map;
 
 public class Controller {
     private UserInterface userInterface = new UserInterface();
-    private GameServiceFactory gameServiceFactory = new GameServiceFactory();
+    private RacingGameFactory racingGameFactory = new RacingGameFactory();
     private RacingGame racingGame;
 
 
     public int playGame(){
         userInterface.explain();
 
-        if (prepareRacingCar() != 0 || prepareRoundOfNum() != 0) {
+        if (prepareGame() != 0) {
             return errorTerminationInformation();
         }
 
-        racingGame = gameServiceFactory.getRacingGame();
+        racingGame = racingGameFactory.getRacingGame();
         playRound();
         checkTheWinnerCar();
         return 0;
     }
 
+    private int prepareGame() {
+        if (prepareRacingCar() != 0 || prepareRoundOfNum() != 0) {
+            return -1;
+        }
+
+        try {
+            racingGame = racingGameFactory.getRacingGame();
+        } catch (NullPointerException e) {
+            System.out.println(e.getMessage());
+            return -1;
+        }
+        return 0;
+    }
 
 
     private int prepareRacingCar() {
         String carNameInput = userInterface.enterCarName();
-        return executeWithErrorHandling(() -> gameServiceFactory.prepareRacingCar(carNameInput));
+        return executeWithErrorHandling(() -> racingGameFactory.prepareRacingCar(carNameInput));
     }
 
     private int prepareRoundOfNum() {
         String roundInput = userInterface.enterNumberOfRounds();
-        return executeWithErrorHandling(() -> gameServiceFactory.prepareRound(roundInput));
+        return executeWithErrorHandling(() -> racingGameFactory.prepareRound(roundInput));
     }
 
     private int executeWithErrorHandling(Runnable operation) {

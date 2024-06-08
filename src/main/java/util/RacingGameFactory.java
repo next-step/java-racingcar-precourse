@@ -1,11 +1,13 @@
 package util;
 
+import model.Car;
 import service.RacingGame;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 
-public class GameServiceFactory {
+public class RacingGameFactory {
 
     private List<String> vaildCarNames;
     private int validRoundNum;
@@ -57,7 +59,18 @@ public class GameServiceFactory {
     }
 
     public RacingGame getRacingGame() {
-        return new RacingGame(this.vaildCarNames, this.validRoundNum);
+        if (vaildCarNames == null || vaildCarNames.isEmpty()) {
+            throw new NullPointerException("유효한 자동차 이름 목록이 비어있습니다.");
+        }
+        if (validRoundNum == 0) {
+            throw new NullPointerException("유효한 라운드 숫자가 설정되지 않았습니다.");
+        }
+
+        List<Car> cars = new ArrayList<>();
+        for (String carname : vaildCarNames) {
+            cars.add(CarFactory.getBasicCar(carname));
+        }
+        return new RacingGame(cars, this.validRoundNum);
     }
 
 
