@@ -10,4 +10,8 @@ public class Cars {
         this.carList = carList;
     }
 
+    public void move() {
+        carList.forEach(Car::move);
+    }
+
 }
