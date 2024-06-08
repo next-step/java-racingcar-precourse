@@ -24,9 +24,18 @@ public class RacingGameService {
 
     private void moveCar(ArrayList<RacingCar> racingCars){
         for (RacingCar car : racingCars) {
-            int newPosition = car.getPosition() + RandomNumberGenerator.generateRandNum();
+            int newPosition = car.getPosition() + moveForward();
             car.setPosition(newPosition);
         }
+    }
+
+    private int moveForward(){
+        int randNum = RandomNumberGenerator.generateRandNum();
+
+        if(randNum < 4) {
+            return 0;
+        }
+        return randNum;
     }
 
     private String[] findWinners(ArrayList<RacingCar> racingCars) {
