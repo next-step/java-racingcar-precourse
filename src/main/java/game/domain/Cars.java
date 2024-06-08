@@ -18,11 +18,12 @@ public class Cars {
         carList.forEach(Car::move);
     }
 
-    public List<Car> findWinners() {
+    public Cars findWinners() {
         int maxPosition = getMaxPosition();
-        return carList.stream()
+        List<Car> winners = carList.stream()
             .filter(car -> car.getPosition() == maxPosition)
             .collect(Collectors.toList());
+        return new Cars(winners);
     }
 
     public int getMaxPosition() {
