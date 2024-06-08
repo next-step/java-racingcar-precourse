@@ -17,16 +17,9 @@ public class Car {
         return carName;
     }
 
-    public void setCarName(String carName) {
-        this.carName = carName;
-    }
 
     public int getMoveCount() {
         return moveCount;
-    }
-
-    public void setMoveCount(int moveCount) {
-        this.moveCount = moveCount;
     }
 
     private int generateNumber() {
