@@ -56,6 +56,7 @@ public class GameInputView {
             }
         }
 
+        System.out.println();
         return Integer.parseInt(playCountString);
     }
 
