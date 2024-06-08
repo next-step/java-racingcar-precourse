@@ -5,8 +5,21 @@ import racingcar.model.Race;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
+import java.util.List;
+
 public class RaceController {
     public void run(){
-        //기능 구현 예정
+        String[] carNames = InputView.getCarNames();
+        int numberOfAttempts = InputView.getNumberOfAttempts();
+
+        Race race = new Race(carNames);
+        for (int i = 0; i < numberOfAttempts; i++) {
+            race.race();
+            OutputView.printRace(race.getCars());
+        }
+
+        List<String> winners = race.getWinners();
+        OutputView.printWinners(winners);
+
     }
 }
