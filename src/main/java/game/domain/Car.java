@@ -6,12 +6,17 @@ import java.util.Random;
 
 public class Car {
 
-    private String name;
+    private final String name;
     private int position;
 
     public Car(String name) {
+        this(name, 0);
+    }
+
+    public Car(String name, int position) {
         CarNameValidator.getInstance().validateNameLength(name);
         this.name = name;
+        this.position = position;
     }
 
     public String getName() {
