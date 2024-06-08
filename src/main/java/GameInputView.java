@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class GameInputView {
+
     private final Scanner scanner;
 
     public GameInputView() {
