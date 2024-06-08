@@ -17,7 +17,7 @@ public class Main {
 
     public static void doRacing(int n, Car[] cars) {
         Race r = new Race();
-        for(int i=0; i<n; i++) {
+        for (int i = 0; i < n; i++) {
             r.updateCars(cars);
             r.printCars(cars);
             System.out.println();
@@ -29,7 +29,7 @@ public class Main {
         String[] winners = r.returnWinner(cars);
 
         System.out.print("최종 우승자 : ");
-        for(int i=0; i<winners.length; i++) {
+        for (int i = 0; i < winners.length; i++) {
             if (i == winners.length - 1) {
                 System.out.println(winners[i]);
                 break;
@@ -38,7 +38,7 @@ public class Main {
         }
     }
 
-    public static void inputValue() throws IllegalArgumentException{
+    public static void inputValue() throws IllegalArgumentException {
         Input i = new Input();
         String players;
         try {

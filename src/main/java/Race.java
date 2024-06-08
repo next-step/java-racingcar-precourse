@@ -2,6 +2,7 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class Race {
+
     public int randGen() {
         Random rand = new Random();
         return rand.nextInt(10);
@@ -28,7 +29,7 @@ public class Race {
     }
 
     public void printCars(Car[] cars) {
-        for(Car car : cars) {
+        for (Car car : cars) {
             System.out.println(car.getName() + car.toString());
         }
     }
