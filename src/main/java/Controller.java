@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import model.Car;
 
@@ -21,17 +22,45 @@ public class Controller {
     }
 
     private void enrollCars() {
-        String[] inputCarNames = inputView.inputCars().split(",");
+        String carNames;
+
+        while(true) {
+            try {
+                carNames = inputView.inputCars();
+                Validator.validateCarNames(carNames);
+                break;
+            } catch (IllegalArgumentException e) {
+                System.out.println("[ERROR]" + e.getMessage());
+            } catch (IllegalStateException e) {
+                System.out.println("[ERROR]" + e.getMessage());
+            }
+        }
+
+        createCars(carNames);
+    }
+
+    private void createCars(String inputCarNames) {
+        String[] carNamesArray = inputCarNames.split(",");
         List<Car> cars = new ArrayList<>();
-        for(String carName : inputCarNames) {
+        for (String carName : carNamesArray) {
             cars.add(new Car(carName));
         }
         carGameStat.setCars(cars);
     }
 
     private void enrollRepeatNum() {
-        int repeatNum = inputView.inputMoveNumber();
-        carGameStat.setRepeatNum(repeatNum);
+        while(true) {
+            try {
+                int repeatNum = inputView.inputMoveNumber();
+                carGameStat.setRepeatNum(repeatNum);
+                Validator.validateRepeatNumber(repeatNum);
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("[ERROR] 숫자를 입력해주세요");
+            } catch (IllegalArgumentException e) {
+                System.out.println("[ERROR]" + e.getMessage());
+            }
+        }
     }
 
     private void raceStart() {
