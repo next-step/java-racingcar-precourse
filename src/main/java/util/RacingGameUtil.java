@@ -20,7 +20,8 @@ public class RacingGameUtil {
     }
 
 
-    public static int setRounds(String inputValue) throws IllegalArgumentException {
+
+    public static int validRoundInt(String inputValue) throws IllegalArgumentException {
         if (inputValue == null || inputValue.isEmpty()) {
             throw new IllegalArgumentException("라운드 횟수가 빈 값이다.");
         }
