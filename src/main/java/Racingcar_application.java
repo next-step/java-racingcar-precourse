@@ -20,9 +20,22 @@ public class Racingcar_application {
         }
 
         for(int i=0; i<cnt; i++) {
+            raceMap = startRacing(raceMap);
             printRacing(raceMap);
         }
 
+    }
+
+    private static Map<String, String> startRacing(Map<String, String> raceMap) {
+        Random random = new Random();
+        int randNum = 0;
+        for(String s : raceMap.keySet()){
+            randNum = random.nextInt(9);
+            if (randNum > 4) {
+                raceMap.put(s, raceMap.get(s) + "-");
+            }
+        }
+        return raceMap;
     }
 
     private static void printRacing(Map<String, String> raceMap) {
@@ -31,5 +44,7 @@ public class Racingcar_application {
         }
         System.out.println("");
     }
+
+
 
 }
