@@ -14,8 +14,7 @@ public class Controller {
     private RacingGameFactory racingGameFactory = new RacingGameFactory();
     private RacingGame racingGame;
 
-
-    public int playGame(){
+    public int playGame() {
         userInterface.explain();
 
         if (prepareGame() != 0) {
@@ -42,15 +41,28 @@ public class Controller {
         return 0;
     }
 
-
     private int prepareRacingCar() {
-        String carNameInput = userInterface.enterCarName();
-        return executeWithErrorHandling(() -> racingGameFactory.prepareRacingCar(carNameInput));
+        while (true) {
+            String carNameInput = userInterface.enterCarName();
+            int result = executeWithErrorHandling(() -> racingGameFactory.prepareRacingCar(carNameInput));
+            if (result == 0) {
+                break;
+            }
+            System.out.println("잘못된 입력입니다. 다시 시도해 주세요.");
+        }
+        return 0;
     }
 
     private int prepareRoundOfNum() {
-        String roundInput = userInterface.enterNumberOfRounds();
-        return executeWithErrorHandling(() -> racingGameFactory.prepareRound(roundInput));
+        while (true) {
+            String roundInput = userInterface.enterNumberOfRounds();
+            int result = executeWithErrorHandling(() -> racingGameFactory.prepareRound(roundInput));
+            if (result == 0) {
+                break;
+            }
+            System.out.println("잘못된 입력입니다. 다시 시도해 주세요.");
+        }
+        return 0;
     }
 
     private int executeWithErrorHandling(Runnable operation) {
@@ -63,11 +75,9 @@ public class Controller {
         return 0;
     }
 
-
-
     public int playRound() {
         int round = racingGame.getRound();
-        for (int i = 1; i <= round; i++){
+        for (int i = 1; i <= round; i++) {
             LinkedHashMap<String, Integer> carList = racingGame.palyRouound();
             userInterface.printRoundResults(i, carList);
         }
@@ -85,13 +95,10 @@ public class Controller {
 
         userInterface.printWinners(winnerCarList);
         return 0;
-
     }
 
     private int errorTerminationInformation() {
         System.out.println("ㅜㅜ 게임을 종료할게요..!");
         return -1;
     }
-
-
 }
