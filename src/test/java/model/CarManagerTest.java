@@ -3,6 +3,7 @@ package model;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Map;
+import java.util.Objects;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -53,6 +54,32 @@ class CarManagerTest {
         assertTrue(log.get(car1)>=0);
 
 
+
+    }
+
+    @Test
+    void getFastCarName() {
+        //given
+        String car1 = "hh";
+        String car2 = "ss";
+        String car3 = "dd";
+        Map<String,Integer> log;
+
+        cm.addCar(car1);
+        cm.addCar(car2);
+        cm.addCar(car3);
+        //when
+
+        cm.race();
+        cm.race();
+        cm.race();
+        log = cm.getRaceLog();
+
+        //then
+        assertNotNull(cm.getFastCarName());
+        assertTrue(cm.getFastCarName().stream().anyMatch(e->
+                e.equals(car1) || e.equals(car2) || e.equals(car3)
+            ));
 
     }
 }
