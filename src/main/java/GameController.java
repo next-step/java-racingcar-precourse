@@ -44,10 +44,10 @@ public class GameController {
                 checkTryCountValue(tryCount);
                 return tryCount;
             } catch (InputMismatchException e) {
-                System.out.println("잘못된 값 타입입니다. 다시 입력하세요.");
+                System.out.println("[ERROR] 잘못된 값 타입입니다. 다시 입력하세요.");
                 scanner.nextLine();  // make input buffer empty
             } catch (IllegalArgumentException e) {
-                System.out.println("잘못된 값입니다. 값은 0보다 커야합니다. 다시 입력하세요.");
+                System.out.println("[ERROR] 잘못된 값입니다. 값은 0보다 커야합니다. 다시 입력하세요.");
             }
         }
     }
