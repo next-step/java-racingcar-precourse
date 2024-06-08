@@ -13,5 +13,7 @@ public class Car {
         moveCount = 0;
     }
 
-    public int
+    public int generateNumber() {
+        return (int)(Math.random() * 10);
+    }
 }
