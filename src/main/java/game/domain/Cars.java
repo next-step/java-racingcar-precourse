@@ -29,7 +29,7 @@ public class Cars {
         int maxPosition = getMaxPosition();
         List<Car> winners = carList.stream()
             .filter(car -> car.getPosition() == maxPosition)
-            .collect(Collectors.toList());
+            .toList();
         return new Cars(winners);
     }
 
