@@ -1,5 +1,6 @@
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import jdk.jfr.Description;
 
 public class GameService {
 
@@ -28,7 +29,7 @@ public class GameService {
     public void carRace() {
         for (Car car : cars) {
             int n = randomGenerator.makeRandNum();
-            if(n >= 4){
+            if (n >= 4) {
                 car.move(); // distance += 1
             }
             car.showDistance();
@@ -37,17 +38,29 @@ public class GameService {
     }
 
     public void showResult() {
-        int maxDistance = cars.get(0).getDistance();
-        for (Car car : cars) {
-            if(car.getDistance() > maxDistance){ maxDistance = car.getDistance(); }
-        }
-        for (Car car : cars) {
-            if (car.getDistance() == maxDistance) { winCarsName.add(car.getName()); }
-        }
+        getResult();
         System.out.print("최종 우승자 : ");
         for (int i = 0; i < winCarsName.size(); i++) {
-            if(i != winCarsName.size()-1) System.out.print(winCarsName.get(i) + ", ");
-            if(i == winCarsName.size()-1) System.out.print(winCarsName.get(i));
+            if (i != winCarsName.size() - 1) {
+                System.out.print(winCarsName.get(i) + ", ");
+            }
+            if (i == winCarsName.size() - 1) {
+                System.out.print(winCarsName.get(i));
+            }
+        }
+    }
+
+    private void getResult() {
+        int maxDistance = cars.get(0).getDistance();
+        for (Car car : cars) {
+            if (car.getDistance() > maxDistance) {
+                maxDistance = car.getDistance();
+            }
+        }
+        for (Car car : cars) {
+            if (car.getDistance() == maxDistance) {
+                winCarsName.add(car.getName());
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -10,14 +11,14 @@ public class GameController {
         this.scanner = new Scanner(System.in);
     }
 
-    public String[] inputCarNames(){
+    public String[] inputCarNames() {
         String[] carNames;
-        while(true){
+        while (true) {
             System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
             String names = scanner.nextLine();
             carNames = names.split(",");
+            carNames = Arrays.stream(carNames).map(String::trim).toArray(String[]::new);
 
-            for (int i = 0; i < carNames.length; i++) { carNames[i] = carNames[i].trim(); }
             try {
                 checkNameLength(carNames);// if wrong: throws IllegalArgumentException
                 return carNames; // correct
@@ -29,7 +30,7 @@ public class GameController {
 
     public void checkNameLength(String[] carNames) {
         for (String carName : carNames) {
-            if(carName.length() > 5){
+            if (carName.length() > 5) {
                 throw new IllegalArgumentException();
             }
         }

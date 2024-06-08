@@ -8,9 +8,10 @@ public class Car {
         this.distance = 0;
     }
 
-    public void move(){
+    public void move() {
         this.distance += 1;
     }
+
     public void showDistance() {
         System.out.print(this.name + " : ");
         for (int i = 0; i < this.distance; i++) {
@@ -30,9 +31,9 @@ public class Car {
     @Override
     public String toString() {
         return "Car{" +
-                "name='" + name + '\'' +
-                ", distance=" + distance +
-                '}';
+            "name='" + name + '\'' +
+            ", distance=" + distance +
+            '}';
     }
 }
 
