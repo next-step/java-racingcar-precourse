@@ -1,5 +1,7 @@
 package model;
 
+import utils.Constants;
+
 public class Car {
     private final String carName;
     private int position;
@@ -9,9 +11,9 @@ public class Car {
         this.position = 0;
     }
 
-    public void moveCar() {
+    public void move() {
         int randomNumber = (int) (Math.random() * 10);
-        if (randomNumber >= 4) {
+        if (randomNumber >= Constants.MOVE_THRESHOLD) {
             position++;
         }
     }
@@ -20,7 +22,8 @@ public class Car {
         return this.position;
     }
 
-    public String getCarName() {
-        return this.carName;
+    @Override
+    public String toString() {
+        return carName + " : " + "-".repeat(position);
     }
 }

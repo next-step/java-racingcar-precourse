@@ -1,6 +1,7 @@
 package controller;
 
 import java.util.List;
+import model.Race;
 
 public class RaceController {
     private final RaceInputController inputController;
@@ -15,7 +16,7 @@ public class RaceController {
             int rounds = inputController.getUserInputForRaceCount();
 
             Race race = new Race(carNames, rounds);
-            RaceResult result = race.start();
+            race.start();
 
             OutputView.printRaceStatus(result.getCars());
             OutputView.printWinners(result.getWinners());
