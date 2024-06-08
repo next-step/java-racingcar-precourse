@@ -2,6 +2,7 @@ package game.domain;
 
 import game.config.constant.Rule;
 import game.exception.constant.ErrorMessage;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -35,5 +36,9 @@ public class Cars {
             .map(Car::getPosition)
             .max(Comparator.naturalOrder())
             .orElseThrow(() -> new NoSuchElementException(ErrorMessage.EMPTY_LIST.getMessage()));
+    }
+
+    public List<Car> getCarList() {
+        return Collections.unmodifiableList(carList);
     }
 }
