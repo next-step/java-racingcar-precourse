@@ -54,11 +54,11 @@ throw -> IllegalArgumentException
 
 최종 우승자를 출력한다.
 
-### RaceManager.class
+### CarManager.class
 
 ### member
 
-- CarList<Car>
+- Set<Car>
 
 - RandomMaker
 
