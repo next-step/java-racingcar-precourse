@@ -54,4 +54,21 @@ class CarTest {
         assertEquals(car.getPosition(),1);
 
     }
+
+    @Test
+    void isSameCar() {
+
+        //given
+        Car car2 = new Car(happy);
+
+        //when
+        car2.doExcel(10);
+
+        //then
+
+        //위치는 다르더라도 이름이 같으면 같은 자동차객체로
+        //취급한다.
+        assertEquals(car,car2);
+
+    }
 }
