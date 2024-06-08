@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameOutputView {
+
     public void printPlayResult(Car[] carList) {
         for (Car car : carList) {
             String carName = car.getCarName();
@@ -9,7 +10,7 @@ public class GameOutputView {
 
             String moveCountSymbol = "";
 
-            for (int i=0; i<moveCount; i++) {
+            for (int i = 0; i < moveCount; i++) {
                 moveCountSymbol += "-";
             }
 
