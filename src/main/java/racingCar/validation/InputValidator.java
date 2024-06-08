@@ -1,5 +1,7 @@
 package racingCar.validation;
 
+import racingCar.utils.StringUtils;
+
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -23,23 +25,11 @@ public class InputValidator {
      * @param inputNames
      */
     public static void validateInputCarName(String inputNames) {
-        List<String> nameList = splitInputName(inputNames);
+        List<String> nameList = StringUtils.splitStringByComma(inputNames);
 
         validateCountOfCars(nameList);
         validateNameLength(nameList);
         validateNameDuplication(nameList);
-    }
-
-    /**
-     * 검증하기 위해 문자열을 콤마(,) 기준으로 split
-     * @param inputNames
-     * @return name list
-     */
-    private static List<String> splitInputName(String inputNames) {
-        return Arrays.asList(
-                inputNames.replaceAll("\\s+", "")
-                        .split(",")
-        );
     }
 
     /**
