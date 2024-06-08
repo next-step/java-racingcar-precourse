@@ -14,9 +14,7 @@ public class Race {
 
     public List<Car> start() {
         for (int i = 0; i < rounds; i++) {
-            for (Car car : cars) {
-                car.move();
-            }
+            cars.forEach(Car::move);
         }
         return judgeWinners();
     }
