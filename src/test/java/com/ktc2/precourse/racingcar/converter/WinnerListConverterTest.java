@@ -56,7 +56,7 @@ class WinnerListConverterTest {
     }
 
     @Test
-    @DisplayName("자동차 목록을 우승자 목록으로 변환이 잘 되는지 테스트(케이스 1)")
+    @DisplayName("자동차 목록을 우승자 목록으로 변환이 잘 되는지 테스트(케이스 3)")
     void convertTestCase3() {
         List<String> expected = Stream.of("abcd", "aa", "efgh", "bb")
             .sorted()
