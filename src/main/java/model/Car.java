@@ -1,7 +1,7 @@
 package model;
 
 public class Car {
-    private String name;
+    private final String name;
     private int position;
     private int excelCondition;
 
