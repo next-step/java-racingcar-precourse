@@ -1,7 +1,7 @@
 import java.util.List;
 
 public class CheckInput {
-    public static boolean checkCarName(List<String> carNames) {
+    public static boolean checkCarNames(List<String> carNames) {
         for (String carName : carNames) {
             int carLength = carName.length();
             if ((carLength < 1) || (carLength > 5)) {
