@@ -32,4 +32,18 @@ public class GameController {
             gameOutputView.printPlayResult(carList);
         }
     }
+
+    public void gameDone() {
+        int winnerMoveCount = 0;
+
+        for (Car car : carList) {
+            int carMoveCount = car.getMoveCount();
+
+            if (carMoveCount > winnerMoveCount) {
+                winnerMoveCount = carMoveCount;
+            }
+        }
+
+        gameOutputView.printWinner(carList, winnerMoveCount);
+    }
 }
