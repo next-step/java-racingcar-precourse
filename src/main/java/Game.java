@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Game {
 
-    public List<String> getCarName() {
+    public List<String> getCarNames() {
         List<String> carNames;
         Scanner sc = new Scanner(System.in);
 
