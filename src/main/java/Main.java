@@ -7,6 +7,8 @@ public class Main {
         List<Car> cars = getCarNames();
         int trialCount = getTrialCount();
         race(cars, trialCount);
+        List<String> winners = getWinners(cars);
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
     }
 
     private static List<Car> getCarNames() {
@@ -72,6 +74,17 @@ public class Main {
             }
             System.out.println();
         }
+    }
+
+    public static List<String> getWinners(List<Car> cars) {
+        int maxPosition = cars.stream().mapToInt(Car::getPosition).max().orElse(0);
+        List<String> winners = new ArrayList<>();
+        for (Car car : cars) {
+            if (car.getPosition() == maxPosition) {
+                winners.add(car.getName());
+            }
+        }
+        return winners;
     }
 
 }
