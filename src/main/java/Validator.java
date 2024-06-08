@@ -20,4 +20,10 @@ public class Validator {
             }
         }
     }
+
+    public static void validateRepeatNumber(int repeatNumber) {
+        if(repeatNumber <= 0) {
+            throw new IllegalArgumentException(Messages.REPEAT_NUMBER_VALUE_ERR);
+        }
+    }
 }
