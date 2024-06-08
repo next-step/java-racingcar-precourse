@@ -14,6 +14,7 @@ public class InputView {
     private final CarNameValidator carNameValidator;
     private final AttemptCountValidator attemptCountValidator;
 
+    //todo validator를 주입받도록(validator 인터페이스 선언 + 파라미터로 Validator... validator)
     public InputView() {
         scanner = new Scanner(System.in);
         carNameValidator = CarNameValidator.getInstance();
@@ -21,11 +22,17 @@ public class InputView {
     }
 
     public List<String> enterCarNames() {
-        System.out.println(InputMessage.CAR_NAME);
-
-        String input = scanner.next();
-        carNameValidator.validate(input);
-
+        String input = "";
+        while(input.isBlank()) {
+            System.out.println(InputMessage.CAR_NAME);
+            input = scanner.next();
+            try {
+                carNameValidator.validate(input);
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+                input = "";
+            }
+        }
         return Arrays.asList(input.split(Rule.NAME_DELIMITER));
     }
 
