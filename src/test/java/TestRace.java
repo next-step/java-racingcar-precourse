@@ -1,6 +1,8 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
+
 public class TestRace {
 
     private Race race;
@@ -9,7 +11,7 @@ public class TestRace {
     @BeforeEach
     public void setUp() {
         race = new Race();
-        cars = new Car[] {
+        cars = new Car[]{
             new Car("Car1", 0),
             new Car("Car2", 0),
             new Car("Car3", 0)
@@ -52,6 +54,6 @@ public class TestRace {
         cars[2].setDistance(10);
 
         String[] winners = race.returnWinner(cars);
-        assertArrayEquals(new String[] {"Car2", "Car3"}, winners);
+        assertArrayEquals(new String[]{"Car2", "Car3"}, winners);
     }
 }
