@@ -1,9 +1,11 @@
 package game.domain;
 
+import game.config.constant.Rule;
 import game.exception.constant.ErrorMessage;
 import java.util.Comparator;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 public class Cars {
@@ -15,7 +17,9 @@ public class Cars {
     }
 
     public void move() {
-        carList.forEach(Car::move);
+        Random random = new Random();
+        int movementValue = random.nextInt(Rule.MAX_RANDOM_VALUE + 1);
+        carList.forEach(car -> car.move(movementValue));
     }
 
     public Cars findWinners() {
