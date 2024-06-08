@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -31,6 +32,14 @@ public class Game {
             }
         }
         return tryNum;
+    }
+
+    public List<Car> makeCars(List<String> carNames) {
+        List<Car> Cars = new ArrayList<>();
+        for (String carName : carNames) {
+            Cars.add(new Car(carName));
+        }
+        return Cars;
     }
 
 
