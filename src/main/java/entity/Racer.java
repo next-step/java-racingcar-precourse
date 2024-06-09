@@ -11,6 +11,9 @@ public class Racer {
 
     private BigInteger movedDistance;
 
+    /**
+     * @throws IllegalArgumentException name이 null이거나 blank 문자열 일 때
+     */
     public Racer(String name) {
         this.name = validateName(name);
         this.movedDistance = new BigInteger("0");
