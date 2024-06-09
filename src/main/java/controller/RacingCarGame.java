@@ -57,7 +57,29 @@ public class RacingCarGame {
             System.out.println();
         }
 
+        findWinner(cars);
         outputView.showWinner(cars);
+    }
+
+    private void findWinner(ArrayList<Car> cars) {
+        int furthestDistance = findFurthestDistance(cars);
+
+        for (Car car : cars) {
+            if (car.getDistance() == furthestDistance) {
+                car.setWinner(true);
+            }
+        }
+    }
+
+    private int findFurthestDistance(ArrayList<Car> cars){
+        int furthestDistance = 0;
+        for (Car car : cars) {
+            if (car.getDistance() > furthestDistance) {
+                furthestDistance = car.getDistance();
+            }
+        }
+
+        return furthestDistance;
     }
 
 }
