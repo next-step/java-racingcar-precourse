@@ -1,6 +1,7 @@
 package Controller;
 import java.util.Random;
 
+
 public class ForwardLogic {
     public boolean forwarding() {
         Random random = new Random();
