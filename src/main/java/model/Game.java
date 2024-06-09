@@ -16,12 +16,18 @@ public class Game {
         }
     }
 
-    public Map<String, Integer> play() {
+    private Map<String, Integer> getPositions() {
         Map<String, Integer> positions = new LinkedHashMap<>();
         for (Car car : cars) {
-            car.tryMove();
             positions.put(car.getName(), car.getPosition());
         }
         return positions;
+    }
+
+    public Map<String, Integer> play() {
+        for (Car car : cars) {
+            car.tryMove();
+        }
+        return getPositions();
     }
 }
