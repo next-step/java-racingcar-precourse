@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class Main {
 
     static List<String> carList;
+    static List<String> carRaceInfo;
     static int raceNum;
     static Random random;
 
@@ -18,10 +19,13 @@ public class Main {
 
         System.out.println("실행 결과");
         random = new Random();
-        for(int i = 0; i < raceNum; i++){
-            raceStart(i);
+        makeCarRaceInfoList();
+        for(int nowRace = 0; nowRace < raceNum; nowRace++){
+            for (int i = 0; i < carList.size(); i++) {
+                raceStart(i);
+            }
+            printRaceInfo();
         }
-
     }
 
     public static String getUserInput(int inputOrder){ // 사용자 입력 받기
@@ -45,9 +49,24 @@ public class Main {
         return checkedNames;
     }
 
+    public static void makeCarRaceInfoList(){
+        carRaceInfo = new ArrayList<>(carList.size());
+        for (int i = 0; i < carList.size(); i++) {
+            carRaceInfo.add("");
+        }
+    }
+
     public static void raceStart(int i){
         int randomNumber = random.nextInt(10);
-        
+        if (randomNumber <= 4){
+            carRaceInfo.set(i, carRaceInfo.get(i)+"-");
+        }
+    }
 
+    public static void printRaceInfo(){
+        for(int i = 0; i<carList.size(); i++){
+            System.out.println(carList.get(i) + " : " + carRaceInfo.get(i));
+        }
+        System.out.println();
     }
 }
