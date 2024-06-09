@@ -49,7 +49,7 @@ class RacingCarServiceTest {
             Arrays.asList("Car1", "Car2"));
         racingCarService.createRacingCar(createCommand);
 
-        RacingCarCommand.RacingRound racingRound = new RacingCarCommand.RacingRound("3");
+        RacingCarCommand.RacingRound racingRound = new RacingCarCommand.RacingRound(3);
 
         // when
         racingCarService.playRacing(racingRound);
@@ -67,7 +67,7 @@ class RacingCarServiceTest {
             Arrays.asList("Car1", "Car2"));
         racingCarService.createRacingCar(createCommand);
 
-        RacingCarCommand.RacingRound racingRound = new RacingCarCommand.RacingRound("3");
+        RacingCarCommand.RacingRound racingRound = new RacingCarCommand.RacingRound(3);
         racingCarService.playRacing(racingRound);
 
         // when

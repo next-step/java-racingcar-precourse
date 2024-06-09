@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 public class RacingCarRound {
 
     private final Integer round;
-    public final List<RacingCar> racingCars;
+    private final List<RacingCar> racingCars;
 
     private RacingCarRound(Integer round, List<RacingCar> racingCars) {
         this.round = round;

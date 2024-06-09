@@ -29,12 +29,11 @@ public class RacingCarService {
      */
     public void playRacing(RacingCarCommand.RacingRound racingRound) {
         List<RacingCar> racingCars = racingCarRepository.findAll();
-        int roundNumber = Integer.parseInt(racingRound.round());
-        IntStream.range(0, roundNumber)
-            .forEach(round -> {
-                racingCars.forEach(RacingCar::move);
-                racingCarRoundRepository.save(RacingCarRound.create(round, racingCars));
-            });
+        int roundNumber = racingRound.round();
+        IntStream.range(0, roundNumber).forEach(round -> {
+            racingCars.forEach(RacingCar::move);
+            racingCarRoundRepository.save(RacingCarRound.create(round, racingCars));
+        });
     }
 
     /**
