@@ -23,4 +23,8 @@ public class CarRepository {
     public ArrayList<Car> findAll(){
         return cars;
     }
+
+    public void clear(){
+        cars.clear();
+    }
 }
