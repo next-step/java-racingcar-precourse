@@ -113,10 +113,10 @@ public class RaceServiceTest {
         // 충분히 많은 시행에서 모두의 진행도가 동일하다면 어딘가 로직이 잘못된 것
         raceService.prepareRace("100");
         raceService.startRace();
-
-        // 모두의 진행도가 동일한지 확인
         boolean isAllEqual = raceService.getCars().stream()
             .allMatch(car -> raceService.getCars().get(0).getProgress() == car.getProgress());
+
+        // 모두의 진행도가 동일한지 확인
         Assertions.assertThat(isAllEqual).isFalse();
     }
 
