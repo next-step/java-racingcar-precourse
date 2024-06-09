@@ -24,6 +24,7 @@ public class Controller {
         }
 
         winner = DecisionWinner.decideWinner(carList); //우승자를 가림
+        view.printWinner(winner); //우승자를 출력
 
     }
 
