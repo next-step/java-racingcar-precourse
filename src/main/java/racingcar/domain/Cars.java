@@ -47,6 +47,10 @@ public class Cars {
         return new Activity(this.cars);
     }
 
+    public List<Car> value() {
+        return this.cars;
+    }
+
     @Override
     public boolean equals(final Object o) {
         if (this == o) {

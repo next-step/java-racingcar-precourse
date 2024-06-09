@@ -42,4 +42,8 @@ public class RacingCar {
     public Cars winner() {
         return winnerRule.winner(this.cars);
     }
+
+    public List<Activity> activities() {
+        return this.activities;
+    }
 }

@@ -17,6 +17,10 @@ public class Position {
         return this.value > position.value;
     }
 
+    public int value() {
+        return this.value;
+    }
+
     @Override
     public boolean equals(final Object o) {
         if (this == o) {

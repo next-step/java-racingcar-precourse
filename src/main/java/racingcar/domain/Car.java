@@ -19,6 +19,10 @@ public class Car {
         return this.position;
     }
 
+    public Name name() {
+        return this.name;
+    }
+
     @Override
     public boolean equals(final Object o) {
         if (this == o) {
