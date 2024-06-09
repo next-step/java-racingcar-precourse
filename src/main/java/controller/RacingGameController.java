@@ -8,6 +8,9 @@ import java.util.List;
 public class RacingGameController {
     private final View view = new View();
 
+    /**
+     * 게임을 시작하는 메서드
+     */
     public void start() {
         List<String> carNames = view.getCarNames();
         int trialCount = view.getTrialCount();

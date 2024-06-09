@@ -8,6 +8,10 @@ import java.util.Scanner;
 public class View {
     private final Scanner scanner = new Scanner(System.in);
 
+    /**
+     * 사용자로부터 자동차 이름을 입력받는 메서드
+     * @return 입력받은 자동차 이름 리스트
+     */
     public List<String> getCarNames() {
         while (true) {
             try {
@@ -24,6 +28,10 @@ public class View {
         }
     }
 
+    /**
+     * 사용자로부터 시도할 회수를 입력받는 메서드
+     * @return 입력받은 시도할 회수
+     */
     public int getTrialCount() {
         while (true) {
             try {
