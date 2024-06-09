@@ -18,10 +18,11 @@ public class InputView {
         Scanner scanner = new Scanner(System.in);
         System.out.println("시도할 회수는 몇회인가요?");
         try { // 횟수 입력 검사
-            this.iteration = scanner.nextInt();
-            if (this.iteration < 1) {
+            int iteration = scanner.nextInt();
+            if (iteration < 1) {
                 throw new IllegalArgumentException();
             }
+            this.iteration = iteration;
         } catch (InputMismatchException e) { // 숫자가 아닌 값을 입력 받은 경우
             System.out.println("[ERROR] : 시도할 회수는 자연수만 입력 가능합니다. 다시 입력 해주세요.");
         } catch (IllegalArgumentException e) { // 0 또는 음의 정수를 입력 받은 경우
