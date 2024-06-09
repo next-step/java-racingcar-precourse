@@ -43,6 +43,8 @@
   - private final ArrayList<RacingCarDTO> carArrList = new ArrayList<>();
   - 인터페이스 구현
 ### Utility
+- StringSplitter
+  - 쉼표(,) 기준으로 문자열 분리
 - Fortuna
   - Random Class -> 전진 성공여부 반환
   
