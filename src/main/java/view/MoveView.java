@@ -12,5 +12,6 @@ public class MoveView {
         for (Map.Entry<String, Integer> entry : positions.entrySet()) {
             System.out.println(entry.getKey() + " : " + "-".repeat(entry.getValue()));
         }
+        System.out.println();
     }
 }
