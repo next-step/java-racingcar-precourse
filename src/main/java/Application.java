@@ -30,9 +30,9 @@ public class Application {
         // controller의 부담을 덜기 위함.
         subject.addObserver(observer);
 
-        // RaceController 객체 생성 및 인터페이스 변수 생성
+        // RaceController  생성 및 인터페이스 변수 생성
         RaceControllerInterface raceController = new RaceController(raceService, raceViewInterface);
-        // RaceView와 RaceController가 상호 참조하므로 setter를 사용함.
+        // RaceView와 RaceController가 상호 참조하므로 seatter를 사용함.
         raceViewInterface.setRaceControllerInterface(raceController);
 
         // 컨트롤러를 사용한 서비스 시작

@@ -93,14 +93,12 @@ public class RaceView implements Observer, RaceViewInterface {
         // service 인터페이스를 통해 값 참조
         List<CarModelInterface> winners = raceServiceInterface.getWinners();
         // 문자열을 빠르게 붙이기 위해 StringBuilder를 사용
+        String winnersString = "";
         StringBuilder stringBuilder = new StringBuilder();
 
         // 우승자들의 정보를 String으로 변환한다.
-        for (int i = 0; i < winners.size() - 1; i++) {
-            CarModelInterface winner = winners.get(i);
-            stringBuilder.append(winner.getName()).append(',').append(' ');
-        }
-        stringBuilder.append(winners.get(winners.size() - 1));
+        IntStream.range(0, winners.size() - 1).forEach(i -> stringBuilder.append(winners.get(i).getName()).append(", "));
+        stringBuilder.append(winners.get(winners.size() - 1).getName());
 
         System.out.println("최종 우승자 : " + stringBuilder);
     }
