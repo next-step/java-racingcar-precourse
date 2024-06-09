@@ -5,6 +5,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.Scanner;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class InputTest {
@@ -13,7 +15,7 @@ class InputTest {
 
     @BeforeEach
     void init() {
-        this.input = new Input();
+        this.input = new Input(new Scanner(System.in));
     }
 
     @DisplayName("자동차 이름의 길이가 5이하인 1대 이상 자동차 이름을 쉼표로 구분하여 입력한다.")

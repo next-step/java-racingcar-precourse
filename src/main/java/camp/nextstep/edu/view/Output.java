@@ -11,14 +11,15 @@ public class Output {
         cars.stream()
                 .map(Car::currentStateMessage)
                 .forEach(System.out::println);
+        System.out.println();
     }
 
     public void printWinners(String[] winners) {
         System.out.print("최종 우승자 : ");
         IntStream.range(0, winners.length)
                 .forEach(i -> {
-                    System.out.println(winners[i]);
-                    if (i < winners.length - 1) System.out.print(",");
+                    System.out.print(winners[i]);
+                    if (i < winners.length - 1) System.out.print(", ");
                 });
     }
 }
