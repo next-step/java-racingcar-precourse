@@ -17,8 +17,8 @@ public class RacerController {
 
     public RacerController() {
         this.raceList = new ArrayList<>();
-        this.maxGameCount = BigInteger.ZERO;
-        this.currentGameCount = BigInteger.ZERO;
+        this.maxGameCount = new BigInteger("-1");
+        this.currentGameCount = new BigInteger("-1");
     }
 
     /**

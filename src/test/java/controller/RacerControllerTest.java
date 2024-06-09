@@ -1,5 +1,6 @@
 package controller;
 
+import dto.RacerDto;
 import entity.Racer;
 import org.assertj.core.api.ThrowableAssert;
 import org.junit.jupiter.api.DisplayName;
@@ -10,6 +11,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.BDDMockito.then;
+import static org.mockito.Mockito.when;
 
 class RacerControllerTest {
     @Test
@@ -73,6 +77,31 @@ class RacerControllerTest {
         assertThatThrownBy(setUpGameCount)
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(RacerController.VALIDATE_GAME_COUNT_ERROR_MESSAGE);
+    }
+
+    @Test
+    @DisplayName("Controller playGame 메소드 성공 테스트")
+    void playGameTest() {
+        // given
+        RacerController controller = new RacerController();
+        List<RacerDto> racerDtoList = Arrays.asList(new RacerDto(
+                        getValidNameInputString(),
+                        BigInteger.ZERO,
+                        false
+                )
+        );
+
+        controller.setUpRacer(getValidNameInputString());
+        controller.setUpGameCount(new BigInteger("2"));
+
+        when(RandomNumberGenerator.getRandomNumber(any(int))).thenReturn(3);
+
+        // when
+        RacerResult result = controller.playGame();
+
+        // then
+        assertThat(result.isEnded()).isEqualTo(false);
+        assertThat(result.racers()).isEqualTo(racerDtoList);
     }
 
     private String getValidNameInputString() {

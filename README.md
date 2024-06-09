@@ -8,7 +8,7 @@
 
 #### Data
 - [x] 자동차 경주자는 이름이 있다.
-  - [ ] NAME_MAX_LENGTH 이하의 길이여야 한다.
+  - [x] NAME_MAX_LENGTH 이하의 길이여야 한다.
 - [x] 자동차 경주자는 이동한 거리를 정수로 기록한다.
 
 #### Act
@@ -35,7 +35,7 @@
 
 #### Act
 - [x] 자동차 이름을 1개의 문자열로 입력받아 자동차 목록을 생성한다.
-  - [ ] 자동차 이름은 쉼표를 기준으로 구분하며, 이름이 NAME_MAX_LENGTH보다 길 경우 IllegalArgumentException을 발생시킨다.
+  - [x] 자동차 이름은 쉼표를 기준으로 구분하며, 이름이 NAME_MAX_LENGTH보다 길 경우 IllegalArgumentException을 발생시킨다.
 - [x] 경주 게임을 진행할 횟수를 입력 받는다.
   - [x] 횟수에는 최댓값 제한은 없으며, 음수 또는 숫자가 아닐 시 IllegalArgumentException을 발생시킨다.
   - [x] 입력 받은 숫자로 경주 진행 시도 횟수를 초기화하고, 현재 자동차 경주 진행 횟수는 0으로 리셋한다.
