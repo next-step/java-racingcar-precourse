@@ -6,7 +6,7 @@ import domain.CarRepository;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.stream.Collectors;
+import java.util.HashMap;
 
 public class GameService {
     CarRepository carRepository = CarRepository.getInstance();
@@ -16,11 +16,21 @@ public class GameService {
         Arrays.stream(carNames).map(Car::new).forEach(carRepository::save);
     }
 
-    public void findWinner(){
-        ArrayList<Car> cars = carRepository.findAll();
-        int maxPosition = cars.stream()
-                .max(Comparator.comparingInt(Car::getPosition))
-                .map(Car::getPosition)
-                .orElseThrow(() -> new IllegalStateException("레이싱카가 존재하지 않습니다."));
+    public HashMap<String,Integer> moveCars(String[] names){
+        HashMap<String,Integer> dto = new HashMap<>();
+        for(String name:names){
+            Car car = carRepository.findByName(name);
+            car.move();
+            dto.put(name,car.getPosition());
+        }
+        return dto;
     }
+
+//    public void findWinner(){
+//        ArrayList<Car> cars = carRepository.findAll();
+//        int maxPosition = cars.stream()
+//                .max(Comparator.comparingInt(Car::getPosition))
+//                .map(Car::getPosition)
+//                .orElseThrow(() -> new IllegalStateException("레이싱카가 존재하지 않습니다."));
+//    }
 }

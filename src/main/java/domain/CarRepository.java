@@ -24,6 +24,11 @@ public class CarRepository {
         return cars;
     }
 
+    public Car findByName(String name){
+        return cars.stream().filter(c -> c.getName().equals(name)).findFirst()
+                .orElseThrow(() -> new IllegalStateException("잘못된 접근입니다."));
+    }
+
     public void clear(){
         cars.clear();
     }

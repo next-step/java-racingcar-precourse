@@ -14,6 +14,7 @@ class GameServiceTest {
     CarRepository carRepository = CarRepository.getInstance();
     private final GameService gameService = new GameService();
 
+    //각 테스트가 끝나면 repository가 초기화된다.
     @AfterEach
     void afterEach(){
         carRepository.clear();
