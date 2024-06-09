@@ -18,6 +18,9 @@ public class CarList {
             carList.add(car);
         }
     }
+    public void addCar(Car car){
+        carList.add(car);
+    }
     public List<Car> getCarList(){
         return carList;
     }
