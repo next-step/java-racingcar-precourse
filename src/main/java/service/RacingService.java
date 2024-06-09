@@ -8,6 +8,10 @@ public class RacingService {
     private final CarRepository carRepository = new CarRepositoryImpl();
     private final StringSplitter sp = new StringSplitter();
 
+    public CarRepository getCarRepository(){
+        return carRepository;
+    }
+
     public void enrollCars(String carNames) {
         String[] nameArr = sp.splitter(carNames);
         for (String name : nameArr) {
