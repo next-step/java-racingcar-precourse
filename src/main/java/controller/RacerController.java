@@ -19,6 +19,8 @@ public class RacerController {
                 .map(Racer::new)
                 .toList();
 
+        System.out.println(newRacerSet);
+
         raceList.clear();
         raceList.addAll(newRacerSet);
     }
