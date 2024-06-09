@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import model.Car;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import service.CarRaceService;
 
@@ -16,7 +17,8 @@ public class CarInputTest {
         carRace = new CarRaceService();
     }
     @Test
-    public void InvalidateNumberCarName() { // Car의 이름 글자수가 기준에 맞지 않을 경우 테스트
+    @DisplayName("Car의 이름 글자 수가 기준에 맞지 않을 경우")
+    public void InvalidateNumberCarName() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
             new Car("abcdef"); // Car의 이름이 총 6글자
         });
@@ -24,7 +26,8 @@ public class CarInputTest {
     }
 
     @Test
-    public void DuplicatedCarName() { // 중복된 Car 이름에 대한 테스트
+    @DisplayName("Car의 이름이 중복되었을 경우")
+    public void DuplicatedCarName() { 
 
         //Given
         String carName = "carA,carB,carA"; // 중복된 이름
