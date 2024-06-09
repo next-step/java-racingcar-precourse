@@ -28,10 +28,9 @@ public class Car implements CarState {
         return position;
     }
 
-    public Integer move(Integer seed){
+    public void move(Integer seed){
         if(seed > 3){
             this.position ++;
         }
-        return this.getPosition();
     }
 }
