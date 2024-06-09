@@ -44,4 +44,22 @@ class InputValidatorTest {
         Assertions.assertThatThrownBy(() -> InputValidator.validateNames(names))
             .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    @DisplayName("숫자가 아닌 값을 입력하면 에러 발생")
+    void validateAttemptNum_NotANumber_ThrowsException() {
+        String input = "a123";
+
+        Assertions.assertThatThrownBy(() -> InputValidator.validateAttemptNum(input))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("입력받은 값이 0 이하의 정수일 경우 에러 발생")
+    void validateAttemptNum_NumberLessThanOne_ThrowsException() {
+        String input = "-1";
+
+        Assertions.assertThatThrownBy(() -> InputValidator.validateAttemptNum(input))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
 }
