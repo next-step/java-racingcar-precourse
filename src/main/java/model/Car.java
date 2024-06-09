@@ -9,7 +9,7 @@ public class Car {
             throw new IllegalArgumentException("[ERROR] 자동차 이름은 1자 이상 5자 이하만 가능합니다.");
         }
         this.name = name;
-        this.position = 0;
+        // 위치 초기화는 나중에
     }
 
     public String getName() {
@@ -18,6 +18,10 @@ public class Car {
 
     public int getPosition() {
         return position;
+    }
+
+    public void initializePosition() {
+        this.position = 0;
     }
 
     public void move() {
