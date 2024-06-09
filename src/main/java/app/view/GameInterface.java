@@ -13,9 +13,9 @@ public class GameInterface {
         return scanner.nextLine();
     }
 
-    public int getAttemptCount() {
+    public String getAttemptCount() {
         System.out.println("시도할 회수는 몇회인가요?");
-        return scanner.nextInt();
+        return scanner.nextLine();
     }
 
     public void printAttemptResult(List<RacingCar> carList) {

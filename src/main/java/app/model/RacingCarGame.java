@@ -12,14 +12,17 @@ public class RacingCarGame {
 
     public RacingCarGame() {
         this.curCnt = 0;
+        this.attemptCnt = 0;
     }
 
     public int getAttemptCnt() {
         return attemptCnt;
     }
 
-    public void setAttemptCnt(int attemptCnt) {
-        this.attemptCnt = attemptCnt;
+    public void setAttemptCnt(String attemptCnt) {
+        int num = Integer.parseInt(attemptCnt);
+        if (num < 1) throw new IllegalArgumentException("시도 회수는 1 이상이어야 합니다.");
+        this.attemptCnt = num;
     }
 
     public int getCurCnt() {

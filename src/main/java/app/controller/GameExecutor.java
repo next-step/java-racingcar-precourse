@@ -3,6 +3,8 @@ package app.controller;
 import app.model.RacingCarGame;
 import app.view.GameInterface;
 
+import java.util.InputMismatchException;
+
 public class GameExecutor {
     private GameInterface gameInterface;
     private RacingCarGame racingCarGame;
@@ -17,6 +19,15 @@ public class GameExecutor {
         while (racingCarGame.getCarList() == null) {
             try {
                 racingCarGame.setCarList(gameInterface.getRacingCarNames());
+            } catch (IllegalArgumentException e) {
+                gameInterface.printErrorMessage(e.getMessage());
+            }
+        }
+        while (racingCarGame.getAttemptCnt() == 0) {
+            try {
+                racingCarGame.setAttemptCnt(gameInterface.getAttemptCount());
+            } catch (NumberFormatException e) {
+                gameInterface.printErrorMessage("숫자만 입력해주세요.");
             } catch (IllegalArgumentException e) {
                 gameInterface.printErrorMessage(e.getMessage());
             }
