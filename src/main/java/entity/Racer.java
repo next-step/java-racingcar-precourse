@@ -3,7 +3,8 @@ package entity;
 import java.math.BigInteger;
 
 public class Racer {
-    public BigInteger MOVE_THRESHOLD = new BigInteger("3");
+    public static BigInteger MOVE_THRESHOLD = new BigInteger("3");
+
     private String name;
 
     private BigInteger movedDistance;
