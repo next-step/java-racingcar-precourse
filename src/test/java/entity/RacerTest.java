@@ -16,14 +16,15 @@ class RacerTest {
     @DisplayName("Racer 생성자 테스트")
     void racerConstructorTest() {
         // given: 생성자 데이터
-        String name = "Racer";
+        String givenName = "Racer   ";
+        String expectedName = "Racer";
         BigInteger expectedMovedDistance = new BigInteger("0");
 
         // when
-        Racer racer = new Racer(name);
+        Racer racer = new Racer(givenName);
 
         // then
-        assertThat(racer.getName()).isEqualTo(name);
+        assertThat(racer.getName()).isEqualTo(expectedName);
         assertThat(racer.getMovedDistance()).isEqualTo(expectedMovedDistance);
     }
 
