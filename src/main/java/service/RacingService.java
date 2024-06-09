@@ -25,7 +25,6 @@ public class RacingService {
     }
 
     public int getMaxDistance(CarList carList){
-        // 우승자 로직
         int maxDistance = 0;
         for( Car car : carList.getCarList()){
             if(maxDistance < car.getDistance()){
@@ -34,6 +33,7 @@ public class RacingService {
         }
         return maxDistance;
     }
+
 
     public List<String> getWinner(int maxDistance, CarList carList){
         List<String> winner = new ArrayList<>();
