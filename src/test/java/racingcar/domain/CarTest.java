@@ -22,12 +22,20 @@ public class CarTest {
     void 자동차_위치를_전진시킨다() {
         Name name = new Name("pobi");
         Position position = new Position(0);
-
         Car car = new Car(name, position);
 
         assertAll(
                 () -> assertThat(car.forward()).isEqualTo(new Car(new Name("pobi"), new Position(1))),
                 () -> assertThat(car.forward()).isNotEqualTo(new Car(new Name("pobi"), new Position(0)))
         );
+    }
+
+    @Test
+    void 자동차_위치를_반환한다() {
+        Name name = new Name("pobi");
+        Position position = new Position(0);
+        Car car = new Car(name, position);
+
+        assertThat(car.position()).isEqualTo(new Position(0));
     }
 }

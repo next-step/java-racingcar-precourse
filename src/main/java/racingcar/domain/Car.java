@@ -15,6 +15,10 @@ public class Car {
         return new Car(name, position.forward());
     }
 
+    public Position position() {
+        return this.position;
+    }
+
     @Override
     public boolean equals(final Object o) {
         if (this == o) {
