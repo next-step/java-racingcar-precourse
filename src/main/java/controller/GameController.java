@@ -7,18 +7,25 @@ import view.OutputView;
 
 public class GameController {
     //TODO
-    // 2.자동차 모델 생성
     // 3.게임 진행
     // 4.승자 탐색
     private final InputView inputView = new InputView();
     private final OutputView outputView = new OutputView();
+    private final GameService gameService = new GameService();
+    private static String[] carsName;
+    private static int count;
 
     public void playGame(){
         //TODO
+        getUserInput();
+        gameService.createCars(carsName);
+
     }
-    public void getUserInput(){
-        String[] carsName = getCarsName();
-        int count = getCount();
+
+
+    private void getUserInput(){
+        carsName = getCarsName();
+        count = getCount();
     }
 
     private String[] getCarsName(){
