@@ -25,6 +25,11 @@ public class EntryMoveCnt {
         } catch (InputMismatchException e) {
             throw new IllegalArgumentException("[ERROR] : 시도 횟수는 숫자가 와야합니다");
         }
+
+        if (moveCnt <= 0 )
+            throw new IllegalArgumentException("[ERROR] : 시도 횟수는 숫자 1이상이여야 합니다");
+
+
         return moveCnt;
     }
 }
