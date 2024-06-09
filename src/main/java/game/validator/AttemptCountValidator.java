@@ -7,21 +7,15 @@ import game.exception.constant.ErrorMessage;
  */
 public class AttemptCountValidator {
 
-    private static final AttemptCountValidator instance = new AttemptCountValidator();
-
     private AttemptCountValidator() {
     }
 
-    public static AttemptCountValidator getInstance() {
-        return instance;
-    }
-
-    public void validate(String attemptCountInput) {
+    public static void validate(String attemptCountInput) {
         validateNumberFormat(attemptCountInput);
-        validatePositiveValue(attemptCountInput);
+        validatePositiveNumber(attemptCountInput);
     }
 
-    private void validateNumberFormat(String attemptCountInput) {
+    private static void validateNumberFormat(String attemptCountInput) {
         try {
             Integer.parseInt(attemptCountInput);
         } catch (NumberFormatException e) {
@@ -29,7 +23,7 @@ public class AttemptCountValidator {
         }
     }
 
-    private void validatePositiveValue(String attemptCountInput) {
+    private static void validatePositiveNumber(String attemptCountInput) {
         if (Integer.parseInt(attemptCountInput) <= 0) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_ATTEMPT_COUNT_INPUT.getMessage());
         }
