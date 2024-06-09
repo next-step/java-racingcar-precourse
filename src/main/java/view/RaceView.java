@@ -3,6 +3,7 @@ package view;
 import controller.RaceControllerInterface;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.IntStream;
 import model.CarModelInterface;
 import observer.Observer;
 import service.RaceServiceInterface;
@@ -34,7 +35,7 @@ public class RaceView implements Observer, RaceViewInterface {
     @Override
     public void userCarsInput() {
         // 안내문 출력
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분");
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
 
         // 유저의 입력을 받고 token으로 쪼개기
         Scanner sc = new Scanner(System.in);
@@ -59,6 +60,15 @@ public class RaceView implements Observer, RaceViewInterface {
         raceControllerInterface.setRound(userInput);
     }
 
+    // progress를 받으면 막대기로 돌려주는 메서드
+    private String getProgressBar(int progress) {
+        // 빠른 처리를 위한 Stringbuilder
+        StringBuilder stringBuilder = new StringBuilder();
+        IntStream.range(0, progress).forEach(i -> stringBuilder.append('-'));
+
+        return stringBuilder.toString();
+    }
+
     // 한 번 진행의 결과를 보여주는 메서드
     @Override
     public void printProgress() {
@@ -67,7 +77,7 @@ public class RaceView implements Observer, RaceViewInterface {
         List<CarModelInterface> carList = raceService.getCars();
         // stream을 이용하여 양식에 맞게 출력
         carList.stream()
-            .forEach(car -> System.out.println(car.getName() + " : " + car.getProgress()));
+            .forEach(car -> System.out.println(car.getName() + " : " + getProgressBar(car.getProgress())));
         System.out.println();
     }
 
