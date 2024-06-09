@@ -12,6 +12,11 @@ public class Car {
         numberOfMove = 0;
     }
 
+    public Car(int numberOfMove, String carName) {
+        this.numberOfMove = numberOfMove;
+        this.carName = carName;
+    }
+
     public int getNumberOfMove() {
         return numberOfMove;
     }
@@ -21,7 +26,6 @@ public class Car {
             numberOfMove++;
         }
     }
-
 
     public String getCarName() {
         return carName;
