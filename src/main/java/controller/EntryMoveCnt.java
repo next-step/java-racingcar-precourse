@@ -23,7 +23,7 @@ public class EntryMoveCnt {
         int moveCnt=-1;
         try {
             moveCnt= Integer.parseInt(in);
-        } catch (InputMismatchException e) {
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException("[ERROR] : 시도 횟수는 숫자가 와야합니다");
         }
 
