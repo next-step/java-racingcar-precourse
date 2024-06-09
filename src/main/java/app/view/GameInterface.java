@@ -1,5 +1,8 @@
 package app.view;
 
+import app.model.RacingCar;
+
+import java.util.List;
 import java.util.Scanner;
 
 public class GameInterface {
@@ -13,5 +16,21 @@ public class GameInterface {
     public int getAttemptCount() {
         System.out.println("시도할 회수는 몇회인가요?");
         return scanner.nextInt();
+    }
+
+    public void printAttemptResult(List<RacingCar> carList) {
+        carList.stream().forEach(RacingCar::printCurLocation);
+    }
+
+    public void printWinner(String winner) {
+        System.out.println("최종 우승자 : " + winner);
+    }
+
+    public void printMessage(String message) {
+        System.out.println(message);
+    }
+
+    public void printErrorMessage(String message) {
+        System.out.println("Error : " + message);
     }
 }
