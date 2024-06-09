@@ -1,11 +1,8 @@
 package controller;
 
-import java.util.ArrayList;
-import java.util.List;
-import model.Car;
+import java.util.Random;
 import model.CarList;
 import service.RacingService;
-import validation.Validation;
 import view.InputView;
 import view.PrintView;
 
@@ -14,11 +11,13 @@ public class RacingController {
     private PrintView printView;
     private InputView inputView;
     private RacingService racingService;
+    private Random random;
     public RacingController(){
         carList = new CarList();
         printView = new PrintView();
         inputView = new InputView();
         racingService = new RacingService();
+        random = new Random();
     }
 
     public void run(){
@@ -30,8 +29,8 @@ public class RacingController {
 
         // 경주 진행
         for(int i=0; i< cnt; i++){
-            racingService.race(carList);
-            printView.printDriveView(i, carList);
+            racingService.race(()->(random.nextInt(10)),carList);
+            printView.printRaceView(i, carList);
         }
 
         // 우승자 구하기
