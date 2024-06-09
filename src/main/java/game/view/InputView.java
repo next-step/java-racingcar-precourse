@@ -11,14 +11,9 @@ import java.util.Scanner;
 public class InputView {
 
     private final Scanner scanner;
-    private final CarNameValidator carNameValidator;
-    private final AttemptCountValidator attemptCountValidator;
 
-    //todo validator를 주입받도록(validator 인터페이스 선언 + 파라미터로 Validator... validator)
-    public InputView() {
-        scanner = new Scanner(System.in);
-        carNameValidator = CarNameValidator.getInstance();
-        attemptCountValidator = AttemptCountValidator.getInstance();
+    public InputView(Scanner scanner) {
+        this.scanner = scanner;
     }
 
     public List<String> enterCarNames() {
@@ -27,7 +22,7 @@ public class InputView {
             System.out.println(InputMessage.CAR_NAME);
             input = scanner.nextLine();
             try {
-                carNameValidator.validate(input);
+                CarNameValidator.validate(input);
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
                 input = "";
@@ -47,7 +42,7 @@ public class InputView {
             System.out.println(InputMessage.ATTEMPT_COUNT);
             input = scanner.nextLine();
             try {
-                attemptCountValidator.validate(input);
+                AttemptCountValidator.validate(input);
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
                 input = "";
