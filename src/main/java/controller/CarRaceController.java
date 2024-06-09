@@ -17,7 +17,7 @@ public class CarRaceController {
             List<Car> cars = createAndInitializeCars(carNames);
             runRace(cars, raceCount);
             List<Car> winners = determineWinners(cars); // 우승자 결정
-            // TODO: 우승자 출력 로직 추가
+            printWinners(winners); // 우승자 출력
         } catch (IllegalArgumentException e) {
             OutputView.printMessage(e.getMessage());
         }
@@ -66,5 +66,12 @@ public class CarRaceController {
         return cars.stream()
             .filter(car -> car.getPosition() == maxPosition)
             .collect(Collectors.toList());
+    }
+
+    private void printWinners(List<Car> winners) {
+        String winnerNames = winners.stream()
+            .map(Car::getName)
+            .collect(Collectors.joining(", "));
+        OutputView.printMessage("최종 우승자 : " + winnerNames);
     }
 }
