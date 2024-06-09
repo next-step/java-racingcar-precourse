@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
 public class Game {
     private List<Car> cars;
@@ -29,5 +30,21 @@ public class Game {
             car.tryMove();
         }
         return getPositions();
+    }
+
+    public List<String> getWinners() {
+        Map<String, Integer> positions = getPositions();
+        List<String> winners = new ArrayList<>();
+
+        int max_position = positions.values().stream()
+            .max(Integer::compareTo)
+            .orElseThrow(NoSuchElementException::new);
+
+        for (String name : positions.keySet()) {
+            if (positions.get(name) == max_position) {
+                winners.add(name);
+            }
+        }
+        return winners;
     }
 }
