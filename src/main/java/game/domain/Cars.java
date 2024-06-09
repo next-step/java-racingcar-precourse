@@ -45,6 +45,10 @@ public class Cars {
             .orElseThrow(() -> new NoSuchElementException(ErrorMessage.EMPTY_LIST.getMessage()));
     }
 
+    public List<String> getCarNames() {
+        return carList.stream().map(Car::getName).toList();
+    }
+
     public List<Car> getCarList() {
         return Collections.unmodifiableList(carList);
     }
