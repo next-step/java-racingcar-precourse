@@ -34,7 +34,7 @@ class TrackTest {
             track.addCar(carName);
         }
         //when
-        track.step(seeds);
+        track.runStep(seeds);
         //then
         var position = List.of(0,0,1);
         assertEquals(position, track.getCars().stream().map(Car::getPosition).toList());
@@ -51,7 +51,7 @@ class TrackTest {
             track.addCar(carName);
         }
         //when
-        track.step(seeds);
+        track.runStep(seeds);
         //then
         var answer = List.of("Car3");
         assertEquals(answer, track.getWinners().stream().map(Car::getName).toList());
@@ -68,7 +68,7 @@ class TrackTest {
             track.addCar(carName);
         }
         //when
-        track.step(seeds);
+        track.runStep(seeds);
         //then
         var answer = List.of("Car2", "Car3");
         assertEquals(answer, track.getWinners().stream().map(Car::getName).toList());

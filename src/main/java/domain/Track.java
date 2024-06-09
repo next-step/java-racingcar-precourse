@@ -13,7 +13,7 @@ public class Track {
     public void addCar(String carName){
         cars.add(new Car(carName));
     }
-    public void step(List<Integer> seeds){
+    public void runStep(List<Integer> seeds){
         validateSeedSize(seeds);
         for(int i = 0; i < seeds.size(); i++){
             cars.get(i).move(seeds.get(i));
