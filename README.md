@@ -54,23 +54,42 @@ jun : -----
 ### view
 사용자에게 보여지는 출력
 - UserInputView
+  1. 자동차 이름 입력 받기
+  2. 자동차 객체로 저장
+  3. 시도 횟수 입력 받기
+   
+
 - RacingGameView
+   1. 실행 결과 출력
+   2. 우승자 출력
 
 ### controller
 사용자의 입력을 받아 Service를 업데이트, View를 통해 출력
 - RacingGameController
 
+
 ### service
 비지니스 로직 처리
 - RacingGameService
+   1. 자동차 경주 진행
+   2. 랜덤 수에 따라 자동자 전진
+   3. 우승자 결정
 
 ### exception
 예외 처리
 - ExceptionHandler
+   1. [ERROR] 메세지 출력
+   
+
 - ErrorMsg
 
 ### util
 - RandomNumberGenerator
+   1. 0~9 사이 랜덤 수 생성   
+  
+
 - InputValidator
+   1. 자동차 이름 입력값에 대한 유효성 검사
+   2. 시도 횟수 입력값에 대한 유효성 검사
 
 
