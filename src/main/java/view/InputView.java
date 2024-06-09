@@ -1,19 +1,25 @@
 package view;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class InputView {
-    private static final Scanner scanner = new Scanner(System.in);
+    private static final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
     public static List<String> getCarNames() {
-        System.out.println("경주할 자동차 이름을 입력하세요. (이름은 쉼표(,) 기준으로 구분)");
-        String input = scanner.nextLine();
-        List<String> carNames = parseCarNames(input);
-        validateCarNames(carNames);
-        return carNames;
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        try {
+            String input = br.readLine();
+            List<String> carNames = parseCarNames(input);
+            validateCarNames(carNames);
+            return carNames;
+        } catch (IOException e) {
+            throw new IllegalStateException("[ERROR] 입력을 읽는 중 오류가 발생했습니다.", e);
+        }
     }
 
     private static List<String> parseCarNames(String input) {
@@ -30,4 +36,3 @@ public class InputView {
         }
     }
 }
-
