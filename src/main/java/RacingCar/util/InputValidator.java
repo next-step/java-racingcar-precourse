@@ -7,23 +7,16 @@ import java.util.Set;
 public class InputValidator {
 
   public static List<String> checkCarValid(String input) {
-    if (input == null || input.trim().isEmpty()) {
-      throw new IllegalArgumentException("[ERROR] 자동차 이름을 입력해주세요.");
-    }
-
     List<String> carNames = List.of(input.split(","));
     Set<String> uniqueNames = new HashSet<>();
-
     for (String name : carNames) {
-      name = name.trim();
-      if (name.length() > 5) {
-        throw new IllegalArgumentException("[ERROR] 자동차 이름은 5자 이하여야 합니다.");
+      if (name.length() > 5 || name.isBlank()) {
+        throw new IllegalArgumentException("[ERROR] 자동차 이름은 1자 이상 5자 이하여야 합니다.");
       }
       if (!uniqueNames.add(name)) {
         throw new IllegalArgumentException("[ERROR] 중복된 자동차 이름이 있습니다: " + name);
       }
     }
-
     return carNames;
   }
 
