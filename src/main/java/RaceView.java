@@ -8,6 +8,10 @@ public class RaceView {
         System.out.println("시도할 회수는 몇회인가요?");
     }
 
+    public void showRound() {
+        System.out.println("\n실행 결과");
+    }
+
     public void showWinners(String output) {
         System.out.println("최종 우승자 : " + output);
     }

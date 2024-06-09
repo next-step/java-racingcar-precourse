@@ -59,6 +59,7 @@ public class RaceController {
         int iterNum = getIter();
         StringBuilder winners = new StringBuilder();
         Race race = new Race(carNames, iterNum);
+        view.showRound();
         for(int i=0 ; i<iterNum ; i++) {
             race.round();
         }
