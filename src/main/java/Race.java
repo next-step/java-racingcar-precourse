@@ -23,6 +23,7 @@ public class Race {
             for (Car car : cars) {
                 car.move((int) (Math.random() * 10));
             }
+            gameView.requestMoveResult(cars);
         }
     }
 

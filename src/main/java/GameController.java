@@ -16,6 +16,7 @@ public class GameController {
         int attemptCount = getAttemptCount();
         race = new Race(carNames);
         race.run(attemptCount);
+        printWinners();
     }
 
     private String[] getCarNames() {
@@ -48,7 +49,9 @@ public class GameController {
         }
     }
 
-
+    private void printWinners() {
+        gameView.displayWinners(race.getWinners());
+    }
 
     private boolean isValidInput(String[] carNames) {
         for (String name : carNames) {
