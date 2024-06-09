@@ -1,7 +1,6 @@
 package game.domain;
 
-import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.stream.Stream;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -43,7 +42,6 @@ class CarTest {
             Arguments.arguments(new Car("enzo"), 3)
         );
     }
-
 
 
 }
