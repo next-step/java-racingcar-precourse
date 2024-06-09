@@ -1,6 +1,7 @@
 package camp.nextstep.edu.view;
 
 import java.util.Scanner;
+import java.util.stream.IntStream;
 
 public class Input {
 
@@ -23,13 +24,15 @@ public class Input {
     }
 
     public String[] validateCarNames(String carNames) {
-        carNames = carNames.replaceAll("\\s+", "");
+        carNames = carNames.trim();
         checkCarCount(carNames);
 
         String[] arrCarNames = carNames.split(",");
-        for (String name : arrCarNames) {
-            checkCarNameLength(name);
-        }
+        IntStream.range(0, arrCarNames.length)
+                .forEach(i -> {
+                    arrCarNames[i] = arrCarNames[i].trim();
+                    checkCarNameLength(arrCarNames[i]);
+                });
 
         return arrCarNames;
     }

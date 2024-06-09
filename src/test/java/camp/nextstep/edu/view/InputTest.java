@@ -6,6 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.Scanner;
+import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -27,7 +28,9 @@ class InputTest {
     })
     void validateCarNames(String carNames) {
         String[] arrCarNames = input.validateCarNames(carNames);
-        String[] expected = carNames.replaceAll("\\s", "").split(",");
+        String[] expected = carNames.trim().split(",");
+        IntStream.range(0, expected.length)
+                .forEach(i -> expected[i] = expected[i].trim());
         assertArrayEquals(expected, arrCarNames);
     }
 
@@ -38,9 +41,7 @@ class InputTest {
             " "
     })
     void checkCarCount(String carNames) {
-        assertThrows(IllegalArgumentException.class, () -> {
-            input.validateCarNames(carNames);
-        });
+        assertThrows(IllegalArgumentException.class, () -> input.validateCarNames(carNames));
     }
 
     @DisplayName("길이가 5 초과인 자동차 이름은 입력할 수 없다.")
@@ -51,9 +52,7 @@ class InputTest {
             "aa,bbbbbb"
     })
     void checkCarNameLength(String carNames) {
-        assertThrows(IllegalArgumentException.class, () -> {
-            input.validateCarNames(carNames);
-        });
+        assertThrows(IllegalArgumentException.class, () -> input.validateCarNames(carNames));
     }
 
     @DisplayName("1 이상 숫자인 시도 횟수를 입력한다.")
@@ -78,9 +77,7 @@ class InputTest {
             ""
     })
     void checkNumberFormat(String moveCount) {
-        assertThrows(IllegalStateException.class, () -> {
-            input.validateMoveCount(moveCount);
-        });
+        assertThrows(IllegalStateException.class, () -> input.validateMoveCount(moveCount));
     }
 
     @DisplayName("1보다 작은 시도 횟수는 입력할 수 없다.")
@@ -90,8 +87,6 @@ class InputTest {
             "-100"
     })
     void checkMoveCount(String moveCount) {
-        assertThrows(IllegalArgumentException.class, () -> {
-            input.validateMoveCount(moveCount);
-        });
+        assertThrows(IllegalArgumentException.class, () -> input.validateMoveCount(moveCount));
     }
 }
