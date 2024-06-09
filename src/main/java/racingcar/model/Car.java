@@ -8,6 +8,9 @@ public class Car {
     private int position = 0;
 
     public Car(String name){
+        if (name == null || name.isEmpty() || name.length() > 5) {
+            throw new IllegalArgumentException("자동차 이름은 1자 이상, 5자 이하로 입력하세요.");
+        }
         this.name = name;
     }
 
