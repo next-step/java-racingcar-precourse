@@ -5,9 +5,10 @@ import utills.Validator;
 import view.InputView;
 import view.OutputView;
 
+import java.util.Map;
+
 public class GameController {
     //TODO
-    // 3.게임 진행
     // 4.승자 탐색
     private final InputView inputView = new InputView();
     private final OutputView outputView = new OutputView();
@@ -15,11 +16,24 @@ public class GameController {
     private static String[] carsName;
     private static int count;
 
-    public void playGame(){
+    public void startGame(){
         //TODO
         getUserInput();
         gameService.createCars(carsName);
+        playGame();
+    }
 
+    /**
+     * 게임을 진행하는 메서드 (사용자가 입력한 횟수만큼 진행)
+     */
+    private void playGame(){
+        Map<String,Integer> result;
+        outputView.outputText();
+        //count 횟수만큼 움직이고 출력
+        for (int i = 0; i<count; i++){
+            result = gameService.moveCars(carsName);
+            outputView.printResult(result);
+        }
     }
 
 
@@ -47,7 +61,7 @@ public class GameController {
                 String count = inputView.getCount();
                 Validator.validCheckCount(count);
                 return Integer.parseInt(count);
-            } catch(IllegalArgumentException e){
+            } catch(IllegalArgumentException e) {
                 outputView.printError(e.getMessage());
             }
         }
