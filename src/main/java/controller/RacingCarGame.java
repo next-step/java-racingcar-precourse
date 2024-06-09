@@ -3,15 +3,19 @@ package controller;
 import java.util.ArrayList;
 import model.Car;
 import view.InputView;
+import view.OutputView;
 
 public class RacingCarGame {
 
     private final InputView inputView = new InputView();
+    private final OutputView outputView = new OutputView();
     private final int MAX_NAME_LENGTH = 5;
 
     public void racingGame() {
         ArrayList<Car> cars = new ArrayList<>();
         input(cars);
+        System.out.println();
+        output(cars);
     }
 
     private ArrayList<Car> input(ArrayList<Car> cars) throws IllegalArgumentException {
@@ -40,6 +44,20 @@ public class RacingCarGame {
         }
 
         return true;
+    }
+
+    private void output(ArrayList<Car> cars){
+        outputView.showExecutionResult();
+
+        for (int i = 0; i < inputView.getIteration(); i++) {
+            for (Car car : cars) {
+                car.moveForward();
+                outputView.showCarMove(car);
+            }
+            System.out.println();
+        }
+
+        outputView.showWinner(cars);
     }
 
 }
