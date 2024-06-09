@@ -10,4 +10,10 @@ public class DecisionMove {
             car.setMove(true);
         }
     }
+
+    public static int getRandom(){ //랜덤값을 구하는 기능
+        Random random = new Random();
+        int randomValue = random.nextInt(10); //0~9
+        return randomValue;
+    }
 }
