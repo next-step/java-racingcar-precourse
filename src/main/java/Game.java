@@ -11,13 +11,16 @@ public class Game {
 
 
         while (true) {
-            System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-            carNames = List.of(sc.next().split(","));
-            if (CheckInput.checkCarNames(carNames)) {
-                break;
+            try {
+                System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+                carNames = List.of(sc.next().split(","));
+                CheckInput.checkCarNames(carNames);
+                return carNames;
+            } catch (IllegalArgumentException | IllegalStateException e) {
+                System.out.println(e.getMessage());
             }
         }
-        return carNames;
+
     }
 
     public int getTryNum() {
@@ -26,9 +29,13 @@ public class Game {
         while (true) {
             try {
                 tryNum = sc.nextInt();
+                CheckInput.isWrongIntValue(tryNum);
                 break;
             } catch (InputMismatchException e){
-                CheckInput.isWrongValue();
+                System.out.println("[ERROR] 잘못된 값을 입력했습니다. 1 이상의 정수를 다시 입력하세요.");
+                sc.next();
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
             }
         }
         return tryNum;
