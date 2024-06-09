@@ -6,5 +6,5 @@ public interface CarModelInterface {
 
     public int getProgress();
 
-    public void setProgress(int progress);
+    public void goForward();
 }

@@ -1,6 +1,6 @@
 package model;
 
-// model과 service를 분리해서 model은 getter, setter, 변수만 갖도록 함.
+// model과 service를 분리해서 도메인 관련 작업만 처리
 public class Car implements CarModelInterface {
 
     private final String name;
@@ -16,6 +16,16 @@ public class Car implements CarModelInterface {
         this.progress = progress;
     }
 
+    private void setProgress(int progress) {
+        this.progress = progress;
+    }
+
+    // 한 칸 앞으로 가는 메서드
+    @Override
+    public void goForward() {
+        setProgress(getProgress() + 1);
+    }
+
     @Override
     public String getName() {
         return name;
@@ -24,10 +34,5 @@ public class Car implements CarModelInterface {
     @Override
     public int getProgress() {
         return progress;
-    }
-
-    @Override
-    public void setProgress(int progress) {
-        this.progress = progress;
     }
 }
