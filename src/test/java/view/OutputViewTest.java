@@ -37,7 +37,7 @@ class OutputViewTest {
 
         // then
         String expectedOutput =
-                "최종 우승자 : [car1, car2, car3]\n";
+                "최종 우승자 : car1, car2, car3";
         assertThat(outContent.toString()).isEqualTo(expectedOutput);
     }
 }
