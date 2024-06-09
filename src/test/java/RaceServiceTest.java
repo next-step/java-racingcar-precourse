@@ -86,6 +86,17 @@ public class RaceServiceTest {
     }
 
     @Test
+    void prepareRaceRangeErrorTest() {
+        // 객체와 삽입할 배열을 준비
+        Race race = new Race();
+        RaceServiceInterface raceService = new RaceService(race, race);
+        String round = "101";
+
+        // 잘못된 경우에 대해 테스트 (범위 문제)
+        Assertions.assertThatCode(() -> raceService.prepareRace(round)).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
     void getWinnersTest() {
         // 객체와 삽입할 배열을 준비
         Race race = new Race();
