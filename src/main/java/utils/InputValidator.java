@@ -21,4 +21,15 @@ public class InputValidator {
             throw new IllegalArgumentException("[ERROR] 자동차 이름은 중복될 수 없습니다.");
         }
     }
+
+    public static void validateAttemptNum(String input) {
+        try {
+            int num = Integer.parseInt(input);
+            if (num < 1) {
+                throw new IllegalArgumentException("[ERROR] 시도 횟수는 0 이하가 될 수 없습니다.");
+            }
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR] 시도 횟수는 1 이상의 자연수로 입력해야 합니다.");
+        }
+    }
 }
