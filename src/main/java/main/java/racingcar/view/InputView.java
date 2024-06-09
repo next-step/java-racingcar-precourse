@@ -19,4 +19,20 @@ public class InputView {
             throw new IllegalArgumentException(ErrorMessage.INPUT_BLANK);
         }
     }
+
+    public static int inputInteger(String message) {
+        System.out.println(message);
+        String inputValue = scanner.nextLine();
+        validateBlank(inputValue);
+        validateInteger(inputValue);
+        return Integer.parseInt(inputValue);
+    }
+
+    public static void validateInteger(String input) {
+        try {
+            Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ErrorMessage.INPUT_NOT_INTEGER);
+        }
+    }
 }
