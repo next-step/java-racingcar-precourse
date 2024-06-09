@@ -4,6 +4,7 @@ import app.model.RacingCar;
 
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class GameInterface {
     private Scanner scanner = new Scanner(System.in);
@@ -23,8 +24,10 @@ public class GameInterface {
         System.out.println();
     }
 
-    public void printWinner(String winner) {
-        System.out.println("최종 우승자 : " + winner);
+    public void printWinner(List<RacingCar> winnerList) {
+        System.out.println("최종 우승자 : " + winnerList.stream()
+                                            .map(RacingCar::getName)
+                                            .collect(Collectors.joining(",")));
     }
 
     public void printMessage(String message) {
