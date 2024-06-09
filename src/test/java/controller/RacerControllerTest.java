@@ -60,7 +60,7 @@ class RacerControllerTest {
     }
 
     @Test
-    @DisplayName("Controller setUpGameCount 메소드 성공 테스트")
+    @DisplayName("Controller setUpGameCount 메소드 실패 테스트")
     void setUpGameCount_WillThrownTest() {
         // given
         RacerController controller = new RacerController();

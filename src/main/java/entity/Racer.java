@@ -3,9 +3,9 @@ package entity;
 import java.math.BigInteger;
 
 public class Racer {
-    public static BigInteger MOVE_THRESHOLD = new BigInteger("3");
+    public static final BigInteger MOVE_THRESHOLD = new BigInteger("3");
 
-    public static String VALIDATE_NAME_ERROR_MESSAGE = "name은 null이거나 빈 문자열일 수 없습니다.";
+    public static final String VALIDATE_NAME_ERROR_MESSAGE = "name은 null이거나 빈 문자열일 수 없습니다.";
 
     private String name;
 
