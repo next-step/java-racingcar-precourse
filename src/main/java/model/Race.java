@@ -2,6 +2,7 @@ package model;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import utils.Utils;
 
 public class Race {
     private final List<Car> cars;
@@ -11,7 +12,7 @@ public class Race {
     }
 
     public void start() {
-        cars.forEach(Car::move);
+        cars.forEach(Car -> Car.move(Utils.getRandomNumber()));
     }
 
     public List<Car> judgeWinners() {

@@ -11,8 +11,7 @@ public class Car {
         this.position = 0;
     }
 
-    public void move() {
-        int randomNumber = (int) (Math.random() * 10);
+    public void move(int randomNumber) {
         if (randomNumber >= Constants.MOVE_THRESHOLD) {
             position++;
         }
