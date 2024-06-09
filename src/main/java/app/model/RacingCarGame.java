@@ -1,7 +1,9 @@
 package app.model;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class RacingCarGame {
@@ -52,6 +54,11 @@ public class RacingCarGame {
     public void proceed() {
         carList.forEach(RacingCar::moveForward);
         this.curCnt++;
+    }
+
+    public List<RacingCar> getWinnerList() {
+        int maxLocation = carList.stream().mapToInt(RacingCar::getLocation).max().orElse(0);
+        return carList.stream().filter(car -> car.getLocation() == maxLocation).collect(Collectors.toList());
     }
 
     public boolean isFinished() {
