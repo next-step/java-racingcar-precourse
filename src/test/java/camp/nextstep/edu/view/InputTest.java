@@ -8,6 +8,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.util.Scanner;
 import java.util.stream.IntStream;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 
 class InputTest {
@@ -41,7 +42,9 @@ class InputTest {
             " "
     })
     void checkCarCount(String carNames) {
-        assertThrows(IllegalArgumentException.class, () -> input.validateCarNames(carNames));
+        assertThatThrownBy(() -> input.validateCarNames(carNames))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("[ERROR] 1개 이상의 자동차 이름을 입력하시오.");
     }
 
     @DisplayName("길이가 5 초과인 자동차 이름은 입력할 수 없다.")
@@ -52,7 +55,9 @@ class InputTest {
             "aa,bbbbbb"
     })
     void checkCarNameLength(String carNames) {
-        assertThrows(IllegalArgumentException.class, () -> input.validateCarNames(carNames));
+        assertThatThrownBy(() -> input.validateCarNames(carNames))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("[ERROR] 자동차 이름은 5자 이하로 입력하시오.");
     }
 
     @DisplayName("1 이상 숫자인 시도 횟수를 입력한다.")
@@ -77,7 +82,9 @@ class InputTest {
             ""
     })
     void checkNumberFormat(String moveCount) {
-        assertThrows(IllegalStateException.class, () -> input.validateMoveCount(moveCount));
+        assertThatThrownBy(() -> input.validateMoveCount(moveCount))
+                .isInstanceOf(IllegalStateException.class)
+                .hasMessage("[ERROR] 시도 횟수는 정수 형태로 입력하시오.");
     }
 
     @DisplayName("1보다 작은 시도 횟수는 입력할 수 없다.")
@@ -87,6 +94,8 @@ class InputTest {
             "-100"
     })
     void checkMoveCount(String moveCount) {
-        assertThrows(IllegalArgumentException.class, () -> input.validateMoveCount(moveCount));
+        assertThatThrownBy(() -> input.validateMoveCount(moveCount))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("[ERROR] 시도 횟수는 1회 이상 입력하시오.");
     }
 }
