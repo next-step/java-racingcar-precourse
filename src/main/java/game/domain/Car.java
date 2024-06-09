@@ -14,7 +14,7 @@ public class Car {
     }
 
     public Car(String name, int position) {
-        CarNameValidator.getInstance().validateNameLength(name);
+        CarNameValidator.validateNameLength(name);
         this.name = name;
         this.position = position;
     }
