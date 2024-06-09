@@ -18,7 +18,8 @@ public class Input {
         }   
     }
 
-    private String[] validateCarNames(String carNames) {
+    public String[] validateCarNames(String carNames) {
+        carNames = carNames.replaceAll("\\s", "");
         checkCarCount(carNames);
 
         String[] arrCarNames = carNames.split(",");
@@ -53,7 +54,7 @@ public class Input {
         }
     }
 
-    private int validateMoveCount(String count) {
+    public int validateMoveCount(String count) {
         int moveCount = checkNumberFormat(count);
         checkMoveCount(moveCount);
         return moveCount;
