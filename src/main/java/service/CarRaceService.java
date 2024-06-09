@@ -24,23 +24,18 @@ public class CarRaceService {
         for (String name : carNames) {
             name = name.trim();
             if(name.length() > 5 || name.length() < 1)
-            {
                 throw new IllegalArgumentException("[ERROR] 자동차 이름은 1자 이상 5자 이하만 가능합니다.");
-            }
-            if (nameSet.contains(name)) {
+            if (nameSet.contains(name))
                 throw new IllegalArgumentException("[ERROR] 자동차 이름은 중복될 수 없습니다.");
-            }
             nameSet.add(name);
             newCars.add(new Car(name));
         }
         cars = newCars;
-
     }
 
     public void race(int tryCount) { // 시도 횟수만큼 차량 레이스 진행
         if(tryCount < 1)
-            throw new IllegalArgumentException(("[ERROR] 시도 횟수는 1 이상의 정수로 입력 가능합니다."));
-
+            throw new IllegalArgumentException("[ERROR] 시도 횟수는 1 이상의 정수로 입력 가능합니다. 다시 입력해주세요");
         for (int i = 0; i < tryCount; i++) {
             raceOnce();
         }
