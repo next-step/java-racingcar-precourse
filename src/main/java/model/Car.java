@@ -35,4 +35,16 @@ public class Car implements CarModelInterface {
     public int getProgress() {
         return progress;
     }
+
+    @Override
+    public void moveOrNot() {
+        // 랜덤 변수를 생성한 후
+        int randomNumber = (int) (Math.random() * 10);
+
+        // 만약 4 이상이라면
+        if (randomNumber > 3) {
+            // 앞으로 전진한다.
+            goForward();
+        }
+    }
 }

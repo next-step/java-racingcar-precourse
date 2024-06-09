@@ -6,14 +6,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 import observer.Observer;
 import observer.Subject;
-import service.CarService;
-import service.CarServiceInterface;
 
 // model과 service를 분리해서 model에 관련된 로직만 갖도록 함.
 public class Race implements Subject, RaceModelInterface {
 
     private int numberOfRounds;
-    private List<CarServiceInterface> cars;
+    private List<CarModelInterface> cars;
     private List<Observer> observers;
 
     public Race() {
@@ -28,7 +26,7 @@ public class Race implements Subject, RaceModelInterface {
     }
 
     @Override
-    public List<CarServiceInterface> getCars() {
+    public List<CarModelInterface> getCars() {
         return cars;
     }
 
@@ -56,7 +54,7 @@ public class Race implements Subject, RaceModelInterface {
         // 유효성 검사부터
         verifyNumberOfCars(carsName);
         // 검사가 끝났으면 객체 리스트를 생성
-        List<CarService> cars = Arrays.stream(carsName).map(carName -> new CarService(carName, 0))
+        List<Car> cars = Arrays.stream(carsName).map(carName -> new Car(carName, 0))
             .collect(Collectors.toList());
         // 추가
         this.cars.addAll(cars);

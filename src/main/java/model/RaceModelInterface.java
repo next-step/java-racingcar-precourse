@@ -1,8 +1,6 @@
 package model;
 
 import java.util.List;
-import observer.Observer;
-import service.CarServiceInterface;
 
 public interface RaceModelInterface {
 
@@ -10,7 +8,7 @@ public interface RaceModelInterface {
 
     void prepareRace(String rounds);
 
-    List<CarServiceInterface> getCars();
+    List<CarModelInterface> getCars();
 
     void addCars(String[] carsName);
 

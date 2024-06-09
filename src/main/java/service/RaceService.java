@@ -2,6 +2,7 @@ package service;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import model.CarModelInterface;
 import model.RaceModelInterface;
 import observer.Observer;
 import observer.Subject;
@@ -18,15 +19,15 @@ public class RaceService implements Subject, RaceServiceInterface {
         this.subject = subject;
     }
 
-    // model의 getter
+    // getter
     @Override
     public int getNumberOfCars() {
         return race.getNumberOfCars();
     }
 
-    // model의 getter
+    // getter
     @Override
-    public List<CarServiceInterface> getCars() {
+    public List<CarModelInterface> getCars() {
         return race.getCars();
     }
 
@@ -39,11 +40,11 @@ public class RaceService implements Subject, RaceServiceInterface {
     // 우승자의 진행도를 반환하는 메서드
     private int getWinnersProgress() {
         // 차들의 정보를 가져와서
-        List<CarServiceInterface> carList = race.getCars();
+        List<CarModelInterface> carList = race.getCars();
 
         // 진행도의 최댓값을 구한다.
         int winnersProgress = 0;
-        for (CarServiceInterface car : carList) {
+        for (CarModelInterface car : carList) {
             winnersProgress = Math.max(winnersProgress, car.getProgress());
         }
 
@@ -52,14 +53,14 @@ public class RaceService implements Subject, RaceServiceInterface {
 
     // 비즈니스 로직: 우승자의 목록이 필요하다.
     @Override
-    public List<CarServiceInterface> getWinners() {
+    public List<CarModelInterface> getWinners() {
         // 차들의 정보를 가져오고
-        List<CarServiceInterface> carList = race.getCars();
+        List<CarModelInterface> carList = race.getCars();
         // 우승자의 진행도를 가져온다.
         int winnersProgress = getWinnersProgress();
 
         // 우승자의 진행도를 바탕으로 우승자 목록을 stream으로 가져온다.
-        List<CarServiceInterface> winners = carList.stream()
+        List<CarModelInterface> winners = carList.stream()
             .filter(car -> car.getProgress() == winnersProgress).collect(Collectors.toList());
 
         return winners;

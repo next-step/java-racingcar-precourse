@@ -3,8 +3,8 @@ package view;
 import controller.RaceControllerInterface;
 import java.util.List;
 import java.util.Scanner;
+import model.CarModelInterface;
 import observer.Observer;
-import service.CarServiceInterface;
 import service.RaceServiceInterface;
 
 public class RaceView implements Observer, RaceViewInterface {
@@ -61,7 +61,7 @@ public class RaceView implements Observer, RaceViewInterface {
     public void printProgress() {
         // raceService를 통해 차 목록을 받아와서
         RaceServiceInterface raceService = raceServiceInterface;
-        List<CarServiceInterface> carList = raceService.getCars();
+        List<CarModelInterface> carList = raceService.getCars();
         // stream을 이용하여 양식에 맞게 출력
         carList.stream().forEach(car -> System.out.println(car.getName() + " : " + car.getProgress()));
         System.out.println();
@@ -77,13 +77,13 @@ public class RaceView implements Observer, RaceViewInterface {
     @Override
     public void printResult() {
         // service 인터페이스를 통해 값 참조
-        List<CarServiceInterface> winners = raceServiceInterface.getWinners();
+        List<CarModelInterface> winners = raceServiceInterface.getWinners();
         // 문자열을 빠르게 붙이기 위해 StringBuilder를 사용
         StringBuilder stringBuilder = new StringBuilder();
 
         // 우승자들의 정보를 String으로 변환한다.
         for (int i = 0; i < winners.size() - 1; i++) {
-            CarServiceInterface winner = winners.get(i);
+            CarModelInterface winner = winners.get(i);
             stringBuilder.append(winner.getName()).append(',').append(' ');
         }
         stringBuilder.append(winners.get(winners.size() - 1));

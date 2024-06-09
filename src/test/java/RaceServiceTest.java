@@ -1,9 +1,9 @@
 import java.util.List;
 import java.util.stream.IntStream;
+import model.CarModelInterface;
 import model.Race;
 import org.junit.jupiter.api.Test;
 import org.assertj.core.api.Assertions;
-import service.CarServiceInterface;
 import service.RaceService;
 import service.RaceServiceInterface;
 
@@ -73,7 +73,7 @@ public class RaceServiceTest {
         // 경주 시작
         raceService.startRace();
         // 승자 목록 받아옴. getWinners 테스트
-        List<CarServiceInterface> winners = raceService.getWinners();
+        List<CarModelInterface> winners = raceService.getWinners();
         // 승자 중 한명의 진행도를 받아옴.
         int winnerProgress = winners.get(0).getProgress();
         // 우선 승자들끼리 진행도가 모두 같은지 확인하는 변수 생성
