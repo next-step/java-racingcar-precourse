@@ -10,8 +10,8 @@ import java.util.List;
 
 public class RacingGame {
 
-    private Input input;
-    private Output output;
+    private final Input input;
+    private final Output output;
     private List<Car> cars;
     private int moveCount;
 

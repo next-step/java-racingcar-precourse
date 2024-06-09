@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Input {
 
-    private Scanner scanner;
+    private final Scanner scanner;
 
     public Input(Scanner scanner) {
         this.scanner = scanner;
@@ -23,7 +23,7 @@ public class Input {
     }
 
     public String[] validateCarNames(String carNames) {
-        carNames = carNames.replaceAll("\\s", "");
+        carNames = carNames.replaceAll("\\s+", "");
         checkCarCount(carNames);
 
         String[] arrCarNames = carNames.split(",");
