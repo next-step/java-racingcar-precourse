@@ -48,6 +48,21 @@ public class TryCountTest {
         //Then
         Assertions.assertNotEquals(cars.size(), 0);
     }
+    @Test
+    @DisplayName("시도 횟수가 음수일 경우")
+    public void MinusCase() {
+        //Given
+        int count = -1;
+
+        //When&Then
+        IllegalArgumentException exception = Assertions.assertThrows(
+            IllegalArgumentException.class,
+            () -> {
+                carRace.race(count);
+            });
+        Assertions.assertEquals("[ERROR] 시도 횟수는 1 이상의 정수로 입력 가능합니다. 다시 입력해주세요", exception.getMessage());
+
+    }
 
 
 }
