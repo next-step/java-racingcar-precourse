@@ -21,7 +21,7 @@ public class View {
             System.out.println();
         }
         System.out.println();
-    };
+    }
 
     public void printWinner(Vector<String> winner){ //우승자를 출력하는 기능
         System.out.print("최종 우승자 : ");
