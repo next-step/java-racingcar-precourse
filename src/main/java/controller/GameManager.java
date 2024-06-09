@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import model.Game;
 import model.Validator;
+import view.GameInput;
 import view.GameView;
 
 public class GameManager {
