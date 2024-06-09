@@ -1,10 +1,14 @@
 package view;
 
+import controller.RaceControllerInterface;
+
 public interface RaceViewInterface {
 
     void userCarsInput();
 
     void userRoundsInput();
+
+    void setRaceControllerInterface(RaceControllerInterface raceControllerInterface);
 
     void printProgress();
 

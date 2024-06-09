@@ -7,10 +7,13 @@ import org.assertj.core.api.Assertions;
 import service.RaceService;
 import service.RaceServiceInterface;
 
-// 구체적 로직을 갖는 RaceService에 대한 테스트.
-// 단순한 getter, setter에 대한 테스트는 생략하였습니다.
-// service와 model을 분리하였으므로 model에 대한 테스트 없이 service에 대한 테스트만 진행합니다.
-// 또한 RaceService의 로직에서 car model의 모든 기능을 사용하므로 car model에 대한 테스트도 생략합니다.
+/*
+구체적 로직을 갖는 RaceService에 대한 테스트.
+단순한 getter, setter에 대한 테스트는 생략하였습니다.
+service와 model을 분리하였으므로 model에 대한 테스트 없이 service에 대한 테스트만 진행합니다.
+또한 RaceService의 로직에서 car model의 모든 기능을 사용하므로 car model에 대한 테스트도 생략합니다.
+*/
+
 public class RaceServiceTest {
 
     // addCars를 통해 삽입이 잘 됐는지 확인

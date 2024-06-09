@@ -11,12 +11,15 @@ public class RaceView implements Observer, RaceViewInterface {
 
     // View가 참조할 Service와 Controller. 조작은 절대 금지.
     private RaceServiceInterface raceServiceInterface;
-    private RaceControllerInterface raceControllerInterface;
+    private RaceControllerInterface raceControllerInterface = null;
 
     // 생성자
-    public RaceView(RaceServiceInterface raceServiceInterface,
-        RaceControllerInterface raceControllerInterface) {
+    public RaceView(RaceServiceInterface raceServiceInterface) {
         this.raceServiceInterface = raceServiceInterface;
+    }
+
+    // setter
+    public void setRaceControllerInterface(RaceControllerInterface raceControllerInterface) {
         this.raceControllerInterface = raceControllerInterface;
     }
 
