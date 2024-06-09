@@ -34,4 +34,15 @@ public class RacingCarController {
         }
     }
 
+    public int getRacingCount() {
+        while (true) {
+            try {
+                return inputView.inputRacingCount();
+            } catch (IllegalArgumentException e) {
+                outputView.printErrorMessage(e.getMessage());
+            }
+        }
+    }
+
+
 }
