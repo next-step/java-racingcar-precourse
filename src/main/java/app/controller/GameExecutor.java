@@ -3,8 +3,6 @@ package app.controller;
 import app.model.RacingCarGame;
 import app.view.GameInterface;
 
-import java.util.InputMismatchException;
-
 public class GameExecutor {
     private GameInterface gameInterface;
     private RacingCarGame racingCarGame;
