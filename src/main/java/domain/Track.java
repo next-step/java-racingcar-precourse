@@ -9,4 +9,8 @@ public class Track {
     public Track() {
         this.cars = new ArrayList<>();
     }
+
+    public void addCar(String carName){
+        cars.add(new Car(carName));
+    }
 }
