@@ -2,12 +2,14 @@ package service;
 
 import repository.CarRepository;
 import repository.CarRepositoryImpl;
+import utility.StringSplitter;
 
 public class RacingService {
     private final CarRepository carRepository = new CarRepositoryImpl();
+    private final StringSplitter sp = new StringSplitter();
 
     public void enrollCars(String carNames) {
-        String[] nameArr = carNames.split(",\\s*|\\s+");
+        String[] nameArr = sp.splitter(carNames);
         for (String name : nameArr) {
             validateName(name);
             carRepository.add(name);
