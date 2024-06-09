@@ -3,7 +3,7 @@ package main.java.racingcar.domain;
 import main.java.racingcar.Utils;
 import java.util.List;
 
-public record Cars(List<Car> CarList) {
+public record Cars(List<Car> carList) {
 
     public static final String CAR_NAME_DELIMITER = ",";
 
@@ -14,5 +14,10 @@ public record Cars(List<Car> CarList) {
                 .map(Car::new)
                 .toList();
         return new Cars(carList);
+    }
+
+    public void commandAllCarsToMove() {
+        carList.forEach(car ->
+                car.moveForwardIfTrue(Utils.isFourOrMore()));
     }
 }

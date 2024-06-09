@@ -16,4 +16,8 @@ public class Position {
             throw new IllegalArgumentException(ErrorMessage.INVALID_NEGATIVE);
         }
     }
+
+    public void increment(int speed) {
+        this.amount += speed;
+    }
 }

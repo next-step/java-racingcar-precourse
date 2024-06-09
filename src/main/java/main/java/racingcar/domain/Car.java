@@ -11,4 +11,10 @@ public class Car {
         this.speed = 1;
         this.position = new Position(START_POSITION);
     }
+
+    public void moveForwardIfTrue(boolean isForward) {
+        if(isForward) {
+            this.position.increment(speed);
+        }
+    }
 }
