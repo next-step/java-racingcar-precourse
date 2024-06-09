@@ -13,7 +13,7 @@ public class RacingCarController {
 
         RacingCarGame game = new RacingCarGame(carNames, movementCount);
 
-        game.startRacing();
+        game.goForward();
     }
 
 }

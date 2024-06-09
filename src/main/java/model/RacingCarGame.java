@@ -18,12 +18,12 @@ public class RacingCarGame {
         this.movementCount = movementCount;
     }
 
-    public void startRacing() {
-        for (int i = 0; i < movementCount; i++) {
-            for (Car car : cars) {
-                car.move(generator.generateRandomNumber());
-            }
+    public List<Car> goForward() {
+        for (Car car : cars) {
+            car.move(generator.generateRandomNumber());
         }
+
+        return cars;
     }
 
 }
