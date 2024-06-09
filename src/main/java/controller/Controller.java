@@ -1,8 +1,6 @@
 package controller;
 
-import domain.Car;
 import domain.Game;
-import java.util.List;
 import repository.CarRepository;
 import util.Input;
 import view.OutputView;
