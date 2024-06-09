@@ -2,13 +2,13 @@ package game.domain;
 
 import game.config.constant.Rule;
 import game.exception.constant.ErrorMessage;
+import game.util.RandomNumberGenerator;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Objects;
-import java.util.Random;
 
 public class Cars {
 
@@ -24,9 +24,7 @@ public class Cars {
     }
 
     public void move() {
-        Random random = new Random();
-        int movementValue = random.nextInt(Rule.MAX_RANDOM_VALUE + 1);
-        carList.forEach(car -> car.move(movementValue));
+        carList.forEach(car -> car.move(RandomNumberGenerator.getNumber(Rule.MAX_RANDOM_VALUE)));
     }
 
     public Cars findWinners() {
