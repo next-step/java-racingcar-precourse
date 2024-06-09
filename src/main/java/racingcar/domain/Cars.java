@@ -43,6 +43,10 @@ public class Cars {
         return new Cars(forwardCars);
     }
 
+    public Activity activity() {
+        return new Activity(this.cars);
+    }
+
     @Override
     public boolean equals(final Object o) {
         if (this == o) {
