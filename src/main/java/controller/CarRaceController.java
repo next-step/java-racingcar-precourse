@@ -39,6 +39,19 @@ public class CarRaceController {
                     car.move();
                 }
             }
+            printRaceStatus(cars); // 각 회차 결과 출력
         }
+    }
+
+    private void printRaceStatus(List<Car> cars) {
+        for (Car car : cars) {
+            StringBuilder status = new StringBuilder();
+            status.append(car.getName()).append(" : ");
+            for (int i = 0; i < car.getPosition(); i++) {
+                status.append("-");
+            }
+            OutputView.printMessage(status.toString());
+        }
+        OutputView.printMessage(""); // 빈 줄로 회차 구분
     }
 }
