@@ -4,9 +4,14 @@ public class RacingCar {
     private final String name;
     private int moveDistance;
 
-    private RacingCar(String name){
+    public RacingCar(String name){
         this.name = name;
         this.moveDistance = 0;
+    }
+
+    public RacingCar(String name, int moveDistance){
+        this.name = name;
+        this.moveDistance = moveDistance;
     }
 
     public static RacingCar from(String name){
