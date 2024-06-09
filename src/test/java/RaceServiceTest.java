@@ -64,7 +64,7 @@ public class RaceServiceTest {
         // 삽입
         raceService.addCars(carsName);
         // round 설정 (= 3)
-        raceService.setNumberOfRounds("3");
+        raceService.prepareRace("3");
         // 경주 시작
         raceService.startRace();
         // 승자 목록 받아옴. getWinners 테스트

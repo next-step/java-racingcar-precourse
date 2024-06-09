@@ -53,7 +53,7 @@ public class RaceController implements RaceControllerInterface {
     public void setRound(String numberOfRound) {
         // 전달 시도
         try {
-            race.setNumberOfRounds(numberOfRound);
+            race.prepareRace(numberOfRound);
         } catch (NumberFormatException e) {
             // 숫자가 아닌 경우, error 메시지를 출력
             view.printRoundsFormatErrorMessage();

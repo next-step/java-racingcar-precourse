@@ -67,17 +67,10 @@ public class RaceService implements Subject, RaceServiceInterface {
 
     // controller에게 받은 round 정보를 설정하는 메서드
     @Override
-    public void setNumberOfRounds(String rounds)
+    public void prepareRace(String rounds)
         throws IllegalArgumentException {
-        // 수가 아닌 경우
-        int numberOfRounds = Integer.parseInt(rounds);
-
-        // 100보다 큰 입력이 들어온 경우
-        if (numberOfRounds > 100) {
-            throw new IllegalArgumentException();
-        }
-
-        race.setNumberOfRounds(numberOfRounds);
+        // rounds를 전달.
+        race.prepareRace(rounds);
     }
 
     // 차들의 정보가 바뀐 후에 실행되는 메서드.

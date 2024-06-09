@@ -10,7 +10,7 @@ public interface RaceModelInterface {
 
     int getNumberOfRounds();
 
-    void setNumberOfRounds(int numberOfRounds);
+    void prepareRace(String rounds);
 
     List<CarServiceInterface> getCars();
 
