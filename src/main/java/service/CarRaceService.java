@@ -37,6 +37,34 @@ public class CarRaceService {
 
     }
 
+    public void race(int tryCount) { // 시도 횟수만큼 차량 레이스 진행
+        if(tryCount < 1)
+            throw new IllegalArgumentException(("[ERROR] 시도 횟수는 1 이상의 정수로 입력 가능합니다."));
 
+        for (int i = 0; i < tryCount; i++) {
+            raceOnce();
+        }
+    }
+
+    private void raceOnce() {
+        for (Car car : cars) {
+            car.move(random.nextInt(10)); // 차량 랜덤값 4보다 크면 이동 아니면 그대로 둔다.
+        }
+    }
+
+    public List<Car> getCars() {
+        return cars;
+    }
+
+    public List<Car> findWinners() { // 우승 차량 찾아서 반환
+        int maxPosition = cars.stream().mapToInt(Car::getPosition).max().orElse(0);
+        List<Car> winners = new ArrayList<>();
+        for (Car car : cars) {
+            if (car.getPosition() == maxPosition) {
+                winners.add(car);
+            }
+        }
+        return winners;
+    }
 
 }
