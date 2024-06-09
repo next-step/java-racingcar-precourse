@@ -1,6 +1,8 @@
+import java.util.List;
 import java.util.stream.IntStream;
 import org.junit.jupiter.api.Test;
 import org.assertj.core.api.Assertions;
+import service.CarServiceInterface;
 import service.RaceService;
 import service.RaceServiceInterface;
 
@@ -51,5 +53,32 @@ public class RaceServiceTest {
         // 잘못된 경우에 대한 테스트 (빈 입력)
         Assertions.assertThatThrownBy(() -> raceService.addCars(empty))
             .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void getWinnersTest() {
+        // 객체와 삽입할 배열을 준비
+        RaceServiceInterface raceService = new RaceService();
+        String[] carsName = {"jih", "hyu", "abc", "xyz"};
+
+        // 삽입
+        raceService.addCars(carsName);
+        // round 설정 (= 3)
+        raceService.setNumberOfRounds("3");
+        // 경주 시작
+        raceService.startRace();
+        // 승자 목록 받아옴. getWinners 테스트
+        List<CarServiceInterface> winners = raceService.getWinners();
+        // 승자 중 한명의 진행도를 받아옴.
+        int winnerProgress = winners.get(0).getProgress();
+        // 우선 승자들끼리 진행도가 모두 같은지 확인하는 변수 생성
+        boolean isWinnersProgressAllEqual = winners.stream().allMatch(car -> car.getProgress() == winnerProgress);
+        // getWinners로 받아온 승자의 진행도가 실제로 가장 높은지 확인하는 변수 생성
+        boolean isWinnerProgressTheHighest = raceService.getCars().stream().allMatch(car -> car.getProgress() <= winnerProgress);
+
+        // 승자들끼리의 진행도를 확인
+        Assertions.assertThat(isWinnersProgressAllEqual).isTrue();
+        // getWinners로 받아온 승자가 진짜 승자인지 확인
+        Assertions.assertThat(isWinnerProgressTheHighest).isTrue();
     }
 }
