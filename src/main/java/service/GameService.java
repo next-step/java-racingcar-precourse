@@ -9,7 +9,7 @@ import java.util.Comparator;
 import java.util.stream.Collectors;
 
 public class GameService {
-    private final CarRepository carRepository = new CarRepository();
+    CarRepository carRepository = CarRepository.getInstance();
 
     public void createCars(String[] carNames){
         //Arrays.stream(carNames).forEach(name -> carRepository.save(new Car(name)));
