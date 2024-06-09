@@ -1,4 +1,3 @@
-import java.util.List;
 
 public class GameView {
     public void requestCarNamesInput() {
@@ -9,14 +8,7 @@ public class GameView {
         System.out.println("시도할 회수는 몇회인가요?");
     }
 
-    public void requestMoveResult(List<Car> cars) {
-        for (Car car : cars) {
-            System.out.print(car.getName()+" : ");
-            for(int i=0; i<car.getPosition();i++){
-                System.out.print("-");
-            }
-            System.out.println();
-        }
+    public void displayErrorMessage(String message) {
+        System.out.println("[ERROR] " + message);
     }
-    
 }
