@@ -18,10 +18,15 @@ public class Car {
         return location;
     }
 
-    public void moveLocation() {
+    public void moveForward() {
         if (canMoveForward()) {
             location += 1;
         }
+    }
+
+    public String currentStateMessage() {
+        String state = "-".repeat(location);
+        return name + " : " + state;
     }
 
     private boolean canMoveForward() {
