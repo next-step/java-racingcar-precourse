@@ -3,7 +3,7 @@ package controller;
 import java.util.*;
 
 public class EntryMoveCnt {
-    public static int getMoveCnt() {
+    public static int getMoveCnt() { //사용자에게 시도 횟수를 입력받는 기능
         int moveCnt;
         while (true) {
             try {
@@ -19,7 +19,7 @@ public class EntryMoveCnt {
         return moveCnt;
     }
 
-    public static int input(String in) throws IllegalArgumentException {//사용자에게 시도 횟수를 입력받는 기능
+    public static int input(String in) throws IllegalArgumentException {//입력받은 값이 올바른 값인지 판단하는 함수
         int moveCnt=-1;
         try {
             moveCnt= Integer.parseInt(in);
