@@ -24,64 +24,31 @@ class RacerControllerTest {
     private RandomNumberGenerator mockRNG = Mockito.mock(RandomNumberGenerator.class);
 
     @Test
-    @DisplayName("Controller setUpRacer 메소드 성공 테스트")
-    void setUpRacerTest() {
-        // given
-        RacerController controller = new RacerController();
-
-        // when
-        ThrowableAssert.ThrowingCallable setUpName = () -> controller.setUpRacer(getValidNameInputString());
-        ThrowableAssert.ThrowingCallable setUpNames = () -> controller.setUpRacer(getValidNamesInputString());
-
-        // then
-        assertThatCode(setUpName).doesNotThrowAnyException();
-        assertThatCode(setUpNames).doesNotThrowAnyException();
-    }
-
-    @Test
-    @DisplayName("Controller setUpRacer 메소드 실패 테스트")
-    void setUpRacer_WillThrownTest() {
-        // given
-        RacerController controller = new RacerController();
-        List<String> invalidNameInputStringList = Arrays.asList(null, "   ", "", getInvalidNameInputString());
-
-        for (String invalidNameInputString : invalidNameInputStringList) {
-            // when
-            ThrowableAssert.ThrowingCallable setUpName = () -> controller.setUpRacer(invalidNameInputString);
-
-            // then
-            assertThatThrownBy(setUpName)
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(Racer.VALIDATE_NAME_ERROR_MESSAGE);
-        }
-    }
-
-    @Test
-    @DisplayName("Controller setUpGameCount 메소드 성공 테스트")
-    void setUpGameCountTest() {
+    @DisplayName("Controller setUp 메소드 성공 테스트")
+    void setUpTest() {
         // given
         RacerController controller = new RacerController();
         BigInteger givenInput = new BigInteger("0");
 
         // when
-        ThrowableAssert.ThrowingCallable setUpGameCount = () -> controller.setUpGameCount(givenInput);
+        ThrowableAssert.ThrowingCallable setUpName = () -> controller.setUp(getValidNameInputString(), givenInput);
 
         // then
-        assertThatCode(setUpGameCount).doesNotThrowAnyException();
+        assertThatCode(setUpName).doesNotThrowAnyException();
     }
 
     @Test
-    @DisplayName("Controller setUpGameCount 메소드 실패 테스트")
-    void setUpGameCount_WillThrownTest() {
+    @DisplayName("Controller setUp 메소드 숫자로 인한 실패 테스트")
+    void setUp_WillThrownByIntegerTest() {
         // given
         RacerController controller = new RacerController();
         BigInteger givenInput = new BigInteger("-1");
 
         // when
-        ThrowableAssert.ThrowingCallable setUpGameCount = () -> controller.setUpGameCount(givenInput);
+        ThrowableAssert.ThrowingCallable setUp = () -> controller.setUp(getValidNameInputString(), givenInput);
 
         // then
-        assertThatThrownBy(setUpGameCount)
+        assertThatThrownBy(setUp)
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(RacerController.VALIDATE_GAME_COUNT_ERROR_MESSAGE);
     }
@@ -93,14 +60,13 @@ class RacerControllerTest {
         RandomNumberGenerator generator = mock(RandomNumberGenerator.class);
         RacerController controller = new RacerController();
         List<RacerDto> racerDtoList = List.of(new RacerDto(
-                        getValidNameInputString(),
+                        getValidNameInputString().get(0),
                         BigInteger.ZERO,
                         false
                 )
         );
 
-        controller.setUpRacer(getValidNameInputString());
-        controller.setUpGameCount(new BigInteger("2"));
+        controller.setUp(getValidNameInputString(), new BigInteger("2"));
 
         try (MockedStatic<RandomNumberGenerator> generatorMockedStatic = mockStatic(RandomNumberGenerator.class)) {
             given(RandomNumberGenerator.getInstance()).willReturn(generator);
@@ -117,15 +83,87 @@ class RacerControllerTest {
         }
     }
 
-    private String getValidNameInputString() {
-        return "pobi";
+    @Test
+    @DisplayName("Controller playGame 메소드에서 게임 종료 테스트")
+    void playGameTest_WillEndedTest() {
+        // given
+        RandomNumberGenerator generator = mock(RandomNumberGenerator.class);
+        RacerController controller = new RacerController();
+        List<RacerDto> racerDtoList = List.of(new RacerDto(
+                getValidNameInputString().get(0),
+                        BigInteger.ONE,
+                        true
+                )
+        );
+
+        controller.setUp(getValidNameInputString(), new BigInteger("1"));
+
+        try (MockedStatic<RandomNumberGenerator> generatorMockedStatic = mockStatic(RandomNumberGenerator.class)) {
+            given(RandomNumberGenerator.getInstance()).willReturn(generator);
+
+            when(generator.getRandomNumber(anyInt(), anyInt()))
+                    .thenReturn(Racer.MOVE_THRESHOLD + 1);
+
+            // when
+            RacerResult result = controller.playGame();
+
+            // then
+            assertThat(result.isEnded()).isEqualTo(true);
+            assertThat(result.racerDtos()).isEqualTo(racerDtoList);
+        }
     }
 
-    private String getValidNamesInputString() {
-        return "pobi,woni    , jun  ";
+    @Test
+    @DisplayName("Controller setUp 없이 playGame 메소드 실행하면 실패하는 테스트")
+    void playGameTest_ThrowsExceptionWhenNotSetUp_Test() {
+        // given
+        RandomNumberGenerator generator = mock(RandomNumberGenerator.class);
+        RacerController controller = new RacerController();
+
+        try (MockedStatic<RandomNumberGenerator> generatorMockedStatic = mockStatic(RandomNumberGenerator.class)) {
+            given(RandomNumberGenerator.getInstance()).willReturn(generator);
+
+            when(generator.getRandomNumber(anyInt(), anyInt()))
+                    .thenReturn(Racer.MOVE_THRESHOLD + 1);
+
+            // when
+            ThrowableAssert.ThrowingCallable throwingCallable = controller::playGame;
+
+            // then
+            assertThatThrownBy(throwingCallable)
+                    .isInstanceOf(IllegalStateException.class)
+                    .hasMessage(RacerController.VALIDATE_RACER_LIST_ERROR_MESSAGE);
+        }
     }
 
-    private String getInvalidNameInputString() {
-        return "pobi, Tester, ";
+    @Test
+    @DisplayName("Controller playGame 메소드에서 게임 종료 이후 게임을 진행하면 실패하는 테스트")
+    void playGameTest_ThrowsExceptionWhenEnded_Test() {
+        // given
+        RandomNumberGenerator generator = mock(RandomNumberGenerator.class);
+        RacerController controller = new RacerController();
+
+        controller.setUp(getValidNameInputString(), new BigInteger("1"));
+
+        try (MockedStatic<RandomNumberGenerator> generatorMockedStatic = mockStatic(RandomNumberGenerator.class)) {
+            given(RandomNumberGenerator.getInstance()).willReturn(generator);
+
+            when(generator.getRandomNumber(anyInt(), anyInt()))
+                    .thenReturn(Racer.MOVE_THRESHOLD + 1);
+
+            controller.playGame();
+
+            // when
+            ThrowableAssert.ThrowingCallable throwingCallable = controller::playGame;
+
+            // then
+            assertThatThrownBy(throwingCallable)
+                    .isInstanceOf(IllegalStateException.class)
+                    .hasMessage(RacerController.VALIDATE_GAME_ENDED_ERROR_MESSAGE);
+        }
+    }
+
+    private List<String> getValidNameInputString() {
+        return List.of("pobi");
     }
 }

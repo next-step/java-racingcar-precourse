@@ -30,25 +30,18 @@ public class RacerController {
     /**
      * @throws IllegalArgumentException nameString이 null 또는 빈 문자열일 때, ","를 기준으로 split 했을 때 빈 문자열인 경우
      */
-    public void setUpRacer(String nameString) {
-        validateName(nameString);
+    public void setUp(List<String> nameList, BigInteger input) {
+        validateGameCount(input);
 
-        List<Racer> newRacerSet = Arrays.stream(nameString.split(","))
+        List<Racer> newRacerList = nameList.stream()
                 .map(Racer::new)
                 .toList();
 
-        racerList.clear();
-        racerList.addAll(newRacerSet);
-    }
-
-    /**
-     * @throws IllegalArgumentException input이 null 또는 음수일 때
-     */
-    public void setUpGameCount(BigInteger input) {
-        validateGameCount(input);
-
         maxGameCount = input;
         currentGameCount = BigInteger.ZERO;
+
+        racerList.clear();
+        racerList.addAll(newRacerList);
     }
 
     public RacerResult playGame() {
@@ -56,9 +49,8 @@ public class RacerController {
 
         currentGameCount = currentGameCount.add(BigInteger.ONE);
 
-        int randomInteger = RandomNumberGenerator.getInstance().getRandomNumber(0, 9);
-
         for (Racer racer : racerList) {
+            int randomInteger = RandomNumberGenerator.getInstance().getRandomNumber(0, 9);
             racer.moveIfCan(randomInteger);
         }
 
@@ -66,6 +58,10 @@ public class RacerController {
                 isEnded(),
                 racerList.stream().map(this::getRacerDto).toList()
         );
+    }
+
+    public boolean isEnded() {
+        return maxGameCount.equals(currentGameCount);
     }
 
     private RacerDto getRacerDto(Racer racer) {
@@ -117,9 +113,5 @@ public class RacerController {
         if (isEnded()) {
             throw new IllegalStateException(VALIDATE_GAME_ENDED_ERROR_MESSAGE);
         }
-    }
-
-    private boolean isEnded() {
-        return maxGameCount.equals(currentGameCount);
     }
 }
