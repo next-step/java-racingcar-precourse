@@ -8,11 +8,11 @@ public interface RaceModelInterface {
 
     int getNumberOfCars();
 
-    int getNumberOfRounds();
-
     void prepareRace(String rounds);
 
     List<CarServiceInterface> getCars();
 
     void addCars(String[] carsName);
+
+    void startRace();
 }

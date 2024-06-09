@@ -28,11 +28,6 @@ public class Race implements Subject, RaceModelInterface {
     }
 
     @Override
-    public int getNumberOfRounds() {
-        return numberOfRounds;
-    }
-
-    @Override
     public List<CarServiceInterface> getCars() {
         return cars;
     }
@@ -82,6 +77,25 @@ public class Race implements Subject, RaceModelInterface {
         // 100보다 큰 입력이 들어온 경우
         if (numberOfRounds > 100) {
             throw new IllegalArgumentException();
+        }
+    }
+
+    // 차들의 정보가 바뀐 후에 실행되는 메서드.
+    private void carsChanged() {
+        // 옵저버들에게 알림
+        // 지금은 하나의 역할만 수행하지만, 단일 책임 + 확장을 위해 메서드를 분리
+        notifyObservers();
+    }
+
+    // cars를 하나씩 출발시키는 작업을 n번 반복하는 메서드
+    @Override
+    public void startRace() {
+        // 횟수만큼 반복
+        for (int i = 0; i < numberOfRounds; i++) {
+            // 모든 차들에 대해 경주 시작
+            cars.stream().forEach(car -> car.moveOrNot());
+            // 차들의 변경이 일어났으므로 이를 처리하는 메서드를 호출
+            carsChanged();
         }
     }
 

@@ -1,5 +1,6 @@
 import java.util.List;
 import java.util.stream.IntStream;
+import model.Race;
 import org.junit.jupiter.api.Test;
 import org.assertj.core.api.Assertions;
 import service.CarServiceInterface;
@@ -14,7 +15,8 @@ public class RaceServiceTest {
     @Test
     void addCarsTest() {
         // 객체와 삽입할 배열을 준비
-        RaceServiceInterface raceService = new RaceService();
+        Race race = new Race();
+        RaceServiceInterface raceService = new RaceService(race, race);
         String[] carsName = {"jih", "hyu", "abc", "xyz"};
 
         // 삽입 과정
@@ -35,7 +37,8 @@ public class RaceServiceTest {
     @Test
     void addCarsNameErrorTest() {
         // 객체와 삽입할 배열을 준비
-        RaceServiceInterface raceService = new RaceService();
+        Race race = new Race();
+        RaceServiceInterface raceService = new RaceService(race, race);
         String[] carsErrorName = {"abcdef", "abcd"};
 
         // 잘못된 경우에 대한 테스트 (5자 이상)
@@ -47,7 +50,8 @@ public class RaceServiceTest {
     @Test
     void addCarsEmptyErrorTest() {
         // 객체와 삽입할 배열을 준비
-        RaceServiceInterface raceService = new RaceService();
+        Race race = new Race();
+        RaceServiceInterface raceService = new RaceService(race, race);
         String[] empty = {};
 
         // 잘못된 경우에 대한 테스트 (빈 입력)
@@ -58,7 +62,8 @@ public class RaceServiceTest {
     @Test
     void getWinnersTest() {
         // 객체와 삽입할 배열을 준비
-        RaceServiceInterface raceService = new RaceService();
+        Race race = new Race();
+        RaceServiceInterface raceService = new RaceService(race, race);
         String[] carsName = {"jih", "hyu", "abc", "xyz"};
 
         // 삽입

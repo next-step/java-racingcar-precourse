@@ -50,7 +50,7 @@ public class RaceService implements Subject, RaceServiceInterface {
         return winnersProgress;
     }
 
-    // 우승자의 목록을 반환하는 메서드
+    // 비즈니스 로직: 우승자의 목록이 필요하다.
     @Override
     public List<CarServiceInterface> getWinners() {
         // 차들의 정보를 가져오고
@@ -73,27 +73,10 @@ public class RaceService implements Subject, RaceServiceInterface {
         race.prepareRace(rounds);
     }
 
-    // 차들의 정보가 바뀐 후에 실행되는 메서드.
-    private void carsChanged() {
-        // 옵저버들에게 알림
-        // 지금은 하나의 역할만 수행하지만, 단일 책임 + 확장을 위해 메서드를 분리
-        notifyObservers();
-    }
-
     // cars를 하나씩 출발시키는 작업을 n번 반복하는 메서드
     @Override
     public void startRace() {
-        // 필요한 변수들
-        int numberOfRounds = race.getNumberOfRounds();
-        List<CarServiceInterface> cars = race.getCars();
-
-        // 횟수만큼 반복
-        for (int i = 0; i < numberOfRounds; i++) {
-            // 모든 차들에 대해 경주 시작
-            cars.stream().forEach(car -> car.moveOrNot());
-            // 차들의 변경이 일어났으므로 이를 처리하는 메서드를 호출
-            carsChanged();
-        }
+        race.startRace();
     }
 
     // observer를 추가하는 메서드
