@@ -39,4 +39,11 @@ public class RacingController {
             }
         }
     }
+    public void racingStart(){
+        rv.showRacingStartMsg();
+        for(int i=0; i<n; i++){
+            rs.round();
+            rv.showRacing(rs.getCarRepository());
+        }
+    }
 }
