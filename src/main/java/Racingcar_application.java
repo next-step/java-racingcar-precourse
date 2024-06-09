@@ -7,14 +7,10 @@ public class Racingcar_application {
 
     public static void main(String[] args) throws IOException {
         // 1. 자동차 이름 입력
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분");
-        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(bf.readLine(), ",");
+        StringTokenizer st = getCarName();
 
         // 2. 시도할 횟수 입력
-        System.out.println("시도할 횟수는 몇 회인가요?");
-        Scanner sc = new Scanner(System.in);
-        int cnt = sc.nextInt();
+        int cnt = getTryCnt();
 
         Map<String, String> raceMap = new LinkedHashMap<>();
         while(st.hasMoreElements()){
@@ -33,6 +29,37 @@ public class Racingcar_application {
         String winner = getWinner(raceMap);
         // 7. 우승자 출력
         System.out.println("최종 우승자 : " + winner);
+    }
+
+    private static int getTryCnt() {
+        int cnt = 0;
+        try {
+            System.out.println("시도할 횟수는 몇 회인가요?");
+            Scanner sc = new Scanner(System.in);
+            cnt = sc.nextInt();
+        }catch(Exception ex){
+            System.out.println("[ERROR] "+ ex.toString() + " : 입력이 잘못되었습니다.");
+            getTryCnt();
+        }
+
+        return cnt;
+    }
+
+    private static StringTokenizer getCarName() throws IOException {
+        BufferedReader bf = null;
+        StringTokenizer st = null;
+        try {
+            System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분");
+            bf = new BufferedReader(new InputStreamReader(System.in));
+            st = new StringTokenizer(bf.readLine(), ",");
+        }catch(IllegalArgumentException ex){
+            System.out.println("[ERROR] "+ ex.toString() + " : 입력이 잘못되었습니다.");
+            getCarName();
+        }catch(Exception ex){
+            System.out.println("[ERROR] "+ ex.toString() + " : 입력이 잘못되었습니다.");
+            getCarName();
+        }
+        return st;
     }
 
     private static String getWinner(Map<String, String> raceMap) {
@@ -74,7 +101,5 @@ public class Racingcar_application {
         }
         System.out.println("");
     }
-
-
 
 }
