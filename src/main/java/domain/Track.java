@@ -20,6 +20,10 @@ public class Track {
         }
     }
 
+    public List<Car> getCars(){
+        return this.cars;
+    }
+
     public List<Car> getWinners(){
         int maxPosition = 0;
 
