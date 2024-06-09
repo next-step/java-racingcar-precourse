@@ -1,10 +1,12 @@
 import java.util.Scanner;
 
 public class GameController {
+    private Race race;
     private final GameView gameView;
     private final Scanner scanner;
 
     public GameController() {
+        this.race = null;
         this.gameView = new GameView();
         this.scanner = new Scanner(System.in);
     }
@@ -12,6 +14,8 @@ public class GameController {
     public void startGame() {
         String[] carNames = getCarNames();
         int attemptCount = getAttemptCount();
+        race = new Race(carNames);
+        race.run(attemptCount);
     }
 
     private String[] getCarNames() {
@@ -44,7 +48,7 @@ public class GameController {
         }
     }
 
-  
+
 
     private boolean isValidInput(String[] carNames) {
         for (String name : carNames) {
