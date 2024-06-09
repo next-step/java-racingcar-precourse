@@ -4,6 +4,7 @@ import domain.Car;
 import domain.CarRepository;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class GameService {
     CarRepository carRepository = CarRepository.getInstance();
@@ -23,11 +24,12 @@ public class GameService {
         return dto;
     }
 
-//    public void findWinner(){
-//        ArrayList<Car> cars = carRepository.findAll();
-//        int maxPosition = cars.stream()
-//                .max(Comparator.comparingInt(Car::getPosition))
-//                .map(Car::getPosition)
-//                .orElseThrow(() -> new IllegalStateException("레이싱카가 존재하지 않습니다."));
-//    }
+    public List<String> findWinner(){
+        ArrayList<Car> cars = carRepository.findAll();
+        int maxPosition = cars.stream()
+                .max(Comparator.comparingInt(Car::getPosition))
+                .map(Car::getPosition)
+                .orElseThrow(() -> new IllegalStateException("레이싱카가 존재하지 않습니다."));
+        return cars.stream().filter(c -> c.getPosition() == maxPosition).map(Car::getName).collect(Collectors.toList());
+    }
 }

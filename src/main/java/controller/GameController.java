@@ -5,11 +5,11 @@ import utills.Validator;
 import view.InputView;
 import view.OutputView;
 
+import java.util.List;
 import java.util.Map;
 
 public class GameController {
-    //TODO
-    // 4.승자 탐색
+
     private final InputView inputView = new InputView();
     private final OutputView outputView = new OutputView();
     private final GameService gameService = new GameService();
@@ -17,10 +17,10 @@ public class GameController {
     private static int count;
 
     public void startGame(){
-        //TODO
         getUserInput();
         gameService.createCars(carsName);
         playGame();
+        getWinner();
     }
 
     /**
@@ -34,6 +34,11 @@ public class GameController {
             result = gameService.moveCars(carsName);
             outputView.printResult(result);
         }
+    }
+
+    private void getWinner(){
+        List<String> winnerNames = gameService.findWinner();
+        outputView.printWinner(winnerNames);
     }
 
 

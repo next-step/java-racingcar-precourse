@@ -1,5 +1,6 @@
 package view;
 
+import java.util.List;
 import java.util.Map;
 
 public class OutputView {
@@ -14,6 +15,7 @@ public class OutputView {
     }
 
     public void outputText(){
+        System.out.println();
         System.out.println("실행 결과");
     }
 
@@ -24,5 +26,7 @@ public class OutputView {
         System.out.println();
     }
 
-    //TODO 승자 출력하기
+    public void printWinner(List<String> names){
+        System.out.println("최종 우승자 : " + String.join(", ",names));
+    }
 }
