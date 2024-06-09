@@ -31,6 +31,18 @@ public class Cars {
         return new Cars(cars);
     }
 
+    public Cars forward(final ForwardRule forwardRule, final PickNumberRule pickNumberRule) {
+        Car[] forwardCars = this.cars.stream()
+                .map(car -> {
+                    if (forwardRule.isForward(pickNumberRule.pick())) {
+                        return car.forward();
+                    }
+                    return car;
+                }).toArray(Car[]::new);
+
+        return new Cars(forwardCars);
+    }
+
     @Override
     public boolean equals(final Object o) {
         if (this == o) {
