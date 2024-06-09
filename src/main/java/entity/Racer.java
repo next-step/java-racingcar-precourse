@@ -16,12 +16,10 @@ public class Racer {
         this.movedDistance = new BigInteger("0");
     }
 
-    private String validateName(String name) {
-        if (name == null || name.isBlank()) {
-            throw new IllegalArgumentException(VALIDATE_NAME_ERROR_MESSAGE);
+    public void moveIfCan(BigInteger input) {
+        if(input.compareTo(MOVE_THRESHOLD) > 0) {
+            movedDistance = movedDistance.add(new BigInteger("1"));
         }
-
-        return name.trim();
     }
 
     public String getName() {
@@ -30,5 +28,13 @@ public class Racer {
 
     public BigInteger getMovedDistance() {
         return movedDistance;
+    }
+
+    private String validateName(String name) {
+        if (name == null || name.isBlank()) {
+            throw new IllegalArgumentException(VALIDATE_NAME_ERROR_MESSAGE);
+        }
+
+        return name.trim();
     }
 }
