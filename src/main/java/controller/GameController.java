@@ -16,8 +16,28 @@ public class GameController {
     }
 
     public void run() throws IOException {
-        String[] carNames = inputView.inputCarNames();
-        int times = inputView.inputTimes();
+
+        String[] carNames;
+        int times;
+
+        while (true) {
+            try {
+                carNames = inputView.inputCarNames();
+                break;
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+
+        while (true) {
+            try {
+                times = inputView.inputTimes();
+                break;
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+
         CarRace carRace = new CarRace(carNames);
 
         outputView.printAnnounce();
