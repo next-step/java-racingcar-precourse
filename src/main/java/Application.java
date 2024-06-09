@@ -9,5 +9,6 @@ public class Application {
 
         //racing
         rc.racingStart();
+        rc.showWinner();
     }
 }
