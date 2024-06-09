@@ -21,4 +21,8 @@ public class RacingGameService {
                 Randoms.pickNumbersInRange(track.getCars().size(), 0, 9)
         );
     }
+    public List<CarState> getWinners(){
+        var winners = track.getWinners();
+        return new ArrayList<>(winners);
+    }
 }
