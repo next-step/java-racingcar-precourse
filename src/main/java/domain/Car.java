@@ -1,8 +1,10 @@
 package domain;
 
-public class Car {
+import domain.state.CarState;
+
+public class Car implements CarState {
     private String name;
-    private Integer position;
+    private int position;
 
     public Car(String name) {
         setName(name);
@@ -22,7 +24,7 @@ public class Car {
         return name;
     }
 
-    public Integer getPosition() {
+    public int getPosition() {
         return position;
     }
 
