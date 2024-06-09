@@ -1,9 +1,9 @@
 package domain;
 
 public class RacingCar {
-    private String name;
+    private RacingCarName racingCarName;
 
-    public RacingCar(String name) {
-        this.name = name;
+    public RacingCar(final String name) {
+        this.racingCarName = new RacingCarName(name);
     }
 }
