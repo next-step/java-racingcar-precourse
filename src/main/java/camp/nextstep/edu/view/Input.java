@@ -74,4 +74,8 @@ public class Input {
             throw new IllegalArgumentException("[ERROR] 시도 횟수는 1회 이상 입력하시오.");
         }
     }
+
+    public void endInput() {
+        scanner.close();
+    }
 }

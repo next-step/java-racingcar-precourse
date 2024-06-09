@@ -17,4 +17,14 @@ public class Car {
     public int getLocation() {
         return location;
     }
+
+    public void moveLocation() {
+        if (canMoveForward()) {
+            location += 1;
+        }
+    }
+
+    private boolean canMoveForward() {
+        return (int) (Math.random() * 10) >= 4;
+    }
 }
