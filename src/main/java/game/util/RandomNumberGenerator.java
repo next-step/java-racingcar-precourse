@@ -4,6 +4,8 @@ import java.util.Random;
 
 public class RandomNumberGenerator {
 
+    private static Random random = new Random();
+
     private RandomNumberGenerator() {
     }
 
@@ -13,7 +15,6 @@ public class RandomNumberGenerator {
      * @return 음이 아닌 정수
      */
     public static int getNumber(int maxRange) {
-        Random random = new Random();
         return random.nextInt(maxRange + 1);
     }
 
