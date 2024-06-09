@@ -44,4 +44,32 @@ class RacerTest {
                     .hasMessage(Racer.VALIDATE_NAME_ERROR_MESSAGE);
         }
     }
+
+    @Test
+    @DisplayName("Racer moveIfCan 전진 테스트")
+    void racerMoveIfCan() {
+        // given: 전진하는 데이터
+        BigInteger input = Racer.MOVE_THRESHOLD.add(new BigInteger("1"));
+        Racer racer = new Racer("Tester");
+
+        // when
+        racer.moveIfCan(input);
+
+        // then
+        assertThat(racer.getMovedDistance()).isEqualTo(new BigInteger("1"));
+    }
+
+    @Test
+    @DisplayName("Racer moveIfCan 정지 테스트")
+    void racerMoveIfCan() {
+        // given: 전진하는 데이터와 전진하지 않는 데이터
+        BigInteger input = Racer.MOVE_THRESHOLD;
+        Racer racer = new Racer("Tester");
+
+        // when
+        racer.moveIfCan(input);
+
+        // then
+        assertThat(racer.getMovedDistance()).isEqualTo(new BigInteger("0"));
+    }
 }
