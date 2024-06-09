@@ -1,7 +1,9 @@
 package service;
 
+import model.RacingCarDTO;
 import repository.CarRepository;
 import repository.CarRepositoryImpl;
+import utility.Fortuna;
 import utility.StringSplitter;
 
 public class RacingService {
@@ -17,6 +19,13 @@ public class RacingService {
         for (String name : nameArr) {
             validateName(name);
             carRepository.add(name);
+        }
+    }
+    public void round(){
+        for(RacingCarDTO car : carRepository.getAllCars()){
+            if(Fortuna.isForward()){
+                car.setForward(car.getForward() + 1);
+            }
         }
     }
     protected void validateName(String name) {
