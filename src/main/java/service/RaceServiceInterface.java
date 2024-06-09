@@ -7,6 +7,8 @@ public interface RaceServiceInterface {
 
     int getNumberOfCars();
 
+    int getNumberOfRounds();
+
     List<CarModelInterface> getCars();
 
     List<CarModelInterface> getWinners();

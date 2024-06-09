@@ -27,6 +27,12 @@ public class RaceService implements Subject, RaceServiceInterface {
 
     // getter
     @Override
+    public int getNumberOfRounds() {
+        return race.getNumberOfRounds();
+    }
+
+    // getter
+    @Override
     public List<CarModelInterface> getCars() {
         return race.getCars();
     }
