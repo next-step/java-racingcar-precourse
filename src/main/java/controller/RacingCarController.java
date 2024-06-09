@@ -22,6 +22,15 @@ public class RacingCarController {
         random.setSeed(System.currentTimeMillis());
     }
 
+    public void run() {
+        List<Car> cars = getCarNames();
+        int racingCount = getRacingCount();
+        outputView.printOutput();
+        List<Car> result = race(cars, racingCount);
+        List<String> winners = getWinner(result);
+        outputView.printWinners(winners);
+    }
+
     public List<Car> getCarNames() {
         while (true) {
             try {
