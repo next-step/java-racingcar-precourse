@@ -2,7 +2,7 @@ package domain;
 
 public class RacingCar {
     private final String name;
-    private final int moveDistance;
+    private int moveDistance;
 
     private RacingCar(String name){
         this.name = name;
@@ -19,5 +19,9 @@ public class RacingCar {
 
     public int getMoveDistance(){
         return this.moveDistance;
+    }
+
+    public void move(){
+        this.moveDistance += 1;
     }
 }
