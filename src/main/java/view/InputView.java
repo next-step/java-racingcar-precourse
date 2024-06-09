@@ -11,24 +11,32 @@ public class InputView {
     private static final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
     public static List<String> getCarNames() {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        try {
-            String input = br.readLine();
-            List<String> carNames = parseCarNames(input);
-            validateCarNames(carNames);
-            return carNames;
-        } catch (IOException e) {
-            throw new IllegalStateException("[ERROR] 입력을 읽는 중 오류가 발생했습니다.", e);
+        while (true) {
+            try {
+                System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+                String input = br.readLine();
+                List<String> carNames = parseCarNames(input);
+                validateCarNames(carNames);
+                return carNames;
+            } catch (IOException e) {
+                System.out.println("[ERROR] 입력을 읽는 중 오류가 발생했습니다. 다시 시도해주세요.");
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
         }
     }
 
     public static int getRaceCount() {
-        System.out.println("시도할 회수는 몇회인가요?");
-        try {
-            String input = br.readLine();
-            return validateRaceCount(input);
-        } catch (IOException e) {
-            throw new IllegalStateException("[ERROR] 입력을 읽는 중 오류가 발생했습니다.", e);
+        while (true) {
+            try {
+                System.out.println("시도할 횟수는 몇회인가요?");
+                String input = br.readLine();
+                return validateRaceCount(input);
+            } catch (IOException e) {
+                System.out.println("[ERROR] 입력을 읽는 중 오류가 발생했습니다. 다시 시도해주세요.");
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
         }
     }
 

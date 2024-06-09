@@ -10,17 +10,13 @@ import java.util.stream.Collectors;
 
 public class CarRaceController {
     public void startRace() {
-        try {
-            List<String> carNames = InputView.getCarNames();
-            int raceCount = InputView.getRaceCount();
+        List<String> carNames = InputView.getCarNames();
+        int raceCount = InputView.getRaceCount();
 
-            List<Car> cars = createAndInitializeCars(carNames);
-            runRace(cars, raceCount);
-            List<Car> winners = determineWinners(cars); // 우승자 결정
-            printWinners(winners); // 우승자 출력
-        } catch (IllegalArgumentException e) {
-            OutputView.printMessage(e.getMessage());
-        }
+        List<Car> cars = createAndInitializeCars(carNames);
+        runRace(cars, raceCount);
+        List<Car> winners = determineWinners(cars); // 우승자 결정
+        printWinners(winners); // 우승자 출력
     }
 
     private List<Car> createAndInitializeCars(List<String> carNames) {
