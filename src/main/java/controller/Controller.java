@@ -18,7 +18,8 @@ public class Controller {
 
         for(int i = 0 ; i < moveCnt; i++){
             DecisionMove.decide(carList); //자동차들을 전진할지 멈출지 판단
-            view.print(carList); //사용자에게 게임 과정 출력
+            view.print(carList);//사용자에게 게임 과정 출력
+            updateCarList(); //다음 게임을 위해 자동차 정보 업데이트
         }
 
     }
@@ -31,5 +32,11 @@ public class Controller {
             carList.add(car);
         }
         return carList;
+    }
+
+    public void updateCarList(){ //게임이 한번 끝날 때 마다 다음 게임을 위해 Car객체 안에있는 move변수 업데이트 하는 함수
+        for(int i = 0 ; i <carList.size(); i++){
+            carList.get(i). setMove(false); //자동차의 Move 변수 false로 변환
+        }
     }
 }
