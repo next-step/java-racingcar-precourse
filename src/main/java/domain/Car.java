@@ -4,9 +4,9 @@ public class Car {
     private String name;
     private Integer position;
 
-    public Car(String name, Integer position) {
+    public Car(String name) {
         setName(name);
-        this.position = position;
+        this.position = 0;
     }
 
     private void setName(String name){
