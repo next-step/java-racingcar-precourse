@@ -1,6 +1,6 @@
 package domain;
 
-public class RacingCar {
+public class RacingCar implements Comparable<RacingCar> {
     private static final int MOVE_CONDITION = 4;
 
     private RacingCarName racingCarName;
@@ -23,5 +23,10 @@ public class RacingCar {
 
     public Integer getDistance() {
         return distance.location();
+    }
+
+    @Override
+    public int compareTo(RacingCar competeCar) {
+        return this.distance.location() - competeCar.distance.location();
     }
 }
