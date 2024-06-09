@@ -18,25 +18,20 @@ public class Race {
         }
     }
 
-    public void init() {
-        for (int i = 0; i < iterNum; i++) {
-            round();
-        }
-    }
-
-    private void round() {
+    public void round() {
         for (Car car : cars) {
             int randNum = random.nextInt(10);
             if (randNum >= 4) {
                 car.moveFoward();
             }
+            System.out.print(car.toString());
         }
     }
 
 
-    public List<Car> checkWinner() {
+    public List<String> checkWinner() {
         int maxPosition = 0;
-        List<Car> winners = new ArrayList<>();
+        List<String> winners = new ArrayList<>();
         for (Car car : cars) {
             if (car.getPosition() > maxPosition) {
                 maxPosition = car.getPosition();
@@ -44,7 +39,7 @@ public class Race {
         }
         for (Car car : cars) {
             if (car.getPosition() == maxPosition) {
-                winners.add(car);
+                winners.add(car.getName());
             }
         }
         return winners;
