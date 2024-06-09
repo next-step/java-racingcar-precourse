@@ -20,16 +20,19 @@ public class Race implements Subject, RaceModelInterface {
         observers = new ArrayList<>();
     }
 
+    // getter
     @Override
     public int getNumberOfCars() {
         return cars.size();
     }
 
+    // getter
     @Override
     public List<CarModelInterface> getCars() {
         return cars;
     }
 
+    // setter
     private void setNumberOfRounds(int numberOfRounds) {
         this.numberOfRounds = numberOfRounds;
     }

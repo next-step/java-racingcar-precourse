@@ -1,6 +1,6 @@
 package model;
 
-// model과 service를 분리해서 도메인 관련 작업만 처리
+// model과 service를 분리할 필요가 없다고 생각하여 model만 사용
 public class Car implements CarModelInterface {
 
     private final String name;
