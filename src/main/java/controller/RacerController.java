@@ -1,22 +1,28 @@
 package controller;
 
+import dto.RacerDto;
+import dto.RacerResult;
 import entity.Racer;
+import utils.RandomNumberGenerator;
 
 import java.math.BigInteger;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class RacerController {
     public static final String VALIDATE_GAME_COUNT_ERROR_MESSAGE = "gameCount는 null이거나 음수일 수 없습니다.";
 
-    private List<Racer> raceList;
+    public static final String VALIDATE_RACER_LIST_ERROR_MESSAGE = "racerList는 null이거나 빈 배열일 수 없습니다.";
+
+    public static final String VALIDATE_GAME_ENDED_ERROR_MESSAGE = "이미 종료된 게임입니다.";
+
+    private List<Racer> racerList;
 
     private BigInteger maxGameCount;
 
     private BigInteger currentGameCount;
 
     public RacerController() {
-        this.raceList = new ArrayList<>();
+        this.racerList = new ArrayList<>();
         this.maxGameCount = new BigInteger("-1");
         this.currentGameCount = new BigInteger("-1");
     }
@@ -31,8 +37,8 @@ public class RacerController {
                 .map(Racer::new)
                 .toList();
 
-        raceList.clear();
-        raceList.addAll(newRacerSet);
+        racerList.clear();
+        racerList.addAll(newRacerSet);
     }
 
     /**
@@ -45,9 +51,55 @@ public class RacerController {
         currentGameCount = BigInteger.ZERO;
     }
 
+    public RacerResult playGame() {
+        validatePlayGame();
+
+        currentGameCount = currentGameCount.add(BigInteger.ONE);
+
+        int randomInteger = RandomNumberGenerator.getInstance().getRandomNumber(0, 9);
+
+        for (Racer racer : racerList) {
+            racer.moveIfCan(randomInteger);
+        }
+
+        return new RacerResult(
+                isEnded(),
+                racerList.stream().map(this::getRacerDto).toList()
+        );
+    }
+
+    private RacerDto getRacerDto(Racer racer) {
+        if (isEnded()) {
+            return RacerDto.of(racer, getMax());
+        }
+
+        return new RacerDto(
+                racer.getName(),
+                racer.getMovedDistance(),
+                false
+        );
+    }
+
+    private BigInteger getMax() {
+        if (isEnded()) {
+            return racerList.stream()
+                    .map(Racer::getMovedDistance)
+                    .max(BigInteger::compareTo)
+                    .orElseThrow(() -> new IllegalStateException(VALIDATE_RACER_LIST_ERROR_MESSAGE));
+        }
+
+        return null;
+    }
+
     private void validateName(String name) {
         if (name == null || name.isBlank()) {
             throw new IllegalArgumentException(Racer.VALIDATE_NAME_ERROR_MESSAGE);
+        }
+    }
+
+    private void validateRacerList() {
+        if (racerList == null || racerList.isEmpty()) {
+            throw new IllegalStateException(VALIDATE_RACER_LIST_ERROR_MESSAGE);
         }
     }
 
@@ -55,5 +107,19 @@ public class RacerController {
         if (integer == null || integer.compareTo(BigInteger.ZERO) < 0) {
             throw new IllegalArgumentException(VALIDATE_GAME_COUNT_ERROR_MESSAGE);
         }
+    }
+
+    private void validatePlayGame() {
+        validateRacerList();
+        validateGameCount(maxGameCount);
+        validateGameCount(currentGameCount);
+
+        if (isEnded()) {
+            throw new IllegalStateException(VALIDATE_GAME_ENDED_ERROR_MESSAGE);
+        }
+    }
+
+    private boolean isEnded() {
+        return maxGameCount.equals(currentGameCount);
     }
 }

@@ -49,7 +49,7 @@ class RacerTest {
     @DisplayName("Racer moveIfCan 전진 테스트")
     void racerMoveIfCan_WillMoveTest() {
         // given: 전진하는 데이터
-        BigInteger input = Racer.MOVE_THRESHOLD.add(new BigInteger("1"));
+        int input = Racer.MOVE_THRESHOLD + 1;
         Racer racer = new Racer(getValidName());
 
         // when
@@ -63,7 +63,7 @@ class RacerTest {
     @DisplayName("Racer moveIfCan 정지 테스트")
     void racerMoveIfCan_WillStopTest() {
         // given: 전진하지 않는 데이터
-        BigInteger input = Racer.MOVE_THRESHOLD;
+        int input = Racer.MOVE_THRESHOLD;
         Racer racer = new Racer(getValidName());
 
         // when

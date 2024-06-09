@@ -5,7 +5,7 @@ import java.math.BigInteger;
 public class Racer {
     public static final int NAME_MAX_LENGTH = 5;
 
-    public static final BigInteger MOVE_THRESHOLD = new BigInteger("3");
+    public static final int MOVE_THRESHOLD = 3;
 
     public static final String VALIDATE_NAME_ERROR_MESSAGE = "name은 null이거나 빈 문자열일 수 없습니다. 그리고 " + NAME_MAX_LENGTH + "자 이하 여야합니다.";
 
@@ -21,8 +21,8 @@ public class Racer {
         this.movedDistance = new BigInteger("0");
     }
 
-    public void moveIfCan(BigInteger input) {
-        if(input.compareTo(MOVE_THRESHOLD) > 0) {
+    public void moveIfCan(int input) {
+        if(input > MOVE_THRESHOLD) {
             movedDistance = movedDistance.add(new BigInteger("1"));
         }
     }

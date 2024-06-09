@@ -1,21 +1,28 @@
 package controller;
 
 import dto.RacerDto;
+import dto.RacerResult;
 import entity.Racer;
 import org.assertj.core.api.ThrowableAssert;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.mockito.MockedStatic;
+import org.mockito.Mockito;
+import utils.RandomNumberGenerator;
 
 import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.BDDMockito.then;
-import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.*;
 
 class RacerControllerTest {
+    private RandomNumberGenerator mockRNG = Mockito.mock(RandomNumberGenerator.class);
+
     @Test
     @DisplayName("Controller setUpRacer 메소드 성공 테스트")
     void setUpRacerTest() {
@@ -83,8 +90,9 @@ class RacerControllerTest {
     @DisplayName("Controller playGame 메소드 성공 테스트")
     void playGameTest() {
         // given
+        RandomNumberGenerator generator = mock(RandomNumberGenerator.class);
         RacerController controller = new RacerController();
-        List<RacerDto> racerDtoList = Arrays.asList(new RacerDto(
+        List<RacerDto> racerDtoList = List.of(new RacerDto(
                         getValidNameInputString(),
                         BigInteger.ZERO,
                         false
@@ -94,18 +102,23 @@ class RacerControllerTest {
         controller.setUpRacer(getValidNameInputString());
         controller.setUpGameCount(new BigInteger("2"));
 
-        when(RandomNumberGenerator.getRandomNumber(any(int))).thenReturn(3);
+        try (MockedStatic<RandomNumberGenerator> generatorMockedStatic = mockStatic(RandomNumberGenerator.class)) {
+            given(RandomNumberGenerator.getInstance()).willReturn(generator);
 
-        // when
-        RacerResult result = controller.playGame();
+            when(generator.getRandomNumber(anyInt(), anyInt()))
+                    .thenReturn(Racer.MOVE_THRESHOLD);
 
-        // then
-        assertThat(result.isEnded()).isEqualTo(false);
-        assertThat(result.racers()).isEqualTo(racerDtoList);
+            // when
+            RacerResult result = controller.playGame();
+
+            // then
+            assertThat(result.isEnded()).isEqualTo(false);
+            assertThat(result.racerDtos()).isEqualTo(racerDtoList);
+        }
     }
 
     private String getValidNameInputString() {
-        return "pobi  ";
+        return "pobi";
     }
 
     private String getValidNamesInputString() {
