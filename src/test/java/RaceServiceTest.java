@@ -74,7 +74,16 @@ public class RaceServiceTest {
         Assertions.assertThat(numberOfRounds).isEqualTo(Integer.parseInt(round));
     }
 
+    @Test
+    void prepareRaceParseErrorTest() {
+        // 객체와 삽입할 배열을 준비
+        Race race = new Race();
+        RaceServiceInterface raceService = new RaceService(race, race);
+        String round = "a";
 
+        // 잘못된 경우에 대해 테스트 (parse 문제)
+        Assertions.assertThatCode(() -> raceService.prepareRace(round)).isInstanceOf(IllegalArgumentException.class);
+    }
 
     @Test
     void getWinnersTest() {
