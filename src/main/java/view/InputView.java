@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class InputView {
 
-    private Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner = new Scanner(System.in);
 
     public String[] inputCarNames() {
         String[] carNames = null;
@@ -18,6 +18,12 @@ public class InputView {
         }
 
         return carNames;
+    }
+
+    public int inputMovementCount() {
+        System.out.println("시도할 횟수는 몇회인가요?");
+
+        return scanner.nextInt();
     }
 
     private boolean isValidCarNames(String[] carNames) {
