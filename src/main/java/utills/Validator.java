@@ -11,7 +11,7 @@ public class Validator {
      * @param carNames 사용자가 입력한 이름 배열
      * @throws IllegalArgumentException 유효하지 않은 이름 입력시 발생
      */
-    public void validCheckCarNames(String[] carNames){
+    public static void validCheckCarNames(String[] carNames){
         checkLength(carNames);
         checkCount(carNames);
         checkDuplicate(carNames);
@@ -24,7 +24,7 @@ public class Validator {
      * @param count 사용자가 입력한 횟수
      * @throws IllegalArgumentException 유효하지 않은 이름 입력시 발생
      */
-    public void validCheckCount(String count){
+    public static void validCheckCount(String count){
         checkIsInt(count);
         checkRange(count);
     }
@@ -34,11 +34,11 @@ public class Validator {
      *
      * @param carNames 사용자가 입력한 자동차이름 배열
      */
-    private void checkLength(String[] carNames){
+    private static void checkLength(String[] carNames){
         for(String name:carNames){
             int MAX_LENGTH = 5;
             if (name.isBlank() || name.length() > MAX_LENGTH){
-                throw new IllegalArgumentException("[ERROR] 이름은 1글자 이상 5글자 이하여야합니다.");
+                throw new IllegalArgumentException("이름은 1글자 이상 5글자 이하여야합니다.");
             }
         }
     }
@@ -48,9 +48,9 @@ public class Validator {
      *
      * @param carNames 사용자가 입력한 이름 배열
      */
-    private void checkCount(String[] carNames){
+    private static void checkCount(String[] carNames){
         if (carNames.length <= 1 || carNames.length >= 6){
-            throw new IllegalArgumentException("[ERROR] 자동차의 개수는 2개 이상 5개 이하여야합니다.");
+            throw new IllegalArgumentException("자동차의 개수는 2개 이상 5개 이하여야합니다.");
         }
     }
 
@@ -59,10 +59,10 @@ public class Validator {
      *
      * @param carNames 사용자가 입력한 이름 배열
      */
-    private void checkAlphaOnly(String[] carNames){
+    private static void checkAlphaOnly(String[] carNames){
         for (String name:carNames){
             if (!name.matches("^[a-zA-Z]*$")){
-                throw new IllegalArgumentException("[ERROR] 자동차의 이름은 알파벳으로만 이루어져야합니다.");
+                throw new IllegalArgumentException("자동차의 이름은 알파벳으로만 이루어져야합니다.");
             }
         }
     }
@@ -72,11 +72,11 @@ public class Validator {
      *
      * @param carNames 사용자가 입력한 이름 배열
      */
-    private void checkDuplicate(String[] carNames){
+    private static void checkDuplicate(String[] carNames){
         Set<String> nameSet = new HashSet<>();
         for (String name:carNames){
             if (!nameSet.add(name)){
-                throw new IllegalArgumentException("[ERROR] 자동차의 이름은 중복될 수 없습니다.");
+                throw new IllegalArgumentException("자동차의 이름은 중복될 수 없습니다.");
             }
         }
     }
@@ -86,9 +86,9 @@ public class Validator {
      *
      * @param count 사용자가 입력한 횟수
      */
-    private void checkIsInt(String count){
+    private static void checkIsInt(String count){
         if (!count.matches("^[0-9]+$")){
-            throw new IllegalArgumentException("[ERROR] 횟수는 숫자로 입력해야합니다.");
+            throw new IllegalArgumentException("횟수는 숫자로 입력해야합니다.");
         }
     }
 
@@ -96,10 +96,10 @@ public class Validator {
      * 용자가 입력한 횟수가 유효한 크기인지 체크하는 메서드
      * @param count 사용자가 입력한 횟수
      */
-    private void checkRange(String count){
+    private static void checkRange(String count){
         int countInt = Integer.parseInt(count);
         if (countInt < 2 || countInt > 100){
-            throw new IllegalArgumentException("[ERROR] 이동횟수는 2회 이상 100회 이하여야합니다.");
+            throw new IllegalArgumentException("이동횟수는 2회 이상 100회 이하여야합니다.");
         }
     }
 }
