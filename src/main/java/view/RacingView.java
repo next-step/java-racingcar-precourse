@@ -1,5 +1,6 @@
 package view;
 
+import java.util.ArrayList;
 import repository.CarRepository;
 
 public class RacingView {
@@ -18,5 +19,13 @@ public class RacingView {
     public void showRacing(CarRepository carRepository){
         System.out.println(carRepository.toString());
     }
-
+    public void showWinnerList(ArrayList<String> winnerArrList){
+        StringBuilder sb = new StringBuilder();
+        sb.append("최종우승자 : ");
+        for(int i=0; i<winnerArrList.size()-1; i++){
+            sb.append(winnerArrList.get(i)).append(", ");
+        }
+        sb.append(winnerArrList.get(winnerArrList.size()-1));
+        System.out.println(sb);
+    }
 }
