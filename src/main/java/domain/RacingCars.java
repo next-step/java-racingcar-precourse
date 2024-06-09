@@ -44,4 +44,23 @@ public class RacingCars {
     public List<RacingCar> getCars() {
         return cars;
     }
+
+    public List<String> findWinners(){
+        RacingCar maxDistanceCar = findMaxDistanceCar();
+        List<String> winnerCarNameList = findSameDistanceList(maxDistanceCar);
+        return winnerCarNameList;
+    }
+
+    private RacingCar findMaxDistanceCar() {
+        return cars.stream()
+                .max(RacingCar::compareTo)
+                .orElseThrow(() -> new IllegalArgumentException("차량 리스트가 비었습니다."));
+    }
+
+    private List<String> findSameDistanceList(RacingCar maxDistanceCar) {
+        return cars.stream()
+                .filter(maxDistanceCar::isSameDistance)
+                .map(RacingCar::getRacingCarName)
+                .collect(Collectors.toList());
+    }
 }
