@@ -37,4 +37,33 @@ public class RaceTest {
         assertThat(winners).extracting("name")
             .contains("pobi", "jun");
     }
+
+    @Test
+    public void shouldRunRaceAndMoveCars() {
+        List<String> carNames = List.of("pobi", "woni", "jun");
+        Race race = new Race(carNames);
+
+        race.run(5);
+
+        assertThat(race.getCars()).allSatisfy(car ->
+            assertThat(car.getPosition()).isGreaterThanOrEqualTo(0)
+        );
+    }
+
+    @Test
+    public void shouldHaveMultipleWinnersIfTied() {
+        List<String> carNames = List.of("pobi", "woni", "jun");
+        Race race = new Race(carNames);
+
+        race.getCars().get(0).move();
+        race.getCars().get(1).move();
+        race.getCars().get(1).move();
+        race.getCars().get(2).move();
+        race.getCars().get(2).move();
+
+        List<Car> winners = race.getWinners();
+        assertThat(winners).hasSize(2);
+        assertThat(winners).extracting("name")
+            .contains("woni", "jun");
+    }
 }

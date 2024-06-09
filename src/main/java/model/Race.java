@@ -2,12 +2,14 @@ package model;
 
 import java.util.List;
 import java.util.Random;
+import view.OutputView;
 import java.util.stream.Collectors;
 
 public class Race {
     private final List<Car> cars;
     private static final int FORWARD_THRESHOLD = 4;
     private static final int RANDOM_BOUND = 10;
+    private static final Random RANDOM = new Random(); // static final로 변경
 
     public Race(List<String> carNames) {
         this.cars = carNames.stream()
@@ -29,29 +31,16 @@ public class Race {
     public void run(int raceCount) {
         for (int i = 0; i < raceCount; i++) {
             moveCars();
-            printRaceStatus();
+            OutputView.printRaceStatus(cars); // 출력 로직을 외부로 이동
         }
     }
 
     private void moveCars() {
-        Random random = new Random();
         for (Car car : cars) {
-            if (random.nextInt(RANDOM_BOUND) >= FORWARD_THRESHOLD) {
+            if (RANDOM.nextInt(RANDOM_BOUND) >= FORWARD_THRESHOLD) {
                 car.move();
             }
         }
-    }
-
-    private void printRaceStatus() {
-        for (Car car : cars) {
-            StringBuilder status = new StringBuilder();
-            status.append(car.getName()).append(" : ");
-            for (int i = 0; i < car.getPosition(); i++) {
-                status.append("-");
-            }
-            System.out.println(status.toString());
-        }
-        System.out.println(""); // 빈 줄로 회차 구분
     }
 
     public List<Car> getWinners() {

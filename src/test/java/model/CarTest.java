@@ -23,6 +23,12 @@ public class CarTest {
     }
 
     @Test
+    public void carNameShouldBeSetCorrectly() {
+        Car car = new Car("pobi");
+        assertEquals("pobi", car.getName());
+    }
+
+    @Test
     public void carShouldStartAtPositionZero() {
         Car car = new Car("test");
         car.initializePosition();
@@ -35,5 +41,14 @@ public class CarTest {
         car.initializePosition();
         car.move();
         assertEquals(1, car.getPosition());
+    }
+
+    @Test
+    public void carShouldMoveMultipleTimes() {
+        Car car = new Car("test");
+        car.initializePosition();
+        car.move();
+        car.move();
+        assertEquals(2, car.getPosition());
     }
 }
