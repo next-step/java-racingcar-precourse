@@ -1,18 +1,19 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Game {
+    Scanner sc;
 
+    public Game(){
+        sc = new Scanner(System.in);
+    }
     public List<String> getCarNames() {
         List<String> carNames;
-        Scanner sc = new Scanner(System.in);
+
 
         while (true) {
             System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-            carNames = List.of(sc.nextLine().split(","));
+            carNames = List.of(sc.next().split(","));
             if (CheckInput.checkCarNames(carNames)) {
-                sc.close();
                 break;
             }
         }
@@ -21,13 +22,12 @@ public class Game {
 
     public int getTryNum() {
         int tryNum;
-        Scanner sc = new Scanner(System.in);
+        System.out.println("시도할 회수는 몇회인가요?");
         while (true) {
-            System.out.println("시도할 회수는 몇회인가요?");
             try {
                 tryNum = sc.nextInt();
                 break;
-            } catch (IllegalArgumentException e) {
+            } catch (InputMismatchException e){
                 CheckInput.isWrongValue();
             }
         }
