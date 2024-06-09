@@ -15,8 +15,8 @@ public class Car {
         return numberOfMove;
     }
 
-    public void setNumberOfMove(int numberOfMove) {
-        this.numberOfMove = numberOfMove;
+    public void increaseNumberOfMove() {
+        numberOfMove++;
     }
 
     public String getCarName() {

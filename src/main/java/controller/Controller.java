@@ -1,5 +1,6 @@
 package controller;
 import model.Car;
+import view.View;
 
 import java.util.*;
 
@@ -12,7 +13,13 @@ public class Controller {
         carName = EntryCarName.getCarName(); //사용자에게 입력받은 자동차 이름 저장
         moveCnt = EntryMoveCnt.getMoveCnt(); //사용자에게 입력받은 시도 횟수 저장
         carList=makeCar(carName); //자동차 객체 생성
-        DecisionMove.decide(carList); //자동차들을 전진할지 멈출지 판단
+
+        View view = new View(); //뷰 생성
+
+        for(int i = 0 ; i < moveCnt; i++){
+            DecisionMove.decide(carList); //자동차들을 전진할지 멈출지 판단
+            view.print(carList); //사용자에게 게임 과정 출력
+        }
 
     }
 

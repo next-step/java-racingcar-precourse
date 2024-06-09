@@ -9,6 +9,7 @@ public class DecisionMove {
             int ramdomValue = getRandom();
             if (ramdomValue >= 4) {
                 carList.get(i).setMove(true);
+                carList.get(i).increaseNumberOfMove();
             }
         }
     }
