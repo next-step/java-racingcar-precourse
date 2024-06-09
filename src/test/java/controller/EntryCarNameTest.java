@@ -16,7 +16,7 @@ class EntryCarNameTest {
     @DisplayName("자동차 이름이 5이하가 아닌경우 테스트")
     void invalidInputTest(String input) {
         assertThrows(IllegalArgumentException.class,()->EntryCarName.input(input));
-        String expected = "[ERROR] : 자동차 이름의 길이는5이하여야 합니다";
+        String expected = "[ERROR] : 자동차 이름의 길이는 1이상 5이하여야 합니다";
         String actual="";
         try{
            EntryCarName.input(input);
