@@ -34,8 +34,20 @@ public class TryCountTest {
             });
         Assertions.assertEquals("[ERROR] 시도 횟수는 1 이상의 정수로 입력 가능합니다. 다시 입력해주세요", exception.getMessage());
     }
+    @Test
+    @DisplayName("시도 횟수가 알맞은 숫자일 경우")
+    public void CorrectCase() {
+        //Given
+        int count = 2;
+        String carName = "A";
 
-    
+        //When & Then
+        carRace.createCars(carName);
+        carRace.race(count);
+        List<Car> cars = carRace.findWinners();
+        //Then
+        Assertions.assertNotEquals(cars.size(), 0);
+    }
 
 
 }
