@@ -12,6 +12,7 @@ public class Controller {
         carName = EntryCarName.getCarName(); //사용자에게 입력받은 자동차 이름 저장
         moveCnt = EntryMoveCnt.getMoveCnt(); //사용자에게 입력받은 시도 횟수 저장
         carList=makeCar(carName);
+        DecisionMove.decide(carList);
     }
 
     public Vector<Car> makeCar(Vector<String> carName) { //car 객체를 생성하는 기능
