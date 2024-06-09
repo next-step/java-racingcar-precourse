@@ -20,7 +20,6 @@ public class Car {
     /**
      * 테스트용으로 랜덤 숫자를 고정하는 메서드
      * @param number 고정할 랜덤 숫자
-     * @see CarTest#move(int)
      */
     public void setFixedRandomNumber(int number) {
         this.fixedRandomNumber = number;
@@ -41,7 +40,6 @@ public class Car {
      * 테스트용으로 랜덤 숫자를 고정했을 경우 고정된 숫자를 반환
      * @return 생성된 랜덤 숫자
      * @see Car#move()
-     * @see CarTest#move(int)
      */
     protected int getRandomNumber() {
         if (fixedRandomNumber != null) {
