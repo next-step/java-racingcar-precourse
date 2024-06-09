@@ -12,7 +12,7 @@ public class GameController {
 
     private final InputView inputView = new InputView();
     private final OutputView outputView = new OutputView();
-    private final GameService gameService = new GameService();
+    private static final GameService gameService = GameService.getInstance();
     private static String[] carsName;
     private static int count;
 

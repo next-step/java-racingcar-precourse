@@ -9,6 +9,15 @@ import java.util.stream.Collectors;
 public class GameService {
     CarRepository carRepository = CarRepository.getInstance();
 
+    private static GameService gameService;
+    private GameService(){}
+
+    public static GameService getInstance(){
+        if(gameService == null)
+            gameService = new GameService();
+        return gameService;
+    }
+
     public void createCars(String[] carNames){
         //Arrays.stream(carNames).forEach(name -> carRepository.save(new Car(name)));
         Arrays.stream(carNames).map(Car::new).forEach(carRepository::save);

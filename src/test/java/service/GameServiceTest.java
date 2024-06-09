@@ -12,13 +12,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class GameServiceTest {
     CarRepository carRepository = CarRepository.getInstance();
-    private final GameService gameService = new GameService();
+    private static final GameService gameService = GameService.getInstance() ;
 
     //각 테스트가 끝나면 repository가 초기화된다.
     @AfterEach
     void afterEach(){
         carRepository.clear();
     }
+
     @Test
     void createCars() {
         //given
@@ -33,6 +34,12 @@ class GameServiceTest {
     }
 
     @Test
+    void moveCars() {
+
+    }
+    @Test
     void findWinner() {
     }
+
+
 }
