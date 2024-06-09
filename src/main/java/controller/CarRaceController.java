@@ -31,13 +31,14 @@ public class CarRaceController {
         }
 
         int tryCount = 0; // 시도 횟수
-        while (true) {  // 시도 횟수 입력 받음, 오류 발생 시 재입력 받음
+        while (true) {
             try {
                 view.printTryCountMessage();
                 tryCount = inputHandler.getTryCount();
                 break;
             } catch (IllegalArgumentException e) {
                 view.printErrorMessage(e.getMessage());
+                view.printTryCountMessage();
             }
         }
 
