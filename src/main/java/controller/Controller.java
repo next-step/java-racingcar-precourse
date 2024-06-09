@@ -8,6 +8,7 @@ public class Controller {
     private Vector <String> carName;
     private int moveCnt;
     private Vector<Car> carList;
+    private Vector<String> winner;
 
     public void play() { //자동차 경주 게임 전반의 흐름을 처리
         carName = EntryCarName.getCarName(); //사용자에게 입력받은 자동차 이름 저장
@@ -16,7 +17,7 @@ public class Controller {
 
         View view = new View(); //뷰 생성
 
-        for(int i = 0 ; i < moveCnt; i++){
+        for(int i = 0 ; i < moveCnt; i++){ //게임 진행
             DecisionMove.decide(carList); //자동차들을 전진할지 멈출지 판단
             view.print(carList);//사용자에게 게임 과정 출력
             updateCarList(); //다음 게임을 위해 자동차 정보 업데이트
