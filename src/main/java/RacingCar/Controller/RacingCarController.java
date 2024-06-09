@@ -1,5 +1,6 @@
 package RacingCar.Controller;
 
+import RacingCar.Model.Car;
 import RacingCar.Model.Race;
 import RacingCar.View.InputView;
 import RacingCar.View.ResultView;
@@ -18,5 +19,8 @@ public class RacingCarController {
       race.moveCars();
       ResultView.printCarPostion(race.getCars());
     }
+
+    List<Car> winners = race.getWinner();
+    ResultView.printWinner(winners);
   }
 }
