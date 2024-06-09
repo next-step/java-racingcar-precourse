@@ -3,10 +3,7 @@ package service;
 import domain.Car;
 import domain.CarRepository;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.HashMap;
+import java.util.*;
 
 public class GameService {
     CarRepository carRepository = CarRepository.getInstance();
@@ -16,8 +13,8 @@ public class GameService {
         Arrays.stream(carNames).map(Car::new).forEach(carRepository::save);
     }
 
-    public HashMap<String,Integer> moveCars(String[] names){
-        HashMap<String,Integer> dto = new HashMap<>();
+    public Map<String,Integer> moveCars(String[] names){
+        Map<String,Integer> dto = new LinkedHashMap<>();
         for(String name:names){
             Car car = carRepository.findByName(name);
             car.move();
