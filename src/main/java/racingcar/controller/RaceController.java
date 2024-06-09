@@ -13,6 +13,7 @@ public class RaceController {
         int numberOfAttempts = InputView.getNumberOfAttempts();
 
         Race race = new Race(carNames);
+        OutputView.printOutput();
         for (int i = 0; i < numberOfAttempts; i++) {
             race.race();
             OutputView.printRace(race.getCars());
