@@ -22,14 +22,14 @@ public class RacingGameService {
         carRacingView.displayWinners(findWinners(racingCars));
     }
 
-    private void moveCar(ArrayList<RacingCar> racingCars){
+    public void moveCar(ArrayList<RacingCar> racingCars){
         for (RacingCar car : racingCars) {
             int newPosition = car.getPosition() + moveForward();
             car.setPosition(newPosition);
         }
     }
 
-    private int moveForward(){
+    public int moveForward(){
         int randNum = RandomNumberGenerator.generateRandNum();
 
         if(randNum < 4) {
@@ -38,7 +38,7 @@ public class RacingGameService {
         return randNum;
     }
 
-    private String[] findWinners(ArrayList<RacingCar> racingCars) {
+    public String[] findWinners(ArrayList<RacingCar> racingCars) {
 
         int maxPosition = racingCars.stream()
                 .mapToInt(RacingCar::getPosition)
