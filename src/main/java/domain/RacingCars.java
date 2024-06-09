@@ -31,4 +31,8 @@ public class RacingCars {
             throw new IllegalArgumentException("자동차 경주를 위해서는 최소 2대 이상의 자동차를 만들어야 합니다.");
         }
     }
+
+    public List<RacingCar> getCars() {
+        return cars;
+    }
 }
