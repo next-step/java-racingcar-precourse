@@ -2,11 +2,11 @@ package model;
 
 public interface CarModelInterface {
 
-    public String getName();
+    String getName();
 
-    public int getProgress();
+    int getProgress();
 
-    public void goForward();
+    void goForward();
 
     void moveOrNot();
 }

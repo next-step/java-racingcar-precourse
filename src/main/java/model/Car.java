@@ -26,16 +26,19 @@ public class Car implements CarModelInterface {
         setProgress(getProgress() + 1);
     }
 
+    // getter
     @Override
     public String getName() {
         return name;
     }
 
+    // getter
     @Override
     public int getProgress() {
         return progress;
     }
 
+    // 난수에 따라 한 칸 전진할지 결정하는 메서드
     @Override
     public void moveOrNot() {
         // 랜덤 변수를 생성한 후

@@ -5,15 +5,15 @@ import model.CarModelInterface;
 
 public interface RaceServiceInterface {
 
-    public int getNumberOfCars();
+    int getNumberOfCars();
 
-    public List<CarModelInterface> getCars();
+    List<CarModelInterface> getCars();
 
-    public List<CarModelInterface> getWinners();
+    List<CarModelInterface> getWinners();
 
-    public void addCars(String[] cars);
+    void addCars(String[] cars);
 
-    public void prepareRace(String rounds);
+    void prepareRace(String rounds);
 
-    public void startRace();
+    void startRace();
 }

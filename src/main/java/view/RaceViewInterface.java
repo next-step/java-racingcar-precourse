@@ -2,19 +2,19 @@ package view;
 
 public interface RaceViewInterface {
 
-    public void userCarsInput();
+    void userCarsInput();
 
-    public void userRoundsInput();
+    void userRoundsInput();
 
-    public void printProgress();
+    void printProgress();
 
-    public void printProcess();
+    void printProcess();
 
-    public void printResult();
+    void printResult();
 
-    public void printCarsErrorMessage();
+    void printCarsErrorMessage();
 
-    public void printRoundsArgumentErrorMessage();
+    void printRoundsArgumentErrorMessage();
 
-    public void printRoundsFormatErrorMessage();
+    void printRoundsFormatErrorMessage();
 }
