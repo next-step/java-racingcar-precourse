@@ -23,9 +23,9 @@ public class InputView {
 
     public List<String> enterCarNames() {
         String input = "";
-        while(input.isBlank()) {
+        while (input.isBlank()) {
             System.out.println(InputMessage.CAR_NAME);
-            input = scanner.next();
+            input = scanner.nextLine();
             try {
                 carNameValidator.validate(input);
             } catch (IllegalArgumentException e) {
@@ -42,11 +42,17 @@ public class InputView {
      * @return 시도 횟수
      */
     public int enterAttemptCount() {
-        System.out.println(InputMessage.ATTEMPT_COUNT);
-
-        String input = scanner.next();
-        attemptCountValidator.validate(input);
-
+        String input = "";
+        while (input.isBlank()) {
+            System.out.println(InputMessage.ATTEMPT_COUNT);
+            input = scanner.nextLine();
+            try {
+                attemptCountValidator.validate(input);
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+                input = "";
+            }
+        }
         return Integer.parseInt(input);
     }
 }
