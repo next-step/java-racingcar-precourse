@@ -16,7 +16,9 @@ class GameServiceTest {
     private static final GameService gameService = GameService.getInstance();
 
 
-    //각 테스트가 끝나면 repository가 초기화된다.
+    /**
+     * 각 유닛 테스트가 완료되면 레포지토리가 비워진다
+     */
     @AfterEach
     void afterEach(){
         carRepository.clear();
@@ -36,11 +38,6 @@ class GameServiceTest {
         assertEquals(cars.get(0).getPosition(),0);
     }
 
-    @Test
-    void moveCars() {
-
-
-    }
     @Test
     @DisplayName("최종 우승 자동차 출력 테스트")
     void findWinner() throws NoSuchFieldException, IllegalAccessException {

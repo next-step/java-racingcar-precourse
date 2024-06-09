@@ -56,7 +56,6 @@ public class GameController {
             } catch(IllegalArgumentException e){
                 outputView.printError(e.getMessage());
             }
-
         }
     }
 
