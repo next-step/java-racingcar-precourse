@@ -1,21 +1,21 @@
 package service;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import model.Race;
 import model.RaceModelInterface;
 import observer.Observer;
 import observer.Subject;
 
-// model과 service를 분리해서 service는 구체적인 로직만 갖도록 함.
+// model과 service를 분리해서 service는 비즈니스 로직만 갖도록 함.
 public class RaceService implements Subject, RaceServiceInterface {
 
     private RaceModelInterface race;
+    private Subject subject;
 
     // 생성자
-    public RaceService() {
-        race = new Race();
+    public RaceService(RaceModelInterface race, Subject subject) {
+        this.race = race;
+        this.subject = subject;
     }
 
     // model의 getter
@@ -99,21 +99,18 @@ public class RaceService implements Subject, RaceServiceInterface {
     // observer를 추가하는 메서드
     @Override
     public void addObserver(Observer observer) {
-        List<Observer> observers = race.getObservers();
-        observers.add(observer);
+        subject.addObserver(observer);
     }
 
     // observer를 삭제하는 메서드
     @Override
     public void removeObserver(Observer observer) {
-        List<Observer> observers = race.getObservers();
-        observers.remove(observer);
+        subject.removeObserver(observer);
     }
 
     // observer들을 update하는 메서드
     @Override
     public void notifyObservers() {
-        List<Observer> observers = race.getObservers();
-        observers.stream().forEach(observer -> observer.update());
+        subject.notifyObservers();
     }
 }

@@ -5,11 +5,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import observer.Observer;
+import observer.Subject;
 import service.CarService;
 import service.CarServiceInterface;
 
-// model과 service를 분리.
-public class Race implements RaceModelInterface {
+// model과 service를 분리해서 model에 관련된 로직만 갖도록 함.
+public class Race implements Subject, RaceModelInterface {
 
     private int numberOfRounds;
     private List<CarServiceInterface> cars;
@@ -34,11 +35,6 @@ public class Race implements RaceModelInterface {
     @Override
     public List<CarServiceInterface> getCars() {
         return cars;
-    }
-
-    @Override
-    public List<Observer> getObservers() {
-        return observers;
     }
 
     private void setNumberOfRounds(int numberOfRounds) {
@@ -89,4 +85,21 @@ public class Race implements RaceModelInterface {
         }
     }
 
+    // observer를 추가하는 메서드
+    @Override
+    public void addObserver(Observer observer) {
+        observers.add(observer);
+    }
+
+    // observer를 삭제하는 메서드
+    @Override
+    public void removeObserver(Observer observer) {
+        observers.remove(observer);
+    }
+
+    // observer들을 update하는 메서드
+    @Override
+    public void notifyObservers() {
+        observers.stream().forEach(observer -> observer.update());
+    }
 }

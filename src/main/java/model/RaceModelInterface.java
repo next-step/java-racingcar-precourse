@@ -14,7 +14,5 @@ public interface RaceModelInterface {
 
     List<CarServiceInterface> getCars();
 
-    List<Observer> getObservers();
-
     void addCars(String[] carsName);
 }
