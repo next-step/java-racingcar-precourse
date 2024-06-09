@@ -16,7 +16,7 @@ public class RacingGameService {
         }
     }
 
-    public void step(){
+    public void runStep(){
         track.runStep(
                 Randoms.pickNumbersInRange(track.getCars().size(), 0, 9)
         );
