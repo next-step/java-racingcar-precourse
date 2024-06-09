@@ -26,7 +26,7 @@ class CarsTest {
         carList.add(new Car("james", 1));
 
         return Stream.of(
-            Arguments.arguments(new Cars(carList), maxPosition)
+            Arguments.arguments(Cars.fromCarList(carList), maxPosition)
         );
     }
 
@@ -47,7 +47,7 @@ class CarsTest {
         winners.add(new Car("gusto", 5));
 
         return Stream.of(
-            Arguments.arguments(new Cars(carList), new Cars(winners))
+            Arguments.arguments(Cars.fromCarList(carList), Cars.fromCarList(winners))
         );
     }
 
