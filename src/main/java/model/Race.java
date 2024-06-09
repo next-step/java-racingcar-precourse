@@ -5,18 +5,13 @@ import java.util.stream.Collectors;
 
 public class Race {
     private final List<Car> cars;
-    private final int rounds;
 
-    public Race(List<String> carNames, int rounds) {
+    public Race(List<String> carNames) {
         this.cars = carNames.stream().map(Car::new).collect(Collectors.toList());
-        this.rounds = rounds;
     }
 
-    public List<Car> start() {
-        for (int i = 0; i < rounds; i++) {
-            cars.forEach(Car::move);
-        }
-        return judgeWinners();
+    public void start() {
+        cars.forEach(Car::move);
     }
 
     public List<Car> judgeWinners() {
@@ -27,5 +22,9 @@ public class Race {
         return cars.stream()
                 .filter(car -> car.getPosition() == maxPosition)
                 .toList();
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 }

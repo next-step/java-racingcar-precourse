@@ -1,19 +1,17 @@
+import controller.RaceController;
 import controller.RaceInputController;
 import java.util.List;
-import model.Car;
 import model.Race;
-import view.OutputView;
 
 public class Application {
     public static void main(String[] args) {
         final RaceInputController inputController = new RaceInputController();
         List<String> carNames = inputController.getUserInputForCarNames();
         int rounds = inputController.getUserInputForRaceCount();
+        final Race race = new Race(carNames);
 
-        Race race = new Race(carNames, rounds);
-        List<Car> result = race.start();
+        RaceController raceController = new RaceController(race, rounds);
+        raceController.startRace();
 
-        OutputView.printRaceStatus(result);
-        OutputView.printWinners(result);
     }
 }

@@ -4,10 +4,11 @@ package view;
 import java.util.List;
 import java.util.stream.Collectors;
 import model.Car;
+import model.Race;
 
 public class OutputView {
-    public static void printRaceStatus(List<Car> cars) {
-        cars.forEach(System.out::println);
+    public static void printRaceStatus(Race race) {
+        race.getCars().forEach(System.out::println);
         System.out.println();
     }
 
