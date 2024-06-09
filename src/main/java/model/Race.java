@@ -32,6 +32,11 @@ public class Race implements Subject, RaceModelInterface {
         return cars;
     }
 
+    @Override
+    public int getNumberOfRounds() {
+        return numberOfRounds;
+    }
+
     // setter
     private void setNumberOfRounds(int numberOfRounds) {
         this.numberOfRounds = numberOfRounds;

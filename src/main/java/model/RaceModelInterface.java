@@ -6,6 +6,8 @@ public interface RaceModelInterface {
 
     int getNumberOfCars();
 
+    int getNumberOfRounds();
+
     void prepareRace(String rounds);
 
     List<CarModelInterface> getCars();
