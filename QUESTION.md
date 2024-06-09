@@ -26,3 +26,4 @@ class RacerTest {
 
 + static 키워드에 대한 테스트에 대해서 강사님은 어떻게 생각하시는지?
 + entity, controller, view 여러 곳에 퍼져있는 validate 로직을 통합하는게 나은지, 아니면 지금대로 분산시켜서 각각 검증 로직을 들고 있는게 나은건지?
++ Test case, Test Fixture 등을 쉽게 만들어주는 라이브러리가 있는지? 아님 방법론이라던가?!
