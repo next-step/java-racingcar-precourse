@@ -60,4 +60,5 @@ public class CarTest {
         // then
         assertEquals(initialPosition, newPosition);
     }
+
 }

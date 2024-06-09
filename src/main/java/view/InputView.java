@@ -46,4 +46,5 @@ public class InputView {
             throw new IllegalArgumentException("[Error] 숫자의 형태로 입력해 주세요");
         }
     }
+
 }

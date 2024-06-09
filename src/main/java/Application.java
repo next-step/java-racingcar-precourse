@@ -9,4 +9,5 @@ public class Application {
         GameController game = new GameController(new InputView(), new OutputView());
         game.run();
     }
+
 }

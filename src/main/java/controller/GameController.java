@@ -41,10 +41,12 @@ public class GameController {
         CarRace carRace = new CarRace(carNames);
 
         outputView.printAnnounce();
+
         for (int i = 0; i < times; i++) {
             carRace.raceOnce();
             outputView.printRace(carRace);
         }
+
         outputView.printWinner(carRace);
     }
 }

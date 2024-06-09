@@ -97,7 +97,7 @@ class InputViewTest {
             int time = inputView.inputTimes();
 
             //then
-            assertEquals(time,5);
+            assertEquals(time, 5);
         }
 
         @Test

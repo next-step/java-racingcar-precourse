@@ -8,4 +8,5 @@ public class Utils {
         Random random = new Random();
         return random.nextInt(0, 10);
     }
+
 }
