@@ -27,4 +27,8 @@ public class CarName {
             throw new IllegalArgumentException(ErrorMessage.INVALID_CAR_NAME);
         }
     }
+
+    public String getName() {
+        return name;
+    }
 }

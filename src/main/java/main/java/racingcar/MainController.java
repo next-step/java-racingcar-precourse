@@ -1,10 +1,13 @@
 package main.java.racingcar;
 
+import main.java.racingcar.domain.Car;
 import main.java.racingcar.domain.Cars;
 import main.java.racingcar.domain.TrialCount;
 import main.java.racingcar.message.ViewMessage;
 import main.java.racingcar.view.InputView;
 import main.java.racingcar.view.OutputView;
+
+import java.util.List;
 
 public class MainController {
 
@@ -12,6 +15,7 @@ public class MainController {
         Cars cars = this.initCars();
         TrialCount trialCount = this.initTrialCount();
         this.proceedGame(cars, trialCount);
+        this.endGame(cars);
     }
 
     private Cars initCars() {
@@ -34,5 +38,8 @@ public class MainController {
         }
     }
 
-
+    private void endGame(Cars cars) {
+        List<Car> winner = cars.getWinnerList();
+        OutputView.printWinner(winner);
+    }
 }

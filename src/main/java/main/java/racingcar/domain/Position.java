@@ -20,4 +20,8 @@ public class Position {
     public void increment(int speed) {
         this.amount += speed;
     }
+
+    public int getAmount() {
+        return amount;
+    }
 }
