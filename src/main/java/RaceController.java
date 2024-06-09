@@ -32,6 +32,7 @@ public class RaceController {
         }
         return carNames;
     }
+
     public int getIter() {
         int iterNum = 0;
         while(iterNum < 1) {
@@ -62,9 +63,9 @@ public class RaceController {
             race.round();
         }
         for(String winner : race.checkWinner()) {
-            winners.append(winner).append(",");
+            winners.append(winner).append(", ");
         }
 
-        view.showWinners(winners.substring(0, winners.length()-1));
+        view.showWinners(winners.substring(0, winners.length()-2));
     }
 }
