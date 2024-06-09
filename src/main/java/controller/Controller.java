@@ -23,6 +23,8 @@ public class Controller {
             updateCarList(); //다음 게임을 위해 자동차 정보 업데이트
         }
 
+        winner = DecisionWinner.decideWinner(carList); //우승자를 가림
+
     }
 
     public Vector<Car> makeCar(Vector<String> carName) { //car 객체를 생성하는 기능
