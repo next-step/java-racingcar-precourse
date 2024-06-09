@@ -6,7 +6,5 @@ public interface CarModelInterface {
 
     int getProgress();
 
-    void goForward();
-
     void moveOrNot();
 }

@@ -20,12 +20,6 @@ public class Car implements CarModelInterface {
         this.progress = progress;
     }
 
-    // 한 칸 앞으로 가는 메서드
-    @Override
-    public void goForward() {
-        setProgress(getProgress() + 1);
-    }
-
     // getter
     @Override
     public String getName() {
@@ -36,6 +30,11 @@ public class Car implements CarModelInterface {
     @Override
     public int getProgress() {
         return progress;
+    }
+
+    // 한 칸 앞으로 가는 메서드
+    private void goForward() {
+        setProgress(getProgress() + 1);
     }
 
     // 난수에 따라 한 칸 전진할지 결정하는 메서드
