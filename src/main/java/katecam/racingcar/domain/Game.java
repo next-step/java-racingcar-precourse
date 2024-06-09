@@ -30,4 +30,12 @@ public class Game {
     public boolean isEnded(){
         return this.attemptedNumber == this.numberToAttempt;
     }
+
+    public int getNumberToAttempt() {
+        return numberToAttempt;
+    }
+
+    public int getAttemptedNumber() {
+        return attemptedNumber;
+    }
 }
