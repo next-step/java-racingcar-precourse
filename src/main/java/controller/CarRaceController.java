@@ -5,6 +5,7 @@ import view.InputView;
 import view.OutputView;
 
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 public class CarRaceController {
@@ -14,7 +15,7 @@ public class CarRaceController {
             int raceCount = InputView.getRaceCount();
 
             List<Car> cars = createAndInitializeCars(carNames);
-            // TODO: 경주 시작 로직 추가
+            runRace(cars, raceCount);
         } catch (IllegalArgumentException e) {
             OutputView.printMessage(e.getMessage());
         }
@@ -28,5 +29,16 @@ public class CarRaceController {
                 return car;
             })
             .collect(Collectors.toList());
+    }
+
+    private void runRace(List<Car> cars, int raceCount) {
+        Random random = new Random();
+        for (int i = 0; i < raceCount; i++) {
+            for (Car car : cars) {
+                if (random.nextInt(10) >= 4) { // 4 이상이면 전진
+                    car.move();
+                }
+            }
+        }
     }
 }
