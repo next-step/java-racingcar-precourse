@@ -32,24 +32,8 @@ public class RaceService implements Subject, RaceServiceInterface {
 
     // controller가 넘겨준 차 목록을 추가하는 메서드
     @Override
-    public void addCars(String[] cars) throws IllegalArgumentException {
-        List<CarServiceInterface> carList = race.getCars();
-
-        // 빈 입력이 들어온 경우도 예외를 반환
-        if (cars.length == 0) {
-            throw new IllegalArgumentException();
-        }
-
-        // cars의 원소 중에 길이가 5 이상인 것이 있다면 예외를 반환
-        boolean isWrongArgument = Arrays.stream(cars).anyMatch(carName -> carName.length() > 5);
-        if (isWrongArgument) {
-            throw new IllegalArgumentException();
-        }
-
-        // 그렇지 않다면 차 목록을 추가
-        List<CarService> tempList = Arrays.stream(cars).map(carName -> new CarService(carName, 0))
-            .collect(Collectors.toList());
-        carList.addAll(tempList);
+    public void addCars(String[] carsName) throws IllegalArgumentException {
+        race.addCars(carsName);
     }
 
     // 우승자의 진행도를 반환하는 메서드

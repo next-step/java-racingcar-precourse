@@ -6,13 +6,15 @@ import service.CarServiceInterface;
 
 public interface RaceModelInterface {
 
-    public int getNumberOfCars();
+    int getNumberOfCars();
 
-    public int getNumberOfRounds();
+    int getNumberOfRounds();
 
-    public void setNumberOfRounds(int numberOfRounds);
+    void setNumberOfRounds(int numberOfRounds);
 
-    public List<CarServiceInterface> getCars();
+    List<CarServiceInterface> getCars();
 
-    public List<Observer> getObservers();
+    List<Observer> getObservers();
+
+    void addCars(String[] carsName);
 }
