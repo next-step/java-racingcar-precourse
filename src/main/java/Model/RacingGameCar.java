@@ -20,8 +20,22 @@ public class RacingGameCar {
         this.carName = carName;
     }
 
+    //getter
+    public int getForward() {
+        return forward;
+    }
+
+    //setter
+    public void setForward(int forward) {
+        this.forward = forward;
+    }
+
     public void forwardingCar(){
         this.forward+=1;
     }
 
+    @Override
+    public String toString() {
+        return this.carName+" : "+ "-".repeat(this.forward);
+    }
 }
