@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.List;
+import model.Car;
 import model.RacingCarGame;
 import view.InputView;
 import view.OutputView;
@@ -19,6 +21,11 @@ public class RacingCarController {
         for (int i = 0; i < movementCount; i++) {
             outputView.printProgress(game.playOneRound());
         }
+
+        List<String> winnerCarNames = game.judgeWinners().stream()
+            .map(Car::getCarName)
+            .toList();
+        outputView.printWinners(winnerCarNames);
     }
 
 }

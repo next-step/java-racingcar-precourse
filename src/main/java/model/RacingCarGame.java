@@ -2,6 +2,7 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import util.RandomNumberGenerator;
 
 public class RacingCarGame {
@@ -24,6 +25,17 @@ public class RacingCarGame {
         }
 
         return cars;
+    }
+
+    public List<Car> judgeWinners() {
+        int winnerPosition = cars.stream()
+            .mapToInt(Car::getPosition)
+            .max()
+            .orElseThrow(NoSuchElementException::new);
+
+        return cars.stream()
+            .filter(car -> car.getPosition() == winnerPosition)
+            .toList();
     }
 
 }
