@@ -62,7 +62,7 @@ class RacerTest {
     @Test
     @DisplayName("Racer moveIfCan 정지 테스트")
     void racerMoveIfCan_WillStopTest() {
-        // given: 전진하는 데이터와 전진하지 않는 데이터
+        // given: 전진하지 않는 데이터
         BigInteger input = Racer.MOVE_THRESHOLD;
         Racer racer = new Racer("Tester");
 
@@ -76,7 +76,7 @@ class RacerTest {
     @Test
     @DisplayName("Racer isWinner 테스트")
     void racerIsWinnerTest_WillTrueTest() {
-        // given: 전진하는 데이터와 전진하지 않는 데이터
+        // given
         Racer racer = new Racer("Tester");
         BigInteger input = racer.getMovedDistance();
         boolean expectedResult = true;
@@ -88,9 +88,9 @@ class RacerTest {
     @Test
     @DisplayName("Racer isWinner 테스트")
     void racerIsWinnerTest_WillFalseTest() {
-        // given: 전진하는 데이터와 전진하지 않는 데이터
+        // given
         Racer racer = new Racer("Tester");
-        BigInteger input = racer.getMovedDistance().add("1");
+        BigInteger input = racer.getMovedDistance().add(new BigInteger("1"));
         boolean expectedResult = false;
 
         // when & then

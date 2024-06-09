@@ -22,6 +22,10 @@ public class Racer {
         }
     }
 
+    public boolean isWinner(BigInteger input) {
+        return input.compareTo(movedDistance) <= 0;
+    }
+
     public String getName() {
         return name;
     }
