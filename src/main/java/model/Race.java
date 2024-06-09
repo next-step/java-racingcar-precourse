@@ -24,8 +24,9 @@ public class Race {
             if (randNum >= 4) {
                 car.moveFoward();
             }
-            System.out.print(car.toString());
+            System.out.println(car.toString());
         }
+        System.out.println();
     }
 
 

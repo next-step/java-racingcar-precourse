@@ -26,9 +26,10 @@ public class RaceController {
     }
 
     public void start() {
+        List<String> carNames = setCars(view.showSetcars());
         int iterNum = setIter(view.showSetiter());
         StringBuilder winners = new StringBuilder();
-        Race race = new Race(setCars(view.showSetcars()), iterNum);
+        Race race = new Race(carNames, iterNum);
         for(int i=0 ; i<iterNum ; i++) {
             race.round();
         }
