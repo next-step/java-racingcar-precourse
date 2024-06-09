@@ -7,9 +7,9 @@ import katecam.racingcar.application.port.in.command.GameTurnPlayUseCase;
 import katecam.racingcar.application.port.in.query.GameStatusQuery;
 import katecam.racingcar.application.port.out.GameRecordPort;
 import katecam.racingcar.application.port.out.GameLoadPort;
-import katecam.racingcar.application.service.command.GameInitializationService;
-import katecam.racingcar.application.service.command.GameTurnPlayService;
-import katecam.racingcar.application.service.query.GameStatusQueryService;
+import katecam.racingcar.application.service.GameInitializationService;
+import katecam.racingcar.application.service.GameTurnPlayService;
+import katecam.racingcar.application.service.GameStatusQueryService;
 
 public class AppConfig {
     private static GameLoadPort gameLoadPort;

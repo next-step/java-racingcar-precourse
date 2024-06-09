@@ -1,4 +1,4 @@
-package katecam.racingcar.application.service.query;
+package katecam.racingcar.application.service;
 
 
 import java.util.List;

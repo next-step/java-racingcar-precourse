@@ -1,4 +1,4 @@
-package katecam.racingcar.application.service.command;
+package katecam.racingcar.application.service;
 
 import katecam.racingcar.application.dto.command.GameInitializationReq;
 import katecam.racingcar.application.port.in.command.GameInitializationUseCase;

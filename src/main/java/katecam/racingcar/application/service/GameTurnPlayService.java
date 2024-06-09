@@ -1,4 +1,4 @@
-package katecam.racingcar.application.service.command;
+package katecam.racingcar.application.service;
 
 import katecam.racingcar.application.port.in.command.GameTurnPlayUseCase;
 import katecam.racingcar.application.port.out.GameLoadPort;
