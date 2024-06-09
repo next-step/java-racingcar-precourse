@@ -28,18 +28,9 @@ public class Race {
     }
 
     public void execute() {
-        raceInput = input.getCarName();
-        while (!validator.validateRaceInput(input.deleteSpace(raceInput), INPUT_SYMBOL,
-            CAR_NAME_NUM)) {
-            raceInput = input.getCarName();
-        }
-        registCar(raceInput);
+        getCarName();
+        getRaceCount();
 
-        String stringRaceNum = input.getRaceCount();
-        while (!validator.validateRaceCount(stringRaceNum)) {
-            stringRaceNum = input.getRaceCount();
-        }
-        raceNum = Integer.parseInt(stringRaceNum);
         List<Car> carList = carRepository.findAllCar();
 
         output.print("실행 결과");
@@ -49,6 +40,31 @@ public class Race {
         output.printWinner(winnerList);
     }
 
+    private void getCarName(){
+        while (true) {
+            try {
+                raceInput = input.getCarName();
+                validator.validateRaceInput(input.deleteSpace(raceInput), INPUT_SYMBOL, CAR_NAME_NUM);
+                registCar(raceInput);
+                break;
+            } catch (IllegalArgumentException | IllegalStateException e) {
+                output.print(e.getMessage());
+            }
+        }
+    }
+
+    private void getRaceCount(){
+        while (true) {
+            try {
+                String stringRaceNum = input.getRaceCount();
+                validator.validateRaceCount(stringRaceNum);
+                raceNum = Integer.parseInt(stringRaceNum);
+                break;
+            } catch (IllegalArgumentException | IllegalStateException e) {
+                output.print(e.getMessage());
+            }
+        }
+    }
     public void registCar(String raceInput) {
         String[] carList = raceInput.split(Character.toString(INPUT_SYMBOL));
         for (String stringCar : carList) {
