@@ -4,6 +4,8 @@ import entity.Racer;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.math.BigInteger;
+
 import static org.assertj.core.api.Assertions.*;
 
 class RacerDtoTest {
@@ -12,13 +14,14 @@ class RacerDtoTest {
     void ofTest() {
         // given
         Racer givenRacer = new Racer("Tester");
-        boolean givenIsWinner = givenRacer.isWinner(givenRacer.getMovedDistance());
+        BigInteger givenInput = givenRacer.getMovedDistance();;
 
         // when
-        RacerDto racerDto = RacerDto.of(givenRacer);
+        RacerDto racerDto = RacerDto.of(givenRacer, givenInput);
 
+        // then
         assertThat(racerDto.name()).isEqualTo(givenRacer.getName());
         assertThat(racerDto.movedDistance()).isEqualTo(givenRacer.getMovedDistance());
-        assertThat(racerDto.isWinner()).isEqualTo(givenIsWinner);
+        assertThat(racerDto.isWinner()).isEqualTo(givenRacer.isWinner(givenInput));
     }
 }
