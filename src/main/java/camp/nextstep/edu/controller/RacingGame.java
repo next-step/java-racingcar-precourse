@@ -7,6 +7,7 @@ import camp.nextstep.edu.view.Output;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class RacingGame {
 
@@ -18,6 +19,10 @@ public class RacingGame {
     public RacingGame(Input input, Output output) {
         this.input = input;
         this.output = output;
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 
     public void run() {
@@ -36,12 +41,13 @@ public class RacingGame {
 
     public void race() {
         System.out.println("실행 결과");
-        for (int i = 0; i < moveCount; i++) {
-            for (Car car : cars) {
-                car.moveForward();
-            }
-            output.printCurrentState(cars);
-        }
+        IntStream.range(0, moveCount)
+                .forEach(i -> {
+                    for (Car car : cars) {
+                        car.moveForward();
+                    }
+                    output.printCurrentState(cars);
+                });
     }
 
     public void endRace() {
