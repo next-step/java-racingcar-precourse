@@ -5,8 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Race {
-    private List<Car> cars;
-    private int raceCount;
+    private final List<Car> cars;
 
     public Race(String[] carNames) {
         cars = new ArrayList<>();
@@ -17,10 +16,6 @@ public class Race {
 
     public List<Car> getCars(){
         return cars;
-    }
-
-    public int getRaceCount(){
-        return raceCount;
     }
 
     public void race() {
