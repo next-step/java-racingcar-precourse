@@ -1,4 +1,4 @@
-package camp.nextstep.edu;
+package camp.nextstep.edu.view;
 
 import java.util.Scanner;
 

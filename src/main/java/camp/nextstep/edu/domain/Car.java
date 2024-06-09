@@ -1,4 +1,4 @@
-package camp.nextstep.edu;
+package camp.nextstep.edu.domain;
 
 public class Car {
 
