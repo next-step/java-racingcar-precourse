@@ -8,10 +8,9 @@ public class Application {
         final RaceInputController inputController = new RaceInputController();
         List<String> carNames = inputController.getUserInputForCarNames();
         int rounds = inputController.getUserInputForRaceCount();
-        final Race race = new Race(carNames);
 
+        final Race race = new Race(carNames);
         RaceController raceController = new RaceController(race, rounds);
         raceController.startRace();
-
     }
 }
