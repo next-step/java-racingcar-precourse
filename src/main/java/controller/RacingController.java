@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import service.RacingService;
 import view.RacingView;
@@ -23,6 +24,18 @@ public class RacingController {
                 break;
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
+            }
+        }
+    }
+    public void inputNumOfTry(){
+        while(true){
+            rv.showInputNumOfTry();
+            try{
+                n = sc.nextInt();
+                break;
+            }catch (InputMismatchException e) {
+                rv.errorMsgInputNumOfTry();
+                sc.next();
             }
         }
     }
