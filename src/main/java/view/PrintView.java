@@ -14,7 +14,7 @@ public class PrintView {
         System.out.println("시도할 회수는 몇회인가요?");
     }
 
-    public void printDriveView(int round, CarList carList){
+    public void printRaceView(int round, CarList carList){
         if( round == 0) {
             System.out.println("실행 결과");
         }
