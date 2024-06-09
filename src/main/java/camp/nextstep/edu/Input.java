@@ -11,25 +11,26 @@ public class Input {
         while (true) {
             try {
                 String carNames = scanner.nextLine();
-                String[] arrCarNames = carNames.split(",");
-                validateCarNames(arrCarNames);
-                return arrCarNames;
+                return validateCarNames(carNames);
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }
         }   
     }
 
-    private void validateCarNames(String[] arrCarNames) {
-        checkCarNumber(arrCarNames);
+    private String[] validateCarNames(String carNames) {
+        checkCarCount(carNames);
 
+        String[] arrCarNames = carNames.split(",");
         for (String name : arrCarNames) {
             checkCarNameLength(name);
         }
+
+        return arrCarNames;
     }
 
-    private void checkCarNumber(String[] arrCarNames) {
-        if (arrCarNames.length == 0) {
+    private void checkCarCount(String arrCarNames) {
+        if (arrCarNames.isEmpty()) {
             throw new IllegalArgumentException("[ERROR] 1개 이상의 자동차 이름을 입력하시오.");
         }
     }
