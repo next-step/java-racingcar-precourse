@@ -1,5 +1,7 @@
 package domain;
 
+import util.RandomGeneratingMove;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -12,6 +14,13 @@ public class RacingCars {
         isDifferentCarName(cars);
         minimumNumofCars(cars.size());
         this.cars = cars;
+    }
+
+    public void moveAll(final RandomGeneratingMove randomGeneratingMove) {
+        for (final RacingCar car : cars) {
+            int engine = randomGeneratingMove.generateRandomInt();
+            car.move(engine);
+        }
     }
 
     private void isDifferentCarName(List<RacingCar> cars) {
