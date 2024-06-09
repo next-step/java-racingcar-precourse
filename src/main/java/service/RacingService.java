@@ -1,23 +1,16 @@
 package service;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import model.Car;
 import model.CarList;
 
 public class RacingService {
-    private Random random ;
-    public RacingService(){
-        random = new Random();
-    }
-    private int getRandomNum(){
-        return random.nextInt(10);
-    }
+    public RacingService(){}
 
-    public void race(CarList carList){
+    public void race(RandomNumberGenerator randomNumberGenerator, CarList carList){
         // 랜덤 값 나와서 전진하는 로직
         for(Car car : carList.getCarList()) {
-            int randNum = getRandomNum();
+            int randNum = randomNumberGenerator.getRandomNum();
             if(randNum >= 4){
                 car.move();
             }
