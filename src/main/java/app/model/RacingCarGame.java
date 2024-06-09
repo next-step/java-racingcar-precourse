@@ -1,6 +1,5 @@
 package app.model;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -48,5 +47,14 @@ public class RacingCarGame {
         Arrays.stream(carNameList).filter(name -> name.length() > 5 || name.length() < 1).findAny().ifPresent(name -> {
             throw new IllegalArgumentException("자동차 이름은 1자리 이상 5자리 이하만 가능합니다.");
         });
+    }
+
+    public void proceed() {
+        carList.forEach(RacingCar::moveForward);
+        this.curCnt++;
+    }
+
+    public boolean isFinished() {
+        return this.attemptCnt == this.curCnt;
     }
 }

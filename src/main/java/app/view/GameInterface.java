@@ -20,6 +20,7 @@ public class GameInterface {
 
     public void printAttemptResult(List<RacingCar> carList) {
         carList.stream().forEach(RacingCar::printCurLocation);
+        System.out.println();
     }
 
     public void printWinner(String winner) {

@@ -32,6 +32,11 @@ public class GameExecutor {
                 gameInterface.printErrorMessage(e.getMessage());
             }
         }
+        gameInterface.printMessage("\n실행 결과");
+        while (!racingCarGame.isFinished()) {
+            racingCarGame.proceed();
+            gameInterface.printAttemptResult(racingCarGame.getCarList());
+        }
     }
 
 }
