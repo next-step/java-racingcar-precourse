@@ -84,6 +84,6 @@ class RacerControllerTest {
     }
 
     private String getInvalidNameInputString() {
-        return "pobi, ";
+        return "pobi, Tester, ";
     }
 }

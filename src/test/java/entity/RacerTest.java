@@ -32,7 +32,7 @@ class RacerTest {
     @DisplayName("Racer 생성자 실패 테스트")
     void racerConstructorWithInvalidDataTest() {
         // given: 생성자 데이터
-        List<String> invalidNameList = Arrays.asList(null, "", "   ");
+        List<String> invalidNameList = Arrays.asList(null, "", "   ", "5자이상문자");
 
         for (String invalidName : invalidNameList) {
             // when
@@ -50,7 +50,7 @@ class RacerTest {
     void racerMoveIfCan_WillMoveTest() {
         // given: 전진하는 데이터
         BigInteger input = Racer.MOVE_THRESHOLD.add(new BigInteger("1"));
-        Racer racer = new Racer("Tester");
+        Racer racer = new Racer(getValidName());
 
         // when
         racer.moveIfCan(input);
@@ -64,7 +64,7 @@ class RacerTest {
     void racerMoveIfCan_WillStopTest() {
         // given: 전진하지 않는 데이터
         BigInteger input = Racer.MOVE_THRESHOLD;
-        Racer racer = new Racer("Tester");
+        Racer racer = new Racer(getValidName());
 
         // when
         racer.moveIfCan(input);
@@ -77,7 +77,7 @@ class RacerTest {
     @DisplayName("Racer isWinner 테스트")
     void racerIsWinnerTest_WillTrueTest() {
         // given
-        Racer racer = new Racer("Tester");
+        Racer racer = new Racer(getValidName());
         BigInteger input = racer.getMovedDistance();
         boolean expectedResult = true;
 
@@ -89,11 +89,15 @@ class RacerTest {
     @DisplayName("Racer isWinner 테스트")
     void racerIsWinnerTest_WillFalseTest() {
         // given
-        Racer racer = new Racer("Tester");
+        Racer racer = new Racer(getValidName());
         BigInteger input = racer.getMovedDistance().add(new BigInteger("1"));
         boolean expectedResult = false;
 
         // when & then
         assertThat(racer.isWinner(input)).isEqualTo(expectedResult);
+    }
+
+    private String getValidName() {
+        return "Test";
     }
 }
