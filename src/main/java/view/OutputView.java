@@ -10,13 +10,10 @@ public class OutputView {
 
     public static void printRaceStatus(List<Car> cars) {
         for (Car car : cars) {
-            StringBuilder status = new StringBuilder();
-            status.append(car.getName()).append(" : ");
-            for (int i = 0; i < car.getPosition(); i++) {
-                status.append("-");
-            }
-            System.out.println(status.toString());
+            String status = car.getName() + " : "
+                + "-".repeat(Math.max(0, car.getPosition()));
+            printMessage(status);
         }
-        System.out.println(); // 빈 줄로 회차 구분
+        printMessage(""); // 빈 줄로 회차 구분
     }
 }

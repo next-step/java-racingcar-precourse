@@ -66,4 +66,20 @@ public class RaceTest {
         assertThat(winners).extracting("name")
             .contains("woni", "jun");
     }
+
+    @Test
+    public void shouldHaveSingleWinnerWhenOnlyOneCarHasMaxPosition() {
+        List<String> carNames = List.of("pobi", "woni", "jun");
+        Race race = new Race(carNames);
+
+        race.getCars().get(0).move();
+        race.getCars().get(0).move(); // pobi moves twice
+        race.getCars().get(1).move(); // woni moves once
+        race.getCars().get(2).move();
+
+        List<Car> winners = race.getWinners();
+        assertThat(winners).hasSize(1);
+        assertThat(winners).extracting("name")
+            .contains("pobi");
+    }
 }

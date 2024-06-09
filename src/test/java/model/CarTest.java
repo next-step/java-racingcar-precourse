@@ -51,4 +51,10 @@ public class CarTest {
         car.move();
         assertEquals(2, car.getPosition());
     }
+
+    @Test
+    public void carNameShouldAllowSpecialCharacters() {
+        Car car = new Car("p@bi");
+        assertEquals("p@bi", car.getName());
+    }
 }
