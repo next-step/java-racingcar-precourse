@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import service.RacingService;
@@ -45,5 +46,9 @@ public class RacingController {
             rs.round();
             rv.showRacing(rs.getCarRepository());
         }
+    }
+    public void showWinner(){
+        ArrayList<String> winnerArrList = rs.getWinnerArrList();
+        rv.showWinnerList(winnerArrList);
     }
 }
