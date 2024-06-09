@@ -6,4 +6,8 @@ public class RacingCar {
     public RacingCar(final String name) {
         this.racingCarName = new RacingCarName(name);
     }
+
+    public RacingCarName getRacingCarName() {
+        return racingCarName;
+    }
 }
