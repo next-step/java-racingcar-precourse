@@ -27,6 +27,18 @@ public class RaceTest {
         List<Car> cars = carRace.getCars();
         Assertions.assertEquals(3, cars.size());
     }
+    @Test
+    @DisplayName("차량 이름 입력 받아 전진한다")
+    public void move() {
+        // Given
+        Car car = new Car("A");
 
-    
+        // When
+        car.move(5);
+
+        // Then
+        Assertions.assertEquals(car.getPosition(), 1);
+    }
+
+
 }
