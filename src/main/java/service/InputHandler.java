@@ -16,9 +16,13 @@ public class InputHandler {
     public int getTryCount() {
         while (true) {
             try {
-                return Integer.parseInt(scanner.nextLine());
-            } catch (NumberFormatException e) {
-                System.out.println("[ERROR] 숫자를 입력해 주세요.");
+                int tryCount = Integer.parseInt(scanner.nextLine());
+                if (tryCount < 1) {
+                    throw new IllegalArgumentException("[ERROR] 시도 횟수는 1 이상의 정수로 입력 가능합니다.다시 입력해주세요");
+                }
+                return tryCount;
+            } catch (IllegalArgumentException e) {
+                System.out.println("[ERROR] 시도 횟수는 1 이상의 정수로 입력 가능합니다. 다시 입력해주세요.");
             }
         }
     }
