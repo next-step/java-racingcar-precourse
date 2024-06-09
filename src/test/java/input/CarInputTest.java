@@ -23,7 +23,18 @@ public class CarInputTest {
         assertEquals("[ERROR] 자동차 이름은 1자 이상 5자 이하만 가능합니다.", exception.getMessage());
     }
 
-    
+    @Test
+    public void DuplicatedCarName() { // 중복된 Car 이름에 대한 테스트
+
+        //Given
+        String carName = "carA,carB,carA"; // 중복된 이름
+
+        // When & Then
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            carRace.createCars(carName);
+        });
+        assertEquals("[ERROR] 자동차 이름은 중복될 수 없습니다.", exception.getMessage());
+    }
 
 
 }
