@@ -16,6 +16,8 @@ public class CarRaceController {
 
             List<Car> cars = createAndInitializeCars(carNames);
             runRace(cars, raceCount);
+            List<Car> winners = determineWinners(cars); // 우승자 결정
+            // TODO: 우승자 출력 로직 추가
         } catch (IllegalArgumentException e) {
             OutputView.printMessage(e.getMessage());
         }
@@ -53,5 +55,16 @@ public class CarRaceController {
             OutputView.printMessage(status.toString());
         }
         OutputView.printMessage(""); // 빈 줄로 회차 구분
+    }
+
+    private List<Car> determineWinners(List<Car> cars) {
+        int maxPosition = cars.stream()
+            .mapToInt(Car::getPosition)
+            .max()
+            .orElse(0); // 최대 거리 계산
+
+        return cars.stream()
+            .filter(car -> car.getPosition() == maxPosition)
+            .collect(Collectors.toList());
     }
 }
