@@ -20,6 +20,23 @@ public class Track {
         }
     }
 
+    public List<Car> getWinners(){
+        int maxPosition = 0;
+
+        List<Car> winner = new ArrayList<>();
+        for(Car car : cars){
+            if(car.getPosition() == maxPosition){
+                winner.add(car);
+                continue;
+            }
+            if(car.getPosition() > maxPosition){
+                winner.clear();
+                maxPosition = car.getPosition();
+                winner.add(car);
+            }
+        }
+        return winner;
+    }
     private void validateSeedSize(List<Integer> seeds){
         if(seeds.size() != cars.size()){
             throw new IllegalArgumentException("[ERROR]: Seed 개수가 차량 개수와 일치하지 않습니다");
