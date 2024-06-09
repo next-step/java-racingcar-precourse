@@ -2,9 +2,24 @@ import model.Race;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
+
 
 public class RaceController {
     RaceView view = new RaceView();
+    Scanner scanner = new Scanner(System.in);
+
+    public List<String> getCars() {
+        List<String> carNames = new ArrayList<>();
+        while (carNames.isEmpty()) {
+            try {
+                carNames = setCars(scanner.nextLine());
+            } catch (IllegalArgumentException e) {
+                view.showError(e.getMessage());
+            }
+        }
+        return carNames;
+    }
 
     public static List<String> setCars(String input) {
         String[] rawNames = input.split(",");
@@ -17,6 +32,17 @@ public class RaceController {
         }
         return carNames;
     }
+    public int getIter() {
+        int iterNum = 0;
+        while(iterNum < 1) {
+            try {
+                iterNum = setIter(scanner.nextInt());
+            } catch (IllegalArgumentException e) {
+                view.showError(e.getMessage());
+            }
+        }
+        return iterNum;
+    }
 
     public static int setIter(int input) {
         if (input <= 0) {
@@ -26,8 +52,10 @@ public class RaceController {
     }
 
     public void start() {
-        List<String> carNames = setCars(view.showSetcars());
-        int iterNum = setIter(view.showSetiter());
+        view.showSetcars();
+        List<String> carNames = getCars();
+        view.showSetiter();
+        int iterNum = getIter();
         StringBuilder winners = new StringBuilder();
         Race race = new Race(carNames, iterNum);
         for(int i=0 ; i<iterNum ; i++) {
