@@ -11,17 +11,25 @@ public class CarNameValidator {
     }
 
     public static void validate(String input) {
+        validateNameExists(input);
         validateNameLength(input);
         validateDuplication(input);
+    }
+
+    private static void validateNameExists(String input) {
+        String[] names = input.split(NAME_DELIMITER);
+        if (names.length == 0) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_NAME_LENGTH.getMessage());
+        }
     }
 
     public static void validateNameLength(String input) {
         String[] names = input.split(NAME_DELIMITER);
         Arrays.stream(names)
-            .filter(name -> name.length() > MAX_NAME_LENGTH)
+            .filter(name -> name.length() > MAX_NAME_LENGTH || name.isBlank())
             .findAny()
             .ifPresent(name -> {
-                throw new IllegalArgumentException(ErrorMessage.EXCEED_NAME_LENGTH.getMessage());
+                throw new IllegalArgumentException(ErrorMessage.INVALID_NAME_LENGTH.getMessage());
             });
     }
 
@@ -36,3 +44,4 @@ public class CarNameValidator {
     }
 
 }
+
