@@ -1,19 +1,21 @@
 package RacingCar.Controller;
 
+import RacingCar.Model.Race;
 import RacingCar.View.InputView;
 import java.util.List;
 
 public class RacingCarController {
 
-  public static void startGame(){
+  public static void startGame() {
     List<String> carNames = InputView.getCarNames();
+    int attempts = InputView.getNumberOfAttempts();
 
-    int attempts;
+    Race race = new Race(carNames);
 
-    try {
-      attempts = InputView.getNumberOfAttempts();
-    } catch (NumberFormatException e){
-      throw new IllegalArgumentException("[ERROR] 유효한 숫자를 입력해야 합니다.");
+    for (int i = 0; i < attempts; i++) {
+      race.moveCars();
     }
+
+
   }
 }
