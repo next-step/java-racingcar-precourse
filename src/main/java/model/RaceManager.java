@@ -37,6 +37,7 @@ public class RaceManager {
      * 레이스 진행과 결과 출력
      */
     public void doRace(){
+        System.out.println("\n실행 결과");
         for(int i=0;i<raceNum;i++){
             cm.race();
             outControl.printRaceLog(cm.getRaceLog());
