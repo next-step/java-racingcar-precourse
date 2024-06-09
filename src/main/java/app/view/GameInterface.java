@@ -27,7 +27,7 @@ public class GameInterface {
     public void printWinner(List<RacingCar> winnerList) {
         System.out.println("최종 우승자 : " + winnerList.stream()
                                             .map(RacingCar::getName)
-                                            .collect(Collectors.joining(",")));
+                                            .collect(Collectors.joining(", ")));
     }
 
     public void printMessage(String message) {
@@ -35,6 +35,6 @@ public class GameInterface {
     }
 
     public void printErrorMessage(String message) {
-        System.out.println("Error : " + message);
+        System.out.println("[Error] " + message);
     }
 }
