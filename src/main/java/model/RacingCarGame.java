@@ -18,7 +18,7 @@ public class RacingCarGame {
         this.movementCount = movementCount;
     }
 
-    public List<Car> goForward() {
+    public List<Car> playOneRound() {
         for (Car car : cars) {
             car.move(generator.generateRandomNumber());
         }
