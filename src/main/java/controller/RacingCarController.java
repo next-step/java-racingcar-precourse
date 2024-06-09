@@ -61,5 +61,16 @@ public class RacingCarController {
         }
     }
 
+    public List<String> getWinner(List<Car> cars) {
+        int maxPosition = cars.stream()
+                .map(Car::getPosition)
+                .max(Integer::compareTo)
+                .orElse(0);
+
+        return cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .map(Car::getName)
+                .collect(Collectors.toList());
+    }
 
 }
