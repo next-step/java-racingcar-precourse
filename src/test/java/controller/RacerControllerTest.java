@@ -5,6 +5,7 @@ import org.assertj.core.api.ThrowableAssert;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.List;
 
@@ -42,6 +43,36 @@ class RacerControllerTest {
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(Racer.VALIDATE_NAME_ERROR_MESSAGE);
         }
+    }
+
+    @Test
+    @DisplayName("Controller setUpGameCount 메소드 성공 테스트")
+    void setUpGameCountTest() {
+        // given
+        RacerController controller = new RacerController();
+        BigInteger givenInput = new BigInteger("0");
+
+        // when
+        ThrowableAssert.ThrowingCallable setUpGameCount = () -> controller.setUpGameCount(givenInput);
+
+        // then
+        assertThatCode(setUpGameCount).doesNotThrowAnyException();
+    }
+
+    @Test
+    @DisplayName("Controller setUpGameCount 메소드 성공 테스트")
+    void setUpGameCount_WillThrownTest() {
+        // given
+        RacerController controller = new RacerController();
+        BigInteger givenInput = new BigInteger("-1");
+
+        // when
+        ThrowableAssert.ThrowingCallable setUpGameCount = () -> controller.setUpGameCount(givenInput);
+
+        // then
+        assertThatThrownBy(setUpGameCount)
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(RacerController.VALIDATE_GAME_COUNT_ERROR_MESSAGE);
     }
 
     private String getValidNameInputString() {

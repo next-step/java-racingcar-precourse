@@ -6,6 +6,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class RacerController {
+
     private List<Racer> raceList;
 
     public RacerController() {
