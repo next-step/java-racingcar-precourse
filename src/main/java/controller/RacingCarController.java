@@ -44,5 +44,22 @@ public class RacingCarController {
         }
     }
 
+    public List<Car> race(List<Car> cars, int count) {
+        for (int i = 0; i < count; i++) {
+            attempt(cars);
+            System.out.println();
+        }
+        return cars;
+    }
+
+    public void attempt(List<Car> cars) {
+        for (Car car : cars) {
+            if (random.nextInt(10) >= 4) {
+                car.moveForward();
+            }
+            outputView.printRacingCar(car.getName(), car.getPosition());
+        }
+    }
+
 
 }
