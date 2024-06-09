@@ -6,5 +6,8 @@ public class Application {
         //input
         rc.inputCarNames();
         rc.inputNumOfTry();
+
+        //racing
+        rc.racingStart();
     }
 }
