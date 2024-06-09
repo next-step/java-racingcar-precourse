@@ -13,16 +13,20 @@ public class CarRaceController {
             List<String> carNames = InputView.getCarNames();
             int raceCount = InputView.getRaceCount();
 
-            List<Car> cars = createCars(carNames);
+            List<Car> cars = createAndInitializeCars(carNames);
             // TODO: 경주 시작 로직 추가
         } catch (IllegalArgumentException e) {
             OutputView.printMessage(e.getMessage());
         }
     }
 
-    private List<Car> createCars(List<String> carNames) {
+    private List<Car> createAndInitializeCars(List<String> carNames) {
         return carNames.stream()
-            .map(Car::new)
+            .map(name -> {
+                Car car = new Car(name);
+                car.initializePosition(); // 위치 초기화
+                return car;
+            })
             .collect(Collectors.toList());
     }
 }
