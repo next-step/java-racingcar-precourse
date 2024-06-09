@@ -15,4 +15,8 @@ public class InputView {
         String carNames = scanner.nextLine();
         return SplitingCarName.splitCarName(carNames);
     }
+
+    public String inputTryCount(){
+        return scanner.nextLine();
+    }
 }
