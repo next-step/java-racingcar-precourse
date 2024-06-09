@@ -3,6 +3,7 @@ package model;
 public class Car {
     private final String name;
     private int position;
+    private Integer fixedRandomNumber = null;
 
     public Car(String name) {
         if (name.length() > 5) {
@@ -12,10 +13,21 @@ public class Car {
         this.position = 0;
     }
 
+    public void setFixedRandomNumber(int number) {
+        this.fixedRandomNumber = number;
+    }
+
     public void move() {
-        if ((int) (Math.random() * 10) >= 4) {
+        if (getRandomNumber() >= 4) {
             this.position++;
         }
+    }
+
+    protected int getRandomNumber() {
+        if (fixedRandomNumber != null) {
+            return fixedRandomNumber;
+        }
+        return (int) (Math.random() * 10);
     }
 
     public String getName() {
