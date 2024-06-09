@@ -41,7 +41,7 @@ version 1.1
 * addCar(CarServiceInterface) : void
 * setRound(int) : void
 ---
-### class CarServiceTest
+### class CarTest
 * tests
 ---
 ### class RaceServiceTest

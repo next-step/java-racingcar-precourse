@@ -60,6 +60,23 @@ public class RaceServiceTest {
     }
 
     @Test
+    void prepareRaceTest() {
+        // 객체와 삽입할 배열을 준비
+        Race race = new Race();
+        RaceServiceInterface raceService = new RaceService(race, race);
+        String round = "5";
+
+        // race 준비(round 정보 설정)
+        raceService.prepareRace(round);
+        int numberOfRounds = raceService.getNumberOfRounds();
+
+        // round가 잘 들어갔는지 테스트
+        Assertions.assertThat(numberOfRounds).isEqualTo(Integer.parseInt(round));
+    }
+
+
+
+    @Test
     void getWinnersTest() {
         // 객체와 삽입할 배열을 준비
         Race race = new Race();
@@ -86,4 +103,6 @@ public class RaceServiceTest {
         // getWinners로 받아온 승자가 진짜 승자인지 확인
         Assertions.assertThat(isWinnerProgressTheHighest).isTrue();
     }
+
+
 }
