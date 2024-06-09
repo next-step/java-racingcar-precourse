@@ -16,27 +16,18 @@ class CarNameValidatorTest {
         assertDoesNotThrow(() -> CarNameValidator.validate(input));
     }
 
-    @ParameterizedTest(name = "{0}은 길이를 초과한 이름 입력입니다")
-    @ValueSource(strings = {"thiago,sil   ", "en      ,zo"})
+    @ParameterizedTest(name = "{0}은 부적절한 길이의 이름이 존재합니다")
+    @ValueSource(strings = {"thiago,sil   ", "en      ,zo", ",,,,", "        "})
     void 부적절한_이름_길이는_예외를_발생시킵니다(String input) {
         IllegalArgumentException error = assertThrows(
             IllegalArgumentException.class, () -> CarNameValidator.validate(input));
 
-        assertThat(error.getMessage()).isEqualTo(ErrorMessage.EXCEED_NAME_LENGTH.getMessage());
+        assertThat(error.getMessage()).isEqualTo(ErrorMessage.INVALID_NAME_LENGTH.getMessage());
     }
 
     @ParameterizedTest(name = "{0}은 중복이 존재하는 이름 입력입니다")
     @ValueSource(strings = {"enzo,bruno,enzo", "james,james,james"})
     void 중복이_존재하는_이름은_예외를_발생시킵니다(String input) {
-        IllegalArgumentException error = assertThrows(
-            IllegalArgumentException.class, () -> CarNameValidator.validate(input));
-
-        assertThat(error.getMessage()).isEqualTo(ErrorMessage.DUPLICATE_NAME_FOUND.getMessage());
-    }
-
-    @ParameterizedTest(name = "{0}은 길이가 0인 이름 입력입니다")
-    @ValueSource(strings = {",,,,"})
-    void 길이가_0인_이름은_예외를_발생시킵니다(String input) {
         IllegalArgumentException error = assertThrows(
             IllegalArgumentException.class, () -> CarNameValidator.validate(input));
 
