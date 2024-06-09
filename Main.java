@@ -1,43 +1,47 @@
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Main {
 
-    static List<String> carList;
-    static List<String> carRaceInfo;
-    static int raceNum;
-    static Random random;
+    static Scanner scanner ;
+    static List<String> carList ;
 
     public static void main(String[] args) {
+        scanner = new Scanner(System.in);
+
         System.out.println("경주할 자동차 이름을 입력하세요. (이름은 쉼표(,) 기준으로 구분");
-        carList = checkCarName(getUserInput(0));
+        getCarList();
 
         System.out.println("시도할 회수는 몇회인가요?");
-        raceNum = Integer.parseInt(getUserInput(1));
+        int raceNum = getRaceNum();
 
-        System.out.println("실행 결과");
-        random = new Random();
-        makeCarRaceInfoList();
-        for(int nowRace = 0; nowRace < raceNum; nowRace++){
-            for (int i = 0; i < carList.size(); i++) {
-                raceStart(i);
+        // int raceNum = Integer.parseInt(scanner.nextLine());
+        System.out.println();
+
+        CarRaceModel model = new CarRaceModel(carList);
+        CarRaceView view = new CarRaceView();
+        CarRaceController controller = new CarRaceController(model, view);
+        controller.startRace(raceNum);
+    }
+
+    public static List<String> getCarList(){
+        carList = new ArrayList<>();
+
+        while (true) {
+            String input = scanner.nextLine().trim();
+
+            try {
+                validateInput(input);
+                break;
+            } catch (IllegalArgumentException e) {
+                System.out.println("[ERROR] " + e.getMessage());
             }
-            printRaceInfo();
         }
+        return carList ;
     }
 
-    public static String getUserInput(int inputOrder){ // 사용자 입력 받기
-        Scanner scanner = new Scanner(System.in);
-        String input = scanner.nextLine();
-        if (input == null || input.trim().isEmpty()) {
-            throw new IllegalArgumentException("Input must be a non-empty string.");
-        }
-        return input ;
-    }
-
-    public static List<String> checkCarName(String input){ // 입력받은 차 이름 반환
+    public static List<String> checkCarName(String input) { // 입력받은 차 이름 반환
         List<String> checkedNames = new ArrayList<>();
         String[] names = input.split(",");
 
@@ -49,24 +53,34 @@ public class Main {
         return checkedNames;
     }
 
-    public static void makeCarRaceInfoList(){
-        carRaceInfo = new ArrayList<>(carList.size());
-        for (int i = 0; i < carList.size(); i++) {
-            carRaceInfo.add("");
+    private static void validateInput(String input) throws IllegalArgumentException {
+        if (input.isEmpty()) {
+            throw new IllegalArgumentException("입력이 비어있습니다.");
+        }
+
+        String[] names = input.split(",");
+        for (String name : names) {
+            if (name.trim().isEmpty()) {
+                throw new IllegalArgumentException("빈 자동차 이름이 있습니다.");
+            }
+            if (name.trim().length() > 5) {
+                throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.");
+            }
+            carList.add(name);
         }
     }
 
-    public static void raceStart(int i){
-        int randomNumber = random.nextInt(10);
-        if (randomNumber <= 4){
-            carRaceInfo.set(i, carRaceInfo.get(i)+"-");
+    public static int getRaceNum(){
+        int raceNum ;
+        while (true) {
+            try {
+                raceNum = scanner.nextInt();                
+                break;
+            } catch (IllegalArgumentException e) {
+                System.out.println("[ERROR] " + e.getMessage());
+                scanner.nextLine();
+            }
         }
-    }
-
-    public static void printRaceInfo(){
-        for(int i = 0; i<carList.size(); i++){
-            System.out.println(carList.get(i) + " : " + carRaceInfo.get(i));
-        }
-        System.out.println();
+        return raceNum;
     }
 }
