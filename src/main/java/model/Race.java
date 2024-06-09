@@ -45,4 +45,11 @@ public class Race {
         }
         return winners;
     }
+
+    public List<Car> getCars() {
+        return cars;
+    }
+    public int getIterNum() {
+        return iterNum;
+    }
 }
