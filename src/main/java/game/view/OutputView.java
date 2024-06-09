@@ -16,15 +16,8 @@ public class OutputView {
 
     public void printWinner(Cars cars) {
         System.out.print(OutputMessage.WINNER);
-
-        StringBuilder result = new StringBuilder();
-        List<Car> winnerList = cars.findWinners().getCarList();
-        for (Car car : winnerList) {
-            result.append(car.getName());
-            if (winnerList.indexOf(car) < winnerList.size() - 1) {
-                result.append(", ");
-            }
-        }
+        Cars winners = cars.findWinners();
+        String result = String.join(", ", winners.getCarNames());
 
         System.out.println(result);
     }
