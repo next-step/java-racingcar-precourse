@@ -39,6 +39,20 @@ public class RaceTest {
         // Then
         Assertions.assertEquals(car.getPosition(), 1);
     }
+    @Test
+    @DisplayName("우승자 찾는 테스트")
+    public void winner() {
+        // Given
+        String name = "A";
+        carRace.createCars(name);
+
+        // When
+        carRace.race(3);
+        List<Car> Winner = carRace.findWinners();
+
+        // Then
+        Assertions.assertEquals(Winner.get(0).getName(), "A");
+    }
 
 
 }
