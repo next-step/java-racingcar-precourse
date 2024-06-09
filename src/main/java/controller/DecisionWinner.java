@@ -9,7 +9,7 @@ public class DecisionWinner { //우승자를 판별하는 것과 관련된 클�
         Vector<String> winner = new Vector<>(); //우승자들의 자동차 이름을 담을 벡터
         for(int i = 0; i < carList.size(); i++){
             Car car = carList.get(i);
-            if (car.getNumberOfMove() == winnerMove)
+            if (car.getNumberOfMove() == winnerMove) //우승자의 전진 횟수와 NumberOfMove의 값이 동일한다면 벡터에 추가
                 winner.add(car.getCarName()); // 우승자들의 이름을 벡터에 추가
         }
 
