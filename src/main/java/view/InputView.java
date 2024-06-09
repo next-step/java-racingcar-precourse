@@ -20,7 +20,7 @@ public class InputView {
         return Arrays.stream(carNameArr).map(RacingCar::from).collect(Collectors.toList());
     }
 
-    public static int inputCount(){
+    public static int inputRoundNumber(){
         return Integer.parseInt(readLine(InputValidator::validateIsNumber));
     }
 

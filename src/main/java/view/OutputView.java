@@ -12,7 +12,7 @@ public class OutputView {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
     }
 
-    public static void printNumberOfTryInputTest(){
+    public static void printRoundNumberInputText(){
         System.out.println("시도할 회수는 몇회인가요?");
     }
 
@@ -28,18 +28,12 @@ public class OutputView {
         System.out.println("실행 결과");
     }
 
-    public static void printGameProgress(List<RacingCar> racingCars){
-        racingCars.forEach(racingCar -> {
+    public static void printGameProgress(List<RacingCar> racingCarList){
+        racingCarList.forEach(racingCar -> {
             System.out.print(racingCar.getName()+" : ");
-            printGameProgressMove(racingCar.getMoveDistance());
+            System.out.println("-".repeat(racingCar.getMoveDistance()));
         });
-    }
-
-    public static void printGameProgressMove(int count){
-        for(int i=0; i<count; i++){
-            System.out.print("-");
-            if(i==count-1) printLine();
-        }
+        printLine();
     }
 
     public static void printWinners(List<RacingCar> winners){
