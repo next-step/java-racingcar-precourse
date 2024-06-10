@@ -1,37 +1,51 @@
 package controller;
 
+import controller.res.CarInfoDto;
 import domain.state.CarState;
 import java.util.List;
 import java.util.stream.Collectors;
 import service.RacingGameService;
+import view.InputView;
+import view.OutputView;
 
 public class RacingGameController {
     private final RacingGameService racingGameService;
 
-
     public RacingGameController() {
         this.racingGameService = new RacingGameService();
     }
+    public void carInit(){
+        while(true){
+            try{
+                var carName = InputView.readCarName();
+                racingGameService.trackInit(carName);
+                break;
+            }catch (IllegalArgumentException e){
+                OutputView.printError(e.getMessage());
+            }
+        }
 
+    }
+
+    public int gameCountInit(){
+        while(true){
+            try{
+                return InputView.readGameCount();
+            }catch (IllegalArgumentException e){
+                OutputView.printError(e.getMessage());
+            }
+        }
+    }
     public void runGame(){
-        //Todo Input값 받기
-        var carName = List.of("Car1", "Car2", "Car3");
-        var gameCount = 3;
-        racingGameService.trackInit(carName);
+        var gameCount = gameCountInit();
 
+        OutputView.printResultOutput();
         for(int i = 0; i < gameCount; i++){
             racingGameService.runStep();
             var cars = racingGameService.getCars();
-            //Todo DTO변환 후 View에 값 반환하기
-            for(CarState car : cars){
-                System.out.printf("%s : %s\n", car.getName(), "-".repeat(car.getPosition()));
-            }
-            System.out.println();
+            OutputView.printStep(cars.stream().map(CarInfoDto::toDTO).toList());
         }
-        //Todo DTO변환 후 View에 값 반환하기
-        System.out.printf("최종 우승자 : %s\n", racingGameService.getWinners()
-                .stream()
-                .map(CarState::getName).
-                collect(Collectors.joining(", ")));
+
+        OutputView.printResult(racingGameService.getWinners().stream().map(CarInfoDto::toDTO).toList());
     }
 }

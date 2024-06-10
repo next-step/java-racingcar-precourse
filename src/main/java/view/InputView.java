@@ -1,7 +1,5 @@
 package view;
 
-import java.sql.SQLOutput;
-import java.util.Arrays;
 import java.util.List;
 import utils.Console;
 
@@ -10,32 +8,14 @@ public class InputView {
     private static final String GET_GAME_COUNT_REQUEST = "시도할 회수는 몇회인가요?";
 
     public static List<String> readCarName(){
-        List<String> validCarName = null;
-        do {
-            System.out.println(GET_CAR_NAME_REQUEST);
-            try{
-                validCarName = Parser.validateCarNameInput(Console.readLine());
-            }catch(Exception e) {
-                System.out.println(e.getMessage());
-            }
-        }while (validCarName == null);
-
-        return validCarName;
+        System.out.println(GET_CAR_NAME_REQUEST);
+        return Parser.validateCarNameInput(Console.readLine());
     }
 
 
     public static int readGameCount(){
-        Integer validGameCount = null;
-        do {
-            System.out.println(GET_GAME_COUNT_REQUEST);
-            try {
-                validGameCount = Parser.validateGameCountInput(Console.readLine());
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-            }
-        } while (validGameCount == null);
-
-        return validGameCount;
+        System.out.println(GET_GAME_COUNT_REQUEST);
+        return Parser.validateGameCountInput(Console.readLine());
     }
 
 }
