@@ -28,25 +28,27 @@ public class RacingCarGame {
             cars.add(new Car(name));
         }
 
-        inputView.inputIteration();
-
+        System.out.println("시도할 회수는 몇회인가요?");
+        while (!inputView.inputIteration()) {
+        }
         return cars;
     }
 
-    private boolean checkNameLength(String name) {
+    public boolean checkNameLength(String name) {
         try {
-            if (name.length() > MAX_NAME_LENGTH + 1) {
+            if (name.length() > MAX_NAME_LENGTH) {
                 throw new IllegalArgumentException();
             }
         } catch (IllegalArgumentException e) {
-            System.out.println("[ERROR] : 이름은 " + MAX_NAME_LENGTH + "자 이하만 가능합니다." + name + " 부분부터 다시 입력해 주세요.");
+            System.out.println(
+                "[ERROR] : 이름은 " + MAX_NAME_LENGTH + "자 이하만 가능합니다." + name + " 부분부터 다시 입력해 주세요.");
             return false;
         }
 
         return true;
     }
 
-    private void output(ArrayList<Car> cars){
+    public void output(ArrayList<Car> cars) {
         outputView.showExecutionResult();
 
         for (int i = 0; i < inputView.getIteration(); i++) {
@@ -61,7 +63,7 @@ public class RacingCarGame {
         outputView.showWinner(cars);
     }
 
-    private void findWinner(ArrayList<Car> cars) {
+    public void findWinner(ArrayList<Car> cars) {
         int furthestDistance = findFurthestDistance(cars);
 
         for (Car car : cars) {
@@ -71,7 +73,7 @@ public class RacingCarGame {
         }
     }
 
-    private int findFurthestDistance(ArrayList<Car> cars){
+    public int findFurthestDistance(ArrayList<Car> cars) {
         int furthestDistance = 0;
         for (Car car : cars) {
             if (car.getDistance() > furthestDistance) {

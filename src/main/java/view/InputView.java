@@ -14,21 +14,21 @@ public class InputView {
         this.carNames = scanner.nextLine().split("\\s*,\\s*");
     }
 
-    public void inputIteration() {
+    public boolean inputIteration() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("시도할 회수는 몇회인가요?");
-        try { // 횟수 입력 검사
+        try {
             int iteration = scanner.nextInt();
             if (iteration < 1) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("[ERROR] : 시도할 회수는 자연수만 입력 가능합니다. 다시 입력 해주세요.");
             }
             this.iteration = iteration;
-        } catch (InputMismatchException e) { // 숫자가 아닌 값을 입력 받은 경우
+            return true;
+        } catch (InputMismatchException | IllegalArgumentException e) { // 올바르지 않은 값을 입력 받은 경우
             System.out.println("[ERROR] : 시도할 회수는 자연수만 입력 가능합니다. 다시 입력 해주세요.");
-        } catch (IllegalArgumentException e) { // 0 또는 음의 정수를 입력 받은 경우
-            System.out.println("[ERROR] : 시도할 회수는 자연수만 입력 가능합니다. 다시 입력 해주세요.");
+            return false;
         }
     }
+
 
     public String[] getCarNames() {
         return this.carNames;
