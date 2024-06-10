@@ -1,6 +1,7 @@
 package domain;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -39,4 +40,22 @@ public class RacingCarTest {
         //then
         assertThat(sameDistance).isEqualTo(sameDistanceCheck);
     }
+
+    @DisplayName("전진한 자동차들을 비교할 수 있다.")
+    @Test
+    void compareDistanceToCar() throws Exception{
+
+        //given
+        String myCarName = "ini";
+        String competeCarName= "yoni";
+        RacingCar myCar = new RacingCar(myCarName, 4);
+        RacingCar competeCar = new RacingCar(competeCarName, 2);
+
+        //when
+        int compare = myCar.compareTo(competeCar);
+
+        //then
+        assertThat(compare).isGreaterThan(0);
+    }
+
 }
