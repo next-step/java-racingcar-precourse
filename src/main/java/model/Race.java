@@ -32,6 +32,7 @@ public class Race implements Subject, RaceModelInterface {
         return cars;
     }
 
+    // getter
     @Override
     public int getNumberOfRounds() {
         return numberOfRounds;
@@ -79,6 +80,7 @@ public class Race implements Subject, RaceModelInterface {
         setNumberOfRounds(numberOfRounds);
     }
 
+    // round 횟수에 대한 유효성 검사
     private void verifyNumberOfRounds(int numberOfRounds) throws IllegalArgumentException {
         // 100보다 큰 입력이 들어온 경우
         if (numberOfRounds > 100) {
