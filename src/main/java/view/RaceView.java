@@ -84,7 +84,7 @@ public class RaceView implements Observer, RaceViewInterface {
     // 과정을 담당하는 메서드
     @Override
     public void printProcess() {
-        System.out.println("실행 결과");
+        System.out.println("\n실행 결과");
     }
 
     // 결과를 출력하는 메서드
