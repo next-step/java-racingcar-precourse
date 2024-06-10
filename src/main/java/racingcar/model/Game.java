@@ -30,9 +30,14 @@ public class Game {
         Game.trial = trial;
     }
 
-    public void play(){
-        moveForward();
-        increaseTrialNumber();
+    public void moveForward(){
+        for (Car car : raceCars){
+            car.move(RandomNumberGenerator.generate());
+        }
+    }
+
+    public void increaseTrialNumber(){
+        this.trialNumber += 1;
     }
 
     public Boolean isGameEnd(){
@@ -43,16 +48,6 @@ public class Game {
         return raceCars.stream()
                 .filter(c -> c.getPosition() == getMaxPosition(raceCars))
                 .collect(Collectors.toList());
-    }
-
-    private void increaseTrialNumber(){
-        this.trialNumber += 1;
-    }
-
-    public void moveForward(){
-        for (Car car : raceCars){
-            car.move(RandomNumberGenerator.generate());
-        }
     }
 
     public int getMaxPosition(List<Car> cars){

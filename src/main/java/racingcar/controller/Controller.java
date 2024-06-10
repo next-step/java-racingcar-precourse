@@ -1,10 +1,15 @@
 package racingcar.controller;
 
+import racingcar.model.Car;
 import racingcar.model.Game;
 import racingcar.model.Validator;
 import racingcar.utils.Parser;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
+
+import java.util.List;
+
+import static racingcar.utils.Parser.parseTrialNumber;
 
 public class Controller {
     private final Validator validator = new Validator();
@@ -24,7 +29,8 @@ public class Controller {
     private void play(Game game){
         OutputView.printHead();
         while(!game.isGameEnd()){
-            game.play();
+            game.moveForward();
+            game.increaseTrialNumber();
             OutputView.printScore(game.getRaceCars());
         }
         OutputView.printWinners(game.getWinners());
@@ -35,7 +41,7 @@ public class Controller {
     }
 
     private void setTrial(Game game){
-        game.setTrial(Parser.parseTrialNumber(getTrialNumberUserInput()));
+        game.setTrial(parseTrialNumber(getTrialNumberUserInput()));
     }
 
     private String getCarNamesUserInput() {
