@@ -50,5 +50,5 @@
 
 ### utils
 - [X] 자동차 이름 parser
-- [ ] 시도 횟수 parser
+- [X] 시도 횟수 parser
 - [ ] 난수 생성기
