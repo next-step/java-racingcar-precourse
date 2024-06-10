@@ -27,14 +27,35 @@ public class Controller {
     }
 
     private static List<String> getNames() {
-        List<String> names = List.of(InputView.inputCarNames().split(","));
-        InputValidator.validateNames(names);
+        InputView.printCarNamesMesage();
+        List<String> names = null;
+        while (names == null) {
+            try {
+                names = List.of(InputView.getInput().split(","));
+                InputValidator.validateNames(names);
+            }
+            catch (IllegalArgumentException e) {
+                System.out.println(e.toString());
+                names = null;
+            }
+        }
         return names;
     }
 
     private static int getAttemptNum() {
-        String attemptNumInput = InputView.inputAttemptNum();
-        InputValidator.validateAttemptNum(attemptNumInput);
+        InputView.printAttemptNumMessage();
+        String attemptNumInput = null;
+
+        while (attemptNumInput == null) {
+            try {
+                attemptNumInput = InputView.getInput();
+                InputValidator.validateAttemptNum(attemptNumInput);
+            }
+            catch (IllegalArgumentException e) {
+                System.out.println(e.toString());
+                attemptNumInput = null;
+            }
+        }
         return Integer.parseInt(attemptNumInput);
     }
 }
