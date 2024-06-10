@@ -24,7 +24,7 @@ public class RacingCarTest {
     @Test
     void minimumCountOfCars() throws Exception{
         //given
-        String racingCarName = "pobi";
+        String racingCarName = "ini";
         RacingCar car = new RacingCar(racingCarName, 1);
 
         List<RacingCar> cars = List.of(car);
