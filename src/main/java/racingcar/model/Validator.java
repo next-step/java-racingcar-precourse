@@ -11,7 +11,7 @@ public class Validator {
         String[] names = carsName.split(",");
         Set<String> carSet = new HashSet<>();
         for (String name : names) {
-            if (name.length() > 5 || name.isEmpty()) {
+            if (name.trim().isEmpty() || name.length() > 5) {
                 throw new IllegalArgumentException("자동차 이름은 1 ~ 5글자로 입력해주세요.");
             }
             if (!carSet.add(name)) {
