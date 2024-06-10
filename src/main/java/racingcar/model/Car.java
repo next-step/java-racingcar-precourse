@@ -15,7 +15,7 @@ public class Car {
     }
 
     public int getPosition(){
-        return  position;
+        return position;
     }
 
     public void move(int condition){
