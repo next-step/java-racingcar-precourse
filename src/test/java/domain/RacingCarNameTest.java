@@ -11,7 +11,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 class RacingCarNameTest {
 
     @ParameterizedTest
-    @ValueSource(strings = {"pobi", "woni", "jun", "cobi"})
+    @ValueSource(strings = {"yoni", "ini", "nini", "zzang"})
     @DisplayName("racing car 생성 test")
     void test_name_constructor_success(String input) {
         // when
@@ -22,7 +22,7 @@ class RacingCarNameTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"","avante", "sonata"})
+    @ValueSource(strings = {"","doggang", "lovelove"})
     @DisplayName("경주할 자동차 이름은 유효한 범위(1이상 5이하)를 가져야한다. ")
     void test_name_constructor_fail_over_length_name(String carName) {
         // given
