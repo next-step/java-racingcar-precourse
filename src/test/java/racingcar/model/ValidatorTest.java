@@ -46,11 +46,11 @@ public class ValidatorTest {
         //when & then
         assertThatThrownBy(() -> validator.checkTrialNumber(testNum1))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("1 이상 2,147,483,647 이하의 자연수만 입력 가능합니다.");
+                .hasMessage("1 이상 2,147,483,647 이하의 자연수를 입력해주세요.");
 
         assertThatThrownBy(() -> validator.checkTrialNumber(testNum2))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("1 이상 2,147,483,647 이하의 자연수만 입력 가능합니다.");
+                .hasMessage("1 이상 2,147,483,647 이하의 자연수를 입력해주세요.");
     }
 
 }
