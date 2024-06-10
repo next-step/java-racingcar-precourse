@@ -49,13 +49,13 @@ public class Game {
         this.trialNumber += 1;
     }
 
-    private void moveForward(){
+    public void moveForward(){
         for (Car car : raceCars){
             car.move(RandomNumberGenerator.generate());
         }
     }
 
-    private int getMaxPosition(List<Car> cars){
+    public int getMaxPosition(List<Car> cars){
         return cars.stream()
                 .mapToInt(Car::getPosition)
                 .max()
