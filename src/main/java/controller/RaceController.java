@@ -3,6 +3,7 @@ package controller;
 import service.RaceServiceInterface;
 import view.RaceViewInterface;
 
+// 실제 사용자가 조작할 컨트롤러. 이 클래스만으로 모든 로직을 수행할 수 있어야 한다.
 public class RaceController implements RaceControllerInterface {
 
     private RaceServiceInterface race;
