@@ -45,4 +45,11 @@ public class Game {
             car.move(RandomNumberGenerator.generate());
         }
     }
+
+    private int getMaxPosition(List<Car> cars){
+        return cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
+    }
 }
