@@ -52,6 +52,4 @@ public class SetTest {
             Set.validateAttempt(5);
         });
     }
-
-
 }
