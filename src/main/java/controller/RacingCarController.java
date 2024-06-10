@@ -15,7 +15,7 @@ public class RacingCarController {
         String[] carNames = inputView.inputCarNames();
         int movementCount = inputView.inputMovementCount();
 
-        RacingCarGame game = new RacingCarGame(carNames, movementCount);
+        RacingCarGame game = new RacingCarGame(carNames);
 
         outputView.printResultMessage();
         for (int i = 0; i < movementCount; i++) {

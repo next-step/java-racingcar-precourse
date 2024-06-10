@@ -8,15 +8,13 @@ import util.RandomNumberGenerator;
 public class RacingCarGame {
 
     private final List<Car> cars = new ArrayList<>();
-    private final int movementCount;
 
     private final RandomNumberGenerator generator = new RandomNumberGenerator();;
 
-    public RacingCarGame(String[] carNames, int movementCount) {
+    public RacingCarGame(String[] carNames) {
         for (String carName : carNames) {
             cars.add(new Car(carName));
         }
-        this.movementCount = movementCount;
     }
 
     public List<Car> playOneRound() {
