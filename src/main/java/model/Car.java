@@ -12,11 +12,11 @@ public class Car {
         setName(name);
     }
 
-    private void setName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    private void setDistance(int distance) {
+    public void setDistance(int distance) {
         this.distance = distance;
     }
 
