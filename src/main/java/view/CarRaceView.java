@@ -16,12 +16,12 @@ public class CarRaceView {
         System.out.println(message);
     }
 
-    public void printCars(List<Car> cars) {
-        for (Car car : cars) {
-            System.out.println(car);
-        }
-        System.out.println();
-    }
+//    public void printCars(List<Car> cars) {
+//        for (Car car : cars) {
+//            System.out.println(car);
+//        }
+//        System.out.println();
+//    }
 
     public void printWinners(List<Car> winners) {
         System.out.print("최종 우승자: ");

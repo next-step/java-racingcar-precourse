@@ -41,9 +41,9 @@ public class CarRaceController {
                 view.printTryCountMessage();
             }
         }
-
+        System.out.println("실행 결과");
         carRace.race(tryCount); // 시도 횟수만큼 레이스 진행
-        view.printCars(carRace.getCars()); // 진행된 레이스 결과바 보여줌
+//        view.printCars(carRace.getCars()); // 진행된 레이스 결과바 보여줌
 
         List<Car> winners = carRace.findWinners();
         view.printWinners(winners);

@@ -27,7 +27,7 @@ public class CarInputTest {
 
     @Test
     @DisplayName("Car의 이름이 중복되었을 경우")
-    public void DuplicatedCarName() { 
+    public void DuplicatedCarName() {
 
         //Given
         String carName = "carA,carB,carA"; // 중복된 이름

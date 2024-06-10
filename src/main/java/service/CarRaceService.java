@@ -38,6 +38,7 @@ public class CarRaceService {
             throw new IllegalArgumentException("[ERROR] 시도 횟수는 1 이상의 정수로 입력 가능합니다. 다시 입력해주세요");
         for (int i = 0; i < tryCount; i++) {
             raceOnce();
+            printCurrentPositions();
         }
     }
 
@@ -45,6 +46,13 @@ public class CarRaceService {
         for (Car car : cars) {
             car.move(random.nextInt(10)); // 차량 랜덤값 4보다 크면 이동 아니면 그대로 둔다.
         }
+    }
+
+    private void printCurrentPositions() {
+        for (Car car : cars) {
+            System.out.println(car);
+        }
+        System.out.println();
     }
 
     public List<Car> getCars() {
