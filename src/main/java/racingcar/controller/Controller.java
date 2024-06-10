@@ -41,7 +41,7 @@ public class Controller {
     }
 
     private void setTrial(Game game){
-        game.setTrial(parseTrialNumber(getTrialNumberUserInput()));
+        game.setTrial(Parser.parseTrialNumber(getTrialNumberUserInput()));
     }
 
     private String getCarNamesUserInput() {
