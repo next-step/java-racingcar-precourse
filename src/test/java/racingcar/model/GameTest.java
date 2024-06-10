@@ -34,6 +34,20 @@ public class GameTest {
     }
 
     @Test
+    @DisplayName("수행 횟수 증가 Test")
+    void 수행_횟수_증가_TEST(){
+        //given
+
+        //when
+        for(int i=0; i<5; i++){
+            game.increaseTrialNumber();
+        }
+
+        //then
+        assertThat(game.getTrialNumber()).isEqualTo(5);
+    }
+
+    @Test
     @DisplayName("경주 우승자 위치 GET Test")
     void 경주_우승자_위치_GET_TEST(){
         //given
