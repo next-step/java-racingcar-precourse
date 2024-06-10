@@ -1,4 +1,4 @@
-package view;
+package utils;
 
 import java.util.Arrays;
 import java.util.List;
@@ -29,9 +29,9 @@ public class Parser {
 
     public static int validateGameCountInput(String input) {
         try {
-            validateGameCountIsBlank(input);
+            validateGameCountIsPositive(input);
             int count = Integer.parseInt(input.trim());
-            validateGameCountIsBlank(count);
+            validateGameCountIsPositive(count);
 
             return count;
         } catch (NumberFormatException e) {
@@ -39,12 +39,12 @@ public class Parser {
         }
     }
 
-    private static void validateGameCountIsBlank(String input){
+    private static void validateGameCountIsPositive(String input){
         if (input == null || input.trim().isEmpty()) {
             throw new IllegalArgumentException(INVALID_COUNT_ERROR);
         }
     }
-    private static void validateGameCountIsBlank(int count){
+    private static void validateGameCountIsPositive(int count){
         if (count <= 0) {
             throw new IllegalArgumentException(INVALID_COUNT_ERROR);
         }
