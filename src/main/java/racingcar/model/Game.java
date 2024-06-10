@@ -2,6 +2,7 @@ package racingcar.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Game {
     private final List<Car> raceCars;
@@ -34,6 +35,12 @@ public class Game {
 
     public Boolean isGameEnd(){
         return trial == this.trialNumber;
+    }
+
+    public List<Car> getWinners() {
+        return raceCars.stream()
+                .filter(c -> c.getPosition() == getMaxPosition(raceCars))
+                .collect(Collectors.toList());
     }
 
     private void increaseTrialNumber(){
