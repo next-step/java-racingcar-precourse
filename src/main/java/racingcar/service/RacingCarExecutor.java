@@ -48,7 +48,7 @@ public class RacingCarExecutor {
         int maxLocation = racingCars.stream()
                 .mapToInt(RacingCar::getLocation)
                 .max()
-                .orElse(Integer.MIN_VALUE);
+                .orElseThrow(IllegalStateException::new);
 
         return racingCars.stream()
                 .filter(racingCar -> maxLocation == racingCar.getLocation())

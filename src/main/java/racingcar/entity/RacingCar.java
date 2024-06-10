@@ -1,10 +1,12 @@
 package racingcar.entity;
 
 public class RacingCar {
+    private static final int MAXIMUM_NAME_LENGTH = 5;
+
     private final String name;
     private int location;
 
-    public RacingCar(String name) {
+    public RacingCar(final String name) {
         this.name = name.trim();
         this.location = 0;
 
@@ -24,7 +26,7 @@ public class RacingCar {
     }
 
     private void validate() {
-        if (name.isEmpty() || name.length() > 5) {
+        if (name.isEmpty() || name.length() > MAXIMUM_NAME_LENGTH) {
             throw new IllegalArgumentException("wrong car name : " + name);
         }
     }
