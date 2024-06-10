@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 public class OutputView {
     private static final String RESULT_OUTPUT = "\n실행결과";
-    private static final String WINNER_OUTPUT = "최종우승자 %s\n";
+    private static final String WINNER_OUTPUT = "최종우승자 : %s\n";
     public static void printError(String error){
         System.out.println(error + "\n");
     }
