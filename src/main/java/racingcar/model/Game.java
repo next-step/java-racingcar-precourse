@@ -49,7 +49,7 @@ public class Game {
     }
 
     public Boolean isGameEnd(){
-        return trial == this.trialNumber;
+        return trial <= this.trialNumber;
     }
 
     public List<Car> getWinners() {
