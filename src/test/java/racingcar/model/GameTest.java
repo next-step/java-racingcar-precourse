@@ -48,8 +48,41 @@ public class GameTest {
     }
 
     @Test
-    @DisplayName("경주 우승자 위치 GET Test")
-    void 경주_우승자_위치_GET_TEST(){
+    @DisplayName("경주 게임 종료 여부 True Test")
+    void 경주_게임_종료_여부_TRUE_TEST(){
+        // given
+        game.setTrial(4);
+        for(int i=0; i<4; i++){
+            game.increaseTrialNumber();
+        }
+
+        // when
+        Boolean result = game.isGameEnd();
+
+        // then
+        assertThat(result).isTrue();
+    }
+
+    @Test
+    @DisplayName("경주 게임 종료 여부 False Test")
+    void 경주_게임_종료_여부_FALSE_TEST(){
+        // given
+        game.setTrial(4);
+        for(int i=0; i<2; i++){
+            game.increaseTrialNumber();
+        }
+
+        // when
+        Boolean result = game.isGameEnd();
+
+        // then
+        assertThat(result).isFalse();
+    }
+
+
+    @Test
+    @DisplayName("자동차 최대 위치 GET Test")
+    void 자동차_최대_위치_GET_TEST(){
         //given
         String[] carsName = {"자동차1", "자동차2"};
         game.setRaceCars(carsName);
