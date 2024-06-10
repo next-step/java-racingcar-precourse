@@ -22,4 +22,21 @@ public class RacingCarTest {
         // then
         assertThat(car.getDistance()).isEqualTo(curLocation);
     }
+
+    @DisplayName("같은 위치의 자동차가 존재하는지 확인할 수 있다.")
+    @ParameterizedTest
+    @CsvSource({"2,2,true","2,1,false"})
+    void isSameDistanceOfCar(int myCarLocation,
+                             int competeCarLocation,
+                             boolean sameDistanceCheck) throws Exception{
+        //given
+        RacingCar myCar = new RacingCar("ini", myCarLocation);
+        RacingCar competeCar = new RacingCar("yoni", competeCarLocation);
+
+        //when
+        boolean sameDistance = myCar.isSameDistance(competeCar);
+
+        //then
+        assertThat(sameDistance).isEqualTo(sameDistanceCheck);
+    }
 }
