@@ -21,4 +21,19 @@ public class Controller {
             return getCarNamesUserInput();
         }
     }
+
+    private String getTrialNumberUserInput() {
+        String input = inputView.requestTrialNumberMessage();
+        return checkValidationTrialNumber(input);
+    }
+
+    private String checkValidationTrialNumber(String input) {
+        try {
+            validator.checkTrialNumber(input);
+            return input;
+        } catch (IllegalArgumentException e) {
+            System.out.println("[ERROR] " + e.getMessage());
+            return getTrialNumberUserInput();
+        }
+    }
 }
