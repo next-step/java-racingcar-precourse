@@ -20,6 +20,14 @@ public class Game {
         return raceCars;
     }
 
+    public int getTrial(){
+        return trial;
+    }
+
+    public int getTrialNumber(){
+        return trialNumber;
+    }
+
     public void setRaceCars(String[] carsName){
         for (String s : carsName) {
             raceCars.add(new Car(s));
