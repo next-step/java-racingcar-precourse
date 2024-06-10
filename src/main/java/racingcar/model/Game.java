@@ -16,4 +16,10 @@ public class Game {
     public List<Car> getRaceCars(){
         return raceCars;
     }
+
+    public void setRaceCars(String[] carsName){
+        for (String s : carsName) {
+            raceCars.add(new Car(s));
+        }
+    }
 }
