@@ -8,8 +8,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class GameTest {
     private Game game = new Game();
     @Test
-    @DisplayName("경주 참여 자동차 등록 Test")
-    void 경주_참여_자동차_등록_TEST(){
+    @DisplayName("경주 자동차 등록 Test")
+    void 경주_자동차_등록_TEST(){
         //given
         String[] carsName = {"자동차1", "자동차2"};
 
@@ -18,6 +18,19 @@ public class GameTest {
 
         //then
         assertThat(game.getRaceCars().size()).isEqualTo(2);
+    }
+
+    @Test
+    @DisplayName("시도 횟수 설정 Test")
+    void 시도_횟수_설정_TEST(){
+        //given
+        int trial = 4;
+
+        //when
+        game.setTrial(trial);
+
+        //then
+        assertThat(game.getTrial()).isEqualTo(4);
     }
 
     @Test
