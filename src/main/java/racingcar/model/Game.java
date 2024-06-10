@@ -22,4 +22,8 @@ public class Game {
             raceCars.add(new Car(s));
         }
     }
+
+    public void setTrial(int trial){
+        Game.trial = trial;
+    }
 }
