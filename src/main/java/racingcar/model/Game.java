@@ -26,4 +26,8 @@ public class Game {
     public void setTrial(int trial){
         Game.trial = trial;
     }
+
+    private void increaseTrialNumber(){
+        this.trialNumber += 1;
+    }
 }
