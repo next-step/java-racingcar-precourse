@@ -19,4 +19,16 @@ public class Validator {
             }
         }
     }
+
+    public void checkTrialNumber(String trialNumberInput){
+        int trialNumber;
+        try{
+            trialNumber = Integer.parseInt(trialNumberInput);
+        } catch (NumberFormatException e){
+            throw new IllegalArgumentException("1 이상 2,147,483,647 이하의 자연수를 입력해주세요.");
+        }
+        if(trialNumber < 1){
+            throw new IllegalArgumentException("1 이상 2,147,483,647 이하의 자연수를 입력해주세요.");
+        }
+    }
 }
