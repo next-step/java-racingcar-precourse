@@ -27,11 +27,22 @@ public class Game {
         Game.trial = trial;
     }
 
+    public void play(){
+        moveForward();
+        increaseTrialNumber();
+    }
+
     public Boolean isGameEnd(){
         return trial == this.trialNumber;
     }
 
     private void increaseTrialNumber(){
         this.trialNumber += 1;
+    }
+
+    private void moveForward(){
+        for (Car car : raceCars){
+            car.move(RandomNumberGenerator.generate());
+        }
     }
 }
