@@ -50,6 +50,6 @@ class ParserTest {
         //when
 
         //then
-        assertThrows(IllegalArgumentException.class, () -> Parser.validateCarNameInput(input));
+        assertThrows(IllegalArgumentException.class, () -> Parser.validateGameCountInput(input));
     }
 }
