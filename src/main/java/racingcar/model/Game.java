@@ -27,6 +27,10 @@ public class Game {
         Game.trial = trial;
     }
 
+    public Boolean isGameEnd(){
+        return trial == this.trialNumber;
+    }
+
     private void increaseTrialNumber(){
         this.trialNumber += 1;
     }
