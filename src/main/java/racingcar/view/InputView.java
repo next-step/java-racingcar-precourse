@@ -14,6 +14,11 @@ public class InputView {
         return getUserInput();
     }
 
+    public String requestTrialNumberMessage() {
+        System.out.println("시도할 횟수는 몇회인가요?");
+        return getUserInput();
+    }
+
     private String getUserInput() {
         return scanner.nextLine();
     }
