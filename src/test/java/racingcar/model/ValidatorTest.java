@@ -10,8 +10,8 @@ public class ValidatorTest {
     private Validator validator = new Validator();
 
     @Test
-    @DisplayName("자동차 이름 파싱 Test")
-    void 자동차_이름_파싱_TEST(){
+    @DisplayName("자동차 이름 유효 Test")
+    void 자동차_이름_유효_TEST(){
         //given
         String testInput1 = "a,b,c,";
         String testInput2 = "aaaaaa,b,c";
