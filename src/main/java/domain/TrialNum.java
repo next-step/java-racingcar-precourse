@@ -1,10 +1,10 @@
 package domain;
 
-public class TryialNum {
+public class TrialNum {
 
     private final int trialNum;
 
-    public TryialNum(final String trialNum) {
+    public TrialNum(final String trialNum) {
         isNaturalNumberValidate(trialNum);
         this.trialNum = convertStringToInt(trialNum);
     }

@@ -1,7 +1,7 @@
 package controller;
 
 import domain.RacingCars;
-import domain.TryialNum;
+import domain.TrialNum;
 import util.CreatingCar;
 import util.RandomGeneratingMove;
 import view.InputView;
@@ -13,9 +13,9 @@ public class RacingGameController {
     private final RandomGeneratingMove randomGeneratingMove = new RandomGeneratingMove();
     public void startGame(){
         RacingCars racingCars = createRacingCars();
-        TryialNum tryialNum = getTryCount();
+        TrialNum trialNum = getTryCount();
 
-        racing(racingCars, tryialNum);
+        racing(racingCars, trialNum);
     }
 
     private RacingCars createRacingCars(){
@@ -24,16 +24,16 @@ public class RacingGameController {
         return CreatingCar.createCars(carNames);
     }
 
-    private TryialNum getTryCount(){
+    private TrialNum getTryCount(){
         outputView.printRequestTryCount();
         String inputTryCount = inputView.inputTryCount();
-        return new TryialNum(inputTryCount);
+        return new TrialNum(inputTryCount);
     }
 
-    private void racing(RacingCars cars, TryialNum tryialNum) {
+    private void racing(RacingCars cars, TrialNum trialNum) {
         outputView.printExecutionResult();
 
-        for (int i = 0; i < tryialNum.getTrialNum(); i++) {
+        for (int i = 0; i < trialNum.getTrialNum(); i++) {
             cars.moveAll(randomGeneratingMove);
             outputView.printRoundByExecutionResults(cars);
         }
