@@ -35,7 +35,7 @@ public class Controller {
                 InputValidator.validateNames(names);
             }
             catch (IllegalArgumentException e) {
-                System.out.println(e.toString());
+                System.out.println(e.getMessage());
                 names = null;
             }
         }
@@ -52,7 +52,7 @@ public class Controller {
                 InputValidator.validateAttemptNum(attemptNumInput);
             }
             catch (IllegalArgumentException e) {
-                System.out.println(e.toString());
+                System.out.println(e.getMessage());
                 attemptNumInput = null;
             }
         }
