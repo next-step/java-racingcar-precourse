@@ -39,7 +39,7 @@
 ### getResults
 자동차의 전진 여부를 출력한다. 이전 실행 결과까지 누적된 전진 횟수를 출력한다.
 
-### checkMaxMove
+### checkWinner
 모든 자동차들 중 최대로 전진한 자동차의 전진 횟수를 출력한다. <br/>
 
 ### getWinner

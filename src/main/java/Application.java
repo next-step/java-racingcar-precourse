@@ -4,6 +4,8 @@ public class Application {
     private static final String SET_CAR_NAMES = "경주할 자동차의 이름을 입력하세요. (이름은 쉼표(,) 기준으로 구분)";
     private static final String QUESTION_MOVE_NUM = "시도할 회수는 몇회인가요?";
     private static final String PLAY_GAME = "\n실행 결과";
+    private static final String NOTICE_WINNER = "최종 우승자 : ";
+    private static final int MAX_CAR_NAME = 5;
 
     public static void main(String[] args) {
         HashMap<String, Integer> cars = new LinkedHashMap<>();
@@ -13,6 +15,9 @@ public class Application {
 
         playGame(cars, moveNum);
 
+        int maxMove = checkMaxMove(cars);
+
+        getWinner(cars, maxMove);
 
     }
 
@@ -25,7 +30,7 @@ public class Application {
         List<String> carNames = List.of(userInput.split(", "));
 
         for (String carName: carNames) {
-            if (carName.length() > 5) {
+            if (carName.length() > MAX_CAR_NAME) {
                 throw new IllegalArgumentException("[Error] 자동차의 이름은 5자 이내여야 합니다.");
             }
 
@@ -72,6 +77,26 @@ public class Application {
 
     private static void getResults (Map.Entry<String, Integer> car) {
         System.out.println(car.getKey() + " : " + "-".repeat(car.getValue()));
+    }
+
+    private static int checkMaxMove (HashMap<String, Integer> cars) {
+        return Collections.max(cars.values());
+    }
+
+    private static void getWinner (HashMap<String, Integer> cars, int maxMove) {
+
+        System.out.print(NOTICE_WINNER);
+
+        List<String> winners = new ArrayList<>();
+
+        for (Map.Entry<String, Integer> car: cars.entrySet()) {
+            if (car.getValue() == maxMove) {
+                winners.add(car.getKey());
+            }
+        }
+
+        System.out.println(String.join(", ", winners));
+
     }
 
 }
