@@ -3,6 +3,7 @@ import java.util.*;
 public class Application {
     private static final String SET_CAR_NAMES = "경주할 자동차의 이름을 입력하세요. (이름은 쉼표(,) 기준으로 구분)";
     private static final String QUESTION_MOVE_NUM = "시도할 회수는 몇회인가요?";
+    private static final String PLAY_GAME = "\n실행 결과";
 
     public static void main(String[] args) {
         HashMap<String, Integer> cars = new LinkedHashMap<>();
@@ -43,8 +44,12 @@ public class Application {
 
     private static void playGame (HashMap<String, Integer> cars, int moveNum) {
 
+        System.out.println(PLAY_GAME);
+
         for (int i = 0; i < moveNum; i ++) {
             checkMove(cars);
+
+            System.out.println();
         }
     }
 
@@ -53,6 +58,8 @@ public class Application {
             if (isMove()) {
                 car.setValue(car.getValue() + 1);
             }
+
+            getResults(car);
         }
     }
 
@@ -62,4 +69,9 @@ public class Application {
 
         return randomNumber >= 4;
     }
+
+    private static void getResults (Map.Entry<String, Integer> car) {
+        System.out.println(car.getKey() + " : " + "-".repeat(car.getValue()));
+    }
+
 }
